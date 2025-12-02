@@ -46,31 +46,101 @@
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BoatRental",
-    "name": "Mare Boats Hvar",
-    "url": "https://mareboatshvar.com/",
-    "image": "https://mareboatshvar.com/img/carousel-1.jpeg",
-    "description": "Private boat tours in Hvar, Croatia. Blue Cave, Green Cave (Vis), Pakleni Islands, Red Rocks, Sunset tours, transfers, and rentals with/without skipper.",
-    "telephone": "+385951966734",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Hvar",
-      "addressRegion": "Split-Dalmatia",
-      "addressCountry": "HR"
-    },
-    "priceRange": "€€",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "43.1663",
-      "longitude": "16.4423"
-    },
-    "sameAs": [
-      "https://www.instagram.com/mareboats.hvar/",
-      "https://www.tripadvisor.com/Attraction_Review-g303808-d26168387-Reviews-Mare_Boats_Hvar-Hvar_Hvar_Island_Split_Dalmatia_County_Dalmatia.html"
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "BoatRental"],
+  "@id": "https://mareboatshvar.com/#mareboats",
+  "name": "Mare Boats Hvar",
+  "url": "https://mareboatshvar.com/",
+  "image": "https://mareboatshvar.com/img/carousel-1.jpeg",
+  "description": "Private boat tours from Hvar, Croatia. Blue Cave and Green Cave trips, Pakleni Islands and Red Rocks excursions, sunset tours, transfers and speedboat rentals with WhatsApp booking.",
+  "telephone": "+385951966734",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Hvar Port",
+    "addressLocality": "Hvar",
+    "addressRegion": "Split-Dalmatia County",
+    "postalCode": "21450",
+    "addressCountry": "HR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.172,
+    "longitude": 16.441
+  },
+  "sameAs": [
+    "https://www.instagram.com/mareboats.hvar"
+  ],
+  "areaServed": {
+    "@type": "Place",
+    "name": "Hvar, Pakleni Islands, Vis, Blue Cave, Green Cave, Red Rocks"
+  },
+  "knowsAbout": [
+    "Private boat tours",
+    "Blue Cave tour",
+    "Green Cave tour",
+    "Pakleni Islands tour",
+    "Hvar speedboat transfers",
+    "Sunset boat tours"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Boat tours from Hvar",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Blue Cave & Green Cave full-day tour",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": "Blue Cave & Green Cave speedboat tour from Hvar",
+          "description": "Full-day speedboat tour from Hvar to the Blue Cave, Green Cave and nearby bays, with multiple swimming and snorkelling stops.",
+          "touristType": ["Couples", "Families", "Groups of friends"],
+          "itinerary": "Hvar – Biševo (Blue Cave) – Green Cave – Stiniva – Pakleni Islands – Hvar",
+          "tripDuration": "PT8H"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Pakleni Islands & Red Rocks tour",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": "Pakleni Islands & Red Rocks tour from Hvar",
+          "description": "Day-trip by speedboat from Hvar visiting the Pakleni Islands, Red Rocks cliffs and hidden bays for swimming and snorkelling.",
+          "tripDuration": "PT8H"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Private custom tour with skipper",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": "Private boat tour from Hvar with skipper",
+          "description": "Fully private speedboat charter with skipper, customised route around Hvar, Pakleni Islands and the Vis archipelago.",
+          "tripDuration": "PT8H"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Full-day bareboat rental",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Speedboat rental without skipper",
+          "description": "RIB speedboat rental from Hvar port without skipper for guests with a valid boat licence. Ideal for independent island hopping."
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Sunset tour",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": "Sunset tour around Pakleni Islands",
+          "description": "Short evening speedboat tour from Hvar to watch the sunset around the Pakleni Islands with swimming stops when conditions allow.",
+          "tripDuration": "PT2H"
+        }
+      }
     ]
   }
+}
   </script>
 </head>
 <body>
