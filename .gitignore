@@ -4,4 +4,7 @@ dist
 *.log
 vite.config.timestamp-*.mjs
 
+# Netlify local build artifacts
+.netlify
+
 
