@@ -19,6 +19,7 @@ const Hero = () => {
         className="hero-img d-md-none"
         src="/img/carousel-1.jpeg"
         alt="Speedboat tour from Hvar with guests enjoying the sea"
+        fetchpriority="high"
       />
 
       <div className="content">

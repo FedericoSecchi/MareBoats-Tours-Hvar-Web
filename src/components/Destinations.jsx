@@ -9,7 +9,7 @@ const destinations = [
 
 const Destinations = () => {
   return (
-    <section id="destinations" className="py-5 bg-light">
+    <section className="py-5 bg-light">
       <div className="container">
         <div className="text-center mb-4 section-title">
           <small>Destinations</small>

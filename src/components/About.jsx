@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="py-5">
+    <section className="py-5">
       <div className="container">
         <div className="row g-4 align-items-center">
           <div className="col-12 col-lg-6 js-animate-on-scroll">

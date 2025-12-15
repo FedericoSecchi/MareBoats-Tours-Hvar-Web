@@ -146,7 +146,7 @@ const TourCard = ({ tour }) => {
 
 const Tours = () => {
   return (
-    <section id="tours" className="py-5">
+    <section className="py-5">
       <div className="container">
         <div className="text-center mb-4 section-title">
           <small>Suggested Tours</small>
