@@ -53,7 +53,6 @@ const Masonry = ({
   ease = 'power2.out',
   duration = 0.6,
   stagger = 0.2,
-  animateFrom = 'random',
   scaleOnHover = true,
   hoverScale = 0.95,
   blurToFocus = true,
@@ -68,60 +67,43 @@ const Masonry = ({
   const [containerRef, { width }] = useMeasure();
   const [imagesReady, setImagesReady] = useState(false);
 
-  const getInitialPosition = (item, index) => {
-    const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return { x: item.x, y: item.y };
-
-    let direction = animateFrom;
-
-    if (animateFrom === 'random') {
-      // Organic random movement: slight variations in x and y
-      const randomX = gsap.utils.random(-30, 30);
-      const randomY = gsap.utils.random(20, 60);
-      return {
-        x: item.x + randomX,
-        y: item.y + randomY
-      };
-    }
-
-    switch (direction) {
-      case 'top':
-        return { x: item.x, y: -200 };
-      case 'bottom':
-        return { x: item.x, y: window.innerHeight + 200 };
-      case 'left':
-        return { x: -200, y: item.y };
-      case 'right':
-        return { x: window.innerWidth + 200, y: item.y };
-      case 'center':
-        return {
-          x: containerRect.width / 2 - item.w / 2,
-          y: containerRect.height / 2 - item.h / 2
-        };
-      default:
-        return { x: item.x, y: item.y + 100 };
-    }
-  };
+  // Store random values per item to ensure true randomness (not recalculated)
+  const randomValues = useRef(new Map());
 
   useEffect(() => {
     preloadImages(items.map(i => i.img)).then(() => setImagesReady(true));
   }, [items]);
 
+  // Editorial grid: uniform card size, no dynamic height calculation
   const grid = useMemo(() => {
     if (!width) return [];
 
-    const colHeights = new Array(columns).fill(0);
     const columnWidth = width / columns;
+    const cardHeight = columnWidth * 1.2; // Aspect ratio 1:1.2 (uniform cards)
+    const gap = 12; // Gap between cards
+    const cardWidth = columnWidth - gap;
 
-    return items.map(child => {
-      const col = colHeights.indexOf(Math.min(...colHeights));
-      const x = columnWidth * col;
-      const height = child.height / 2;
-      const y = colHeights[col];
+    const totalRows = Math.ceil(items.length / columns);
+    const containerHeight = totalRows * (cardHeight + gap) + gap;
 
-      colHeights[col] += height;
+    // Update container height
+    if (containerRef.current) {
+      containerRef.current.style.height = `${containerHeight}px`;
+    }
 
-      return { ...child, x, y, w: columnWidth, h: height };
+    return items.map((child, index) => {
+      const col = index % columns;
+      const row = Math.floor(index / columns);
+      const x = col * columnWidth + gap / 2;
+      const y = row * (cardHeight + gap) + gap / 2;
+
+      return { 
+        ...child, 
+        x, 
+        y, 
+        w: cardWidth, 
+        h: cardHeight 
+      };
     });
   }, [columns, items, width]);
 
@@ -131,25 +113,36 @@ const Masonry = ({
     if (!imagesReady) return;
 
     grid.forEach((item, index) => {
+      // Generate and store random values per item (only once)
+      if (!randomValues.current.has(item.id)) {
+        randomValues.current.set(item.id, {
+          x: gsap.utils.random(-40, 40),
+          y: gsap.utils.random(-70, -30),
+          rotation: gsap.utils.random(-2, 2)
+        });
+      }
+
+      const random = randomValues.current.get(item.id);
       const selector = `[data-key="${item.id}"]`;
       const imgSelector = `${selector} .item-img`;
+      
       const animationProps = {
         x: item.x,
         y: item.y,
         width: item.w,
-        height: item.h
+        height: item.h,
+        rotation: 0
       };
 
       if (!hasMounted.current) {
-        const initialPos = getInitialPosition(item, index);
-        
-        // Initial state: reduced saturation (0.6), opacity 0, blur 8px
+        // Initial state with true random values per item
         const initialState = {
           opacity: 0,
-          x: initialPos.x,
-          y: initialPos.y,
+          x: item.x + random.x,
+          y: item.y + random.y,
           width: item.w,
-          height: item.h
+          height: item.h,
+          rotation: random.rotation
         };
 
         // Initial filter state for image (blur + saturate)
@@ -160,7 +153,7 @@ const Masonry = ({
         // Final filter state (no blur, full saturation)
         const finalFilter = 'blur(0px) saturate(1)';
 
-        // Animate wrapper (position, size, opacity)
+        // Animate wrapper (position, size, opacity, rotation)
         gsap.fromTo(selector, initialState, {
           opacity: 1,
           ...animationProps,
@@ -191,7 +184,7 @@ const Masonry = ({
 
     hasMounted.current = true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [grid, imagesReady, stagger, animateFrom, blurToFocus, duration, ease]);
+  }, [grid, imagesReady, stagger, blurToFocus, duration, ease]);
 
   const handleMouseEnter = (e, item) => {
     const element = e.currentTarget;
@@ -253,6 +246,10 @@ const Masonry = ({
             style={{ cursor: item.url ? 'pointer' : 'default' }}
           >
             <div className="item-img" style={{ backgroundImage: `url(${item.img})` }}>
+              <div className="item-content">
+                <h3 className="item-title">{item.title}</h3>
+                {item.subtitle && <p className="item-subtitle">{item.subtitle}</p>}
+              </div>
               {colorShiftOnHover && (
                 <div
                   className="color-overlay"
