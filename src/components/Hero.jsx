@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const carouselImages = [
   {
@@ -13,59 +13,14 @@ const carouselImages = [
 
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState([false, false]);
-  const intervalRef = useRef(null);
-  const imageRefs = useRef([]);
 
-  // Track when images actually load via onLoad event
+  // Carousel auto-advance (purely time-based)
   useEffect(() => {
-    const checkImageLoad = (index) => {
-      const pictureEl = imageRefs.current[index];
-      if (pictureEl) {
-        const img = pictureEl.querySelector('img');
-        if (img && img.complete) {
-          setImagesLoaded((prev) => {
-            const updated = [...prev];
-            updated[index] = true;
-            return updated;
-          });
-        } else if (img) {
-          img.onload = () => {
-            setImagesLoaded((prev) => {
-              const updated = [...prev];
-              updated[index] = true;
-              return updated;
-            });
-          };
-        }
-      }
-    };
-
-    // Check first image immediately
-    setTimeout(() => checkImageLoad(0), 0);
-
-    // Preload next image when current is loaded
-    if (imagesLoaded[activeIndex]) {
-      const nextIndex = (activeIndex + 1) % carouselImages.length;
-      setTimeout(() => checkImageLoad(nextIndex), 0);
-    }
-  }, [activeIndex, imagesLoaded]);
-
-  // Carousel auto-advance
-  useEffect(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-
-    intervalRef.current = setInterval(() => {
+    const intervalId = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % carouselImages.length);
     }, 3000);
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -73,25 +28,14 @@ const Hero = () => {
       <div className="hero-carousel">
         {carouselImages.map((image, index) => {
           const isActive = index === activeIndex;
-          const isLoaded = imagesLoaded[index];
           const base = image.base;
 
           return (
-            <picture
-              key={image.base}
-              ref={(el) => {
-                imageRefs.current[index] = el;
-              }}
-              className={`hero-img-wrapper ${isActive ? 'active' : ''}`}
-              style={{
-                opacity: isActive && isLoaded ? 1 : 0,
-                transition: 'opacity 1.2s ease-in-out'
-              }}
-            >
+            <picture key={image.base} className="hero-picture">
               <source srcSet={`/img/${base}.avif`} type="image/avif" />
               <source srcSet={`/img/${base}.webp`} type="image/webp" />
               <img
-                className="hero-img"
+                className={`hero-img ${isActive ? 'active' : ''}`}
                 src={`/img/${base}.jpeg`}
                 alt={image.alt}
                 loading={index === 0 ? 'eager' : 'lazy'}
@@ -103,7 +47,7 @@ const Hero = () => {
         })}
       </div>
 
-      <div className="content" style={{ opacity: imagesLoaded[activeIndex] ? 1 : 0, transition: 'opacity 1.2s ease-in-out' }}>
+      <div className="content">
         <h1 className="display-5 fw-bold">Private boat tours from Hvar, Croatia</h1>
         <p className="lead mb-4">
           Swim, snorkel and explore with our private speedboat tours around Hvar and nearby islands.
