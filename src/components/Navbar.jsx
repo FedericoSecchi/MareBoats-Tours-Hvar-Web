@@ -29,7 +29,10 @@ const Navbar = () => {
   }, []);
 
   // Calculate opacity and blur based on scroll progress
-  const bgOpacity = scrollProgress * 0.85; // Max 0.85 opacity
+  // Base opacity 0.3 (30%) so navbar is never fully transparent.
+  const minOpacity = 0.3;
+  const maxOpacity = 0.85;
+  const bgOpacity = minOpacity + (maxOpacity - minOpacity) * scrollProgress;
   const blurAmount = scrollProgress * 8; // Max 8px blur
   const shadowOpacity = scrollProgress * 0.06; // Max shadow opacity
   
