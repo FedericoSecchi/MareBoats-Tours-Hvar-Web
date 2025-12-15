@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const carouselImages = [
   {
-    src: '/img/carousel-1.jpeg',
+    base: 'carousel-1',
     alt: 'Speedboat tour from Hvar with guests enjoying the sea'
   },
   {
-    src: '/img/carousel-2.jpeg',
+    base: 'carousel-2',
     alt: 'Beautiful Croatian coastline and crystal clear waters'
   }
 ];
@@ -17,25 +17,37 @@ const Hero = () => {
   const intervalRef = useRef(null);
   const imageRefs = useRef([]);
 
-  // Preload next image when current is loaded
+  // Track when images actually load via onLoad event
   useEffect(() => {
-    const preloadNext = () => {
-      const nextIndex = (activeIndex + 1) % carouselImages.length;
-      if (!imagesLoaded[nextIndex] && imageRefs.current[nextIndex]) {
-        const img = new Image();
-        img.onload = () => {
+    const checkImageLoad = (index) => {
+      const pictureEl = imageRefs.current[index];
+      if (pictureEl) {
+        const img = pictureEl.querySelector('img');
+        if (img && img.complete) {
           setImagesLoaded((prev) => {
             const updated = [...prev];
-            updated[nextIndex] = true;
+            updated[index] = true;
             return updated;
           });
-        };
-        img.src = carouselImages[nextIndex].src;
+        } else if (img) {
+          img.onload = () => {
+            setImagesLoaded((prev) => {
+              const updated = [...prev];
+              updated[index] = true;
+              return updated;
+            });
+          };
+        }
       }
     };
 
+    // Check first image immediately
+    setTimeout(() => checkImageLoad(0), 0);
+
+    // Preload next image when current is loaded
     if (imagesLoaded[activeIndex]) {
-      preloadNext();
+      const nextIndex = (activeIndex + 1) % carouselImages.length;
+      setTimeout(() => checkImageLoad(nextIndex), 0);
     }
   }, [activeIndex, imagesLoaded]);
 
@@ -56,42 +68,37 @@ const Hero = () => {
     };
   }, []);
 
-  // Load first image immediately
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => {
-      setImagesLoaded((prev) => {
-        const updated = [...prev];
-        updated[0] = true;
-        return updated;
-      });
-    };
-    img.src = carouselImages[0].src;
-  }, []);
-
   return (
     <header id="home" className="hero">
       <div className="hero-carousel">
         {carouselImages.map((image, index) => {
           const isActive = index === activeIndex;
           const isLoaded = imagesLoaded[index];
+          const base = image.base;
 
           return (
-            <img
-              key={image.src}
+            <picture
+              key={image.base}
               ref={(el) => {
                 imageRefs.current[index] = el;
               }}
-              className={`hero-img ${isActive ? 'active' : ''}`}
-              src={isLoaded || index === 0 ? image.src : undefined}
-              alt={image.alt}
-              loading={index === 0 ? 'eager' : 'lazy'}
-              fetchpriority={index === 0 ? 'high' : 'auto'}
+              className={`hero-img-wrapper ${isActive ? 'active' : ''}`}
               style={{
                 opacity: isActive && isLoaded ? 1 : 0,
                 transition: 'opacity 1.2s ease-in-out'
               }}
-            />
+            >
+              <source srcSet={`/img/${base}.avif`} type="image/avif" />
+              <source srcSet={`/img/${base}.webp`} type="image/webp" />
+              <img
+                className="hero-img"
+                src={`/img/${base}.jpeg`}
+                alt={image.alt}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                decoding="async"
+              />
+            </picture>
           );
         })}
       </div>

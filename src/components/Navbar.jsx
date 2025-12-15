@@ -1,49 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const heroRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!heroRef.current) {
-        const hero = document.getElementById('home');
-        if (hero) {
-          heroRef.current = hero;
-        }
-      }
-
-      if (heroRef.current) {
-        const heroRect = heroRef.current.getBoundingClientRect();
-        const isPastHero = heroRect.bottom <= 0;
-        setIsScrolled(isPastHero);
+      const scrollY = window.scrollY;
+      const triggerPoint = 60; // Start transition after 60px
+      const maxPoint = 200; // Fully opaque after 200px
+      
+      if (scrollY <= triggerPoint) {
+        setScrollProgress(0);
+      } else if (scrollY >= maxPoint) {
+        setScrollProgress(1);
+      } else {
+        // Progressive opacity between triggerPoint and maxPoint
+        const progress = (scrollY - triggerPoint) / (maxPoint - triggerPoint);
+        setScrollProgress(Math.min(progress, 1));
       }
     };
 
-    // Use IntersectionObserver for better performance
-    const hero = document.getElementById('home');
-    if (hero) {
-      heroRef.current = hero;
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            setIsScrolled(!entry.isIntersecting);
-          });
-        },
-        {
-          threshold: 0,
-          rootMargin: '0px'
-        }
-      );
-
-      observer.observe(hero);
-
-      return () => {
-        observer.disconnect();
-      };
-    }
-
-    // Fallback to scroll listener
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial check
 
@@ -52,9 +28,27 @@ const Navbar = () => {
     };
   }, []);
 
+  // Calculate opacity and blur based on scroll progress
+  const bgOpacity = scrollProgress * 0.85; // Max 0.85 opacity
+  const blurAmount = scrollProgress * 8; // Max 8px blur
+  const shadowOpacity = scrollProgress * 0.06; // Max shadow opacity
+  
+  // Interpolate link colors from white to dark
+  const linkColor = scrollProgress > 0.5 
+    ? `rgba(${9 + (scrollProgress - 0.5) * 241}, ${14 + (scrollProgress - 0.5) * 241}, ${19 + (scrollProgress - 0.5) * 241}, 1)`
+    : `rgba(255, 255, 255, ${1 - scrollProgress * 2})`;
+
   return (
     <nav
-      className={`navbar navbar-expand-lg sticky-top border-bottom ${isScrolled ? 'navbar-scrolled' : 'navbar-transparent'}`}
+      className="navbar navbar-expand-lg sticky-top border-bottom navbar-progressive"
+      style={{
+        backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
+        backdropFilter: blurAmount > 0 ? `blur(${blurAmount}px)` : 'none',
+        WebkitBackdropFilter: blurAmount > 0 ? `blur(${blurAmount}px)` : 'none',
+        boxShadow: shadowOpacity > 0 ? `0 2px 12px rgba(0, 0, 0, ${shadowOpacity})` : 'none',
+        borderBottomColor: scrollProgress > 0 ? `rgba(0, 0, 0, ${0.1 * scrollProgress})` : 'rgba(255, 255, 255, 0.1)',
+        transition: 'background-color 0.8s ease-in-out, backdrop-filter 0.8s ease-in-out, box-shadow 0.8s ease-in-out, border-color 0.8s ease-in-out'
+      }}
     >
       <div className="container">
         <a className="navbar-brand" href="#home">
@@ -68,28 +62,60 @@ const Navbar = () => {
           aria-controls="navMain"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style={{
+            borderColor: scrollProgress > 0.5 ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.3)',
+            transition: 'border-color 0.8s ease-in-out'
+          }}
         >
           <span className="navbar-toggler-icon" />
         </button>
         <div id="navMain" className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#tours">
+              <a 
+                className="nav-link" 
+                href="#tours"
+                style={{
+                  color: linkColor,
+                  transition: 'color 0.8s ease-in-out'
+                }}
+              >
                 Tours
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about">
+              <a 
+                className="nav-link" 
+                href="#about"
+                style={{
+                  color: linkColor,
+                  transition: 'color 0.8s ease-in-out'
+                }}
+              >
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#destinations">
+              <a 
+                className="nav-link" 
+                href="#destinations"
+                style={{
+                  color: linkColor,
+                  transition: 'color 0.8s ease-in-out'
+                }}
+              >
                 Destinations
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#contact">
+              <a 
+                className="nav-link" 
+                href="#contact"
+                style={{
+                  color: linkColor,
+                  transition: 'color 0.8s ease-in-out'
+                }}
+              >
                 Contact
               </a>
             </li>
