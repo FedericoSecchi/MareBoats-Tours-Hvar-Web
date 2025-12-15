@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ChromaGrid from './ChromaGrid.jsx';
+import { useMasonryEffect } from '../utils/masonry.js';
+import '../styles/masonry.css';
 
 /**
- * ChromaGridWrapper - Wrapper para el efecto Chroma Grid de React Bites
+ * MasonryWrapper - Wrapper para el efecto Masonry layout
  * 
  * Este componente:
  * - Usa IntersectionObserver para activar el efecto solo cuando la sección es visible
  * - Monta el efecto de forma lazy para no bloquear el render inicial
- * - Renderiza ChromaGrid solo cuando la sección es visible
+ * - Renderiza el layout Masonry cuando es visible, con fallback a grid normal
  */
-const ChromaGridWrapper = ({ children, items, showGrid = true }) => {
+const MasonryWrapper = ({ children, items }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
 
@@ -40,16 +41,18 @@ const ChromaGridWrapper = ({ children, items, showGrid = true }) => {
     };
   }, []);
 
+  // Activar el efecto Masonry cuando la sección es visible
+  useMasonryEffect(isVisible, containerRef);
+
   return (
-    <div ref={containerRef} className="chroma-grid-wrapper">
-      {showGrid && isVisible && items && items.length > 0 ? (
-        <ChromaGrid items={items} columns={2} rows={2} />
-      ) : (
-        children
-      )}
+    <div
+      ref={containerRef}
+      className={`masonry-wrapper ${isVisible ? 'masonry-active' : ''}`}
+    >
+      {children}
     </div>
   );
 };
 
-export default ChromaGridWrapper;
+export default MasonryWrapper;
 
