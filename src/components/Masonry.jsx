@@ -50,10 +50,10 @@ const preloadImages = async urls => {
 
 const Masonry = ({
   items,
-  ease = 'power3.out',
+  ease = 'power2.out',
   duration = 0.6,
-  stagger = 0.05,
-  animateFrom = 'bottom',
+  stagger = 0.2,
+  animateFrom = 'random',
   scaleOnHover = true,
   hoverScale = 0.95,
   blurToFocus = true,
@@ -68,15 +68,20 @@ const Masonry = ({
   const [containerRef, { width }] = useMeasure();
   const [imagesReady, setImagesReady] = useState(false);
 
-  const getInitialPosition = item => {
+  const getInitialPosition = (item, index) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
     if (!containerRect) return { x: item.x, y: item.y };
 
     let direction = animateFrom;
 
     if (animateFrom === 'random') {
-      const directions = ['top', 'bottom', 'left', 'right'];
-      direction = directions[Math.floor(Math.random() * directions.length)];
+      // Organic random movement: slight variations in x and y
+      const randomX = gsap.utils.random(-30, 30);
+      const randomY = gsap.utils.random(20, 60);
+      return {
+        x: item.x + randomX,
+        y: item.y + randomY
+      };
     }
 
     switch (direction) {
@@ -127,6 +132,7 @@ const Masonry = ({
 
     grid.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
+      const imgSelector = `${selector} .item-img`;
       const animationProps = {
         x: item.x,
         y: item.y,
@@ -136,23 +142,43 @@ const Masonry = ({
 
       if (!hasMounted.current) {
         const initialPos = getInitialPosition(item, index);
+        
+        // Initial state: reduced saturation (0.6), opacity 0, blur 8px
         const initialState = {
           opacity: 0,
           x: initialPos.x,
           y: initialPos.y,
           width: item.w,
-          height: item.h,
-          ...(blurToFocus && { filter: 'blur(10px)' })
+          height: item.h
         };
 
+        // Initial filter state for image (blur + saturate)
+        const initialFilter = blurToFocus 
+          ? 'blur(8px) saturate(0.6)' 
+          : 'saturate(0.6)';
+
+        // Final filter state (no blur, full saturation)
+        const finalFilter = 'blur(0px) saturate(1)';
+
+        // Animate wrapper (position, size, opacity)
         gsap.fromTo(selector, initialState, {
           opacity: 1,
           ...animationProps,
-          ...(blurToFocus && { filter: 'blur(0px)' }),
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: duration,
+          ease: ease,
           delay: index * stagger
         });
+
+        // Animate image filter (blur + saturate) simultaneously
+        gsap.fromTo(imgSelector, 
+          { filter: initialFilter },
+          {
+            filter: finalFilter,
+            duration: duration,
+            ease: ease,
+            delay: index * stagger
+          }
+        );
       } else {
         gsap.to(selector, {
           ...animationProps,
