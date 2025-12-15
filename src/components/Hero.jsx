@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 const carouselImages = [
   {
-    base: 'carousel-1',
+    src: '/img/carousel-1.jpeg',
     alt: 'Speedboat tour from Hvar with guests enjoying the sea'
   },
   {
-    base: 'carousel-2',
+    src: '/img/carousel-2.jpeg',
     alt: 'Beautiful Croatian coastline and crystal clear waters'
   }
 ];
@@ -14,7 +14,7 @@ const carouselImages = [
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Carousel auto-advance (purely time-based)
+  // Carousel auto-advance
   useEffect(() => {
     const intervalId = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % carouselImages.length);
@@ -28,21 +28,16 @@ const Hero = () => {
       <div className="hero-carousel">
         {carouselImages.map((image, index) => {
           const isActive = index === activeIndex;
-          const base = image.base;
 
           return (
-            <picture key={image.base} className="hero-picture">
-              <source srcSet={`/img/${base}.avif`} type="image/avif" />
-              <source srcSet={`/img/${base}.webp`} type="image/webp" />
-              <img
-                className={`hero-img ${isActive ? 'active' : ''}`}
-                src={`/img/${base}.jpeg`}
-                alt={image.alt}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                fetchPriority={index === 0 ? 'high' : 'auto'}
-                decoding="async"
-              />
-            </picture>
+            <img
+              key={image.src}
+              className={`hero-img ${isActive ? 'active' : ''}`}
+              src={image.src}
+              alt={image.alt}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+            />
           );
         })}
       </div>
@@ -71,5 +66,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-
