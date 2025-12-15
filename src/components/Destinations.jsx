@@ -1,11 +1,13 @@
 import React from 'react';
 import MasonryWrapper from './MasonryWrapper.jsx';
 
+// Destinations data with height for Masonry layout calculation
+// Height values are approximate and will be adjusted by the Masonry component
 const destinations = [
-  { id: 'stiniva', title: 'Stiniva', img: '/img/destination-2.jpeg' },
-  { id: 'blue-cave', title: 'Blue Cave', img: '/img/destination-4.jpeg' },
-  { id: 'green-cave', title: 'Green Cave', img: '/img/destination-5.jpeg' },
-  { id: 'red-rocks', title: 'Red Rocks', img: '/img/destination-6.jpeg' }
+  { id: 'stiniva', title: 'Stiniva', img: '/img/destination-2.jpeg', height: 400 },
+  { id: 'blue-cave', title: 'Blue Cave', img: '/img/destination-4.jpeg', height: 500 },
+  { id: 'green-cave', title: 'Green Cave', img: '/img/destination-5.jpeg', height: 450 },
+  { id: 'red-rocks', title: 'Red Rocks', img: '/img/destination-6.jpeg', height: 480 }
 ];
 
 const Destinations = () => {

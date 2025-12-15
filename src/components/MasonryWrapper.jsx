@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useMasonryEffect } from '../utils/masonry.js';
-import '../styles/masonry.css';
+import Masonry from './Masonry.jsx';
 
 /**
  * MasonryWrapper - Wrapper para el efecto Masonry layout
@@ -41,15 +40,13 @@ const MasonryWrapper = ({ children, items }) => {
     };
   }, []);
 
-  // Activar el efecto Masonry cuando la sección es visible
-  useMasonryEffect(isVisible, containerRef);
-
   return (
-    <div
-      ref={containerRef}
-      className={`masonry-wrapper ${isVisible ? 'masonry-active' : ''}`}
-    >
-      {children}
+    <div ref={containerRef} className="masonry-wrapper">
+      {isVisible && items && items.length > 0 ? (
+        <Masonry items={items} />
+      ) : (
+        children
+      )}
     </div>
   );
 };

@@ -6,27 +6,17 @@
  * INSTRUCCIONES:
  * 1. Pegar aquí el CSS del efecto Masonry
  * 2. Asegurarse de que los estilos no rompan el layout existente
- * 3. Los estilos deben estar contenidos dentro de .masonry-wrapper
+ * 3. Los estilos deben estar contenidos dentro de .list y .item-wrapper
  * 
  * NOTAS:
- * - Este archivo se importa en MasonryWrapper.jsx
+ * - Este archivo se importa en Masonry.jsx
  * - Los estilos deben ser específicos para no afectar otras secciones
  * - Mantener compatibilidad con el layout responsive existente
- * - El fallback (grid normal) debe seguir funcionando sin estos estilos
  * 
  * ============================================
  * PEGAR AQUÍ EL CSS DEL MASONRY
  * ============================================
  */
 
-/* Contenedor base - mantener estructura sin estilos activos */
-.masonry-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-/* Estado activo - se aplicará cuando el efecto esté montado */
-.masonry-wrapper.masonry-active {
-  /* PEGAR AQUÍ EL CSS DEL MASONRY */
-}
+/* PEGAR AQUÍ EL CSS DEL MASONRY */
 
