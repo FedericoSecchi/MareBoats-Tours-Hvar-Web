@@ -1,4 +1,5 @@
 import React from 'react';
+import ChromaGridWrapper from './ChromaGridWrapper.jsx';
 
 const destinations = [
   { id: 'stiniva', title: 'Stiniva', img: '/img/destination-2.jpeg' },
@@ -9,26 +10,28 @@ const destinations = [
 
 const Destinations = () => {
   return (
-    <section className="py-5 bg-light">
+    <section id="destinations" className="py-5 bg-light">
       <div className="container">
         <div className="text-center mb-4 section-title">
           <small>Destinations</small>
           <h2 className="mb-3">Explore top spots</h2>
         </div>
-        <div className="row g-3 destination">
-          {destinations.map((dest) => (
-            <div key={dest.id} className="col-6 col-md-4 col-lg-3 js-animate-on-scroll">
-              <img
-                src={dest.img}
-                alt={dest.title}
-                className="img-fluid"
-                loading="lazy"
-                decoding="async"
-              />
-              <p className="destination-title">{dest.title}</p>
-            </div>
-          ))}
-        </div>
+        <ChromaGridWrapper>
+          <div className="row g-3 destination">
+            {destinations.map((dest) => (
+              <div key={dest.id} className="col-6 col-md-4 col-lg-3 js-animate-on-scroll">
+                <img
+                  src={dest.img}
+                  alt={dest.title}
+                  className="img-fluid"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <p className="destination-title">{dest.title}</p>
+              </div>
+            ))}
+          </div>
+        </ChromaGridWrapper>
       </div>
     </section>
   );
