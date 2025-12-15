@@ -1,12 +1,11 @@
+/* Combined main stylesheet for Mare Boats Hvar React app
+   (ported from original css/style.css) */
+
 /* ================================
    Mare Boats Hvar — Minimal CSS
    Bootstrap 5 complement (no jQuery)
    Author: Fede
 =================================== */
-
-/* Tipografía Poppins se carga via <link> en el head */
-
-/* === Design tokens, navbar padding, secciones 90vh, footer alto === */
 
 /* Root tokens */
 :root {
@@ -30,6 +29,7 @@
 html { scroll-behavior: smooth; }
 
 body {
+  margin: 0;
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial, sans-serif;
   font-weight: 400;
   color: var(--text);
@@ -111,14 +111,14 @@ img[loading="lazy"] { background: #f2f4f7; }
 .navbar .nav-link:hover,
 .navbar .nav-link:focus { color: var(--brand); }
 .navbar.sticky-top.is-scrolled { background: var(--surface); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
-.navbar { --bs-navbar-brand-padding-y: 0; }  /* o 8px si querés más alto */
+.navbar { --bs-navbar-brand-padding-y: 0; }
 .navbar-light .navbar-nav .nav-link {
   font-size: 1.5rem !important;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-/* Hero (ahora 90vh en desktop) */
+/* Hero */
 .hero {
   position: relative;
   min-height: 90vh;
@@ -145,13 +145,20 @@ img[loading="lazy"] { background: #f2f4f7; }
 }
 
 /* Secciones principales al 90vh (excepto footer) */
-/* IDs presentes */
 #tours,
 #about,
-#contact { min-height: 90vh; display: grid; align-items: center; }
+#contact {
+  min-height: 90vh;
+  display: grid;
+  align-items: center;
+}
 
-/* Las secciones con fondo claro (Why us + Destinations en este HTML) */
-section.bg-light { min-height: 90vh; display: grid; align-items: center; }
+/* Secciones con fondo claro */
+section.bg-light {
+  min-height: 90vh;
+  display: grid;
+  align-items: center;
+}
 
 /* Tours */
 .tour-card .badge { letter-spacing: .04em; }
@@ -197,14 +204,14 @@ section.bg-light { min-height: 90vh; display: grid; align-items: center; }
 }
 .whatsapp-fab:hover { color: #fff; filter: brightness(1.05); transform: translateY(-1px); }
 
-/* Footer (+30% aprox de alto: más padding) */
+/* Footer */
 .footer a { color: #adb5bd; }
 .footer a:hover { color: #d1d5db; }
-footer.footer { padding-top: 2rem; padding-bottom: 2rem; } /* py-4 ~1.5rem → ahora ~2rem */
+footer.footer { padding-top: 2rem; padding-bottom: 2rem; }
 
 /* Spacing helpers */
 .section { padding: 64px 0; }
-.section--light { background: #f8f9fa; } /* si querés, podrías usar var(--accent) muy suave */
+.section--light { background: #f8f9fa; }
 
 /* Animación opcional */
 @keyframes fadeInUp {
@@ -215,7 +222,7 @@ footer.footer { padding-top: 2rem; padding-bottom: 2rem; } /* py-4 ~1.5rem → a
 
 /* Responsive tweaks */
 @media (max-width: 575.98px) {
-  .hero { min-height: 70vh; } /* en mobile no forzamos 90vh para no saturar */
+  .hero { min-height: 70vh; }
 }
 
 /* Map iframe */
@@ -235,9 +242,7 @@ footer.footer { padding-top: 2rem; padding-bottom: 2rem; } /* py-4 ~1.5rem → a
 /* Muted */
 .text-muted { color: var(--muted) !important; }
 
-/* ============================================
-   Tour Booking Inputs (Date & People)
-   ============================================ */
+/* Tour Booking Inputs */
 .tour-booking-inputs {
   padding: 12px;
   background: #f8f9fa;
@@ -261,9 +266,7 @@ footer.footer { padding-top: 2rem; padding-bottom: 2rem; } /* py-4 ~1.5rem → a
   padding: 6px 10px;
 }
 
-/* ============================================
-   FAQ Widget
-   ============================================ */
+/* FAQ Widget */
 .faq-widget {
   position: fixed;
   right: 16px;
@@ -358,21 +361,19 @@ footer.footer { padding-top: 2rem; padding-bottom: 2rem; } /* py-4 ~1.5rem → a
     bottom: 84px;
     right: 12px;
   }
-  
+
   .faq-panel {
     width: calc(100vw - 24px);
     right: -12px;
   }
-  
+
   .faq-toggle-btn {
     width: 48px;
     height: 48px;
   }
 }
 
-/* ============================================
-   WhatsApp FAB Tooltip (optional)
-   ============================================ */
+/* WhatsApp FAB Tooltip (optional) */
 .whatsapp-fab .fab-tooltip {
   position: absolute;
   right: 100%;
@@ -399,3 +400,6 @@ footer.footer { padding-top: 2rem; padding-bottom: 2rem; } /* py-4 ~1.5rem → a
     display: none; /* Hide tooltip on mobile */
   }
 }
+
+
+
