@@ -40,8 +40,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className="navbar navbar-expand-lg sticky-top border-bottom navbar-progressive"
+      className="navbar navbar-expand-lg fixed-top border-bottom navbar-progressive"
       style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
+        zIndex: 1030,
         backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
         backdropFilter: blurAmount > 0 ? `blur(${blurAmount}px)` : 'none',
         WebkitBackdropFilter: blurAmount > 0 ? `blur(${blurAmount}px)` : 'none',
