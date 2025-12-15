@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../styles/chroma-grid.css';
-// TODO: Importar el código JS del Chroma Grid cuando esté listo
-// import { initChromaGrid } from '../utils/chroma-grid.js';
+import ChromaGrid from './ChromaGrid.jsx';
 
 /**
  * ChromaGridWrapper - Wrapper para el efecto Chroma Grid de React Bites
@@ -9,11 +7,10 @@ import '../styles/chroma-grid.css';
  * Este componente:
  * - Usa IntersectionObserver para activar el efecto solo cuando la sección es visible
  * - Monta el efecto de forma lazy para no bloquear el render inicial
- * - Mantiene el layout intacto si el efecto no está activo
+ * - Renderiza ChromaGrid solo cuando la sección es visible
  */
-const ChromaGridWrapper = ({ children }) => {
+const ChromaGridWrapper = ({ children, items, showGrid = true }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isEffectActive, setIsEffectActive] = useState(false);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -26,13 +23,7 @@ const ChromaGridWrapper = ({ children }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // Activar el efecto solo cuando es visible
-            setIsEffectActive(true);
-            
-            // TODO: Inicializar el efecto Chroma Grid cuando el código JS esté pegado
-            // if (isEffectActive) {
-            //   initChromaGrid(container);
-            // }
+            observer.disconnect(); // Stop observing once visible
           }
         });
       },
@@ -50,11 +41,12 @@ const ChromaGridWrapper = ({ children }) => {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className={`chroma-grid-container ${isEffectActive ? 'chroma-grid-active' : ''}`}
-    >
-      {children}
+    <div ref={containerRef} className="chroma-grid-wrapper">
+      {showGrid && isVisible && items && items.length > 0 ? (
+        <ChromaGrid items={items} columns={2} rows={2} />
+      ) : (
+        children
+      )}
     </div>
   );
 };

@@ -6,10 +6,10 @@
  * INSTRUCCIONES:
  * 1. Pegar aquí el CSS del efecto Chroma Grid de React Bites
  * 2. Asegurarse de que los estilos no rompan el layout existente
- * 3. Los estilos deben estar contenidos dentro de .chroma-grid-container
+ * 3. Los estilos deben estar contenidos dentro de .chroma-grid
  * 
  * NOTAS:
- * - Este archivo se importa en ChromaGridWrapper.jsx
+ * - Este archivo se importa en ChromaGrid.jsx
  * - Los estilos deben ser específicos para no afectar otras secciones
  * - Mantener compatibilidad con el layout responsive existente
  * 
@@ -18,15 +18,5 @@
  * ============================================
  */
 
-/* Contenedor base - mantener estructura sin estilos activos */
-.chroma-grid-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* Estado activo - se aplicará cuando el efecto esté montado */
-.chroma-grid-active {
-  /* PEGAR AQUÍ EL CSS DEL CHROMA GRID */
-}
+/* PEGAR AQUÍ EL CSS DEL CHROMA GRID */
 

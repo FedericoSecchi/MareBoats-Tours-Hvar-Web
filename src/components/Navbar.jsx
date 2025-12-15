@@ -29,11 +29,17 @@ const Navbar = () => {
   }, []);
 
   // Calculate opacity and blur based on scroll progress
-  // Base opacity 0.3 (30%) so navbar is never fully transparent.
-  const minOpacity = 0.3;
+  // Base opacity ~0.15 so navbar feels light over the hero but is never fully transparent.
+  const minOpacity = 0.15;
   const maxOpacity = 0.85;
   const bgOpacity = minOpacity + (maxOpacity - minOpacity) * scrollProgress;
-  const blurAmount = scrollProgress * 8; // Max 8px blur
+
+  // Glassy blur: higher base blur and aggressive ease-out so blur is the main legibility tool.
+  const baseBlur = 10; // px at scrollProgress = 0
+  const maxBlur = 20;  // px at full scroll
+  const easedBlurProgress = 1 - Math.pow(1 - scrollProgress, 2); // ease-out curve
+  const blurProgress = Math.min(easedBlurProgress, 1);
+  const blurAmount = baseBlur + (maxBlur - baseBlur) * blurProgress;
   const shadowOpacity = scrollProgress * 0.06; // Max shadow opacity
   
   // Interpolate link colors from white to dark
@@ -52,8 +58,8 @@ const Navbar = () => {
         width: '100%',
         zIndex: 1030,
         backgroundColor: `rgba(255, 255, 255, ${bgOpacity})`,
-        backdropFilter: blurAmount > 0 ? `blur(${blurAmount}px)` : 'none',
-        WebkitBackdropFilter: blurAmount > 0 ? `blur(${blurAmount}px)` : 'none',
+        backdropFilter: `blur(${blurAmount}px) saturate(1.6)`,
+        WebkitBackdropFilter: `blur(${blurAmount}px) saturate(1.6)`,
         boxShadow: shadowOpacity > 0 ? `0 2px 12px rgba(0, 0, 0, ${shadowOpacity})` : 'none',
         borderBottomColor: scrollProgress > 0 ? `rgba(0, 0, 0, ${0.1 * scrollProgress})` : 'rgba(255, 255, 255, 0.1)',
         transition: 'background-color 0.8s ease-in-out, backdrop-filter 0.8s ease-in-out, box-shadow 0.8s ease-in-out, border-color 0.8s ease-in-out'
