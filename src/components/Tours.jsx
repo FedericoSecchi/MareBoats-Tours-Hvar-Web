@@ -152,8 +152,7 @@ const Tours = () => {
           <small>Suggested Tours</small>
           <h2 className="mb-3">Pick your adventure</h2>
           <p className="text-muted mb-0">
-            Flexible itineraries. Local crew. Safe boats. Prices visible — message us to confirm
-            availability.
+            Flexible itineraries. Local crew. Safe boats. Transparent pricing — message us to confirm availability.
           </p>
         </div>
 

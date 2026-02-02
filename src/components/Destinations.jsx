@@ -1,7 +1,6 @@
 import React from 'react';
 import MasonryWrapper from './MasonryWrapper.jsx';
 
-// Destinations data for uniform editorial grid
 const destinations = [
   { id: 'stiniva', title: 'Stiniva', subtitle: 'Hidden beach cove', img: '/img/destination-2.jpeg' },
   { id: 'blue-cave', title: 'Blue Cave', subtitle: 'Crystal blue waters', img: '/img/destination-4.jpeg' },
@@ -18,7 +17,6 @@ const Destinations = () => {
           <h2 className="mb-3">Explore top spots</h2>
         </div>
         <MasonryWrapper items={destinations}>
-          {/* Fallback grid layout - works without Masonry effect */}
           <div className="row g-3 destination">
             {destinations.map((dest) => (
               <div key={dest.id} className="col-6 col-md-4 col-lg-3 js-animate-on-scroll">

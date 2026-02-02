@@ -7,11 +7,13 @@ import FaqWidget from './components/FaqWidget.jsx';
 import { useScrollAnimation } from './hooks/useScrollAnimation.js';
 
 const Tours = lazy(() => import('./components/Tours.jsx'));
+const LargeGroups = lazy(() => import('./components/LargeGroups.jsx'));
 const About = lazy(() => import('./components/About.jsx'));
 const Destinations = lazy(() => import('./components/Destinations.jsx'));
+const Reviews = lazy(() => import('./components/Reviews.jsx'));
 const Contact = lazy(() => import('./components/Contact.jsx'));
 
-const SECTION_IDS = ['tours', 'about', 'destinations', 'contact'];
+const SECTION_IDS = ['tours', 'large-groups', 'about', 'destinations', 'reviews', 'contact'];
 const PRELOAD_OFFSET_PX = 300;
 
 const useSectionPreload = () => {
@@ -101,11 +103,17 @@ const App = () => {
           <section id="tours">
             {visibleSections.has('tours') ? <Tours /> : null}
           </section>
+          <section id="large-groups">
+            {visibleSections.has('large-groups') ? <LargeGroups /> : null}
+          </section>
           <section id="about">
             {visibleSections.has('about') ? <About /> : null}
           </section>
           <section id="destinations">
             {visibleSections.has('destinations') ? <Destinations /> : null}
+          </section>
+          <section id="reviews">
+            {visibleSections.has('reviews') ? <Reviews /> : null}
           </section>
           <section id="contact">
             {visibleSections.has('contact') ? <Contact /> : null}

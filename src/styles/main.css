@@ -1,24 +1,31 @@
-/* Combined main stylesheet for Mare Boats Hvar React app
-   (ported from original css/style.css) */
-
-/* ================================
-   Mare Boats Hvar — Minimal CSS
-   Bootstrap 5 complement (no jQuery)
-   Author: Fede
-=================================== */
+/* Mare Boats Hvar – Global styles */
 
 /* Root tokens */
 :root {
-  --brand:   #091F5B; /* primario (azul oscuro) */
-  --brand-2: #344EAD; /* secundario (azul claro) */
-  --accent:  #BAD6EB; /* acento (celeste) */
-  --surface: #FFFFFF; /* fondo */
-  --text:    #0b0e13; /* texto principal */
+  --brand:   #091F5B;
+  --brand-2: #344EAD;
+  --accent:  #BAD6EB;
+  --surface: #FFFFFF;
+  --text:    #0b0e13;
   --muted:   #6c757d;
   --dark:    #0b0e13;
 
   --radius: 12px;
   --shadow: 0 10px 30px rgba(0,0,0,.15);
+
+  /* Navbar progressive scroll – design values (no JS edits needed for visual changes) */
+  --navbar-bg-opacity-min: 0.15;
+  --navbar-bg-opacity-max: 0.85;
+  --navbar-blur-min: 10;
+  --navbar-blur-max: 20;
+  --navbar-shadow-opacity-max: 0.06;
+  --navbar-border-opacity-max: 0.1;
+  --navbar-transition-duration: 0.8s;
+  --navbar-link-light: rgba(255, 255, 255, 1);
+  --navbar-link-dark: rgb(9, 14, 19);
+  --navbar-toggler-light: rgba(255, 255, 255, 0.3);
+  --navbar-toggler-dark: rgba(0, 0, 0, 0.1);
+  --navbar-border-light: rgba(255, 255, 255, 0.1);
 }
 
 /* Base */
@@ -85,6 +92,18 @@ a:hover { color: var(--brand); }
   background-color: var(--brand) !important;
 }
 
+/* Header CTA buttons – shared height and padding */
+.btn-cta {
+  height: 44px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 /* A11y + motion */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
@@ -124,17 +143,34 @@ img[loading="lazy"] { background: #f2f4f7; }
   padding-right: 1rem;
 }
 
-/* Progressive navbar - styles handled inline via React */
+/* Progressive navbar – visual values from CSS vars, --navbar-scroll/--navbar-blur-eased set by JS */
 .navbar-progressive {
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  --navbar-scroll: 0;
+  --navbar-blur-eased: 0;
+  background-color: rgba(255, 255, 255, calc(var(--navbar-bg-opacity-min) + (var(--navbar-bg-opacity-max) - var(--navbar-bg-opacity-min)) * var(--navbar-scroll)));
+  backdrop-filter: blur(calc(var(--navbar-blur-min) * 1px + (var(--navbar-blur-max) - var(--navbar-blur-min)) * var(--navbar-blur-eased) * 1px)) saturate(1.6);
+  -webkit-backdrop-filter: blur(calc(var(--navbar-blur-min) * 1px + (var(--navbar-blur-max) - var(--navbar-blur-min)) * var(--navbar-blur-eased) * 1px)) saturate(1.6);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, calc(var(--navbar-shadow-opacity-max) * var(--navbar-scroll)));
+  border-bottom: 1px solid color-mix(in srgb, var(--navbar-border-light) calc((1 - var(--navbar-scroll)) * 100%), rgba(0, 0, 0, var(--navbar-border-opacity-max)) calc(var(--navbar-scroll) * 100%));
+  transition: background-color var(--navbar-transition-duration) ease-in-out,
+    backdrop-filter var(--navbar-transition-duration) ease-in-out,
+    box-shadow var(--navbar-transition-duration) ease-in-out,
+    border-color var(--navbar-transition-duration) ease-in-out;
+}
+
+.navbar-progressive .nav-link {
+  color: color-mix(in srgb, var(--navbar-link-light) calc((1 - var(--navbar-scroll)) * 100%), var(--navbar-link-dark) calc(var(--navbar-scroll) * 100%));
+  transition: color var(--navbar-transition-duration) ease-in-out;
 }
 
 .navbar-progressive .nav-link:hover,
 .navbar-progressive .nav-link:focus {
   color: var(--accent) !important;
+}
+
+.navbar-progressive .navbar-toggler {
+  border-color: color-mix(in srgb, var(--navbar-toggler-light) calc((1 - var(--navbar-scroll)) * 100%), var(--navbar-toggler-dark) calc(var(--navbar-scroll) * 100%));
+  transition: border-color var(--navbar-transition-duration) ease-in-out;
 }
 
 .navbar-progressive .navbar-toggler-icon {
@@ -196,7 +232,9 @@ img[loading="lazy"] { background: #f2f4f7; }
   padding-top: 76px; /* Account for fixed navbar height */
 }
 
+#large-groups,
 #about,
+#reviews,
 #contact {
   min-height: 90vh;
   display: grid;
@@ -226,6 +264,108 @@ section.bg-light {
 #contact.section {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+/* Reviews carousel */
+.reviews-carousel-wrapper {
+  position: relative;
+  margin: 0 -1rem;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.5rem 3rem;
+}
+
+.reviews-track::-webkit-scrollbar {
+  display: none;
+}
+
+.reviews-track:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.review-card {
+  flex: 0 0 85%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+@media (min-width: 768px) {
+  .review-card {
+    flex: 0 0 calc(50% - 0.5rem);
+  }
+}
+
+@media (min-width: 992px) {
+  .review-card {
+    flex: 0 0 calc(33.333% - 0.667rem);
+  }
+}
+
+.reviews-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  box-shadow: var(--shadow);
+}
+
+.reviews-carousel-btn:hover:not(:disabled) {
+  background: var(--brand);
+  color: #fff;
+}
+
+.reviews-carousel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.reviews-carousel-btn--prev {
+  left: 0;
+}
+
+.reviews-carousel-btn--next {
+  right: 0;
+}
+
+@media (max-width: 575.98px) {
+  .reviews-track {
+    padding: 0.5rem 2.5rem;
+  }
+
+  .reviews-carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.875rem;
+  }
+
+  .reviews-carousel-btn--prev {
+    left: 0.25rem;
+  }
+
+  .reviews-carousel-btn--next {
+    right: 0.25rem;
+  }
 }
 
 /* Visible titles under each destination image */

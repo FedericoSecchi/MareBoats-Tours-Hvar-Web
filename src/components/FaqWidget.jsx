@@ -7,9 +7,9 @@ const faqData = [
       'Bring sunscreen, sunglasses, a hat, swimwear, towel, and a light jacket for sunset tours. We provide water, snorkeling equipment, and an icebox.'
   },
   {
-    question: 'How many people per boat?',
+    question: 'Can you host large groups?',
     answer:
-      'Our boats typically accommodate 6-8 people comfortably. For larger groups, we can arrange multiple boats. Contact us for specific requirements.'
+      'Yes! Mare Boats Hvar operates multiple speedboats. We organize tours for large groups, events, families and agencies using several boats at the same time. Contact us to discuss your group size and requirements.'
   },
   {
     question: 'Is it safe for kids?',
