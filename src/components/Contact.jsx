@@ -7,7 +7,7 @@ const Contact = () => {
         <div className="row g-4 align-items-center">
           <div className="col-12 col-lg-6">
             <h2 className="h3">Contact</h2>
-            <p className="text-muted">Fastest way to book is via WhatsApp. We reply quickly.</p>
+            <p className="text-muted">The easiest way to plan your tour is via WhatsApp. We usually reply quickly.</p>
             <div className="d-grid gap-2 d-md-block">
               <a
                 className="btn btn-success me-2"

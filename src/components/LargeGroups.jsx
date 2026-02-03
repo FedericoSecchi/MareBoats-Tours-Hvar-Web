@@ -11,7 +11,7 @@ const LargeGroups = () => {
         <div className="row g-4 align-items-center">
           <div className="col-12 col-lg-8 mx-auto">
             <p className="lead text-center mb-4">
-              Mare Boats Hvar operates multiple speedboats. We organize private tours for large groups, events, families, agencies and groups of friends — using several boats at the same time when needed.
+              We organize private tours for large groups, events and special occasions — coordinating multiple boats when needed to keep the experience smooth and well organized.
             </p>
             <ul className="list-check text-muted mb-4">
               <li>Weddings, birthdays and corporate events</li>

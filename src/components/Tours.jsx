@@ -4,7 +4,7 @@ import { buildWhatsAppUrl } from '../utils/whatsapp.js';
 const tours = [
   {
     id: 'option1',
-    title: 'Option 1 — Green & Blue Cave (Vis)',
+    title: 'Green & Blue Cave (Vis)',
     duration: '8h',
     time: '10:30–18:30',
     route: '• Green Cave • Stiniva Bay • Blue Cave • Pritiscina • Pakleni (Palmizana/Zdrilca)',
@@ -14,7 +14,7 @@ const tours = [
   },
   {
     id: 'option2',
-    title: 'Option 2 — Paklinski Islands + Red Rocks',
+    title: 'Paklinski Islands + Red Rocks',
     duration: '4h',
     time: '14:00–18:00',
     route: '• Borce Bay • Red Rocks • Dubovica Beach • Paklinski (Zdrilca/Tarsce)',
@@ -24,7 +24,7 @@ const tours = [
   },
   {
     id: 'option3',
-    title: 'Option 3 — Private Tour (custom)',
+    title: 'Private Tour (custom)',
     duration: 'Flexible',
     time: '',
     route: '',
@@ -34,7 +34,7 @@ const tours = [
   },
   {
     id: 'option4',
-    title: 'Option 4 — Rent Boat (no skipper)',
+    title: 'Rent Boat (no skipper)',
     duration: '8h',
     time: '09:00–17/18:00',
     route: '',
@@ -44,7 +44,7 @@ const tours = [
   },
   {
     id: 'option5',
-    title: 'Option 5 — Sunset Tour',
+    title: 'Sunset Tour',
     duration: '2h',
     time: '19:00–21:00',
     route: '',
@@ -152,7 +152,7 @@ const Tours = () => {
           <small>Suggested Tours</small>
           <h2 className="mb-3">Pick your adventure</h2>
           <p className="text-muted mb-0">
-            Flexible itineraries. Local crew. Safe boats. Transparent pricing — message us to confirm availability.
+            Flexible itineraries, local crew and well-maintained boats — message us to check availability and plan your day.
           </p>
         </div>
 

@@ -11,13 +11,13 @@ const destinations = [
 const Destinations = () => {
   return (
     <section id="destinations" className="py-5 bg-light">
-      <div className="container">
+      <div className="container destinations-wrap">
         <div className="text-center mb-4 section-title">
           <small>Destinations</small>
           <h2 className="mb-3">Explore top spots</h2>
         </div>
         <MasonryWrapper items={destinations}>
-          <div className="row g-3 destination">
+          <div className="row g-3 destination justify-content-center">
             {destinations.map((dest) => (
               <div key={dest.id} className="col-6 col-md-4 col-lg-3 js-animate-on-scroll">
                 <img

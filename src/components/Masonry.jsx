@@ -86,6 +86,10 @@ const Masonry = ({
     const totalRows = Math.ceil(items.length / columns);
     const containerHeight = totalRows * (cardHeight + gap) + gap;
 
+    // Center the grid when fewer items than columns (e.g. 4 items in 5-column layout)
+    const usedColumns = Math.min(items.length, columns);
+    const offsetX = (columns - usedColumns) * (columnWidth / 2);
+
     // Update container height
     if (containerRef.current) {
       containerRef.current.style.height = `${containerHeight}px`;
@@ -94,7 +98,7 @@ const Masonry = ({
     return items.map((child, index) => {
       const col = index % columns;
       const row = Math.floor(index / columns);
-      const x = col * columnWidth + gap / 2;
+      const x = col * columnWidth + gap / 2 + offsetX;
       const y = row * (cardHeight + gap) + gap / 2;
 
       return { 

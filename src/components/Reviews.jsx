@@ -178,7 +178,7 @@ const Reviews = () => {
         </div>
 
         <div className="text-center mt-4">
-          <p className="mb-3">Planning a group trip? Contact us directly — we reply quickly.</p>
+          <p className="mb-3">Real experiences from guests who spent the day with us on the sea.</p>
           <div className="d-flex gap-2 justify-content-center flex-wrap">
             <a
               className="btn btn-outline-primary"

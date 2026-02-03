@@ -4,29 +4,42 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark text-white-50 footer">
-      <div className="container py-4">
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-          <a href="#home" className="text-white-50 text-decoration-none">
-            &copy; {year} Mare Boats Hvar
-          </a>
-          <div className="d-flex gap-3">
+    <footer className="footer">
+      <div className="container footer-inner">
+        <div className="footer-grid">
+          <div className="footer-col footer-brand">
+            <a href="#home" className="footer-logo">
+              Mare Boats Hvar
+            </a>
+            <p className="footer-tagline">Private boat tours in Hvar, Croatia</p>
+          </div>
+
+          <div className="footer-col footer-contact">
+            <h3 className="footer-heading">Contact</h3>
+            <address className="footer-address">
+              <span>Port, Hvar, Croatia</span>
+              <a href="tel:+385951966734" className="footer-link">+385 95 196 6734</a>
+              <a href="mailto:mare.boatshvar@gmail.com" className="footer-link">mare.boatshvar@gmail.com</a>
+            </address>
+          </div>
+
+          <div className="footer-col footer-social">
+            <h3 className="footer-heading">Follow</h3>
             <a
               href="https://www.instagram.com/mareboats.hvar/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="Instagram"
             >
-              <i className="fa-brands fa-instagram" /> Instagram
-            </a>
-            <a
-              href="https://www.tripadvisor.com/Attraction_Review-g303808-d26168387-Reviews-Mare_Boats_Hvar-Hvar_Hvar_Island_Split_Dalmatia_County_Dalmatia.html"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="fa-brands fa-tripadvisor" /> TripAdvisor
+              <i className="fa-brands fa-instagram" aria-hidden="true" />
             </a>
           </div>
-          <span>Designed &amp; built by Federico Secchi</span>
+        </div>
+
+        <div className="footer-bottom">
+          <span className="footer-copyright">&copy; {year} Mare Boats Hvar</span>
+          <span className="footer-credit">Designed &amp; built by Federico Secchi</span>
         </div>
       </div>
     </footer>
@@ -34,5 +47,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
