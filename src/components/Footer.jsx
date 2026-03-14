@@ -40,6 +40,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <span className="footer-copyright">&copy; {year} Mare Boats Hvar</span>
           <span className="footer-credit">Diseñado por <a href="https://somoskosmos.com" target="_blank" rel="noopener noreferrer">somoskosmos</a></span>
+          <span className="footer-photo-credit">Photos &amp; drone footage by SkyShot Lab</span>
         </div>
       </div>
     </footer>

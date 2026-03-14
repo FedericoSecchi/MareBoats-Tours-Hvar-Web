@@ -517,6 +517,20 @@ section.bg-light {
   color: rgba(255, 255, 255, 0.4);
 }
 
+.footer-photo-credit {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .footer-photo-credit {
+    width: auto;
+    order: 3;
+  }
+}
+
 /* Spacing helpers */
 .section { padding: 64px 0; }
 .section--light { background: #f8f9fa; }
