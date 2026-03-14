@@ -39,8 +39,8 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <span className="footer-copyright">&copy; {year} Mare Boats Hvar</span>
-          <span className="footer-credit">Diseñado por <a href="https://somoskosmos.com" target="_blank" rel="noopener noreferrer">somoskosmos</a></span>
-          <span className="footer-photo-credit">Photos &amp; drone footage by SkyShot Lab</span>
+          <span className="footer-credit">Designed by <a href="https://somoskosmos.com" target="_blank" rel="noopener noreferrer">SomosKosmos</a></span>
+          <span className="footer-photo-credit">Photos &amp; drone footage by <a href="https://skyshotlab.com" target="_blank" rel="noopener noreferrer">SkyShot Lab</a></span>
         </div>
       </div>
     </footer>
