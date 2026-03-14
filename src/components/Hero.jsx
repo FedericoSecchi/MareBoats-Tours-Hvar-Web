@@ -45,7 +45,7 @@ const Hero = () => {
       <div className="content">
         <h1 className="display-5 fw-bold">Mare Boats Hvar — Private boat tours around Hvar</h1>
         <p className="lead mb-4">
-          Swim, snorkel and explore at your own pace with our private speedboat tours around Hvar and nearby islands. From relaxed half-days to full adventures — we tailor each trip to the day, the weather and your vibe.
+          Blue Cave boat tour, Pakleni Islands boat tour and private boat Hvar experiences. Swim, snorkel and explore at your own pace with our speedboat tours. From relaxed half-days to full adventures — we tailor each trip to the day, the weather and your vibe.
         </p>
         <div className="d-flex gap-2 justify-content-center flex-wrap">
           <a

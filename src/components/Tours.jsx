@@ -4,6 +4,7 @@ import { buildWhatsAppUrl } from '../utils/whatsapp.js';
 const tours = [
   {
     id: 'option1',
+    anchorId: 'blue-cave-tour',
     title: 'Green & Blue Cave (Vis)',
     duration: '8h',
     time: '10:30–18:30',
@@ -14,6 +15,7 @@ const tours = [
   },
   {
     id: 'option2',
+    anchorId: 'pakleni-islands-tour',
     title: 'Paklinski Islands + Red Rocks',
     duration: '4h',
     time: '14:00–18:00',
@@ -24,6 +26,7 @@ const tours = [
   },
   {
     id: 'option3',
+    anchorId: 'private-boat-tour',
     title: 'Private Tour (custom)',
     duration: 'Flexible',
     time: '',
@@ -44,6 +47,7 @@ const tours = [
   },
   {
     id: 'option5',
+    anchorId: 'sunset-boat-tour',
     title: 'Sunset Tour',
     duration: '2h',
     time: '19:00–21:00',
@@ -72,7 +76,7 @@ const TourCard = ({ tour }) => {
   };
 
   return (
-    <div className="col-12 col-md-6 col-lg-4">
+    <div className="col-12 col-md-6 col-lg-4" id={tour.anchorId || undefined}>
       <div className="card tour-card h-100 shadow-soft js-animate-on-scroll">
         <img
           src={tour.img}
@@ -150,7 +154,7 @@ const Tours = () => {
       <div className="container">
         <div className="text-center mb-4 section-title">
           <small>Suggested Tours</small>
-          <h2 className="mb-3">Pick your adventure</h2>
+          <h2 className="mb-3">Blue Cave boat tour, Pakleni Islands boat tour &amp; private boat Hvar</h2>
           <p className="text-muted mb-0">
             Flexible itineraries, local crew and well-maintained boats — message us to check availability and plan your day.
           </p>
