@@ -6,4 +6,29 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Canonical domain: redirect www to root and enforce HTTPS
+[[redirects]]
+  from = "https://www.mareboatshvar.com/*"
+  to = "https://mareboatshvar.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.mareboatshvar.com/*"
+  to = "https://mareboatshvar.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://mareboatshvar.com/*"
+  to = "https://mareboatshvar.com/:splat"
+  status = 301
+  force = true
+
+# SPA fallback: serve index.html for all paths (programmatic SEO URLs)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 

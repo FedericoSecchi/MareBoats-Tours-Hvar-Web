@@ -39,7 +39,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <span className="footer-copyright">&copy; {year} Mare Boats Hvar</span>
-          <span className="footer-credit">Designed &amp; built by Federico Secchi</span>
+          <span className="footer-credit">Diseñado por <a href="https://somoskosmos.com" target="_blank" rel="noopener noreferrer">somoskosmos</a></span>
         </div>
       </div>
     </footer>
