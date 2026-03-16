@@ -25,7 +25,18 @@
   status = 301
   force = true
 
-# SPA fallback: serve index.html for all paths (programmatic SEO URLs)
+# Ensure sitemap and robots are served as static files (no SPA fallback)
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+# SPA fallback: serve index.html for all other paths (programmatic SEO URLs)
 [[redirects]]
   from = "/*"
   to = "/index.html"
