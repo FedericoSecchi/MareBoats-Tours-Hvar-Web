@@ -1,6 +1,7 @@
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
+import SEOContext from './components/SEOContext.jsx';
 import Footer from './components/Footer.jsx';
 import WhatsAppFab from './components/WhatsAppFab.jsx';
 import FaqWidget from './components/FaqWidget.jsx';
@@ -120,6 +121,7 @@ const App = () => {
           </section>
         </Suspense>
       </main>
+      <SEOContext />
       <Footer />
       <WhatsAppFab />
       <FaqWidget />
