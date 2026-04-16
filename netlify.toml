@@ -1,12 +1,11 @@
 [build]
   command = "npm run build"
-  publish = "dist"
-  functions = "netlify/functions"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# Canonical domain: redirect www to root and enforce HTTPS
+# Redirect www to root and enforce HTTPS
 [[redirects]]
   from = "https://www.mareboatshvar.com/*"
   to = "https://mareboatshvar.com/:splat"
@@ -24,22 +23,3 @@
   to = "https://mareboatshvar.com/:splat"
   status = 301
   force = true
-
-# Ensure sitemap and robots are served as static files (no SPA fallback)
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-
-# SPA fallback: serve index.html for all other paths (programmatic SEO URLs)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-
