@@ -35,6 +35,7 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          CUSTOM_DOMAIN: ""
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
