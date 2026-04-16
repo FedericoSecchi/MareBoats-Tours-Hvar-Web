@@ -13,3 +13,4 @@ out
 
 # TypeScript
 tsconfig.tsbuildinfo
+next-env.d.ts
