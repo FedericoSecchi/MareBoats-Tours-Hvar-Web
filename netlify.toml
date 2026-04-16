@@ -6,6 +6,7 @@
 [build.environment]
   NODE_VERSION = "20"
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  CUSTOM_DOMAIN = "mareboatshvar.com"
 
 # Redirect www to root and enforce HTTPS
 [[redirects]]
