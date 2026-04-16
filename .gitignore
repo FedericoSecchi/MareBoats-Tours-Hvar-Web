@@ -7,4 +7,9 @@ vite.config.timestamp-*.mjs
 # Netlify local build artifacts
 .netlify
 
+# Next.js
+.next
+out
 
+# TypeScript
+tsconfig.tsbuildinfo
