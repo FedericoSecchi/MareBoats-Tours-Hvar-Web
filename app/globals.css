@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mare-primary: #0077B6;
+  --mare-dark: #023E8A;
+  --mare-light: #CAF0F8;
+  --mare-accent: #FF6B35;
+  --mare-white: #FAFAFA;
+  --mare-text: #1A1A2E;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--mare-text);
+    background-color: var(--mare-white);
+    font-display: swap;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-semibold leading-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-mare-accent text-white font-semibold px-6 py-3 rounded-lg hover:brightness-110 active:scale-95 transition-all;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-mare-dark active:scale-95 transition-all;
+  }
+
+  .section-heading {
+    @apply text-3xl md:text-4xl font-semibold text-mare-dark;
+  }
+}
