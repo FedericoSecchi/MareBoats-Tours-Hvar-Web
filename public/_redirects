@@ -1,3 +1,2 @@
-/*  /index.html  200
-
-
+# Next.js static export — trailing slash already handled by next.config.mjs
+# No SPA fallback needed; each route has its own index.html
