@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
+import NavBar from '@/components/ui/NavBar';
 import Footer from '@/components/sections/Footer';
 import { businessSchema } from '@/lib/schema';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -53,6 +54,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="antialiased">
         <JsonLd data={businessSchema as Record<string, unknown>} />
+        <NavBar />
         {children}
         <Footer />
         <WhatsAppButton />
