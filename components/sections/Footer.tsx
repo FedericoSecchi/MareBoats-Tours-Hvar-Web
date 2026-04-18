@@ -28,11 +28,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
               <Image
-                src="/img/logo_mare_boats_hvar-letters.png"
+                src="/img/mareboats-logo-horizontal.svg"
                 alt="Mare Boats Hvar logo"
-                width={160}
-                height={48}
-                className="h-10 w-auto object-contain"
+                width={200}
+                height={26}
+                className="h-10 w-auto object-contain object-left"
               />
             </Link>
             <p className="mt-4 font-body text-sm leading-relaxed text-[color:var(--gray)]">

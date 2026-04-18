@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   // Syne & Space Grotesk load via @fontsource with font-display: swap in their @font-face rules.
   icons: {
     icon: [
-      { url: '/img/favicon.png', type: 'image/png' },
+      { url: '/img/mareboats-icon.svg', type: 'image/svg+xml' },
       { url: '/icon.png', sizes: '512x512', type: 'image/png' },
     ],
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       'Private boat tours from Hvar, Croatia. Blue Cave excursions, Pakleni Islands, boat rental, and transfers. Aerial drone video included.',
     images: [
       {
-        url: '/img/carousel-1.jpeg',
+        url: '/img/mareboats-og.png',
         width: 1200,
         height: 630,
         alt: 'Mare Boats Hvar — Private boat tours in Hvar, Croatia',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     title: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
     description:
       'Private boat tours from Hvar, Croatia. Blue Cave, Pakleni Islands, sunset cruises and transfers. Aerial drone video included.',
-    images: ['/img/carousel-1.jpeg'],
+    images: ['/img/mareboats-og.png'],
   },
 };
 

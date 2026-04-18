@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 const BASE_URL = 'https://mareboatshvar.com';
-const DEFAULT_OG_IMAGE = '/img/carousel-1.jpeg';
+const DEFAULT_OG_IMAGE = '/img/mareboats-og.png';
 
 interface SEOProps {
   title: string;

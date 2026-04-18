@@ -15,34 +15,59 @@ NUNCA tocar /src/components/ — es código legacy
 Leer KOSMOS_SKILL.md antes de tocar cualquier archivo de UI.
 Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 
-## Estado actual (18 abril 2026)
+## Estado actual (18 abril 2026 — actualizado)
 - Fase 1 ✅ commit c47932d — tokens, fuentes, Tailwind config
 - Fase 2 ✅ commit 4b8df40 — SEO metadata, schema JSON-LD, sitemap, robots
 - Fase 3 ✅ commit dd0748d — Rediseño visual completo (Navbar, Hero, Tours, Features, Gallery, Testimonials, FAQ, Contact, CTABanner, Footer)
 - Fase 4 ✅ commit fdb830c — Framer Motion + scroll progress bar
 - Fase 5 ✅ commit 04c780b — next/image audit, lazy loading, fuentes swap, favicon
 - Fase 6 ✅ commit 301457a — Páginas /tours/[slug] con SEO long-tail (4 rutas estáticas)
+- Fase 7 ✅ commit 06da4c9 — Fix LCP + trailing slash sitemap + copy "boat rental"
+- Fase 8 (parcial) ✅ — Logo SVG horizontal (navbar + footer), ícono SVG (favicon) + PNG OG 1200×630 derivado del ícono; `icon.png` / `apple-icon.png` regenerados desde el ícono
 
-## Datos reales de performance (Lighthouse 18/04/2026)
+## Datos reales de performance (Lighthouse 18/04/2026 — post Fase 7)
 ### Desktop
-- Performance: 77 — LCP: 4.1s ⚠️ — CLS: 0.072 — TBT: 0ms
-- Ahorro potencial imágenes: 8847 KiB
+- Performance: 98 ✅ — LCP: 0.8s ✅ — CLS: 0.072 — TBT: 40ms
 ### Mobile
-- Performance: 65 — LCP: 25.2s 🔴 CRÍTICO — Speed Index: 12.2s — CLS: 0
-- Ahorro potencial imágenes: 6402 KiB — Render-blocking requests: 750ms
+- Performance: 83 🟡 — LCP: 4.5s ⚠️ — CLS: 0 ✅ — TBT: 0ms
+- LCP mobile bajará más cuando se reemplacen las fotos por las profesionales de Nikola
 
 ## Datos reales de Google Search Console (últimos 3 meses)
 - Clicks: 33 / Impresiones: 546 / CTR: 6% / Posición promedio: 38.2
-- Páginas indexadas: 1 de 16 (problema crítico — las /tours/[slug] probablemente no indexadas aún)
-- Top keywords por impresiones: "rent a boat hvar" (42), "hvar boat rental with skipper" (19), "boat hire hvar" (19), "hvar boat hire" (25)
-- Top keywords por clicks: "boat rental hvar" (2 clicks), "hvar boat rental" (1), "mare boats" (1)
-- INSIGHT: el sitio rankea para "rental" más que "tours" — el copy y H1 deben reflejar ambos
+- Sitemap subido ✅ — indexación /tours/[slug] x4 solicitada
+- Top keywords: "boat rental hvar", "rent a boat hvar", "hvar boat rental with skipper"
+- INSIGHT: el sitio rankea para "rental" más que "tours" — copy ya actualizado en Fase 7
 
-## Próxima tarea
-### Fase 7 — Fix LCP crítico + indexación de /tours/[slug]
-Ver CURSOR_PROMPT.md para las instrucciones exactas.
+## Próxima tarea — Fase 8
+Implementar cuando Fede entregue los assets:
 
-El LCP de 25.2s en mobile es el problema más urgente antes del lanzamiento de temporada (Mayo).
+1. **Logo SVG** — ✅ Hecho (assets en `public/img/mareboats-logo-horizontal.svg`, `mareboats-icon.svg`; OG social `mareboats-og.png`).
+
+2. **WhatsApp real** — reemplazar el número placeholder en todos los componentes:
+   - Número real: +385 95 196 6734
+   - Buscar con grep todos los href="https://wa.me/..." y tel: en el repo
+
+3. **Reviews reales** — cuando Nikola tenga reviews en OTAs (Viator/GetYourGuide/Airbnb):
+   - Reemplazar los 3 placeholders en components/sections/Testimonials.tsx
+   - Usar nombre real + país + texto real de la review
+
+4. **Fotos profesionales** — cuando Fede viaje a Hvar:
+   - Reemplazar imágenes en /public/images/
+   - Comprimir antes de agregar (máx 500 KB por imagen)
+   - Actualizar alt text si cambia el contenido visual
+
+5. **Cambios estéticos de Coti** — cuando Fede los entregue
+
+6. **Precios reales** — cuando Nikola los confirme:
+   - Reemplazar "From €XX" en components/sections/Tours.tsx y lib/tours-data.ts
+
+## Decisiones de negocio confirmadas
+- ✅ Sin formulario de contacto ni email — conversión 100% por WhatsApp
+- ✅ El botón WhatsAppButton.tsx siempre visible — es el único CTA de conversión
+- ✅ OTAs (Viator, GetYourGuide, Airbnb): trabajo SEO independiente en red. No linkeados desde el sitio por ahora. Si se crean listings activos, evaluar si un link mejora el SEO local.
+- ✅ Instagram: linkear en Footer cuando se confirme la URL de la cuenta
+- ✅ TikTok: no existe todavía — NO agregar en Footer ni redes sociales
+- ✅ Formulario/Formspree: descartado completamente
 
 ## Reglas siempre activas
 - Mobile-first: grid-cols-1 primero, luego md: lg:
@@ -51,14 +76,3 @@ El LCP de 25.2s en mobile es el problema más urgente antes del lanzamiento de t
 - Todo clickeable necesita hover + focus-visible + active
 - npm run build debe pasar sin errores al terminar cada fase
 - Commit al terminar cada fase con el mensaje indicado
-
-## TODOs pendientes de Nikola
-- Precios reales 4 tours (actualmente From €XX)
-- Número WhatsApp real
-- Email de contacto real
-- Endpoint Formspree (crear cuenta en formspree.io)
-- URL TikTok del negocio
-- Logo final SVG o PNG alta resolución
-- Fotos profesionales del bote y destinos (crítico para LCP — las actuales pesan demasiado)
-- Reviews reales de clientes
-- Horarios exactos de temporada

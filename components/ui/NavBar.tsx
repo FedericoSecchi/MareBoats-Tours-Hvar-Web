@@ -56,11 +56,11 @@ export default function NavBar() {
         {/* Logo */}
         <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
           <Image
-            src="/img/logo_mare_boats_hvar-letters.png"
+            src="/img/mareboats-logo-horizontal.svg"
             alt="Mare Boats Hvar"
-            width={140}
-            height={40}
-            className="h-9 w-auto object-contain drop-shadow-[0_4px_14px_rgba(0,0,0,0.5)]"
+            width={260}
+            height={34}
+            className="h-9 w-auto object-contain object-left drop-shadow-[0_4px_14px_rgba(0,0,0,0.5)]"
             priority
           />
         </Link>

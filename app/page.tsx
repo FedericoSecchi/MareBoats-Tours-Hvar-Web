@@ -38,7 +38,7 @@ export const metadata: Metadata = generateSEO({
     'blue cave hvar',
     'pakleni islands tour',
   ],
-  ogImage: '/img/carousel-1.jpeg',
+  ogImage: '/img/mareboats-og.png',
 });
 
 const WA_URL =

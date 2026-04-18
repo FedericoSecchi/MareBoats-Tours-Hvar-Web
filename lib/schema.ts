@@ -30,7 +30,7 @@ export const businessSchema = {
       address: sharedAddress,
       geo: sharedGeo,
       image: `${SITE_URL}/img/carousel-1.jpeg`,
-      logo: `${SITE_URL}/img/logo_mare_boats_hvar-01.png`,
+      logo: `${SITE_URL}/img/mareboats-logo-horizontal.svg`,
       sameAs: ['https://www.instagram.com/mareboats.hvar/'],
       priceRange: '$$',
       currenciesAccepted: 'EUR',
