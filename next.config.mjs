@@ -8,9 +8,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Only apply basePath when no custom domain is configured
-  basePath: process.env.CUSTOM_DOMAIN ? '' : `/${repoName}`,
-  assetPrefix: process.env.CUSTOM_DOMAIN ? '' : `/${repoName}`,
+  // Keep local development on root URL to avoid / 404.
+  basePath: isProd && !process.env.CUSTOM_DOMAIN ? `/${repoName}` : '',
+  assetPrefix: isProd && !process.env.CUSTOM_DOMAIN ? `/${repoName}` : '',
 };
 
 export default nextConfig;
