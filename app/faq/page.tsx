@@ -156,7 +156,7 @@ export default function FaqPage() {
           <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Ask on WhatsApp
           </a>
-          <Link href="/tours" className="inline-flex items-center justify-center gap-2 border-2 border-mare-primary text-mare-primary font-semibold px-6 py-3 rounded-lg hover:bg-mare-primary hover:text-white transition-all">
+          <Link href="/tours" className="inline-flex items-center justify-center gap-2 border-2 border-mare-primary text-mare-primary font-semibold px-6 py-3 rounded-lg hover:bg-mare-primary hover:text-white transition-[background-color,color] duration-200">
             View All Tours
           </Link>
         </div>

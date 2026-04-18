@@ -8,7 +8,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact us on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 active:scale-95 transition-all"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 active:scale-95 transition-[background-color,transform] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

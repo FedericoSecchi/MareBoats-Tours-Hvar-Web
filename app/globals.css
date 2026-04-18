@@ -39,15 +39,33 @@
 }
 
 @layer components {
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-up 700ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-mare-accent text-white font-semibold px-6 py-3 rounded-lg hover:brightness-110 active:scale-95 transition-all;
+    @apply inline-flex items-center justify-center gap-2 bg-mare-accent text-white font-semibold px-6 py-3 rounded-lg hover:brightness-110 active:scale-95 transition-[filter,transform] duration-200;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-mare-dark active:scale-95 transition-all;
+    @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-mare-dark active:scale-95 transition-[background-color,color,transform] duration-200;
   }
 
   .section-heading {
     @apply text-3xl md:text-4xl font-semibold text-mare-dark;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
