@@ -1,17 +1,14 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
+import '@fontsource/syne/700.css';
+import '@fontsource/syne/800.css';
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import NavBar from '@/components/ui/NavBar';
 import Footer from '@/components/sections/Footer';
 import { businessSchema } from '@/lib/schema';
 import { JsonLd } from '@/components/ui/JsonLd';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mareboatshvar.com'),
@@ -51,8 +48,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="antialiased">
+    <html lang="en">
+      <body className="antialiased font-body">
         <JsonLd data={businessSchema as Record<string, unknown>} />
         <NavBar />
         {children}

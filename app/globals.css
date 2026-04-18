@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 :root {
+  --bg: #0d1b2a;
+  --surface: #122236;
+  --accent: #3bc9db;
+  --accent-dk: #2a9faf;
+  --white: #f5f0e8;
+  --gray: #8a9ab0;
+  --border: #1e3048;
+  --font-display: 'Syne';
+  --font-body: 'Space Grotesk';
+
   --mare-primary: #0077B6;
   --mare-dark: #023E8A;
   --mare-light: #CAF0F8;
@@ -19,11 +29,12 @@
   body {
     color: var(--mare-text);
     background-color: var(--mare-white);
+    font-family: var(--font-body), system-ui, sans-serif;
     font-display: swap;
   }
 
   h1, h2, h3, h4 {
-    @apply font-semibold leading-tight;
+    @apply font-display font-semibold leading-tight;
   }
 }
 
