@@ -26,11 +26,27 @@ export const metadata: Metadata = {
   icons: {
     icon: '/img/favicon.png',
   },
+  alternates: {
+    canonical: 'https://mareboatshvar.com',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://mareboatshvar.com',
     siteName: 'Mare Boats Hvar',
+    title: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
+    description:
+      'Private boat tours from Hvar, Croatia. Blue Cave excursions, Pakleni Islands, boat rental, and transfers. Aerial drone video included.',
     images: [
       {
         url: '/img/carousel-1.jpeg',
@@ -39,6 +55,13 @@ export const metadata: Metadata = {
         alt: 'Mare Boats Hvar — Private boat tours in Hvar, Croatia',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
+    description:
+      'Private boat tours from Hvar, Croatia. Blue Cave, Pakleni Islands, sunset cruises and transfers. Aerial drone video included.',
+    images: ['/img/carousel-1.jpeg'],
   },
 };
 

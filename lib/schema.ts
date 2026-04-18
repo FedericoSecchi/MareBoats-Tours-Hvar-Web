@@ -1,42 +1,77 @@
+const SITE_URL = 'https://mareboatshvar.com';
+
+const sharedAddress = {
+  '@type': 'PostalAddress',
+  streetAddress: 'Port of Hvar',
+  addressLocality: 'Hvar',
+  addressRegion: 'Split-Dalmatia County',
+  postalCode: '21450',
+  addressCountry: 'HR',
+} as const;
+
+const sharedGeo = {
+  '@type': 'GeoCoordinates',
+  latitude: 43.1725,
+  longitude: 16.4411,
+} as const;
+
 export const businessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'TourismBusiness',
-  name: 'Mare Boats Hvar',
-  description:
-    'Private boat tours, Blue Cave excursions, boat rental, and transfers from Hvar, Croatia. Includes aerial drone video and underwater footage.',
-  url: 'https://mareboatshvar.com',
-  telephone: '+385951966734',
-  email: 'mare.boatshvar@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Port of Hvar',
-    addressLocality: 'Hvar',
-    addressRegion: 'Split-Dalmatia County',
-    postalCode: '21450',
-    addressCountry: 'HR',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 43.1725,
-    longitude: 16.4411,
-  },
-  image: 'https://mareboatshvar.com/img/carousel-1.jpeg',
-  sameAs: [
-    'https://www.instagram.com/mareboats.hvar/',
-  ],
-  priceRange: '$$',
-  currenciesAccepted: 'EUR',
-  paymentAccepted: 'Cash, Bank Transfer',
-  openingHours: 'Mo-Su 08:00-20:00',
-  areaServed: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: 43.1725,
-      longitude: 16.4411,
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'TouristInformationCenter'],
+      '@id': `${SITE_URL}/#localbusiness`,
+      name: 'Mare Boats Hvar',
+      description:
+        'Private boat tours, Blue Cave excursions, boat rental, and transfers from Hvar, Croatia. Includes aerial drone video and underwater footage.',
+      url: SITE_URL,
+      telephone: '+385951966734',
+      email: 'mare.boatshvar@gmail.com',
+      address: sharedAddress,
+      geo: sharedGeo,
+      image: `${SITE_URL}/img/carousel-1.jpeg`,
+      logo: `${SITE_URL}/img/logo_mare_boats_hvar-01.png`,
+      sameAs: ['https://www.instagram.com/mareboats.hvar/'],
+      priceRange: '$$',
+      currenciesAccepted: 'EUR',
+      paymentAccepted: 'Cash, Bank Transfer',
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+            'Sunday',
+          ],
+          opens: '08:00',
+          closes: '20:00',
+        },
+      ],
+      areaServed: {
+        '@type': 'GeoCircle',
+        geoMidpoint: sharedGeo,
+        geoRadius: '100000',
+      },
     },
-    geoRadius: '100000',
-  },
+    {
+      '@type': 'TouristAttraction',
+      '@id': `${SITE_URL}/#touristattraction`,
+      name: 'Mare Boats Hvar — Private Boat Tours',
+      description:
+        'Private speedboat tours from Hvar visiting the Blue Cave, Pakleni Islands, and the Dalmatian coast. Aerial drone and underwater footage included.',
+      url: SITE_URL,
+      image: `${SITE_URL}/img/carousel-1.jpeg`,
+      address: sharedAddress,
+      geo: sharedGeo,
+      isAccessibleForFree: false,
+      touristType: ['Couples', 'Families', 'Groups'],
+      provider: { '@id': `${SITE_URL}/#localbusiness` },
+    },
+  ],
 };
 
 export function buildTouristTripSchema({
