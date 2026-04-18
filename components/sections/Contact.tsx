@@ -1,3 +1,9 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
+import { fadeInUpContainer } from '@/lib/motion';
+
 // TODO: replace with the real Formspree endpoint once Nikola creates the form
 const FORMSPREE_ENDPOINT =
   process.env.NEXT_PUBLIC_FORMSPREE_ID ?? 'FORMSPREE_ENDPOINT_PENDING';
@@ -20,9 +26,16 @@ const labelClasses =
   'flex flex-col gap-2 font-body text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--gray)]';
 
 export default function Contact() {
+  const { ref, inView } = useScrollAnimation();
+
   return (
-    <section id="contact" className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
-      <div className="mx-auto max-w-container">
+    <section id="contact" ref={ref} className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
+      <motion.div
+        className="mx-auto max-w-container"
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        variants={fadeInUpContainer}
+      >
         <div className="mb-12 max-w-2xl">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Booking
@@ -191,7 +204,7 @@ export default function Contact() {
             </ul>
           </aside>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

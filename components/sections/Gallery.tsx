@@ -1,4 +1,9 @@
+'use client';
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
+import { fadeInUpItem, staggerListOnly } from '@/lib/motion';
 
 type Photo = {
   src: string;
@@ -40,40 +45,46 @@ const photos: Photo[] = [
 ];
 
 export default function Gallery() {
+  const { ref, inView } = useScrollAnimation();
+
   return (
-    <section className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
-      <div className="mx-auto max-w-container">
-        <div className="mb-10 max-w-2xl">
+    <section ref={ref} className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
+      <motion.div
+        className="mx-auto grid max-w-container grid-cols-2 gap-2 md:grid-cols-3 md:gap-3"
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        variants={staggerListOnly}
+      >
+        <motion.div variants={fadeInUpItem} className="col-span-2 md:col-span-3">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Gallery
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
             Where We Sail
           </h2>
-        </div>
+        </motion.div>
 
-        <ul className="grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-3">
-          {photos.map((photo) => (
-            <li
-              key={photo.src}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-[color:var(--border)]"
-            >
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                fill
-                sizes="(max-width: 768px) 50vw, 33vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity duration-300 ease-out group-hover:bg-black/55 group-hover:opacity-100 group-focus-within:bg-black/55 group-focus-within:opacity-100">
-                <span className="px-3 text-center font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-lg">
-                  {photo.label}
-                </span>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+        {photos.map((photo) => (
+          <motion.div
+            key={photo.src}
+            variants={fadeInUpItem}
+            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-[color:var(--border)]"
+          >
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              fill
+              sizes="(max-width: 768px) 50vw, 33vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity duration-300 ease-out group-hover:bg-black/55 group-hover:opacity-100 group-focus-within:bg-black/55 group-focus-within:opacity-100">
+              <span className="px-3 text-center font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-lg">
+                {photo.label}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }

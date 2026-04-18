@@ -1,16 +1,30 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
+import { fadeInUpContainer } from '@/lib/motion';
+
 const WA_URL =
   'https://wa.me/385951966734?text=Hi!%20I%E2%80%99m%20interested%20in%20a%20boat%20tour.';
 
 export default function CTABanner() {
+  const { ref, inView } = useScrollAnimation();
+
   return (
     <section
+      ref={ref}
       className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-24"
       style={{
         backgroundImage:
           'radial-gradient(ellipse at center, rgba(59,201,219,0.12) 0%, transparent 70%)',
       }}
     >
-      <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
+      <motion.div
+        className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center"
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        variants={fadeInUpContainer}
+      >
         <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
           Last call
         </p>
@@ -33,7 +47,7 @@ export default function CTABanner() {
         <p className="mt-4 font-body text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
           Peak season May–September · Spots fill fast · Book early to secure your date
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 }

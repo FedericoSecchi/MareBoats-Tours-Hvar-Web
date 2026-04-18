@@ -20,10 +20,15 @@ const WA_URL =
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - window.innerHeight;
+      const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, pct)));
     };
 
     handleScroll();
@@ -36,12 +41,17 @@ export default function NavBar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+      className={`relative sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-300 ${
         isScrolled
           ? 'bg-[color:var(--bg)]/90 border-[color:var(--border)] backdrop-blur-xl shadow-[0_10px_30px_rgba(59,201,219,0.16)]'
           : 'bg-transparent border-transparent'
       }`}
     >
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 z-[60] h-0.5 bg-[color:var(--accent)] transition-[width] duration-150 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+        aria-hidden="true"
+      />
       <nav className="mx-auto flex h-20 w-full max-w-container items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>

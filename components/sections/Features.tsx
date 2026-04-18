@@ -1,4 +1,9 @@
+'use client';
+
 import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
+import { fadeInUpItem, staggerListOnly } from '@/lib/motion';
 
 type Feature = {
   title: string;
@@ -65,42 +70,48 @@ const features: Feature[] = [
 ];
 
 export default function Features() {
+  const { ref, inView } = useScrollAnimation();
+
   return (
-    <section className="bg-[color:var(--surface)] py-20 px-4 md:py-24">
-      <div className="mx-auto max-w-container">
-        <div className="mb-12 max-w-2xl">
+    <section ref={ref} className="bg-[color:var(--surface)] py-20 px-4 md:py-24">
+      <motion.div
+        className="mx-auto grid max-w-container grid-cols-2 gap-6 md:grid-cols-4 md:gap-8"
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        variants={staggerListOnly}
+      >
+        <motion.div variants={fadeInUpItem} className="col-span-2 md:col-span-4">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Why Us
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
             Why Choose MareBoats
           </h2>
-        </div>
+        </motion.div>
 
-        <ul className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
-          {features.map((feature) => (
-            <li
-              key={feature.title}
-              className="flex flex-col gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/40 p-6"
+        {features.map((feature) => (
+          <motion.div
+            key={feature.title}
+            variants={fadeInUpItem}
+            className="flex flex-col gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/40 p-6"
+          >
+            <span
+              className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[color:var(--accent)]/10 text-[color:var(--accent)]"
+              aria-hidden="true"
             >
-              <span
-                className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[color:var(--accent)]/10 text-[color:var(--accent)]"
-                aria-hidden="true"
-              >
-                <span className="block h-7 w-7">{feature.icon}</span>
-              </span>
-              <div>
-                <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-lg">
-                  {feature.title}
-                </h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                  {feature.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+              <span className="block h-7 w-7">{feature.icon}</span>
+            </span>
+            <div>
+              <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-lg">
+                {feature.title}
+              </h3>
+              <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                {feature.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }
