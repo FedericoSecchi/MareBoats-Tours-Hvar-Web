@@ -26,8 +26,8 @@ export default function Tours() {
             Choose Your Day on the Adriatic
           </h2>
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Private speedboat tours from Hvar Harbour. Every booking includes a local captain,
-            snorkeling gear and aerial drone footage of your day.
+            Four routes, one private boat. Local captain, snorkeling gear and drone video included
+            on every trip.
           </p>
         </motion.div>
 
@@ -69,7 +69,7 @@ export default function Tours() {
                   href={`/tours/${tour.slug}`}
                   className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                 >
-                  Book This Tour
+                  See This Tour
                 </Link>
               </div>
             </div>

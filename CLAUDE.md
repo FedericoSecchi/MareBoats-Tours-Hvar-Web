@@ -24,9 +24,9 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 6  ✅ commit 301457a — Páginas /tours/[slug] x4 con SEO long-tail
 - Fase 7  ✅ commit 06da4c9 — Fix LCP + trailing slash sitemap + copy "boat rental"
 - Fase 8  ✅ commit 116ab39 — Logo SVG, favicon, OG image, WhatsApp confirmado
-- Fase 9  🔄 EN CURSO — UI/UX + Conversión
-- Fase 10 ⏳ PENDIENTE — Guest Guide /guide (SEO + post-booking)
-- Fase 11 ⏳ PENDIENTE — Copy humano
+- Fase 9  ✅ — UX conversion (WhatsApp-only, cards simétricas, TourHero compartido, /tours/split-airport-transfer, Footer cleanup)
+- Fase 10 ✅ — Guest Guide /guide con FAQPage schema + sitemap + footer link
+- Fase 11 ✅ — Copy humano en Hero, CTAs, Tours, Features, FAQ
 
 ## Datos reales de performance (Lighthouse 18/04/2026 — post Fase 7)
 - Desktop: Performance 98 ✅ — LCP 0.8s ✅ — CLS 0.072 — TBT 40ms

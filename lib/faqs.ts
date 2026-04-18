@@ -4,31 +4,31 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'What is included in the tour?',
     answer:
-      'All our tours include fuel, snorkeling equipment, towels, and a knowledgeable local captain. We also provide water and soft drinks on board. Lunch stops can be arranged at local island restaurants at your own expense.',
+      'Local captain, fuel, snorkeling gear, towels, water and soft drinks on board. Aerial drone and underwater video of your day. Lunch stops at island restaurants are at your own tab.',
   },
   {
     question: 'How many people can join a private tour?',
     answer:
-      "Our boat comfortably fits up to 8 guests, making every tour a private, personal experience. We don't do shared group tours — the boat is always exclusively yours.",
+      'Up to 8 guests on the boat. We do not run shared tours — every booking is private, only your group.',
   },
   {
     question: 'What happens if the weather is bad?',
     answer:
-      "Your safety is our priority. If sea conditions are unsafe, we'll reschedule your tour at no extra cost. We monitor weather closely and will contact you in advance if there's any concern.",
+      'If wind or sea conditions are unsafe, the captain reschedules at no extra cost. If we cancel, you choose: full refund or a new date. We confirm by WhatsApp the evening before.',
   },
   {
     question: 'What should I bring?',
     answer:
-      'Bring sunscreen, a hat, sunglasses, swimwear, and a light layer for the breeze. We recommend water shoes for rocky beaches. Everything else — snorkeling gear, towels — is provided on board.',
+      'Sunscreen, hat, sunglasses, swimwear and a light layer for the breeze. Water shoes help on rocky coves. Snorkeling gear and towels are on board.',
   },
   {
     question: 'Can we customize the route?',
     answer:
-      "Absolutely. Every tour can be tailored to your interests. Want to spend more time at Blue Cave, find a hidden beach, or stop for lunch at a specific island? Just let us know when you book and we'll plan accordingly.",
+      'Yes — every tour is private. Want more time at Blue Cave, a quieter beach or a specific lunch stop? Tell us when you book and the captain plans around it.',
   },
   {
     question: 'How do I book a boat tour in Hvar?',
     answer:
-      'The fastest way is WhatsApp at +385 95 196 6734. Tell us your date, group size and the tour you want — we reply within the hour during the season and confirm availability the same day.',
+      'WhatsApp at +385 95 196 6734. Send your date, group size and the tour you want. We reply within the hour during the season and confirm the same day.',
   },
 ];

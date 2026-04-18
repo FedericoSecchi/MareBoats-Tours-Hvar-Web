@@ -26,13 +26,13 @@ export default function CTABanner() {
         variants={fadeInUpContainer}
       >
         <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-          Last call
+          Ready when you are
         </p>
         <h2 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-6xl">
-          Ready to Explore Hvar?
+          Pick a Date. We Handle the Rest.
         </h2>
         <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-          Private boat tours from Hvar Harbour — snorkeling, Blue Cave, Pakleni Islands and more.
+          Send your date and group size on WhatsApp. We confirm the same day during the season.
         </p>
 
         <a
@@ -41,11 +41,11 @@ export default function CTABanner() {
           rel="noopener noreferrer"
           className="mt-8 inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
         >
-          Book Now — Limited Spots
+          Book on WhatsApp
         </a>
 
         <p className="mt-4 font-body text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
-          Peak season May–September · Spots fill fast · Book early to secure your date
+          Peak season May–September · Reply within the hour · Daily 8:00–20:00
         </p>
       </motion.div>
     </section>

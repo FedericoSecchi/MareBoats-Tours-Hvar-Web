@@ -13,9 +13,9 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: 'Experienced Captain',
+    title: 'Local Captain',
     description:
-      'Born and raised in Hvar. Knows every cove, current and hidden beach on the Dalmatian coast.',
+      'Born in Hvar. Knows every cove, every wind, and which beach is empty in the morning.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="9" />
@@ -32,9 +32,9 @@ const features: Feature[] = [
     ),
   },
   {
-    title: 'Private Tours',
+    title: 'One Group, One Boat',
     description:
-      'The boat is exclusively yours. Up to 8 guests, no shared groups, no fixed schedule.',
+      'Up to 8 guests. No shared groups, no fixed schedule. The day moves at your pace.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="9" cy="8" r="3" />
@@ -45,9 +45,9 @@ const features: Feature[] = [
     ),
   },
   {
-    title: 'Custom Routes',
+    title: 'Your Route',
     description:
-      'Tell us what you love — Blue Cave, snorkeling, lunch on a quiet island. We build the day around you.',
+      'Blue Cave, snorkeling, lunch on a quiet island — tell us what matters and we build the day around it.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 6.5L9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5z" />
@@ -87,7 +87,7 @@ export default function Features() {
             Why Us
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
-            Why Choose MareBoats
+            Why Guests Book Direct
           </h2>
         </motion.div>
 
