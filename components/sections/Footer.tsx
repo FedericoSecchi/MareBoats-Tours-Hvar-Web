@@ -15,7 +15,7 @@ const infoLinks = [
   { href: '/contact', label: 'Contact' },
 ];
 
-const MAPS_URL = 'https://maps.google.com/?q=43.1729,16.4413';
+const MAPS_URL = 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -94,16 +94,12 @@ export default function Footer() {
                 Hvar Harbour, Croatia
               </a>
               <a
-                href="tel:+385951966734"
+                href="https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline active:opacity-90"
               >
-                +385 95 196 6734
-              </a>
-              <a
-                href="mailto:mare.boatshvar@gmail.com"
-                className="transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline active:opacity-90"
-              >
-                mare.boatshvar@gmail.com
+                WhatsApp +385 95 196 6734
               </a>
               <span>Daily 8:00 AM – 8:00 PM (May–September)</span>
             </address>
@@ -125,14 +121,16 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                {/* TODO: replace with the real TikTok URL */}
                 <a
-                  href="#"
-                  aria-label="Mare Boats Hvar on TikTok"
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Mare Boats Hvar on Google Maps"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--border)] text-[color:var(--white)] transition-colors duration-200 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:opacity-90"
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
-                    <path d="M19.5 7.6a6.7 6.7 0 0 1-3.9-1.25v8.55a5.6 5.6 0 1 1-5.6-5.6c.31 0 .61.03.9.08v2.7a2.9 2.9 0 1 0 2 2.76V2.5h2.7a4.7 4.7 0 0 0 3.9 4.6v0.5z" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-5 w-5" aria-hidden="true">
+                    <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
+                    <circle cx="12" cy="9" r="2.5" />
                   </svg>
                 </a>
               </li>

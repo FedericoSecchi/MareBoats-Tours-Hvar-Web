@@ -21,7 +21,7 @@ export type TourRecord = {
 };
 
 const MEETING = 'Hvar Harbour, Croatia';
-const MAPS = 'https://maps.google.com/?q=43.1729,16.4413';
+const MAPS = 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA';
 
 export const toursData: TourRecord[] = [
   {
@@ -213,7 +213,72 @@ For guests comparing private boat charter Hvar offers, ask about fuel coverage, 
     ],
     keywords: ['private boat charter hvar', 'boat rental hvar croatia'],
   },
+  {
+    slug: 'split-airport-transfer',
+    name: 'Split Airport to Hvar Speedboat Transfer',
+    tagline: 'Private 45-minute speedboat transfer between Split Airport and Hvar Harbour.',
+    shortDescription:
+      'Private speedboat transfer from Split Airport to Hvar in around 45 minutes. Skip ferries and queues — door-to-harbour service from Mare Boats Hvar.',
+    description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in around 45 minutes — with luggage handled and a flexible departure time that fits your flight.
+
+We coordinate the meeting point near Split (airport pier or Split town harbour, depending on your arrival) and confirm everything by WhatsApp the day before so there are no surprises. Your skipper monitors weather and tides, suggests the best route, and adapts the plan if your flight is delayed.
+
+This Split to Hvar speedboat transfer is ideal for couples, families and groups who want to arrive on Hvar relaxed and on schedule, without losing half a day to public transport. The same service works in reverse: a private morning transfer from Hvar Harbour back to Split in time for your departure.
+
+Message us on WhatsApp with your flight number, group size and luggage to get a fast quote and lock in your slot. Peak summer transfers fill quickly — booking ahead is the only way to guarantee the time you want.
+
+If you are comparing Split Hvar transfer options, the speedboat is usually the most reliable choice in summer: ferries can be busy, schedules tighten in high season, and a private boat avoids almost all of that. We focus on safety, punctuality and a smooth handover so the first thing you remember about Hvar is the sea, not the queue.`,
+    duration: '~45 min',
+    durationIso: 'PT45M',
+    price: 'From €XX — to be confirmed by Nikola',
+    includes: [
+      'Private speedboat and local skipper',
+      'Fuel for the Split ↔ Hvar route',
+      'Luggage handling on board',
+      'Flexible departure time around your flight',
+    ],
+    notIncludes: [
+      'Taxi between Split Airport and the boat pier',
+      'Port and dock fees where applicable',
+    ],
+    whatToBring: [
+      'A light layer for the breeze on board',
+      'Travel documents and luggage tagged for boarding',
+    ],
+    meetingPoint: 'Split Airport pier / Split harbour ↔ Hvar Harbour',
+    meetingPointMapsUrl: MAPS,
+    highlights: [
+      'Around 45 minutes door-to-harbour vs. several hours by ferry + transfer',
+      'Private boat — no shared groups, no fixed schedule',
+      'Flight monitoring and WhatsApp coordination the day before',
+    ],
+    images: [
+      {
+        src: '/img/destination-5.jpeg',
+        alt: 'Split Airport to Hvar private speedboat transfer arriving at Hvar Harbour',
+      },
+      { src: '/img/carousel-2.jpeg', alt: 'Speedboat crossing the Adriatic between Split and Hvar' },
+    ],
+    keywords: [
+      'split to hvar transfer',
+      'split airport to hvar',
+      'speedboat split hvar',
+      'split hvar boat transfer',
+    ],
+  },
 ];
+
+/** Slugs shown in the homepage Tours grid. The transfer route lives at /tours/split-airport-transfer for SEO but is not in the home grid (we keep 4 cards for symmetry). */
+export const FEATURED_TOUR_SLUGS = [
+  'blue-cave-pakleni-islands',
+  'pakleni-islands',
+  'sunset-cruise',
+  'private-boat-charter',
+] as const;
+
+export const featuredTours: TourRecord[] = FEATURED_TOUR_SLUGS
+  .map((slug) => toursData.find((t) => t.slug === slug))
+  .filter((t): t is TourRecord => Boolean(t));
 
 export function getTourBySlug(slug: string): TourRecord | undefined {
   return toursData.find((t) => t.slug === slug);

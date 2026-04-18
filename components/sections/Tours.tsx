@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
 import { fadeInUpItem, staggerListOnly } from '@/lib/motion';
-import { toursData } from '@/lib/tours-data';
+import { featuredTours } from '@/lib/tours-data';
 
 export default function Tours() {
   const { ref, inView } = useScrollAnimation();
@@ -13,12 +13,12 @@ export default function Tours() {
   return (
     <section id="tours" ref={ref} className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
       <motion.div
-        className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={staggerListOnly}
       >
-        <motion.div variants={fadeInUpItem} className="col-span-full mb-2 md:col-span-2 lg:col-span-3">
+        <motion.div variants={fadeInUpItem} className="col-span-full mb-2 md:col-span-2 lg:col-span-4">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Our Tours
           </p>
@@ -31,18 +31,18 @@ export default function Tours() {
           </p>
         </motion.div>
 
-        {toursData.map((tour) => (
+        {featuredTours.map((tour) => (
           <motion.article
             key={tour.slug}
             variants={fadeInUpItem}
-            className="group flex transform-gpu flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]"
+            className="group flex h-full transform-gpu flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden">
               <Image
                 src={tour.images[0].src}
                 alt={tour.images[0].alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

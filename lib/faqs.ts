@@ -29,6 +29,6 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'How do I book a boat tour in Hvar?',
     answer:
-      "The easiest way is to send us a WhatsApp message or fill out the booking form on this page. Tell us your preferred date, number of guests, and which tour interests you. We'll confirm availability and details within a few hours.",
+      'The fastest way is WhatsApp at +385 95 196 6734. Tell us your date, group size and the tour you want — we reply within the hour during the season and confirm availability the same day.',
   },
 ];

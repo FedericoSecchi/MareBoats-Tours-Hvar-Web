@@ -73,7 +73,7 @@ export default function Testimonials() {
           <motion.article
             key={t.author}
             variants={fadeInUpItem}
-            className="relative flex flex-col gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-7"
+            className="relative flex h-full flex-col gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-7"
           >
             <span
               aria-hidden="true"
@@ -81,7 +81,7 @@ export default function Testimonials() {
             >
               &ldquo;
             </span>
-            <p className="-mt-6 font-body text-base leading-relaxed text-[color:var(--white)]">{t.quote}</p>
+            <p className="-mt-6 flex-1 font-body text-base leading-relaxed text-[color:var(--white)]">{t.quote}</p>
             <div className="mt-auto flex flex-col gap-2 border-t border-[color:var(--border)] pt-4">
               <Stars />
               <p className="font-body text-sm font-semibold text-[color:var(--white)]">

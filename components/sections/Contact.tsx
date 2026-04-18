@@ -4,26 +4,9 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
 import { fadeInUpContainer } from '@/lib/motion';
 
-// TODO: replace with the real Formspree endpoint once Nikola creates the form
-const FORMSPREE_ENDPOINT =
-  process.env.NEXT_PUBLIC_FORMSPREE_ID ?? 'FORMSPREE_ENDPOINT_PENDING';
-
-const FORMSPREE_ACTION = FORMSPREE_ENDPOINT.startsWith('http')
-  ? FORMSPREE_ENDPOINT
-  : `https://formspree.io/f/${FORMSPREE_ENDPOINT}`;
-
-const tourTypes = [
-  'Blue Cave & Pakleni Islands',
-  'Pakleni Islands Half Day',
-  'Sunset Cruise',
-  'Private Charter',
-];
-
-const inputClasses =
-  'w-full rounded-lg border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 font-body text-sm text-[color:var(--white)] placeholder:text-[color:var(--gray)]/70 focus:border-[color:var(--accent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/40';
-
-const labelClasses =
-  'flex flex-col gap-2 font-body text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--gray)]';
+const WA_URL =
+  'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20boat%20tour%20from%20Hvar.';
+const MAPS_URL = 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA';
 
 export default function Contact() {
   const { ref, inView } = useScrollAnimation();
@@ -36,170 +19,103 @@ export default function Contact() {
         animate={inView ? 'visible' : 'hidden'}
         variants={fadeInUpContainer}
       >
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-10 max-w-2xl">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Booking
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
-            Book Your Tour
+            Tell Us Your Date
           </h2>
           <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Send us your preferred date and tour. We reply within hours and tailor every detail to
-            your day on the Adriatic.
+            Send a message with your date and group size. We reply fast — usually within the hour.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.5fr_1fr]">
-          <form
-            action={FORMSPREE_ACTION}
-            method="POST"
-            className="grid grid-cols-1 gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6 md:grid-cols-2 md:p-8"
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
+          {/* WhatsApp primary CTA card */}
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col justify-between gap-8 rounded-2xl border border-[color:var(--accent)]/40 bg-[color:var(--surface)] p-8 shadow-[0_18px_44px_rgba(59,201,219,0.18)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(59,201,219,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:translate-y-0 md:p-10"
           >
-            <label className={`${labelClasses} md:col-span-2`}>
-              Name
-              <input
-                type="text"
-                name="name"
-                required
-                autoComplete="name"
-                className={inputClasses}
-                placeholder="Your full name"
-              />
-            </label>
-
-            <label className={labelClasses}>
-              Email
-              <input
-                type="email"
-                name="email"
-                required
-                autoComplete="email"
-                className={inputClasses}
-                placeholder="you@email.com"
-              />
-            </label>
-
-            <label className={labelClasses}>
-              Phone
-              <input
-                type="tel"
-                name="phone"
-                autoComplete="tel"
-                className={inputClasses}
-                placeholder="+1 555 000 0000"
-              />
-            </label>
-
-            <label className={labelClasses}>
-              Preferred Date
-              <input type="date" name="date" required className={inputClasses} />
-            </label>
-
-            <label className={labelClasses}>
-              Tour Type
-              <select name="tour" required className={inputClasses} defaultValue="">
-                <option value="" disabled>
-                  Choose a tour
-                </option>
-                {tourTypes.map((tour) => (
-                  <option key={tour} value={tour}>
-                    {tour}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className={labelClasses}>
-              Number of People
-              <input
-                type="number"
-                name="people"
-                min={1}
-                max={8}
-                defaultValue={2}
-                required
-                className={inputClasses}
-              />
-            </label>
-
-            <label className={`${labelClasses} md:col-span-2`}>
-              Message
-              <textarea
-                name="message"
-                rows={3}
-                className={`${inputClasses} resize-none`}
-                placeholder="Anything we should know? Special requests, must-see spots…"
-              />
-            </label>
-
-            <div className="md:col-span-2">
-              <button
-                type="submit"
-                className="inline-flex w-full items-center justify-center rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] sm:w-auto"
+            <div className="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_28px_rgba(37,211,102,0.45)]"
               >
-                Send Booking Request
-              </button>
-              <p className="mt-3 font-body text-xs text-[color:var(--gray)]">
-                We never share your details. We reply within a few hours during the season.
-              </p>
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+              </span>
+              <div>
+                <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+                  Fastest channel
+                </p>
+                <h3 className="mt-2 font-display text-3xl font-extrabold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)] md:text-4xl">
+                  Book on WhatsApp
+                </h3>
+                <p className="mt-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
+                  Share your date, group size and the tour you want. We reply within the hour during the season.
+                </p>
+              </div>
             </div>
-          </form>
 
+            <div className="flex flex-col gap-3 border-t border-[color:var(--border)] pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <span className="font-body text-base font-semibold text-[color:var(--white)]">
+                +385 95 196 6734
+              </span>
+              <span className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 group-hover:bg-[color:var(--accent-dk)] group-hover:text-[color:var(--white)]">
+                Open WhatsApp
+              </span>
+            </div>
+          </a>
+
+          {/* Quick info aside */}
           <aside className="flex flex-col gap-6 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 md:p-8">
             <div>
               <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-                Talk to us
+                Quick info
               </p>
               <h3 className="mt-2 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                Prefer to message?
+                Before you write
               </h3>
-              <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                The fastest way to confirm availability is WhatsApp.
-              </p>
             </div>
 
-            <ul className="flex flex-col gap-4 font-body text-sm text-[color:var(--white)]">
-              <li className="flex flex-col gap-1">
-                <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
-                  WhatsApp
-                </span>
-                {/* TODO: confirm WhatsApp number with Nikola */}
-                <a
-                  href="https://wa.me/385951966734"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-[color:var(--accent)] hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline active:opacity-90"
-                >
-                  +385 95 196 6734
-                </a>
-              </li>
-
-              <li className="flex flex-col gap-1">
-                <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
-                  Email
-                </span>
-                {/* TODO: confirm contact email with Nikola */}
-                <a
-                  href="mailto:info@mareboatshvar.com"
-                  className="font-semibold text-[color:var(--white)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline active:opacity-90"
-                >
-                  info@mareboatshvar.com
-                </a>
-              </li>
-
+            <ul className="flex flex-col gap-5 font-body text-sm text-[color:var(--white)]">
               <li className="flex flex-col gap-1">
                 <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
                   Meeting point
                 </span>
-                <span>Hvar Harbour, Croatia</span>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[color:var(--white)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline active:opacity-90"
+                >
+                  Hvar Harbour, Croatia →
+                </a>
               </li>
 
               <li className="flex flex-col gap-1">
                 <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
-                  Hours
+                  Reply time
                 </span>
-                <span>Daily 8:00 AM – 8:00 PM</span>
-                <span className="text-[color:var(--gray)]">May–September</span>
+                <span>Usually within 1 hour, daily 8:00–20:00 (May–Sep).</span>
+              </li>
+
+              <li className="flex flex-col gap-1">
+                <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
+                  Languages
+                </span>
+                <span>English, Croatian, Italian, Spanish.</span>
+              </li>
+
+              <li className="flex flex-col gap-1">
+                <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
+                  Group size
+                </span>
+                <span>Up to 8 guests on a private boat — no shared tours.</span>
               </li>
             </ul>
           </aside>

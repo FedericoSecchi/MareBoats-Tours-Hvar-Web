@@ -57,13 +57,15 @@ const features: Feature[] = [
     ),
   },
   {
-    title: 'Best Price Guarantee',
+    title: 'Speaks Your Language',
     description:
-      'Direct booking with the captain. No middlemen, no hidden fees, no surprise extras at the dock.',
+      'English, Croatian, Italian and Spanish. Whichever you are most comfortable in — that is how we run the tour.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M3 12V4h8l10 10-8 8L3 12z" />
-        <circle cx="8" cy="9" r="1.6" />
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3a14 14 0 0 1 0 18" />
+        <path d="M12 3a14 14 0 0 0 0 18" />
       </svg>
     ),
   },
@@ -93,7 +95,7 @@ export default function Features() {
           <motion.div
             key={feature.title}
             variants={fadeInUpItem}
-            className="flex flex-col gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/40 p-6"
+            className="flex h-full flex-col gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/40 p-6"
           >
             <span
               className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[color:var(--accent)]/10 text-[color:var(--accent)]"
@@ -101,7 +103,7 @@ export default function Features() {
             >
               <span className="block h-7 w-7">{feature.icon}</span>
             </span>
-            <div>
+            <div className="flex flex-1 flex-col">
               <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-lg">
                 {feature.title}
               </h3>
