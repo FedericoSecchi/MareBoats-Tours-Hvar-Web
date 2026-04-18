@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next';
+import { toursData } from '@/lib/tours-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://mareboatshvar.com';
-  return [
+
+  const staticPages: MetadataRoute.Sitemap = [
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${base}/tours`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${base}/blue-cave`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
@@ -13,4 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
   ];
+
+  const tourPages: MetadataRoute.Sitemap = toursData.map((t) => ({
+    url: `${base}/tours/${t.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...tourPages];
 }

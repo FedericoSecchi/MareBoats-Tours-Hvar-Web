@@ -36,7 +36,11 @@ Your skipper plans the day around sea conditions and your preferences, so you ge
 
 Along the route you can expect crystal-clear water, dramatic cliffs, and classic Dalmatian island scenery. Snorkeling gear is provided, and every private tour includes aerial drone footage and underwater video so you leave with a professional memory of your day — not just phone snapshots.
 
-This tour is ideal for couples, families, and small groups who want a premium Hvar boat excursion with a knowledgeable local captain. Message us on WhatsApp to check availability during peak season (May–September) and to customize stops such as additional time at the Pakleni Islands or a lunch break at a waterfront restaurant on your own tab.`,
+This tour is ideal for couples, families, and small groups who want a premium Hvar boat excursion with a knowledgeable local captain. Message us on WhatsApp to check availability during peak season (May–September) and to customize stops such as additional time at the Pakleni Islands or a lunch break at a waterfront restaurant on your own tab.
+
+If you are researching Blue Cave boat tour Hvar options, remember that cave visits depend on sea conditions and queue times — a private itinerary gives you more flexibility to adapt the day rather than being locked into a rigid group schedule. We focus on safety first, then on making the most of your hours on the water with swimming breaks, scenic cruising, and local insight you cannot get from a generic brochure route.
+
+When you message us, share your travel dates and how confident you are on the water — we will recommend the best departure window and a realistic plan so your expectations match what the Adriatic delivers that day.`,
     duration: '6–8 hrs',
     durationIso: 'PT8H',
     price: 'From €XX — to be confirmed by Nikola',
@@ -85,7 +89,11 @@ Departing from Hvar Harbour, you reach the Pakleni archipelago quickly, where pi
 
 Because the boat is private, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and like every MareBoats private tour, you also receive aerial drone footage and underwater video as a keepsake.
 
-If you are searching for the best half day boat tour Hvar has to offer — combining proximity, scenery, and comfort — this is the experience guests book again and again. Contact us on WhatsApp to confirm departure times during the season and to tailor the route to your group.`,
+If you are searching for the best half day boat tour Hvar has to offer — combining proximity, scenery, and comfort — this is the experience guests book again and again. Contact us on WhatsApp to confirm departure times during the season and to tailor the route to your group.
+
+Because the Pakleni Islands sit so close to Hvar town, you spend less time commuting and more time enjoying the water — a practical advantage on hot summer days when you want maximum swimming time. Your captain can suggest quieter bays if the wind shifts, and you can always adjust the plan if younger guests want shallower water or if you prefer a longer stop for coffee at a waterfront venue. The goal is simple: a premium private boat experience that feels effortless from the first message to the last swim of the afternoon.
+
+If you are comparing shared excursions versus a private Pakleni Islands boat, the private option usually wins on comfort, timing, and the ability to avoid the busiest pockets of the archipelago when possible.`,
     duration: '3–4 hrs',
     durationIso: 'PT4H',
     price: 'From €XX — to be confirmed by Nikola',
@@ -126,7 +134,9 @@ This private evening boat tour departs from Hvar Harbour and follows a route cho
 
 Your captain focuses on safety and smooth cruising as light fades, and you can bring your own wine or bubbly to enjoy responsibly on board (please confirm preferences when booking). As with all MareBoats private experiences, the tour includes aerial drone footage and underwater video when conditions allow, so you can relive the golden hour long after you return to shore.
 
-Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date. If you are comparing Hvar sunset boat tour options, choose private for the best views, the calmest pace, and a route tailored to the evening sky.`,
+Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date. If you are comparing Hvar sunset boat tour options, choose private for the best views, the calmest pace, and a route tailored to the evening sky.
+
+Evening light also makes the coastline look more cinematic — stone villages glow warmer, the sea reflects softer blues, and the breeze often settles compared to midday heat. That is why many guests schedule their sunset cruise after a busy sightseeing day on land: it is the perfect reset before dinner in Hvar town. If you are celebrating something special, tell us when you book and we will do our best to set the mood with a smooth route and plenty of time for photos.`,
     duration: '2 hrs',
     durationIso: 'PT2H',
     price: 'From €XX — to be confirmed by Nikola',
@@ -166,7 +176,11 @@ Unlike fixed itineraries, a full-day charter gives you room to adapt — spend l
 
 Every charter includes fuel for standard cruising ranges discussed at booking, snorkeling equipment, towels, and refreshments basics on board. As with other MareBoats private tours, you also benefit from aerial drone footage and underwater video so your charter feels like a complete experience, not just a transfer between dots on a map.
 
-Private charters are especially popular for multi-generational families, groups of friends, and guests who want the best of Hvar without compromising on comfort. Contact us on WhatsApp with your dates, group size, and ideas — we will confirm pricing with Nikola where needed and help you design a day you will want to repeat next summer.`,
+Private charters are especially popular for multi-generational families, groups of friends, and guests who want the best of Hvar without compromising on comfort. Contact us on WhatsApp with your dates, group size, and ideas — we will confirm pricing with Nikola where needed and help you design a day you will want to repeat next summer.
+
+A charter is also the best format if you want to combine multiple “must-see” destinations in one day without feeling rushed between them. Your captain will be honest about what is realistic given distances and sea conditions, then help you choose a route that still feels relaxed. Whether you care most about snorkeling, photography, island restaurants, or simply floating in quiet water, a private charter keeps the day aligned with what matters to you.
+
+For guests comparing private boat charter Hvar offers, ask about fuel coverage, included equipment, and realistic routing — we prefer transparent planning so your day feels calm, safe, and worth every minute on the water.`,
     duration: 'Full day',
     durationIso: 'PT8H',
     price: 'From €XX — to be confirmed by Nikola',

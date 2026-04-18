@@ -2,10 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const tourLinks = [
-  { href: '/blue-cave', label: 'Blue Cave & Islands' },
-  { href: '/tours', label: 'Pakleni Islands' },
-  { href: '/sunset', label: 'Sunset Cruise' },
-  { href: '/boat-rental', label: 'Private Charter' },
+  { href: '/tours/blue-cave-pakleni-islands', label: 'Blue Cave & Islands' },
+  { href: '/tours/pakleni-islands', label: 'Pakleni Islands' },
+  { href: '/tours/sunset-cruise', label: 'Sunset Cruise' },
+  { href: '/tours/private-boat-charter', label: 'Private Charter' },
 ];
 
 const infoLinks = [
