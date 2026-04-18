@@ -1,16 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { FAQJsonLd } from '@/components/ui/JsonLd';
 import Tours from '@/components/sections/Tours';
 import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
-import Testimonials from '@/components/sections/Testimonials';
-import FAQ from '@/components/sections/FAQ';
 import { homepageFaqs } from '@/lib/faqs';
-import Contact from '@/components/sections/Contact';
-import CTABanner from '@/components/sections/CTABanner';
+
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), { ssr: true });
+const FAQ = dynamic(() => import('@/components/sections/FAQ'), { ssr: true });
+const Contact = dynamic(() => import('@/components/sections/Contact'), { ssr: true });
+const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), { ssr: true });
 
 export const metadata: Metadata = generateSEO({
   title: 'Private Boat Tours Hvar | Mare Boats Hvar',

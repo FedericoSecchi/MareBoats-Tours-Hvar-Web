@@ -23,8 +23,13 @@ export const metadata: Metadata = {
   creator: 'Mare Boats Hvar',
   publisher: 'Mare Boats Hvar',
   formatDetection: { telephone: true, email: true },
+  // Syne & Space Grotesk load via @fontsource with font-display: swap in their @font-face rules.
   icons: {
-    icon: '/img/favicon.png',
+    icon: [
+      { url: '/img/favicon.png', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   alternates: {
     canonical: 'https://mareboatshvar.com',
