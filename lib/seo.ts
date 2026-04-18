@@ -20,7 +20,7 @@ export function generateSEO({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
 }: SEOProps): Metadata {
-  const canonical = slug ? `${BASE_URL}/${slug}` : BASE_URL;
+  const canonical = slug ? `${BASE_URL}/${slug}/` : `${BASE_URL}/`;
 
   return {
     title,

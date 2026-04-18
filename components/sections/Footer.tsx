@@ -10,6 +10,7 @@ const tourLinks = [
 
 const infoLinks = [
   { href: '/', label: 'Home' },
+  { href: '/guide', label: 'Guest Guide' },
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
