@@ -29,7 +29,7 @@ export const toursData: TourRecord[] = [
     name: 'Blue Cave & Pakleni Islands Tour',
     tagline: 'Full-day speedboat adventure — Biševo, Vis coastline, and the Pakleni archipelago.',
     shortDescription:
-      'Visit the legendary Blue Cave on Biševo, swim in hidden bays around Vis, and end the day at Pakleni Islands.',
+      'Private full-day boat tour from Hvar, Croatia: visit the Blue Cave on Biševo, swim in hidden Vis bays and end the day at Pakleni Islands.',
     description: `Book a private Blue Cave boat tour from Hvar for one of the most iconic days you can spend on the Adriatic. This route is built for guests who want the full experience: early departure from Hvar Harbour, a relaxed pace, and time to enjoy both world-famous sights and quieter swimming stops along the way.
 
 Your skipper plans the day around sea conditions and your preferences, so you get the best possible light at the Blue Cave entrance and still have hours left for Pakleni Islands snorkeling, sunbathing, and exploring small bays that larger boats skip. Because the tour is private, you are never rushed through a fixed timetable — if you fall in love with a beach, you can stay longer.
@@ -82,7 +82,7 @@ When you message us, share your travel dates and how confident you are on the wa
     name: 'Pakleni Islands Half Day Tour',
     tagline: 'Half day of turquoise water, hidden coves, and island hopping minutes from Hvar town.',
     shortDescription:
-      'Snorkel the clearest waters of the Adriatic, stop at Palmižana and explore secluded coves just minutes from Hvar town.',
+      'Half-day private boat tour from Hvar, Croatia. Snorkel the clearest Adriatic waters, stop at Palmižana and explore secluded Pakleni coves.',
     description: `The Pakleni Islands half day boat tour from Hvar is the perfect option when you want maximum beauty in a shorter window — ideal for families, couples on a tight schedule, or anyone who prefers a relaxed pace without committing to a full offshore crossing.
 
 Departing from Hvar Harbour, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your captain chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
@@ -127,7 +127,7 @@ If you are comparing shared excursions versus a private Pakleni Islands boat, th
     name: 'Sunset Cruise Hvar',
     tagline: 'Golden hour on the Adriatic — wine-friendly, calm water, and unforgettable light.',
     shortDescription:
-      'Golden hour over the Dalmatian coast — drinks on board, calm waters and the best photo light of the day.',
+      'Private sunset cruise from Hvar, Croatia. Golden hour over the Dalmatian coast, drinks on board, calm waters and the best photo light of the day.',
     description: `A sunset cruise from Hvar is the most romantic way to end a day on the island — and one of the easiest tours to enjoy if you want premium photos without a full-day commitment. As the heat softens and the light turns gold, the Adriatic takes on a completely different mood: quieter harbours, warm tones on the stone towns, and a gentle breeze that makes the sea feel brand new.
 
 This private evening boat tour departs from Hvar Harbour and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the experience is private, you can keep the atmosphere relaxed and personal — perfect for proposals, anniversaries, families celebrating together, or friends who want a memorable night without crowds.
@@ -169,7 +169,7 @@ Evening light also makes the coastline look more cinematic — stone villages gl
     name: 'Private Boat Charter Hvar',
     tagline: 'Your boat, your itinerary — full-day freedom with an experienced local skipper.',
     shortDescription:
-      'Your own boat, your own route. Captain, fuel and equipment included — design the day you want on the Adriatic.',
+      'Private boat charter from Hvar, Croatia. Your own boat and route, captain, fuel and equipment included — design the day you want on the Adriatic.',
     description: `A private boat charter from Hvar is the ultimate flexible option: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your captain helps you build a realistic plan based on weather and distances.
 
 Unlike fixed itineraries, a full-day charter gives you room to adapt — spend longer at Pakleni Islands, add a coastal cruise, or prioritize snorkeling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.

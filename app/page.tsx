@@ -9,10 +9,22 @@ import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
 import { homepageFaqs } from '@/lib/faqs';
 
-const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), { ssr: true });
-const FAQ = dynamic(() => import('@/components/sections/FAQ'), { ssr: true });
-const Contact = dynamic(() => import('@/components/sections/Contact'), { ssr: true });
-const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), { ssr: true });
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), {
+  ssr: true,
+  loading: () => <div className="min-h-[200px]" />,
+});
+const FAQ = dynamic(() => import('@/components/sections/FAQ'), {
+  ssr: true,
+  loading: () => <div className="min-h-[200px]" />,
+});
+const Contact = dynamic(() => import('@/components/sections/Contact'), {
+  ssr: true,
+  loading: () => <div className="min-h-[200px]" />,
+});
+const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), {
+  ssr: true,
+  loading: () => <div className="min-h-[200px]" />,
+});
 
 export const metadata: Metadata = generateSEO({
   title: 'Private Boat Tours Hvar | Mare Boats Hvar',
@@ -44,6 +56,7 @@ export default function HomePage() {
           alt="Private boat tour from Hvar, Croatia — crystal clear Adriatic waters"
           fill
           priority
+          quality={75}
           sizes="100vw"
           className="object-cover object-center"
         />

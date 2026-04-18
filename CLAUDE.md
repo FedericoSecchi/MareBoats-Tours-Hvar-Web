@@ -1,241 +1,64 @@
-# CLAUDE.md — MareBoats Hvar (mareboatshvar.com)
+# MareBoats Tours Hvar — Contexto del Proyecto
 
-## Proyecto
-Sitio web de Mare Boats Hvar — tours privados en lancha, alquiler de barcos, scooter rental y transfers desde Hvar, Croacia.
-Cliente: Nikola (dueño). Desarrollo: Fede (Somos Kosmos). Diseño: Coti.
+## Qué es esto
+Sitio web de tours en lancha desde Hvar, Croacia.
+Cliente: Nikola (dueño). Fede = skipper + marketing.
+URL live: https://mareboatshvar.com
+Entrega: 2026-04-30
 
 ## Stack
-- Next.js 14 (App Router) con SSR/SSG
-- Tailwind CSS
-- TypeScript
-- Vercel (deploy)
-- Idioma principal: inglés
+Next.js 14 + Tailwind CSS + TypeScript
+App Router en /app — componentes activos en /components/ui/ y /components/sections/
+NUNCA tocar /src/components/ — es código legacy
 
-## Estructura de carpetas
-```
-/mareboatshvar/
-├── app/
-│   ├── layout.tsx         ← fonts, metadata global, WhatsApp button
-│   ├── page.tsx           ← homepage
-│   ├── tours/page.tsx     ← listado de tours
-│   ├── blue-cave/page.tsx ← Blue Cave tour (keyword principal)
-│   ├── boat-rental/page.tsx
-│   ├── transfers/page.tsx
-│   ├── sunset/page.tsx
-│   ├── contact/page.tsx
-│   ├── about/page.tsx
-│   ├── faq/page.tsx
-│   ├── sitemap.ts
-│   ├── robots.ts
-│   └── globals.css
-├── components/
-│   ├── ui/               ← WhatsAppButton, CTAButton, NavBar
-│   └── sections/         ← Hero, Tours, FAQ, Footer
-├── lib/
-│   ├── seo.ts            ← helper de metadata
-│   └── schema.ts         ← JSON-LD helpers
-├── public/
-│   └── images/
-└── CLAUDE.md
-```
+## Design System
+Leer KOSMOS_SKILL.md antes de tocar cualquier archivo de UI.
+Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 
-## Reglas de respuesta
-- Respuestas cortas y accionables. No narrar el plan antes de ejecutar.
-- No duplicar código ya presente. Solo implementar lo mínimo que resuelve el problema.
-- Un archivo por vez salvo que sean dependientes.
-- Siempre verificar que el código compila antes de dar por terminado.
+## Estado actual (18 abril 2026)
+- Fase 1 ✅ commit c47932d — tokens, fuentes, Tailwind config
+- Fase 2 ✅ commit 4b8df40 — SEO metadata, schema JSON-LD, sitemap, robots
+- Fase 3 ✅ commit dd0748d — Rediseño visual completo (Navbar, Hero, Tours, Features, Gallery, Testimonials, FAQ, Contact, CTABanner, Footer)
+- Fase 4 ✅ commit fdb830c — Framer Motion + scroll progress bar
+- Fase 5 ✅ commit 04c780b — next/image audit, lazy loading, fuentes swap, favicon
+- Fase 6 ✅ commit 301457a — Páginas /tours/[slug] con SEO long-tail (4 rutas estáticas)
 
-## SEO — Reglas obligatorias
+## Datos reales de performance (Lighthouse 18/04/2026)
+### Desktop
+- Performance: 77 — LCP: 4.1s ⚠️ — CLS: 0.072 — TBT: 0ms
+- Ahorro potencial imágenes: 8847 KiB
+### Mobile
+- Performance: 65 — LCP: 25.2s 🔴 CRÍTICO — Speed Index: 12.2s — CLS: 0
+- Ahorro potencial imágenes: 6402 KiB — Render-blocking requests: 750ms
 
-### Metadata en cada página
-```tsx
-import { Metadata } from 'next';
+## Datos reales de Google Search Console (últimos 3 meses)
+- Clicks: 33 / Impresiones: 546 / CTR: 6% / Posición promedio: 38.2
+- Páginas indexadas: 1 de 16 (problema crítico — las /tours/[slug] probablemente no indexadas aún)
+- Top keywords por impresiones: "rent a boat hvar" (42), "hvar boat rental with skipper" (19), "boat hire hvar" (19), "hvar boat hire" (25)
+- Top keywords por clicks: "boat rental hvar" (2 clicks), "hvar boat rental" (1), "mare boats" (1)
+- INSIGHT: el sitio rankea para "rental" más que "tours" — el copy y H1 deben reflejar ambos
 
-// SIEMPRE incluir:
-export const metadata: Metadata = {
-  title: 'Keyword Principal | Mare Boats Hvar',  // <60 chars
-  description: 'Descripción con keyword + CTA. Max 155 chars.',
-  keywords: ['keyword1', 'keyword2'],
-  alternates: { canonical: 'https://mareboatshvar.com/slug' },
-  openGraph: {
-    title: '...',
-    description: '...',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
-    type: 'website',
-  },
-};
-```
+## Próxima tarea
+### Fase 7 — Fix LCP crítico + indexación de /tours/[slug]
+Ver CURSOR_PROMPT.md para las instrucciones exactas.
 
-### Keywords objetivo por página
-| Página | Keyword principal | Keywords secundarias |
-|--------|-------------------|----------------------|
-| Homepage | private boat tours hvar | boat tour hvar, mare boats |
-| /blue-cave | blue cave tour from hvar | blue cave hvar, blue cave boat trip |
-| /boat-rental | boat rental hvar | rent a boat hvar, hvar boat hire |
-| /transfers | boat transfer hvar split | water taxi hvar, hvar split boat |
-| /sunset | sunset boat tour hvar | sunset cruise hvar, evening boat hvar |
-| /tours | hvar boat excursion | best boat tours hvar, pakleni islands tour |
-| /faq | boat tour hvar faq | do I need license hvar, how much boat tour hvar |
+El LCP de 25.2s en mobile es el problema más urgente antes del lanzamiento de temporada (Mayo).
 
-### H1: uno por página, con keyword principal
-```tsx
-// BIEN
-<h1>Private Boat Tours in Hvar</h1>
+## Reglas siempre activas
+- Mobile-first: grid-cols-1 primero, luego md: lg:
+- Solo next/image — cero <img> tags
+- Solo animar transform y opacity — nunca transition-all
+- Todo clickeable necesita hover + focus-visible + active
+- npm run build debe pasar sin errores al terminar cada fase
+- Commit al terminar cada fase con el mensaje indicado
 
-// MAL
-<h1>Welcome to Mare Boats</h1>  // sin keyword
-```
-
-### Schema JSON-LD — obligatorio en layout
-```tsx
-// lib/schema.ts
-export const businessSchema = {
-  "@context": "https://schema.org",
-  "@type": "TouristAttraction",
-  "additionalType": "BoatTour",
-  "name": "Mare Boats Hvar",
-  "description": "Private boat tours, Blue Cave excursions, boat rental and transfers from Hvar, Croatia.",
-  "url": "https://mareboatshvar.com",
-  "telephone": "+385...",  // completar
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Hvar",
-    "addressRegion": "Split-Dalmatia",
-    "addressCountry": "HR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 43.1725,
-    "longitude": 16.4411
-  },
-  "image": "https://mareboatshvar.com/images/hero.jpg",
-  "sameAs": [
-    "https://www.instagram.com/mareboatshvar",
-    "https://www.facebook.com/mareboatshvar"
-  ]
-};
-
-// Componente reutilizable
-export function JsonLd({ data }: { data: Record<string, unknown> }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-```
-
-### Sitemap y Robots
-```tsx
-// app/sitemap.ts
-import { MetadataRoute } from 'next';
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://mareboatshvar.com';
-  return [
-    { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
-    { url: `${base}/tours`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${base}/blue-cave`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${base}/boat-rental`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/transfers`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/sunset`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${base}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
-  ];
-}
-
-// app/robots.ts
-import { MetadataRoute } from 'next';
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: { userAgent: '*', allow: '/', disallow: ['/api/'] },
-    sitemap: 'https://mareboatshvar.com/sitemap.xml',
-  };
-}
-```
-
-### Imágenes
-- Siempre usar `next/image` con `alt` descriptivo que incluya keyword.
-- Formato WebP/AVIF preferido.
-- Hero image con `priority={true}`.
-
-### Internal linking
-- Cada página debe linkar a al menos 2 páginas internas.
-- Anchor text descriptivo (no "click aquí").
-- Footer con links a todas las páginas.
-
-## Diseño — Reglas
-
-### Mobile-first siempre
-```tsx
-// BIEN
-<div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
-// MAL
-<div className="grid-cols-3 md:grid-cols-1">
-```
-
-### WhatsApp button fijo
-```tsx
-// Debe estar visible en TODA la web, mobile-first
-<a
-  href="https://wa.me/385..."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition"
-  aria-label="Contact us on WhatsApp"
->
-  {/* WhatsApp icon */}
-</a>
-```
-
-### Paleta de colores (definir con Coti)
-```css
---mare-primary: #0077B6;    /* azul Adriático */
---mare-dark: #023E8A;       /* azul profundo */
---mare-light: #CAF0F8;      /* celeste claro */
---mare-accent: #FF6B35;     /* naranja sunset — CTA */
---mare-white: #FAFAFA;
---mare-text: #1A1A2E;
-```
-Nota: estos son placeholder. Ajustar cuando Coti defina la paleta en Figma.
-
-### Estructura de cada página de servicio
-```
-ABOVE THE FOLD
-├── H1 con keyword + subtítulo
-├── Imagen hero (drone shot)
-├── CTA: "Book on WhatsApp" + "View Details"
-├── Info rápida: duración, personas, qué incluye
-
-BELOW THE FOLD
-├── Descripción detallada del tour
-├── Galería de fotos
-├── Qué está incluido / no incluido
-├── FAQ específica del tour (con schema FAQPage)
-├── Reviews / testimonios
-├── CTA final: WhatsApp
-```
-
-## Core Web Vitals — Checklist
-- [ ] LCP < 2.5s: hero image con priority + sizes
-- [ ] INP < 200ms: minimizar JS, code splitting
-- [ ] CLS < 0.1: dimensiones explícitas en img/video, font-display: swap
-- [ ] Preload fuentes críticas
-- [ ] No render-blocking CSS/JS
-
-## Diferenciador clave
-MareBoats incluye **video aéreo con drone y video subacuático** en sus tours.
-Esto debe estar presente en:
-- Hero de la homepage
-- Meta descriptions
-- Copy de cada tour
-- Schema markup
-- OG images
-
-## No hacer
-- No inventar precios ni datos de contacto. Preguntar a Fede.
-- No crear páginas sin metadata SEO completa.
-- No usar client-side rendering para contenido principal (Google no lo lee).
-- No hardcodear textos en español — todo en inglés.
+## TODOs pendientes de Nikola
+- Precios reales 4 tours (actualmente From €XX)
+- Número WhatsApp real
+- Email de contacto real
+- Endpoint Formspree (crear cuenta en formspree.io)
+- URL TikTok del negocio
+- Logo final SVG o PNG alta resolución
+- Fotos profesionales del bote y destinos (crítico para LCP — las actuales pesan demasiado)
+- Reviews reales de clientes
+- Horarios exactos de temporada

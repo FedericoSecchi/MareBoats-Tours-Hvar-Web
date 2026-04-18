@@ -1,256 +1,295 @@
 {
   "project": "MareBoats Tours Hvar",
+  "cliente": "Nikola (dueño) — Fede trabaja como skipper + marketing",
+  "url_live": "https://mareboatshvar.com",
   "repo": "https://github.com/FedericoSecchi/MareBoats-Tours-Hvar-Web",
-  "stack": "Next.js 14 + Tailwind CSS + TypeScript",
-  "skill": "KOSMOS_SKILL.md (lee este archivo primero antes de tocar cualquier código)",
-  "instructions": {
-    "before_starting": [
-      "1. Lee el archivo KOSMOS_SKILL.md que está en la raíz del proyecto",
-      "2. Explorá toda la estructura del repo antes de tocar cualquier archivo",
-      "3. Identificá el stack exacto: versiones en package.json, estructura de carpetas, qué archivos existen",
-      "4. Nunca sobreescribas imágenes, contenido de texto, o copy existente — solo mejorá el diseño/código",
-      "5. Hacé un commit después de cada fase completada"
+  "stack": "Next.js 14 + Tailwind CSS + TypeScript — App Router en /app, componentes en /components",
+  "entrega": "2026-04-30",
+  "skill": "KOSMOS_SKILL.md — LEER PRIMERO antes de tocar cualquier archivo",
+
+  "contexto_negocio": {
+    "descripcion": "Tours privados en lancha desde Hvar, Croacia. Incluye video drone + underwater.",
+    "servicios": ["Tours privados en lancha", "Blue Cave", "Pakleni Islands", "Sunset cruises", "Snorkeling", "Drone + underwater video"],
+    "mercado": "Turistas internacionales que visitan Hvar en temporada alta (Mayo–Septiembre)",
+    "keywords_principales": [
+      "boat tours Hvar",
+      "private boat Hvar Croatia",
+      "Blue Cave tour Hvar",
+      "Pakleni Islands boat",
+      "Hvar day trips",
+      "boat rental Hvar",
+      "speedboat tour Hvar",
+      "snorkeling Hvar Croatia"
     ],
-    "brand_tokens": {
-      "colors": {
-        "--bg": "#0d1b2a",
-        "--surface": "#122236",
-        "--accent": "#3BC9DB",
-        "--accent-dk": "#2A9FAF",
-        "--white": "#F5F0E8",
-        "--gray": "#8a9ab0",
-        "--border": "#1e3048"
-      },
-      "fonts": {
-        "headings": "Syne",
-        "body": "Space Grotesk"
-      },
-      "note": "Si el cliente ya tiene colores definidos en globals.css o tailwind.config, respetarlos y extenderlos en lugar de reemplazarlos"
-    }
+    "idioma_sitio": "Inglés (mercado turista internacional)"
   },
+
+  "estado_actual": {
+    "fases_completadas": [
+      "Fase 1 ✅ commit c47932d — tokens, fuentes, Tailwind config",
+      "Fase 2 ✅ commit 4b8df40 — SEO metadata, schema JSON-LD, sitemap, robots",
+      "Fase 3 ✅ commit dd0748d — rediseño visual completo (3.1 a 3.10)"
+    ],
+    "proxima_tarea": "Fase 4 — Animaciones Framer Motion + scroll progress bar",
+    "estructura_actual": {
+      "componentes_activos": [
+        "components/ui/NavBar.tsx — sticky scroll effect, hamburger mobile, CTA pill",
+        "components/ui/WhatsAppButton.tsx — fixed, siempre visible",
+        "components/ui/JsonLd.tsx — LocalBusiness + FAQPage schema (usa lib/faqs.ts)",
+        "components/sections/Footer.tsx — 4 cols, Google Maps link, redes sociales",
+        "components/sections/Tours.tsx — 4 cards con precio placeholder y CTA",
+        "components/sections/Features.tsx — 4 features con SVG inline",
+        "components/sections/Gallery.tsx — grid 6 fotos con overlay hover",
+        "components/sections/Testimonials.tsx — 3 reviews placeholder",
+        "components/sections/FAQ.tsx — accordion animado, usa lib/faqs.ts",
+        "components/sections/Contact.tsx — form Formspree (endpoint TODO)",
+        "components/sections/CTABanner.tsx — radial gradient, urgencia",
+        "lib/faqs.ts — fuente única de verdad para FAQs (compartida con JSON-LD)"
+      ],
+      "codigo_legado": "src/components/ — NO TOCAR NUNCA",
+      "orden_renderizado_home": [
+        "NavBar (layout)",
+        "Hero",
+        "Tours",
+        "Features",
+        "Gallery",
+        "Testimonials",
+        "FAQ + FAQJsonLd",
+        "Contact",
+        "CTABanner",
+        "Footer (layout)",
+        "WhatsAppButton (layout)"
+      ]
+    },
+    "todos_pendientes_de_nikola": [
+      "Precios reales de los 4 tours (actualmente From €XX)",
+      "Número WhatsApp real",
+      "Email de contacto real",
+      "Endpoint Formspree (crear cuenta en formspree.io)",
+      "URL TikTok del negocio",
+      "Logo final SVG o PNG alta resolución",
+      "Fotos profesionales del bote y destinos",
+      "Reviews reales de clientes",
+      "Horarios exactos de temporada"
+    ]
+  },
+
+  "instrucciones_globales": [
+    "SIEMPRE leer KOSMOS_SKILL.md antes de empezar",
+    "NUNCA tocar archivos en src/components/ — son legacy",
+    "NUNCA cambiar copy ni imágenes existentes — solo mejorar diseño y código",
+    "Correr npm run dev antes de arrancar",
+    "npm run build debe pasar sin errores al terminar cada fase",
+    "Commit al terminar cada fase con el mensaje indicado",
+    "Mobile-first SIEMPRE — primero 375px, luego md:, lg:",
+    "Todas las imágenes con next/image — cero <img> tags",
+    "Solo animar transform y opacity — nunca transition-all",
+    "Todo clickeable necesita hover + focus-visible + active"
+  ],
+
+  "design_tokens": {
+    "--bg": "#0d1b2a",
+    "--surface": "#122236",
+    "--accent": "#3BC9DB",
+    "--accent-dk": "#2A9FAF",
+    "--white": "#F5F0E8",
+    "--gray": "#8a9ab0",
+    "--border": "#1e3048",
+    "font-heading": "Syne — bold/extrabold, uppercase, tracking-tight",
+    "font-body": "Space Grotesk — regular/medium, leading-relaxed"
+  },
+
   "phases": [
     {
-      "id": 1,
-      "name": "Setup & Tokens",
-      "priority": "CRÍTICO — hacer primero",
-      "tasks": [
-        {
-          "id": "1.1",
-          "title": "Instalar fuentes Syne + Space Grotesk",
-          "description": "Instalar @fontsource/syne y @fontsource/space-grotesk con npm. Importarlos en app/layout.tsx. Configurar como variables CSS --font-display y --font-body.",
-          "files": ["app/layout.tsx", "package.json"]
-        },
-        {
-          "id": "1.2",
-          "title": "Actualizar tailwind.config.ts con tokens del cliente",
-          "description": "Extender la config con los colores brand_tokens, las fuentes, spacing personalizado (section-py: '5rem', container: '1200px'), y borderRadius (pill: '999px'). Agregar los CSS custom properties en globals.css.",
-          "files": ["tailwind.config.ts", "app/globals.css"]
-        },
-        {
-          "id": "1.3",
-          "title": "Crear PROYECTO.md en la raíz",
-          "description": "Crear un archivo PROYECTO.md con: nombre del cliente, descripción del negocio (tours en bote, Hvar Croatia), paleta de colores, fuentes, secciones del sitio, keywords SEO principales (boat tours Hvar, private boat Hvar Croatia, Blue Cave tour, Pakleni Islands).",
-          "files": ["PROYECTO.md"]
-        }
-      ]
+      "id": 1, "name": "Tokens + Fuentes + Tailwind Config",
+      "status": "✅ COMPLETADA", "commit": "c47932d"
     },
     {
-      "id": 2,
-      "name": "SEO Foundation",
-      "priority": "CRÍTICO",
-      "tasks": [
-        {
-          "id": "2.1",
-          "title": "Metadata global en layout.tsx",
-          "description": "Agregar metadata completa: title template ('MareBoats Tours Hvar | %s'), description de 155 chars con keywords, openGraph con title/description/images/locale en_US, twitter card, robots index/follow, canonical URL.",
-          "files": ["app/layout.tsx"]
-        },
-        {
-          "id": "2.2",
-          "title": "Schema JSON-LD LocalBusiness + TouristAttraction",
-          "description": "Crear componente components/SchemaMarkup.tsx con JSON-LD schema de tipo TouristAttraction + LocalBusiness. Incluir: name, description, url, telephone, address (Hvar, Croatia), geo coordinates, priceRange, openingHours. Importarlo en app/layout.tsx dentro de un <script type='application/ld+json'>.",
-          "files": ["components/SchemaMarkup.tsx", "app/layout.tsx"]
-        },
-        {
-          "id": "2.3",
-          "title": "Crear /public/og-image.jpg placeholder",
-          "description": "Si no existe una og-image, crear una nota en PROYECTO.md indicando que se necesita una imagen 1200x630px con el logo y una foto del mar de Hvar para redes sociales.",
-          "files": ["PROYECTO.md"]
-        },
-        {
-          "id": "2.4",
-          "title": "Agregar alt text descriptivo a todas las imágenes",
-          "description": "Revisar todos los componentes. Toda imagen debe tener alt text descriptivo en inglés con keywords naturales. Ej: 'Private boat tour at Pakleni Islands, Hvar Croatia'. Reemplazar alt='' o alt='image' por descripciones reales.",
-          "files": ["components/**/*.tsx", "app/**/*.tsx"]
-        }
-      ]
+      "id": 2, "name": "SEO Foundation",
+      "status": "✅ COMPLETADA", "commit": "4b8df40"
     },
     {
-      "id": 3,
-      "name": "Rediseño Visual — Sección por Sección",
-      "priority": "ALTO",
-      "tasks": [
-        {
-          "id": "3.1",
-          "title": "Rediseñar componente Hero",
-          "description": "El Hero debe tener: fondo oscuro navy con overlay sobre foto del mar, título hero con Syne ExtraBold uppercase en clamp(3rem,10vw,8rem), subtítulo en Space Grotesk, 2 CTAs (primario pill con acento turquesa + ghost), scroll indicator animado. Mobile-first. El copy existente no cambia, solo el diseño.",
-          "guardrails": [
-            "Nunca shadow-md plano — usar sombras tinted con color acento",
-            "Overlay en imagen: bg-gradient-to-b from-transparent via-[--bg]/40 to-[--bg]",
-            "Animación de entrada: opacity 0→1 + translateY(20px)→0 con stagger entre elementos"
-          ],
-          "files": ["components/sections/Hero.tsx o donde esté el Hero actual"]
-        },
-        {
-          "id": "3.2",
-          "title": "Rediseñar sección de Tours/Servicios",
-          "description": "Cards de tours con: foto con overlay, badge de duración/precio, título en Syne, descripción corta, CTA 'Book Now'. Grid: 1 col mobile → 2 col tablet → 3 col desktop. Hover: translateY(-4px) + sombra tinted. Bordes finos 1px con --border.",
-          "files": ["components/sections/Tours.tsx o equivalente"]
-        },
-        {
-          "id": "3.3",
-          "title": "Rediseñar Navbar",
-          "description": "Navbar con: fondo transparente sobre hero → bg-[--bg]/90 backdrop-blur al hacer scroll (useEffect + scroll listener), logo a la izquierda, links en Space Grotesk Medium, CTA 'Book Now' pill con acento. Mobile: hamburger menu con animación. Sticky top-0 z-50.",
-          "files": ["components/Navbar.tsx o equivalente"]
-        },
-        {
-          "id": "3.4",
-          "title": "Rediseñar sección Galería/Fotos",
-          "description": "Grid masonry o grid fijo con imágenes del mar. Cada imagen con overlay oscuro en hover que muestra una descripción. next/image para todas las fotos. Layout: 2 cols mobile → 3 cols desktop. Sin bordes blancos ni sombras genéricas.",
-          "files": ["components/sections/Gallery.tsx o equivalente"]
-        },
-        {
-          "id": "3.5",
-          "title": "Rediseñar sección About/Sobre",
-          "description": "Layout 2 columnas desktop (texto + foto), 1 columna mobile. Foto con overlay color tinted (mix-blend-multiply con el acento). Título Syne, body Space Grotesk. Stats/números destacados si existen (años de experiencia, tours realizados, etc.).",
-          "files": ["components/sections/About.tsx o equivalente"]
-        },
-        {
-          "id": "3.6",
-          "title": "Rediseñar sección Testimonios",
-          "description": "Cards de reviews con: comillas grandes en color acento, texto del review, nombre + origen del cliente, estrellas si aplica. Grid o slider. Fondo surface (--surface) para contraste con el fondo principal.",
-          "files": ["components/sections/Testimonials.tsx o equivalente"]
-        },
-        {
-          "id": "3.7",
-          "title": "Rediseñar sección Contacto/Booking",
-          "description": "Formulario con campos: Name, Email, Date, Tour type (select), Message. Estilo: inputs con borde --border, fondo --surface, focus con border-accent. Submit button pill acento. Si hay integración existente (Formspree, etc.), mantenerla. Si no hay, usar Formspree con action URL placeholder.",
-          "files": ["components/sections/Contact.tsx o equivalente"]
-        },
-        {
-          "id": "3.8",
-          "title": "Rediseñar Footer",
-          "description": "Footer con: logo, links de navegación en columnas, info de contacto, redes sociales, copyright. Fondo más oscuro que --bg (ej: #070f18). Separador superior con border-t border-[--border]. Links con hover en color acento.",
-          "files": ["components/Footer.tsx o equivalente"]
-        }
+      "id": 3, "name": "Rediseño Visual — Sección por Sección",
+      "status": "✅ COMPLETADA", "commit": "dd0748d",
+      "tasks_done": [
+        "3.1 Navbar sticky con scroll effect, hamburger, CTA pill",
+        "3.2 Hero min-h-screen, H1 keyword, 2 CTAs, badge, fadeInUp",
+        "3.3 Tours 4 cards con precio placeholder, badge duración, CTA",
+        "3.4 Features 4 items con SVG inline, fondo --surface",
+        "3.5 Galería grid 6 fotos con overlay hover y label destino",
+        "3.6 Testimonios 3 cards con comillas tipográficas y 5 estrellas",
+        "3.7 FAQ accordion client component + FAQPage schema actualizado",
+        "3.8 Contact form Formspree (endpoint TODO) + columna contacto",
+        "3.9 Footer 4 cols + Google Maps link + Instagram/TikTok",
+        "3.10 CTABanner radial gradient turquesa + texto urgencia"
       ]
     },
     {
       "id": 4,
-      "name": "Secciones Nuevas",
-      "priority": "MEDIO",
+      "name": "Animaciones con Framer Motion",
+      "status": "⏳ ARRANCAR ACÁ",
+      "prioridad": "MEDIO",
+      "objetivo": "El sitio debe sentirse vivo y premium. Cada sección aparece suavemente al entrar en el viewport.",
       "tasks": [
         {
           "id": "4.1",
-          "title": "Agregar sección 'Why Choose Us' / Features",
-          "description": "Si no existe: crear sección con 3-4 features (ej: 'Experienced Captains', 'Private Tours', 'Custom Itineraries', 'Best Price Guarantee'). Cada feature con ícono SVG simple, título Syne, descripción Space Grotesk. Grid 2x2 mobile → 4 cols desktop.",
-          "files": ["components/sections/Features.tsx"]
+          "title": "Instalar Framer Motion + hook useScrollAnimation",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "npm install framer-motion. Crear lib/hooks/useScrollAnimation.ts usando IntersectionObserver. Props: threshold 0.15, triggerOnce true. Retornar { ref, inView }.",
+          "archivos": ["lib/hooks/useScrollAnimation.ts", "package.json"]
         },
         {
           "id": "4.2",
-          "title": "Agregar sección FAQ",
-          "description": "Si no existe: crear FAQ con accordion animado (useState para open/close, animación height con max-height transition). Preguntas relevantes: 'What's included?', 'How many people?', 'Cancellation policy?', 'What to bring?'. Mínimo 5 preguntas.",
-          "files": ["components/sections/FAQ.tsx"]
+          "title": "fadeInUp con stagger en secciones y cards",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "Envolver secciones en motion.div. Variantes: hidden = { opacity: 0, y: 20 }, visible = { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] } }. Cards de tours con staggerChildren: 0.1. Activar con useScrollAnimation (inView). SOLO opacity + transform.",
+          "archivos": [
+            "components/sections/Tours.tsx",
+            "components/sections/Features.tsx",
+            "components/sections/Testimonials.tsx",
+            "components/sections/FAQ.tsx",
+            "components/sections/Gallery.tsx",
+            "components/sections/Contact.tsx",
+            "components/sections/CTABanner.tsx"
+          ]
         },
         {
           "id": "4.3",
-          "title": "Agregar CTA Section antes del Footer",
-          "description": "Banner full-width con fondo degradado (acento → navy), título grande 'Ready to Explore Hvar?', subtítulo, botón 'Book Your Tour'. Efecto parallax sutil si es posible con CSS transform.",
-          "files": ["components/sections/CTABanner.tsx"]
+          "title": "Scroll progress bar en NavBar",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "En NavBar.tsx agregar un div position absolute bottom-0 left-0, height 2px, bg-[var(--accent)], width en % = scrollY / (scrollHeight - innerHeight) * 100. useEffect con scroll event listener, limpiar en cleanup. JS nativo — no usar framer-motion para esto.",
+          "archivos": ["components/ui/NavBar.tsx"]
         }
-      ]
+      ],
+      "commit": "git commit -m 'feat: animaciones framer motion y scroll progress bar'"
     },
     {
       "id": 5,
-      "name": "Animaciones",
-      "priority": "MEDIO",
+      "name": "Performance — Core Web Vitals",
+      "status": "⏳ PENDIENTE",
+      "prioridad": "ALTO — impacta ranking SEO directamente",
+      "objetivo": "LCP < 2.5s, CLS = 0.",
       "tasks": [
         {
           "id": "5.1",
-          "title": "Instalar y configurar Framer Motion",
-          "description": "npm install framer-motion. Crear hook useScrollAnimation en lib/hooks/useScrollAnimation.ts que use IntersectionObserver para animar elementos al entrar en viewport.",
-          "files": ["lib/hooks/useScrollAnimation.ts", "package.json"]
+          "title": "Auditoría de imágenes — confirmar cero img tags",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "grep -r '<img' --include='*.tsx' . — debe retornar cero resultados. Si quedan, reemplazar por next/image. Verificar hero con priority={true}. Verificar sizes en imágenes de grid: '(max-width: 768px) 50vw, 33vw'.",
+          "archivos": ["app/**/*.tsx", "components/**/*.tsx"]
         },
         {
           "id": "5.2",
-          "title": "Animaciones de entrada en secciones",
-          "description": "Aplicar el hook de scroll animation a: cards de tours (stagger 0.1s entre cards), sección features (stagger), testimonios, sección about (slide desde lados). Solo opacity + translateY. Nunca transition-all. Easing: cubic-bezier(0.34, 1.56, 0.64, 1).",
-          "files": ["components/sections/*.tsx"]
+          "title": "next.config.mjs — formatos de imagen modernos",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "Verificar/agregar: images.formats: ['image/avif', 'image/webp']. Agregar remotePatterns si hay imágenes externas. compress: true.",
+          "archivos": ["next.config.mjs"]
         },
         {
           "id": "5.3",
-          "title": "Animación hover en cards de tours",
-          "description": "Cards: translateY(-4px) en hover, sombra tinted que aumenta, imagen con scale(1.05) suave. Duración: 300ms. Botón dentro de la card con opacity 0 → 1 en hover de la card (group-hover).",
-          "files": ["components/sections/Tours.tsx o equivalente"]
+          "title": "Lazy loading con dynamic() para secciones below the fold",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "En app/page.tsx importar con next/dynamic: Testimonials, FAQ, Contact, CTABanner. Dejar como imports estáticos: Hero, Tours, Features (above the fold). Reduce bundle inicial y mejora LCP.",
+          "archivos": ["app/page.tsx"]
         },
         {
           "id": "5.4",
-          "title": "Smooth scroll + scroll progress indicator",
-          "description": "Agregar smooth scrolling al html en globals.css (scroll-behavior: smooth). Opcional: barra de progreso de scroll en la navbar (div con width% basado en scroll position via useEffect).",
-          "files": ["app/globals.css", "components/Navbar.tsx"]
+          "title": "Verificar display: swap en fuentes",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "En app/layout.tsx confirmar display: 'swap' en Syne y Space Grotesk. Crítico para CLS.",
+          "archivos": ["app/layout.tsx"]
+        },
+        {
+          "id": "5.5",
+          "title": "Favicon y touch icons",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "Verificar /public/favicon.ico, /public/icon.png (512x512), /public/apple-icon.png (180x180). Si no existen, crear SVGs placeholder con iniciales 'MB' en --accent sobre --bg. Comentar: // TODO: reemplazar con logo final de Nikola.",
+          "archivos": ["app/layout.tsx", "public/"]
         }
-      ]
+      ],
+      "commit": "git commit -m 'perf: next/image audit, lazy loading, fuentes swap, favicon'"
     },
     {
       "id": 6,
-      "name": "Performance",
-      "priority": "ALTO",
+      "name": "Páginas Individuales por Tour",
+      "status": "⏳ PENDIENTE",
+      "prioridad": "ALTO — multiplica el tráfico SEO con long-tail keywords",
+      "objetivo": "Rankear en Google para queries específicas de cada tour. Cada página captura una intención de búsqueda distinta y tiene metadata única.",
       "tasks": [
         {
           "id": "6.1",
-          "title": "Migrar todas las imágenes a next/image",
-          "description": "Reemplazar todos los <img> tags por next/image con width, height o fill según el caso. Agregar sizes attribute para responsive images. priority={true} en imágenes above the fold (Hero). Esto es crítico para LCP.",
-          "files": ["components/**/*.tsx", "app/**/*.tsx"]
+          "title": "Crear lib/tours-data.ts — fuente de verdad",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "Array tipado Tour[]. Cada tour: slug, name, tagline, shortDescription, description (300+ palabras SEO en inglés, keyword natural), duration, price ('€XX — to be confirmed by Nikola'), includes[], notIncludes[], whatToBring[], meetingPoint: 'Hvar Harbour, Croatia', meetingPointMapsUrl, highlights[], images[], keywords[]. Exportar getTourBySlug(slug) helper.",
+          "tours": [
+            {
+              "slug": "blue-cave-pakleni-islands",
+              "name": "Blue Cave & Pakleni Islands Tour",
+              "keywords": ["blue cave boat tour hvar", "blue cave hvar", "pakleni islands tour"]
+            },
+            {
+              "slug": "pakleni-islands",
+              "name": "Pakleni Islands Half Day Tour",
+              "keywords": ["pakleni islands boat", "half day tour hvar"]
+            },
+            {
+              "slug": "sunset-cruise",
+              "name": "Sunset Cruise Hvar",
+              "keywords": ["sunset cruise hvar", "hvar sunset boat tour"]
+            },
+            {
+              "slug": "private-boat-charter",
+              "name": "Private Boat Charter Hvar",
+              "keywords": ["private boat charter hvar", "boat rental hvar croatia"]
+            }
+          ],
+          "archivos": ["lib/tours-data.ts"]
         },
         {
           "id": "6.2",
-          "title": "Configurar next.config.js para optimización de imágenes",
-          "description": "Verificar que next.config.js tenga configurado images.domains o remotePatterns si las imágenes vienen de una URL externa. Agregar formats: ['image/avif', 'image/webp'].",
-          "files": ["next.config.js o next.config.ts"]
+          "title": "Crear app/tours/[slug]/page.tsx",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "Página estática con generateStaticParams desde toursData. Metadata dinámica: title = '{Tour Name} from Hvar, Croatia | MareBoats', description SEO con keyword del tour. Estructura: breadcrumb (Home > Tours > nombre), H1 con nombre del tour, tagline, hero image next/image priority, highlights 2–3 bullets, descripción en prosa, 'What's Included' lista, 'What to Bring', precio + duración destacados, meeting point + link Maps, CTA 'Book This Tour'. Schema TouristTrip específico via JsonLd.",
+          "archivos": ["app/tours/[slug]/page.tsx"]
         },
         {
           "id": "6.3",
-          "title": "Lazy loading de secciones below the fold",
-          "description": "Usar dynamic imports de Next.js para componentes de secciones que están below the fold (Testimonials, FAQ, Footer). Esto reduce el bundle inicial.",
-          "files": ["app/page.tsx"]
+          "title": "Verificar slugs entre Tours.tsx y tours-data.ts",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "Confirmar que los slugs en components/sections/Tours.tsx coincidan exactamente con los slugs definidos en lib/tours-data.ts. Corregir si hay diferencias.",
+          "archivos": ["components/sections/Tours.tsx", "lib/tours-data.ts"]
         },
         {
           "id": "6.4",
-          "title": "Agregar favicon y meta icons",
-          "description": "Verificar que exista /public/favicon.ico y /public/icon.png. Si no existen, crear placeholder y agregar nota en PROYECTO.md. Configurar en layout.tsx: icons: { icon: '/icon.png', apple: '/apple-icon.png' }.",
-          "files": ["app/layout.tsx", "public/"]
+          "title": "Actualizar sitemap.ts para incluir rutas /tours/[slug]",
+          "status": "⏳ PENDIENTE",
+          "descripcion": "En app/sitemap.ts agregar las rutas de cada tour: toursData.map(t => ({ url: 'https://mareboatshvar.com/tours/' + t.slug, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 })). Las páginas de tour son las más importantes para SEO después de la home.",
+          "archivos": ["app/sitemap.ts"]
         }
-      ]
+      ],
+      "commit": "git commit -m 'feat: páginas individuales /tours/[slug] con SEO long-tail'"
     }
   ],
-  "commit_strategy": {
-    "after_phase_1": "git commit -m 'feat: setup tokens, fuentes y tailwind config'",
-    "after_phase_2": "git commit -m 'feat: SEO metadata, schema JSON-LD y alt texts'",
-    "after_phase_3": "git commit -m 'feat: rediseño visual completo todas las secciones'",
-    "after_phase_4": "git commit -m 'feat: nuevas secciones Features, FAQ y CTA Banner'",
-    "after_phase_5": "git commit -m 'feat: animaciones framer motion y scroll effects'",
-    "after_phase_6": "git commit -m 'perf: next/image, lazy loading y optimizaciones'"
+
+  "para_correr_en_local": {
+    "dev": "npm run dev → http://localhost:3000",
+    "build": "npm run build (después de cada fase)",
+    "mobile": "Chrome DevTools → F12 → iPhone 12 (390px)"
   },
+
   "final_checklist": [
-    "Mobile responsive verificado en 375px, 768px, 1280px",
-    "npm run build corre sin errores",
-    "No hay <img> tags, solo next/image",
-    "Metadata SEO en app/layout.tsx",
-    "Schema JSON-LD en el <head>",
-    "Alt text en todas las imágenes",
-    "Formulario de contacto funcional",
+    "npm run build sin errores",
+    "Mobile OK en 375px, 768px, 1280px",
+    "1 solo H1 por página con keyword principal",
+    "Metadata SEO en layout.tsx y en cada página /tours/[slug]",
+    "Schema JSON-LD: LocalBusiness + FAQPage en home, TouristTrip en cada tour",
+    "Alt text descriptivo en TODAS las imágenes",
+    "Cero <img> tags — solo next/image",
+    "Sitemap incluye rutas /tours/[slug]",
+    "robots.txt apunta al sitemap",
     "Favicon configurado",
-    "Fuentes con display: swap",
-    "No hay console.errors en el browser"
+    "Formulario con endpoint Formspree real",
+    "WhatsApp button con número real",
+    "Sin console.errors en browser",
+    "Sin transition-all en ningún archivo"
   ]
 }
