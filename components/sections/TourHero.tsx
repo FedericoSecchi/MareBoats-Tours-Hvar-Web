@@ -8,8 +8,11 @@ type TourHeroProps = {
 
 export default function TourHero({ tour }: TourHeroProps) {
   const hero = tour.images[0];
-  const waText = encodeURIComponent(`Hi! I'd like to book the ${tour.name}.`);
-  const waUrl = `https://wa.me/385951966734?text=${waText}`;
+  const waMessage =
+    tour.slug === 'yacht-sailboat-taxi'
+      ? 'Hi! I need a water taxi from my yacht. My location is: [coordinates]'
+      : `Hi! I'd like to book the ${tour.name}.`;
+  const waUrl = `https://wa.me/385951966734?text=${encodeURIComponent(waMessage)}`;
 
   return (
     <section className="relative flex min-h-[88vh] items-center overflow-hidden text-white md:min-h-[92vh]">

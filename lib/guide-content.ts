@@ -248,6 +248,6 @@ export const guideFaqs: GuideFaq[] = [
   {
     question: 'Can you pick us up from our yacht or sailboat?',
     answer:
-      'Yes. We offer water taxi service for boats anchored in the area — pickup from your yacht, transfer to shore or to a tour starting point. Message us on WhatsApp with your location and we will sort it out.',
+      'Yes. Our Yacht & Sailboat Water Taxi service picks you up directly from your vessel and takes you to shore, a restaurant, or any tour starting point. Send your coordinates on WhatsApp and we will sort it out.',
   },
 ];

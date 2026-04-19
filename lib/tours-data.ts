@@ -266,6 +266,65 @@ If you are comparing Split Hvar transfer options, the speedboat is usually the m
       'split hvar boat transfer',
     ],
   },
+  {
+    slug: 'yacht-sailboat-taxi',
+    name: 'Yacht & Sailboat Water Taxi',
+    tagline: 'Anchored near Hvar? We come to your boat — pickup, transfer or full tour.',
+    shortDescription:
+      'Private water taxi in Hvar for guests anchored on yachts and sailboats. We pick you up from your vessel and take you to shore, a restaurant, or any tour starting point.',
+    description: `Anchored in the area on a yacht or sailboat? We bring the speedboat to you. Our water taxi service in Hvar picks you up directly from your vessel and takes you wherever you need — Hvar Harbour, a restaurant on the islands, a quiet swimming bay, or the starting point of any MareBoats tour.
+ 
+This is the easiest way to enjoy Hvar when your boat is moored offshore. No tender hassle, no long swims to land, no waiting for a marina slot. We coordinate everything by WhatsApp: you send your coordinates and arrival time, we confirm the pickup window and a clear meeting plan with your skipper.
+ 
+The same service works in both directions. We can take you ashore for dinner in Hvar town and bring you back to your yacht later that evening, or transfer you to one of our partner restaurants on the Pakleni Islands and back. If you want to combine the taxi with a full tour — Blue Cave in the morning, lunch on an island, sunset cruise — just tell us when you message and we will plan the whole day around your boat.
+ 
+Our local skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, Croatian, Italian and Spanish (when Fede is on board), so the handover from your charter crew to ours is always smooth.
+ 
+If you are searching for a private water taxi in Hvar, a yacht transfer, a sailboat pickup, or a way to start a tour without coming to the harbour first, this is the service. Message us with your boat name, your coordinates and the time window — we will reply with a quote and a plan.`,
+    duration: 'On demand',
+    durationIso: 'PT1H',
+    price: 'From €XX — to be confirmed by Nikola',
+    includes: [
+      'Pickup from anchored yacht or sailboat',
+      'Drop-off at Hvar Harbour or any agreed destination',
+      'Local skipper familiar with anchorages around Hvar',
+      'WhatsApp coordination with your charter crew',
+      'Can connect directly to any MareBoats tour',
+    ],
+    notIncludes: [
+      'Restaurant or marina fees',
+      'Charter boat fuel or mooring costs (handled by your captain)',
+    ],
+    whatToBring: [
+      'Your exact coordinates and pickup time on WhatsApp',
+      'Cash or card for any onshore stops (restaurants, marina)',
+    ],
+    meetingPoint: 'We come to your vessel — share coordinates on WhatsApp',
+    meetingPointMapsUrl: MAPS,
+    highlights: [
+      'Direct pickup from your yacht or sailboat — no tender needed',
+      'Two-way service: shore for dinner, back to your boat at night',
+      'Combines with any MareBoats tour — Blue Cave, Pakleni, sunset',
+    ],
+    images: [
+      {
+        src: '/img/destination-7.jpeg',
+        alt: 'Yacht and sailboat water taxi service in Hvar — private speedboat pickup',
+      },
+      {
+        src: '/img/carousel-1.jpeg',
+        alt: 'Speedboat approaching anchored sailboat near Hvar for water taxi transfer',
+      },
+    ],
+    keywords: [
+      'water taxi hvar',
+      'water taxi hvar yacht',
+      'sailboat taxi hvar croatia',
+      'yacht transfer hvar',
+      'boat pickup hvar harbour',
+      'speedboat taxi hvar sailing',
+    ],
+  },
 ];
 
 /** Slugs shown in the homepage Tours grid. The transfer route lives at /tours/split-airport-transfer for SEO but is not in the home grid (we keep 4 cards for symmetry). */

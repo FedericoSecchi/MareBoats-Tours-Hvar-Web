@@ -339,6 +339,12 @@ export default function GuidePage() {
             <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
               {restaurantsOnWaterIntro}
             </p>
+            <Link
+              href="/tours/yacht-sailboat-taxi"
+              className="mt-4 inline-flex items-center gap-2 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+            >
+              See the Yacht &amp; Sailboat Water Taxi service →
+            </Link>
             {restaurantsOnWater.length > 0 ? (
               <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
                 {restaurantsOnWater.map((r) => (

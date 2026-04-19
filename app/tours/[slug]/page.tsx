@@ -52,8 +52,11 @@ export default function TourDetailPage({ params }: PageProps) {
   if (!tour) notFound();
 
   const hero = tour.images[0];
-  const waText = encodeURIComponent(`Hi! I'd like to book the ${tour.name}.`);
-  const waUrl = `https://wa.me/385951966734?text=${waText}`;
+  const waMessage =
+    tour.slug === 'yacht-sailboat-taxi'
+      ? 'Hi! I need a water taxi from my yacht. My location is: [coordinates]'
+      : `Hi! I'd like to book the ${tour.name}.`;
+  const waUrl = `https://wa.me/385951966734?text=${encodeURIComponent(waMessage)}`;
 
   const tripSchema = buildTouristTripSchema({
     name: tour.name,
