@@ -33,10 +33,10 @@ export default function AboutPage() {
           sizes="100vw"
           className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mare-dark/80 via-mare-dark/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
         <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">About Mare Boats Hvar</h1>
-          <p className="text-blue-100 text-lg max-w-xl">
+          <p className="text-[color:var(--gray)] text-lg max-w-xl">
             Local crew. Private boats. Drone video included. Based at Hvar port.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
       {/* Story */}
       <section className="py-14 px-4 max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4 text-gray-700">
+          <div className="space-y-4 text-[color:var(--gray)]">
             <h2 className="section-heading">Who We Are</h2>
             <p>
               Mare Boats Hvar is a family-run boat tour company based at the port of Hvar, Croatia.
@@ -75,7 +75,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-mare-light py-14 px-4">
+      <section className="bg-[color:var(--surface)] py-14 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="section-heading text-center mb-10">Why Choose Mare Boats</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -111,10 +111,10 @@ export default function AboutPage() {
                 desc: 'We operate from Hvar port — easy access, central location, no complicated logistics.',
               },
             ].map((item) => (
-              <div key={item.title} className="bg-white rounded-xl p-5 shadow-sm">
+              <div key={item.title} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm">
                 <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="font-semibold text-mare-dark mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+                <h3 className="font-semibold text-[color:var(--white)] mb-2">{item.title}</h3>
+                <p className="text-[color:var(--gray)] text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -141,17 +141,17 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-              <p className="font-semibold text-mare-dark text-sm">{member.name}</p>
-              <p className="text-gray-500 text-xs">{member.role}</p>
+              <p className="font-semibold text-[color:var(--white)] text-sm">{member.name}</p>
+              <p className="text-[color:var(--gray)] text-xs">{member.role}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-mare-dark text-white py-14 px-4 text-center">
+      <section className="bg-[color:var(--bg)] text-white py-14 px-4 text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to Explore Hvar with Us?</h2>
-        <p className="text-blue-200 mb-6 max-w-md mx-auto">
+        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
           Message us on WhatsApp and we&apos;ll plan the perfect day on the water for your group.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">

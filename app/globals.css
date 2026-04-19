@@ -27,8 +27,8 @@
   }
 
   body {
-    color: var(--mare-text);
-    background-color: var(--mare-white);
+    color: var(--white);
+    background-color: var(--bg);
     font-family: var(--font-body), system-ui, sans-serif;
     font-display: swap;
   }
@@ -46,15 +46,15 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-mare-accent text-white font-semibold px-6 py-3 rounded-lg hover:brightness-110 active:scale-95 transition-[filter,transform] duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-accent px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-bg shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-accent-dk hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-mare-dark active:scale-95 transition-[background-color,color,transform] duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-accent px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-accent transition-colors duration-300 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent active:scale-[0.98];
   }
 
   .section-heading {
-    @apply text-3xl md:text-4xl font-semibold text-mare-dark;
+    @apply font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-4xl;
   }
 }
 

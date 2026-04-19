@@ -84,13 +84,13 @@ export default function BoatRentalPage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mare-dark/80 via-mare-dark/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
 
         <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-3 drop-shadow-lg">
             Boat Rental in Hvar
           </h1>
-          <p className="text-lg text-blue-100 mb-6 max-w-2xl">
+          <p className="text-lg text-[color:var(--gray)] mb-6 max-w-2xl">
             Rent a speedboat without a skipper and explore Pakleni Islands, hidden coves, and beaches
             at your own pace. Valid boat license required.
           </p>
@@ -123,7 +123,7 @@ export default function BoatRentalPage() {
       <section className="py-14 px-4 max-w-4xl mx-auto">
         <h2 className="section-heading mb-6">Boat Rental Details</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="space-y-4 text-gray-700">
+          <div className="space-y-4 text-[color:var(--gray)]">
             <p>
               Explore the Adriatic on your own terms. Our rental speedboats depart from Hvar port and
               give you the freedom to discover secluded bays, swim stops, and nearby islands without
@@ -134,10 +134,10 @@ export default function BoatRentalPage() {
               recommended spots, and weather conditions. A nautical chart and our local tips are
               included.
             </p>
-            <p className="text-sm text-gray-500 border-l-4 border-mare-accent pl-4">
+            <p className="text-sm text-[color:var(--gray)] border-l-4 border-[color:var(--accent)] pl-4">
               <strong>License required:</strong> A valid boating license (or equivalent) is
               mandatory to rent without a skipper. No license? Book our{' '}
-              <Link href="/blue-cave" className="text-mare-primary underline">
+              <Link href="/blue-cave" className="text-[color:var(--accent)] underline">
                 private guided tours
               </Link>{' '}
               instead.
@@ -153,9 +153,9 @@ export default function BoatRentalPage() {
               { label: 'License', value: 'Valid boat license required' },
               { label: 'Price', value: 'TODO — contact for current rates' },
             ].map(({ label, value }) => (
-              <div key={label} className="flex justify-between border-b border-gray-100 pb-2">
-                <span className="text-gray-500 text-sm font-medium">{label}</span>
-                <span className="text-mare-dark text-sm font-semibold text-right max-w-[60%]">
+              <div key={label} className="flex justify-between border-b border-[color:var(--border)] pb-2">
+                <span className="text-[color:var(--gray)] text-sm font-medium">{label}</span>
+                <span className="text-[color:var(--white)] text-sm font-semibold text-right max-w-[60%]">
                   {value}
                 </span>
               </div>
@@ -165,7 +165,7 @@ export default function BoatRentalPage() {
       </section>
 
       {/* Suggested spots */}
-      <section className="bg-mare-light py-14 px-4">
+      <section className="bg-[color:var(--surface)] py-14 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="section-heading mb-6">Where to Go</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -200,9 +200,9 @@ export default function BoatRentalPage() {
           </h2>
           <dl className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="border border-gray-200 bg-white rounded-xl p-5">
-                <dt className="font-semibold text-mare-dark">{faq.question}</dt>
-                <dd className="text-gray-600 mt-1 text-sm">{faq.answer}</dd>
+              <div key={faq.question} className="border border-[color:var(--border)] bg-[color:var(--surface)] rounded-xl p-5">
+                <dt className="font-semibold text-[color:var(--white)]">{faq.question}</dt>
+                <dd className="text-[color:var(--gray)] mt-1 text-sm">{faq.answer}</dd>
               </div>
             ))}
           </dl>
@@ -210,9 +210,9 @@ export default function BoatRentalPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 text-center bg-mare-dark text-white">
+      <section className="py-16 px-4 text-center bg-[color:var(--bg)] text-white">
         <h2 className="text-3xl font-bold mb-4">Ready to Rent a Boat in Hvar?</h2>
-        <p className="text-blue-200 mb-6 max-w-md mx-auto">
+        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
           Message us on WhatsApp with your date and group size. We will confirm availability within
           hours.
         </p>

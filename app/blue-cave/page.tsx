@@ -99,13 +99,13 @@ export default function BlueCavePage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mare-dark/80 via-mare-dark/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
 
         <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-3 drop-shadow-lg">
             Blue Cave Tour from Hvar
           </h1>
-          <p className="text-lg text-blue-100 mb-6 max-w-2xl">
+          <p className="text-lg text-[color:var(--gray)] mb-6 max-w-2xl">
             Private speedboat to Blue Cave (Biševo), Green Cave, Stiniva Bay &amp; Pakleni Islands.
             Aerial drone &amp; underwater video included.
           </p>
@@ -138,7 +138,7 @@ export default function BlueCavePage() {
         <h2 className="section-heading mb-6">Tour Route &amp; Schedule</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <p className="text-gray-600 mb-4">
+            <p className="text-[color:var(--gray)] mb-4">
               Departing from Hvar port at <strong>10:30</strong>, this 8-hour private tour covers
               the best of the Dalmatian islands in one day.
             </p>
@@ -152,11 +152,11 @@ export default function BlueCavePage() {
                 { time: '18:30', stop: 'Return to Hvar port' },
               ].map((item) => (
                 <li key={item.stop} className="flex gap-4 items-start">
-                  <span className="text-mare-primary font-semibold text-sm w-12 shrink-0">
+                  <span className="text-[color:var(--accent)] font-semibold text-sm w-12 shrink-0">
                     {item.time}
                   </span>
                   <span
-                    className="text-gray-700 text-sm"
+                    className="text-[color:var(--gray)] text-sm"
                     dangerouslySetInnerHTML={{ __html: item.stop }}
                   />
                 </li>
@@ -177,13 +177,13 @@ export default function BlueCavePage() {
       </section>
 
       {/* Includes / not includes */}
-      <section className="bg-mare-light py-14 px-4">
+      <section className="bg-[color:var(--surface)] py-14 px-4">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           <div>
-            <h2 className="text-xl font-semibold text-mare-dark mb-4">What&apos;s Included</h2>
+            <h2 className="text-xl font-semibold text-[color:var(--white)] mb-4">What&apos;s Included</h2>
             <ul className="space-y-2">
               {includes.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-gray-700 text-sm">
+                <li key={item} className="flex items-start gap-2 text-[color:var(--gray)] text-sm">
                   <span className="text-green-600 font-bold mt-0.5">✓</span>
                   {item}
                 </li>
@@ -191,10 +191,10 @@ export default function BlueCavePage() {
             </ul>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-mare-dark mb-4">Not Included</h2>
+            <h2 className="text-xl font-semibold text-[color:var(--white)] mb-4">Not Included</h2>
             <ul className="space-y-2">
               {notIncludes.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-gray-500 text-sm">
+                <li key={item} className="flex items-start gap-2 text-[color:var(--gray)] text-sm">
                   <span className="font-bold mt-0.5">—</span>
                   {item}
                 </li>
@@ -230,16 +230,16 @@ export default function BlueCavePage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-gray-50 py-14 px-4">
+      <section className="bg-[color:var(--surface)] py-14 px-4">
         <div className="max-w-3xl mx-auto">
           <h2 className="section-heading text-center mb-8">
             Blue Cave Tour — Frequently Asked Questions
           </h2>
           <dl className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="border border-gray-200 bg-white rounded-xl p-5">
-                <dt className="font-semibold text-mare-dark">{faq.question}</dt>
-                <dd className="text-gray-600 mt-1 text-sm">{faq.answer}</dd>
+              <div key={faq.question} className="border border-[color:var(--border)] bg-[color:var(--surface)] rounded-xl p-5">
+                <dt className="font-semibold text-[color:var(--white)]">{faq.question}</dt>
+                <dd className="text-[color:var(--gray)] mt-1 text-sm">{faq.answer}</dd>
               </div>
             ))}
           </dl>
@@ -247,9 +247,9 @@ export default function BlueCavePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 text-center bg-mare-dark text-white">
+      <section className="py-16 px-4 text-center bg-[color:var(--bg)] text-white">
         <h2 className="text-3xl font-bold mb-4">Book Your Blue Cave Tour</h2>
-        <p className="text-blue-200 mb-6 max-w-md mx-auto">
+        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
           Message us on WhatsApp with your preferred date and group size. We reply within hours.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">

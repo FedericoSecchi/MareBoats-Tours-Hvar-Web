@@ -78,12 +78,12 @@ export default function SunsetPage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mare-dark/80 via-mare-dark/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
         <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-3 drop-shadow-lg">
             Sunset Boat Tour from Hvar
           </h1>
-          <p className="text-lg text-blue-100 mb-6 max-w-xl">
+          <p className="text-lg text-[color:var(--gray)] mb-6 max-w-xl">
             Two hours of golden light on the Adriatic. Wine, snacks, and the most beautiful
             coastline in Croatia — fully private.
           </p>
@@ -121,13 +121,13 @@ export default function SunsetPage() {
                 'Snacks on board',
                 'Scenic coastal route at golden hour',
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-gray-700">
+                <li key={item} className="flex items-start gap-3 text-[color:var(--gray)]">
                   <span className="text-orange-400 font-bold mt-0.5">✦</span>
                   {item}
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-sm text-gray-500 border-l-4 border-orange-300 pl-3">
+            <p className="mt-4 text-sm text-[color:var(--gray)] border-l-4 border-orange-300 pl-3">
               Tip: bring a light jacket — evenings on the water can be cool even in summer.
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function SunsetPage() {
       </section>
 
       {/* Gallery */}
-      <section className="bg-mare-light py-14 px-4">
+      <section className="bg-[color:var(--surface)] py-14 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="section-heading mb-6">Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -176,9 +176,9 @@ export default function SunsetPage() {
           <h2 className="section-heading text-center mb-8">Sunset Cruise — FAQ</h2>
           <dl className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="border border-gray-200 bg-white rounded-xl p-5">
-                <dt className="font-semibold text-mare-dark">{faq.question}</dt>
-                <dd className="text-gray-600 mt-1 text-sm">{faq.answer}</dd>
+              <div key={faq.question} className="border border-[color:var(--border)] bg-[color:var(--surface)] rounded-xl p-5">
+                <dt className="font-semibold text-[color:var(--white)]">{faq.question}</dt>
+                <dd className="text-[color:var(--gray)] mt-1 text-sm">{faq.answer}</dd>
               </div>
             ))}
           </dl>
@@ -186,7 +186,7 @@ export default function SunsetPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 text-center bg-gradient-to-r from-orange-500 to-mare-dark text-white">
+      <section className="py-16 px-4 text-center bg-gradient-to-r from-orange-500 to-[color:var(--bg)] text-white">
         <h2 className="text-3xl font-bold mb-4">Book Your Sunset Cruise</h2>
         <p className="text-orange-100 mb-6 max-w-md mx-auto">
           Send us your date and group size on WhatsApp — we confirm within hours.

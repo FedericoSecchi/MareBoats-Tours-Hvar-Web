@@ -92,13 +92,13 @@ export default function TransfersPage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mare-dark/80 via-mare-dark/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
 
         <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-3 drop-shadow-lg">
             Boat Transfer Hvar — Split &amp; Islands
           </h1>
-          <p className="text-lg text-blue-100 mb-6 max-w-2xl">
+          <p className="text-lg text-[color:var(--gray)] mb-6 max-w-2xl">
             Private speedboat transfers from Hvar to Split, Brač, Korčula, and Vis. Skip the ferry —
             arrive faster in style.
           </p>
@@ -130,7 +130,7 @@ export default function TransfersPage() {
       {/* Routes */}
       <section className="py-14 px-4 max-w-4xl mx-auto">
         <h2 className="section-heading mb-2">Transfer Routes from Hvar</h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-[color:var(--gray)] mb-8">
           All transfers are private. We depart when you need — no fixed ferry schedule.
         </p>
 
@@ -138,37 +138,37 @@ export default function TransfersPage() {
           {routes.map((route) => (
             <div
               key={`${route.from}-${route.to}`}
-              className="border border-gray-200 rounded-xl p-5 flex items-center justify-between hover:border-mare-primary transition-colors"
+              className="border border-[color:var(--border)] rounded-xl p-5 flex items-center justify-between hover:border-[color:var(--accent)] transition-colors"
             >
               <div>
-                <div className="flex items-center gap-2 font-semibold text-mare-dark">
+                <div className="flex items-center gap-2 font-semibold text-[color:var(--white)]">
                   <span>{route.from}</span>
-                  <span className="text-mare-primary">→</span>
+                  <span className="text-[color:var(--accent)]">→</span>
                   <span>{route.to}</span>
                 </div>
-                <div className="text-sm text-gray-500 mt-1">{route.direction}</div>
+                <div className="text-sm text-[color:var(--gray)] mt-1">{route.direction}</div>
               </div>
               <div className="text-right">
-                <div className="text-sm font-semibold text-mare-primary">{route.duration}</div>
-                <div className="text-xs text-gray-400">by speedboat</div>
+                <div className="text-sm font-semibold text-[color:var(--accent)]">{route.duration}</div>
+                <div className="text-xs text-[color:var(--gray)]">by speedboat</div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 bg-mare-light rounded-xl p-5 text-sm text-gray-700">
+        <div className="mt-6 bg-[color:var(--surface)] rounded-xl p-5 text-sm text-[color:var(--gray)]">
           <strong>Don&apos;t see your route?</strong> We can transfer you to any coastal destination in
           Dalmatia.{' '}
-          <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="text-mare-primary font-semibold hover:underline">
+          <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="text-[color:var(--accent)] font-semibold hover:underline">
             Message us for a custom quote →
           </a>
         </div>
       </section>
 
       {/* Why choose us */}
-      <section className="bg-mare-dark text-white py-14 px-4">
+      <section className="bg-[color:var(--bg)] text-white py-14 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-mare-light">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-[color:var(--accent)]">
             Why Choose Our Water Taxi
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -189,7 +189,7 @@ export default function TransfersPage() {
             ].map((item) => (
               <div key={item.title} className="bg-white/10 rounded-xl p-5">
                 <h3 className="font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-blue-200 text-sm">{item.desc}</p>
+                <p className="text-[color:var(--gray)] text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -218,16 +218,16 @@ export default function TransfersPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-gray-50 py-14 px-4">
+      <section className="bg-[color:var(--surface)] py-14 px-4">
         <div className="max-w-3xl mx-auto">
           <h2 className="section-heading text-center mb-8">
             Hvar Boat Transfer — Frequently Asked Questions
           </h2>
           <dl className="space-y-4">
             {faqs.map((faq) => (
-              <div key={faq.question} className="border border-gray-200 bg-white rounded-xl p-5">
-                <dt className="font-semibold text-mare-dark">{faq.question}</dt>
-                <dd className="text-gray-600 mt-1 text-sm">{faq.answer}</dd>
+              <div key={faq.question} className="border border-[color:var(--border)] bg-[color:var(--surface)] rounded-xl p-5">
+                <dt className="font-semibold text-[color:var(--white)]">{faq.question}</dt>
+                <dd className="text-[color:var(--gray)] mt-1 text-sm">{faq.answer}</dd>
               </div>
             ))}
           </dl>
@@ -235,9 +235,9 @@ export default function TransfersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-4 text-center bg-mare-primary text-white">
+      <section className="py-16 px-4 text-center bg-[color:var(--accent)] text-white">
         <h2 className="text-3xl font-bold mb-4">Book Your Hvar Transfer</h2>
-        <p className="text-blue-100 mb-6 max-w-md mx-auto">
+        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
           Tell us your route, date, time, and number of passengers. We confirm within hours.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">

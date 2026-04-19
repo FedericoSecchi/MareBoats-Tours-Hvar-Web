@@ -114,11 +114,11 @@ export default function FaqPage() {
       <JsonLd data={faqSchema as Record<string, unknown>} />
 
       {/* Header */}
-      <section className="bg-mare-dark text-white py-16 px-4 text-center">
+      <section className="bg-[color:var(--bg)] text-white py-16 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Boat Tour Hvar — Frequently Asked Questions
         </h1>
-        <p className="text-blue-200 max-w-xl mx-auto">
+        <p className="text-[color:var(--gray)] max-w-xl mx-auto">
           Everything you need to know before booking a private boat tour from Hvar, Croatia.
         </p>
       </section>
@@ -127,17 +127,17 @@ export default function FaqPage() {
       <section className="py-14 px-4 max-w-3xl mx-auto">
         {faqSections.map((section) => (
           <div key={section.section} className="mb-10">
-            <h2 className="text-xl font-semibold text-mare-dark mb-4 pb-2 border-b border-gray-200">
+            <h2 className="text-xl font-semibold text-[color:var(--white)] mb-4 pb-2 border-b border-[color:var(--border)]">
               {section.section}
             </h2>
             <dl className="space-y-4">
               {section.faqs.map((faq) => (
                 <div
                   key={faq.question}
-                  className="border border-gray-200 rounded-xl p-5 hover:border-mare-primary transition-colors"
+                  className="border border-[color:var(--border)] rounded-xl p-5 hover:border-[color:var(--accent)] transition-colors"
                 >
-                  <dt className="font-semibold text-mare-dark">{faq.question}</dt>
-                  <dd className="text-gray-600 mt-1 text-sm leading-relaxed">{faq.answer}</dd>
+                  <dt className="font-semibold text-[color:var(--white)]">{faq.question}</dt>
+                  <dd className="text-[color:var(--gray)] mt-1 text-sm leading-relaxed">{faq.answer}</dd>
                 </div>
               ))}
             </dl>
@@ -146,9 +146,9 @@ export default function FaqPage() {
       </section>
 
       {/* Still have questions */}
-      <section className="bg-mare-light py-14 px-4 text-center">
+      <section className="bg-[color:var(--surface)] py-14 px-4 text-center">
         <h2 className="section-heading mb-3">Still have questions?</h2>
-        <p className="text-gray-600 mb-6 max-w-md mx-auto">
+        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
           Message us directly on WhatsApp — we reply within hours and are happy to help plan your
           perfect day on the water.
         </p>
@@ -156,7 +156,7 @@ export default function FaqPage() {
           <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
             Ask on WhatsApp
           </a>
-          <Link href="/tours" className="inline-flex items-center justify-center gap-2 border-2 border-mare-primary text-mare-primary font-semibold px-6 py-3 rounded-lg hover:bg-mare-primary hover:text-white transition-[background-color,color] duration-200">
+          <Link href="/tours" className="inline-flex items-center justify-center gap-2 border-2 border-[color:var(--accent)] text-[color:var(--accent)] font-semibold px-6 py-3 rounded-lg hover:bg-[color:var(--accent)] hover:text-[color:var(--bg)] transition-[background-color,color] duration-200">
             View All Tours
           </Link>
         </div>

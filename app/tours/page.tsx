@@ -36,7 +36,7 @@ const tours = [
     href: '/blue-cave',
     waText: 'the%20Blue%20Cave%20full%20day%20tour.',
     badge: 'Most popular',
-    badgeColor: 'bg-mare-accent',
+    badgeColor: 'bg-[color:var(--accent)]',
   },
   {
     id: 'pakleni',
@@ -51,7 +51,7 @@ const tours = [
     href: '/tours',
     waText: 'the%20Pakleni%20Islands%20tour.',
     badge: 'Half day',
-    badgeColor: 'bg-mare-primary',
+    badgeColor: 'bg-[color:var(--accent)]',
   },
   {
     id: 'private',
@@ -66,7 +66,7 @@ const tours = [
     href: '/tours',
     waText: 'a%20private%20custom%20tour.',
     badge: 'Fully private',
-    badgeColor: 'bg-mare-dark',
+    badgeColor: 'bg-[color:var(--bg)]',
   },
   {
     id: 'rental',
@@ -81,7 +81,7 @@ const tours = [
     href: '/boat-rental',
     waText: 'a%20boat%20rental%20in%20Hvar.',
     badge: 'Self-drive',
-    badgeColor: 'bg-gray-600',
+    badgeColor: 'bg-[color:var(--surface)]',
   },
   {
     id: 'sunset',
@@ -143,10 +143,10 @@ export default function ToursPage() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-mare-dark/80 via-mare-dark/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
         <div className="relative z-10 w-full px-4 pb-10 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">Hvar Boat Excursions</h1>
-          <p className="text-blue-100 text-lg max-w-xl">
+          <p className="text-[color:var(--gray)] text-lg max-w-xl">
             Private speedboat tours from Hvar. Blue Cave, Pakleni Islands, sunset cruises and more —
             all fully private, with drone video included.
           </p>
@@ -159,7 +159,7 @@ export default function ToursPage() {
           {tours.map((tour) => (
             <article
               key={tour.id}
-              className="flex flex-col rounded-2xl overflow-hidden shadow hover:shadow-lg transition-shadow bg-white"
+              className="flex flex-col rounded-2xl overflow-hidden border border-[color:var(--border)] bg-[color:var(--surface)] shadow hover:shadow-lg transition-shadow"
             >
               <div className="relative h-52">
                 <Image
@@ -177,24 +177,24 @@ export default function ToursPage() {
               </div>
 
               <div className="p-5 flex flex-col flex-1">
-                <h2 className="font-semibold text-mare-dark text-lg mb-1">{tour.title}</h2>
+                <h2 className="font-semibold text-[color:var(--white)] text-lg mb-1">{tour.title}</h2>
 
                 <div className="flex gap-2 mb-3 flex-wrap">
-                  <span className="bg-mare-light text-mare-dark text-xs font-medium px-2 py-1 rounded">
+                  <span className="bg-[color:var(--surface)] text-[color:var(--white)] text-xs font-medium px-2 py-1 rounded">
                     {tour.duration}
                   </span>
                   {tour.time !== 'Your schedule' && tour.time !== 'With any tour' && (
-                    <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
+                    <span className="bg-[color:var(--bg)] text-[color:var(--gray)] text-xs px-2 py-1 rounded">
                       {tour.time}
                     </span>
                   )}
                 </div>
 
-                <p className="text-gray-600 text-sm mb-1">{tour.route}</p>
+                <p className="text-[color:var(--gray)] text-sm mb-1">{tour.route}</p>
                 {tour.extras && (
-                  <p className="text-gray-400 text-xs mb-1">{tour.extras}</p>
+                  <p className="text-[color:var(--gray)] text-xs mb-1">{tour.extras}</p>
                 )}
-                <p className="text-gray-500 text-xs mb-4">{tour.includes}</p>
+                <p className="text-[color:var(--gray)] text-xs mb-4">{tour.includes}</p>
 
                 <div className="mt-auto flex gap-2">
                   <a
@@ -208,7 +208,7 @@ export default function ToursPage() {
                   {tour.href !== '/tours' && (
                     <Link
                       href={tour.href}
-                      className="px-3 py-2 border border-mare-primary text-mare-primary text-sm font-semibold rounded-lg hover:bg-mare-light transition-colors"
+                      className="px-3 py-2 border border-[color:var(--accent)] text-[color:var(--accent)] text-sm font-semibold rounded-lg hover:bg-[color:var(--surface)] transition-colors"
                     >
                       Details
                     </Link>
@@ -221,9 +221,9 @@ export default function ToursPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-mare-dark text-white py-14 px-4 text-center">
+      <section className="bg-[color:var(--bg)] text-white py-14 px-4 text-center">
         <h2 className="text-3xl font-bold mb-3">Not sure which tour to pick?</h2>
-        <p className="text-blue-200 mb-6 max-w-md mx-auto">
+        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
           Message us on WhatsApp — we&apos;ll recommend the best option based on your group, dates
           and preferences.
         </p>
