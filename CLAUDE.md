@@ -15,7 +15,10 @@ NUNCA tocar /src/components/ — es código legacy
 Leer KOSMOS_SKILL.md antes de tocar cualquier archivo de UI.
 Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 
-## Estado actual (18 abril 2026)
+---
+
+## Estado actual (19 abril 2026)
+
 - Fase 1  ✅ commit c47932d — tokens, fuentes, Tailwind config
 - Fase 2  ✅ commit 4b8df40 — SEO metadata, schema JSON-LD, sitemap, robots
 - Fase 3  ✅ commit dd0748d — Rediseño visual completo
@@ -27,9 +30,23 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 9  ✅ commit 78e989b — UX/Conversión: WhatsApp CTAs, cards simétricas, TourHero, transfer slug, Instagram footer
 - Fase 10 ✅ commit be472fd — Guest Guide /guide pública + FAQPage schema + sitemap
 - Fase 11 ✅ commit e7ec143 — Copy humano: Hero, CTAs, Features, FAQ sin adjetivos vacíos
-- Fase 12 ✅ commit 7865a48 — Tokens unificados en páginas internas (about, blue-cave, boat-rental, faq, sunset, transfers, tours/index) + btn-primary/secondary refactor en globals.css
-- Fase 13 ✅ commit eeeadf1 — /guide expandida: 10 secciones (Day on Water, What to Bring, On Board Rules, Renting, Safety, Where We Go con maps embeds, Restaurants Hvar Town, Restaurants on Water, Hotel Partners, Meeting Point, FAQ x8 + JSON-LD)
-- Fase 14 ✅ commit 950dde6 — Yacht & Sailboat Water Taxi en /tours/yacht-sailboat-taxi con SEO long-tail, link desde /guide y mensaje WhatsApp pre-cargado con coordenadas
+- Fase 12 ✅ commit 7865a48 — Fix colores/tokens en todas las páginas internas + refactor btn-primary/btn-secondary/section-heading en globals.css
+- Fase 13 ✅ commit eeeadf1 — /guide expandida: 10 secciones, 8 FAQs JSON-LD, mapas embed, alianzas, rental rules, yacht taxi
+- Fase 14 ✅ commit 950dde6 — Nuevo servicio: /tours/yacht-sailboat-taxi con SEO long-tail + WhatsApp pre-cargado
+- Fase 15 ⬜ PRÓXIMA — /guide reorganizada: 5 secciones claras (Where We Go, What to Bring, Rules & Rentals, FAQ, Weather Policy)
+- Fase 16 ⬜ PENDIENTE — 5 landing pages: /landing/explore, /pre-tour, /review, /guide-hvar, /rental
+- Fase 17 ⬜ PENDIENTE — WhatsApp templates + post-booking flow (archivos de referencia en /public/docs/)
+- Fase 18 ⬜ PENDIENTE — QR code strategy (3 físicos: muelle, barco, guide)
+- Fase 19 ⬜ PENDIENTE — Google My Maps embeds integrados (/guide + landing pages)
+
+## Build actual
+21 páginas estáticas. Rutas /tours/[slug]:
+- blue-cave-pakleni-islands
+- pakleni-islands
+- sunset-cruise
+- split-airport-transfer
+- private-boat-charter
+- yacht-sailboat-taxi
 
 ## Datos reales de performance (Lighthouse 18/04/2026 — post Fase 7)
 - Desktop: Performance 98 ✅ — LCP 0.8s ✅ — CLS 0.072 — TBT 40ms
@@ -50,300 +67,319 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - ✅ Reviews de OTAs → reemplazar placeholders en Testimonials.tsx cuando Nikola confirme
 - ✅ Google Maps + website trabajan en red para SEO local
 - ✅ TikTok: no existe — no linkear
-- ✅ /guide es página pública indexable (no PDF) — captura SEO long-tail pre-booking
-- ✅ Idiomas a bordo solo aplican cuando Fede es el skipper — no prometer en copy genérico del sitio
-- ✅ No hay baño a bordo — los guests usan los de los restaurantes en las paradas
+- ✅ /guide es página pública indexable — captura SEO long-tail pre-booking + se envía a guests post-booking por WhatsApp
+- ✅ Idiomas a bordo (EN/HR/IT/ES) solo aplican cuando Fede es el skipper — no prometer en copy genérico del sitio
+- ✅ No hay baño a bordo — guests usan los de los restaurantes en las paradas
 - ✅ Botellas de vidrio: PERMITIDAS — la gente puede traer sus bebidas
 - ✅ Heladera/conservadora a bordo incluida — guests también pueden traer la suya
 - ✅ Fumar: NO permitido a bordo
 - ✅ Zonas de baja velocidad: multas reales de la policía marítima — hay que respetarlas siempre
 
-## Pendiente de terceros
-- Precios reales 4 tours + transfer (Nikola)
-- OTAs activos + reviews reales (Nikola)
-- Fotos profesionales (Fede viaja a Hvar — comprimir <500KB antes de agregar)
-- Cambios estéticos de Coti
-- Nombres de restaurantes socios + beneficio para guests ("mention MareBoats for X") (Nikola)
-- Nombre del hotel socio con muelle (Nikola)
-- URL del mapa de Google Maps personalizado con todos los pins (Nikola o Fede crean en Google My Maps)
-- Confirmación con Nikola: barco licensiado y asegurado bajo regulaciones marítimas croatas → verificar antes de publicar
-
 ---
 
-## FASE 12 — Fix colores páginas internas
+## FASE 15 — /guide Reorganizada
 
-**Objetivo:** Todas las páginas internas deben usar exactamente los mismos tokens CSS que el Home. El Home tiene los colores correctos — replicar a todas las internas.
+### Objetivo
+Página pública, indexable, SEO-optimizada. Para turistas que consideran bookear.
+Separar en 5 secciones claras, sin saturar.
 
-**Páginas a auditar y corregir:**
-- `app/tours/[slug]/page.tsx` y `components/sections/TourHero.tsx`
-- `app/guide/page.tsx`
-- `app/about/page.tsx` (si existe)
-- Cualquier otra ruta bajo `/app/` que no sea `page.tsx` principal
-
-**Qué revisar en cada una:**
-- Fondo: debe ser `bg-[var(--bg)]` (#0d1b2a) — no `bg-white`, `bg-gray-900`, ni colores hardcodeados
-- Cards/superficies: `bg-[var(--surface)]` (#122236)
-- Texto principal: `text-[var(--white)]` (#F5F0E8)
-- Texto secundario: `text-[var(--gray)]` (#8a9ab0)
-- Bordes: `border-[var(--border)]` (#1e3048)
-- Accent: `text-[var(--accent)]` o `bg-[var(--accent)]` (#3BC9DB)
-- Headings: Syne (font-heading), uppercase donde corresponda
-- Body: Space Grotesk (font-body)
-
-**Verificar en:** 375px, 768px, 1280px para cada página.
-
-**Commit:** `git commit -m 'fix: colores y tokens CSS unificados en todas las páginas internas'`
-
----
-
-## FASE 13 — /guide expandida: contenido SEO + mapas + alianzas
-
-**Objetivo:** Convertir `/guide` en la guía de Hvar más útil para turistas que vienen en lancha. Tráfico orgánico long-tail + leads directos a WhatsApp. Doble uso: SEO pre-booking + enviar a guests post-booking.
-
-**Archivo principal:** `app/guide/page.tsx`
-**Actualizar también:** `components/ui/JsonLd.tsx` (FAQPage schema) y `app/sitemap.ts`
-
-### Secciones a reescribir/expandir (en orden de aparición en la página):
-
----
-
-#### Sección 1 — Your Day on the Water ← NUEVA (arriba del todo, antes de What to Bring)
-
-Tono: narrativo, como Fede contando el día. Humano, concreto, sin adjetivos vacíos.
-
-Copy base (expandir y adaptar):
-> "We leave at 10am from Hvar Harbour. First stop is usually the Blue Cave — we time it to arrive before the big catamarans crowd in. If we have intel that it's already packed, we adjust the route and come back at the quieter window. Same hours on the water, better experience — no queues, no waiting, just the right place at the right moment. By the end of the day you'll have swum in spots most tourists never find."
-
-Agregar debajo como bullets visuales (icon + texto):
-- Private group only — no strangers sharing the boat
-- Route adjusts in real time — we know when spots are quiet
-- Snorkel gear on board (limited quantity — bring your own for all stops except Blue Cave)
-- Cooler with ice included — bring your own drinks and food if you want
-
----
-
-#### Sección 2 — What to Bring (reescribir con datos reales)
-
-Copy corregido y expandido:
-
-**Essentials:**
-- Sunscreen (reef-safe preferred — we're in a protected marine area)
-- Towel and swimwear
-- Hat and sunglasses
-- Cash — most restaurants on the islands accept cards, but prefer cash. Bring some.
-
-**Optional but recommended:**
-- Your own snorkel mask and fins — we have gear on board but bringing yours means you can swim at every stop, including shallow coves
-- Water shoes — not mandatory, but worth it if you're sensitive to rocky beaches
-- Your own cooler — we have one on board with ice, but if you're bringing a lot, yours is welcome too
-
-**Drinks and food:**
-- All drinks welcome — glass bottles included. Cans, tetra-packs and reusable bottles obviously fine too.
-- You can bring your own food — the cooler keeps it cold. That said, stopping to eat at a restaurant on the islands is part of the experience. We recommend it.
-
----
-
-#### Sección 3 — On Board Rules (reescribir tono — directo pero amable)
-
-Copy:
-- No smoking on board at any time
-- Don't hang from the bimini (the shade canopy) — it's built for shade, not for body weight
-- The skipper's word is final on safety and route decisions. If anyone disrespects the rules or the captain, the tour may be cancelled with no refund.
-- No bathroom on board — we plan stops at restaurants where you can use facilities
-
----
-
-#### Sección 4 — If You're Renting (sin skipper) ← NUEVA
-
-Título sugerido: **"Renting Without a Skipper — What You Need to Know"**
-
-SEO keywords: "rent speedboat Hvar without skipper", "boat rental Hvar rules"
-
-Copy:
-> "All our boats come with stereo, anchor, life jackets, and fenders. Here's what to keep in mind before you head out."
-
-Rules list:
-- **Return the tank full.** We check fuel at drop-off.
-- **The dinghy (gomon) is inspected on return.** Any damage must be covered — check it with us before leaving so there are no surprises.
-- **Respect low-speed zones.** Croatian maritime police patrol actively and issue real fines. No exceptions.
-- **Don't push the engine to full throttle.** These are Adriatic waters, not a race track. Enjoy the trip, look around.
-- **Not sure about a manoeuvre?** Ask before you go. We'd rather spend 10 minutes walking you through it than have you stuck somewhere.
-- **Tell us where you want to go.** We know the area — if you share your plan, we can flag anything to watch out for and point you to the best spots.
-- **First time in these waters?** We genuinely recommend going with a skipper. The coast has hidden coves and shallow areas that aren't obvious on a chart. If you still want to go alone, just talk to us first.
-
----
-
-#### Sección 5 — Safety (reescribir con datos reales — VERIFICAR con Nikola antes de publicar)
-
-Copy:
-- Life jackets in adult and child sizes — on board and ready
-- Full safety kit on board
-- Skipper maintains contact with shore throughout the trip
-- Captain checks weather and sea conditions before every departure — if conditions aren't right, we reschedule
-- **Boat is licensed and insured under Croatian maritime regulations** ← VERIFICAR con Nikola antes de publicar esta línea
-
----
-
-#### Sección 6 — Where We Go ← NUEVA — tres mapas embed de Google Maps
-
-**Implementación técnica:** Google Maps iframe embed estándar (sin API key). Usar `<iframe>` con `loading="lazy"` dentro de un componente React. Wrapping div con `aspect-video` o altura fija para evitar CLS.
-
-Crear en Google My Maps (Nikola/Fede): tres mapas públicos separados:
-
-**Mapa 1 — Tour Destinations**
-Pins: Hvar Harbour (punto de salida), Blue Cave (Biševo), Pakleni Islands (Palmižana, Stipanska, Vlaka), Vis Island, mejores spots de snorkeling
-Título del mapa: "MareBoats — Where We Go"
-
-**Mapa 2 — Partner Restaurants**
-Pins: restaurantes en Hvar town (socios con descuento) + restaurantes en las islas accesibles por lancha durante el tour
-Título del mapa: "MareBoats — Where to Eat"
-Nota en la página: "Most of these are only reachable by boat. Some stops can be included in your tour — ask us when booking."
-
-**Mapa 3 — Hvar Local Tips**
-Pins: miradores, playas menos conocidas, mercado local, spots fotográficos, cosas que hacer si llegás temprano o te quedás hasta tarde
-Título del mapa: "MareBoats — Hvar Local Tips"
-
-**Copy intro para la sección:**
-> "Here's where we usually go — though your route is always flexible. Blue Cave before the crowds, Pakleni for swimming, and a lunch stop somewhere you can only reach by boat."
-
-**Placeholder URL mapas:** `PLACEHOLDER_MAP_URL_TOURS`, `PLACEHOLDER_MAP_URL_RESTAURANTS`, `PLACEHOLDER_MAP_URL_HVAR`
-Nikola/Fede deben crear los mapas en Google My Maps, publicarlos, y reemplazar los placeholders.
-
----
-
-#### Sección 7 — Where to Eat (expandir la existente)
-
-**Subsección A — Restaurants in Hvar Town**
-Cards de restaurantes socios. Estructura por card:
-- Nombre del restaurante
-- Breve descripción (2 líneas)
-- Badge: "MareBoats Partner — mention us for [BENEFIT_PLACEHOLDER]"
-- Nota: "Most accept cards, but cash is always preferred."
-
-Placeholder hasta que Nikola confirme: "We're building our list of recommended spots in Hvar. Message us on WhatsApp and we'll tell you where we'd go."
-
-**Subsección B — Restaurants on the Water (accessible by boat)**
-Cards de restaurantes en las islas o en el agua. Mismo formato.
-Copy adicional: "Some of these are only reachable by boat. Depending on your tour, we can include a lunch stop — just let us know when booking. Private water taxi from your yacht or sailboat also available."
-
-**Nota general en ambas subsecciones:**
-> "Most restaurants accept cards, but they genuinely prefer cash. Bring some."
-
----
-
-#### Sección 8 — Hotel Partners ← NUEVA placeholder
-
-Título: "Arriving by Boat? We Work With Local Hotels"
-
-Copy:
-> "One of our partner hotels has its own pier — you can start or end your tour directly from there, no need to come to the harbour first. Message us and we'll connect you with the right people."
-
-Estructura: card con nombre del hotel (PLACEHOLDER), descripción breve, badge "Has Private Pier", CTA WhatsApp.
-Nikola confirma nombre y detalles.
-
----
-
-#### Sección 9 — Meeting Point (reescribir con datos reales)
-
-Copy:
-> "We meet at Hvar Harbour, next to the fuel station. It's the easiest spot to find — you'll see the boats lined up."
-
-- Link directo a Google Maps: https://maps.app.goo.gl/U6kgAaRG81KZmqUEA
-- **Callout box visible (no inline):** "💡 Tip for Nikola: A sign with the MareBoats logo and a QR code pointing to this page would help guests find the boat fast — and gives passing tourists a reason to visit the site and book."
-
----
-
-#### Sección 10 — FAQ expandida (actualizar JSON-LD también)
-
-Preguntas a agregar o reescribir:
-
-```
-Q: Can I bring my own food and drinks on board?
-A: Yes. You can bring whatever you like — glass bottles included. We have a cooler with ice on board, or bring your own. That said, stopping to eat at a restaurant on the islands is part of the experience — we recommend it.
-
-Q: Is there a bathroom on board?
-A: No. We plan stops at restaurants and beaches where you can use facilities. It works out fine on a full-day tour.
-
-Q: Can I snorkel at every stop?
-A: Yes, except inside Blue Cave itself. We have snorkel gear on board in limited quantity. Bringing your own mask and fins is recommended — you'll want to swim at every stop.
-
-Q: Do I need water shoes?
-A: Not mandatory. But if you're sensitive to rocky surfaces, they're worth packing. Some coves have sharp pebbles.
-
-Q: What's included in the price?
-A: The boat, the skipper, snorkel gear, and a cooler with ice. Entrance to Blue Cave (€20–25/person) is paid separately on site. Lunch and drinks are on you — we know where to stop.
-
-Q: Can I rent a boat without a skipper?
-A: Yes, if you have the required licence. All boats have stereo, anchor, life jackets and fenders. Respect low-speed zones — maritime police patrol and fine actively. We recommend going with a skipper if it's your first time in these waters.
-
-Q: What happens if the weather is bad?
-A: We check conditions every morning. If it's not safe, we reschedule at no cost. Safety first, always.
-
-Q: Can you pick us up from our yacht or sailboat?
-A: Yes. We offer water taxi service for boats anchored in the area — pickup from your yacht, transfer to shore or to a tour starting point. Message us on WhatsApp with your location and we'll sort it out.
-```
-
-**Actualizar FAQPage JSON-LD** en `components/ui/JsonLd.tsx` con todas estas preguntas.
-
----
-
-### Metadata de /guide (actualizar):
+### Metadata
 ```tsx
-title: 'Hvar Boat Tour Guide — What to Know Before You Go | MareBoats'
-description: 'Everything you need for a private boat tour in Hvar. What to bring, where to eat, where we go, safety rules, snorkeling tips, and local restaurant recommendations.'
+title: 'Hvar Boat Tour Guide | What to Bring, Rules & Tips'
+description: 'Complete guide for MareBoats tours: packing list, weather policy, FAQs, and insider tips for your Hvar boat experience.'
+keywords: ['hvar boat tour guide', 'what to bring boat tour', 'boat tour packing list', 'hvar tour rules']
+url: 'https://mareboatshvar.com/guide'
 ```
 
-**Commit:** `git commit -m 'feat: /guide expandida — contenido SEO, mapas, alianzas, rental rules, yacht taxi'`
+### Estructura (5 secciones)
+```
+/guide
+├── Hero: "Everything you need to know before your tour"
+├── Sección 1: WHERE WE GO — Google My Maps embed #1 (placeholder) + destinos
+├── Sección 2: WHAT TO BRING — grid 6 items con ícono + 1 línea
+├── Sección 3: RULES & RENTALS — accordion expandible (vidrio ✅, fumar ❌, baño ⚠️, heladera ✅)
+├── Sección 4: FAQ PRE-TOUR — accordion 8-10 preguntas + FAQPage schema JSON-LD
+├── Sección 5: WEATHER POLICY — alert box, política de cancelación
+└── CTA: "More questions? Message Nikola on WhatsApp"
+```
+
+### Archivos a tocar
+- app/guide/page.tsx — refactor completo
+- components/ui/JsonLd.tsx — actualizar FAQPage schema con las nuevas preguntas
+- lib/guide-content.ts — actualizar con las 5 secciones (si existe)
+
+### Commit
+```bash
+git commit -m "feat: fase 15 — /guide reorganizada con 5 secciones (where, what to bring, rules, faq, weather)"
+```
 
 ---
 
-## FASE 14 — Nuevo servicio: Yacht & Sailboat Taxi
+## FASE 16 — 5 Landing Pages con Smart Routing
 
-**Objetivo:** Capturar tráfico long-tail de turistas que llegan en velero o yate y necesitan transfer al puerto o quieren empezar un tour desde a bordo.
+### Objetivo
+Un QR code, un destino específico por contexto. Cada página tiene 1 CTA claro.
 
-**Keywords objetivo:** "water taxi Hvar yacht", "boat transfer Hvar harbour", "speedboat taxi Hvar sailing"
+### Rutas
 
-### Tareas:
+| Ruta | Quién | Objetivo | Indexable |
+|------|-------|----------|-----------|
+| /landing/explore | Turista en muelle (no bookeó) | Convertir a booking WhatsApp | ✅ SÍ |
+| /landing/pre-tour | Cliente que ya bookeó (Nikola le manda link) | Llegar preparado | ❌ noindex |
+| /landing/review | Cliente que terminó el tour (QR en barco) | Dejar review en Google Maps | ❌ noindex |
+| /landing/guide-hvar | Turista con guide impreso | SEO long-tail + engagement | ✅ SÍ |
+| /landing/rental | Cliente alquilando sin skipper | Informar reglas | opcional noindex |
 
-**14.1 — Agregar entrada en `lib/tours-data.ts`:**
-```ts
-{
-  slug: 'yacht-sailboat-taxi',
-  name: 'Yacht & Sailboat Water Taxi',
-  shortDescription: 'Anchored in the area? We pick you up from your yacht and take you wherever you need — harbour, beach, restaurant, or tour starting point.',
-  description: `...300+ words SEO...`,
-  duration: 'On demand',
-  price: 'From €XX',
-  includes: ['Pickup from anchored vessel', 'Drop-off at destination', 'Can connect to any MareBoats tour'],
-  keywords: ['water taxi Hvar', 'yacht transfer Hvar', 'sailboat taxi Hvar Croatia', 'boat pickup Hvar harbour'],
-  meetingPoint: 'We come to you — send us your coordinates on WhatsApp'
+### Estructura de archivos
+```
+app/landing/
+├── explore/page.tsx
+├── pre-tour/page.tsx
+├── review/page.tsx
+├── guide-hvar/page.tsx
+└── rental/page.tsx
+
+app/review/page.tsx  ← redirect 301 → Google Business Profile
+```
+
+### /landing/explore
+```
+Hero: "Choose Your Adventure" + "⭐ 100+ happy guests"
+Tours Grid: 4 cards (Blue Cave, Pakleni, Sunset, Charter) con precio + CTA WhatsApp
+CTA Section: "When are you visiting Hvar?" + WhatsApp prominente + "We reply within 1 hour"
+Trust: 3 reviews + Google Maps score
+```
+Metadata: `title: 'Private Boat Tours Hvar | Blue Cave & Island Tours'`
+SEO keywords: boat tour hvar, private boat hvar, blue cave tour, pakleni islands boat
+
+### /landing/pre-tour (noindex)
+```
+Hero: "Your MareBoats Tour is Tomorrow! 🌊"
+Sección 1: MEETING POINT — "Hvar Harbour, main dock" + Google Maps embed
+Sección 2: TIMELINE — 9:00 meet / 9:15 depart / 11:00 Blue Cave / 13:00 lunch / 16:00 back
+Sección 3: WHAT TO BRING — checklist visual (checkboxes no funcionales)
+Sección 4: IMPORTANT INFO — weather cancellation policy + WhatsApp Nikola
+Sección 5: BONUS — Spotify playlist + Instagram @mareboats.hvar
+CTA: "See you tomorrow! 🌊" + WhatsApp +385 95 196 6734
+```
+
+### /landing/review (noindex)
+```
+Hero: "Thanks for joining us! 🎉" + "Help us stay #1 in Hvar"
+CTA GIGANTE: "⭐ Leave a Review on Google" → apunta a /review (que redirige a Google Business)
+Copia: "Takes 30 seconds"
+Bonus: Spotify playlist + "Tag us @mareboats.hvar" + "Your photos are our best marketing"
+```
+
+### /review (redirect)
+```tsx
+// app/review/page.tsx
+// 301 redirect a Google Business Profile review URL
+// URL: https://maps.app.goo.gl/U6kgAaRG81KZmqUEA (confirmar URL directa de review)
+```
+
+### /landing/guide-hvar (indexable)
+```
+Hero: "You have time in Hvar? 🏝️" — "Must-see spots, restaurants, hidden gems"
+Sección 1: WHERE TO EAT — Google My Maps embed #2 (Partner Restaurants) — placeholder
+Sección 2: WHAT TO DO — Old Town, beaches, beach clubs, nightlife
+Sección 3: LOCAL TIPS — horarios, moneda, números de emergencia
+Sección 4: MAPS — Google My Maps embed #3 (Hvar Local Tips) — placeholder
+CTA Primario: "Want to explore from the sea?" → /landing/explore
+CTA Secundario: Instagram @mareboats.hvar
+```
+Metadata: `title: 'Hvar Travel Guide | Restaurants, Beaches & Local Tips'`
+SEO keywords: hvar croatia guide, things to do hvar, hvar restaurants, hvar beaches
+
+### /landing/rental
+```
+Hero: "Boat Rental — Important Rules" + "We want you to have fun & stay safe"
+Sección 1: FUEL & MAINTENANCE — full tank in/out, dónde recargar
+Sección 2: SPEED ZONES — mapa + multas reales de policía marina + "national laws"
+Sección 3: SAFETY & EQUIPMENT — chalecos, botiquín, radio, instrucciones
+Sección 4: DAMAGE POLICY — qué cubre / no cubre / depósito / cómo reportar
+Sección 5: ALCOHOL & SMOKING — alcohol ✅ con moderación / smoking solo en proa ❌ cabina / botellas vidrio OK en deck
+Sección 6: RETURN PROCESS — hora, checklist devolución, fotos pre/post
+FAQ Accordion: "What if I run out of fuel?", "Can I go to Italy?", "Bad weather?", "Can I hire a skipper?"
+CTA: "Questions? Call Nikola" + link a /landing/explore
+```
+
+### Commit
+```bash
+git commit -m "feat: fase 16 — 5 landing pages con smart routing (/explore, /pre-tour, /review, /guide-hvar, /rental)"
+```
+
+---
+
+## FASE 17 — WhatsApp Templates + Post-Booking Flow
+
+### Template de Nikola (1 línea)
+Después de confirmar booking:
+```
+Tu tour está confirmado ✅
+Toda la info aquí: mareboatshvar.com/landing/pre-tour
+¡Nos vemos! 🌊
+```
+
+Follow-up (día anterior, 2 horas antes):
+```
+Buen día! Tu tour es hoy a las 09:00 en Hvar Harbour, main dock.
+Último check: mareboatshvar.com/landing/pre-tour
+¡Nos vemos! ⛵
+```
+
+Post-tour:
+```
+¡Gracias por viajar con nosotros! 🎉
+Dejá una reseña rápida: mareboatshvar.com/review
+Compartí tus fotos: @mareboats.hvar 📸
+```
+
+### Archivos a crear
+```
+/public/docs/NIKOLA_WHATSAPP_TEMPLATES.md — templates copiables para Nikola
+/public/docs/QR_CODES_GUIDE.md — cómo generar los QR (para Nikola)
+/public/docs/GOOGLE_MAPS_SETUP.md — cómo crear los 3 mapas My Maps
+```
+
+### Commit
+```bash
+git commit -m "feat: fase 17 — WhatsApp templates + post-booking flow (Nikola reference)"
+```
+
+---
+
+## FASE 18 — QR Code Strategy (Físico)
+
+### 3 QR Codes
+
+| QR | Ubicación | URL destino | Objetivo |
+|----|-----------|-------------|----------|
+| #1 Muelle | Cartel harbour | /landing/explore | Turistas indecisos → booking |
+| #2 Barco | Sticker popa/cabina | /landing/review | Reviews post-tour → Google ranking |
+| #3 Guide | Guide impreso | /landing/guide-hvar | Engagement + SEO long-tail |
+
+### Cartel QR #1 (printable)
+```
+╔════════════════════════════════════╗
+║   🎫 BOAT TOURS FROM HVAR HARBOUR  ║
+║          [QR CODE HERE]            ║
+║      Scan for tours & prices       ║
+║      Private • Professional • Fun  ║
+║     mareboatshvar.com/landing/     ║
+║              explore               ║
+╚════════════════════════════════════╝
+```
+
+### Sticker QR #2 (pequeño, discreto)
+```
+⭐ Just finished?
+Leave a review:
+[QR CODE]
+30 seconds. Huge help.
+```
+
+### Generación (para Nikola)
+Tool: https://www.qr-code-generator.com (free)
+Color sugerido: turquesa #3BC9DB o blanco/negro
+Descargar PNG alta resolución para impresión
+Testear en múltiples teléfonos antes de imprimir
+
+### Commit
+```bash
+git commit -m "feat: fase 18 — QR code strategy + embed templates (muelle, barco, guide)"
+```
+
+---
+
+## FASE 19 — Google My Maps Embeds
+
+### 3 Mapas a crear (Nikola o Fede en Google My Maps)
+
+| Mapa | Dónde se usa | Pins sugeridos |
+|------|-------------|----------------|
+| Tour Destinations | /guide#where-we-go | Blue Cave, Pakleni Islands N/S, Hvar Harbour, lunch spots |
+| Partner Restaurants | /landing/guide-hvar#where-to-eat | Restaurantes Hvar Town + en las islas |
+| Hvar Local Tips | /landing/guide-hvar#maps | Old Town, beaches, beach clubs, farmacia, ATM, hospital |
+
+### Cómo Nikola publica los mapas
+1. Ir a https://www.google.com/mymaps
+2. Crear mapa, agregar pins, publicar → "Anyone with the link can view"
+3. Share → "Embed on my website" → copiar URL del atributo `src` del iframe
+4. Pegar en lib/maps-data.ts
+
+### lib/maps-data.ts (a crear)
+```tsx
+export const MAPS = {
+  tourDestinations: null,       // TODO: Nikola agrega embed URL
+  partnerRestaurants: null,     // TODO: Nikola agrega embed URL
+  hvarLocalTips: null,          // TODO: Nikola agrega embed URL
 }
 ```
 
-**14.2 — Crear `app/tours/yacht-sailboat-taxi/page.tsx`:**
-- Metadata SEO única con keywords long-tail
-- H1: "Water Taxi & Yacht Transfer — Hvar"
-- Copy: directo, explica el servicio, CTA WhatsApp con mensaje pre-cargado "Hi, I need a water taxi from my yacht. My location is: [coordinates]"
-- Agregar al sitemap con priority 0.7
+### Implementación en componentes
+```tsx
+{MAPS.tourDestinations && (
+  <iframe
+    width="100%"
+    height="400"
+    style={{ border: 0 }}
+    loading="lazy"
+    allowFullScreen
+    src={MAPS.tourDestinations}
+    title="MareBoats tour destinations map"
+  />
+)}
+```
 
-**14.3 — Mencionar en /guide:**
-En la sección "Where to Eat — Restaurants on the Water" y en la FAQ, agregar referencia natural: "Private water taxi from your yacht or sailboat also available."
+Nota: Si `null`, mostrar placeholder: "Map coming soon — check back before your tour"
 
-**Commit:** `git commit -m 'feat: nuevo servicio yacht & sailboat water taxi con página SEO'`
+### Commit
+```bash
+git commit -m "feat: fase 19 — Google My Maps embeds integrados en /guide + /landing pages"
+git commit -m "docs: actualizado CLAUDE.md con fases 15-19 completadas"
+```
 
 ---
 
-## PENDIENTE DE TERCEROS (no bloqueante para entrega 30/04)
+## Arquitectura final de URLs (post Fases 15-19)
 
-- Precios reales 5 tours + transfer + yacht taxi → `lib/tours-data.ts` (actualmente `From €XX`)
-- Reviews reales OTAs → `Testimonials.tsx` (actualmente placeholders UK/DE/USA)
-- Fotos profesionales → comprimir <500KB antes de subir (Fede viaja a Hvar)
-- Cambios estéticos de Coti
-- **Nikola:** Nombres de restaurantes socios + beneficio para guests (descuento, welcome drink, etc.)
-- **Nikola:** Nombre y detalles del hotel socio con muelle
-- **Nikola/Fede:** Crear 3 mapas en Google My Maps (tours, restaurantes, Hvar tips) → reemplazar `PLACEHOLDER_MAP_URL_*` en guide
-- **Nikola:** Confirmar que el barco está licensiado y asegurado bajo regulaciones marítimas croatas antes de publicar esa línea en /guide
-- **Nikola:** Precio del servicio yacht taxi
+```
+mareboatshvar.com/
+├── / (HOME)
+├── /tours/[slug] — 6 tours individuales
+├── /guide ✨ REORGANIZADA (Fase 15)
+├── /landing/explore (Fase 16) ← QR #1 muelle
+├── /landing/pre-tour (Fase 16) ← Nikola lo manda por WhatsApp
+├── /landing/review (Fase 16) ← QR #2 barco
+├── /landing/guide-hvar (Fase 16) ← QR #3 guide impreso
+├── /landing/rental (Fase 16)
+└── /review ← redirect 301 → Google Business Profile
+```
+
+---
+
+## PENDIENTE DE TERCEROS — desbloquea contenido final
+
+| Item | Responsable | Dónde se usa |
+|------|-------------|--------------|
+| Mapa Google My Maps — Tour Destinations (embedUrl) | Nikola / Fede | /guide → Where We Go |
+| Mapa Google My Maps — Partner Restaurants (embedUrl) | Nikola / Fede | /landing/guide-hvar → Where to Eat |
+| Mapa Google My Maps — Hvar Local Tips (embedUrl) | Nikola / Fede | /landing/guide-hvar → Maps |
+| Lista de restaurantes socios Hvar Town + beneficio para guests | Nikola | /landing/guide-hvar → Where to Eat |
+| Lista de restaurantes en el agua (islas) accesibles por lancha | Nikola | /landing/guide-hvar → Restaurants on the Water |
+| URL directa de Google Business review page | Nikola | /review redirect |
+| Spotify playlist link "Hvar vibes" | Fede | /landing/pre-tour + /landing/review |
+| Precios reales 5 tours + transfer + yacht taxi | Nikola | lib/tours-data.ts |
+| Reviews reales OTAs | Nikola | components/sections/Testimonials.tsx |
+| Fotos profesionales | Fede (viaja a Hvar) | Comprimir <500KB antes de agregar |
+| Cambios estéticos | Coti | — |
+
+### Cómo crear los mapas (para Nikola o Fede):
+1. Ir a https://www.google.com/mymaps
+2. Crear mapa nuevo, agregar pins, publicar → "Anyone with the link can view"
+3. Botón "Share" → "Embed on my website" → copiar la URL del atributo `src` del iframe
+4. Pegar esa URL en `lib/maps-data.ts` reemplazando `null`
 
 ---
 
@@ -355,5 +391,7 @@ En la sección "Where to Eat — Restaurants on the Water" y en la FAQ, agregar 
 - npm run build debe pasar sin errores al terminar cada fase
 - Commit al terminar cada fase con el mensaje indicado
 - NUNCA tocar /src/components/ — legacy
-- NUNCA cambiar copy ni imágenes existentes sin instrucción explícita
+- NUNCA cambiar copy ni imágenes existentes sin instrucción explícica
 - Los idiomas a bordo (EN/HR/IT/ES) solo aplican cuando Fede es el skipper — no prometer en copy genérico
+- /landing/pre-tour y /landing/review son noindex: true
+- /review redirige a Google Business Profile — no es una página indexable
