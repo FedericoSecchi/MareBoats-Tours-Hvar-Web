@@ -33,7 +33,7 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 12 ✅ commit 7865a48 — Fix colores/tokens en todas las páginas internas + refactor btn-primary/btn-secondary/section-heading en globals.css
 - Fase 13 ✅ commit eeeadf1 — /guide expandida: 10 secciones, 8 FAQs JSON-LD, mapas embed, alianzas, rental rules, yacht taxi
 - Fase 14 ✅ commit 950dde6 — Nuevo servicio: /tours/yacht-sailboat-taxi con SEO long-tail + WhatsApp pre-cargado
-- Fase 15 ⬜ PRÓXIMA — /guide reorganizada: 5 secciones claras (Where We Go, What to Bring, Rules & Rentals, FAQ, Weather Policy)
+- Fase 15 ✅ commit dc334dc — /guide reorganizada: 5 secciones (Where We Go + map embed, What to Bring x6 con SVG, Rules & Rentals accordion, FAQ x8 accordion + JSON-LD, Weather Policy alert) + lib/maps-data.ts
 - Fase 16 ⬜ PENDIENTE — 5 landing pages: /landing/explore, /pre-tour, /review, /guide-hvar, /rental
 - Fase 17 ⬜ PENDIENTE — WhatsApp templates + post-booking flow (archivos de referencia en /public/docs/)
 - Fase 18 ⬜ PENDIENTE — QR code strategy (3 físicos: muelle, barco, guide)
