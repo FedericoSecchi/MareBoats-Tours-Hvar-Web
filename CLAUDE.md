@@ -27,9 +27,9 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 9  ✅ commit 78e989b — UX/Conversión: WhatsApp CTAs, cards simétricas, TourHero, transfer slug, Instagram footer
 - Fase 10 ✅ commit be472fd — Guest Guide /guide pública + FAQPage schema + sitemap
 - Fase 11 ✅ commit e7ec143 — Copy humano: Hero, CTAs, Features, FAQ sin adjetivos vacíos
-- Fase 12 ⬜ PRÓXIMA — Fix colores páginas internas
-- Fase 13 ⬜ PENDIENTE — /guide expandida: contenido SEO + mapas + alianzas
-- Fase 14 ⬜ PENDIENTE — Nuevo servicio: Yacht & Sailboat Taxi
+- Fase 12 ✅ commit 7865a48 — Tokens unificados en páginas internas (about, blue-cave, boat-rental, faq, sunset, transfers, tours/index) + btn-primary/secondary refactor en globals.css
+- Fase 13 ✅ commit eeeadf1 — /guide expandida: 10 secciones (Day on Water, What to Bring, On Board Rules, Renting, Safety, Where We Go con maps embeds, Restaurants Hvar Town, Restaurants on Water, Hotel Partners, Meeting Point, FAQ x8 + JSON-LD)
+- Fase 14 ✅ commit 950dde6 — Yacht & Sailboat Water Taxi en /tours/yacht-sailboat-taxi con SEO long-tail, link desde /guide y mensaje WhatsApp pre-cargado con coordenadas
 
 ## Datos reales de performance (Lighthouse 18/04/2026 — post Fase 7)
 - Desktop: Performance 98 ✅ — LCP 0.8s ✅ — CLS 0.072 — TBT 40ms
