@@ -6,22 +6,35 @@ import {
   guideFaqs,
   whatToBring,
   onBoardRules,
-  swimmingSpots,
-  restaurants,
+  dayOnWaterCopy,
+  dayOnWaterPoints,
+  rentingIntro,
+  rentingRules,
+  safetyPoints,
+  whereWeGoIntro,
+  whereWeGoMaps,
+  restaurantsHvarTown,
+  restaurantsHvarTownIntro,
+  restaurantsOnWater,
+  restaurantsOnWaterIntro,
+  hotelPartners,
+  hotelPartnersIntro,
 } from '@/lib/guide-content';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Your Hvar Boat Tour Guide | What to Bring, Swim Spots & Tips',
+  title: 'Hvar Boat Tour Guide — What to Know Before You Go',
   description:
-    'Everything you need to know before your private boat tour in Hvar. What to bring, where we swim, weather policy and local restaurant tips from Mare Boats Hvar.',
+    'Everything you need for a private boat tour in Hvar. What to bring, where to eat, where we go, safety rules, snorkeling tips, and local restaurant recommendations.',
   keywords: [
+    'hvar boat tour guide',
     'what to bring boat tour hvar',
-    'swimming blue cave croatia',
-    'hvar boat tour tips',
-    'weather policy boat charter',
+    'rent speedboat hvar without skipper',
+    'boat rental hvar rules',
+    'water taxi hvar yacht',
+    'where to eat hvar by boat',
     'hvar harbour meeting point',
-    'restaurants hvar harbour',
-    'sea sickness boat tour tips',
+    'pakleni islands restaurants',
+    'blue cave hvar tips',
   ],
   slug: 'guide',
 });
@@ -88,8 +101,8 @@ export default function GuidePage() {
             Your Hvar Boat Tour Guide
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            What to bring, where we swim, weather policy and local restaurant tips. Read this before
-            you sail with us — it makes the day better.
+            Everything you need for a private boat tour in Hvar — what to bring, where we go, where
+            to eat and what to know before you sail with us.
           </p>
           <div className="mt-7 flex justify-center">
             <CtaButton>Book on WhatsApp</CtaButton>
@@ -97,49 +110,25 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* What to bring */}
+      {/* Section 1 — Your Day on the Water */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
-        <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Pack list" title="What to Bring" />
-          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Keep it light. We provide snorkeling gear, towels and bottled water on board.
-          </p>
-          <ul className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2">
-            {whatToBring.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 font-body text-sm text-[color:var(--white)]"
-              >
-                <span aria-hidden="true" className="mt-0.5 text-[color:var(--accent)]">
-                  ✓
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Swimming & snorkeling */}
-      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container gap-10 md:grid-cols-[1fr_1.4fr] md:items-start">
-          <SectionHeading eyebrow="On the water" title="Swimming & Snorkeling" />
+          <SectionHeading eyebrow="The day, told straight" title="Your Day on the Water" />
           <div>
-            <p className="font-body text-base leading-relaxed text-[color:var(--gray)]">
-              Yes, you will get wet. Most of the day is built around swim stops. Here is where we
-              normally go and what to expect at each.
+            <p className="font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+              {dayOnWaterCopy}
             </p>
-            <ul className="mt-6 flex flex-col gap-4">
-              {swimmingSpots.map((spot) => (
+            <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {dayOnWaterPoints.map((point) => (
                 <li
-                  key={spot.name}
-                  className="rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/50 p-5"
+                  key={point.title}
+                  className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5"
                 >
                   <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                    {spot.name}
+                    {point.title}
                   </h3>
-                  <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                    {spot.detail}
+                  <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                    {point.detail}
                   </p>
                 </li>
               ))}
@@ -148,15 +137,71 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* On board rules */}
+      {/* Section 2 — What to Bring */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <SectionHeading eyebrow="Pack list" title="What to Bring" />
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6">
+              <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                Essentials
+              </h3>
+              <ul className="mt-4 flex-1 space-y-2">
+                {whatToBring.essentials.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 font-body text-sm leading-relaxed text-[color:var(--gray)]"
+                  >
+                    <span aria-hidden="true" className="mt-1 text-[color:var(--accent)]">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6">
+              <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                Optional but recommended
+              </h3>
+              <ul className="mt-4 flex-1 space-y-2">
+                {whatToBring.optional.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 font-body text-sm leading-relaxed text-[color:var(--gray)]"
+                  >
+                    <span aria-hidden="true" className="mt-1 text-[color:var(--accent)]">+</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6">
+              <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                Drinks &amp; food
+              </h3>
+              <ul className="mt-4 flex-1 space-y-3">
+                {whatToBring.drinksAndFood.map((item) => (
+                  <li
+                    key={item}
+                    className="font-body text-sm leading-relaxed text-[color:var(--gray)]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3 — On Board Rules */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="On board" title="A Few Simple Rules" />
+          <SectionHeading eyebrow="On board" title="On Board Rules" />
           <ul className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2">
             {onBoardRules.map((rule) => (
               <li
                 key={rule}
-                className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 font-body text-sm text-[color:var(--white)]"
+                className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-4 font-body text-sm leading-relaxed text-[color:var(--white)]"
               >
                 {rule}
               </li>
@@ -165,64 +210,223 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* Safety */}
+      {/* Section 4 — Renting Without a Skipper */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
-        <div className="mx-auto grid max-w-container gap-10 md:grid-cols-[1fr_1.4fr] md:items-start">
-          <SectionHeading eyebrow="Safety first" title="On the Boat" />
-          <ul className="space-y-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-            <li>
-              VHF radio, GPS and a full safety kit on board. Captain checks weather and sea
-              conditions before every trip.
-            </li>
-            <li>Life jackets in adult and child sizes, ready for everyone on board.</li>
-            <li>
-              Captain&apos;s decision is final on routes and weather. We choose sheltered bays when
-              the wind picks up.
-            </li>
-            <li>Boat is licensed and insured under Croatian maritime regulations.</li>
+        <div className="mx-auto max-w-container">
+          <SectionHeading
+            eyebrow="If you have a licence"
+            title="Renting Without a Skipper — What You Need to Know"
+          />
+          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+            {rentingIntro}
+          </p>
+          <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+            {rentingRules.map((rule) => (
+              <li
+                key={rule.title}
+                className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
+              >
+                <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                  {rule.title}
+                </h3>
+                <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {rule.detail}
+                </p>
+              </li>
+            ))}
           </ul>
         </div>
       </section>
 
-      {/* Weather policy */}
+      {/* Section 5 — Safety */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+        <div className="mx-auto grid max-w-container gap-10 md:grid-cols-[1fr_1.4fr] md:items-start">
+          <SectionHeading eyebrow="Safety first" title="On the Boat" />
+          <ul className="space-y-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
+            {safetyPoints.map((point) => (
+              <li key={point} className="flex items-start gap-3">
+                <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--accent)]" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Section 6 — Where We Go (3 maps) */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="If the wind picks up" title="Weather Policy" />
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
-              <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                Strong wind (Bura or Jugo)
-              </h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                If the captain decides the sea is unsafe, we reschedule for another day or refund
-                your booking — your choice. We do not run tours in unsafe conditions.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
-              <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                Mixed weather
-              </h3>
-              <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                If conditions are usable but the original route is not safe, we adjust on the day —
-                more sheltered bays, shorter crossings, same time on the water.
-              </p>
-            </div>
+          <SectionHeading eyebrow="On the chart" title="Where We Go" />
+          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+            {whereWeGoIntro}
+          </p>
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
+            {whereWeGoMaps.map((map) => (
+              <article
+                key={map.id}
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60"
+              >
+                <div className="aspect-video w-full bg-[color:var(--bg)]">
+                  {map.embedUrl ? (
+                    <iframe
+                      src={map.embedUrl}
+                      title={`MareBoats — ${map.title} map`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="h-full w-full border-0"
+                    />
+                  ) : (
+                    <a
+                      href={map.fallbackUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-full w-full items-center justify-center bg-[color:var(--bg)] p-6 text-center transition-colors duration-300 hover:bg-[color:var(--bg)]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60"
+                    >
+                      <span className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+                        Map coming soon · open in Google Maps →
+                      </span>
+                    </a>
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                    {map.title}
+                  </h3>
+                  <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                    {map.description}
+                  </p>
+                </div>
+              </article>
+            ))}
           </div>
-          <p className="mt-6 font-body text-sm text-[color:var(--gray)]">
-            We message you on WhatsApp the evening before your tour with a final confirmation and
-            any weather notes.
+        </div>
+      </section>
+
+      {/* Section 7 — Where to Eat */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container space-y-12">
+          <div>
+            <SectionHeading eyebrow="Local picks" title="Restaurants in Hvar Town" />
+            <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+              {restaurantsHvarTownIntro}
+            </p>
+            {restaurantsHvarTown.length > 0 ? (
+              <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {restaurantsHvarTown.map((r) => (
+                  <li
+                    key={r.name}
+                    className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
+                  >
+                    <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                      {r.name}
+                    </h3>
+                    <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                      {r.description}
+                    </p>
+                    {r.perk && (
+                      <span className="mt-4 inline-flex w-fit items-center rounded-pill border border-[color:var(--accent)]/60 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                        MareBoats Partner — {r.perk}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+
+          <div>
+            <SectionHeading eyebrow="Reachable by boat" title="Restaurants on the Water" />
+            <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+              {restaurantsOnWaterIntro}
+            </p>
+            {restaurantsOnWater.length > 0 ? (
+              <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                {restaurantsOnWater.map((r) => (
+                  <li
+                    key={r.name}
+                    className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
+                  >
+                    <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                      {r.name}
+                    </h3>
+                    <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                      {r.description}
+                    </p>
+                    {r.perk && (
+                      <span className="mt-4 inline-flex w-fit items-center rounded-pill border border-[color:var(--accent)]/60 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                        MareBoats Partner — {r.perk}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+
+          <p className="font-body text-sm text-[color:var(--gray)]">
+            Most restaurants accept cards, but they genuinely prefer cash. Bring some.
           </p>
         </div>
       </section>
 
-      {/* Meeting point */}
+      {/* Section 8 — Hotel Partners */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <SectionHeading
+            eyebrow="Arriving by boat?"
+            title="We Work With Local Hotels"
+          />
+          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+            {hotelPartnersIntro}
+          </p>
+          {hotelPartners.length > 0 ? (
+            <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+              {hotelPartners.map((hotel) => (
+                <li
+                  key={hotel.name}
+                  className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6"
+                >
+                  <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                    {hotel.name}
+                  </h3>
+                  <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                    {hotel.description}
+                  </p>
+                  {hotel.hasPrivatePier && (
+                    <span className="mt-4 inline-flex w-fit items-center rounded-pill border border-[color:var(--accent)]/60 px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                      Has Private Pier
+                    </span>
+                  )}
+                  <a
+                    href={WA_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex w-fit items-center gap-2 rounded-pill bg-[color:var(--accent)] px-5 py-2.5 font-body text-sm font-semibold text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]"
+                  >
+                    Ask on WhatsApp
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="mt-8 rounded-2xl border border-dashed border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6">
+              <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                Hotel partner details coming soon. In the meantime, message us on WhatsApp with the
+                name of your hotel and we will tell you the easiest way to start your tour.
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Section 9 — Meeting Point */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container gap-10 md:grid-cols-[1fr_1.4fr] md:items-start">
           <SectionHeading eyebrow="Where we meet" title="Hvar Harbour" />
           <div>
-            <p className="font-body text-base leading-relaxed text-[color:var(--gray)]">
-              We meet at Hvar Harbour, in front of the main pier. The exact pier number is confirmed
-              by WhatsApp the evening before your tour. Please arrive 10 minutes early.
+            <p className="font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+              We meet at Hvar Harbour, next to the fuel station. It is the easiest spot to find —
+              you will see the boats lined up. Please arrive 10 minutes early.
             </p>
             <ul className="mt-6 space-y-2 font-body text-sm text-[color:var(--gray)]">
               <li>
@@ -234,8 +438,8 @@ export default function GuidePage() {
                 16.4413° E
               </li>
               <li>
-                <span className="text-[color:var(--white)]">Languages on board:</span> English,
-                Croatian, Italian, Spanish
+                <span className="text-[color:var(--white)]">Languages on board (Fede):</span>{' '}
+                English, Croatian, Italian, Spanish
               </li>
             </ul>
             <a
@@ -250,36 +454,10 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* Where to eat */}
-      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
-        <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Local picks" title="Where to Eat in Hvar" />
-          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            A short list of places we send guests to before or after a tour. Walking distance from
-            the harbour unless noted.
-          </p>
-          <ul className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-            {restaurants.map((r) => (
-              <li
-                key={r.name}
-                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
-              >
-                <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                  {r.name}
-                </h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                  {r.detail}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Quick FAQ */}
+      {/* Section 10 — FAQ */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-3xl">
-          <SectionHeading eyebrow="Quick FAQ" title="Common Questions" />
+          <SectionHeading eyebrow="Common questions" title="Quick FAQ" />
           <ul className="mt-8 space-y-4">
             {guideFaqs.map((faq) => (
               <li
@@ -308,14 +486,14 @@ export default function GuidePage() {
       >
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-            Ready?
+            Ready when you are
           </p>
           <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
-            Message Us on WhatsApp
+            Pick a Date. We Handle the Rest.
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Send your date, group size and the tour you want. We reply fast — usually within the
-            hour during the season.
+            Send your date, group size and the tour you want. We reply within the hour during the
+            season.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <CtaButton>Book on WhatsApp</CtaButton>
