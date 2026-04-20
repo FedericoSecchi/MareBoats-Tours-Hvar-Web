@@ -36,25 +36,28 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 15 ✅ commit dc334dc — /guide reorganizada: 5 secciones claras + lib/maps-data.ts creado
 - Fase 15.1 ✅ commit cae1265 — Fix overflow-x en todas las páginas (globals.css + word-break en h1-h4)
 - Fase 16 ✅ commit 5ea136d — 5 landing pages con smart routing (/explore, /pre-tour, /review, /guide-hvar, /rental)
-- Fase 17 ⬜ PRÓXIMA — Actualizar precios reales en lib/tours-data.ts + tours nuevos confirmados
-- Fase 18 ⬜ PENDIENTE — Nuevo tour: /tours/red-rocks-pakleni-islands + actualizar home
-- Fase 19 ⬜ PENDIENTE — Scooter rental: nuevo servicio en lib/tours-data.ts + sección o página
-- Fase 20 ⬜ PENDIENTE — WhatsApp templates en /public/docs/ para Nikola
-- Fase 21 ⬜ PENDIENTE — QR codes: archivos de instrucciones en /public/docs/ para Nikola
-- Fase 22 ⬜ PENDIENTE — Google My Maps embeds integrados (/guide + /landing pages)
-- Fase 23 ⬜ PENDIENTE — On-tour info page: /on-tour (pantalla para usar a bordo durante el viaje)
+- Fase 17 ✅ — precios reales de Nikola + drone/underwater movido a add-ons on request en todos los tours
+- Fase 18 ✅ — nuevo tour /tours/red-rocks-pakleni-islands + featured en home + sitemap + Footer
+- Fase 19 ✅ — scooter rental: sección en /landing/rental + página indexable /services/scooter-rental + sitemap
+- Fase 20 ✅ — WhatsApp templates para Nikola en /public/docs/NIKOLA_WHATSAPP_TEMPLATES.md
+- Fase 21 ✅ — QR code guide en /public/docs/QR_CODES_GUIDE.md
+- Fase 22 ✅ — MAPS.partnerRestaurants → recommendedRestaurants + /public/docs/GOOGLE_MAPS_SETUP.md
+- Fase 23 ✅ — /on-tour info page (noindex) con 9 destinos y fun facts, pensada para usar a bordo
 
 ## Build actual
-27 páginas estáticas. Rutas activas:
+30 páginas estáticas. Rutas activas:
 ```
 / (home)
 /tours/blue-cave-pakleni-islands
+/tours/red-rocks-pakleni-islands
 /tours/pakleni-islands
 /tours/sunset-cruise
 /tours/split-airport-transfer
 /tours/private-boat-charter
 /tours/yacht-sailboat-taxi
+/services/scooter-rental
 /guide
+/on-tour  (noindex, onboard reference)
 /landing/explore
 /landing/pre-tour
 /landing/review
