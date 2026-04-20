@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contact/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${base}/about/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${base}/guide/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/landing/explore/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/landing/guide-hvar/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ];
 
   const tourPages: MetadataRoute.Sitemap = toursData.map((t) => ({

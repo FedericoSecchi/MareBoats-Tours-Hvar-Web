@@ -35,7 +35,7 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 14 ✅ commit 950dde6 — Nuevo servicio: /tours/yacht-sailboat-taxi con SEO long-tail + WhatsApp pre-cargado
 - Fase 15 ✅ commit dc334dc — /guide reorganizada: 5 secciones claras + lib/maps-data.ts creado
 - Fase 15.1 ✅ FIX — overflow-x mobile: overflow-x:hidden + max-width:100% en html/body + word-break en h1-h4 (globals.css)
-- Fase 16 ⬜ PENDIENTE — 5 landing pages: /landing/explore, /pre-tour, /review, /guide-hvar, /rental
+- Fase 16 ✅ — 5 landing pages: /landing/explore (indexable), /landing/pre-tour (noindex), /landing/review (noindex) + /review redirect a Google Maps, /landing/guide-hvar (indexable), /landing/rental (indexable) + sitemap actualizado
 - Fase 17 ⬜ PENDIENTE — WhatsApp templates + post-booking flow (archivos de referencia en /public/docs/)
 - Fase 18 ⬜ PENDIENTE — QR code strategy (3 físicos: muelle, barco, guide)
 - Fase 19 ⬜ PENDIENTE — Google My Maps embeds integrados (/guide + landing pages)
