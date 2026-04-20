@@ -3,9 +3,11 @@ import Image from 'next/image';
 
 const tourLinks = [
   { href: '/tours/blue-cave-pakleni-islands', label: '5 Islands, 4 Beaches, 3 Caves' },
-  { href: '/tours/pakleni-islands', label: 'Pakleni Islands' },
+  { href: '/tours/red-rocks-pakleni-islands', label: 'Red Rocks & Pakleni' },
+  { href: '/tours/pakleni-islands', label: 'Pakleni Islands (Half Day)' },
   { href: '/tours/sunset-cruise', label: 'Sunset Cruise' },
   { href: '/tours/private-boat-charter', label: 'Private Charter' },
+  { href: '/tours/split-airport-transfer', label: 'Split ↔ Hvar Transfer' },
 ];
 
 const infoLinks = [

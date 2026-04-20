@@ -89,6 +89,71 @@ If you are researching Blue Cave boat tour Hvar options, remember that cave visi
     keywords: ['blue cave boat tour hvar', 'blue cave hvar', 'pakleni islands tour', '5 islands tour hvar', 'stiniva bay tour'],
   },
   {
+    slug: 'red-rocks-pakleni-islands',
+    name: 'Red Rocks & Pakleni Islands Tour',
+    tagline: 'Cliffs, caves and crystal water — 4 hours, private.',
+    shortDescription:
+      'Private 4-hour boat tour from Hvar: Borče Bay, Red Rocks cliffs, Dubovica Beach, a secret sea cave and Pakleni Islands. Morning or afternoon departure, up to 8 guests.',
+    description: `The Red Rocks & Pakleni Islands tour is our best half-day option from Hvar — four hours, fully private, covering the most photogenic stretch of the southern Hvar coast and finishing in the calm bays of the Pakleni archipelago. It is the ideal choice if you want big variety in a short window, or if you prefer to spend the rest of the day on land exploring Hvar town.
+
+Departing from Hvar Harbour, we head first to Borče Bay — a quiet cove on the southern coast of Hvar, perfect for a warm-up swim and a quick snorkel. From there we cruise to Red Rocks, where dramatic vertical red cliffs drop straight into turquoise water. The colour comes from iron oxide in the limestone, and the water stays deep right up to the wall, so cliff jumping from 5 to 10 metres is popular here (optional, always at your own choice and skill level).
+
+From Red Rocks we head to Dubovica Beach, one of the most iconic beaches on Hvar, protected by a natural bay with a 16th-century stone house on the shore. A few minutes away, a hidden sea cave near Dubovica — accessible only by boat or a short swim — rewards you with turquoise light and near-silence even in peak season.
+
+We finish in the Pakleni Islands at Ždrilca and Taršće: beach bars at Ždrilca for a late drink or snack, and untouched nature at Taršće when you want a quieter stop. The pace stays relaxed, and because the tour is private you can spend more time at the stops that feel right and less at the ones that do not.
+
+This tour is private only — up to 8 guests — and departs in two fixed windows: morning 09:00–13:00 or afternoon 14:00–18:00. There are no extra entrance fees along the route; lunch is optional if you add a longer stop at one of the Pakleni restaurants. Message us on WhatsApp with your preferred date and window to confirm availability.
+
+If you are comparing half day boat tours from Hvar, the Red Rocks route is the best-balanced option: it combines the photogenic cliffs of the southern coast, a genuine "secret cave" moment, an iconic beach, and the calm swimming bays of the Pakleni Islands — all in a single four-hour window.`,
+    duration: '4 hours · 09:00–13:00 or 14:00–18:00',
+    durationIso: 'PT4H',
+    price: '€400 private (up to 8)',
+    includes: [
+      'Private speedboat and local skipper',
+      'Fuel for the itinerary',
+      'Icebox on board',
+      'Bottled water',
+      'Snorkeling masks',
+    ],
+    notIncludes: [
+      'Lunch and drinks (optional stops available at Ždrilca)',
+      'Hotel pickup',
+    ],
+    addons: DEFAULT_ADDONS,
+    whatToBring: [
+      'Sunscreen, hat and sunglasses',
+      'Swimwear and a light layer for the breeze',
+      'Water shoes if you are sensitive to pebble beaches',
+    ],
+    meetingPoint: MEETING,
+    meetingPointMapsUrl: MAPS,
+    highlights: [
+      'Red Rocks — vertical red cliffs, cliff jumping, photos',
+      'Dubovica Beach — iconic Hvar bay with 16th-century stone house',
+      'Secret sea cave near Dubovica — reachable only by boat or swimming',
+      'Borče Bay — quiet cove for a warm-up swim',
+      'Pakleni Islands (Ždrilca & Taršće) — beach bars and untouched nature',
+    ],
+    images: [
+      {
+        src: '/img/destination-4.jpeg',
+        alt: 'Red Rocks and Pakleni Islands private boat tour from Hvar — turquoise water and cliffs',
+      },
+      {
+        src: '/img/destination-5.jpeg',
+        alt: 'Dubovica Beach seen from the sea on a Red Rocks boat tour from Hvar',
+      },
+    ],
+    keywords: [
+      'red rocks hvar',
+      'red rocks hvar boat tour',
+      'pakleni islands half day tour',
+      'afternoon boat tour hvar',
+      'private boat tour hvar 4 hours',
+      'dubovica beach boat hvar',
+    ],
+  },
+  {
     slug: 'pakleni-islands',
     name: 'Pakleni Islands Half Day Tour',
     tagline: 'Half day of turquoise water, hidden coves, and island hopping minutes from Hvar town.',
@@ -340,9 +405,11 @@ If you are searching for a private water taxi in Hvar, a yacht transfer, a sailb
   },
 ];
 
+/** Slugs shown in the homepage Tours grid. We feature four premium products:
+ *  the flagship full-day, the new half-day Red Rocks, sunset, and private charter. */
 export const FEATURED_TOUR_SLUGS = [
   'blue-cave-pakleni-islands',
-  'pakleni-islands',
+  'red-rocks-pakleni-islands',
   'sunset-cruise',
   'private-boat-charter',
 ] as const;
