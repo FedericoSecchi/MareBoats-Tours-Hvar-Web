@@ -240,6 +240,80 @@ export default function LandingRentalPage() {
         <SectionBlock key={s.id} s={s} index={i} />
       ))}
 
+      {/* Scooter rental — Explore by land too */}
+      <section
+        id="scooter-rental"
+        className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse at top left, rgba(59,201,219,0.10) 0%, transparent 55%)',
+        }}
+      >
+        <div className="mx-auto max-w-3xl">
+          <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+            Explore by land too
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+            Scooter Rental Hvar
+          </h2>
+          <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+            You have seen the coast from the water. Now explore the island. 6 scooters available —
+            pick up at Hvar Harbour, same spot as your boat tour. Perfect for Hvar Town, Stari
+            Grad, Jelsa and the lavender fields.
+          </p>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
+              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€50</p>
+              <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Full day</p>
+            </div>
+            <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
+              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€40</p>
+              <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Half day (PM)</p>
+            </div>
+            <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
+              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€30</p>
+              <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Half day (AM)</p>
+            </div>
+          </div>
+
+          <ul className="mt-6 flex flex-col gap-3">
+            {[
+              '6 scooters available — book early in peak season',
+              'Valid driver\u2019s license required (car licence accepted for 50cc)',
+              'Pickup at Hvar Harbour, same meeting point as the boat tours',
+              'Helmets and basic safety briefing included',
+            ].map((b) => (
+              <li
+                key={b}
+                className="flex items-start gap-3 font-body text-sm leading-relaxed text-[color:var(--white)] md:text-base"
+              >
+                <span aria-hidden="true" className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20rent%20a%20scooter%20in%20Hvar."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]"
+            >
+              <WhatsAppIcon />
+              Book a Scooter
+            </a>
+            <Link
+              href="/services/scooter-rental"
+              className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
+            >
+              More details
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-3xl">
