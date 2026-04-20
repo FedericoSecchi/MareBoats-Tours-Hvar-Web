@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const tourLinks = [
-  { href: '/tours/blue-cave-pakleni-islands', label: 'Blue Cave & Islands' },
+  { href: '/tours/blue-cave-pakleni-islands', label: '5 Islands, 4 Beaches, 3 Caves' },
   { href: '/tours/pakleni-islands', label: 'Pakleni Islands' },
   { href: '/tours/sunset-cruise', label: 'Sunset Cruise' },
   { href: '/tours/private-boat-charter', label: 'Private Charter' },
@@ -38,7 +38,7 @@ export default function Footer() {
             </Link>
             <p className="mt-4 font-body text-sm leading-relaxed text-[color:var(--gray)]">
               Private boat tours, Blue Cave excursions and transfers from Hvar Harbour, Croatia.
-              Aerial drone &amp; underwater video included on every trip.
+              Local skipper, icebox and snorkeling masks on every trip.
             </p>
           </div>
 

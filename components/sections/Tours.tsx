@@ -26,8 +26,8 @@ export default function Tours() {
             Choose Your Day on the Adriatic
           </h2>
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Four routes, one private boat. Local captain, snorkeling gear and drone video included
-            on every trip.
+            Four routes, one private boat. Local captain, fuel, icebox and snorkeling masks on every
+            trip.
           </p>
         </motion.div>
 
@@ -61,8 +61,8 @@ export default function Tours() {
                 </p>
               </div>
 
-              <div className="mt-auto flex items-center justify-between gap-4">
-                <span className="font-body text-base font-semibold text-[color:var(--accent)]">
+              <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+                <span className="font-body text-sm font-semibold leading-snug text-[color:var(--accent)]">
                   {tour.price}
                 </span>
                 <Link

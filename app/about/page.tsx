@@ -6,7 +6,7 @@ import { generateSEO } from '@/lib/seo';
 export const metadata: Metadata = generateSEO({
   title: 'About Mare Boats Hvar | Local Boat Tour Crew',
   description:
-    'Meet the team behind Mare Boats Hvar. Local crew, private speedboat tours, drone video and underwater footage. Based in Hvar port since 2019.',
+    'Meet the team behind Mare Boats Hvar. Local crew, private speedboat tours, multilingual skipper. Based at Hvar Harbour.',
   keywords: [
     'about mare boats hvar',
     'mare boats hvar team',
@@ -37,7 +37,7 @@ export default function AboutPage() {
         <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">About Mare Boats Hvar</h1>
           <p className="text-[color:var(--gray)] text-lg max-w-xl">
-            Local crew. Private boats. Drone video included. Based at Hvar port.
+            Local crew. Private boats. Based at Hvar Harbour.
           </p>
         </div>
       </section>
@@ -57,9 +57,9 @@ export default function AboutPage() {
               knows these waters inside out. We take care of the navigation; you enjoy the sea.
             </p>
             <p>
-              Our differentiator: every private tour includes <strong>aerial drone footage</strong>{' '}
-              and <strong>underwater video</strong> — a professional keepsake of your day on the
-              Adriatic that most operators don&apos;t offer.
+              Optional add-ons: we can arrange <strong>aerial drone footage</strong> and{' '}
+              <strong>underwater video</strong> of your day on the Adriatic — on request, paid
+              separately, and only when Fede (our skipper with the camera gear) is on board.
             </p>
           </div>
           <div className="relative h-72 rounded-2xl overflow-hidden">
@@ -82,8 +82,8 @@ export default function AboutPage() {
             {[
               {
                 icon: '🎬',
-                title: 'Drone & Underwater Video',
-                desc: 'Professional aerial drone footage and underwater video included in every private tour. Leave with memories that last.',
+                title: 'Optional Drone & Underwater',
+                desc: 'Aerial drone footage and underwater video available on request as a paid add-on when Fede is on board. Ask us when you book.',
               },
               {
                 icon: '🚤',

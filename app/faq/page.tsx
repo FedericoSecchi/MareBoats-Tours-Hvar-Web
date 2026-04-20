@@ -58,7 +58,7 @@ const faqSections = [
       {
         question: 'Do you include drone and underwater video?',
         answer:
-          'Yes — aerial drone footage and underwater video are included in all private tours. This is one of our key differentiators. You leave with a unique visual keepsake of your day.',
+          'Not by default. Drone and underwater video are available on request as a paid add-on, and only when Fede (our skipper with the camera gear) is on board. Ask when you book and we will let you know if it can be arranged for your date.',
       },
       {
         question: 'Can you customise the itinerary?',
@@ -93,7 +93,7 @@ const faqSections = [
       {
         question: 'Is the Blue Cave entrance fee included?',
         answer:
-          'No — the Blue Cave entrance fee (approximately €18 per person) and Green Cave fee (~€12 pp) are paid separately on site. These are national park fees set by the Croatian government.',
+          'No — the Blue Cave entrance fee (€24 per person) and Green Cave fee (€12 per person) are paid separately on site in cash. These are official fees set by the local authorities on Biševo.',
       },
       {
         question: 'Do you provide lunch?',

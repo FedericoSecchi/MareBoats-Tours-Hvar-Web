@@ -29,7 +29,7 @@ const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), {
 export const metadata: Metadata = generateSEO({
   title: 'Private Boat Tours Hvar | Mare Boats Hvar',
   description:
-    'Private boat tours from Hvar, Croatia. Blue Cave, Pakleni Islands, sunset cruises & boat rental. Aerial drone video included. Book on WhatsApp.',
+    'Private boat tours from Hvar, Croatia. Blue Cave, Red Rocks, Pakleni Islands, sunset cruises and boat rental. Local skipper, WhatsApp booking.',
   keywords: [
     'private boat tours hvar',
     'boat tour hvar',
@@ -72,8 +72,8 @@ export default function HomePage() {
           </h1>
 
           <p className="animate-fade-up mt-4 max-w-2xl text-base leading-relaxed text-[color:var(--gray)] [animation-delay:0.3s] md:text-xl">
-            We sail from Hvar Harbour. You pick the day, the stops and the pace — Blue Cave,
-            Pakleni Islands, sunset or all of it. Drone &amp; underwater video included.
+            We sail from Hvar Harbour. You pick the day, the stops and the pace — Blue Cave, Red
+            Rocks, Pakleni Islands, sunset or all of it. Private boat, local captain.
           </p>
 
           <div className="animate-fade-up mt-8 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center [animation-delay:0.4s]">

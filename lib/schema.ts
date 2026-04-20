@@ -23,7 +23,7 @@ export const businessSchema = {
       '@id': `${SITE_URL}/#localbusiness`,
       name: 'Mare Boats Hvar',
       description:
-        'Private boat tours, Blue Cave excursions, boat rental, and transfers from Hvar, Croatia. Includes aerial drone video and underwater footage.',
+        'Private boat tours, Blue Cave excursions, boat rental, and transfers from Hvar, Croatia. Local skippers, flexible itineraries, WhatsApp booking.',
       url: SITE_URL,
       telephone: '+385951966734',
       email: 'mare.boatshvar@gmail.com',
@@ -62,7 +62,7 @@ export const businessSchema = {
       '@id': `${SITE_URL}/#touristattraction`,
       name: 'Mare Boats Hvar — Private Boat Tours',
       description:
-        'Private speedboat tours from Hvar visiting the Blue Cave, Pakleni Islands, and the Dalmatian coast. Aerial drone and underwater footage included.',
+        'Private speedboat tours from Hvar visiting the Blue Cave, Pakleni Islands, and the Dalmatian coast. Local skipper, icebox, snorkeling masks included.',
       url: SITE_URL,
       image: `${SITE_URL}/img/carousel-1.jpeg`,
       address: sharedAddress,

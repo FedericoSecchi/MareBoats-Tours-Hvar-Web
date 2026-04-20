@@ -4,7 +4,7 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'What is included in the tour?',
     answer:
-      'Local captain, fuel, snorkeling gear, towels, water and soft drinks on board. Aerial drone and underwater video of your day. Lunch stops at island restaurants are at your own tab.',
+      'Local captain, fuel for the itinerary, snorkeling masks, icebox and bottled water on board. Lunch stops at island restaurants and cave entrance fees (Blue Cave €24, Green Cave €12) are at your own tab. Drone and underwater video are available on request as a paid add-on when Fede is on board — not included by default.',
   },
   {
     question: 'How many people can join a private tour?',

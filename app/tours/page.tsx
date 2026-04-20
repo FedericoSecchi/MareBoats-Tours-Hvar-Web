@@ -7,7 +7,7 @@ import { JsonLd } from '@/components/ui/JsonLd';
 export const metadata: Metadata = generateSEO({
   title: 'Hvar Boat Excursions | All Tours | Mare Boats Hvar',
   description:
-    'All boat excursions from Hvar: Blue Cave, Pakleni Islands, Red Rocks, sunset cruise, boat rental & transfers. Private speedboat, English skipper, drone video.',
+    'All boat excursions from Hvar: Blue Cave, Red Rocks, Pakleni Islands, sunset cruise, boat rental and transfers. Private speedboat, local skipper, WhatsApp booking.',
   keywords: [
     'hvar boat excursion',
     'best boat tours hvar',
@@ -29,8 +29,8 @@ const tours = [
     duration: '8h',
     time: '10:30 – 18:30',
     route: 'Green Cave → Stiniva Bay → Blue Cave (Biševo) → Pakleni Islands',
-    extras: 'Blue Cave €18 pp · Green Cave €12 pp (paid on site)',
-    includes: 'Water, snorkeling gear, icebox, drone video',
+    extras: 'Blue Cave €24 pp · Green Cave €12 pp (paid on site)',
+    includes: 'Water, snorkeling masks, icebox, local skipper',
     image: '/img/package-1.jpeg',
     alt: 'Blue Cave and Green Cave full day boat tour from Hvar',
     href: '/blue-cave',
@@ -60,7 +60,7 @@ const tours = [
     time: 'Your schedule',
     route: 'You choose — we plan together via WhatsApp',
     extras: 'Fuel estimate based on your plan',
-    includes: 'Water, snorkeling gear, icebox, towels on request, drone video',
+    includes: 'Water, snorkeling masks, icebox, towels on request',
     image: '/img/package-3.jpeg',
     alt: 'Private custom boat tour from Hvar — fully tailored itinerary',
     href: '/tours',
@@ -147,8 +147,8 @@ export default function ToursPage() {
         <div className="relative z-10 w-full px-4 pb-10 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-3">Hvar Boat Excursions</h1>
           <p className="text-[color:var(--gray)] text-lg max-w-xl">
-            Private speedboat tours from Hvar. Blue Cave, Pakleni Islands, sunset cruises and more —
-            all fully private, with drone video included.
+            Private speedboat tours from Hvar. Blue Cave, Red Rocks, Pakleni Islands, sunset
+            cruises and more — all fully private, with a local skipper.
           </p>
         </div>
       </section>

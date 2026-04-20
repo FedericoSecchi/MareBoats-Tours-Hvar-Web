@@ -8,7 +8,7 @@ import { JsonLd } from '@/components/ui/JsonLd';
 export const metadata: Metadata = generateSEO({
   title: 'Blue Cave Tour from Hvar | Mare Boats Hvar',
   description:
-    'Blue Cave boat tour from Hvar: Blue Cave (Biševo), Green Cave, Stiniva Bay & Pakleni Islands. Private speedboat, English skipper, drone video. Book on WhatsApp.',
+    'Blue Cave boat tour from Hvar: Blue Cave (Biševo), Green Cave, Stiniva Bay & Pakleni Islands. Private speedboat, local skipper, WhatsApp booking.',
   keywords: [
     'blue cave tour from hvar',
     'blue cave hvar',
@@ -28,12 +28,12 @@ const faqs = [
   {
     question: 'How long is the Blue Cave tour from Hvar?',
     answer:
-      'The full-day Blue Cave tour is approximately 8 hours (10:30–18:30), departing from Hvar port. It includes Blue Cave (Biševo), Green Cave, Stiniva Bay, and Pakleni Islands.',
+      'The full-day Blue Cave tour is approximately 7 hours (10:00–17:00), departing from Hvar Harbour. It includes Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands.',
   },
   {
     question: 'Is the Blue Cave entrance fee included?',
     answer:
-      'The Blue Cave entrance fee (approximately €18 per person) and Green Cave fee (approximately €12 per person) are paid separately on site and are not included in the tour price.',
+      'The Blue Cave entrance fee (€24 per person) and Green Cave fee (€12 per person) are paid separately in cash on site and are not included in the tour price.',
   },
   {
     question: 'Can I visit the Blue Cave from Hvar?',
@@ -43,7 +43,7 @@ const faqs = [
   {
     question: 'What is included in the Blue Cave boat trip?',
     answer:
-      'Included: private speedboat, English-speaking skipper, icebox, bottled water, snorkeling equipment, aerial drone video, and underwater footage.',
+      'Included: private speedboat, English-speaking skipper, fuel for the itinerary, icebox, bottled water, and snorkeling masks. Cave entrance fees are paid on site. Drone and underwater video are available on request as a paid add-on when Fede is on board.',
   },
   {
     question: 'How many people can join the Blue Cave tour?',
@@ -60,25 +60,25 @@ const faqs = [
 const includes = [
   'Private speedboat (no shared tours)',
   'English-speaking skipper',
+  'Fuel for the itinerary',
   'Bottled water & icebox',
-  'Snorkeling equipment',
-  'Aerial drone video footage',
-  'Underwater video footage',
+  'Snorkeling masks',
 ];
 
 const notIncludes = [
-  'Blue Cave entrance fee (~€18 pp) — paid on site',
-  'Green Cave entrance fee (~€12 pp) — paid on site',
+  'Blue Cave entrance fee (€24 pp) — paid on site',
+  'Green Cave entrance fee (€12 pp) — paid on site',
   'Lunch (restaurant stop available on Pakleni)',
+  'Drone & underwater video — available on request, extra cost',
 ];
 
 export default function BlueCavePage() {
   const tripSchema = buildTouristTripSchema({
     name: 'Blue Cave Tour from Hvar',
     description:
-      'Full-day private speedboat tour from Hvar visiting Blue Cave (Biševo), Green Cave, Stiniva Bay, and Pakleni Islands. Includes aerial drone video and underwater footage.',
+      'Full-day private speedboat tour from Hvar visiting Blue Cave (Biševo), Green Cave, Stiniva Bay, and Pakleni Islands. Local skipper, fuel, icebox and snorkeling masks included.',
     image: 'https://mareboatshvar.com/img/destination-4.jpeg',
-    duration: 'PT8H',
+    duration: 'PT7H',
     url: 'https://mareboatshvar.com/blue-cave',
   });
 
@@ -107,12 +107,12 @@ export default function BlueCavePage() {
           </h1>
           <p className="text-lg text-[color:var(--gray)] mb-6 max-w-2xl">
             Private speedboat to Blue Cave (Biševo), Green Cave, Stiniva Bay &amp; Pakleni Islands.
-            Aerial drone &amp; underwater video included.
+            Local skipper, icebox, snorkeling masks.
           </p>
 
           {/* Quick info */}
           <div className="flex flex-wrap gap-3 mb-6 text-sm">
-            {['8 hours', 'Up to 12 people', 'Private boat', 'Drone video included'].map((info) => (
+            {['7 hours', 'Up to 10 people', 'Private boat', 'Local skipper'].map((info) => (
               <span
                 key={info}
                 className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-1.5"
@@ -139,17 +139,18 @@ export default function BlueCavePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <p className="text-[color:var(--gray)] mb-4">
-              Departing from Hvar port at <strong>10:30</strong>, this 8-hour private tour covers
-              the best of the Dalmatian islands in one day.
+              Departing from Hvar Harbour at <strong>10:00</strong>, this 7-hour private tour
+              covers the best caves, bays and beaches of the Dalmatian islands in one day.
             </p>
             <ol className="space-y-3">
               {[
-                { time: '10:30', stop: 'Departure from Hvar port' },
-                { time: '11:15', stop: 'Green Cave — emerald grotto (€12 pp)' },
-                { time: '12:00', stop: 'Stiniva Bay — secluded pebble beach' },
-                { time: '13:30', stop: 'Blue Cave, Biševo (€18 pp)' },
-                { time: '15:00', stop: 'Pakleni Islands — swim &amp; snorkel' },
-                { time: '18:30', stop: 'Return to Hvar port' },
+                { time: '10:00', stop: 'Departure from Hvar Harbour' },
+                { time: '10:45', stop: 'Green Cave — emerald grotto (€12 pp)' },
+                { time: '11:30', stop: 'Stiniva Bay — best beach in Europe 2016' },
+                { time: '12:30', stop: 'Blue Cave, Biševo (€24 pp)' },
+                { time: '14:00', stop: 'Budikovac Blue Lagoon — snorkeling' },
+                { time: '15:30', stop: 'Pakleni Islands — lunch &amp; swim' },
+                { time: '17:00', stop: 'Return to Hvar Harbour' },
               ].map((item) => (
                 <li key={item.stop} className="flex gap-4 items-start">
                   <span className="text-[color:var(--accent)] font-semibold text-sm w-12 shrink-0">

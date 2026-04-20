@@ -111,6 +111,25 @@ export default function TourDetailPage({ params }: PageProps) {
               ))}
             </ul>
           </div>
+          {tour.addons && tour.addons.length > 0 && (
+            <div className="md:col-span-2 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
+              <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                Add-ons <span className="text-[color:var(--accent)]">· on request</span>
+              </h2>
+              <p className="mt-2 font-body text-sm text-[color:var(--gray)]">
+                Not part of the tour price. Ask on WhatsApp when you book if you want to add any of
+                these.
+              </p>
+              <ul className="mt-4 space-y-2 font-body text-[color:var(--gray)]">
+                {tour.addons.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-[color:var(--accent)]">+</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div className="md:col-span-2 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
               What to bring

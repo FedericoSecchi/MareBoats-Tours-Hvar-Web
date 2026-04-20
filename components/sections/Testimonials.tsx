@@ -19,7 +19,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'Absolutely worth every euro. Private tour, completely at our pace. The drone video they filmed for us is our favorite memory of the trip.',
+      'Worth every euro. Private tour, completely at our own pace, and Fede spoke perfect Italian so our parents felt at home on board.',
     author: 'Marco & Julia',
     origin: 'Germany',
   },

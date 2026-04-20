@@ -37,7 +37,7 @@ const reviews: Review[] = [
   },
   {
     quote:
-      'Private, relaxed, and the drone video they sent us after is the best souvenir from the holiday.',
+      'Private and relaxed. Fede knew the route perfectly, the snorkeling stops were beautiful and the boat was ours the whole day.',
     author: 'Marco & Julia',
     origin: 'Germany',
   },
@@ -142,8 +142,8 @@ export default function LandingExplorePage() {
             Choose Your Adventure
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Four private boat tours from Hvar Harbour. Local captain, snorkeling gear and drone
-            video on every trip. Pick your day — we handle the rest.
+            Four private boat tours from Hvar Harbour. Local captain, snorkeling masks and icebox
+            on every trip. Pick your day — we handle the rest.
           </p>
         </div>
       </section>

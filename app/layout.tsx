@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | Mare Boats Hvar',
   },
   description:
-    'Private boat tours from Hvar, Croatia. Blue Cave excursions, Pakleni Islands, boat rental, and transfers. Aerial drone video included.',
+    'Private boat tours from Hvar, Croatia. Blue Cave excursions, Red Rocks, Pakleni Islands, boat rental and transfers. Local skipper, WhatsApp booking.',
   keywords: ['boat tours hvar', 'mare boats hvar', 'private boat hvar', 'hvar croatia tours'],
   authors: [{ name: 'Mare Boats Hvar' }],
   creator: 'Mare Boats Hvar',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'Mare Boats Hvar',
     title: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
     description:
-      'Private boat tours from Hvar, Croatia. Blue Cave excursions, Pakleni Islands, boat rental, and transfers. Aerial drone video included.',
+      'Private boat tours from Hvar, Croatia. Blue Cave excursions, Red Rocks, Pakleni Islands, boat rental and transfers. Local skipper, WhatsApp booking.',
     images: [
       {
         url: '/img/mareboats-og.png',
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
     description:
-      'Private boat tours from Hvar, Croatia. Blue Cave, Pakleni Islands, sunset cruises and transfers. Aerial drone video included.',
+      'Private boat tours from Hvar, Croatia. Blue Cave, Red Rocks, Pakleni Islands, sunset cruises and transfers. Local skipper, WhatsApp booking.',
     images: ['/img/mareboats-og.png'],
   },
 };
