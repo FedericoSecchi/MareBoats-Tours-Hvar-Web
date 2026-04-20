@@ -33,7 +33,8 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 12 ✅ commit 7865a48 — Fix colores/tokens en todas las páginas internas + refactor btn-primary/btn-secondary/section-heading en globals.css
 - Fase 13 ✅ commit eeeadf1 — /guide expandida: 10 secciones, 8 FAQs JSON-LD, mapas embed, alianzas, rental rules, yacht taxi
 - Fase 14 ✅ commit 950dde6 — Nuevo servicio: /tours/yacht-sailboat-taxi con SEO long-tail + WhatsApp pre-cargado
-- Fase 15 ✅ commit dc334dc — /guide reorganizada: 5 secciones (Where We Go + map embed, What to Bring x6 con SVG, Rules & Rentals accordion, FAQ x8 accordion + JSON-LD, Weather Policy alert) + lib/maps-data.ts
+- Fase 15 ✅ commit dc334dc — /guide reorganizada: 5 secciones claras + lib/maps-data.ts creado
+- Fase 15.1 ✅ FIX — overflow-x mobile: overflow-x:hidden + max-width:100% en html/body + word-break en h1-h4 (globals.css)
 - Fase 16 ⬜ PENDIENTE — 5 landing pages: /landing/explore, /pre-tour, /review, /guide-hvar, /rental
 - Fase 17 ⬜ PENDIENTE — WhatsApp templates + post-booking flow (archivos de referencia en /public/docs/)
 - Fase 18 ⬜ PENDIENTE — QR code strategy (3 físicos: muelle, barco, guide)
@@ -383,8 +384,58 @@ mareboatshvar.com/
 
 ---
 
+## Fix pendientes — hacer junto con Fase 15
+
+### notranslate meta tag (1 línea)
+```tsx
+// app/layout.tsx — agregar dentro de export const metadata: Metadata
+other: {
+  'google': 'notranslate',
+}
+```
+Bloquea que Chrome/Google Translate ofrezca traducir la página (altera el diseño).
+
+### overflow-x mobile
+Hay scroll horizontal no deseado en mobile. Fix inicial en `app/globals.css`:
+```css
+html, body {
+  overflow-x: hidden;
+}
+```
+Luego en DevTools a 375px identificar el elemento que desborda y corregir la causa raíz.
+
+### Commit
+```bash
+git commit -m "fix: notranslate meta tag + overflow-x mobile fix"
+```
+
+---
+
+## Pendiente de Terceros — actualizado
+
+| Item | Responsable | Urgencia |
+|------|-------------|----------|
+| Fotos de los skippers (Fede + otros) con nombre e idiomas | Nikola/Fede | Alta |
+| Precios reales 5 tours + transfer + yacht taxi | Nikola | Alta |
+| URL directa review Google Business | Nikola | Alta |
+| Reviews reales OTAs | Nikola | Alta |
+| 3 mapas Google My Maps embed URLs | Nikola/Fede | Media |
+| Lista restaurantes socios + beneficio guests | Nikola | Media |
+| Spotify playlist "Hvar vibes" | Fede | Baja |
+| Fotos profesionales del bote y destinos (<500KB) | Fede | Alta |
+| Cambios estéticos | Coti | — |
+
+**Fotos de skippers — qué se necesita:**
+- Foto de Fede en el barco o en Hvar (cara visible, luz natural)
+- Foto de otros skippers si trabajan en temporada alta
+- Formato: JPG, retrato o cuadrada, alta resolución, comprimir <500KB
+- Se usa en: Features.tsx ("Experienced Captain") + /landing/pre-tour
+
+---
+
 ## Reglas siempre activas
 - Mobile-first: grid-cols-1 primero, luego md: lg:
+- overflow-x: hidden en html y body — verificar scroll horizontal en 375px antes de cada commit
 - Solo next/image — cero <img> tags
 - Solo animar transform y opacity — nunca transition-all
 - Todo clickeable necesita hover + focus-visible + active

@@ -26,6 +26,16 @@
     scroll-behavior: smooth;
   }
 
+  /* Fix mobile horizontal scroll (overflow-x) across all pages.
+     Applied on html AND body because iOS Safari can scroll html even
+     when body has overflow hidden. max-width: 100% catches any rogue
+     element that overflows the viewport via absolute/negative margins. */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   body {
     color: var(--white);
     background-color: var(--bg);
@@ -33,8 +43,13 @@
     font-display: swap;
   }
 
+  /* Large display headings with clamp() can overflow on 375px when the
+     word is long (e.g. "PRIVATE BOAT CHARTER HVAR"). Break long words
+     instead of pushing the viewport horizontally. */
   h1, h2, h3, h4 {
     @apply font-display font-semibold leading-tight;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 }
 
