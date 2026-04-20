@@ -225,15 +225,15 @@ export default function LandingGuideHvarPage() {
         <div className="mx-auto max-w-container">
           <SectionHeading eyebrow="On the plate" title="Where to Eat" />
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Our partner restaurants in Hvar town and on the islands — places we send guests to
-            because the food and the hosts are worth it.
+            Restaurants we often stop at in Hvar town and on the islands — no official deal, just
+            places we like and keep coming back to.
           </p>
 
           <div className="mt-8">
             <MapEmbedBlock
-              src={MAPS.partnerRestaurants.src}
-              title={MAPS.partnerRestaurants.title}
-              description={MAPS.partnerRestaurants.description}
+              src={MAPS.recommendedRestaurants.src}
+              title={MAPS.recommendedRestaurants.title}
+              description={MAPS.recommendedRestaurants.description}
             />
           </div>
         </div>

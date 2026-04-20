@@ -14,7 +14,7 @@ export type MapEmbed = {
 
 export const MAPS: {
   tourDestinations: MapEmbed;
-  partnerRestaurants: MapEmbed;
+  recommendedRestaurants: MapEmbed;
   hvarLocalTips: MapEmbed;
 } = {
   tourDestinations: {
@@ -23,11 +23,11 @@ export const MAPS: {
     description:
       'Hvar Harbour, Blue Cave (Biševo), Pakleni Islands, Vis and our favourite snorkel and lunch spots.',
   },
-  partnerRestaurants: {
+  recommendedRestaurants: {
     src: null,
-    title: 'Partner Restaurants',
+    title: 'Recommended Restaurants',
     description:
-      'Restaurants in Hvar town we send guests to, plus island restaurants only reachable by boat.',
+      'Restaurants we often stop at in Hvar town and on the islands — no official deal, just places we like.',
   },
   hvarLocalTips: {
     src: null,
