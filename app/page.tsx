@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { FAQJsonLd } from '@/components/ui/JsonLd';
+import ScrollExpandHero from '@/components/ui/ScrollExpandHero';
 import Tours from '@/components/sections/Tours';
 import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
@@ -49,34 +49,26 @@ export default function HomePage() {
     <main>
       <FAQJsonLd faqs={homepageFaqs} />
 
-      {/* Hero */}
-      <section className="relative flex min-h-screen items-center overflow-hidden text-white">
-        <Image
-          src="/img/carousel-1.jpeg"
-          alt="Private boat tour from Hvar, Croatia — crystal clear Adriatic waters"
-          fill
-          priority
-          quality={75}
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--bg)] via-[color:var(--bg)]/60 to-transparent" />
-
-        <div className="relative z-10 mx-auto flex w-full max-w-container flex-col items-center px-4 pb-12 pt-28 text-center md:pt-32">
-          <span className="animate-fade-up inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)] [animation-delay:0.1s]">
+      {/* Hero with scroll-expansion effect */}
+      <ScrollExpandHero
+        bgImageSrc="/img/carousel-1.jpeg"
+        bgImageAlt="Private boat tour from Hvar, Croatia — crystal clear Adriatic waters"
+        expandImageSrc="/img/about.jpeg"
+        expandImageAlt="MareBoats crew at Hvar Harbour"
+        titlePrimary="Private Boat"
+        titleAccent="Tours Hvar"
+      >
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
+          <span className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)]">
             ⭐ 100+ happy guests
           </span>
 
-          <h1 className="animate-fade-up mt-5 font-display text-[clamp(3rem,10vw,8rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.02em] text-[color:var(--white)] [animation-delay:0.2s]">
-            Private Boat Tours Hvar
-          </h1>
-
-          <p className="animate-fade-up mt-4 max-w-2xl text-base leading-relaxed text-[color:var(--gray)] [animation-delay:0.3s] md:text-xl">
+          <p className="max-w-2xl text-base leading-relaxed text-[color:var(--gray)] md:text-xl">
             We sail from Hvar Harbour. You pick the day, the stops and the pace — Blue Cave, Red
             Rocks, Pakleni Islands, sunset or all of it. Private boat, local captain.
           </p>
 
-          <div className="animate-fade-up mt-8 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center [animation-delay:0.4s]">
+          <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
             <a
               href={WA_URL}
               target="_blank"
@@ -96,15 +88,8 @@ export default function HomePage() {
               See All Tours
             </Link>
           </div>
-
-          <span className="animate-fade-up mt-10 inline-flex flex-col items-center text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--gray)] [animation-delay:0.5s]">
-            Scroll
-            <span className="mt-2 inline-flex h-9 w-5 items-start justify-center rounded-pill border border-[color:var(--accent)]/70 p-1">
-              <span className="h-2 w-2 animate-bounce rounded-full bg-[color:var(--accent)]" />
-            </span>
-          </span>
         </div>
-      </section>
+      </ScrollExpandHero>
 
       <Tours />
       <Features />
