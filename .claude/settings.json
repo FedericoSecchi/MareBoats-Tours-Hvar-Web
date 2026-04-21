@@ -36,6 +36,12 @@
         "source": "github",
         "repo": "D4Vinci/Scrapling"
       }
+    },
+    "claude-webkit": {
+      "source": {
+        "source": "github",
+        "repo": "Hainrixz/claude-webkit"
+      }
     }
   }
 }
