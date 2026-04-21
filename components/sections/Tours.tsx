@@ -31,6 +31,18 @@ export default function Tours() {
           </p>
         </motion.div>
 
+        <motion.div
+          variants={fadeInUpItem}
+          className="col-span-full flex justify-end md:col-span-2 lg:col-span-4 -mt-2"
+        >
+          <Link
+            href="/tours"
+            className="inline-flex items-center gap-2 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-200 hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+          >
+            See all tours <span aria-hidden="true">→</span>
+          </Link>
+        </motion.div>
+
         {featuredTours.map((tour) => (
           <motion.article
             key={tour.slug}

@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getAllTourSlugs, getTourBySlug } from '@/lib/tours-data';
+import { getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/lib/tours-data';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { buildTouristTripSchema } from '@/lib/schema';
 import TourHero from '@/components/sections/TourHero';
@@ -47,6 +48,10 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
+function getRelatedTours(currentSlug: string, count = 2): TourRecord[] {
+  return toursData.filter((t) => t.slug !== currentSlug).slice(0, count);
+}
+
 export default function TourDetailPage({ params }: PageProps) {
   const tour = getTourBySlug(params.slug);
   if (!tour) notFound();
@@ -66,11 +71,61 @@ export default function TourDetailPage({ params }: PageProps) {
     url: `${SITE}/tours/${tour.slug}/`,
   });
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Tours', item: `${SITE}/tours/` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: tour.name,
+        item: `${SITE}/tours/${tour.slug}/`,
+      },
+    ],
+  };
+
+  const related = getRelatedTours(tour.slug, 2);
+
   return (
     <main>
       <JsonLd data={tripSchema as Record<string, unknown>} />
+      <JsonLd data={breadcrumbSchema as Record<string, unknown>} />
 
       <TourHero tour={tour} />
+
+      {/* Breadcrumb + back link */}
+      <nav
+        aria-label="Breadcrumb"
+        className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4"
+      >
+        <div className="mx-auto flex max-w-container flex-wrap items-center gap-2 py-4 font-body text-xs text-[color:var(--gray)]">
+          <Link
+            href="/"
+            className="transition-colors hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:text-[color:var(--accent)]"
+          >
+            Home
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link
+            href="/tours"
+            className="transition-colors hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:text-[color:var(--accent)]"
+          >
+            Tours
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-[color:var(--white)]" aria-current="page">
+            {tour.name}
+          </span>
+          <Link
+            href="/tours"
+            className="ml-auto inline-flex items-center gap-1 font-semibold text-[color:var(--accent)] transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+          >
+            <span aria-hidden="true">←</span> All Tours
+          </Link>
+        </div>
+      </nav>
 
       <section className="bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
@@ -159,6 +214,67 @@ export default function TourDetailPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Related tours */}
+      {related.length > 0 && (
+        <section className="bg-[color:var(--surface)] px-4 py-16 md:py-20">
+          <div className="mx-auto max-w-container">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+                  You might also like
+                </p>
+                <h2 className="mt-3 font-display text-2xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-3xl">
+                  Other tours from Hvar
+                </h2>
+              </div>
+              <Link
+                href="/tours"
+                className="hidden font-body text-sm font-semibold text-[color:var(--accent)] transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline md:inline-block"
+              >
+                See all tours →
+              </Link>
+            </div>
+
+            <ul className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+              {related.map((r) => (
+                <li key={r.slug} className="flex">
+                  <Link
+                    href={`/tours/${r.slug}`}
+                    className="group flex h-full w-full overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60"
+                  >
+                    <div className="relative aspect-square w-32 shrink-0 overflow-hidden md:w-40">
+                      <Image
+                        src={r.images[0].src}
+                        alt={r.images[0].alt}
+                        fill
+                        sizes="160px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col justify-center gap-2 p-5">
+                      <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-lg">
+                        {r.name}
+                      </h3>
+                      <p className="font-body text-xs font-semibold text-[color:var(--accent)]">
+                        {r.price}
+                      </p>
+                      <p className="font-body text-xs text-[color:var(--gray)]">{r.duration}</p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/tours"
+              className="mt-6 inline-block font-body text-sm font-semibold text-[color:var(--accent)] transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline md:hidden"
+            >
+              See all tours →
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Final CTA — same visual rhythm as the home CTABanner */}
       <section

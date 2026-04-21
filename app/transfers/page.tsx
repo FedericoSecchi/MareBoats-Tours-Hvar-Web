@@ -2,251 +2,289 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
-import { buildTouristTripSchema, buildFAQSchema } from '@/lib/schema';
 import { JsonLd } from '@/components/ui/JsonLd';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Boat Transfer Hvar Split | Private Water Taxi Hvar',
+  title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula — MareBoats',
   description:
-    'Private boat transfers from Hvar to Split, Brač, Korčula, and Dubrovnik. Fast water taxi — book your departure time. Contact us on WhatsApp.',
+    'Private speedboat transfers from Hvar to Split, Split Airport, Brač, Korčula and Biševo. Fast, private, door-to-dock. Book via WhatsApp.',
   keywords: [
-    'boat transfer hvar split',
-    'water taxi hvar',
-    'hvar split boat',
-    'private transfer hvar',
-    'hvar boat taxi',
+    'hvar split transfer',
     'speedboat transfer hvar',
-    'hvar to split by boat',
+    'hvar airport transfer boat',
+    'hvar to brac speedboat',
+    'hvar korcula transfer',
+    'hvar bisevo transfer',
   ],
   slug: 'transfers',
-  ogImage: '/img/destination-7.jpeg',
+  ogImage: '/img/destination-5.jpeg',
 });
 
-const WA_URL =
-  'https://wa.me/385951966734?text=Hi!%20I%E2%80%99m%20interested%20in%20a%20boat%20transfer%20from%20Hvar.';
+const SITE = 'https://mareboatshvar.com';
+const WA_BASE = 'https://wa.me/385951966734?text=';
 
-const routes = [
-  { from: 'Hvar', to: 'Split', duration: '~60 min', direction: 'Both ways' },
-  { from: 'Hvar', to: 'Brač (Bol)', duration: '~30 min', direction: 'Both ways' },
-  { from: 'Hvar', to: 'Korčula', duration: '~90 min', direction: 'Both ways' },
-  { from: 'Hvar', to: 'Vis', duration: '~60 min', direction: 'Both ways' },
+function waUrl(message: string) {
+  return `${WA_BASE}${encodeURIComponent(message)}`;
+}
+
+type TransferCard = {
+  id: string;
+  route: string;
+  price: string;
+  time: string;
+  image: string;
+  imageAlt: string;
+  summary: string;
+  waMessage: string;
+  ctaLabel: string;
+  detailsHref?: string;
+};
+
+const TRANSFERS: TransferCard[] = [
+  {
+    id: 'split-hvar',
+    route: 'Split ↔ Hvar',
+    price: '€500 private',
+    time: '~1 hour',
+    image: '/img/destination-5.jpeg',
+    imageAlt: 'Private speedboat transfer between Split and Hvar Harbour',
+    summary: 'Hvar Harbour → Split waterfront. Private boat, direct route.',
+    waMessage: "Hi! I'd like to book the Split transfer",
+    ctaLabel: 'Book on WhatsApp',
+    detailsHref: '/tours/split-airport-transfer',
+  },
+  {
+    id: 'airport-hvar',
+    route: 'Split Airport ↔ Hvar',
+    price: '€600 private',
+    time: '~1.5 hours',
+    image: '/img/carousel-2.jpeg',
+    imageAlt: 'Split Airport to Hvar private speedboat transfer',
+    summary: 'Split Airport → Hvar Harbour. We track your flight.',
+    waMessage: "Hi! I'd like to book the Airport transfer",
+    ctaLabel: 'Book on WhatsApp',
+    detailsHref: '/tours/split-airport-transfer',
+  },
+  {
+    id: 'brac',
+    route: 'Brač',
+    price: 'On request',
+    time: 'Private',
+    image: '/img/destination-2.jpeg',
+    imageAlt: 'Private boat transfer from Hvar to Brač — Bol, Supetar, Milna',
+    summary: 'Bol, Supetar, Milna — tell us where.',
+    waMessage: "Hi! I'd like a transfer to Brač",
+    ctaLabel: 'Ask on WhatsApp',
+  },
+  {
+    id: 'korcula',
+    route: 'Korčula',
+    price: 'On request',
+    time: '~2 hours',
+    image: '/img/destination-4.jpeg',
+    imageAlt: 'Private speedboat transfer from Hvar to Korčula',
+    summary: 'Historic walled city. 2 hours from Hvar by speedboat.',
+    waMessage: "Hi! I'd like a transfer to Korčula",
+    ctaLabel: 'Ask on WhatsApp',
+  },
+  {
+    id: 'bisevo',
+    route: 'Biševo',
+    price: 'On request',
+    time: 'Private',
+    image: '/img/destination-7.jpeg',
+    imageAlt: 'Private transfer from Hvar to Biševo — Blue Cave gateway',
+    summary: 'Gateway to the Blue Cave. No ferry, no crowds.',
+    waMessage: "Hi! I'd like a transfer to Biševo",
+    ctaLabel: 'Ask on WhatsApp',
+  },
 ];
 
-const faqs = [
+const HOW_IT_WORKS = [
   {
-    question: 'How long is the boat transfer from Hvar to Split?',
-    answer:
-      'The private speedboat transfer from Hvar to Split takes approximately 60 minutes, depending on sea conditions. The public ferry takes 1.5–2.5 hours — our transfer is significantly faster.',
+    n: '1',
+    title: 'Share your route',
+    body: 'Tell us your date, arrival time and group size on WhatsApp.',
   },
   {
-    question: 'Can I book a one-way transfer from Hvar?',
-    answer:
-      'Yes. We offer one-way and return transfers. Message us on WhatsApp with your desired date, time, and number of passengers.',
+    n: '2',
+    title: 'We confirm the price',
+    body: 'Transparent quote within the hour during the season.',
   },
   {
-    question: 'Do you transfer to Split Airport?',
-    answer:
-      'We transfer to Split port (Riva or Ferry Terminal). From Split port, Split Airport (SPU) is a 30-minute taxi or shuttle ride. We can help coordinate your arrival logistics.',
+    n: '3',
+    title: 'Meet at the barrel',
+    body: 'Hvar Harbour, or we pick you up at your hotel dock.',
   },
   {
-    question: 'How many people can join a transfer?',
-    answer:
-      'Our speedboats accommodate up to 12 people. For larger groups, we arrange multiple boats. All transfers are private — no shared rides.',
-  },
-  {
-    question: 'Can you pick me up from my hotel or villa?',
-    answer:
-      'If your accommodation has a dock or is near a public pier, we can arrange pickup. Contact us with the details and we will confirm.',
-  },
-  {
-    question: 'What is the price of a boat transfer from Hvar to Split?',
-    answer:
-      'TODO — Prices vary by route, group size and season. Contact us on WhatsApp for a quote.',
+    n: '4',
+    title: 'Private speedboat',
+    body: 'Your group only. No shared boats, no waiting for others.',
   },
 ];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Speedboat Transfers from Hvar — MareBoats',
+  description: 'Private speedboat transfers between Hvar and Split, Brač, Korčula, Biševo.',
+  itemListElement: TRANSFERS.map((t, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `${SITE}/transfers/#${t.id}`,
+    name: `Hvar ↔ ${t.route}`,
+  })),
+};
 
 export default function TransfersPage() {
-  const tripSchema = buildTouristTripSchema({
-    name: 'Private Boat Transfer Hvar — Split, Brač, Korčula',
-    description:
-      'Fast private speedboat transfers from Hvar to Split, Brač, Korčula, and Vis. Water taxi service with flexible departure times.',
-    image: 'https://mareboatshvar.com/img/destination-7.jpeg',
-    duration: 'PT1H',
-    url: 'https://mareboatshvar.com/transfers',
-  });
-
-  const faqSchema = buildFAQSchema(faqs);
-
   return (
-    <main>
-      <JsonLd data={tripSchema as Record<string, unknown>} />
-      <JsonLd data={faqSchema as Record<string, unknown>} />
+    <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
+      <JsonLd data={itemListSchema as Record<string, unknown>} />
 
       {/* Hero */}
-      <section className="relative min-h-[75vh] flex items-end text-white overflow-hidden">
-        <Image
-          src="/img/destination-7.jpeg"
-          alt="Boat transfer from Hvar to Split — private speedboat water taxi Croatia"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
+      <section className="relative overflow-hidden border-b border-[color:var(--border)] px-4 py-20 md:py-24">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-60"
+          style={{
+            backgroundImage:
+              'radial-gradient(ellipse at top, rgba(59,201,219,0.18) 0%, transparent 60%)',
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
-
-        <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-3 drop-shadow-lg">
-            Boat Transfer Hvar — Split &amp; Islands
-          </h1>
-          <p className="text-lg text-[color:var(--gray)] mb-6 max-w-2xl">
-            Private speedboat transfers from Hvar to Split, Brač, Korčula, and Vis. Skip the ferry —
-            arrive faster in style.
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+            Transfers
           </p>
-
-          <div className="flex flex-wrap gap-3 mb-6 text-sm">
-            {['Private speedboat', 'Flexible departure', 'All routes', 'Up to 12 people'].map(
-              (info) => (
-                <span
-                  key={info}
-                  className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-1.5"
-                >
-                  {info}
-                </span>
-              ),
-            )}
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Book a Transfer
-            </a>
-            <Link href="/boat-rental" className="btn-secondary">
-              Rent a Boat Instead
-            </Link>
-          </div>
+          <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] md:text-6xl">
+            Private Speedboat Transfers
+          </h1>
+          <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+            From Hvar Harbour to wherever you need to be. Private &mdash; no shared boats, no
+            waiting.
+          </p>
         </div>
       </section>
 
-      {/* Routes */}
-      <section className="py-14 px-4 max-w-4xl mx-auto">
-        <h2 className="section-heading mb-2">Transfer Routes from Hvar</h2>
-        <p className="text-[color:var(--gray)] mb-8">
-          All transfers are private. We depart when you need — no fixed ferry schedule.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {routes.map((route) => (
-            <div
-              key={`${route.from}-${route.to}`}
-              className="border border-[color:var(--border)] rounded-xl p-5 flex items-center justify-between hover:border-[color:var(--accent)] transition-colors"
-            >
-              <div>
-                <div className="flex items-center gap-2 font-semibold text-[color:var(--white)]">
-                  <span>{route.from}</span>
-                  <span className="text-[color:var(--accent)]">→</span>
-                  <span>{route.to}</span>
+      {/* Transfers grid */}
+      <section className="px-4 py-16 md:py-20">
+        <ul className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {TRANSFERS.map((t) => (
+            <li key={t.id} id={t.id} className="flex scroll-mt-24">
+              <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image
+                    src={t.image}
+                    alt={t.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
+                    {t.time}
+                  </span>
                 </div>
-                <div className="text-sm text-[color:var(--gray)] mt-1">{route.direction}</div>
-              </div>
-              <div className="text-right">
-                <div className="text-sm font-semibold text-[color:var(--accent)]">{route.duration}</div>
-                <div className="text-xs text-[color:var(--gray)]">by speedboat</div>
-              </div>
-            </div>
+
+                <div className="flex flex-1 flex-col gap-4 p-6">
+                  <div>
+                    <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                      Hvar ↔ {t.route}
+                    </h2>
+                    <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                      {t.summary}
+                    </p>
+                  </div>
+
+                  <div className="mt-auto flex flex-col gap-3">
+                    <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
+                      {t.price}
+                    </span>
+                    <div className="flex flex-col gap-2 sm:flex-row">
+                      {t.detailsHref && (
+                        <Link
+                          href={t.detailsHref}
+                          className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                        >
+                          See Full Details
+                        </Link>
+                      )}
+                      <a
+                        href={waUrl(t.waMessage)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+                      >
+                        {t.ctaLabel}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div className="mt-6 bg-[color:var(--surface)] rounded-xl p-5 text-sm text-[color:var(--gray)]">
-          <strong>Don&apos;t see your route?</strong> We can transfer you to any coastal destination in
-          Dalmatia.{' '}
-          <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="text-[color:var(--accent)] font-semibold hover:underline">
-            Message us for a custom quote →
-          </a>
-        </div>
-      </section>
-
-      {/* Why choose us */}
-      <section className="bg-[color:var(--bg)] text-white py-14 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-[color:var(--accent)]">
-            Why Choose Our Water Taxi
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Private — No strangers',
-                desc: 'Your group only. No waiting for other passengers or fixed stops.',
-              },
-              {
-                title: 'Flexible schedule',
-                desc: 'Depart when you want. Early morning airport runs or late evening returns.',
-              },
-              {
-                title: 'Local knowledge',
-                desc:
-                  'Our skippers know every port, weather pattern, and shortcut on the Dalmatian coast.',
-              },
-            ].map((item) => (
-              <div key={item.title} className="bg-white/10 rounded-xl p-5">
-                <h3 className="font-semibold text-white mb-2">{item.title}</h3>
-                <p className="text-[color:var(--gray)] text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Visual */}
-      <section className="py-14 px-4 max-w-4xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {[
-            { src: '/img/carousel-1.jpeg', alt: 'Private speedboat transfer from Hvar' },
-            { src: '/img/destination-8.jpeg', alt: 'Adriatic coast boat transfer Croatia' },
-            { src: '/img/destination-9.jpeg', alt: 'Water taxi Hvar — island hopping Croatia' },
-          ].map((img) => (
-            <div key={img.src} className="relative aspect-video rounded-xl overflow-hidden">
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 768px) 50vw, 33vw"
-                className="object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-[color:var(--surface)] py-14 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="section-heading text-center mb-8">
-            Hvar Boat Transfer — Frequently Asked Questions
-          </h2>
-          <dl className="space-y-4">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="border border-[color:var(--border)] bg-[color:var(--surface)] rounded-xl p-5">
-                <dt className="font-semibold text-[color:var(--white)]">{faq.question}</dt>
-                <dd className="text-[color:var(--gray)] mt-1 text-sm">{faq.answer}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 px-4 text-center bg-[color:var(--accent)] text-white">
-        <h2 className="text-3xl font-bold mb-4">Book Your Hvar Transfer</h2>
-        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
-          Tell us your route, date, time, and number of passengers. We confirm within hours.
+        <p className="mx-auto mt-10 max-w-2xl text-center font-body text-sm leading-relaxed text-[color:var(--gray)]">
+          All transfers are private. Your group, your boat, your schedule. Hotels with private
+          docks &mdash; Podstine, Amfora, Riva, Adriana &mdash; we can pick you up directly.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
-            Book on WhatsApp
+      </section>
+
+      {/* How it works */}
+      <section className="border-y border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <div className="max-w-2xl">
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              How it works
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Four steps, no ferry queues
+            </h2>
+          </div>
+          <ol className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {HOW_IT_WORKS.map((step) => (
+              <li
+                key={step.n}
+                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6"
+              >
+                <span className="font-display text-4xl font-extrabold leading-none text-[color:var(--accent)]">
+                  {step.n}
+                </span>
+                <h3 className="mt-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                  {step.title}
+                </h3>
+                <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {step.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section
+        className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-20"
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse at center, rgba(59,201,219,0.12) 0%, transparent 70%)',
+        }}
+      >
+        <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h2 className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
+            Need a quote?
+          </h2>
+          <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+            Send us the route and the time. We confirm on WhatsApp, usually within the hour.
+          </p>
+          <a
+            href={waUrl("Hi! I'd like a quote for a transfer from Hvar.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
+          >
+            Ask us on WhatsApp
           </a>
-          <Link href="/blue-cave" className="btn-secondary">
-            Explore Tours Instead
-          </Link>
         </div>
       </section>
     </main>

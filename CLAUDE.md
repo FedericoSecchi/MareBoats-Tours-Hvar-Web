@@ -17,7 +17,7 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 
 ---
 
-## Estado actual (20 abril 2026)
+## Estado actual (21 abril 2026)
 
 - Fase 1  ✅ commit c47932d — tokens, fuentes, Tailwind config
 - Fase 2  ✅ commit 4b8df40 — SEO metadata, schema JSON-LD, sitemap, robots
@@ -30,19 +30,29 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 - Fase 9  ✅ commit 78e989b — UX/Conversión: WhatsApp CTAs, cards simétricas, TourHero, transfer slug, Instagram footer
 - Fase 10 ✅ commit be472fd — Guest Guide /guide pública + FAQPage schema + sitemap
 - Fase 11 ✅ commit e7ec143 — Copy humano: Hero, CTAs, Features, FAQ sin adjetivos vacíos
-- Fase 12 ✅ commit 7865a48 — Fix colores/tokens en todas las páginas internas + refactor btn-primary/btn-secondary/section-heading en globals.css
-- Fase 13 ✅ commit eeeadf1 — /guide expandida: 10 secciones, 8 FAQs JSON-LD, mapas embed, alianzas, rental rules, yacht taxi
-- Fase 14 ✅ commit 950dde6 — Nuevo servicio: /tours/yacht-sailboat-taxi con SEO long-tail + WhatsApp pre-cargado
-- Fase 15 ✅ commit dc334dc — /guide reorganizada: 5 secciones claras + lib/maps-data.ts creado
-- Fase 15.1 ✅ commit cae1265 — Fix overflow-x en todas las páginas (globals.css + word-break en h1-h4)
-- Fase 16 ✅ commit 5ea136d — 5 landing pages con smart routing (/explore, /pre-tour, /review, /guide-hvar, /rental)
-- Fase 17 ✅ — precios reales de Nikola + drone/underwater movido a add-ons on request en todos los tours
-- Fase 18 ✅ — nuevo tour /tours/red-rocks-pakleni-islands + featured en home + sitemap + Footer
-- Fase 19 ✅ — scooter rental: sección en /landing/rental + página indexable /services/scooter-rental + sitemap
-- Fase 20 ✅ — WhatsApp templates para Nikola en /public/docs/NIKOLA_WHATSAPP_TEMPLATES.md
-- Fase 21 ✅ — QR code guide en /public/docs/QR_CODES_GUIDE.md
-- Fase 22 ✅ — MAPS.partnerRestaurants → recommendedRestaurants + /public/docs/GOOGLE_MAPS_SETUP.md
-- Fase 23 ✅ — /on-tour info page (noindex) con 9 destinos y fun facts, pensada para usar a bordo
+- Fase 12 ✅ commit 7865a48 — Fix colores/tokens páginas internas + refactor globals.css
+- Fase 13 ✅ commit eeeadf1 — /guide expandida: 10 secciones, 8 FAQs JSON-LD, mapas, rental rules
+- Fase 14 ✅ commit 950dde6 — /tours/yacht-sailboat-taxi con SEO long-tail
+- Fase 15 ✅ commit dc334dc — /guide reorganizada: 5 secciones + lib/maps-data.ts
+- Fase 15.1 ✅ commit cae1265 — Fix overflow-x mobile
+- Fase 16 ✅ commit 5ea136d — 5 landing pages smart routing
+- Fase 17 ✅ — Precios reales en lib/tours-data.ts
+- Fase 18 ✅ — /tours/red-rocks-pakleni-islands
+- Fase 19 ✅ — Scooter rental en /landing/rental
+- Fase 20 ✅ commit 3f2c161 — WhatsApp templates /public/docs/
+- Fase 21 ✅ commit fc385f5 — QR code guide /public/docs/
+- Fase 22 ✅ commit b07d154 — Google My Maps setup + placeholders
+- Fase 23 ✅ commit 8898692 — /on-tour info page
+- Fase 24 ✅ — Navbar nuevo: 5 ítems planos + Book Now (sin dropdowns)
+- Fase 25 ✅ — /tours index page con 6 tours + schema ItemList + How It Works
+- Fase 26 ✅ — /rentals index (scooter, water scooter, boat rental) + rental rules accordion
+- Fase 27 ✅ — /transfers index (Split, Airport, Brač, Korčula, Biševo) + schema ItemList
+- Fase 28 ✅ — /about page con team, historia, boat, licencias + schema Person
+- Fase 29 ✅ — /qr hub animado cinematográfico (noindex) con Framer Motion
+- Fase 30 ✅ — Sitemap actualizado + breadcrumbs /tours/[slug] + related tours + footer nuevo
+- Cleanup ✅ — Rutas legacy convertidas a thin 301 redirects (/blue-cave, /boat-rental, /sunset, /contact, /faq, /services/scooter-rental)
+
+---
 
 ## Build actual
 30 páginas estáticas. Rutas activas:
@@ -55,522 +65,682 @@ Tokens ya instalados en tailwind.config.ts y globals.css (Fase 1 completa).
 /tours/split-airport-transfer
 /tours/private-boat-charter
 /tours/yacht-sailboat-taxi
-/services/scooter-rental
 /guide
-/on-tour  (noindex, onboard reference)
+/on-tour (noindex)
 /landing/explore
-/landing/pre-tour
-/landing/review
+/landing/pre-tour (noindex)
+/landing/review (noindex)
 /landing/guide-hvar
 /landing/rental
-/review  (redirect → Google Business)
+/review (redirect → Google Business)
 ```
 
-## Datos reales de performance (Lighthouse 18/04/2026 — post Fase 7)
-- Desktop: Performance 98 ✅ — LCP 0.8s ✅ — CLS 0.072 — TBT 40ms
-- Mobile: Performance 83 🟡 — LCP 4.5s ⚠️ — CLS 0 ✅ — TBT 0ms
-- LCP mobile bajará con fotos profesionales reales
+---
+
+## Arquitectura de URLs — DEFINITIVA (post Fases 24-30)
+
+### Filosofía de diseño
+- Navbar plano, 6 ítems, sin dropdowns, sin megamenú — máxima simplicidad
+- El usuario normal navega por el navbar y llega a las index pages (/tours, /rentals, /transfers)
+- Las páginas individuales /tours/[slug] son para SEO long-tail — no aparecen en el navbar
+- El usuario llega a /tours/[slug] desde las cards de /tours o desde Google
+- Las landing pages /landing/* se mantienen — accesibles desde /qr y links internos
+- Sin splash screen de carga (daña LCP: actualmente 0.8s desktop, no arruinar)
+- /qr es el único QR físico — una sola URL para todos los contextos
+
+### Navbar (components/ui/NavBar.tsx)
+```
+Tours      →  /tours
+Rentals    →  /rentals
+Transfers  →  /transfers
+Guide      →  /guide
+About      →  /about
+[Book Now] →  https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour
+```
+- Sin dropdowns, sin submenús, sin megamenú
+- "Book Now" es pill sólido color acento — siempre visible a la derecha
+- Desktop: logo izq · links centro · Book Now der
+- Mobile: hamburger → lista vertical full-width
+- Sticky top-0 z-50 · fondo transparente → bg blur al hacer scroll
+- Scroll progress bar 2px en el fondo (ya existe — mantener)
+- Active state: color acento + underline 2px en el link actual
+
+### URLs completas post-refactor
+```
+mareboatshvar.com/
+├── /                              HOME
+├── /tours                         INDEX — lista todos los tours        [NUEVA — Fase 25]
+│   ├── /tours/blue-cave-pakleni-islands     SEO long-tail ✅
+│   ├── /tours/red-rocks-pakleni-islands     SEO long-tail ✅
+│   ├── /tours/pakleni-islands               SEO long-tail ✅
+│   ├── /tours/sunset-cruise                 SEO long-tail ✅
+│   ├── /tours/private-boat-charter          SEO long-tail ✅
+│   ├── /tours/yacht-sailboat-taxi           SEO long-tail ✅
+│   └── /tours/split-airport-transfer        SEO long-tail ✅ (también en /transfers)
+├── /rentals                       INDEX — lista todos los rentals      [NUEVA — Fase 26]
+├── /transfers                     INDEX — lista todos los transfers    [NUEVA — Fase 27]
+├── /guide                         Hvar Guide — tips, restaurants, local info
+├── /about                         About MareBoats                     [NUEVA — Fase 28]
+├── /qr                            QR Hub animado — noindex            [NUEVA — Fase 29]
+├── /on-tour                       Info a bordo — noindex
+├── /landing/explore               Indexable — turistas en el muelle
+├── /landing/pre-tour              noindex — guests que bookearon
+├── /landing/review                noindex — post-tour review
+├── /landing/guide-hvar            Indexable — Hvar travel guide
+├── /landing/rental                Rental rules
+└── /review                        redirect 301 → Google Business Profile
+```
 
 ---
 
 ## Datos confirmados del negocio
 
 ### Contacto
-- WhatsApp: +385 95 196 6734 (único canal de conversión — SIN formulario ni email)
+- WhatsApp: +385 95 196 6734 (único canal de conversión — sin formulario ni email)
 - Instagram: https://www.instagram.com/mareboats.hvar/
-- Google Maps business: https://maps.app.goo.gl/U6kgAaRG81KZmqUEA
-- Punto de encuentro exacto: "barrel" / booking spot en muelle → https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7
+- Google Maps: https://maps.app.goo.gl/U6kgAaRG81KZmqUEA
+- Punto de encuentro exacto: "barrel" / booking spot → https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7
 
 ### Operación
 - Primer tour: 9:00 AM
-- Disponibilidad Nikola por WhatsApp: 07:00 – 00:00 (no responde 00:00–07:00)
-- Grupo máximo: 8–10 personas por lancha (según el tour)
-- Seguro: sí — boat + passenger insurance confirmado
-- Licencia de barco: confirmada
-- Idiomas del skipper (Fede): inglés, croata, italiano, español — otros skippers solo croata/inglés
+- Disponibilidad WhatsApp Nikola: 07:00–00:00 (no responde 00:00–07:00)
+- Seguro: boat + passenger insurance ✅ confirmado
+- Licencia de barco: confirmada ✅
+- Idiomas Fede: EN / HR / IT / ES — otros skippers: HR / EN únicamente
 
-### Servicios activos (confirmados por Nikola)
-- Tours privados en lancha
-- Blue Cave & 5 Islands (shared + private)
-- Red Rocks & Pakleni Islands (NUEVO — private only)
-- Sunset Cruise
-- Snorkeling
-- Transfer Split Airport ↔ Hvar
-- Yacht & Sailboat Taxi
-- Scooter Rental (NUEVO — 6 scooters disponibles)
+### Tours con precios confirmados
+| Tour | Tipo | Precio | Duración | Personas máx |
+|------|------|--------|----------|--------------|
+| 5 Islands, 4 Beaches, 3 Caves | Shared o Private | €130/persona · €700 privado | 7h · 10:00–17:00 | 10 |
+| Red Rocks & Pakleni Islands | Private only | €400 | 4h · 9–13 o 14–18 | 8 |
+| Pakleni Islands | Private | consultar | 4h | 8 |
+| Sunset Cruise | Private | €250 | ~2h | 8 |
+| Private Charter | Private | €500 (fuel excl.) | custom | 8 |
+| Yacht/Sailboat Taxi | On request | on request | — | — |
 
-### Precios confirmados por Nikola
-- Sunset Cruise: €250
-- Private Charter (barco + skipper, sin fuel): €500 (fuel excluded)
-- Split–Hvar transfer (barco): €500
-- Airport–Hvar transfer: €600
-- Yacht/Sailboat Taxi: a pedido (on request)
-- Scooter Rental: €50/día, €30–40/medio día
-- **Opción 1 — 5 Islands, 4 Beaches, 3 Caves:**
-  - Group tour: €130/persona
-  - Private tour: €700 (hasta 10 personas)
-  - Duración: 7 horas (10:00–17:00)
-  - Incluye: speedboat, skipper, fuel, icebox, agua, máscaras de snorkel
-  - Extra: Green Cave €12/persona, Blue Cave €24/persona, almuerzo aparte
-- **Opción 2 — Red Rocks & Pakleni Islands (NUEVO):**
-  - Private only: €400
-  - Duración: 4 horas (9:00–13:00 o 14:00–18:00)
-  - Hasta 8 personas
-  - Incluye: speedboat, skipper, fuel, icebox, agua, máscaras de snorkel
-  - Sin costos extra de entrada
+Incluido en todos los tours: Speedboat + Skipper, Fuel, Icebox, Bottled Water, Snorkeling Masks
+Costos extra en 5 Islands: Green Cave €12/persona · Blue Cave €24/persona · Almuerzo aparte
+Fotos drone + underwater: se venden APARTE, a pedido, solo cuando Fede es el skipper — NO incluidas
+Blue Cave / Green Cave: disponibles como shared (grupo) o private
+Grupos grandes: pueden usar múltiples speedboats
 
-### Reglas a bordo (confirmadas)
-- ✅ Botellas de vidrio: permitidas en cubierta
-- ✅ Heladera/conservadora a bordo incluida — guests pueden traer la suya también
-- ✅ Alcohol: permitido con moderación
-- ❌ Fumar: NO permitido a bordo (solo en proa, si aplica)
-- ⚠️ Baño: no hay a bordo — guests usan los de los restaurantes en paradas
-- ⚠️ Zonas de baja velocidad: multas reales de policía marítima — obligatorio respetar
-- ℹ️ Fotos drone + underwater: NO incluidas en todos los tours — se venden aparte, a pedido, solo cuando Fede es el skipper
+### Rentals
+| Rental | Precio | Unidades |
+|--------|--------|----------|
+| Scooter | €50/día · €30–40/medio día | 6 unidades disponibles |
+| Water Scooter | on request — confirmar precio con Nikola | confirmar |
+| Boat Rental (sin skipper) | on request — confirmar precio con Nikola | confirmar |
 
-### Restaurantes reales (Nikola confirma — sin acuerdo formal)
-Mayormente frecuentados, no socios oficiales:
-- Moli Onte (Milna)
-- Gego Restaurant (Zarace)
-- Zdrilca (Tri Grede)
-- Palmizana (Bacchus)
+### Transfers
+| Ruta | Precio |
+|------|--------|
+| Split – Hvar (speedboat) | €500 |
+| Airport – Hvar | €600 |
+| Brač | on request |
+| Korčula | on request |
+| Biševo | on request |
 
-### Hoteles con muelle (útil para Yacht Taxi)
-- Hotel Podstine (único con muelle propio)
-- Amfora Hotel (muelle frente al hotel)
-- Riva Hotel (centro, city center)
-- Adriana Hotel Spa (centro, city center)
+### Restaurantes frecuentados (sin acuerdo formal — sin prometer beneficios)
+Moli Onte (Milna) · Gego Restaurant (Zarace) · Tri Grede / Zdrilca · Bacchus (Palmizana)
+Copy: "Restaurants we often stop at — no official deal, just good food."
 
-### Destinos del tour "5 Islands, 4 Beaches, 3 Caves"
-- Green Cave (Biševo) — entrada €12/persona
-- Stiniva Bay — cala oculta, una de las mejores de Europa
-- Blue Cave (Biševo) — entrada €24/persona
-- Medvidina Cave — cueva más larga de Biševo, antigua guarida del monje mediterráneo
-- Budikovac (Blue Lagoon) — aguas cristalinas para nadar
-- Pakleni Islands (Palmižana o Ždrilca) — almuerzo y playa
+### Hoteles con muelle (relevante para Yacht Taxi)
+Hotel Podstine (muelle propio) · Amfora · Riva · Adriana Hotel Spa
 
-### Destinos del tour "Red Rocks & Pakleni Islands" (NUEVO)
-- Borče Bay — cala tranquila en la costa sur de Hvar
-- Red Rocks — acantilados rojos verticales, cliff jumping, fotos
-- Dubovica Beach — playa icónica de Hvar
-- Secret Cave near Dubovica — accesible solo en bote o nadando
-- Pakleni Islands: Ždrilca + Taršće — barras de playa y calas tranquilas
+### Reglas a bordo
+- ✅ Botellas de vidrio permitidas en cubierta
+- ✅ Heladera incluida — guests pueden traer la suya
+- ✅ Alcohol con moderación
+- ❌ Fumar: NO a bordo
+- ⚠️ Baño: no hay — guests usan los de restaurantes en paradas
+- ⚠️ Zonas de baja velocidad: multas reales policía marítima — siempre respetar
+- ℹ️ Fotos drone + underwater: aparte, a pedido, solo con Fede de skipper
+- ℹ️ Grupos grandes: múltiples speedboats disponibles
 
 ---
 
-## Decisiones de negocio confirmadas
-
-- ✅ Sin formulario de contacto ni email — conversión 100% por WhatsApp
-- ✅ OTAs: listings independientes, no linkeados desde el sitio por ahora
-- ✅ Reviews de OTAs → reemplazar placeholders en Testimonials.tsx cuando Nikola confirme
-- ✅ Google Maps + website trabajan en red para SEO local
-- ✅ TikTok: no existe todavía — NO linkear
-- ✅ /guide es página pública indexable — captura SEO long-tail pre-booking + se envía a guests por WhatsApp
-- ✅ Idiomas a bordo (EN/HR/IT/ES) solo aplican cuando Fede es el skipper — no prometer en copy genérico
-- ✅ Fotos drone y underwater: se venden APARTE, a pedido, NO incluidas por default — no mencionar como incluidas en ningún tour
-- ✅ Blue Cave y Green Cave: disponibles como shared (grupo) o private — aclarar en la página del tour
-- ✅ Grupos grandes: pueden usar múltiples speedboats — mencionarlo como opción en /tours/blue-cave-pakleni-islands
-- ✅ No hay restaurantes socios oficiales — mencionar los recomendados sin prometer descuentos o beneficios
-
----
-
-## FASE 17 — Actualizar Precios y Tours en lib/tours-data.ts
+## FASE 24 — Navbar Nuevo
 
 ### Objetivo
-Reemplazar todos los precios placeholder (€XX) con los precios reales confirmados por Nikola. Actualizar descripciones donde corresponda.
+Reemplazar el navbar actual por uno limpio con 6 ítems planos. Sin dropdowns. Sin megamenú.
 
-### Cambios en lib/tours-data.ts
-
-**blue-cave-pakleni-islands** (ahora "5 Islands, 4 Beaches, 3 Caves"):
-```ts
-price: 'From €130/person (group) · €700 private (up to 10)',
-duration: '7 hours · 10:00 AM – 5:00 PM',
-includes: ['Speedboat & Skipper', 'Fuel', 'Icebox', 'Bottled Water', 'Snorkeling Masks'],
-notIncludes: ['Green Cave entrance €12/person', 'Blue Cave entrance €24/person', 'Lunch (optional)'],
-groupSizes: 'Shared or private — up to 10 people',
-destinations: ['Green Cave', 'Stiniva Bay', 'Blue Cave', 'Medvidina Cave', 'Budikovac Blue Lagoon', 'Pakleni Islands'],
-note: 'Available as shared group tour or fully private. Large groups can book multiple speedboats.',
-```
-
-**pakleni-islands** (Red Rocks & Pakleni — NUEVO slug o actualización):
-```ts
-price: '€400 private (up to 8 people)',
-duration: '4 hours · 9:00–13:00 or 14:00–18:00',
-includes: ['Speedboat & Skipper', 'Fuel', 'Icebox', 'Bottled Water', 'Snorkeling Masks'],
-notIncludes: ['Lunch (you choose the restaurant)'],
-groupSizes: 'Private only — up to 8 people',
-destinations: ['Borče Bay', 'Red Rocks', 'Dubovica Beach', 'Secret Cave near Dubovica', 'Pakleni Islands (Ždrilca & Taršće)'],
-```
-
-**sunset-cruise**:
-```ts
-price: '€250',
-```
-
-**private-boat-charter**:
-```ts
-price: '€500 (boat + skipper · fuel not included)',
-note: 'Price covers the boat and skipper only. Fuel is paid separately at the marina.',
-```
-
-**split-airport-transfer**:
-```ts
-price: 'Split–Hvar €500 · Airport–Hvar €600',
-```
-
-**yacht-sailboat-taxi**:
-```ts
-price: 'On request — message us on WhatsApp',
-```
-
-### Archivos a tocar
-- lib/tours-data.ts — actualizar price, duration, includes, notIncludes, destinations
-- app/tours/[slug]/page.tsx — verificar que los campos nuevos se rendericen correctamente
-- components/sections/Tours.tsx — verificar que los precios se muestren en las cards del home
-
-### Commit
-```bash
-git commit -m "feat: fase 17 — precios reales + info tours actualizada (Nikola confirmed)"
-```
-
----
-
-## FASE 18 — Nuevo Tour: /tours/red-rocks-pakleni-islands
-
-### Objetivo
-Crear la página individual del nuevo tour "Red Rocks & Pakleni Islands" con SEO long-tail propio.
-Este tour captura keywords como "pakleni islands half day", "red rocks hvar boat", "afternoon boat tour hvar".
-
-### Agregar a lib/tours-data.ts
-```ts
-{
-  slug: 'red-rocks-pakleni-islands',
-  name: 'Red Rocks & Pakleni Islands Tour',
-  tagline: 'Cliffs, caves, and crystal water — 4 hours, private.',
-  duration: '4 hours · 9:00–13:00 or 14:00–18:00',
-  price: '€400 private (up to 8 people)',
-  includes: ['Speedboat & Skipper', 'Fuel', 'Icebox', 'Bottled Water', 'Snorkeling Masks'],
-  notIncludes: ['Lunch (restaurants available at stops)'],
-  meetingPoint: 'MareBoats barrel, Hvar Harbour',
-  groupSize: 'Private only — up to 8 people',
-  destinations: [
-    { name: 'Borče Bay', description: 'Quiet cove on the southern coast of Hvar, perfect for swimming and snorkeling.' },
-    { name: 'Red Rocks', description: 'Dramatic vertical red cliffs dropping into turquoise water. Great for cliff jumping and photos.' },
-    { name: 'Dubovica Beach', description: 'One of the most iconic beaches on Hvar — calm water, great for a swim.' },
-    { name: 'Secret Cave near Dubovica', description: 'A hidden sea cave only accessible by boat or a short swim. Worth every second.' },
-    { name: 'Pakleni Islands (Ždrilca & Taršće)', description: 'Beach bars at Ždrilca, untouched nature at Taršće.' },
-  ],
-  keywords: ['red rocks hvar', 'pakleni islands half day tour', 'afternoon boat tour hvar', 'private boat tour hvar 4 hours', 'dubovica beach boat hvar'],
+### Spec — components/ui/NavBar.tsx
+```tsx
+const NAV_LINKS = [
+  { label: 'Tours',     href: '/tours' },
+  { label: 'Rentals',   href: '/rentals' },
+  { label: 'Transfers', href: '/transfers' },
+  { label: 'Guide',     href: '/guide' },
+  { label: 'About',     href: '/about' },
+]
+const CTA = {
+  label: 'Book Now',
+  href: 'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour',
 }
 ```
 
-### Página app/tours/red-rocks-pakleni-islands/page.tsx
-- Metadata única con title "Red Rocks & Pakleni Islands Tour | Private Boat from Hvar"
-- H1: "RED ROCKS & PAKLENI ISLANDS"
-- Descripción larga con keywords naturales (300+ palabras)
-- Sección "What you'll visit" con los 5 destinos + descripción de cada uno
-- Precio €400, duración 4 horas, hasta 8 personas
-- Nota: disponible en franja mañana (9–13) o tarde (14–18)
-- CTA: "Book on WhatsApp" → `https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20the%20Red%20Rocks%20%26%20Pakleni%20Islands%20Tour`
-- Schema TouristTrip específico
-- Breadcrumb: Home → Tours → Red Rocks & Pakleni Islands
+Desktop:
+- Logo izquierda · links centrados · CTA pill derecha
+- Space Grotesk Medium · uppercase · letter-spacing: 0.05em
+- Fondo transparente en top → bg-[var(--bg)]/90 backdrop-blur-md al hacer scroll
+- Scroll progress bar 2px en el fondo (ya implementado — mantener)
+- Sticky top-0 z-50
+- Active state: color var(--accent) + border-bottom 2px accent
 
-### Actualizar components/sections/Tours.tsx (home)
-- Agregar card del nuevo tour al grid
-- Si hay 5+ tours, evaluar mostrar solo los featured (4 en home, resto en /tours)
-
-### Actualizar sitemap.ts
-- Agregar /tours/red-rocks-pakleni-islands con priority 0.8
-
-### Commit
-```bash
-git commit -m "feat: fase 18 — nuevo tour /tours/red-rocks-pakleni-islands con SEO long-tail"
-```
-
----
-
-## FASE 19 — Scooter Rental
-
-### Contexto (Nikola confirma)
-- 6 scooters disponibles para temporada 2026
-- Precio: €50/día · €30–40/medio día
-- Servicio real, ya en operación
-
-### Decisión de implementación
-Agregar como servicio en la home y crear una sección o página dedicada.
-No crear una página de tour individual `/tours/scooter-rental` — es un producto diferente.
-Crear en cambio `/services/scooter-rental` o agregar a `/landing/rental` (ya existente).
-
-**Opción recomendada:** Agregar sección "EXPLORE HVAR YOUR WAY" en `/landing/rental` (ya existe y trata el tema de alquileres). Si el cliente quiere más visibilidad SEO, crear `/services/scooter-rental` como página independiente.
-
-### Contenido confirmado
-```
-Scooter Rental Hvar
-€50 / full day · €30–40 / half day
-6 scooters available
-Perfect for exploring Hvar Town, Stari Grad, Jelsa, and the lavender fields.
-Pick up at Hvar Harbour — same spot as your boat tour.
-Valid driver's license required.
-```
-
-### Copy humano (sin adjetivos vacíos)
-```
-You've seen the coast from the water. Now explore the island.
-6 scooters available — pick up at the harbour, same spot as your boat.
-Half day €30–40. Full day €50. License required.
-```
+Mobile:
+- Hamburger (3 líneas → X animado con Framer Motion)
+- Panel full-width desde arriba: lista vertical con los 6 ítems + Book Now al fondo
+- Book Now: botón full-width, pill acento
 
 ### Archivos a tocar
-- /landing/rental/page.tsx — agregar sección de scooter rental con precio y CTA WhatsApp
-- O crear app/services/scooter-rental/page.tsx si se quiere página SEO independiente
-- components/sections/Tours.tsx (home) — considerar agregar card de scooter rental o no (decisión estética)
-
-### SEO (si se crea página propia)
-```ts
-title: 'Scooter Rental Hvar | €50/day from Hvar Harbour'
-description: 'Rent a scooter in Hvar from €30. Pick up at Hvar Harbour. Explore the island at your own pace. 6 scooters available.'
-keywords: ['scooter rental hvar', 'hvar scooter hire', 'rent scooter hvar croatia', 'hvar moped rental']
-```
+- `components/ui/NavBar.tsx` — refactor completo
 
 ### Commit
 ```bash
-git commit -m "feat: fase 19 — scooter rental service (precios reales, CTA WhatsApp, integrado en /landing/rental)"
+git commit -m "feat: fase 24 — navbar nuevo 6 ítems planos sin dropdowns"
 ```
 
 ---
 
-## FASE 20 — WhatsApp Templates para Nikola
+## FASE 25 — /tours Index Page
 
 ### Objetivo
-Crear archivo de referencia `/public/docs/NIKOLA_WHATSAPP_TEMPLATES.md` con todos los templates listos para copiar y pegar.
+Lista todos los tours. Destino del link "Tours" del navbar.
+El usuario ve todas las opciones con precio, elige, y va a la página individual o bookea directo.
 
-### Templates confirmados
-
-**Post-booking (inmediato):**
-```
-Your tour is confirmed ✅
-Everything you need to know: mareboatshvar.com/landing/pre-tour
-See you soon! 🌊
-```
-
-**Recordatorio (día anterior o 2 horas antes):**
-```
-Good morning! Your tour is today at 09:00 AM.
-Meeting point: MareBoats barrel, Hvar Harbour main dock.
-Last check: mareboatshvar.com/landing/pre-tour
-See you there! ⛵
+### Metadata
+```tsx
+title: 'Boat Tours Hvar | All Tours from Hvar Harbour — MareBoats'
+description: 'All MareBoats tours: Blue Cave, Red Rocks & Pakleni, Sunset Cruise, Private Charter. Private speedboat tours from Hvar Harbour. Book via WhatsApp.'
+keywords: ['boat tours hvar', 'hvar tours', 'private boat tour hvar', 'blue cave tour hvar', 'pakleni islands tour', 'sunset cruise hvar']
+canonical: 'https://mareboatshvar.com/tours'
 ```
 
-**Post-tour (review request):**
+### Estructura — app/tours/page.tsx (NUEVA — no confundir con app/tours/[slug]/page.tsx)
 ```
-Thanks for sailing with us! 🎉
-If you enjoyed the tour, a quick review means the world:
-mareboatshvar.com/review
-Tag us in your photos: @mareboats.hvar 📸
+H1: "CHOOSE YOUR ADVENTURE"
+Subtítulo: "Private tours from Hvar Harbour. You pick the stops — we know every corner of the coast."
+
+Grid tours (1 col → 2 col → 3 col, cards simétricas):
+  Cada card:
+  - Foto del tour (next/image)
+  - Badge duración (ej: "7 hours")
+  - H3: nombre del tour (Syne)
+  - 2 líneas de descripción (Space Grotesk)
+  - Precio "From €130/person" o "€400 private"
+  - 2 CTAs:
+    - "See Details" → /tours/[slug]  (btn-secondary)
+    - "Book on WhatsApp" → WA con mensaje pre-cargado por tour (btn-primary)
+
+Tours en el grid (orden recomendado):
+1. 5 Islands, 4 Beaches, 3 Caves — €130/persona · €700 privado · 7h
+2. Red Rocks & Pakleni Islands — €400 · 4h
+3. Sunset Cruise — €250 · ~2h
+4. Private Charter — €500 · custom
+5. Pakleni Islands — consultar · 4h
+6. Yacht & Sailboat Taxi — on request
+
+Sección "HOW IT WORKS" (3 pasos):
+1. Choose your tour or tell us what you want
+2. Message us on WhatsApp — we reply within 1 hour
+3. Meet at Hvar Harbour barrel at your time
+
+CTA banner final:
+"Not sure which tour? Tell us your date and group size — we'll help you choose."
+→ WhatsApp link
 ```
 
-**Respuesta inicial (nuevo lead):**
+**WA messages pre-cargados por tour (usar en cada card):**
 ```
-Hi! Thanks for reaching out 🌊
-Which tour are you interested in, and what date are you thinking?
-We're available May–September, first tour at 9:00 AM.
+5 Islands: ?text=Hi!%20I%27d%20like%20to%20book%20the%205%20Islands%20tour
+Red Rocks: ?text=Hi!%20I%27d%20like%20to%20book%20the%20Red%20Rocks%20%26%20Pakleni%20tour
+Sunset: ?text=Hi!%20I%27d%20like%20to%20book%20the%20Sunset%20Cruise
+Charter: ?text=Hi!%20I%27d%20like%20to%20book%20a%20Private%20Charter
+Pakleni: ?text=Hi!%20I%27d%20like%20to%20book%20the%20Pakleni%20Islands%20tour
+Yacht Taxi: ?text=Hi!%20I%27d%20like%20info%20about%20the%20Yacht%20Taxi
 ```
 
-**Info scooter rental:**
+**Schema:** `ItemList` con todos los tours como `ListItem` → rich results en Google
+
+### Archivos a crear/tocar
+- `app/tours/page.tsx` — CREAR
+- `app/sitemap.ts` — agregar /tours priority 0.9
+
+### Commit
+```bash
+git commit -m "feat: fase 25 — /tours index page con todos los tours y schema ItemList"
 ```
-Scooter rental: €50/day · €40/half day (PM) · €30/half day (AM)
-Pick up: same spot as the boat tours, Hvar Harbour.
-Valid license required. 6 scooters available.
+
+---
+
+## FASE 26 — /rentals Index Page
+
+### Objetivo
+Lista todos los rentals. Captura SEO para "boat rental hvar", "scooter rental hvar", "water scooter hvar".
+
+### Metadata
+```tsx
+title: 'Rentals Hvar | Scooter, Water Scooter & Boat Rental — MareBoats'
+description: 'Rent a scooter, water scooter or boat in Hvar. Pick up at Hvar Harbour. MareBoats rentals — May to September.'
+keywords: ['boat rental hvar', 'scooter rental hvar', 'water scooter hvar', 'hvar scooter hire', 'rent boat hvar croatia']
+canonical: 'https://mareboatshvar.com/rentals'
+```
+
+### Estructura — app/rentals/page.tsx (NUEVA)
+```
+H1: "EXPLORE HVAR YOUR WAY"
+Subtítulo: "Pick up at Hvar Harbour. Same spot as the boat tours."
+
+Grid de rentals (1 col → 3 col):
+
+Card 1 — Scooter
+  Precio: €50/day · €40/half day (PM) · €30/half day (AM)
+  6 scooters available
+  "Explore Hvar Town, Stari Grad, Jelsa and the lavender fields."
+  Reglas clave: valid license · return full tank
+  CTA: "Book on WhatsApp" → ?text=Hi!%20I%27d%20like%20to%20rent%20a%20scooter
+
+Card 2 — Water Scooter
+  Precio: on request
+  "Ride the waves. Instructor briefing included."
+  CTA: "Ask on WhatsApp" → ?text=Hi!%20I%27d%20like%20info%20about%20the%20water%20scooter
+
+Card 3 — Boat Rental (without skipper)
+  Precio: on request
+  "For licensed skippers only. Fuel full-in, full-out."
+  Reglas clave: valid boat license required
+  CTA: "Ask on WhatsApp" → ?text=Hi!%20I%27d%20like%20info%20about%20boat%20rental
+
+Sección "RENTAL RULES" (accordion, <details> nativo):
+- Fuel policy: full tank in / full tank out · refuel at Hvar marina
+- Speed zones: Maritime police actively enforce limits · real fines apply
+- Alcohol & smoking: moderate alcohol OK · no smoking inside / cabin
+- Glass bottles: permitted on deck
+- Damage policy: report immediately · deposit may apply
+- Return: check-in at harbour · photos taken pre/post rental
+
+CTA final:
+"Questions about a rental? Message us — we'll sort it out."
+```
+
+**Schema:** `ItemList` con los 3 rentals
+
+### Archivos a crear
+- `app/rentals/page.tsx` — CREAR
+- `app/sitemap.ts` — agregar /rentals priority 0.8
+
+### Commit
+```bash
+git commit -m "feat: fase 26 — /rentals index page scooter, water scooter, boat rental"
+```
+
+---
+
+## FASE 27 — /transfers Index Page
+
+### Objetivo
+Lista todos los transfers. Captura SEO para "hvar split transfer", "speedboat brac hvar", etc.
+Keywords con alta intención de compra y poca competencia.
+
+### Metadata
+```tsx
+title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula — MareBoats'
+description: 'Private speedboat transfers from Hvar to Split, Split Airport, Brač, Korčula and Biševo. Fast, private, door-to-dock. Book via WhatsApp.'
+keywords: ['hvar split transfer', 'speedboat transfer hvar', 'hvar airport transfer boat', 'hvar to brac speedboat', 'hvar korcula transfer', 'hvar bisevo transfer']
+canonical: 'https://mareboatshvar.com/transfers'
+```
+
+### Estructura — app/transfers/page.tsx (NUEVA)
+```
+H1: "PRIVATE SPEEDBOAT TRANSFERS"
+Subtítulo: "From Hvar Harbour to wherever you need to be. Private — no shared boats, no waiting."
+
+Grid transfers (1 col → 2 col → 3 col):
+
+Card 1 — Split – Hvar
+  €500 · ~1 hour · Any time
+  "Hvar Harbour → Split waterfront. Private boat, direct route."
+  CTA: "Book on WhatsApp" → ?text=Hi!%20I%27d%20like%20to%20book%20the%20Split%20transfer
+
+Card 2 — Airport – Hvar
+  €600 · ~1.5 hours
+  "Split Airport → Hvar Harbour. We track your flight."
+  CTA: "Book on WhatsApp" → ?text=Hi!%20I%27d%20like%20to%20book%20the%20Airport%20transfer
+
+Card 3 — Brač
+  On request · private
+  "Bol, Supetar, Milna — tell us where."
+  CTA: "Ask on WhatsApp" → ?text=Hi!%20I%27d%20like%20a%20transfer%20to%20Bra%C4%8D
+
+Card 4 — Korčula
+  On request · private
+  "Historic walled city. 2 hours from Hvar by speedboat."
+  CTA: "Ask on WhatsApp" → ?text=Hi!%20I%27d%20like%20a%20transfer%20to%20Kor%C4%8Dula
+
+Card 5 — Biševo
+  On request · private
+  "Gateway to the Blue Cave. No ferry, no crowds."
+  CTA: "Ask on WhatsApp" → ?text=Hi!%20I%27d%20like%20a%20transfer%20to%20Bi%C5%A1evo
+
+Sección "HOW IT WORKS":
+1. Tell us your route, date and arrival time
+2. We confirm the price on WhatsApp
+3. Meet at Hvar Harbour barrel (or we pick you up at your hotel dock)
+4. Private speedboat — your group only
+
+Nota copy:
+"All transfers are private. Your group, your boat, your schedule.
+Hotels with docks: Podstine, Amfora, Riva, Adriana — we can pick you up directly."
+```
+
+**Schema:** `ItemList` con los transfers
+
+**Nota técnica:** el slug `/tours/split-airport-transfer` ya existe y tiene SEO propio — NO eliminarlo.
+La card de Split en /transfers tiene un link "See full details" → /tours/split-airport-transfer.
+
+### Archivos a crear
+- `app/transfers/page.tsx` — CREAR
+- `app/sitemap.ts` — agregar /transfers priority 0.8
+
+### Commit
+```bash
+git commit -m "feat: fase 27 — /transfers index page todos los transfers"
+```
+
+---
+
+## FASE 28 — /about Page
+
+### Objetivo
+Dar cara humana al negocio. Construye E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) —
+factor de ranking de Google. Un negocio con cara real rankea mejor que uno anónimo.
+
+### Metadata
+```tsx
+title: 'About MareBoats Hvar | Meet the Team'
+description: 'MareBoats is a family-run boat tour operation in Hvar, Croatia. Meet Nikola and the crew, learn about our boats, licenses, and what makes our tours different.'
+keywords: ['mareboats hvar', 'hvar boat captain', 'licensed boat tour hvar', 'about mareboats']
+canonical: 'https://mareboatshvar.com/about'
+```
+
+### Estructura — app/about/page.tsx (NUEVA)
+```
+H1: "BEHIND THE WHEEL"
+Subtítulo: "The people, the boats, and the reason we do this."
+
+Sección 1 — THE STORY
+Placeholder para completar con Nikola:
+"MareBoats started with one boat and one idea: that every group deserves their own
+experience on the water, not a seat on a crowded tour. Today we run [X] boats from
+Hvar Harbour, May through September, and every trip is still private."
+(Fede llena con la historia real de Nikola — año de inicio, cómo empezó)
+
+Sección 2 — THE TEAM (cards)
+Card Nikola:
+  Foto (placeholder — JPG pendiente de Nikola)
+  Nombre: Nikola
+  Rol: Owner & Captain
+  Idiomas: Croatian, English
+  1 línea: "Born in Hvar. Knows every bay, cave and hidden beach on this coast."
+
+Card Fede:
+  Foto (placeholder — JPG pendiente de Fede)
+  Nombre: Federico
+  Rol: Skipper & Marketing
+  Idiomas: English, Croatian, Italian, Spanish
+  1 línea: "Skipper and the guy who built this website."
+
+Nota bajo las cards:
+"During peak season (July–August) we operate with additional skippers.
+Language availability varies — ask when booking."
+
+Sección 3 — THE BOAT
+Placeholder para datos técnicos que Nikola debe pasar:
+"Our speedboat fits up to 10 people. Equipped with icebox, safety gear,
+snorkeling equipment, and a full first aid kit."
+(Nikola: modelo del barco, año, capacidad exacta)
+
+Sección 4 — LICENSED & INSURED
+"Every trip runs under a valid Croatian maritime licence.
+Boat and passenger insurance included on all tours and transfers."
+Badge visual: ✅ Licensed · ✅ Insured · ✅ Safety equipment on board
+
+Sección 5 — TRUST SIGNALS
+- Google ⭐⭐⭐⭐⭐ (número de reviews cuando estén disponibles — placeholder "5★ on Google")
+- "Operating since [año]" (pendiente Nikola)
+- "100+ happy guests"
+
+CTA final:
+"Want to meet us on the water?"
+→ "Book on WhatsApp" (btn-primary)
+```
+
+**Schema:** `Person` para Nikola + Fede, anclados al `LocalBusiness` ya existente en JsonLd.tsx
+
+### Placeholders a completar con Nikola
+- Historia del negocio (año de inicio, número de barcos actual)
+- Foto de Nikola (JPG, retrato, luz natural, <500KB)
+- Datos técnicos del barco (modelo, año, capacidad exacta)
+
+### Archivos a crear
+- `app/about/page.tsx` — CREAR
+- `components/ui/JsonLd.tsx` — agregar schema Person para Nikola + Fede
+- `app/sitemap.ts` — agregar /about priority 0.6
+
+### Commit
+```bash
+git commit -m "feat: fase 28 — /about page con team, historia, licencias y schema Person"
+```
+
+---
+
+## FASE 29 — /qr Hub Animado
+
+### Objetivo
+Una sola URL para el único QR físico de MareBoats.
+Pantalla cinematográfica animada con 6 botones contextuales, cada uno con explicación.
+El usuario escanea → ve la intro → elige su contexto → va a la página correcta.
+
+### URL: /qr — noindex: true · NO en sitemap · NO en navbar
+
+### Animación Framer Motion (secuencia)
+```
+Timing total: ~3.5 segundos hasta que todos los botones están visibles
+
+0.0s — Fondo oscuro var(--bg), pantalla vacía
+0.3s — Logo MareBoats SVG: fadeIn + scale(0.9→1), duration 0.8s
+1.1s — "Thanks for choosing us": fadeIn + translateY(10px→0), duration 0.6s
+        Syne ExtraBold, var(--white), tamaño grande
+1.7s — "What do you need?": fadeIn, duration 0.4s
+        Space Grotesk, var(--gray), tamaño pequeño
+2.1s — Botones: stagger 0.12s entre cada uno
+        Cada botón: fadeIn + translateY(20px→0), duration 0.5s
+        Easing: cubic-bezier(0.34, 1.56, 0.64, 1)
+```
+
+### Los 6 botones (en orden, con explicación visible)
+```tsx
+const QR_BUTTONS = [
+  {
+    icon: '🔍',
+    label: 'Explore Tours',
+    description: 'Browse our tours and book your day on the water',
+    href: '/landing/explore',
+    variant: 'primary', // fondo var(--accent), texto negro — el único destacado
+  },
+  {
+    icon: '📋',
+    label: 'Pre-Tour Info',
+    description: "Your tour is coming up. Here's everything you need.",
+    href: '/landing/pre-tour',
+    variant: 'secondary',
+  },
+  {
+    icon: '🌊',
+    label: 'On Tour',
+    description: 'Info about every stop — download for offline use',
+    href: '/on-tour',
+    variant: 'secondary',
+    badge: '⬇ Save offline', // badge pequeño en la esquina derecha del botón
+  },
+  {
+    icon: '⭐',
+    label: 'Leave a Review',
+    description: 'Just finished? 30 seconds. Means the world.',
+    href: '/landing/review',
+    variant: 'secondary',
+  },
+  {
+    icon: '🗺️',
+    label: 'Hvar Guide',
+    description: 'Restaurants, beaches and hidden spots on the island',
+    href: '/landing/guide-hvar',
+    variant: 'secondary',
+  },
+  {
+    icon: '🛵',
+    label: 'Rental Rules',
+    description: 'What to know before your boat or scooter rental',
+    href: '/landing/rental',
+    variant: 'secondary',
+  },
+]
+```
+
+### Layout
+- Mobile-first — 100% uso en teléfono, max-width 480px centrado
+- Sin navbar, sin footer — solo logo pequeño top-left como link a /
+- Cada botón: fondo var(--surface), border var(--border), padding generoso (py-4 px-5)
+- Hover: border-color var(--accent), translateY(-2px), sombra tinted turquesa
+- Ícono: 2rem, alineado izquierda
+- Label: Syne Medium, var(--white), 1rem
+- Description: Space Grotesk, var(--gray), 0.85rem
+- Badge "⬇ Save offline": pill pequeño var(--accent)/20, texto acento, top-right del botón On Tour
+- "Explore Tours" (primary): fondo var(--accent), texto var(--bg), sin border
+- Espaciado entre botones: gap-3
+
+### Offline para /on-tour — solución simple
+En el botón "On Tour" dentro de /qr, agregar bajo la description:
+```tsx
+<button
+  onClick={() => window.print()}
+  className="text-xs text-[var(--accent)] underline mt-1"
+>
+  Save as PDF for offline use
+</button>
+```
+`window.print()` abre el diálogo de impresión del browser → el usuario elige "Save as PDF".
+No requiere service worker, no requiere backend. Simple y funciona en todos los dispositivos.
+
+En `app/on-tour/page.tsx` agregar `@media print` CSS para que la versión impresa/PDF se vea bien:
+```css
+@media print {
+  nav, footer, .no-print { display: none; }
+  body { background: white; color: black; }
+}
 ```
 
 ### Archivos a crear
-- `/public/docs/NIKOLA_WHATSAPP_TEMPLATES.md`
+- `app/qr/page.tsx` — CREAR (noindex: true)
 
 ### Commit
 ```bash
-git commit -m "docs: fase 20 — WhatsApp templates para Nikola en /public/docs/"
+git commit -m "feat: fase 29 — /qr hub animado cinematográfico con 6 botones y save offline"
 ```
 
 ---
 
-## FASE 21 — QR Code Strategy (archivos para Nikola)
-
-### 3 QR Codes físicos
-
-| QR | Ubicación | URL | Objetivo |
-|----|-----------|-----|----------|
-| #1 Muelle (cartel) | Hvar Harbour, booking barrel | /landing/explore | Turistas indecisos → booking |
-| #2 Barco (sticker) | Popa o cabina | /landing/review | Reviews post-tour → ranking Google |
-| #3 Guide impreso | Folleto o tarjeta | /landing/guide-hvar | Engagement + SEO long-tail |
-
-### Archivo a crear: /public/docs/QR_CODES_GUIDE.md
-```markdown
-# QR Codes — MareBoats Hvar
-
-## Herramienta
-https://www.qr-code-generator.com (free)
-Color: #3BC9DB (turquesa) o blanco/negro para máximo contraste en impresión
-Formato: PNG alta resolución (300dpi mínimo para impresión)
-Testear en 3 teléfonos antes de imprimir.
-
-## QR #1 — Cartel en el muelle
-URL: https://mareboatshvar.com/landing/explore
-Texto del cartel:
-  BOAT TOURS FROM HVAR HARBOUR
-  [QR]
-  Scan for tours & prices
-  mareboatshvar.com/landing/explore
-
-## QR #2 — Sticker en el barco
-URL: https://mareboatshvar.com/landing/review
-Texto del sticker:
-  ⭐ Enjoyed the tour?
-  Leave a review — 30 seconds
-  [QR]
-
-## QR #3 — Guide impreso / tarjeta
-URL: https://mareboatshvar.com/landing/guide-hvar
-Texto: Scan for Hvar tips & hidden spots
-```
-
-### Commit
-```bash
-git commit -m "docs: fase 21 — QR code guide para Nikola en /public/docs/"
-```
-
----
-
-## FASE 22 — Google My Maps Embeds
-
-### 3 Mapas a crear (Nikola o Fede en Google My Maps)
-
-| Mapa | Dónde se usa | Pins sugeridos |
-|------|-------------|----------------|
-| Tour Destinations | /guide → Where We Go | Blue Cave, Pakleni Islands N/S, Hvar Harbour/barrel, Stiniva, Red Rocks, Dubovica, Borče Bay |
-| Recommended Restaurants | /landing/guide-hvar → Where to Eat | Moli Onte (Milna), Gego (Zarace), Tri Grede (Zdrilca), Bacchus (Palmizana) |
-| Hvar Local Tips | /landing/guide-hvar → Maps | Old Town, beaches, beach clubs, ATM, hospital, farmacia |
-
-### lib/maps-data.ts (ya creado en Fase 15 — completar con URLs reales)
-```ts
-export const MAPS = {
-  tourDestinations: null,       // TODO: Nikola/Fede — agregar embed URL
-  recommendedRestaurants: null, // TODO: Nikola/Fede — Moli Onte, Gego, Tri Grede, Bacchus
-  hvarLocalTips: null,          // TODO: Nikola/Fede — spots locales
-}
-```
-
-### Cómo crear (para Nikola/Fede)
-1. Ir a https://www.google.com/mymaps
-2. Crear mapa nuevo, agregar pins con nombres y descripciones
-3. Publicar → "Anyone with the link can view"
-4. Botón "Share" → "Embed on my site" → copiar la URL del atributo `src`
-5. Pegar en lib/maps-data.ts reemplazando `null`
-
-### Nota importante: restaurantes
-Los restaurantes (Moli Onte, Gego, Tri Grede, Bacchus) NO son socios oficiales.
-Copy sugerido para el sitio: "Restaurants we often stop at — no official deal, just places we like."
-
-### Archivo a crear: /public/docs/GOOGLE_MAPS_SETUP.md
-Instrucciones paso a paso para que Nikola cree los 3 mapas.
-
-### Commit
-```bash
-git commit -m "feat: fase 22 — Google My Maps embeds integrados con placeholders + /public/docs/GOOGLE_MAPS_SETUP.md"
-```
-
----
-
-## FASE 23 — On-Tour Info Page (/on-tour)
-
-### Contexto (pedido por Fede)
-Una página o landing para usar a bordo durante el viaje. Da información local de cada parada — historia, datos, qué hacer — que enriquece la experiencia y diferencia MareBoats de otros tours.
+## FASE 30 — Sitemap, Links Internos, Breadcrumbs, Footer
 
 ### Objetivo
-- Que Fede (o Nikola) pueda mostrar esta página en el teléfono a bordo mientras navegan hacia cada destino
-- Que los turistas puedan abrirla desde su propio teléfono con un QR en el barco
-- Simple, rápida de leer, sin distracciones
+Conectar toda la arquitectura. Google distribuye autoridad a través de links internos.
+Sin links internos, las páginas nuevas son huérfanas y rankean menos.
 
-### URL: /on-tour (noindex — no SEO, es para uso interno)
-
-### Estructura
-```
-/on-tour
-├── Hero: "You're on a MareBoats tour 🌊" + tour name (si se puede pasar por query param)
-├── Sección por destino (accordion o tabs):
-│   ├── Hvar Town & Harbour — punto de partida, datos históricos
-│   ├── Red Rocks — cómo se formaron, cliff jumping tips
-│   ├── Dubovica Beach — historia, qué hacer
-│   ├── Borče Bay — datos de la cala
-│   ├── Green Cave — cómo funciona la luz, historia geológica
-│   ├── Blue Cave (Modra Špilja) — por qué el agua es azul, horarios de luz ideal
-│   ├── Stiniva Bay — cómo se formó, qué buscar
-│   ├── Pakleni Islands (Palmižana / Ždrilca / Taršće) — historia, restaurantes
-│   └── Budikovac Lagoon — fauna marina, snorkeling tips
-├── Fun Facts section — curiosidades del Adriático, flora, fauna
-└── CTA: "Leave a review after the tour" → /landing/review
+### 1. Actualizar app/sitemap.ts
+```ts
+// Páginas nuevas a agregar:
+{ url: '/tours',     priority: 0.9, changeFrequency: 'weekly' },
+{ url: '/rentals',   priority: 0.8, changeFrequency: 'monthly' },
+{ url: '/transfers', priority: 0.8, changeFrequency: 'monthly' },
+{ url: '/about',     priority: 0.6, changeFrequency: 'monthly' },
+// /qr → noindex → NO en sitemap
+// /on-tour → noindex → NO en sitemap
 ```
 
-### Notas de implementación
-- `noindex: true` — no indexar
-- Puede recibir query param `?tour=blue-cave` para preseleccionar secciones relevantes
-- Mobile-first — se usa en teléfono, tipografía grande, alto contraste
-- Sin Navbar completo — solo logo y "Back to MareBoats" link
-- Offline-friendly si es posible (considerar service worker o contenido estático puro)
+### 2. Actualizar /tours/[slug] — breadcrumb + back link + related tours
+Agregar en CADA página individual de tour:
+```tsx
+// Debajo del hero, antes del contenido:
+<Breadcrumb items={['Home', 'Tours', tour.name]} />
+// Links: Home → / · Tours → /tours · [nombre] → actual
 
-### Contenido de historia/datos (resumen para Cursor)
-Estos son los highlights por destino. Cursor puede expandirlos:
-- **Blue Cave (Modra Špilja):** La luz entra desde abajo a través de una abertura submarina. El efecto azul es más intenso entre las 11:00 y las 12:00. Descubierta en el siglo XIX.
-- **Green Cave (Špilja Medvidina):** La más larga de Biševo. Antiguamente habitada por el monje mediterráneo (casi extinto). El agua brilla verde por reflexión de la luz solar.
-- **Stiniva Bay:** Formada por el colapso de una cueva marina. En 2016 fue votada como la mejor playa de Europa por European Best Destinations.
-- **Red Rocks:** El color rojo proviene de óxido de hierro en la roca calcárea. Cliff jumping popular desde 5–10 metros.
-- **Pakleni Islands:** El nombre viene de "paklina" — alquitrán — que los pescadores usaban para calafatear los barcos. 21 islas e islotes.
-- **Budikovac Lagoon:** Aguas poco profundas (1–3m), visibilidad perfecta. Tortugas marinas avistadas regularmente.
-- **Dubovica Beach:** Playa de guijarros protegida por una bahía natural. La casa de piedra en la playa es del siglo XVI.
-- **Hvar Town:** Una de las ciudades más soleadas de Europa (2726 horas de sol/año). La fortaleza Španjola data del siglo XVI.
+// Al inicio del contenido:
+<a href="/tours">← All Tours</a>
+
+// Al fondo, antes del CTA banner:
+<RelatedTours currentSlug={slug} count={2} />
+// Muestra 2 tours aleatorios (o los más relacionados) con link a /tours/[slug]
+```
+
+**Schema BreadcrumbList** en cada /tours/[slug] — ya mejora CTR en Google.
+
+### 3. Actualizar Home — app/page.tsx
+- Sección "Tours" en home: agregar "See all tours →" → /tours al fondo de la sección
+- Sección "Transfers" si existe: agregar "All transfers →" → /transfers
+- Verificar que los botones de las tour cards linkeen a /tours/[slug]
+
+### 4. Actualizar /landing/explore
+- Agregar link "See All Tours →" → /tours como CTA secundario en la parte de tours
+
+### 5. Footer — components/sections/Footer.tsx
+```
+Columna 1: Logo · tagline · Instagram · WhatsApp
+Columna 2: Explore
+  Tours → /tours
+  Rentals → /rentals
+  Transfers → /transfers
+  Guide → /guide
+Columna 3: Info
+  About → /about
+  On Tour → /on-tour
+  Weather Policy → /guide (anchor #weather)
+  Book on WhatsApp → WA link
+Columna 4: Find us
+  "MareBoats barrel, Hvar Harbour"
+  Google Maps link → https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7
+  Instagram → @mareboats.hvar
+  © 2026 MareBoats Hvar
+```
+
+### Archivos a tocar
+- `app/sitemap.ts`
+- `app/tours/[slug]/page.tsx`
+- `app/page.tsx` (home)
+- `app/landing/explore/page.tsx`
+- `components/sections/Footer.tsx`
 
 ### Commit
 ```bash
-git commit -m "feat: fase 23 — /on-tour info page para usar a bordo durante el viaje"
+git commit -m "feat: fase 30 — sitemap, breadcrumbs /tours/[slug], links internos, footer actualizado"
+git commit -m "docs: CLAUDE.md actualizado fases 24-30 completadas"
 ```
 
 ---
 
-## Arquitectura de URLs (completa post Fase 23)
+## PENDIENTE DE TERCEROS — actualizado 21/04/2026
 
-```
-mareboatshvar.com/
-├── / (HOME)
-├── /tours/blue-cave-pakleni-islands    ← 5 Islands, 4 Beaches, 3 Caves
-├── /tours/red-rocks-pakleni-islands    ← NUEVO (Fase 18)
-├── /tours/pakleni-islands
-├── /tours/sunset-cruise
-├── /tours/split-airport-transfer
-├── /tours/private-boat-charter
-├── /tours/yacht-sailboat-taxi
-├── /guide                              ← pública, indexable
-├── /on-tour                            ← noindex, para usar a bordo (Fase 23)
-├── /landing/explore                    ← QR #1 muelle
-├── /landing/pre-tour                   ← noindex, Nikola manda por WA
-├── /landing/review                     ← noindex, QR #2 barco
-├── /landing/guide-hvar                 ← QR #3 guide
-├── /landing/rental                     ← incluye scooter rental (Fase 19)
-└── /review                             ← redirect 301 → Google Business
-```
-
----
-
-## PENDIENTE DE TERCEROS — actualizado 20/04/2026
-
-| Item | Responsable | Urgencia | Dónde se usa |
-|------|-------------|----------|--------------|
+| Item | Responsable | Urgencia | Bloquea |
+|------|-------------|----------|---------|
 | URL directa Google Business review | Nikola | 🔴 Alta | /review redirect |
 | Reviews reales de clientes | Nikola | 🔴 Alta | Testimonials.tsx |
-| Fotos profesionales bote + destinos (<500KB) | Fede (viaja a Hvar) | 🔴 Alta | Todo el sitio |
-| Foto de Fede (skipper) — cara visible, luz natural | Fede | 🟡 Media | Features.tsx, /landing/pre-tour |
-| Fotos de otros skippers (si hay en temporada) | Nikola | 🟡 Media | Features.tsx |
-| Mapa Google My Maps — Tour Destinations (embed URL) | Nikola/Fede | 🟡 Media | /guide |
-| Mapa Google My Maps — Restaurants (embed URL) | Nikola/Fede | 🟡 Media | /landing/guide-hvar |
-| Mapa Google My Maps — Hvar Local Tips (embed URL) | Nikola/Fede | 🟡 Media | /landing/guide-hvar |
+| Fotos profesionales bote + destinos (<500KB) | Fede | 🔴 Alta | LCP mobile + todo el sitio |
+| Historia del negocio (año inicio, nº barcos) | Nikola | 🟡 Media | /about |
+| Foto Nikola (skipper, luz natural, JPG <500KB) | Nikola | 🟡 Media | /about |
+| Foto Fede (skipper, luz natural, JPG <500KB) | Fede | 🟡 Media | /about + /landing/pre-tour |
+| Precio Water Scooter + unidades | Nikola | 🟡 Media | /rentals |
+| Precio Boat Rental sin skipper | Nikola | 🟡 Media | /rentals |
+| Datos técnicos barco (modelo, año, capacidad) | Nikola | 🟡 Media | /about |
+| 3 mapas Google My Maps embed URLs | Nikola/Fede | 🟡 Media | /guide + /landing/guide-hvar |
 | Spotify playlist "Hvar vibes" | Fede | 🟢 Baja | /landing/pre-tour, /landing/review |
 | Cambios estéticos | Coti | — | — |
 
@@ -578,19 +748,24 @@ mareboatshvar.com/
 
 ## Reglas siempre activas
 
-- Mobile-first: grid-cols-1 primero, luego md: lg:
-- overflow-x: hidden en html y body (ya aplicado en Fase 15.1) — verificar en 375px antes de cada commit
+- NO hay splash screen de carga — daña LCP (actualmente 0.8s desktop) y aumenta rebote
+- NO hay megamenú ni dropdowns en el navbar — 6 ítems planos únicamente
+- Navbar: Tours · Rentals · Transfers · Guide · About · [Book Now]
+- Las páginas /tours/[slug] NO aparecen en el navbar — acceso desde /tours o Google
+- Mobile-first siempre: grid-cols-1 primero, luego md: lg:
+- overflow-x: hidden en html y body — verificar 375px antes de cada commit
 - Solo next/image — cero `<img>` tags
 - Solo animar transform y opacity — nunca transition-all
-- Todo clickeable necesita hover + focus-visible + active
-- npm run build debe pasar sin errores al terminar cada fase
+- Todo clickeable: hover + focus-visible + active
+- npm run build sin errores antes de cada commit
 - Commit al terminar cada fase con el mensaje indicado
 - NUNCA tocar /src/components/ — legacy
 - NUNCA cambiar copy ni imágenes existentes sin instrucción explícita
-- Los idiomas a bordo (EN/HR/IT/ES) solo aplican cuando Fede es el skipper — no prometer en copy genérico
-- Fotos drone + underwater: se venden aparte, a pedido — NO mencionar como incluidas en los tours
-- /landing/pre-tour y /landing/review son noindex: true
-- /on-tour es noindex: true
-- /review redirige a Google Business Profile — no es una página indexable
-- Restaurantes recomendados: NO son socios oficiales — no prometer beneficios o descuentos
-- WhatsApp pre-cargado en todos los CTAs de booking: `https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour`
+- Fotos drone + underwater: aparte, a pedido, solo con Fede — NO mencionar como incluidas
+- Idiomas EN/HR/IT/ES: solo cuando Fede es el skipper — no prometer en copy genérico
+- /qr · /on-tour · /landing/pre-tour · /landing/review → noindex: true
+- /review → redirect 301 a Google Business Profile
+- Restaurantes: sin acuerdo formal — "places we often stop at, not official partners"
+- WhatsApp pre-cargado en todos los CTAs: https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour
+- Cada /tours/[slug] tiene: breadcrumb + "← All Tours" link + related tours al fondo
+- /transfers menciona que /tours/split-airport-transfer tiene página propia con detalles completos

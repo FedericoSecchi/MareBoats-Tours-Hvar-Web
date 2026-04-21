@@ -2,70 +2,120 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
+import { JsonLd } from '@/components/ui/JsonLd';
 
 export const metadata: Metadata = generateSEO({
-  title: 'About Mare Boats Hvar | Local Boat Tour Crew',
+  title: 'About MareBoats Hvar | Meet the Team',
   description:
-    'Meet the team behind Mare Boats Hvar. Local crew, private speedboat tours, multilingual skipper. Based at Hvar Harbour.',
+    'MareBoats is a family-run boat tour operation in Hvar, Croatia. Meet Nikola and the crew, learn about our boats, licenses, and what makes our tours different.',
   keywords: [
-    'about mare boats hvar',
-    'mare boats hvar team',
-    'hvar local boat tours',
-    'mare boats crew hvar',
+    'mareboats hvar',
+    'hvar boat captain',
+    'licensed boat tour hvar',
+    'about mareboats',
   ],
   slug: 'about',
   ogImage: '/img/about.jpeg',
 });
 
+const SITE = 'https://mareboatshvar.com';
 const WA_URL =
-  'https://wa.me/385951966734?text=Hi!%20I%27m%20interested%20in%20booking%20a%20tour%20with%20Mare%20Boats%20Hvar.';
+  'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour';
+
+type Crew = {
+  name: string;
+  role: string;
+  languages: string[];
+  bio: string;
+  image: string;
+  imageAlt: string;
+};
+
+const CREW: Crew[] = [
+  {
+    name: 'Nikola',
+    role: 'Owner & Captain',
+    languages: ['Croatian', 'English'],
+    bio: 'Born in Hvar. Knows every bay, cave and hidden beach on this coast.',
+    image: '/img/team-1.png',
+    imageAlt: 'Nikola — owner and captain at MareBoats Hvar',
+  },
+  {
+    name: 'Federico',
+    role: 'Skipper & Marketing',
+    languages: ['English', 'Croatian', 'Italian', 'Spanish'],
+    bio: 'Skipper and the guy who built this website.',
+    image: '/img/team-2.jpg',
+    imageAlt: 'Federico — skipper at MareBoats Hvar',
+  },
+];
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@graph': CREW.map((c) => ({
+    '@type': 'Person',
+    name: c.name,
+    jobTitle: c.role,
+    knowsLanguage: c.languages,
+    image: `${SITE}${c.image}`,
+    worksFor: { '@id': `${SITE}/#localbusiness` },
+  })),
+};
 
 export default function AboutPage() {
   return (
-    <main>
+    <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
+      <JsonLd data={personSchema as Record<string, unknown>} />
+
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-end text-white overflow-hidden">
+      <section className="relative min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
         <Image
           src="/img/about.jpeg"
-          alt="Mare Boats Hvar team — local crew at Hvar port"
+          alt="MareBoats Hvar crew at Hvar Harbour"
           fill
           priority
           sizes="100vw"
           className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)]/85 via-[color:var(--bg)]/30 to-transparent" />
-        <div className="relative z-10 w-full px-4 pb-12 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">About Mare Boats Hvar</h1>
-          <p className="text-[color:var(--gray)] text-lg max-w-xl">
-            Local crew. Private boats. Based at Hvar Harbour.
+        <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)] via-[color:var(--bg)]/50 to-transparent" />
+        <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-container flex-col justify-end px-4 pb-14 pt-28 md:pb-20">
+          <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+            About MareBoats
+          </p>
+          <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] md:text-6xl">
+            Behind the Wheel
+          </h1>
+          <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+            The people, the boats, and the reason we do this.
           </p>
         </div>
       </section>
 
       {/* Story */}
-      <section className="py-14 px-4 max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4 text-[color:var(--gray)]">
-            <h2 className="section-heading">Who We Are</h2>
-            <p>
-              Mare Boats Hvar is a family-run boat tour company based at the port of Hvar, Croatia.
-              We offer private speedboat tours, Blue Cave excursions, Pakleni Islands tours, sunset
-              cruises, boat rental and transfers across the Dalmatian coast.
+      <section className="px-4 py-16 md:py-20">
+        <div className="mx-auto grid max-w-container items-center gap-10 md:grid-cols-2">
+          <div>
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              The story
             </p>
-            <p>
-              Every tour is private — your group only, with a local English-speaking skipper who
-              knows these waters inside out. We take care of the navigation; you enjoy the sea.
-            </p>
-            <p>
-              Optional add-ons: we can arrange <strong>aerial drone footage</strong> and{' '}
-              <strong>underwater video</strong> of your day on the Adriatic — on request, paid
-              separately, and only when Fede (our skipper with the camera gear) is on board.
-            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Private by design
+            </h2>
+            <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
+              <p>
+                MareBoats started with one boat and one idea: that every group deserves their own
+                experience on the water, not a seat on a crowded tour.
+              </p>
+              <p>
+                Today we run a small fleet from Hvar Harbour, May through September, and every trip
+                is still private. Your group, your boat, your pace.
+              </p>
+            </div>
           </div>
-          <div className="relative h-72 rounded-2xl overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)]">
             <Image
               src="/img/about-2.jpeg"
-              alt="Mare Boats Hvar — speedboat and crew at Hvar port"
+              alt="MareBoats speedboat at Hvar Harbour"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
@@ -74,93 +124,159 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-[color:var(--surface)] py-14 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="section-heading text-center mb-10">Why Choose Mare Boats</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: '🎬',
-                title: 'Optional Drone & Underwater',
-                desc: 'Aerial drone footage and underwater video available on request as a paid add-on when Fede is on board. Ask us when you book.',
-              },
-              {
-                icon: '🚤',
-                title: '100% Private',
-                desc: 'Your group only — never shared with strangers. We tailor every tour to your pace, preferences and the day\'s conditions.',
-              },
-              {
-                icon: '🧭',
-                title: 'Local Knowledge',
-                desc: 'Our skippers are locals. They know the hidden coves, the best swimming spots, and how to read the sea.',
-              },
-              {
-                icon: '☀️',
-                title: 'Flexible Itineraries',
-                desc: 'No fixed script. We adjust routes based on weather, sea conditions and what you want to see.',
-              },
-              {
-                icon: '👨‍👩‍👧‍👦',
-                title: 'Family Friendly',
-                desc: 'Life jackets for all ages, calm routes for families with kids, snorkeling spots safe for beginners.',
-              },
-              {
-                icon: '📍',
-                title: 'Hvar Port Based',
-                desc: 'We operate from Hvar port — easy access, central location, no complicated logistics.',
-              },
-            ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm">
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="font-semibold text-[color:var(--white)] mb-2">{item.title}</h3>
-                <p className="text-[color:var(--gray)] text-sm">{item.desc}</p>
-              </div>
+      {/* Team */}
+      <section className="border-y border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <div className="max-w-2xl">
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              The team
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Who you&apos;ll meet at the barrel
+            </h2>
+          </div>
+
+          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {CREW.map((c) => (
+              <li key={c.name}>
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/70">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={c.image}
+                      alt={c.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  </div>
+                  <div className="flex flex-1 flex-col gap-3 p-6">
+                    <div>
+                      <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                        {c.name}
+                      </h3>
+                      <p className="mt-1 font-body text-sm font-semibold text-[color:var(--accent)]">
+                        {c.role}
+                      </p>
+                    </div>
+                    <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                      {c.bio}
+                    </p>
+                    <p className="mt-auto font-body text-xs uppercase tracking-[0.12em] text-[color:var(--gray)]">
+                      Speaks: <span className="text-[color:var(--white)]">{c.languages.join(' · ')}</span>
+                    </p>
+                  </div>
+                </article>
+              </li>
             ))}
+          </ul>
+
+          <p className="mt-8 max-w-2xl font-body text-sm leading-relaxed text-[color:var(--gray)]">
+            During peak season (July–August) we operate with additional skippers. Language
+            availability varies &mdash; ask when booking.
+          </p>
+        </div>
+      </section>
+
+      {/* The boat */}
+      <section className="px-4 py-16 md:py-20">
+        <div className="mx-auto grid max-w-container items-center gap-10 md:grid-cols-2">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)] md:order-2">
+            <Image
+              src="/img/package-4.jpeg"
+              alt="MareBoats speedboat on the Adriatic near Hvar"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="md:order-1">
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              The boat
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Built for the Adriatic
+            </h2>
+            <ul className="mt-6 space-y-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
+              {[
+                'Up to 10 passengers per speedboat',
+                'Icebox on board, bottled water included',
+                'Snorkeling masks for every guest',
+                'Full safety gear and first aid kit',
+              ].map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-14 px-4 max-w-4xl mx-auto">
-        <h2 className="section-heading text-center mb-8">The Crew</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { src: '/img/team-1.png', name: 'TODO — Name', role: 'Skipper & Owner' },
-            { src: '/img/team-2.jpg', name: 'TODO — Name', role: 'Skipper' },
-            { src: '/img/team-3.JPEG', name: 'TODO — Name', role: 'Drone Operator' },
-            { src: '/img/team-4.jpg', name: 'TODO — Name', role: 'Guide' },
-          ].map((member) => (
-            <div key={member.src} className="text-center">
-              <div className="relative w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden">
-                <Image
-                  src={member.src}
-                  alt={`${member.name} — ${member.role} at Mare Boats Hvar`}
-                  fill
-                  sizes="96px"
-                  className="object-cover"
-                />
-              </div>
-              <p className="font-semibold text-[color:var(--white)] text-sm">{member.name}</p>
-              <p className="text-[color:var(--gray)] text-xs">{member.role}</p>
-            </div>
-          ))}
+      {/* Trust */}
+      <section className="border-y border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+            Licensed & insured
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+            Every trip runs under a valid Croatian maritime licence
+          </h2>
+          <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+            Boat and passenger insurance included on all tours and transfers.
+          </p>
+
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {[
+              { label: 'Licensed', sub: 'Croatian maritime authority' },
+              { label: 'Insured', sub: 'Boat + passenger cover' },
+              { label: '5★ on Google', sub: 'Happy guests across seasons' },
+            ].map((badge) => (
+              <li
+                key={badge.label}
+                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6 text-center"
+              >
+                <p className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--accent)]">
+                  {badge.label}
+                </p>
+                <p className="mt-2 font-body text-xs uppercase tracking-[0.12em] text-[color:var(--gray)]">
+                  {badge.sub}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-[color:var(--bg)] text-white py-14 px-4 text-center">
-        <h2 className="text-3xl font-bold mb-4">Ready to Explore Hvar with Us?</h2>
-        <p className="text-[color:var(--gray)] mb-6 max-w-md mx-auto">
-          Message us on WhatsApp and we&apos;ll plan the perfect day on the water for your group.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={WA_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
-            Book on WhatsApp
-          </a>
-          <Link href="/tours" className="btn-secondary">
-            View All Tours
-          </Link>
+      {/* Final CTA */}
+      <section
+        className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-20"
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse at center, rgba(59,201,219,0.12) 0%, transparent 70%)',
+        }}
+      >
+        <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h2 className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
+            Want to meet us on the water?
+          </h2>
+          <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
+            >
+              Book on WhatsApp
+            </a>
+            <Link
+              href="/tours"
+              className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98] md:text-base"
+            >
+              See All Tours
+            </Link>
+          </div>
         </div>
       </section>
     </main>

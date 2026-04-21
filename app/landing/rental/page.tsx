@@ -305,7 +305,7 @@ export default function LandingRentalPage() {
               Book a Scooter
             </a>
             <Link
-              href="/services/scooter-rental"
+              href="/rentals"
               className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
             >
               More details
