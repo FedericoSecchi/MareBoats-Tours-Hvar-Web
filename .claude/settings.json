@@ -30,6 +30,12 @@
         "source": "github",
         "repo": "Hainrixz/auto-crm"
       }
+    },
+    "scrapling": {
+      "source": {
+        "source": "github",
+        "repo": "D4Vinci/Scrapling"
+      }
     }
   }
 }
