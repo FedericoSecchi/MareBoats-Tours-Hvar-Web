@@ -12,6 +12,12 @@
         "source": "github",
         "repo": "AgriciDaniel/claude-seo"
       }
+    },
+    "claude-ads": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-ads"
+      }
     }
   }
 }
