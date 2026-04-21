@@ -6,6 +6,12 @@
         "source": "github",
         "repo": "coreyhaines31/marketingskills"
       }
+    },
+    "claude-seo": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-seo"
+      }
     }
   }
 }
