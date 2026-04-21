@@ -18,6 +18,12 @@
         "source": "github",
         "repo": "AgriciDaniel/claude-ads"
       }
+    },
+    "whatsapp-agentkit": {
+      "source": {
+        "source": "github",
+        "repo": "Hainrixz/whatsapp-agentkit"
+      }
     }
   }
 }
