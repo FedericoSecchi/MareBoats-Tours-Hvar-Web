@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { BUSINESS_INFO } from '@/lib/tours-data';
 
-const MAPS_URL = 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA';
+const MAPS_URL = BUSINESS_INFO.googleMapsUrl;
 const WA_BOOK = 'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour';
 const INSTAGRAM = 'https://www.instagram.com/mareboats.hvar/';
 

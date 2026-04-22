@@ -2,7 +2,7 @@ const SITE_URL = 'https://mareboatshvar.com';
 
 const sharedAddress = {
   '@type': 'PostalAddress',
-  streetAddress: 'Port of Hvar',
+  streetAddress: 'Janka Žagjala 56, Hvar Harbour',
   addressLocality: 'Hvar',
   addressRegion: 'Split-Dalmatia County',
   postalCode: '21450',
@@ -11,8 +11,8 @@ const sharedAddress = {
 
 const sharedGeo = {
   '@type': 'GeoCoordinates',
-  latitude: 43.1725,
-  longitude: 16.4411,
+  latitude: 43.16847,
+  longitude: 16.443,
 } as const;
 
 export const businessSchema = {

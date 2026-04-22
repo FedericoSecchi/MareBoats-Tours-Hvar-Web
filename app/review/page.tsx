@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import { BUSINESS_INFO } from '@/lib/tours-data';
 
-const TARGET = 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA';
+const TARGET = BUSINESS_INFO.googleReviewUrl;
 
 export const metadata: Metadata = {
   title: 'Review MareBoats on Google',

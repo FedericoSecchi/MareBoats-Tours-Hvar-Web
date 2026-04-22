@@ -1,3 +1,15 @@
+export const BUSINESS_INFO = {
+  name: 'MareBoats Tours Hvar',
+  phone: '+385951966734',
+  whatsapp: 'https://wa.me/385951966734',
+  address: 'Janka Žagjala 56, Hvar, Croacia',
+  coordinates: { lat: 43.16847, lng: 16.443 },
+  googleMapsUrl: 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA',
+  googleReviewUrl: 'https://g.page/r/Cd7dvQcuwbZ7EBM/review',
+  hours: 'Mo-Su 08:00-21:00',
+  languages: ['English', 'Croatian', 'Italian', 'Spanish'],
+} as const;
+
 export type TourImage = { src: string; alt: string };
 
 export type TourRecord = {

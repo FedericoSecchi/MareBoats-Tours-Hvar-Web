@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { BUSINESS_INFO } from '@/lib/tours-data';
 
 export const metadata: Metadata = {
   title: 'Thanks for Sailing with MareBoats',
@@ -72,8 +72,10 @@ export default function LandingReviewPage() {
       {/* GIANT review CTA */}
       <section className="bg-[color:var(--bg)] px-4 py-20 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <Link
-            href="/review"
+          <a
+            href={BUSINESS_INFO.googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex w-full flex-col items-center gap-5 rounded-3xl border border-[color:var(--accent)]/50 bg-[color:var(--surface)] px-6 py-12 shadow-[0_20px_60px_rgba(59,201,219,0.25)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(59,201,219,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:translate-y-0 md:px-10 md:py-16"
           >
             <span className="flex items-center gap-1 text-[color:var(--accent)]">
@@ -90,7 +92,7 @@ export default function LandingReviewPage() {
             <span className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 group-hover:bg-[color:var(--accent-dk)] group-hover:text-[color:var(--white)] md:text-base">
               Write Your Review
             </span>
-          </Link>
+          </a>
         </div>
       </section>
 
