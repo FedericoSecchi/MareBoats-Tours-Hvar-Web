@@ -28,9 +28,9 @@ const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), {
 });
 
 export const metadata: Metadata = generateSEO({
-  title: 'Private Boat Tours Hvar | Mare Boats Hvar',
+  title: 'Boat Rental & Tours Hvar | Private Boat Hire from €130',
   description:
-    'Private boat tours from Hvar, Croatia. Blue Cave, Red Rocks, Pakleni Islands, sunset cruises and boat rental. Local skipper, WhatsApp booking.',
+    'Rent a boat in Hvar with experienced skipper. Private tours to Blue Cave, Pakleni Islands. No license needed. Book on WhatsApp.',
   keywords: [
     'private boat tours hvar',
     'boat tour hvar',

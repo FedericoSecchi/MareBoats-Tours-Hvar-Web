@@ -21,17 +21,24 @@ export function generateMetadata({ params }: PageProps): Metadata {
     return { title: 'Tour | Mare Boats Hvar' };
   }
 
-  const title = `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
+  const title =
+    tour.slug === 'blue-cave-pakleni-islands'
+      ? 'Blue Cave & Pakleni Islands Boat Tour from Hvar | €130/person'
+      : `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
+  const description =
+    tour.slug === 'blue-cave-pakleni-islands'
+      ? 'Full-day private boat tour from Hvar. Visit Blue Cave, Stiniva Bay, Green Cave & Pakleni Islands. Skipper & snorkeling included.'
+      : tour.shortDescription;
   const ogUrl = `${SITE}${tour.images[0].src}`;
 
   return {
     title,
-    description: tour.shortDescription,
+    description,
     keywords: tour.keywords,
     alternates: { canonical: `${SITE}/tours/${tour.slug}/` },
     openGraph: {
       title,
-      description: tour.shortDescription,
+      description,
       url: `${SITE}/tours/${tour.slug}/`,
       type: 'website',
       locale: 'en_US',
@@ -41,7 +48,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     twitter: {
       card: 'summary_large_image',
       title,
-      description: tour.shortDescription,
+      description,
       images: [ogUrl],
     },
     robots: { index: true, follow: true },
