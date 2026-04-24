@@ -15,6 +15,30 @@ const nextConfig = {
   // Keep local development on root URL to avoid / 404.
   basePath: isProd && !process.env.CUSTOM_DOMAIN ? `/${repoName}` : '',
   assetPrefix: isProd && !process.env.CUSTOM_DOMAIN ? `/${repoName}` : '',
+  async redirects() {
+    return [
+      {
+        source: '/blue-cave',
+        destination: '/tours/blue-cave-pakleni-islands',
+        permanent: true,
+      },
+      {
+        source: '/sunset',
+        destination: '/tours/sunset-cruise',
+        permanent: true,
+      },
+      {
+        source: '/boat-rental',
+        destination: '/rentals',
+        permanent: true,
+      },
+      {
+        source: '/services/scooter-rental',
+        destination: '/rentals',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

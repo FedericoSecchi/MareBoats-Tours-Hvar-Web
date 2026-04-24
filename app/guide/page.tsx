@@ -13,6 +13,7 @@ import {
   type BringItem,
   type Rule,
 } from '@/lib/guide-content';
+import { toursData } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
   title: 'Hvar Boat Tour Guide | What to Bring, Rules & Tips',
@@ -408,6 +409,15 @@ export default function GuidePage() {
           </div>
         </div>
       </section>
+      <nav aria-label="Tour internal links" className="sr-only">
+        <ul>
+          {toursData.map((tour) => (
+            <li key={tour.slug}>
+              <Link href={`/tours/${tour.slug}`}>{tour.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </main>
   );
 }

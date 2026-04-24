@@ -8,6 +8,7 @@ import Tours from '@/components/sections/Tours';
 import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
 import { homepageFaqs } from '@/lib/faqs';
+import { toursData } from '@/lib/tours-data';
 
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), {
   ssr: false,
@@ -103,6 +104,15 @@ export default function HomePage() {
       </section>
 
       <Tours />
+      <nav aria-label="All tour pages" className="sr-only">
+        <ul>
+          {toursData.map((tour) => (
+            <li key={tour.slug}>
+              <Link href={`/tours/${tour.slug}`}>{tour.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <Features />
       <Gallery />
       <Testimonials />
