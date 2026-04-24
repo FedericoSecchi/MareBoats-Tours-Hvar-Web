@@ -77,6 +77,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/img/carousel-1.jpeg" media="(max-width: 768px)" />
+      </head>
       <body className="antialiased font-body">
         <JsonLd data={businessSchema as Record<string, unknown>} />
         <NavBar />

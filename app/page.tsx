@@ -10,19 +10,19 @@ import Gallery from '@/components/sections/Gallery';
 import { homepageFaqs } from '@/lib/faqs';
 
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), {
-  ssr: true,
+  ssr: false,
   loading: () => <div className="min-h-[200px]" />,
 });
 const FAQ = dynamic(() => import('@/components/sections/FAQ'), {
-  ssr: true,
+  ssr: false,
   loading: () => <div className="min-h-[200px]" />,
 });
 const Contact = dynamic(() => import('@/components/sections/Contact'), {
-  ssr: true,
+  ssr: false,
   loading: () => <div className="min-h-[200px]" />,
 });
 const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), {
-  ssr: true,
+  ssr: false,
   loading: () => <div className="min-h-[200px]" />,
 });
 
@@ -54,9 +54,9 @@ export default function HomePage() {
           src="/img/carousel-1.jpeg"
           alt="Private boat tour from Hvar, Croatia — crystal clear Adriatic waters"
           fill
-          priority
+          priority={true}
           quality={75}
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--bg)] via-[color:var(--bg)]/60 to-transparent" />
