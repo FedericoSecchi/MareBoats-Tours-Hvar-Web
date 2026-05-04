@@ -1,38 +1,14 @@
-// ──────────────────────────────────────────────
-// Google My Maps embeds
-// ──────────────────────────────────────────────
-// TODO Nikola/Fede: create the three public maps in Google My Maps
-// (Share → "Embed on my website" → copy the iframe src URL) and
-// replace the `src: null` values below. While they are null the UI
-// renders a "Map coming soon" placeholder.
-
-export type MapEmbed = {
-  src: string | null;
-  title: string;
-  description: string;
-};
-
-export const MAPS: {
-  tourDestinations: MapEmbed;
-  recommendedRestaurants: MapEmbed;
-  hvarLocalTips: MapEmbed;
-} = {
-  tourDestinations: {
-    src: null,
-    title: 'Tour Destinations',
-    description:
-      'Hvar Harbour, Blue Cave (Biševo), Pakleni Islands, Vis and our favourite snorkel and lunch spots.',
+export const mapsData = {
+  whereWeGo: {
+    title: "MareBoats — Where We Go",
+    embedUrl: "https://www.google.com/maps/d/u/0/embed?mid=1S5sjEqOGEjbjzfTWlSI3cBjYhq4i1BE&ehbc=2E312F",
   },
-  recommendedRestaurants: {
-    src: null,
-    title: 'Recommended Restaurants',
-    description:
-      'Restaurants we often stop at in Hvar town and on the islands — no official deal, just places we like.',
+  whereToEat: {
+    title: "MareBoats — Where to Eat",
+    embedUrl: "https://www.google.com/maps/d/u/0/embed?mid=166QwL_dLZy13rTEwn10qTxlUPXYTctU&ehbc=2E312F",
   },
-  hvarLocalTips: {
-    src: null,
-    title: 'Hvar Local Tips',
-    description:
-      'Old Town, beaches, beach clubs, the local market, ATMs, pharmacy and other useful spots.',
+  localTips: {
+    title: "MareBoats — Local Tips",
+    embedUrl: "https://www.google.com/maps/d/u/0/embed?mid=1nuvwn07MXgnNuy-bwl99s361tV4PMsI&ehbc=2E312F",
   },
-};
+}
