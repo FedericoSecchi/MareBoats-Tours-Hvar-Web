@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { TrackedTourDetailLink } from '@/components/ui/TrackedTourDetailLink';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { TourCardImage } from '@/components/ui/TourCardImage';
 import { toursData } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
@@ -144,9 +144,8 @@ const itemListSchema = {
 };
 
 export default function ToursIndexPage() {
-  // Sanity check — every card must match a record in tours-data so the links never 404.
-  const validSlugs = new Set(toursData.map((t) => t.slug));
-  const cards = TOUR_CARDS.filter((c) => validSlugs.has(c.slug));
+  const toursBySlug = new Map(toursData.map((t) => [t.slug, t]));
+  const cards = TOUR_CARDS.filter((c) => toursBySlug.has(c.slug));
 
   return (
     <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
@@ -179,22 +178,17 @@ export default function ToursIndexPage() {
       {/* Tours grid */}
       <section className="px-4 py-16 md:py-20">
         <ul className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {cards.map((tour) => (
+          {cards.map((tour) => {
+            const record = toursBySlug.get(tour.slug);
+            const images = record?.images ?? [{ src: tour.image, alt: tour.imageAlt }];
+            return (
             <li key={tour.slug} className="flex">
               <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Image
-                    src={tour.image}
-                    alt={tour.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
-                    {tour.duration}
-                  </span>
-                </div>
+                <TourCardImage
+                  images={images}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  badge={tour.duration}
+                />
 
                 <div className="flex flex-1 flex-col gap-4 p-6">
                   <div>
@@ -229,7 +223,8 @@ export default function ToursIndexPage() {
                 </div>
               </article>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </section>
 

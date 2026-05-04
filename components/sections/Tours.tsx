@@ -1,11 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
 import { fadeInUpItem, staggerListOnly } from '@/lib/motion';
+import { trackEvent } from '@/lib/analytics';
 import { featuredTours } from '@/lib/tours-data';
+import { TourCardImage } from '@/components/ui/TourCardImage';
 
 export default function Tours() {
   const { ref, inView } = useScrollAnimation();
@@ -49,19 +50,11 @@ export default function Tours() {
             variants={fadeInUpItem}
             className="group flex h-full transform-gpu flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
-              <Image
-                src={tour.images[0].src}
-                alt={tour.images[0].alt}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
-                {tour.duration}
-              </span>
-            </div>
+            <TourCardImage
+              images={tour.images}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              badge={tour.duration}
+            />
 
             <div className="flex flex-1 flex-col gap-4 p-6">
               <div>
@@ -80,6 +73,13 @@ export default function Tours() {
                 <Link
                   href={`/tours/${tour.slug}`}
                   className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+                  onClick={() =>
+                    trackEvent({
+                      action: 'tour_card_click',
+                      category: 'engagement',
+                      label: tour.slug,
+                    })
+                  }
                 >
                   See This Tour
                 </Link>
