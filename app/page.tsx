@@ -100,8 +100,8 @@ export default function HomePage() {
 
                 <Link
                   href="/tours"
-                  className="inline-flex items-center justify-center rounded-pill px-6 py-3 text-sm font-semibold text-white transition-opacity duration-300 hover:opacity-[0.85] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-[0.98]"
-                  style={{ backgroundColor: 'var(--bg)' }}
+                  className="inline-flex items-center justify-center rounded-pill border border-[color:var(--border)] px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-[#1a3050] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-[0.98]"
+                  style={{ backgroundColor: 'var(--surface)' }}
                 >
                   See All Tours
                 </Link>
