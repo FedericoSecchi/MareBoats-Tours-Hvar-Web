@@ -107,7 +107,7 @@ Cuándo usar: 07:00 AM el día del tour.
 > We hope the Blue Cave / Pakleni / [stops] were as good as they looked.
 >
 > If you enjoyed the tour, a quick Google review means the world:
-> mareboatshvar.com/review
+> https://g.page/r/Cd7dvQcuwbZ7EBM/review
 >
 > Tag us in your photos: @mareboats.hvar 📸
 >

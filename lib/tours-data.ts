@@ -84,11 +84,10 @@ If you are comparing half day boat tours from Hvar, the Red Rocks route is the b
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Red Rocks — vertical red cliffs, cliff jumping, photos',
-      'Dubovica Beach — iconic Hvar bay with 16th-century stone house',
-      'Secret sea cave near Dubovica — reachable only by boat or swimming',
-      'Borče Bay — quiet cove for a warm-up swim',
-      'Pakleni Islands (Ždrilca & Taršće) — beach bars and untouched nature',
+      'Plaža Velo Borče — quiet cove, warm-up swim and snorkel',
+      'Red Rocks (Stiniva) — vertical red cliffs, cliff jumping, photos',
+      'Plaža Dubovica — iconic bay with 16th-century stone house and sea cave',
+      'Pakleni Islands (Palmižana) — beach bars, lunch stops and untouched coves',
     ],
     images: [
       {
