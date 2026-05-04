@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { generateSEO } from '@/lib/seo';
-import { MAPS } from '@/lib/maps-data';
+import { mapsData } from '@/lib/maps-data';
 
 export const metadata: Metadata = generateSEO({
   title: 'Hvar Travel Guide | Restaurants, Beaches & Local Tips',
@@ -128,41 +128,6 @@ const localTips: Tip[] = [
   },
 ];
 
-function MapEmbedBlock({
-  src,
-  title,
-  description,
-}: {
-  src: string | null;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)]">
-      <div className="aspect-[4/3] w-full md:aspect-[16/9]">
-        {src ? (
-          <iframe
-            src={src}
-            title={`MareBoats — ${title}`}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-full w-full border-0"
-          />
-        ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-6 text-center">
-            <span className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-              Map coming soon
-            </span>
-            <span className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
-              {description}
-            </span>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <header>
@@ -229,11 +194,16 @@ export default function LandingGuideHvarPage() {
             places we like and keep coming back to.
           </p>
 
-          <div className="mt-8">
-            <MapEmbedBlock
-              src={MAPS.recommendedRestaurants.src}
-              title={MAPS.recommendedRestaurants.title}
-              description={MAPS.recommendedRestaurants.description}
+          <div className="mt-8 overflow-hidden rounded-xl h-[280px] md:h-[400px]">
+            <iframe
+              src={mapsData.whereToEat.embedUrl}
+              title={mapsData.whereToEat.title}
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>
@@ -297,11 +267,16 @@ export default function LandingGuideHvarPage() {
             you might need in one place.
           </p>
 
-          <div className="mt-8">
-            <MapEmbedBlock
-              src={MAPS.hvarLocalTips.src}
-              title={MAPS.hvarLocalTips.title}
-              description={MAPS.hvarLocalTips.description}
+          <div className="mt-8 overflow-hidden rounded-xl h-[280px] md:h-[400px]">
+            <iframe
+              src={mapsData.localTips.embedUrl}
+              title={mapsData.localTips.title}
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>
