@@ -3,7 +3,7 @@ export const BUSINESS_INFO = {
   phone: '+385951966734',
   whatsapp: 'https://wa.me/385951966734',
   address: 'Janka Žagjala 56, Hvar, Croacia',
-  coordinates: { lat: 43.16847, lng: 16.443 },
+  coordinates: { lat: 43.16903, lng: 16.44300 },
   googleMapsUrl: 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA',
   googleReviewUrl: 'https://g.page/r/Cd7dvQcuwbZ7EBM/review',
   hours: 'Mo-Su 08:00-21:00',
@@ -44,62 +44,6 @@ const DEFAULT_ADDONS = [
 ];
 
 export const toursData: TourRecord[] = [
-  {
-    slug: 'blue-cave-pakleni-islands',
-    name: '5 Islands, 4 Beaches, 3 Caves Tour',
-    tagline: 'Full-day speedboat adventure — Green Cave, Blue Cave, Stiniva, Budikovac and Pakleni Islands.',
-    shortDescription:
-      'Full-day private boat tour from Hvar, Croatia: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Available as shared group or fully private.',
-    description: `This is our flagship full-day tour from Hvar — the classic route that shows you the best caves, beaches and coves of the Adriatic in one relaxed day. We leave early from Hvar Harbour so you reach the Blue Cave before the crowds and still have hours left for swimming, snorkelling and lunch on the islands.
-
-Your skipper plans the day around sea conditions and your preferences, so you get the best possible light at the Blue Cave and still make time for quieter swimming stops along the way. The tour is available as a shared group booking (€130 per person) or fully private (€700 for up to 10 people) — and for larger groups we can coordinate multiple speedboats departing together.
-
-Along the route you visit Green Cave on Biševo (entrance €12 per person, paid on site), Stiniva Bay on Vis — voted the best beach in Europe in 2016 — the iconic Blue Cave (entrance €24 per person), Medvidina Cave, Budikovac Blue Lagoon for swimming in shallow crystal-clear water, and the Pakleni Islands for a lunch stop at a restaurant you can only reach by boat.
-
-This tour is ideal for couples, families and small groups who want a premium Hvar boat excursion with a knowledgeable local captain. Message us on WhatsApp to check availability during peak season (May–September) and to customise the pace of the day.
-
-If you are researching Blue Cave boat tour Hvar options, remember that cave visits depend on sea conditions and queue times. A private itinerary gives you more flexibility to adapt the day rather than being locked into a rigid group schedule. Safety first, then we make the most of your hours on the water with swimming breaks, scenic cruising, and local insight you cannot get from a generic brochure route.`,
-    duration: '7 hours · 10:00–17:00',
-    durationIso: 'PT7H',
-    price: '€130/person (group) · €700 private (up to 10)',
-    includes: [
-      'Private speedboat and local skipper',
-      'Fuel for the full itinerary',
-      'Icebox on board',
-      'Bottled water',
-      'Snorkeling masks',
-    ],
-    notIncludes: [
-      'Green Cave entrance — €12 per person (paid on site)',
-      'Blue Cave entrance — €24 per person (paid on site)',
-      'Lunch and drinks at restaurants (optional)',
-      'Hotel pickup (meeting point is Hvar Harbour)',
-    ],
-    addons: DEFAULT_ADDONS,
-    whatToBring: [
-      'Sunscreen, hat, and sunglasses',
-      'Swimwear and a light cover-up for breeze after swimming',
-      'Cash (EUR) for cave entrances and lunch',
-      'Motion-sickness remedy if you are sensitive at sea',
-    ],
-    meetingPoint: MEETING,
-    meetingPointMapsUrl: MAPS,
-    highlights: [
-      'Green Cave (Biševo) — natural light through an underwater arch',
-      'Stiniva Bay on Vis — voted best beach in Europe (2016)',
-      'Blue Cave (Biševo) — the classic, best between 11:00 and 12:00',
-      'Budikovac Blue Lagoon — shallow, calm, great for snorkelling',
-      'Pakleni Islands — lunch stop at a waterfront restaurant',
-    ],
-    images: [
-      {
-        src: '/img/package-1.jpeg',
-        alt: '5 Islands 4 Beaches 3 Caves private boat tour from Hvar, Croatia',
-      },
-      { src: '/img/carousel-2.jpeg', alt: 'Speedboat on the Adriatic near Hvar — Blue Cave day trip' },
-    ],
-    keywords: ['blue cave boat tour hvar', 'blue cave hvar', 'pakleni islands tour', '5 islands tour hvar', 'stiniva bay tour'],
-  },
   {
     slug: 'red-rocks-pakleni-islands',
     name: 'Red Rocks & Pakleni Islands Tour',
@@ -165,6 +109,7 @@ If you are comparing half day boat tours from Hvar, the Red Rocks route is the b
       'dubovica beach boat hvar',
     ],
   },
+
   {
     slug: 'pakleni-islands',
     name: 'Pakleni Islands Half Day Tour',
@@ -210,6 +155,64 @@ If you are comparing shared excursions versus a private Pakleni Islands boat, th
     ],
     keywords: ['pakleni islands boat', 'half day tour hvar'],
   },
+
+  {
+    slug: 'blue-cave-pakleni-islands',
+    name: '5 Islands, 4 Beaches, 3 Caves Tour',
+    tagline: 'Full-day speedboat adventure — Green Cave, Blue Cave, Stiniva, Budikovac and Pakleni Islands.',
+    shortDescription:
+      'Full-day private boat tour from Hvar, Croatia: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Available as shared group or fully private.',
+    description: `This is our flagship full-day tour from Hvar — the classic route that shows you the best caves, beaches and coves of the Adriatic in one relaxed day. We leave early from Hvar Harbour so you reach the Blue Cave before the crowds and still have hours left for swimming, snorkelling and lunch on the islands.
+
+Your skipper plans the day around sea conditions and your preferences, so you get the best possible light at the Blue Cave and still make time for quieter swimming stops along the way. The tour is available as a shared group booking (€130 per person) or fully private (€700 for up to 10 people) — and for larger groups we can coordinate multiple speedboats departing together.
+
+Along the route you visit Green Cave on Biševo (entrance €12 per person, paid on site), Stiniva Bay on Vis — voted the best beach in Europe in 2016 — the iconic Blue Cave (entrance €24 per person), Medvidina Cave, Budikovac Blue Lagoon for swimming in shallow crystal-clear water, and the Pakleni Islands for a lunch stop at a restaurant you can only reach by boat.
+
+This tour is ideal for couples, families and small groups who want a premium Hvar boat excursion with a knowledgeable local captain. Message us on WhatsApp to check availability during peak season (May–September) and to customise the pace of the day.
+
+If you are researching Blue Cave boat tour Hvar options, remember that cave visits depend on sea conditions and queue times. A private itinerary gives you more flexibility to adapt the day rather than being locked into a rigid group schedule. Safety first, then we make the most of your hours on the water with swimming breaks, scenic cruising, and local insight you cannot get from a generic brochure route.`,
+    duration: '7 hours · 10:00–17:00',
+    durationIso: 'PT7H',
+    price: '€130/person (group) · €700 private (up to 10)',
+    includes: [
+      'Private speedboat and local skipper',
+      'Fuel for the full itinerary',
+      'Icebox on board',
+      'Bottled water',
+      'Snorkeling masks',
+    ],
+    notIncludes: [
+      'Green Cave entrance — €12 per person (paid on site)',
+      'Blue Cave entrance — €24 per person (paid on site)',
+      'Lunch and drinks at restaurants (optional)',
+      'Hotel pickup (meeting point is Hvar Harbour)',
+    ],
+    addons: DEFAULT_ADDONS,
+    whatToBring: [
+      'Sunscreen, hat, and sunglasses',
+      'Swimwear and a light cover-up for breeze after swimming',
+      'Cash (EUR) for cave entrances and lunch',
+      'Motion-sickness remedy if you are sensitive at sea',
+    ],
+    meetingPoint: MEETING,
+    meetingPointMapsUrl: MAPS,
+    highlights: [
+      'Green Cave (Biševo) — natural light through an underwater arch',
+      'Stiniva Bay on Vis — voted best beach in Europe (2016)',
+      'Blue Cave (Biševo) — the classic, best between 11:00 and 12:00',
+      'Budikovac Blue Lagoon — shallow, calm, great for snorkelling',
+      'Pakleni Islands — lunch stop at a waterfront restaurant',
+    ],
+    images: [
+      {
+        src: '/img/package-1.jpeg',
+        alt: '5 Islands 4 Beaches 3 Caves private boat tour from Hvar, Croatia',
+      },
+      { src: '/img/carousel-2.jpeg', alt: 'Speedboat on the Adriatic near Hvar — Blue Cave day trip' },
+    ],
+    keywords: ['blue cave boat tour hvar', 'blue cave hvar', 'pakleni islands tour', '5 islands tour hvar', 'stiniva bay tour'],
+  },
+
   {
     slug: 'sunset-cruise',
     name: 'Sunset Cruise Hvar',
@@ -252,6 +255,7 @@ Evening light also makes the coastline look more cinematic — stone villages gl
     ],
     keywords: ['sunset cruise hvar', 'hvar sunset boat tour'],
   },
+
   {
     slug: 'private-boat-charter',
     name: 'Private Boat Charter Hvar',
@@ -299,6 +303,7 @@ A charter is also the best format if you want to combine multiple "must-see" des
     ],
     keywords: ['private boat charter hvar', 'boat rental hvar croatia'],
   },
+
   {
     slug: 'split-airport-transfer',
     name: 'Split Airport to Hvar Speedboat Transfer',
@@ -354,6 +359,7 @@ If you are comparing Split Hvar transfer options, the speedboat is usually the m
       'split hvar boat transfer',
     ],
   },
+
   {
     slug: 'yacht-sailboat-taxi',
     name: 'Yacht & Sailboat Water Taxi',
@@ -414,16 +420,15 @@ If you are searching for a private water taxi in Hvar, a yacht transfer, a sailb
       'boat pickup hvar harbour',
       'speedboat taxi hvar sailing',
     ],
-  },
+  }
 ];
 
-/** Slugs shown in the homepage Tours grid. We feature four premium products:
- *  the flagship full-day, the new half-day Red Rocks, sunset, and private charter. */
+/** Slugs shown in the homepage Tours grid — flagship day tour, Red Rocks, Pakleni half-day, sunset. */
 export const FEATURED_TOUR_SLUGS = [
   'blue-cave-pakleni-islands',
   'red-rocks-pakleni-islands',
+  'pakleni-islands',
   'sunset-cruise',
-  'private-boat-charter',
 ] as const;
 
 export const featuredTours: TourRecord[] = FEATURED_TOUR_SLUGS

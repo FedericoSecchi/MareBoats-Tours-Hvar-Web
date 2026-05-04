@@ -3,6 +3,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
+import { TrackedTourDetailLink } from '@/components/ui/TrackedTourDetailLink';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { toursData } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
@@ -61,6 +63,17 @@ const TOUR_CARDS: TourCard[] = [
     waMessage: "Hi! I'd like to book the Red Rocks & Pakleni tour",
   },
   {
+    slug: 'pakleni-islands',
+    name: 'Pakleni Islands',
+    duration: '3–4 hours',
+    price: 'On request',
+    summary:
+      'A relaxed half-day around the Pakleni archipelago. Ideal for families and shorter visits.',
+    image: '/img/package-2.jpeg',
+    imageAlt: 'Pakleni Islands half-day boat tour from Hvar',
+    waMessage: "Hi! I'd like to book the Pakleni Islands tour",
+  },
+  {
     slug: 'sunset-cruise',
     name: 'Sunset Cruise',
     duration: '~2 hours · golden hour',
@@ -80,17 +93,6 @@ const TOUR_CARDS: TourCard[] = [
     image: '/img/package-4.jpeg',
     imageAlt: 'Private boat charter from Hvar — custom itinerary',
     waMessage: "Hi! I'd like to book a Private Charter",
-  },
-  {
-    slug: 'pakleni-islands',
-    name: 'Pakleni Islands',
-    duration: '3–4 hours',
-    price: 'On request',
-    summary:
-      'A relaxed half-day around the Pakleni archipelago. Ideal for families and shorter visits.',
-    image: '/img/package-2.jpeg',
-    imageAlt: 'Pakleni Islands half-day boat tour from Hvar',
-    waMessage: "Hi! I'd like to book the Pakleni Islands tour",
   },
   {
     slug: 'yacht-sailboat-taxi',
@@ -209,20 +211,19 @@ export default function ToursIndexPage() {
                       {tour.price}
                     </span>
                     <div className="flex flex-col gap-2 sm:flex-row">
-                      <Link
-                        href={`/tours/${tour.slug}`}
+                      <TrackedTourDetailLink
+                        slug={tour.slug}
                         className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
                       >
                         See Details
-                      </Link>
-                      <a
+                      </TrackedTourDetailLink>
+                      <WhatsAppTrackedLink
                         href={waUrl(tour.waMessage)}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        label="tours_index"
                         className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                       >
                         Book on WhatsApp
-                      </a>
+                      </WhatsAppTrackedLink>
                     </div>
                   </div>
                 </div>
@@ -284,14 +285,13 @@ export default function ToursIndexPage() {
             takes.
           </p>
 
-          <a
+          <WhatsAppTrackedLink
             href={waUrl("Hi! I'd like help choosing a tour.")}
-            target="_blank"
-            rel="noopener noreferrer"
+            label="tours_footer_cta"
             className="mt-8 inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
           >
             Ask us on WhatsApp
-          </a>
+          </WhatsAppTrackedLink>
         </div>
       </section>
     </main>
