@@ -159,6 +159,107 @@ function AccordionItem({
   );
 }
 
+// ──────────────────────────────────────────────
+// Destination guide data
+// ──────────────────────────────────────────────
+const DESTINATIONS = [
+  {
+    name: 'Blue Cave (Modra Špilja)',
+    subtitle: 'Biševo Island — 15 permanent residents',
+    badge: 'Best at noon',
+    description:
+      'The electric blue glow happens when sunlight enters through an underwater opening and reflects off the white limestone seabed, absorbing red wavelengths and scattering only blue. The cave was carved by wave erosion over millennia. First documented in 1884 by Austrian painter Baron Eugen von Ransonnet, who had the entrance blasted open with dynamite so boats could enter. Biševo is one of the most remote islands in Croatia. Best light: 11am–12pm on calm days.',
+  },
+  {
+    name: 'Green Cave (Zelena Špilja)',
+    subtitle: 'Ravnik Island — open ceiling, emerald water',
+    badge: 'You can swim here',
+    description:
+      "The Blue Cave's wilder sibling. The Green Cave creates the same optical phenomenon but its interior is larger and open at the top — so the light comes from above, giving the water an intense emerald-green tone. You can actually swim inside. Less regulated, less crowded, and for many visitors the more memorable of the two.",
+  },
+  {
+    name: 'Red Rocks (Crvena Stijena)',
+    subtitle: 'Hvar — iron-oxide limestone breccia',
+    badge: 'Best cliff jumping on Hvar',
+    description:
+      'The color is geology in action. The formations near Milna are breccia — angular limestone fragments cemented with iron-rich minerals. Tectonic forces pushed these layers upright; rain and waves eroded the softer limestone around them, leaving the harder, iron-oxide-stained breccia exposed. The iron oxidized — exactly like metal rusting. The cliffs drop straight into the sea, creating perfect conditions for cliff jumping and some of the best snorkeling on the island.',
+  },
+  {
+    name: 'Stiniva Beach',
+    subtitle: 'Hvar — only reachable by boat or steep hike',
+    badge: 'Named Best Beach in Europe',
+    description:
+      'A hidden cove almost completely enclosed by towering limestone cliffs, with an entrance so narrow that only small boats can pass. The pebble beach inside is completely sheltered, the water crystal clear, and the acoustics of the cliffs create a silence that feels surreal. Named Best Beach in Europe by Which? magazine. Arriving by boat is the only way to skip the 45-minute hike down from the cliffs above.',
+  },
+  {
+    name: 'Plaža Dubovica',
+    subtitle: 'Hvar — 16th-century stone house on the shore',
+    badge: '16th-century stone house',
+    description:
+      'A stone house built by a local nobleman sits on the rocky point at the edge of the bay — one of the oldest standing structures on this part of the island. The beach is protected by a small peninsula that cuts the wind, making the water unusually calm and warm even in early season. A small sea cave just off the eastern cliff face is worth exploring by snorkel.',
+  },
+  {
+    name: 'Pakleni Islands (Pakleni Otoci)',
+    subtitle: 'Archipelago of 16 islands — car-free',
+    badge: 'Car-free, pine-covered',
+    description:
+      "The name doesn't mean \"hellish\" — it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
+  },
+  {
+    name: 'Veliki Budikovac — Blue Lagoon',
+    subtitle: 'Natural saltwater lagoon, sheltered and calm',
+    badge: 'Natural lagoon, zero waves',
+    description:
+      'A natural saltwater lagoon almost entirely enclosed by two islands, creating a sheltered pool of turquoise water so calm it looks artificial. One of the best swimming spots in the region, especially for families. The color changes throughout the day depending on the sun angle — from pale aquamarine in the morning to deep jade by afternoon.',
+  },
+] as const;
+
+// ──────────────────────────────────────────────
+// Restaurant data — Skipper's Picks
+// ──────────────────────────────────────────────
+const RESTAURANTS = [
+  {
+    name: 'Tri Grede',
+    favorite: true,
+    location: 'Uvala Ždrilca, Marinkovac Island (Pakleni)',
+    cuisine: 'Seafood & Mediterranean — boat access only',
+    description:
+      'A beach restaurant on Marinkovac island accessible only by boat, with colorful beanbags on the pebble beach and a menu built around whatever came off the fishing boats that morning. The squid-ink risotto and grilled fish are outstanding. Family-run, relaxed, no pretension.',
+    mustOrder: 'Squid ink risotto, grilled fresh catch',
+    skippersNote: 'This is our go-to lunch stop on Pakleni days. Get there before 1pm or the good tables are gone.',
+  },
+  {
+    name: 'Moli Onte',
+    favorite: false,
+    location: 'Milna Bay, Hvar — arrive by boat, dinghy transfer included',
+    cuisine: 'Dalmatian seafood — 30+ years running',
+    description:
+      'A family konoba terraced into the hillside above Milna bay, operating for over 30 years. You arrive by boat and they transfer you to the restaurant by dinghy — free of charge. Every table has a view of the bay. Fresh fish, grilled octopus, homemade olive oil. The kind of place with no written menu — the waiter just tells you what\'s good today.',
+    mustOrder: 'Fresh grilled fish of the day, octopus salad',
+    skippersNote: 'Book ahead in July/August. Worth the detour every time.',
+  },
+  {
+    name: 'Gego',
+    favorite: false,
+    location: 'Zaraće Bay, Hvar — 3 mooring buoys for boats',
+    cuisine: 'Seafood, family-run since 2002 — cash only',
+    description:
+      'Hidden at the end of a narrow road on one of Hvar\'s best beaches — Zaraće bay. Antonella and Nikša have been running this konoba since 2002. Three black mooring buoys for boats. The Tagliatelle Gego is their signature dish and the reason half their regulars come back.',
+    mustOrder: 'Tagliatelle Gego, octopus salad, panna cotta',
+    skippersNote: 'Ask for a table by the rocks if you arrive by boat. Best value restaurant on the island.',
+  },
+  {
+    name: 'Bacchus Palmižana',
+    favorite: false,
+    location: 'Sveti Klement Island, Palmižana (Pakleni)',
+    cuisine: 'Traditional Dalmatian — wood-fired oven, 50+ years',
+    description:
+      'Set in their own olive grove on Sveti Klement island, Bacchus has been cooking with a traditional stone bread oven for over 50 years. The oven gives their meat and fish a flavor you can\'t replicate anywhere else. Good option for groups — they offer set menus. ACI Marina Palmižana is right nearby for mooring.',
+    mustOrder: 'Anything from the wood-fired oven, grilled octopus',
+    skippersNote: 'More suited for groups or a proper dinner. Book in advance for summer.',
+  },
+] as const;
+
 export default function GuidePage() {
   return (
     <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
@@ -245,6 +346,42 @@ export default function GuidePage() {
         </div>
       </section>
 
+      {/* Destination Guide — SEO content */}
+      <section
+        id="destination-guide"
+        className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-container">
+          <SectionHeading eyebrow="Know before you go" title="Where We Go — Your Destination Guide" />
+          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+            Seven stops, each with a story. History, geology and what to expect when you get there.
+          </p>
+          <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+            {DESTINATIONS.map((d) => (
+              <li
+                key={d.name}
+                className="flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                    {d.name}
+                  </h3>
+                  <span className="shrink-0 rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-[color:var(--accent)] whitespace-nowrap">
+                    {d.badge}
+                  </span>
+                </div>
+                <p className="mt-1 font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]/70">
+                  {d.subtitle}
+                </p>
+                <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {d.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Where to Eat — partner restaurants map */}
       <section
         id="where-to-eat"
@@ -272,6 +409,55 @@ export default function GuidePage() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Restaurant Cards — Skipper's Picks */}
+      <section
+        id="skippers-picks"
+        className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-container">
+          <SectionHeading eyebrow="Skipper's picks" title="Where to Eat — Local Favourites" />
+          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+            Our skippers have been anchoring at these spots for years. These aren&apos;t tourist traps — they&apos;re the places locals actually go.
+          </p>
+          <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+            {RESTAURANTS.map((r) => (
+              <li
+                key={r.name}
+                className="flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] pl-5 pr-6 py-6 border-l-[3px] border-l-[color:var(--accent)]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                      {r.name}
+                    </h3>
+                    {r.favorite && (
+                      <span className="mt-1 inline-block rounded-pill bg-[color:var(--accent)]/15 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                        ⭐ Skipper&apos;s Favorite
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <p className="mt-2 font-body text-xs font-medium uppercase tracking-[0.12em] text-[color:var(--accent)]/70">
+                  {r.location}
+                </p>
+                <p className="font-body text-xs text-[color:var(--gray)]/70 mt-0.5">{r.cuisine}</p>
+                <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {r.description}
+                </p>
+                <div className="mt-4 space-y-1.5">
+                  <p className="font-body text-xs text-[color:var(--white)]">
+                    <span className="font-semibold">Must order:</span> {r.mustOrder}
+                  </p>
+                  <p className="font-body text-xs italic text-[color:var(--gray)]">
+                    &ldquo;{r.skippersNote}&rdquo;
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
