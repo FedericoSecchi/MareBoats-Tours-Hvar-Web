@@ -3,16 +3,18 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 export const metadata: Metadata = generateSEO({
-  title: 'About MareBoats Hvar | Meet the Team',
+  title: 'About MareBoats Hvar | Private Boat Tours',
   description:
-    'MareBoats is a family-run boat tour operation in Hvar, Croatia. Meet Nikola and the crew, learn about our boats, licenses, and what makes our tours different.',
+    'MareBoats runs private speedboat tours from Hvar Harbour. Licensed Croatian skippers, insured boats, zero shared groups. Meet the team and find out why guests come back.',
   keywords: [
     'mareboats hvar',
     'hvar boat captain',
     'licensed boat tour hvar',
     'about mareboats',
+    'private boat tours hvar',
   ],
   slug: 'about',
   ogImage: '/img/about.jpeg',
@@ -50,22 +52,47 @@ const CREW: Crew[] = [
   },
 ];
 
-const personSchema = {
+const aboutSchema = {
   '@context': 'https://schema.org',
-  '@graph': CREW.map((c) => ({
-    '@type': 'Person',
-    name: c.name,
-    jobTitle: c.role,
-    knowsLanguage: c.languages,
-    image: `${SITE}${c.image}`,
-    worksFor: { '@id': `${SITE}/#localbusiness` },
-  })),
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE}/#localbusiness`,
+      name: 'MareBoats Tours Hvar',
+      url: SITE,
+      telephone: '+385951966734',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Janka Žagjala 56',
+        addressLocality: 'Hvar',
+        postalCode: '21450',
+        addressCountry: 'HR',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 43.16847,
+        longitude: 16.44300,
+      },
+      openingHours: 'Mo-Su 08:00-21:00',
+      priceRange: '€€',
+      image: `${SITE}/img/mareboats-og.png`,
+      sameAs: ['https://www.instagram.com/mareboats.hvar/'],
+    },
+    ...CREW.map((c) => ({
+      '@type': 'Person',
+      name: c.name,
+      jobTitle: c.role,
+      knowsLanguage: c.languages,
+      image: `${SITE}${c.image}`,
+      worksFor: { '@id': `${SITE}/#localbusiness` },
+    })),
+  ],
 };
 
 export default function AboutPage() {
   return (
     <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
-      <JsonLd data={personSchema as Record<string, unknown>} />
+      <JsonLd data={aboutSchema as Record<string, unknown>} />
 
       {/* Hero */}
       <section className="relative min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
@@ -121,6 +148,52 @@ export default function AboutPage() {
               className="object-cover"
             />
           </div>
+        </div>
+      </section>
+
+      {/* Why private tours */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <div className="max-w-2xl">
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              Why private
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Your boat. Your pace.
+            </h2>
+          </div>
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'No shared groups',
+                body: 'Every trip is yours alone. No strangers, no fixed stops, no one else\'s schedule.',
+              },
+              {
+                title: 'Flexible timing',
+                body: 'You set the departure. Stop longer at a bay, skip a spot — the boat waits for you.',
+              },
+              {
+                title: 'Local expertise',
+                body: 'Nikola grew up here. He knows every cave, every calm bay, and when to avoid the crowds.',
+              },
+              {
+                title: 'Transparent pricing',
+                body: 'One price for the whole boat. Cheaper per person than most shared tours once you split it.',
+              },
+            ].map((item) => (
+              <li
+                key={item.title}
+                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6"
+              >
+                <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--accent)]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {item.body}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -262,14 +335,13 @@ export default function AboutPage() {
             Want to meet us on the water?
           </h2>
           <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-            <a
+            <WhatsAppTrackedLink
               href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              label="about_page"
               className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
             >
               Book on WhatsApp
-            </a>
+            </WhatsAppTrackedLink>
             <Link
               href="/tours"
               className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98] md:text-base"
