@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development next dev",
+    "dev": "cross-env NODE_ENV=development next dev",
+    "dev:clean": "node -e \"try{require('fs').rmSync('.next',{recursive:true,force:true})}catch(e){}\" && cross-env NODE_ENV=development next dev",
+    "dev:ipv4": "cross-env NODE_ENV=development next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,6 +24,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^10.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.29",
     "postcss": "^8.4.49",
