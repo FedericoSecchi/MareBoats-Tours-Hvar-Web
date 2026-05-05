@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 export const metadata: Metadata = generateSEO({
   title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula — MareBoats',
@@ -29,6 +30,8 @@ function waUrl(message: string) {
 
 type TransferCard = {
   id: string;
+  /** Optional override for the card heading — defaults to "Hvar ↔ {route}" */
+  name?: string;
   route: string;
   price: string;
   time: string;
@@ -98,6 +101,20 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like a transfer to Biševo",
     ctaLabel: 'Ask on WhatsApp',
   },
+  {
+    id: 'yacht-water-taxi',
+    name: 'Yacht & Sailboat Water Taxi',
+    route: 'Your Vessel',
+    price: 'On request',
+    time: 'On demand',
+    image: '/img/destination-7.jpeg',
+    imageAlt: 'Yacht and sailboat water taxi service in Hvar — private speedboat pickup',
+    summary:
+      'Anchored near Hvar? We come to your boat — pickup, transfer or the start of any tour.',
+    waMessage: "Hi! I'd like info about the yacht water taxi",
+    ctaLabel: 'Ask on WhatsApp',
+    detailsHref: '/tours/yacht-sailboat-taxi',
+  },
 ];
 
 const HOW_IT_WORKS = [
@@ -131,8 +148,8 @@ const itemListSchema = {
   itemListElement: TRANSFERS.map((t, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    url: `${SITE}/transfers/#${t.id}`,
-    name: `Hvar ↔ ${t.route}`,
+    url: t.detailsHref ? `${SITE}${t.detailsHref}/` : `${SITE}/transfers/#${t.id}`,
+    name: t.name ?? `Hvar ↔ ${t.route}`,
   })),
 };
 
@@ -188,7 +205,7 @@ export default function TransfersPage() {
                 <div className="flex flex-1 flex-col gap-4 p-6">
                   <div>
                     <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                      Hvar ↔ {t.route}
+                      {t.name ?? `Hvar ↔ ${t.route}`}
                     </h2>
                     <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
                       {t.summary}
@@ -208,14 +225,13 @@ export default function TransfersPage() {
                           See Full Details
                         </Link>
                       )}
-                      <a
+                      <WhatsAppTrackedLink
                         href={waUrl(t.waMessage)}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        label={`transfers_${t.id}`}
                         className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                       >
                         {t.ctaLabel}
-                      </a>
+                      </WhatsAppTrackedLink>
                     </div>
                   </div>
                 </div>
@@ -277,14 +293,13 @@ export default function TransfersPage() {
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
             Send us the route and the time. We confirm on WhatsApp, usually within the hour.
           </p>
-          <a
+          <WhatsAppTrackedLink
             href={waUrl("Hi! I'd like a quote for a transfer from Hvar.")}
-            target="_blank"
-            rel="noopener noreferrer"
+            label="transfers_footer"
             className="mt-8 inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
           >
             Ask us on WhatsApp
-          </a>
+          </WhatsAppTrackedLink>
         </div>
       </section>
     </main>
