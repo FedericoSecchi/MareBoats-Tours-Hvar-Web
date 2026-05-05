@@ -36,19 +36,27 @@ type Crew = {
 const CREW: Crew[] = [
   {
     name: 'Nikola',
-    role: 'Owner & Captain',
+    role: 'Founder',
     languages: ['Croatian', 'English'],
-    bio: 'Born in Hvar. Knows every bay, cave and hidden beach on this coast.',
+    bio: 'Born and raised in Hvar. Runs all operations — logistics, scheduling, fleet. Knows the island inside out, every bay, every season. Occasional skipper, but his real job is making sure every tour runs without a hitch.',
     image: '/img/team-1.png',
-    imageAlt: 'Nikola — owner and captain at MareBoats Hvar',
+    imageAlt: 'Nikola — founder of MareBoats Hvar',
+  },
+  {
+    name: 'Josip',
+    role: 'Head Skipper',
+    languages: ['Croatian', 'English'],
+    bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid \u2014 Hvar is home. Lived in England for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
+    image: '/img/destination-2.jpeg',
+    imageAlt: 'Josip — head skipper at MareBoats Hvar',
   },
   {
     name: 'Federico',
-    role: 'Skipper & Marketing',
-    languages: ['English', 'Croatian', 'Italian', 'Spanish'],
-    bio: 'Skipper and the guy who built this website.',
+    role: 'Marketing',
+    languages: ['Spanish', 'Italian', 'English'],
+    bio: "Argentine. Grew up sailing \u2014 started at 6 in an Optimist, competed internationally at South American and World Championships. Trained sailors as head coach for the Ecuadorian Sailing Federation. Worked with the 69F class, classic regattas and cruising boats up to 90ft. Handles marketing for MareBoats. Occasionally on board as skipper.",
     image: '/img/team-2.jpg',
-    imageAlt: 'Federico — skipper at MareBoats Hvar',
+    imageAlt: 'Federico — marketing at MareBoats Hvar',
   },
 ];
 
@@ -126,16 +134,18 @@ export default function AboutPage() {
               The story
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
-              Private by design
+              Born in Hvar
             </h2>
             <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
               <p>
-                MareBoats started with one boat and one idea: that every group deserves their own
-                experience on the water, not a seat on a crowded tour.
+                MareBoats was built by Nikola — born and raised on the island, and someone who has
+                spent his whole life on these waters. The idea was simple: offer real boat tours from
+                Hvar, run by people who actually know the place.
               </p>
               <p>
-                Today we run a small fleet from Hvar Harbour, May through September, and every trip
-                is still private. Your group, your boat, your pace.
+                Today we run a fleet of RIBs from Hvar Harbour, May through September. Tours can be
+                fully private — your group, your boat, your pace — or shared, departing when the
+                boat fills up.
               </p>
             </div>
           </div>
@@ -156,29 +166,29 @@ export default function AboutPage() {
         <div className="mx-auto max-w-container">
           <div className="max-w-2xl">
             <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-              Why private
+              How we work
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
-              Your boat. Your pace.
+              Private or shared — your call.
             </h2>
           </div>
           <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                title: 'No shared groups',
-                body: 'Every trip is yours alone. No strangers, no fixed stops, no one else\'s schedule.',
+                title: 'Private charter',
+                body: 'Your group only. You set the stops, the timing and the pace. The boat waits for you.',
               },
               {
-                title: 'Flexible timing',
-                body: 'You set the departure. Stop longer at a bay, skip a spot — the boat waits for you.',
+                title: 'Shared departure',
+                body: 'Pay per seat. The boat fills up and departs. Great for solo travellers and small groups.',
               },
               {
-                title: 'Local expertise',
-                body: 'Nikola grew up here. He knows every cave, every calm bay, and when to avoid the crowds.',
+                title: 'Local skippers',
+                body: 'Nikola and Josip grew up on these waters. They know every cave, bay and when to avoid the crowds.',
               },
               {
-                title: 'Transparent pricing',
-                body: 'One price for the whole boat. Cheaper per person than most shared tours once you split it.',
+                title: 'Any group size',
+                body: 'RIBs from 8 to 12 seats. For larger groups, multiple boats depart together.',
               },
             ].map((item) => (
               <li
@@ -209,7 +219,7 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             {CREW.map((c) => (
               <li key={c.name}>
                 <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/70">
@@ -218,21 +228,16 @@ export default function AboutPage() {
                       src={c.image}
                       alt={c.imageAlt}
                       fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
                   <div className="flex flex-1 flex-col gap-3 p-6">
-                    <div>
-                      <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                        {c.name}
-                      </h3>
-                      <p className="mt-1 font-body text-sm font-semibold text-[color:var(--accent)]">
-                        {c.role}
-                      </p>
-                    </div>
-                    <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                    <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                      {c.name}
+                    </h3>
+                    <p className="flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
                       {c.bio}
                     </p>
                     <p className="mt-auto font-body text-xs uppercase tracking-[0.12em] text-[color:var(--gray)]">
@@ -245,8 +250,8 @@ export default function AboutPage() {
           </ul>
 
           <p className="mt-8 max-w-2xl font-body text-sm leading-relaxed text-[color:var(--gray)]">
-            During peak season (July–August) we operate with additional skippers. Language
-            availability varies &mdash; ask when booking.
+            During peak season additional skippers join the team. Language availability may vary
+            &mdash; let us know when booking if it matters.
           </p>
         </div>
       </section>
@@ -265,17 +270,18 @@ export default function AboutPage() {
           </div>
           <div className="md:order-1">
             <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-              The boat
+              The fleet
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
               Built for the Adriatic
             </h2>
             <ul className="mt-6 space-y-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
               {[
-                'Up to 10 passengers per speedboat',
-                'Icebox on board, bottled water included',
-                'Snorkeling masks for every guest',
-                'Full safety gear and first aid kit',
+                'Semi-rigid inflatable boats (RIBs), 150\u2013300\u202fhp',
+                '8 to 12 passengers per boat depending on the vessel',
+                'Sun canopy, music system and cooler on board',
+                'Snorkel gear and masks included for every guest',
+                'Large groups: multiple RIBs depart together',
               ].map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
