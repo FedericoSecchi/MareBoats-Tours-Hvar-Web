@@ -313,7 +313,7 @@ export default function GuidePage() {
               <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
                 {mapsData.whereWeGo.title}
               </h3>
-              <div className="overflow-hidden rounded-xl h-[280px] md:h-[400px]">
+              <div className="relative overflow-hidden rounded-xl h-[280px] md:h-[400px]">
                 <iframe
                   src={mapsData.whereWeGo.embedUrl}
                   title={mapsData.whereWeGo.title}
@@ -324,6 +324,7 @@ export default function GuidePage() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+                <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 z-10 h-10 w-10" style={{ background: 'var(--bg)' }} />
               </div>
             </div>
 
@@ -396,7 +397,7 @@ export default function GuidePage() {
             <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
               {mapsData.whereToEat.title}
             </h3>
-            <div className="overflow-hidden rounded-xl h-[280px] md:h-[400px]">
+            <div className="relative overflow-hidden rounded-xl h-[280px] md:h-[400px]">
               <iframe
                 src={mapsData.whereToEat.embedUrl}
                 title={mapsData.whereToEat.title}
@@ -407,6 +408,7 @@ export default function GuidePage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+              <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 z-10 h-10 w-10" style={{ background: 'var(--surface)' }} />
             </div>
           </div>
         </div>
@@ -554,7 +556,7 @@ export default function GuidePage() {
             <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
               {mapsData.localTips.title}
             </h3>
-            <div className="overflow-hidden rounded-xl h-[280px] md:h-[400px]">
+            <div className="relative overflow-hidden rounded-xl h-[280px] md:h-[400px]">
               <iframe
                 src={mapsData.localTips.embedUrl}
                 title={mapsData.localTips.title}
@@ -565,6 +567,7 @@ export default function GuidePage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+              <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 z-10 h-10 w-10" style={{ background: 'var(--surface)' }} />
             </div>
           </div>
         </div>
