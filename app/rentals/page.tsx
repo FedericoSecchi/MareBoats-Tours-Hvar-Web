@@ -2,6 +2,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 export const metadata: Metadata = generateSEO({
   title: 'Rentals Hvar | Scooter, Water Scooter & Boat Rental — MareBoats',
@@ -194,14 +195,13 @@ export default function RentalsPage() {
                     <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
                       {r.price}
                     </span>
-                    <a
+                    <WhatsAppTrackedLink
                       href={waUrl(r.waMessage)}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      label={`rentals_${r.id}`}
                       className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                     >
                       {r.ctaLabel}
-                    </a>
+                    </WhatsAppTrackedLink>
                   </div>
                 </div>
               </article>
@@ -259,14 +259,13 @@ export default function RentalsPage() {
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
             Message us &mdash; we&apos;ll sort it out.
           </p>
-          <a
+          <WhatsAppTrackedLink
             href={waUrl("Hi! I have a question about a rental.")}
-            target="_blank"
-            rel="noopener noreferrer"
+            label="rentals_footer"
             className="mt-8 inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
           >
             Ask us on WhatsApp
-          </a>
+          </WhatsAppTrackedLink>
         </div>
       </section>
     </main>
