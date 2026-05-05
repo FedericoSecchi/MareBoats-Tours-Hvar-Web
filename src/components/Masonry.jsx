@@ -55,7 +55,6 @@ const Masonry = ({
   stagger = 0.2,
   scaleOnHover = true,
   hoverScale = 0.95,
-  blurToFocus = true,
   colorShiftOnHover = false
 }) => {
   const columns = useMedia(
@@ -128,7 +127,6 @@ const Masonry = ({
 
       const random = randomValues.current.get(item.id);
       const selector = `[data-key="${item.id}"]`;
-      const imgSelector = `${selector} .item-img`;
       
       const animationProps = {
         x: item.x,
@@ -149,14 +147,6 @@ const Masonry = ({
           rotation: random.rotation
         };
 
-        // Initial filter state for image (blur + saturate)
-        const initialFilter = blurToFocus 
-          ? 'blur(8px) saturate(0.6)' 
-          : 'saturate(0.6)';
-
-        // Final filter state (no blur, full saturation)
-        const finalFilter = 'blur(0px) saturate(1)';
-
         // Animate wrapper (position, size, opacity, rotation)
         gsap.fromTo(selector, initialState, {
           opacity: 1,
@@ -165,17 +155,6 @@ const Masonry = ({
           ease: ease,
           delay: index * stagger
         });
-
-        // Animate image filter (blur + saturate) simultaneously
-        gsap.fromTo(imgSelector, 
-          { filter: initialFilter },
-          {
-            filter: finalFilter,
-            duration: duration,
-            ease: ease,
-            delay: index * stagger
-          }
-        );
       } else {
         gsap.to(selector, {
           ...animationProps,
@@ -188,7 +167,7 @@ const Masonry = ({
 
     hasMounted.current = true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [grid, imagesReady, stagger, blurToFocus, duration, ease]);
+  }, [grid, imagesReady, stagger, duration, ease]);
 
   const handleMouseEnter = (e, item) => {
     const element = e.currentTarget;
