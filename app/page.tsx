@@ -58,7 +58,7 @@ export default function HomePage() {
           fill
           priority={true}
           quality={75}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="100vw"
           className="object-cover object-center"
         />
         <div
@@ -112,6 +112,28 @@ export default function HomePage() {
       </section>
 
       <Tours />
+
+      {/* Quick links to other services — internal link equity */}
+      <section className="border-y border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-6">
+        <div className="mx-auto flex max-w-container flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          <span className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--gray)]">
+            Also from Hvar Harbour
+          </span>
+          <Link
+            href="/rentals"
+            className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+          >
+            Boat &amp; Scooter Rentals →
+          </Link>
+          <Link
+            href="/transfers"
+            className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+          >
+            Speedboat Transfers →
+          </Link>
+        </div>
+      </section>
+
       <nav aria-label="All tour pages" className="sr-only">
         <ul>
           {toursData.map((tour) => (

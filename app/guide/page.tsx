@@ -653,6 +653,12 @@ export default function GuidePage() {
             >
               See All Tours
             </Link>
+            <Link
+              href="/explore"
+              className="inline-flex items-center justify-center rounded-pill border border-[color:var(--border)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--gray)] transition-colors duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
+            >
+              Explore Hvar
+            </Link>
           </div>
         </div>
       </section>

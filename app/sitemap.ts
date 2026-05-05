@@ -12,10 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/guide/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/about/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${base}/explore/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/landing/explore/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/landing/guide-hvar/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/landing/rental/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
-    // noindex pages excluded from sitemap: /qr, /on-tour, /landing/pre-tour, /landing/review, /review
+    // noindex pages excluded from sitemap: /qr, /on-tour, /landing/*, /review
   ];
 
   const tourPages: MetadataRoute.Sitemap = toursData.map((t) => ({
