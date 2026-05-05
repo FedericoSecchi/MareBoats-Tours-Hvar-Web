@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_ENV=development next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/space-grotesk": "^5.2.10",
     "@fontsource/syne": "^5.2.7",
+    "@next/third-parties": "14.2.29",
     "framer-motion": "^11.18.2",
     "next": "14.2.29",
     "react": "^18.3.1",

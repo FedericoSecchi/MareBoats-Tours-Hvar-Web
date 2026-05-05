@@ -2,6 +2,16 @@
 const isProd = process.env.NODE_ENV === 'production';
 const repoName = 'MareBoats-Tours-Hvar-Web';
 
+// GitHub Pages needs /repo basePath in production builds only.
+// Never apply it during `next dev` — if NODE_ENV is wrongly set to production in the shell,
+// dev would serve under /repoName and `/` would 404 locally.
+const isDevServer =
+  process.env.npm_lifecycle_event === 'dev' ||
+  process.argv.includes('dev');
+
+const useGhPagesBase =
+  isProd && !isDevServer && !process.env.CUSTOM_DOMAIN;
+
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
@@ -12,33 +22,8 @@ const nextConfig = {
     deviceSizes: [390, 768, 1280, 1920],
     minimumCacheTTL: 60,
   },
-  // Keep local development on root URL to avoid / 404.
-  basePath: isProd && !process.env.CUSTOM_DOMAIN ? `/${repoName}` : '',
-  assetPrefix: isProd && !process.env.CUSTOM_DOMAIN ? `/${repoName}` : '',
-  async redirects() {
-    return [
-      {
-        source: '/blue-cave',
-        destination: '/tours/blue-cave-pakleni-islands',
-        permanent: true,
-      },
-      {
-        source: '/sunset',
-        destination: '/tours/sunset-cruise',
-        permanent: true,
-      },
-      {
-        source: '/boat-rental',
-        destination: '/rentals',
-        permanent: true,
-      },
-      {
-        source: '/services/scooter-rental',
-        destination: '/rentals',
-        permanent: true,
-      },
-    ];
-  },
+  basePath: useGhPagesBase ? `/${repoName}` : '',
+  assetPrefix: useGhPagesBase ? `/${repoName}` : '',
 };
 
 export default nextConfig;
