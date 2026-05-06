@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import MetaRedirect from '@/components/ui/MetaRedirect';
+import { permanentRedirect } from 'next/navigation';
 
 const TARGET = '/rentals/';
 
@@ -15,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function ScooterRentalRedirect() {
-  return <MetaRedirect to={TARGET} label="Redirecting to rentals…" />;
+  permanentRedirect(TARGET);
 }

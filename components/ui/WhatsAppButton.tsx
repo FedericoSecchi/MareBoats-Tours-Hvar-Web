@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { trackEvent } from '@/lib/analytics';
 
 const WA_URL =
   'https://wa.me/385951966734?text=Hi!%20I%E2%80%99m%20interested%20in%20a%20boat%20tour.';
@@ -18,6 +19,13 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label="Contact us on WhatsApp"
       className="no-print fixed bottom-6 right-6 z-50 flex items-center justify-center bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 active:scale-95 transition-[background-color,transform] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
+      onClick={() =>
+        trackEvent({
+          action: 'whatsapp_click',
+          category: 'conversion',
+          label: 'floating_button',
+        })
+      }
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -35,7 +35,10 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          CUSTOM_DOMAIN: ""
+          # Force custom-domain mode (mareboatshvar.com) to avoid /repo basePath on export.
+          CUSTOM_DOMAIN: "1"
+          # Prefer repository variable; fallback to secret if used there.
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID || secrets.NEXT_PUBLIC_GA_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

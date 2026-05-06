@@ -11,8 +11,8 @@ const sharedAddress = {
 
 const sharedGeo = {
   '@type': 'GeoCoordinates',
-  latitude: 43.16847,
-  longitude: 16.443,
+  latitude: 43.16903,
+  longitude: 16.44300,
 } as const;
 
 export const businessSchema = {

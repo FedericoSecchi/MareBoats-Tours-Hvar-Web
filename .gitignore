@@ -11,6 +11,9 @@ vite.config.timestamp-*.mjs
 .next
 out
 
+# Local environment (API keys, GA ID)
+.env.local
+
 # TypeScript
 tsconfig.tsbuildinfo
 next-env.d.ts

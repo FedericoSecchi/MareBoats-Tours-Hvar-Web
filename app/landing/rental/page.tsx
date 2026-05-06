@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { generateSEO } from '@/lib/seo';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 export const metadata: Metadata = generateSEO({
   title: 'Boat Rental Hvar | Rules, Safety & Return Policy',
@@ -295,15 +296,14 @@ export default function LandingRentalPage() {
           </ul>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
+            <WhatsAppTrackedLink
               href="https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20rent%20a%20scooter%20in%20Hvar."
-              target="_blank"
-              rel="noopener noreferrer"
+              label="landing_rental_scooter"
               className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]"
             >
               <WhatsAppIcon />
               Book a Scooter
-            </a>
+            </WhatsAppTrackedLink>
             <Link
               href="/rentals"
               className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
@@ -355,15 +355,14 @@ export default function LandingRentalPage() {
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <a
+            <WhatsAppTrackedLink
               href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              label="landing_rental_footer"
               className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]"
             >
               <WhatsAppIcon />
               Message on WhatsApp
-            </a>
+            </WhatsAppTrackedLink>
             <Link
               href="/landing/explore"
               className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"

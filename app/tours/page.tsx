@@ -94,17 +94,6 @@ const TOUR_CARDS: TourCard[] = [
     imageAlt: 'Private boat charter from Hvar — custom itinerary',
     waMessage: "Hi! I'd like to book a Private Charter",
   },
-  {
-    slug: 'yacht-sailboat-taxi',
-    name: 'Yacht & Sailboat Taxi',
-    duration: 'On demand',
-    price: 'On request',
-    summary:
-      'Anchored near Hvar? We pick you up from your vessel — transfer or full tour, your choice.',
-    image: '/img/destination-7.jpeg',
-    imageAlt: 'Water taxi service for yachts and sailboats in Hvar',
-    waMessage: "Hi! I'd like info about the Yacht Taxi",
-  },
 ];
 
 function waUrl(message: string) {

@@ -4,6 +4,7 @@ import '@fontsource/syne/700.css';
 import '@fontsource/syne/800.css';
 import '@fontsource/space-grotesk/400.css';
 import '@fontsource/space-grotesk/500.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import NavBar from '@/components/ui/NavBar';
 import Footer from '@/components/sections/Footer';
@@ -86,6 +87,9 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        ) : null}
       </body>
     </html>
   );

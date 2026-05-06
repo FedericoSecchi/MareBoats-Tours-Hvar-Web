@@ -6,6 +6,7 @@ import { getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/li
 import { JsonLd } from '@/components/ui/JsonLd';
 import { buildTouristTripSchema } from '@/lib/schema';
 import TourHero from '@/components/sections/TourHero';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 const SITE = 'https://mareboatshvar.com';
 
@@ -304,14 +305,13 @@ export default function TourDetailPage({ params }: PageProps) {
           </p>
 
           <div className="mt-7 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-            <a
+            <WhatsAppTrackedLink
               href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              label="tour_page_footer"
               className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
             >
               Book on WhatsApp
-            </a>
+            </WhatsAppTrackedLink>
             <Link
               href="/guide"
               className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98] md:text-base"

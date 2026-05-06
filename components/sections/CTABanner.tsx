@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
 import { fadeInUpContainer } from '@/lib/motion';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 const WA_URL =
   'https://wa.me/385951966734?text=Hi!%20I%E2%80%99m%20interested%20in%20a%20boat%20tour.';
@@ -35,14 +36,13 @@ export default function CTABanner() {
           Send your date and group size on WhatsApp. We confirm the same day during the season.
         </p>
 
-        <a
+        <WhatsAppTrackedLink
           href={WA_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          label="cta_banner"
           className="mt-8 inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
         >
           Book on WhatsApp
-        </a>
+        </WhatsAppTrackedLink>
 
         <p className="mt-4 font-body text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
           Peak season May–September · Reply within the hour · Daily 8:00–20:00

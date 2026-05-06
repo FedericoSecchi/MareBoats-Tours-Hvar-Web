@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { weatherPolicy, whatToBring } from '@/lib/guide-content';
 
 export const metadata: Metadata = {
@@ -19,9 +20,9 @@ const WA_WEATHER_URL =
 
 // Google Maps public embed — no API key required. Lat/lng of Hvar Harbour main dock.
 const MAP_EMBED_SRC =
-  'https://maps.google.com/maps?q=43.1729,16.4413&z=16&output=embed';
+  'https://maps.google.com/maps?q=43.16903,16.44300&z=16&output=embed';
 const MAP_DIRECTIONS_URL =
-  'https://www.google.com/maps/dir/?api=1&destination=43.1729,16.4413';
+  'https://www.google.com/maps/dir/?api=1&destination=43.16903,16.44300';
 
 type TimelineStep = { time: string; title: string; detail: string };
 
@@ -61,17 +62,24 @@ function WhatsAppIcon({ className = 'h-4 w-4' }: { className?: string }) {
   );
 }
 
-function CtaButton({ href, children }: { href: string; children: React.ReactNode }) {
+function CtaButton({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
-    <a
+    <WhatsAppTrackedLink
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      label={label}
       className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]"
     >
       <WhatsAppIcon />
       {children}
-    </a>
+    </WhatsAppTrackedLink>
   );
 }
 
@@ -113,7 +121,9 @@ export default function PreTourPage() {
             it in the morning.
           </p>
           <div className="mt-7 flex justify-center">
-            <CtaButton href={WA_URL}>Message Nikola</CtaButton>
+            <CtaButton href={WA_URL} label="landing_pre_tour_hero">
+              Message Nikola
+            </CtaButton>
           </div>
         </div>
       </section>
@@ -159,7 +169,7 @@ export default function PreTourPage() {
                   Coordinates
                 </p>
                 <p className="mt-2 font-body text-sm text-[color:var(--gray)]">
-                  43.1729° N, 16.4413° E
+                  43.16903° N, 16.44300° E
                 </p>
               </div>
               <a
@@ -295,7 +305,9 @@ export default function PreTourPage() {
                   {weatherPolicy.contactNote}
                 </p>
                 <div className="mt-6">
-                  <CtaButton href={WA_WEATHER_URL}>Message Nikola on WhatsApp</CtaButton>
+                  <CtaButton href={WA_WEATHER_URL} label="landing_pre_tour_weather">
+                    Message Nikola on WhatsApp
+                  </CtaButton>
                 </div>
               </div>
             </div>
@@ -322,7 +334,9 @@ export default function PreTourPage() {
             WhatsApp Nikola directly: <span className="font-semibold text-[color:var(--white)]">+385 95 196 6734</span>
           </p>
           <div className="mt-7">
-            <CtaButton href={WA_URL}>Open WhatsApp</CtaButton>
+            <CtaButton href={WA_URL} label="landing_pre_tour_footer">
+              Open WhatsApp
+            </CtaButton>
           </div>
         </div>
       </section>

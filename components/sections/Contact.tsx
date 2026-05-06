@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
 import { fadeInUpContainer } from '@/lib/motion';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 const WA_URL =
   'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20boat%20tour%20from%20Hvar.';
@@ -33,10 +34,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
           {/* WhatsApp primary CTA card */}
-          <a
+          <WhatsAppTrackedLink
             href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            label="contact_section"
             className="group flex flex-col justify-between gap-8 rounded-2xl border border-[color:var(--accent)]/40 bg-[color:var(--surface)] p-8 shadow-[0_18px_44px_rgba(59,201,219,0.18)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(59,201,219,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:translate-y-0 md:p-10"
           >
             <div className="flex items-start gap-4">
@@ -69,7 +69,7 @@ export default function Contact() {
                 Open WhatsApp
               </span>
             </div>
-          </a>
+          </WhatsAppTrackedLink>
 
           {/* Quick info aside */}
           <aside className="flex flex-col gap-6 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 md:p-8">

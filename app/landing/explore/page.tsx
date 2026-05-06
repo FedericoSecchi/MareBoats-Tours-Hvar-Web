@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { generateSEO } from '@/lib/seo';
+import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { featuredTours, type TourRecord } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
@@ -106,15 +107,14 @@ function TourCard({ tour }: { tour: TourRecord }) {
           <span className="font-body text-base font-semibold text-[color:var(--accent)]">
             {tour.price}
           </span>
-          <a
+          <WhatsAppTrackedLink
             href={waUrlFor(tour.name)}
-            target="_blank"
-            rel="noopener noreferrer"
+            label={`landing_explore_${tour.slug}`}
             className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
           >
             <WhatsAppIcon />
             Book on WhatsApp
-          </a>
+          </WhatsAppTrackedLink>
         </div>
       </div>
     </article>
@@ -180,15 +180,14 @@ export default function LandingExplorePage() {
             Send your date and group size on WhatsApp. We confirm the same day during the season.
           </p>
 
-          <a
+          <WhatsAppTrackedLink
             href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            label="landing_explore_footer"
             className="mt-8 inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Book on WhatsApp
-          </a>
+          </WhatsAppTrackedLink>
 
           <p className="mt-4 font-body text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
             We reply within 1 hour · Daily 8:00–20:00 (May–September)
