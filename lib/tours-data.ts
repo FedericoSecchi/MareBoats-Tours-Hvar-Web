@@ -22,6 +22,8 @@ export type TourRecord = {
   /** ISO 8601 duration for schema.org */
   durationIso: string;
   price: string;
+  /** Lowest numeric EUR price for schema.org Offer — omit when price is on request */
+  priceEur?: number;
   includes: string[];
   notIncludes: string[];
   /** Paid add-ons / on-request extras (NOT included by default) */
@@ -64,6 +66,7 @@ If you are comparing half day boat tours from Hvar, the Red Rocks route is the b
     duration: '4 hours · 09:00–13:00 or 14:00–18:00',
     durationIso: 'PT4H',
     price: '€400 private (up to 8)',
+    priceEur: 400,
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the itinerary',
@@ -173,6 +176,7 @@ If you are researching Blue Cave boat tour Hvar options, remember that cave visi
     duration: '7 hours · 10:00–17:00',
     durationIso: 'PT7H',
     price: '€130/person (group) · €700 private (up to 10)',
+    priceEur: 130,
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the full itinerary',
@@ -230,6 +234,7 @@ Evening light also makes the coastline look more cinematic — stone villages gl
     duration: '2 hrs',
     durationIso: 'PT2H',
     price: '€250',
+    priceEur: 250,
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the sunset itinerary',
@@ -273,6 +278,7 @@ A charter is also the best format if you want to combine multiple "must-see" des
     duration: 'Full day',
     durationIso: 'PT8H',
     price: '€500 boat + skipper · fuel not included',
+    priceEur: 500,
     includes: [
       'Private speedboat and local skipper',
       'Icebox and bottled water on board',
@@ -323,6 +329,7 @@ If you are comparing Split Hvar transfer options, the speedboat is usually the m
     duration: '~45 min',
     durationIso: 'PT45M',
     price: 'Split–Hvar €500 · Airport–Hvar €600',
+    priceEur: 500,
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the Split ↔ Hvar route',

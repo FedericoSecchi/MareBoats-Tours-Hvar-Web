@@ -77,6 +77,9 @@ export default function TourDetailPage({ params }: PageProps) {
     image: `${SITE}${hero.src}`,
     duration: tour.durationIso,
     url: `${SITE}/tours/${tour.slug}/`,
+    ...(tour.priceEur !== undefined && {
+      offers: { price: String(tour.priceEur), priceCurrency: 'EUR' },
+    }),
   });
 
   const breadcrumbSchema = {

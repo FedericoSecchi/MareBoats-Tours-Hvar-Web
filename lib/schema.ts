@@ -2,7 +2,7 @@ const SITE_URL = 'https://mareboatshvar.com';
 
 const sharedAddress = {
   '@type': 'PostalAddress',
-  streetAddress: 'Janka Žagjala 56, Hvar Harbour',
+  streetAddress: 'Hvar Harbour',
   addressLocality: 'Hvar',
   addressRegion: 'Split-Dalmatia County',
   postalCode: '21450',
@@ -11,8 +11,8 @@ const sharedAddress = {
 
 const sharedGeo = {
   '@type': 'GeoCoordinates',
-  latitude: 43.16903,
-  longitude: 16.44300,
+  latitude: 43.1689123,
+  longitude: 16.4432111,
 } as const;
 
 export const businessSchema = {
@@ -35,6 +35,13 @@ export const businessSchema = {
       priceRange: '$$',
       currenciesAccepted: 'EUR',
       paymentAccepted: 'Cash, Bank Transfer',
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '5.0',
+        reviewCount: '18',
+        bestRating: '5',
+        worstRating: '1',
+      },
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
@@ -69,6 +76,13 @@ export const businessSchema = {
       geo: sharedGeo,
       isAccessibleForFree: false,
       touristType: ['Couples', 'Families', 'Groups'],
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '5.0',
+        reviewCount: '18',
+        bestRating: '5',
+        worstRating: '1',
+      },
       provider: { '@id': `${SITE_URL}/#localbusiness` },
     },
   ],
@@ -98,9 +112,10 @@ export function buildTouristTripSchema({
     duration,
     url,
     provider: {
-      '@type': 'TourismBusiness',
+      '@type': 'TourOperator',
+      '@id': `${SITE_URL}/#localbusiness`,
       name: 'Mare Boats Hvar',
-      url: 'https://mareboatshvar.com',
+      url: SITE_URL,
     },
     ...(offers && {
       offers: {
