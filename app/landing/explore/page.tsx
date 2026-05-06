@@ -1,22 +1,18 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { generateSEO } from '@/lib/seo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { featuredTours, type TourRecord } from '@/lib/tours-data';
 
-export const metadata: Metadata = generateSEO({
+export const metadata: Metadata = {
   title: 'Private Boat Tours Hvar | Blue Cave & Island Tours',
   description:
     'Choose your day on the Adriatic — Blue Cave, Pakleni Islands, sunset cruise or private charter. Private boat from Hvar Harbour, book on WhatsApp.',
-  keywords: [
-    'boat tour hvar',
-    'private boat hvar',
-    'blue cave tour',
-    'pakleni islands boat',
-    'hvar boat excursion',
-  ],
-  slug: 'landing/explore',
-});
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
 
 const WA_URL =
   "https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour";

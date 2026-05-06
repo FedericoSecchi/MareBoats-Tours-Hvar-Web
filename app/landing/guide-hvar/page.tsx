@@ -1,21 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { generateSEO } from '@/lib/seo';
 import { mapsData } from '@/lib/maps-data';
 
-export const metadata: Metadata = generateSEO({
+export const metadata: Metadata = {
   title: 'Hvar Travel Guide | Restaurants, Beaches & Local Tips',
   description:
     "Things to do in Hvar, Croatia: where to eat, beaches, beach clubs, nightlife and local tips from a skipper who lives here.",
-  keywords: [
-    'hvar croatia guide',
-    'things to do hvar',
-    'hvar restaurants',
-    'hvar beaches',
-    'hvar travel tips',
-  ],
-  slug: 'landing/guide-hvar',
-});
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
 
 const INSTAGRAM_URL = 'https://www.instagram.com/mareboats.hvar/';
 

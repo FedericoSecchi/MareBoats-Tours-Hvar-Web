@@ -1,20 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { generateSEO } from '@/lib/seo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
-export const metadata: Metadata = generateSEO({
+export const metadata: Metadata = {
   title: 'Boat Rental Hvar | Rules, Safety & Return Policy',
   description:
     'Everything you need to know before renting a boat in Hvar: fuel, speed zones, safety equipment, damage policy, alcohol and return process.',
-  keywords: [
-    'boat rental hvar',
-    'rent a boat hvar',
-    'hvar boat rental rules',
-    'boat rental croatia',
-  ],
-  slug: 'landing/rental',
-});
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
 
 const WA_URL =
   "https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour";
