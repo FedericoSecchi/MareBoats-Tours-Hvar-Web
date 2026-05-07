@@ -27,17 +27,6 @@
   status = 301
   force = true
 
-# Boat rental page → rentals (was noindex, replacing with server-side 301)
-[[redirects]]
-  from = "/boat-rental"
-  to = "/rentals/"
-  status = 301
-
-[[redirects]]
-  from = "/boat-rental/"
-  to = "/rentals/"
-  status = 301
-
 # Legacy URLs — GSC cleanup
 [[redirects]]
   from = "/about.html"
