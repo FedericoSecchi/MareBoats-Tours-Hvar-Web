@@ -83,7 +83,6 @@ export const businessSchema = {
         bestRating: '5',
         worstRating: '1',
       },
-      provider: { '@id': `${SITE_URL}/#localbusiness` },
     },
   ],
 };
@@ -92,14 +91,12 @@ export function buildTouristTripSchema({
   name,
   description,
   image,
-  duration,
   url,
   offers,
 }: {
   name: string;
   description: string;
   image: string;
-  duration: string;
   url: string;
   offers?: { price: string; priceCurrency: string };
 }) {
@@ -109,14 +106,8 @@ export function buildTouristTripSchema({
     name,
     description,
     image,
-    duration,
     url,
-    provider: {
-      '@type': 'TourOperator',
-      '@id': `${SITE_URL}/#localbusiness`,
-      name: 'Mare Boats Hvar',
-      url: SITE_URL,
-    },
+    provider: { '@id': `${SITE_URL}/#localbusiness` },
     ...(offers && {
       offers: {
         '@type': 'Offer',

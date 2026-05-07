@@ -75,7 +75,6 @@ export default function TourDetailPage({ params }: PageProps) {
     name: tour.name,
     description: tour.description,
     image: `${SITE}${hero.src}`,
-    duration: tour.durationIso,
     url: `${SITE}/tours/${tour.slug}/`,
     ...(tour.priceEur !== undefined && {
       offers: { price: String(tour.priceEur), priceCurrency: 'EUR' },
