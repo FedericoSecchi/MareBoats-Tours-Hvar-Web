@@ -26,3 +26,60 @@
   to = "https://mareboatshvar.com/:splat"
   status = 301
   force = true
+
+# Boat rental page → rentals (was noindex, replacing with server-side 301)
+[[redirects]]
+  from = "/boat-rental"
+  to = "/rentals/"
+  status = 301
+
+[[redirects]]
+  from = "/boat-rental/"
+  to = "/rentals/"
+  status = 301
+
+# Legacy URLs — GSC cleanup
+[[redirects]]
+  from = "/about.html"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/destination"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/service.html"
+  to = "/tours/"
+  status = 301
+
+[[redirects]]
+  from = "/private-boat-tour-hvar"
+  to = "/tours/private-boat-charter/"
+  status = 301
+
+[[redirects]]
+  from = "/blue-cave-tour-hvar"
+  to = "/tours/blue-cave-pakleni-islands/"
+  status = 301
+
+[[redirects]]
+  from = "/case-studies"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/service"
+  to = "/tours/"
+  status = 301
+
+[[redirects]]
+  from = "/package"
+  to = "/tours/"
+  status = 301
+
+[[redirects]]
+  from = "/boat-tour-pakleni-islands"
+  to = "/tours/blue-cave-pakleni-islands/"
+  status = 301

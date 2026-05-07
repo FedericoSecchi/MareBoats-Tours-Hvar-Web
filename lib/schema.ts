@@ -76,13 +76,6 @@ export const businessSchema = {
       geo: sharedGeo,
       isAccessibleForFree: false,
       touristType: ['Couples', 'Families', 'Groups'],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '5.0',
-        reviewCount: '18',
-        bestRating: '5',
-        worstRating: '1',
-      },
     },
   ],
 };
