@@ -22,14 +22,18 @@ export function generateMetadata({ params }: PageProps): Metadata {
     return { title: 'Tour | Mare Boats Hvar' };
   }
 
-  const title =
-    tour.slug === 'blue-cave-pakleni-islands'
-      ? 'Blue Cave & Pakleni Islands Boat Tour from Hvar | €130/person'
-      : `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
-  const description =
-    tour.slug === 'blue-cave-pakleni-islands'
-      ? 'Full-day private boat tour from Hvar. Visit Blue Cave, Stiniva Bay, Green Cave & Pakleni Islands. Skipper & snorkeling included.'
-      : tour.shortDescription;
+  const titleMap: Record<string, string> = {
+    'blue-cave-pakleni-islands': 'Blue Cave & Pakleni Islands Boat Tour from Hvar | MareBoats',
+    'split-airport-transfer': 'Split Airport Transfer by Boat | MareBoats Hvar',
+  };
+  const descriptionMap: Record<string, string> = {
+    'blue-cave-pakleni-islands':
+      'Private speedboat tour to Blue Cave, Stiniva Bay & Pakleni Islands. 7 hours, up to 8 people. From €130/person. Book direct on WhatsApp.',
+    'split-airport-transfer':
+      'Skip the ferry. Private speedboat transfer from Split Airport to Hvar — fast, comfortable, scenic. Book on WhatsApp, instant confirmation.',
+  };
+  const title = titleMap[tour.slug] ?? `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
+  const description = descriptionMap[tour.slug] ?? tour.shortDescription;
   const ogUrl = `${SITE}${tour.images[0].src}`;
 
   return {

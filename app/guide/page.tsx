@@ -17,14 +17,15 @@ import {
 import { toursData } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Hvar Boat Tour Guide | What to Bring, Rules & Tips',
+  title: 'Hvar Boat Tour Guide — What to Know Before You Go | MareBoats',
   description:
-    'Complete guide for MareBoats tours: packing list, weather policy, FAQs, and insider tips for your Hvar boat experience.',
+    'Everything you need for your Hvar boat tour: what to bring, on-board rules, best beaches, local restaurants, and meeting point. Your complete guide.',
   keywords: [
     'hvar boat tour guide',
-    'what to bring boat tour',
+    'what to bring boat tour hvar',
     'boat tour packing list',
     'hvar tour rules',
+    'hvar beaches guide',
   ],
   slug: 'guide',
 });
