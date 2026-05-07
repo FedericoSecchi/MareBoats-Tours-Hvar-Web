@@ -12,8 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/guide/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/about/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${base}/explore/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/boat-rental/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     // noindex (excluded): /qr, /on-tour, /review, /landing/*
-    // redirects (excluded): /contact, /faq, /blue-cave, /boat-rental, /sunset, /services/scooter-rental
+    // redirects (excluded): /contact, /faq, /blue-cave, /sunset, /services/scooter-rental
   ];
 
   const tourPages: MetadataRoute.Sitemap = toursData.map((t) => ({
