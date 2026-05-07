@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { trackEvent } from '@/lib/analytics';
+import { trackWhatsAppClick } from '@/lib/analytics';
 
 const WHATSAPP_URL =
   'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour';
@@ -121,10 +121,9 @@ export default function NavBar() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-[color:var(--accent)] px-5 py-2 font-body text-[0.8rem] font-semibold text-[#0d1b2a] transition-[background-color,opacity] duration-200 hover:bg-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60"
             onClick={() =>
-              trackEvent({
-                action: 'whatsapp_click',
-                category: 'conversion',
-                label: 'navbar',
+              trackWhatsAppClick({
+                cta_text: 'Book via WhatsApp',
+                section: 'navbar',
               })
             }
           >
@@ -213,10 +212,9 @@ export default function NavBar() {
             rel="noopener noreferrer"
             className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[color:var(--accent)] px-6 py-4 font-body text-base font-semibold text-[#0d1b2a] transition-[background-color] duration-200 hover:bg-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60"
             onClick={() => {
-              trackEvent({
-                action: 'whatsapp_click',
-                category: 'conversion',
-                label: 'navbar_mobile',
+              trackWhatsAppClick({
+                cta_text: 'Book via WhatsApp',
+                section: 'navbar_mobile',
               });
               setOpen(false);
             }}

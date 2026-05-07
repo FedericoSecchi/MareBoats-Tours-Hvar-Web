@@ -203,6 +203,8 @@ export default function ToursIndexPage() {
                       <WhatsAppTrackedLink
                         href={waUrl(tour.waMessage)}
                         label="tours_index"
+                        ctaText="Book on WhatsApp"
+                        tourName={tour.name}
                         className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                       >
                         Book on WhatsApp
@@ -272,6 +274,7 @@ export default function ToursIndexPage() {
           <WhatsAppTrackedLink
             href={waUrl("Hi! I'd like help choosing a tour.")}
             label="tours_footer_cta"
+            ctaText="Ask us on WhatsApp"
             className="mt-8 inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
           >
             Ask us on WhatsApp
