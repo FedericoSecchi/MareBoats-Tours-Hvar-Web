@@ -187,7 +187,7 @@ export default function NavBar() {
               </li>
             );
           })}
-          <li className="pt-6 pb-2">
+          <li className="border-t-0 pt-6 pb-2">
             <a
               href={WHATSAPP_URL}
               target="_blank"
