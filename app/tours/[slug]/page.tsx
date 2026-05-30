@@ -23,12 +23,15 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
 
   const titleMap: Record<string, string> = {
-    'blue-cave-pakleni-islands': 'Blue Cave & Pakleni Islands Boat Tour from Hvar | MareBoats',
+    'blue-cave-pakleni-islands': 'Hvar Boat Tour: 5 Islands, Blue Cave & 4 Beaches | MareBoats',
+    'red-rocks-pakleni-islands': 'Red Rocks & Pakleni Islands Boat Tour from Hvar | MareBoats',
     'split-airport-transfer': 'Split Airport Transfer by Boat | MareBoats Hvar',
   };
   const descriptionMap: Record<string, string> = {
     'blue-cave-pakleni-islands':
-      'Private speedboat tour to Blue Cave, Stiniva Bay & Pakleni Islands. 7 hours, up to 8 people. From €130/person. Book direct on WhatsApp.',
+      'Full-day speedboat tour from Hvar. Blue Cave, Stiniva Bay, Green Cave, Medvidina, Budikovac & Pakleni Islands. Small groups. Departs 10:00. Book on WhatsApp.',
+    'red-rocks-pakleni-islands':
+      'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming. Book on WhatsApp.',
     'split-airport-transfer':
       'Skip the ferry. Private speedboat transfer from Split Airport to Hvar — fast, comfortable, scenic. Book on WhatsApp, instant confirmation.',
   };

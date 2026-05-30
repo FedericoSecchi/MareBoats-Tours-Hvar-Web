@@ -48,34 +48,32 @@ const DEFAULT_ADDONS = [
 export const toursData: TourRecord[] = [
   {
     slug: 'red-rocks-pakleni-islands',
-    name: 'Red Rocks & Pakleni Islands Tour',
-    tagline: 'Cliffs, caves and crystal water — 4 hours, private.',
+    name: 'Red Rocks & Pakleni Islands — Hvar Boat Tour',
+    tagline: 'Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming.',
     shortDescription:
-      'Private 4-hour boat tour from Hvar: Borče Bay, Red Rocks cliffs, Dubovica Beach, a secret sea cave and Pakleni Islands. Morning or afternoon departure, up to 8 guests.',
-    description: `The Red Rocks & Pakleni Islands tour is our best half-day option from Hvar — four hours, fully private, covering the most photogenic stretch of the southern Hvar coast and finishing in the calm bays of the Pakleni archipelago. It is the ideal choice if you want big variety in a short window, or if you prefer to spend the rest of the day on land exploring Hvar town.
+      'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
+    description: `The Red Rocks & Pakleni Islands tour is the local route — the one Nikola takes when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
-Departing from Hvar Harbour, we head first to Borče Bay — a quiet cove on the southern coast of Hvar, perfect for a warm-up swim and a quick snorkel. From there we cruise to Red Rocks, where dramatic vertical red cliffs drop straight into turquoise water. The colour comes from iron oxide in the limestone, and the water stays deep right up to the wall, so cliff jumping from 5 to 10 metres is popular here (optional, always at your own choice and skill level).
+We depart from Hvar Harbour and head first to Borče Bay in Milna — a quiet cove on the southern coast, calm water, no other boats. It is the kind of place you only find if you know where to look. From there we cruise to Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
 
-From Red Rocks we head to Dubovica Beach, one of the most iconic beaches on Hvar, protected by a natural bay with a 16th-century stone house on the shore. A few minutes away, a hidden sea cave near Dubovica — accessible only by boat or a short swim — rewards you with turquoise light and near-silence even in peak season.
+Next stop is Dubovica Beach — one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-We finish in the Pakleni Islands at Ždrilca and Taršće: beach bars at Ždrilca for a late drink or snack, and untouched nature at Taršće when you want a quieter stop. The pace stays relaxed, and because the tour is private you can spend more time at the stops that feel right and less at the ones that do not.
+Available as a private half-day (4 hours, 09:00–13:00), private full-day (6 hours, more time at every stop), or shared group tour (join a small group from €85 per person, minimum 4 guests).
 
-This tour is private only — up to 8 guests — and departs in two fixed windows: morning 09:00–13:00 or afternoon 14:00–18:00. There are no extra entrance fees along the route; lunch is optional if you add a longer stop at one of the Pakleni restaurants. Message us on WhatsApp with your preferred date and window to confirm availability.
-
-If you are comparing half day boat tours from Hvar, the Red Rocks route is the best-balanced option: it combines the photogenic cliffs of the southern coast, a genuine "secret cave" moment, an iconic beach, and the calm swimming bays of the Pakleni Islands — all in a single four-hour window.`,
-    duration: '4 hours · 09:00–13:00 or 14:00–18:00',
+Message us on WhatsApp with your date and what sounds right — we sort the rest.`,
+    duration: '4 hours (half-day) · 6 hours (full-day)',
     durationIso: 'PT4H',
-    price: '€400 private (up to 8)',
-    priceEur: 400,
+    price: 'From €85/person (shared) · €400 private half-day · €500 private full-day',
+    priceEur: 85,
     includes: [
-      'Private speedboat and local skipper',
+      'Speedboat and local skipper',
       'Fuel for the itinerary',
       'Icebox on board',
       'Bottled water',
       'Snorkeling masks',
     ],
     notIncludes: [
-      'Lunch and drinks (optional stops available at Ždrilca)',
+      'Lunch and drinks (optional stops at Palmižana or Zdrilca)',
       'Hotel pickup',
     ],
     addons: DEFAULT_ADDONS,
@@ -87,10 +85,10 @@ If you are comparing half day boat tours from Hvar, the Red Rocks route is the b
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Plaža Velo Borče — quiet cove, warm-up swim and snorkel',
-      'Red Rocks (Stiniva) — vertical red cliffs, cliff jumping, photos',
-      'Plaža Dubovica — iconic bay with 16th-century stone house and sea cave',
-      'Pakleni Islands (Palmižana) — beach bars, lunch stops and untouched coves',
+      'Borče Bay (Milna) — quiet cove, first swim, zero crowds',
+      'Red Rocks — vertical iron-red cliffs dropping straight into turquoise water',
+      'Dubovica Beach — iconic bay with a 16th-century stone house and a secret sea cave',
+      'Pakleni Islands (Palmižana or Zdrilca) — beach bars, lunch stops, calm water',
     ],
     images: [
       {
@@ -105,10 +103,10 @@ If you are comparing half day boat tours from Hvar, the Red Rocks route is the b
     keywords: [
       'red rocks hvar',
       'red rocks hvar boat tour',
-      'pakleni islands half day tour',
-      'afternoon boat tour hvar',
-      'private boat tour hvar 4 hours',
+      'pakleni islands tour',
+      'half day boat tour hvar',
       'dubovica beach boat hvar',
+      'shared boat tour hvar',
     ],
   },
 
@@ -160,25 +158,25 @@ If you are comparing shared excursions versus a private Pakleni Islands boat, th
 
   {
     slug: 'blue-cave-pakleni-islands',
-    name: '5 Islands, 4 Beaches, 3 Caves Tour',
-    tagline: 'Full-day speedboat adventure — Green Cave, Blue Cave, Stiniva, Budikovac and Pakleni Islands.',
+    name: '5 Islands, 4 Beaches & Blue Cave — Hvar Boat Tour',
+    tagline: 'Full-day speedboat tour from Hvar. Three sea caves, four beaches, Blue Cave on Biševo — and back before the day crowds hit.',
     shortDescription:
-      'Full-day private boat tour from Hvar, Croatia: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Available as shared group or fully private.',
-    description: `This is our flagship full-day tour from Hvar — the classic route that shows you the best caves, beaches and coves of the Adriatic in one relaxed day. We leave early from Hvar Harbour so you reach the Blue Cave before the crowds and still have hours left for swimming, snorkelling and lunch on the islands.
+      'Full-day speedboat tour from Hvar: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups. Departs 10:00.',
+    description: `This is our full-day tour from Hvar — the one that covers everything. We leave at 10:00, which means we reach the Blue Cave before the worst of the midday crowds and still have the whole afternoon for swimming, snorkelling and a long lunch on the islands.
 
-Your skipper plans the day around sea conditions and your preferences, so you get the best possible light at the Blue Cave and still make time for quieter swimming stops along the way. The tour is available as a shared group booking (€130 per person) or fully private (€700 for up to 10 people) — and for larger groups we can coordinate multiple speedboats departing together.
+The route takes you to five islands and hits three caves, four beaches and a blue lagoon. Green Cave on Biševo is first — natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos — and it delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
 
-Along the route you visit Green Cave on Biševo (entrance €12 per person, paid on site), Stiniva Bay on Vis — voted the best beach in Europe in 2016 — the iconic Blue Cave (entrance €24 per person), Medvidina Cave, Budikovac Blue Lagoon for swimming in shallow crystal-clear water, and the Pakleni Islands for a lunch stop at a restaurant you can only reach by boat.
+After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon — shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
 
-This tour is ideal for couples, families and small groups who want a premium Hvar boat excursion with a knowledgeable local captain. Message us on WhatsApp to check availability during peak season (May–September) and to customise the pace of the day.
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants — more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for up to 10 people).
 
-If you are researching Blue Cave boat tour Hvar options, remember that cave visits depend on sea conditions and queue times. A private itinerary gives you more flexibility to adapt the day rather than being locked into a rigid group schedule. Safety first, then we make the most of your hours on the water with swimming breaks, scenic cruising, and local insight you cannot get from a generic brochure route.`,
-    duration: '7 hours · 10:00–17:00',
+Message us on WhatsApp with your date and group size — we confirm fast.`,
+    duration: '7 hours · Departs 10:00',
     durationIso: 'PT7H',
     price: '€130/person (group) · €700 private (up to 10)',
     priceEur: 130,
     includes: [
-      'Private speedboat and local skipper',
+      'Speedboat and local skipper',
       'Fuel for the full itinerary',
       'Icebox on board',
       'Bottled water',
@@ -200,20 +198,28 @@ If you are researching Blue Cave boat tour Hvar options, remember that cave visi
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Green Cave (Biševo) — natural light through an underwater arch',
-      'Stiniva Bay on Vis — voted best beach in Europe (2016)',
-      'Blue Cave (Biševo) — the classic, best between 11:00 and 12:00',
-      'Budikovac Blue Lagoon — shallow, calm, great for snorkelling',
-      'Pakleni Islands — lunch stop at a waterfront restaurant',
+      'Blue Cave (Biševo) — sunlight turns the water electric blue. Best between 11:00–12:00.',
+      'Green Cave — natural light through an underwater arch. Swim in from the sea.',
+      'Stiniva Bay — voted best beach in Europe. Surrounded by cliffs on three sides.',
+      'Medvidina Cave — longest sea cave on Biševo. Still, dark, unforgettable.',
+      'Budikovac Blue Lagoon — shallow, calm, turquoise. Best snorkelling of the day.',
+      'Pakleni Islands (Palmižana or Zdrilca) — lunch at a waterfront restaurant.',
     ],
     images: [
       {
         src: '/img/package-1.jpeg',
-        alt: '5 Islands 4 Beaches 3 Caves private boat tour from Hvar, Croatia',
+        alt: '5 Islands 4 Beaches Blue Cave speedboat tour from Hvar, Croatia',
       },
       { src: '/img/carousel-2.jpeg', alt: 'Speedboat on the Adriatic near Hvar — Blue Cave day trip' },
     ],
-    keywords: ['blue cave boat tour hvar', 'blue cave hvar', 'pakleni islands tour', '5 islands tour hvar', 'stiniva bay tour'],
+    keywords: [
+      'blue cave boat tour hvar',
+      'blue cave hvar',
+      'pakleni islands tour',
+      '5 islands tour hvar',
+      'stiniva bay tour',
+      'hvar boat excursion',
+    ],
   },
 
   {
