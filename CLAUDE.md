@@ -1,10 +1,10 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 5 Mayo 2026**
+**Actualizado: 29 Mayo 2026 — revisado por Nikola (versión HR)**
 
 ---
 
 ## Negocio
-- Tours privados en lancha desde Hvar, Croacia
+- Tours privados y compartidos en **speedboat** desde Hvar, Croacia
 - Propietario: Nikola (fundador, operaciones). Josip (hermano de Nikola, head skipper). Fede = skipper ocasional + marketing + tech
 - WhatsApp único canal de conversión: +385 95 196 6734 → https://wa.me/385951966734
 - URL live: https://mareboatshvar.com
@@ -13,28 +13,50 @@
 ## Equipo (para copy)
 - **Nikola** — fundador, nació y creció en Hvar, dirige las operaciones, skipper ocasional, habla inglés y croata
 - **Josip** — hermano de Nikola, ~38 años, head skipper, toda su vida en el agua, vivió en Inglaterra, muy querido por los clientes, habla inglés y croata
-- **Federico (Fede)** — argentino, ciudadanía italiana, empezó en Optimist a los 6 años, mundiales y sudamericanos representando Argentina, coach de la Federación de Vela de Ecuador 2 años, trabajó con la clase 69F (un escalón bajo la Copa América), clásicos y cruceros hasta 90 pies, maneja el marketing de MareBoats, skipper ocasional. Habla español, italiano e inglés. Sin título/cargo en la web.
+- **Federico (Fede)** — argentino, ciudadanía italiana, empezó en Optimist a los 6 años, mundiales y sudamericanos representando Argentina, coach de la Federación de Vela de Ecuador 2 años, trabajó con la clase 69F, clásicos y cruceros hasta 90 pies, maneja el marketing de MareBoats, skipper ocasional. Habla español, italiano e inglés. Sin título/cargo en la web.
+- **Coti** — diseño, redes sociales, posts GBP
 
 ## La flota
-- Fleet de RIBs (semi-rígidos) — uno es Joker
-- Capacidad: 8 a 12 pasajeros según embarcación
+- 4 barcos en total (corregido por Nikola 29/05 — antes figuraba 5 en Vesselio)
+- **NO mencionar "RIB" en copy** — decisión consciente de Nikola. Usar **"speedboat"** siempre.
 - Motores: 150–300hp
-- Equipamiento: sun canopy (toldilla), sistema de música, conservadora, snorkel y máscaras
-- Tours privados (grupo propio) o compartidos (sale cuando se llena). Grupos grandes: múltiples RIBs en convoy
+- Equipamiento: sun canopy, sistema de música, conservadora, snorkel y máscaras
+- Tours privados (grupo propio) o compartidos (sale cuando se llena). Grupos grandes: múltiples speedboats en convoy
 
-## Stack
-- Next.js 14 + Tailwind CSS + TypeScript
-- App Router en /app — componentes activos en /components/ui/ y /components/sections/
-- **NUNCA tocar /src/components/** — es código legacy
+| Barco | Cómodo | Máximo |
+|-------|--------|--------|
+| Blue Mariner | 5 | 8 |
+| Red Mariner | 5 | 8 |
+| Jolly | 6 | 9 |
+| Clubman | 6 | 9 |
+
+## Stack técnico
+- Next.js 14 + Tailwind CSS + TypeScript — `output: 'export'` (static export)
+- App Router en `/app` — componentes activos en `/components/ui/` y `/components/sections/`
+- **NUNCA tocar `/src/components/`** — es código legacy
+- Hosting: Netlify — deploy automático en cada push a `main`
+- Redirects: `netlify.toml` (NO usar `next.config.mjs` para redirects en runtime — static export)
+- Herramienta de código: Claude Code (reemplazó a Cursor desde 23/05)
+- `NEXT_PUBLIC_` env vars son build-time — hardcodear Measurement ID directamente en `layout.tsx`
+
+## Herramientas operativas
+- **Vesselio** — app de gestión de reservas que usa Nikola. Fede tiene acceso como Operator.
+  - URL: `mareboats.vesselio.app` · apikey: `Fedde123`
+  - Muestra flota, calendario de reservas, clima en Hvar
+  - Uso: referencia operativa (qué barcos están ocupados, cuándo). **No conectar al sitio ni a GA4.**
 
 ## Reglas inamovibles de contenido
-- Idiomas a bordo solo aplican cuando Fede es el skipper — NO prometer genéricamente
+- Idiomas a bordo solo aplican cuando Fede es el skipper — NO prometer genéricamente en web ni OTAs
 - Botellas de vidrio: permitidas a bordo
 - Comida: permitida, pero se recomiendan restaurantes
 - No fumar a bordo
+- **No hay baño a bordo** — guests usan los de restaurantes en paradas
 - Formularios de contacto: NO. Solo WhatsApp
-- Línea de licencia marítima en /guide: suspendida hasta confirmación de Nikola
+- **Water Scooter (addon): EN TESTING** — no publicar aún. Nikola hace prueba con Fede cuando llegue.
 - NO mencionar año exacto de fundación de MareBoats
+- **Fotos drone + underwater: se venden APARTE, a pedido, NO incluidas por default**
+- **NO mencionar "RIB" ni mostrar foto del RIB** — usar "speedboat" siempre
+- El skipper **no es guía turístico** — puede ir contando y actuando de guía, pero no se anuncia como tal
 
 ## Design tokens
 ```
@@ -51,109 +73,175 @@ font-body: Space Grotesk (regular/medium)
 
 ---
 
-## Google Business Profile
-- Estado: Activo, verificado ✅
-- 19 reviews activas (bajaron de 35 — Google removió las inorgánicas)
-- URL reviews: https://g.page/r/Cd7dvQcuwbZ7EBM/review
+## 🔴 REGLAS INAMOVIBLES — OTAs (establecidas 25/05/2026)
+
+Nada se cambia en GYG, Booking.com, Viator ni Airbnb sin que **Nikola lea y apruebe el texto PRIMERO**. Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → recién entonces se publica. Nunca al revés.
+
+**Lección registrada (incidente 25/05):** se modificó el listing VIP 5 Islands sin consultar. Nikola tenía 20 personas reservadas sobre el concepto original. El concepto de un tour es una decisión de negocio, no de copy. Nunca tocar un listing de OTA sin guardar el texto original antes (screenshot o copia).
+
+### Concepto VIP 5 Islands — fuente de verdad (palabras de Nikola, no modificar)
+- Salida 10:00 (no 10:30 como la competencia) → evitan multitudes
+- Visitan 3 cuevas
+- Grupos chicos → mejor experiencia posible
+- NO mencionar "RIB" ni mostrar foto del RIB
+- Mantener "VIP" en el título
+- La descripción original "tenía escrito todo lo que necesitaban saber y por qué el tour es especial"
+
+### Reglas de copy GYG (aprendidas mayo 2026)
+- "Skipper" > "Tour Guide" en el copy — más preciso y premium
+- "Hvar Boat Tour" > "From Hvar" como keyword en el título — mayor volumen de búsqueda
+- Blue Cave es la keyword estrella — siempre en el título y al inicio de la descripción
+- No combinar conteo de cuevas ("3 caves") con Blue Cave en el título — confunde al guest
+- No escribir "contact us directly" en listings — usar "ask us for details when booking"
+- GYG permite 3000 chars en full description — usarlos. Más detalle = mejor ranking y conversión
+- Mencionar stops específicos: Stiniva Bay (Vis), Podstražje Beach, Sea-Monk Cave, Zdrilca (Pakleni), Borče Bay, Dubovica Beach, Red Rocks
+- El espíritu de Nikola: **menos tiempo navegando, más tiempo en el agua**. Skipper como amigo local, no guía turístico
+- Main listing de GYG es el contenedor — no mencionar privado/compartido ni precio ni duración. Eso va en cada opción
+- Diferencias entre opciones en GYG se explican en Option title (60 chars) + Option description (255 chars)
+
+---
+
+## ✅ ESTADO REAL al 29/05/2026
+
+### GA4
+- **Conversión `whatsapp_click` VERIFICADA ✅** — dispara en producción (confirmado en Realtime el 25/05)
+- Google Ads tiene luz verde técnica. Pendiente: crear/verificar cuenta de Ads + importar la conversión
+- **Métricas (últimos 28 días — al 23/05/2026):**
+  - 95 usuarios activos · 94 nuevos · 48s interacción media
+  - Mercados: US 18 · Croatia 10 · UK 9 · Argentina 7 · Italy 7 · Germany 6
+  - Canales: Direct 86 · Organic Search 51 · Unassigned 13 · Referral 12 · Organic Social 11
+  - Páginas top: Private Boat Tours 142 · /tours 51 · Blue Cave 36 · Rentals 35
+- UTMs Parte A hechos: GBP e Instagram ya etiquetados ✅
+
+### Google Business Profile
+- Verificado · **35 reviews · 5.0 ⭐**
+- URL listing: https://maps.app.goo.gl/U6kgAaRG81KZmqUEA
+- URL reviews directa: https://g.page/r/Cd7dvQcuwbZ7EBM/review
+- Punto de encuentro ("barrel"): https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7
 - Coordenadas: lat 43.16847, lng 16.44300
-- Dirección: Janka Žagjala 56, 21450, Hvar, Croacia
+- Descripción optimizada ✅ · 3 categorías cargadas ✅
+- 8 posts mayo-junio asignados a Coti
+- Pendiente: 20-30 fotos reales (post-shoot) · cargar Q&A (4-5 preguntas frecuentes)
+
+### Google Search Console
+- Conectado a GA4 ✅
+- 44 clics · 775 impresiones · CTR 5.7% · Posición media 35.6 (16 meses)
+- Oportunidad: keywords "rent/hire a boat hvar" con 200+ impresiones, casi 0 clics
+
+### GetYourGuide
+
+**Producto 1 — VIP 5 Islands** · Bookable ✅
+- Título live: *Hvar Boat Tour: 5 Islands, 4 Beaches & Blue Cave | Speedboat*
+- Title, short description, full description, highlights — actualizados y aprobados por Nikola (26/05) ✅
+- Pendiente: cargar itinerary (falló por error GYG — reintentar)
+- Pendiente post-shoot: actualizar fotos
+
+**Producto 2 — Red Rocks & Pakleni** · Bookable ✅ · 1 main listing + 3 opciones
+- Main listing — copy actualizado 29/05 ✅
+  - Title: *Hvar Boat Tour: Red Rocks & Pakleni Islands | Speedboat*
+  - Short description: *Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming. Local skipper who knows every bay — Hvar the way locals experience it.*
+- **Opción 1** — Private Half-Day (4h, €400, 09:00–13:00) ✅
+  - Option title: *Private Half-Day Tour — 4 Hours | Morning Departure*
+  - Meeting point: barrel en Šetalište put Križa
+- **Opción 2** — Private Full-Day (6h, €500 web / €710 GYG, 11:00–17:00) ✅
+  - Option title: *Private Full-Day Tour — 6 Hours | Flexible Departure*
+- **Opción 3** — Shared (€85/persona, mín. 4 personas, 11:00) ✅
+  - Option title: *Shared Boat Tour — Red Rocks & Pakleni | From €85*
+  - Max group size: 14 (2 speedboats en convoy) ✅ confirmado por Nikola
+  - Booking engine: Automatically accept
+  - ⚠️ ESTRATEGIA SHARED: cerrar disponibilidad por defecto y abrir manualmente cuando hay demanda suficiente
+
+**Producto 3 — Underwater Scooters** · No submitted (70%)
+- Bloqueado hasta: prueba con Fede en Hvar + aprobación de Nikola
+
+### OTAs adicionales
+- **Airbnb**: bloqueado por documentación Ministerio de Turismo Hvar. No accionable.
+- **Viator**: en espera de aprobación (3+ semanas). No accionable.
+- **Booking.com**: copy armado → pendiente aprobación de Nikola → publicar.
 
 ---
 
-## Estado de fases — Build actual: 33 páginas estáticas
+## Tours y Precios confirmados
 
-### ✅ COMPLETADAS (Fases 1–36)
-| Fase | Commit | Descripción |
-|------|--------|-------------|
-| 1 | c47932d | Tokens, fuentes, Tailwind config |
-| 2 | 4b8df40 | SEO metadata, schema JSON-LD, sitemap, robots |
-| 3 | dd0748d | Rediseño visual completo (Navbar, Hero, Tours, Features, Gallery, Testimonials, FAQ, Contact, CTABanner, Footer) |
-| 4 | fdb830c | Framer Motion + scroll progress bar |
-| 5 | 04c780b | next/image audit, lazy loading, favicon |
-| 6 | 301457a | Páginas /tours/[slug] x4 con SEO long-tail |
-| 7 | 06da4c9 | Fix LCP + trailing slash sitemap + copy "boat rental" |
-| 8 | 116ab39 | Logo SVG, favicon, OG image, WhatsApp confirmado |
-| 9 | 78e989b | UX/Conversión: WhatsApp CTAs, cards simétricas, TourHero |
-| 10 | be472fd | Guest Guide /guide pública + FAQPage schema |
-| 11 | e7ec143 | Copy humano: Hero, CTAs, Features, FAQ |
-| 12 | 7865a48 | Fix colores/tokens páginas internas + refactor globals.css |
-| 13 | eeeadf1 | /guide expandida: 10 secciones, 8 FAQs JSON-LD, mapas, rental rules |
-| 14 | 950dde6 | /tours/yacht-sailboat-taxi con SEO long-tail |
-| 15 | dc334dc | /guide reorganizada: 5 secciones + lib/maps-data.ts |
-| 15.1 | cae1265 | Fix overflow-x mobile |
-| 16 | 5ea136d | 5 landing pages smart routing |
-| 17 | — | Precios reales en lib/tours-data.ts |
-| 18 | — | /tours/red-rocks-pakleni-islands |
-| 19 | — | Scooter rental en /landing/rental |
-| 20 | 3f2c161 | WhatsApp templates /public/docs/ |
-| 21 | fc385f5 | QR code guide /public/docs/ |
-| 22 | b07d154 | Google My Maps setup + placeholders en /guide |
-| 23 | 8898692 | /on-tour info page (noindex, uso a bordo) |
-| 24–30 | (varios) | /explore, /guide mapas reales + SEO destinos + restaurantes, mapas 500px, /on-tour 36 paradas acordeón, restauración imágenes |
-| 31 | 5f8f4b1 | Navbar plano 6 ítems: Tours/Rentals/Transfers/Guide/Explore/About. CTA WhatsApp SVG, usePathname activo, mobile fullscreen overlay, scroll blur |
-| 32 | — | /tours index page: listado tours, SEO metadata, ItemList schema, CTA WhatsApp. yacht-sailboat-taxi excluido (va en /transfers) |
-| 33 | 3f21694 | /rentals index page: 3 cards (Scooter €50/day, Water Scooter on request, Boat no skipper on request), accordion Rental Rules, schema ItemList |
-| 34 | 1213033 | /transfers index page: 6 cards (Split, Airport, Brač, Korčula, Biševo + Yacht Water Taxi → link a /tours/yacht-sailboat-taxi), schema ItemList |
-| 35 | ea6bb03 | /about page: equipo (Nikola, Josip, Fede), flota RIBs, "How we work", schema LocalBusiness + Person @graph |
-| 35b | 280a2cb | Copy real /about: bios reales Nikola/Josip/Fede, flota real (RIBs 150-300hp, 8-12 pax, toldilla, música, cooler, snorkel) |
-| 36 | 06e5be2 | Sitemap limpio (sin /landing/*), links internos homepage → rentals/transfers, /guide → explore, footer ya tenía 6 links |
+### Red Rocks & Pakleni — Paradas
+Borče Bay (Milna) → Red Rocks → Dubovica Beach (con cueva secreta) → Pakleni Islands (Palmižana o Zdrilca)
 
-### ⏳ PENDIENTES
-| Fase | Descripción | Prioridad |
-|------|-------------|-----------|
-| 37 | GA4 setup + Google Search Console | Alta |
-| 38 | /qr hub animado (noindex) | Baja |
-| 39 | GetYourGuide listing optimizado (junto con fotos mayo) | Media |
-| 40 | Fotos reales reemplazando placeholders (Fede viaja 15/05) | Alta |
-| 41 | Reviews GBP — sistema post-tour con Nikola | Media |
+Incluye: speedboat, skipper, fuel, snorkeling masks, icebox con hielo, agua embotellada.
 
-**Próxima fase a ejecutar: Fase 37 — GA4 + Search Console.**
+| Tour | Precio |
+|------|--------|
+| 5 Islands 4 Beaches 3 Caves | €130/persona (grupo) · €700 privado (hasta 10) |
+| Red Rocks & Pakleni Half-Day (4h) | €400 privado |
+| Red Rocks & Pakleni Full-Day (6h) | €500 privado web · €710 en GYG |
+| Red Rocks & Pakleni Shared | €85/persona (mín. 4 personas) |
+| Sunset Cruise | €250 |
+| Private Charter (barco + skipper, sin fuel) | €500 |
+| Split–Hvar transfer | €500 |
+| Airport–Hvar transfer | €600 |
+| Scooter Rental | €50/día · €30-40/medio día (6 unidades) |
+| Yacht/Sailboat Taxi | a pedido |
+| Water Scooter addon | €40/u ⚠️ en testing — NO publicar |
 
 ---
 
-## Datos pendientes de implementar (esperando contenido real)
+## PLAN UNIFICADO — Estado al 29/05/2026
 
-### Fotos (Fede viaja a Croacia el 15/05)
-- Barco en el muelle
-- Cada destino: Blue Cave, Red Rocks, Stiniva, Pakleni, Dubovica, Budikovac
-- Foto de Nikola, Josip y Fede
-- Comprimir a <500KB, formato WebP preferido
-- Subir a /public/images/ y reemplazar todos los placeholders
+### ✅ BLOQUE 0 — CERRADO
+- ✅ `whatsapp_click` verificado en GA4 Realtime
+- ✅ UTMs Parte A: GBP e Instagram etiquetados
+- ✅ Tarea Coti creada en Notion
+- Pendiente menor: importar conversión en cuenta de Google Ads
 
-### Google My Maps (3 mapas — Fede tiene acceso)
-- Mapa 1: "MareBoats — Where We Go" (destinos del tour)
-- Mapa 2: "MareBoats — Where to Eat" (restaurantes recomendados)
-- Mapa 3: "MareBoats — Local Tips" (spots locales)
-- Una vez creados: pegar URLs embed en lib/maps-data.ts
+### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
+Shot list prioritaria:
+- Hero del sitio: barco navegando, agua turquesa, horizontal, sin gente reconocible
+- 1 foto por tour: Blue Cave · Red Rocks/cliffs · Pakleni · golden hour (sunset)
+- Barco vacío y limpio en el muelle
+- "Barrel"/meeting point con cartel MareBoats
+- Nikola al timón (desbloquea /about + E-E-A-T)
+- Fede skipper (desbloquea /about + /landing/pre-tour)
+- 15-20 sueltas para GBP semanal y OTAs
+- Filmar prueba de underwater scooters con Nikola
 
-### GA4 (no activo todavía)
-- Fede debe crear propiedad en analytics.google.com
-- Obtener Measurement ID (formato: G-XXXXXXXXXX)
-- Reemplazar placeholder en app/layout.tsx
-- Agregar a .env.local como NEXT_PUBLIC_GA_ID
+Reglas: geotag ON · exportar <500KB · nombrar con keyword (`blue-cave-hvar-boat-tour.jpg`)
 
-### Google Search Console (no configurado)
-- Verificar dominio
-- Enviar sitemap: https://mareboatshvar.com/sitemap.xml
-- Conectar con GA4
+### 🧹 BLOQUE 2 — Cerrar lo que está al 90%
+**GYG:**
+- Cargar itinerary VIP 5 Islands (falló por error GYG — reintentar)
+- Underwater Scooters: terminar y publicar (post-prueba + post-aprobación)
+- Post-shoot: actualizar fotos todos los listings
 
-### GetYourGuide (acceso disponible, listing sin optimizar)
-- Optimizar título, descripción, fotos, precio
-- Hacer junto con las fotos en mayo
+**Booking.com:**
+- Aprobación de Nikola del copy → publicar
 
-### Reviews GBP (19 activas, bajaron de 35)
-- Sistema post-tour con Nikola: template WhatsApp listo
-- QR en el barco (pendiente diseño de Coti)
-- NO usar reviews de personas cercanas — Google las remueve
+**Sitio:**
+- `/about`: cerrar con fotos del shoot + historia de Nikola
+- GBP: cargar Q&A (4-5 preguntas frecuentes)
+
+### 🚀 BLOQUE 3 — Google Ads
+- Verificar/crear cuenta Google Ads de MareBoats
+- Importar conversión `whatsapp_click` desde GA4
+- 1 campaña Search · 3 ad groups: Boat Tours / Blue Cave / Boat Rental
+- Presupuesto inicial €15-20/día (shoulder season)
+- Keywords negativas: jobs, for sale, salary, free, cheap, ferry, ciudades ≠ Hvar
+- Geo: Hvar + Split + radio · bid-up para gente físicamente en Hvar
+- Destino: landing pages `/landing/*` (no la home)
+- Meta Ads: NO ahora — fase 2
+
+### 🇺🇸 EN EL RADAR — Segmento US / alto ticket
+US es mercado #1 en GA4. Charter premium varios miles de €. Vuelo directo NY-Split. Definir producto + precio + página. Después de Bloques 0-3.
 
 ---
 
-## Instrucciones para Cursor
+## Instrucciones para Claude Code
 1. Leer CLAUDE.md completo antes de empezar
 2. `npm run dev` para ver estado local en localhost:3000
-3. `npm run build` al terminar cada fase — build debe ser 0 errores
-4. Commit al terminar cada fase
-5. Mobile-first SIEMPRE — primero 375px, luego md:, lg:
+3. `npm run build` al terminar cada tarea — build 0 errores
+4. Commit al terminar cada tarea con mensaje descriptivo
+5. Mobile-first SIEMPRE — primero 375px, luego `md:`, `lg:`
 6. Solo `next/image` — cero `<img>` tags
 7. Solo `opacity` y `transform` en animaciones — nunca `transition-all`
 8. SEO metadata en cada página nueva
+9. Redirects van en `netlify.toml` — NO en `next.config.mjs`
+10. `NEXT_PUBLIC_` env vars son build-time — hardcodear Measurement ID en `layout.tsx`
+11. **NUNCA modificar listings de OTAs desde el código** — eso se hace a mano con aprobación de Nikola
