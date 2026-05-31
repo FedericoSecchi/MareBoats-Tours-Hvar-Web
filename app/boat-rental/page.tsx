@@ -16,6 +16,8 @@ export const metadata: Metadata = {
       'private boat hvar',
       'boat hire hvar without skipper',
       'self drive boat hvar',
+      'boat hire hvar',
+      'rent a boat hvar',
     ],
     slug: 'boat-rental',
   }),
@@ -52,21 +54,57 @@ const faqSchema = {
         text: 'Skippered tours include fuel, bottled water, icebox, and snorkel gear. Self-drive rental includes the boat only — fuel and equipment are extra.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Do I need a boat licence to rent a boat in Hvar?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included — no licence needed.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How many people can rent a boat in Hvar?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is included in the boat rental price?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional — included in private tour packages or available on request.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I choose my own route?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Yes. With a skipper, we'll suggest the best spots based on conditions that day — but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
+      },
+    },
   ],
 };
 
 const FAQS = [
   {
-    q: 'Do I need a license to rent a boat in Hvar?',
-    a: "For self-drive rental you need a valid boating license. If you don't have one, our skippered private tours are the perfect alternative — no license needed.",
+    q: 'Do I need a boat licence to rent a boat in Hvar?',
+    a: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included — no licence needed.",
   },
   {
-    q: 'How many people can fit on the boat?',
-    a: 'Our speedboats accommodate up to 8–10 people depending on the vessel.',
+    q: 'How many people can rent a boat in Hvar?',
+    a: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
   },
   {
-    q: "What's included in the boat rental?",
-    a: 'Skippered tours include fuel, bottled water, icebox, and snorkel gear. Self-drive rental includes the boat only — fuel and equipment are extra.',
+    q: 'What is included in the boat rental price?',
+    a: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional — included in private tour packages or available on request.',
+  },
+  {
+    q: 'Can I choose my own route?',
+    a: "Yes. With a skipper, we'll suggest the best spots based on conditions that day — but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
   },
 ];
 
