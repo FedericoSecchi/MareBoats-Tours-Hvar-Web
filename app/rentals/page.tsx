@@ -5,14 +5,12 @@ import { JsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Rentals Hvar | Scooter, Water Scooter & Boat Rental — MareBoats',
+  title: 'Rentals Hvar | Water Scooter & Boat Rental — MareBoats',
   description:
-    'Rent a scooter, water scooter or boat in Hvar. Pick up at Hvar Harbour. MareBoats rentals — May to September.',
+    'Rent a water scooter or boat in Hvar. Pick up at Hvar Harbour. MareBoats rentals — May to September.',
   keywords: [
     'boat rental hvar',
-    'scooter rental hvar',
     'water scooter hvar',
-    'hvar scooter hire',
     'rent boat hvar croatia',
   ],
   slug: 'rentals',
@@ -41,26 +39,13 @@ type RentalCard = {
 
 const RENTALS: RentalCard[] = [
   {
-    id: 'scooter',
-    name: 'Scooter',
-    price: '€50/day · €40 half-day PM · €30 half-day AM',
-    availability: '6 scooters available',
-    image: '/img/waterscooter.jpeg',
-    imageAlt: 'Scooter rental in Hvar — explore the island at your own pace',
-    description:
-      'Explore Hvar Town, Stari Grad, Jelsa and the lavender fields. Pickup at Hvar Harbour.',
-    rules: ['Valid driver\u2019s licence required', 'Return with a full tank', 'Helmets included'],
-    waMessage: "Hi! I'd like to rent a scooter",
-    ctaLabel: 'Book on WhatsApp',
-  },
-  {
     id: 'water-scooter',
     name: 'Water Scooter',
     price: 'On request',
     image: '/img/waterscooter.jpeg',
     imageAlt: 'Water scooter rental in Hvar — ride the Adriatic waves',
     description: 'Ride the waves. Instructor briefing included.',
-    rules: ['Short safety briefing on pickup', 'Minimum age rules apply', 'Life jacket included'],
+    rules: ['1 battery included per rental', 'Professional masks included', 'Life jacket included'],
     waMessage: "Hi! I'd like info about the water scooter",
     ctaLabel: 'Ask on WhatsApp',
   },
@@ -113,7 +98,7 @@ const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Rentals from MareBoats Hvar',
-  description: 'Scooter, water scooter and boat rental at Hvar Harbour, Croatia.',
+  description: 'Water scooter and boat rental at Hvar Harbour, Croatia.',
   itemListElement: RENTALS.map((r, i) => ({
     '@type': 'ListItem',
     position: i + 1,
