@@ -18,6 +18,9 @@ export const metadata: Metadata = {
       'self drive boat hvar',
       'boat hire hvar',
       'rent a boat hvar',
+      'boat hire hvar no licence',
+      'rent a boat hvar no licence',
+      'hvar boat rental without licence',
     ],
     slug: 'boat-rental',
   }),
@@ -86,6 +89,14 @@ const faqSchema = {
         text: "Yes. With a skipper, we'll suggest the best spots based on conditions that day — but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Can I rent a boat in Hvar without a licence?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Yes — through our partner operators, we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp and we'll sort the right option for your group.",
+      },
+    },
   ],
 };
 
@@ -105,6 +116,10 @@ const FAQS = [
   {
     q: 'Can I choose my own route?',
     a: "Yes. With a skipper, we'll suggest the best spots based on conditions that day — but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
+  },
+  {
+    q: 'Can I rent a boat in Hvar without a licence?',
+    a: "Yes — through our partner operators, we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp and we'll sort the right option for your group.",
   },
 ];
 
@@ -294,6 +309,30 @@ export default function BoatRentalPage() {
                 </WhatsAppTrackedLink>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* No licence callout */}
+      <section className="px-4 py-12 md:py-16">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-[color:var(--accent)]/40 bg-[color:var(--surface)] p-8">
+          <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
+            No Boat Licence? No Problem.
+          </h2>
+          <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
+            Croatian maritime law requires a valid licence for self-drive boat rental. If you
+            don&apos;t have one, we partner with local operators who offer fully equipped
+            self-drive boats with a mandatory safety briefing — no licence required. Ask us on
+            WhatsApp and we&apos;ll connect you with the right option.
+          </p>
+          <div className="mt-6">
+            <WhatsAppTrackedLink
+              href={`${WA_BASE}${encodeURIComponent("Hi! I'd like to rent a boat in Hvar but I don't have a boat licence.")}`}
+              label="boat_rental_no_licence"
+              className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-5 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+            >
+              Ask on WhatsApp
+            </WhatsAppTrackedLink>
           </div>
         </div>
       </section>
