@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   ...generateSEO({
     title: 'Boat Rental Hvar — Rent a Boat With or Without Skipper | MareBoats',
     description:
-      'Rent a boat in Hvar, Croatia. Choose from skippered private tours or self-drive rental. RIB speedboats, up to 8 people. Book direct on WhatsApp.',
+      'Rent a boat in Hvar, Croatia. Available with skipper included or self-drive for licensed captains. Speedboats up to 8 people. Book direct on WhatsApp.',
     keywords: [
       'boat rental hvar',
       'rent a boat hvar croatia',
@@ -41,7 +41,7 @@ const faqSchema = {
       name: 'How many people can fit on the boat?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Our RIB speedboats accommodate up to 8–10 people depending on the vessel.',
+        text: 'Our speedboats accommodate up to 8–10 people depending on the vessel.',
       },
     },
     {
@@ -62,7 +62,7 @@ const FAQS = [
   },
   {
     q: 'How many people can fit on the boat?',
-    a: 'Our RIB speedboats accommodate up to 8–10 people depending on the vessel.',
+    a: 'Our speedboats accommodate up to 8–10 people depending on the vessel.',
   },
   {
     q: "What's included in the boat rental?",
@@ -110,14 +110,14 @@ export default function BoatRentalPage() {
           </p>
           <p>
             For experienced sailors, we also offer a <strong className="text-[color:var(--white)]">self-drive boat rental in Hvar</strong>.
-            Valid boating license required. You take the RIB out on your own schedule — fuel
+            Valid boating license required. You take the speedboat out on your own schedule — fuel
             full-in, full-out. Pickup at Hvar Harbour. This is a genuine <em>rent a boat Hvar
             Croatia</em> option for those who know what they&apos;re doing on the water.
           </p>
           <p>
-            All boats are modern semi-rigid RIBs (rigid inflatable boats) — fast, stable, and
-            built for the Adriatic. Whether you book a private boat Hvar tour with a local skipper
-            or take the helm yourself, you&apos;re getting the same quality vessel. Message us on
+            All boats are modern speedboats — fast, stable, and built for the Adriatic. Whether
+            you book a private boat Hvar tour with a local skipper or take the helm yourself,
+            you&apos;re getting the same quality vessel. Message us on
             WhatsApp with your dates and group size and we&apos;ll sort the rest.
           </p>
         </div>
@@ -221,11 +221,11 @@ export default function BoatRentalPage() {
               </div>
 
               <h3 className="mt-4 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                Self-Drive Boat Rental
+                Boat Rental — With or Without Skipper
               </h3>
 
               <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                RIB speedboat for self-drive. Valid boating license required. Fuel not included.
+                Available for licensed skippers (self-drive) or with one of our local skippers included. Fuel full-in, full-out.
               </p>
 
               <ul className="mt-5 space-y-2 font-body text-sm text-[color:var(--gray)]">
