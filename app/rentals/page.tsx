@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -134,6 +135,19 @@ export default function RentalsPage() {
           </p>
         </div>
       </section>
+
+      {/* Boat rental crosslink */}
+      <div className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-4">
+        <p className="mx-auto max-w-3xl text-center font-body text-sm text-[color:var(--gray)]">
+          Looking to rent a boat with or without skipper?{' '}
+          <Link
+            href="/boat-rental/"
+            className="font-semibold text-[color:var(--accent)] transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+          >
+            See our Boat Rental page →
+          </Link>
+        </p>
+      </div>
 
       {/* Rentals grid */}
       <section className="px-4 py-16 md:py-20">
