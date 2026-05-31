@@ -9,7 +9,6 @@ import {
   rulesAndRentals,
   weatherPolicy,
   whatToBring,
-  whereWeGoDestinations,
   whereWeGoIntro,
   type BringItem,
   type Rule,
@@ -161,59 +160,108 @@ function AccordionItem({
 }
 
 // ──────────────────────────────────────────────
-// Destination guide data
+// Tour routes — ordered stops per route
 // ──────────────────────────────────────────────
-const DESTINATIONS = [
+const ROUTES = [
   {
-    name: 'Blue Cave (Modra Špilja)',
-    subtitle: 'Biševo Island — 15 permanent residents',
-    badge: 'Best at noon',
-    description:
-      'The electric blue glow happens when sunlight enters through an underwater opening and reflects off the white limestone seabed, absorbing red wavelengths and scattering only blue. The cave was carved by wave erosion over millennia. First documented in 1884 by Austrian painter Baron Eugen von Ransonnet, who had the entrance blasted open with dynamite so boats could enter. Biševo is one of the most remote islands in Croatia. Best light: 11am–12pm on calm days.',
+    id: 'route-1',
+    label: 'Blue Cave, Green Cave & Vis',
+    duration: 'Full Day · 7h',
+    mapsUrl: 'https://maps.app.goo.gl/DEGcqoB1Kh6swNxb8',
+    stops: [
+      {
+        name: 'Green Cave (Zelena Špilja)',
+        subtitle: 'Ravnik Island — open ceiling, emerald water',
+        badge: 'You can swim here',
+        description:
+          "The Blue Cave's wilder sibling. The Green Cave creates the same optical phenomenon but its interior is larger and open at the top — so the light comes from above, giving the water an intense emerald-green tone. You can actually swim inside. Less regulated, less crowded, and for many visitors the more memorable of the two.",
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.0154069%2C16.2243444',
+      },
+      {
+        name: 'Stiniva Bay',
+        subtitle: 'Hvar — only reachable by boat or steep hike',
+        badge: 'Named Best Beach in Europe',
+        description:
+          'A hidden cove almost completely enclosed by towering limestone cliffs, with an entrance so narrow that only small boats can pass. The pebble beach inside is completely sheltered, the water crystal clear, and the acoustics of the cliffs create a silence that feels surreal. Named Best Beach in Europe by Which? magazine. Arriving by boat is the only way to skip the 45-minute hike down from the cliffs above.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=Stiniva%20Beach%2C%20Vis',
+      },
+      {
+        name: 'Blue Cave (Modra Špilja)',
+        subtitle: 'Biševo Island — 15 permanent residents',
+        badge: 'Best at noon',
+        description:
+          'The electric blue glow happens when sunlight enters through an underwater opening and reflects off the white limestone seabed, absorbing red wavelengths and scattering only blue. The cave was carved by wave erosion over millennia. First documented in 1884 by Austrian painter Baron Eugen von Ransonnet, who had the entrance blasted open with dynamite so boats could enter. Biševo is one of the most remote islands in Croatia. Best light: 11am–12pm on calm days.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=42.9802472%2C16.0220468',
+      },
+      {
+        name: 'Medvidina Cave',
+        subtitle: 'Biševo Island — sea cave at water level',
+        badge: 'Swim-in sea cave',
+        // TODO: Nikola to confirm description
+        description:
+          'A sea cave on the southern coast of Biševo, accessible by swimming or small dinghy. The interior opens onto vivid turquoise water. Less visited than the Blue Cave — a quieter, wilder stop on the same island.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=Medvidina%20%C5%A1pilja%2C%20Bi%C5%A1evo',
+      },
+      {
+        name: 'Veliki Budikovac — Blue Lagoon',
+        subtitle: 'Natural saltwater lagoon, sheltered and calm',
+        badge: 'Natural lagoon, zero waves',
+        description:
+          'A natural saltwater lagoon almost entirely enclosed by two islands, creating a sheltered pool of turquoise water so calm it looks artificial. One of the best swimming spots in the region, especially for families. The color changes throughout the day depending on the sun angle — from pale aquamarine in the morning to deep jade by afternoon.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.0261501%2C16.2426532',
+      },
+      {
+        name: 'Pakleni Islands (Palmižana / Ždrilca)',
+        subtitle: 'Archipelago of 16 islands — car-free',
+        badge: 'Car-free, pine-covered',
+        description:
+          "The name doesn't mean \"hellish\" — it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1622432%2C16.3686729',
+      },
+    ],
   },
   {
-    name: 'Green Cave (Zelena Špilja)',
-    subtitle: 'Ravnik Island — open ceiling, emerald water',
-    badge: 'You can swim here',
-    description:
-      "The Blue Cave's wilder sibling. The Green Cave creates the same optical phenomenon but its interior is larger and open at the top — so the light comes from above, giving the water an intense emerald-green tone. You can actually swim inside. Less regulated, less crowded, and for many visitors the more memorable of the two.",
+    id: 'route-2',
+    label: 'Red Rocks & Pakleni',
+    duration: 'Half Day · 4h',
+    mapsUrl: 'https://maps.app.goo.gl/XU6Gx2karGzVvebw9',
+    stops: [
+      {
+        name: 'Borče Bay',
+        subtitle: 'Milna, Hvar — sheltered bay, first stop',
+        badge: 'Calm water',
+        // TODO: Nikola to confirm description
+        description:
+          'A quiet sheltered bay near Milna village — typically the first stop on the Red Rocks route. Protected from the wind, with calm and clear water. A good spot for an early swim before the main route continues east.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=Bor%C4%8De%20Bay%2C%20Hvar',
+      },
+      {
+        name: 'Red Rocks (Crvena Stijena)',
+        subtitle: 'Hvar — iron-oxide limestone breccia',
+        badge: 'Best cliff jumping on Hvar',
+        description:
+          'The color is geology in action. The formations near Milna are breccia — angular limestone fragments cemented with iron-rich minerals. Tectonic forces pushed these layers upright; rain and waves eroded the softer limestone around them, leaving the harder, iron-oxide-stained breccia exposed. The iron oxidized — exactly like metal rusting. The cliffs drop straight into the sea, creating perfect conditions for cliff jumping and some of the best snorkeling on the island.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1395393%2C16.5477497',
+      },
+      {
+        name: 'Dubovica Beach (+ Secret Cave)',
+        subtitle: 'Hvar — 16th-century stone house on the shore',
+        badge: '16th-century stone house',
+        description:
+          'A stone house built by a local nobleman sits on the rocky point at the edge of the bay — one of the oldest standing structures on this part of the island. The beach is protected by a small peninsula that cuts the wind, making the water unusually calm and warm even in early season. A small sea cave just off the eastern cliff face is worth exploring by snorkel.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1459862%2C16.5344875',
+      },
+      {
+        name: 'Pakleni Islands (Ždrilca & Taršće)',
+        subtitle: 'Archipelago of 16 islands — car-free',
+        badge: 'Car-free, pine-covered',
+        description:
+          "The name doesn't mean \"hellish\" — it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1622432%2C16.3686729',
+      },
+    ],
   },
-  {
-    name: 'Red Rocks (Crvena Stijena)',
-    subtitle: 'Hvar — iron-oxide limestone breccia',
-    badge: 'Best cliff jumping on Hvar',
-    description:
-      'The color is geology in action. The formations near Milna are breccia — angular limestone fragments cemented with iron-rich minerals. Tectonic forces pushed these layers upright; rain and waves eroded the softer limestone around them, leaving the harder, iron-oxide-stained breccia exposed. The iron oxidized — exactly like metal rusting. The cliffs drop straight into the sea, creating perfect conditions for cliff jumping and some of the best snorkeling on the island.',
-  },
-  {
-    name: 'Stiniva Beach',
-    subtitle: 'Hvar — only reachable by boat or steep hike',
-    badge: 'Named Best Beach in Europe',
-    description:
-      'A hidden cove almost completely enclosed by towering limestone cliffs, with an entrance so narrow that only small boats can pass. The pebble beach inside is completely sheltered, the water crystal clear, and the acoustics of the cliffs create a silence that feels surreal. Named Best Beach in Europe by Which? magazine. Arriving by boat is the only way to skip the 45-minute hike down from the cliffs above.',
-  },
-  {
-    name: 'Plaža Dubovica',
-    subtitle: 'Hvar — 16th-century stone house on the shore',
-    badge: '16th-century stone house',
-    description:
-      'A stone house built by a local nobleman sits on the rocky point at the edge of the bay — one of the oldest standing structures on this part of the island. The beach is protected by a small peninsula that cuts the wind, making the water unusually calm and warm even in early season. A small sea cave just off the eastern cliff face is worth exploring by snorkel.',
-  },
-  {
-    name: 'Pakleni Islands (Pakleni Otoci)',
-    subtitle: 'Archipelago of 16 islands — car-free',
-    badge: 'Car-free, pine-covered',
-    description:
-      "The name doesn't mean \"hellish\" — it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
-  },
-  {
-    name: 'Veliki Budikovac — Blue Lagoon',
-    subtitle: 'Natural saltwater lagoon, sheltered and calm',
-    badge: 'Natural lagoon, zero waves',
-    description:
-      'A natural saltwater lagoon almost entirely enclosed by two islands, creating a sheltered pool of turquoise water so calm it looks artificial. One of the best swimming spots in the region, especially for families. The color changes throughout the day depending on the sun angle — from pale aquamarine in the morning to deep jade by afternoon.',
-  },
-] as const;
+];
 
 // ──────────────────────────────────────────────
 // Restaurant data — Skipper's Picks
@@ -228,6 +276,7 @@ const RESTAURANTS = [
       'A beach restaurant on Marinkovac island accessible only by boat, with colorful beanbags on the pebble beach and a menu built around whatever came off the fishing boats that morning. The squid-ink risotto and grilled fish are outstanding. Family-run, relaxed, no pretension.',
     mustOrder: 'Squid ink risotto, grilled fresh catch',
     skippersNote: 'This is our go-to lunch stop on Pakleni days. Get there before 1pm or the good tables are gone.',
+    mapsHref: 'https://www.google.com/maps/search/?api=1&query=Konoba%20Tri%20Grede%2C%20%C5%BDdrilca',
   },
   {
     name: 'Moli Onte',
@@ -238,6 +287,7 @@ const RESTAURANTS = [
       'A family konoba terraced into the hillside above Milna bay, operating for over 30 years. You arrive by boat and they transfer you to the restaurant by dinghy — free of charge. Every table has a view of the bay. Fresh fish, grilled octopus, homemade olive oil. The kind of place with no written menu — the waiter just tells you what\'s good today.',
     mustOrder: 'Fresh grilled fish of the day, octopus salad',
     skippersNote: 'Book ahead in July/August. Worth the detour every time.',
+    mapsHref: 'https://www.google.com/maps/search/?api=1&query=Moli%20Onte%2C%20Milna%2C%20Hvar',
   },
   {
     name: 'Gego',
@@ -248,6 +298,7 @@ const RESTAURANTS = [
       'Hidden at the end of a narrow road on one of Hvar\'s best beaches — Zaraće bay. Antonella and Nikša have been running this konoba since 2002. Three black mooring buoys for boats. The Tagliatelle Gego is their signature dish and the reason half their regulars come back.',
     mustOrder: 'Tagliatelle Gego, octopus salad, panna cotta',
     skippersNote: 'Ask for a table by the rocks if you arrive by boat. Best value restaurant on the island.',
+    mapsHref: 'https://www.google.com/maps/search/?api=1&query=Konoba%20Gego%2C%20Zara%C4%87e%2C%20Hvar',
   },
   {
     name: 'Bacchus Palmižana',
@@ -258,8 +309,9 @@ const RESTAURANTS = [
       'Set in their own olive grove on Sveti Klement island, Bacchus has been cooking with a traditional stone bread oven for over 50 years. The oven gives their meat and fish a flavor you can\'t replicate anywhere else. Good option for groups — they offer set menus. ACI Marina Palmižana is right nearby for mooring.',
     mustOrder: 'Anything from the wood-fired oven, grilled octopus',
     skippersNote: 'More suited for groups or a proper dinner. Book in advance for summer.',
+    mapsHref: 'https://www.google.com/maps/search/?api=1&query=Bacchus%2C%20Palmi%C5%BEana',
   },
-] as const;
+];
 
 export default function GuidePage() {
   return (
@@ -298,7 +350,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* Section 1 — WHERE WE GO */}
+      {/* WHERE WE GO — map + 2 routes (merged) */}
       <section
         id="where-we-go"
         className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
@@ -309,97 +361,127 @@ export default function GuidePage() {
             {whereWeGoIntro}
           </p>
 
-            <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_1fr]">
-            <div>
-              <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                {mapsData.whereWeGo.title}
-              </h3>
-              <div className="relative overflow-hidden rounded-xl h-[400px] md:h-[500px]">
-                <div aria-hidden="true" className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full" style={{ background: 'var(--bg)' }} />
-                <iframe
-                  src={mapsData.whereWeGo.embedUrl}
-                  title={mapsData.whereWeGo.title}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, display: 'block' }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+          {/* Map */}
+          <div className="mt-10">
+            <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+              {mapsData.whereWeGo.title}
+            </h3>
+            <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full"
+                style={{ background: 'var(--bg)' }}
+              />
+              <iframe
+                src={mapsData.whereWeGo.embedUrl}
+                title={mapsData.whereWeGo.title}
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
+          </div>
 
-            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              {whereWeGoDestinations.map((d) => (
-                <li
-                  key={d.name}
-                  className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5"
-                >
-                  <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                    {d.name}
-                  </h3>
-                  <p className="mt-2 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                    {d.detail}
-                  </p>
-                </li>
-              ))}
-            </ul>
+          {/* Routes */}
+          <div className="mt-12 space-y-10">
+            {ROUTES.map((route) => (
+              <div
+                key={route.id}
+                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 md:p-8"
+              >
+                {/* Route header */}
+                <div className="flex flex-wrap items-start gap-4">
+                  <div className="flex-1">
+                    <p className="font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]">
+                      {route.duration}
+                    </p>
+                    <h3 className="mt-1 font-display text-2xl font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
+                      {route.label}
+                    </h3>
+                  </div>
+                  <a
+                    href={route.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                  >
+                    Open full route in Google Maps
+                  </a>
+                </div>
+
+                {/* Stops */}
+                <ul className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {route.stops.map((stop, idx) => (
+                    <li
+                      key={stop.name}
+                      className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex min-w-0 items-center gap-3">
+                          <span
+                            aria-hidden="true"
+                            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)]/15 font-body text-xs font-bold tabular-nums text-[color:var(--accent)]"
+                          >
+                            {idx + 1}
+                          </span>
+                          <h4 className="font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                            {stop.name}
+                          </h4>
+                        </div>
+                        <span className="shrink-0 whitespace-nowrap rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                          {stop.badge}
+                        </span>
+                      </div>
+                      <p className="mt-1.5 font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]/70">
+                        {stop.subtitle}
+                      </p>
+                      <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                        {stop.description}
+                      </p>
+                      <a
+                        href={stop.mapsHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 font-body text-xs font-medium text-[color:var(--accent)]/60 transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+                      >
+                        <span aria-hidden="true">📍</span>
+                        Open in Google Maps
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Destination Guide — SEO content */}
-      <section
-        id="destination-guide"
-        className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
-      >
-        <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Know before you go" title="Where We Go — Your Destination Guide" />
-          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Seven stops, each with a story. History, geology and what to expect when you get there.
-          </p>
-          <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {DESTINATIONS.map((d) => (
-              <li
-                key={d.name}
-                className="flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
-                    {d.name}
-                  </h3>
-                  <span className="shrink-0 rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-[color:var(--accent)] whitespace-nowrap">
-                    {d.badge}
-                  </span>
-                </div>
-                <p className="mt-1 font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]/70">
-                  {d.subtitle}
-                </p>
-                <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                  {d.description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Where to Eat — partner restaurants map */}
+      {/* WHERE TO EAT — map + cards (merged) */}
       <section
         id="where-to-eat"
         className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
       >
         <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Good food" title="Where to Eat" />
+          <SectionHeading eyebrow="Skipper's picks" title="Where to Eat" />
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Spots we often recommend along the route — reachable only by boat or a short walk.
+            Spots we often recommend along the route — reachable only by boat or a short walk. Our
+            skippers have been anchoring at these places for years.
           </p>
+
+          {/* Map */}
           <div className="mt-10">
             <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
               {mapsData.whereToEat.title}
             </h3>
-            <div className="relative overflow-hidden rounded-xl h-[400px] md:h-[500px]">
-              <div aria-hidden="true" className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full" style={{ background: 'var(--surface)' }} />
+            <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full"
+                style={{ background: 'var(--surface)' }}
+              />
               <iframe
                 src={mapsData.whereToEat.embedUrl}
                 title={mapsData.whereToEat.title}
@@ -412,24 +494,13 @@ export default function GuidePage() {
               />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Restaurant Cards — Skipper's Picks */}
-      <section
-        id="skippers-picks"
-        className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
-      >
-        <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Skipper's picks" title="Where to Eat — Local Favourites" />
-          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Our skippers have been anchoring at these spots for years. These aren&apos;t tourist traps — they&apos;re the places locals actually go.
-          </p>
+          {/* Restaurant cards */}
           <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
             {RESTAURANTS.map((r) => (
               <li
                 key={r.name}
-                className="flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] pl-5 pr-6 py-6 border-l-[3px] border-l-[color:var(--accent)]"
+                className="flex flex-col rounded-2xl border border-[color:var(--border)] border-l-[3px] border-l-[color:var(--accent)] bg-[color:var(--bg)]/60 py-6 pl-5 pr-6"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
@@ -446,7 +517,7 @@ export default function GuidePage() {
                 <p className="mt-2 font-body text-xs font-medium uppercase tracking-[0.12em] text-[color:var(--accent)]/70">
                   {r.location}
                 </p>
-                <p className="font-body text-xs text-[color:var(--gray)]/70 mt-0.5">{r.cuisine}</p>
+                <p className="mt-0.5 font-body text-xs text-[color:var(--gray)]/70">{r.cuisine}</p>
                 <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
                   {r.description}
                 </p>
@@ -458,13 +529,22 @@ export default function GuidePage() {
                     &ldquo;{r.skippersNote}&rdquo;
                   </p>
                 </div>
+                <a
+                  href={r.mapsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 font-body text-xs font-medium text-[color:var(--accent)]/60 transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+                >
+                  <span aria-hidden="true">📍</span>
+                  Open in Google Maps
+                </a>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Section 2 — WHAT TO BRING */}
+      {/* WHAT TO BRING */}
       <section
         id="what-to-bring"
         className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
@@ -495,7 +575,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* Section 3 — RULES & RENTALS (accordion) */}
+      {/* RULES & RENTALS */}
       <section
         id="rules"
         className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
@@ -522,7 +602,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* Section 4 — FAQ PRE-TOUR (accordion) */}
+      {/* FAQ PRE-TOUR */}
       <section
         id="faq"
         className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
@@ -543,7 +623,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* Hvar map — local tips (pharmacy, ferry, Old Town, etc.) */}
+      {/* LOCAL TIPS map */}
       <section
         id="hvar-local-map"
         className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
@@ -557,8 +637,12 @@ export default function GuidePage() {
             <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
               {mapsData.localTips.title}
             </h3>
-            <div className="relative overflow-hidden rounded-xl h-[400px] md:h-[500px]">
-              <div aria-hidden="true" className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full" style={{ background: 'var(--surface)' }} />
+            <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full"
+                style={{ background: 'var(--surface)' }}
+              />
               <iframe
                 src={mapsData.localTips.embedUrl}
                 title={mapsData.localTips.title}
@@ -574,7 +658,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* Section 5 — WEATHER POLICY (alert box) */}
+      {/* WEATHER POLICY */}
       <section
         id="weather"
         className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
@@ -663,6 +747,7 @@ export default function GuidePage() {
           </div>
         </div>
       </section>
+
       <nav aria-label="Tour internal links" className="sr-only">
         <ul>
           {toursData.map((tour) => (
