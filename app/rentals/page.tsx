@@ -115,8 +115,8 @@ const itemListSchema = {
   name: 'Rentals from MareBoats Hvar',
   description: 'Boat rental and water scooter at Hvar Harbour, Croatia.',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-skipper`, name: 'Private Boat Tour — Skipper Included' },
-    { '@type': 'ListItem', position: 2, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental — With or Without Skipper' },
+    { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-skipper`, name: 'Boat Rental — With Skipper' },
+    { '@type': 'ListItem', position: 2, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental — Self-Drive' },
     { '@type': 'ListItem', position: 3, url: `${SITE}/rentals/#water-scooter`, name: 'Water Scooter' },
   ],
 };
@@ -206,34 +206,17 @@ export default function RentalsPage() {
             Boat Rental in Hvar, Croatia
           </h2>
 
-          <div className="mx-auto mt-8 max-w-3xl space-y-5 font-body text-base leading-relaxed text-[color:var(--gray)]">
-            <p>
-              Looking to rent a boat in Hvar? MareBoats offers two formats depending on your
-              experience and preference. The most popular option is a{' '}
-              <strong className="text-[color:var(--white)]">private boat tour with skipper included</strong>{' '}
-              — no license needed, full-day or half-day, custom route around Pakleni Islands, Blue
-              Cave, Red Rocks, and more. It&apos;s the easiest and most complete way to experience
-              Hvar boat hire.
-            </p>
-            <p>
-              For experienced sailors, we also offer a{' '}
-              <strong className="text-[color:var(--white)]">self-drive boat rental in Hvar</strong>.
-              Valid boating license required. You take the speedboat out on your own schedule — fuel
-              full-in, full-out. Pickup at Hvar Harbour. This is a genuine{' '}
-              <em>rent a boat Hvar Croatia</em> option for those who know what they&apos;re doing on
-              the water.
-            </p>
-            <p>
-              All boats are modern speedboats — fast, stable, and built for the Adriatic. Whether
-              you book a private boat Hvar tour with a local skipper or take the helm yourself,
-              you&apos;re getting the same quality vessel. Message us on WhatsApp with your dates
-              and group size and we&apos;ll sort the rest.
-            </p>
-          </div>
+          <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+            Two ways to rent — come with a{' '}
+            <strong className="text-[color:var(--white)]">local skipper included</strong> for the
+            full-service experience, or take the helm yourself with our{' '}
+            <strong className="text-[color:var(--white)]">self-drive option</strong>. Both pickup
+            at Hvar Harbour, same quality speedboat.
+          </p>
 
-          {/* Two option cards */}
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {/* With Skipper */}
+
+            {/* Option A: With Skipper */}
             <article
               id="boat-skipper"
               className="flex flex-col rounded-2xl border border-[color:var(--accent)]/30 bg-[color:var(--surface)] p-8 shadow-[0_10px_30px_rgba(59,201,219,0.10)]"
@@ -261,21 +244,19 @@ export default function RentalsPage() {
               </div>
 
               <h3 className="mt-4 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                Private Boat Tour — Skipper Included
+                With Skipper
               </h3>
 
               <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                Full day or half day. Custom route. Fuel, water, snorkel included. No license
-                needed.
+                No licence needed. Local skipper, custom route, private group.
               </p>
 
               <ul className="mt-5 space-y-2 font-body text-sm text-[color:var(--gray)]">
                 {[
-                  'No boating license required',
-                  'Local skipper who knows every spot',
-                  'Fuel, bottled water & snorkel gear included',
-                  'Up to 8 people — private group only',
-                  'Custom itinerary, your pace',
+                  'No licence needed',
+                  'Local skipper, custom route',
+                  'Fuel, water & snorkel included',
+                  'Up to 8 people — private group',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
@@ -289,101 +270,95 @@ export default function RentalsPage() {
                   From €400
                 </span>
                 <WhatsAppTrackedLink
-                  href={waUrl("Hi! I'd like to book a private boat tour with skipper.")}
+                  href={waUrl("Hi! I'd like to ask about boat rental with skipper in Hvar.")}
                   label="boat_rental_skipper"
                   className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-5 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                 >
-                  Book This Tour
+                  Ask on WhatsApp
                 </WhatsAppTrackedLink>
               </div>
             </article>
 
-            {/* With or Without Skipper */}
-            <article
+            {/* Option B: Self-Drive container */}
+            <div
               id="boat-self-drive"
-              className="flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-8"
+              className="flex flex-col gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
             >
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--bg)] text-[color:var(--gray)]">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M3 17l4-8 4 4 4-6 4 10" />
-                    <path d="M3 21h18" />
-                  </svg>
-                </span>
+              <div>
                 <p className="font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--gray)]">
-                  License required
+                  Self-Drive
                 </p>
+                <h3 className="mt-1 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                  Take the Helm
+                </h3>
               </div>
 
-              <h3 className="mt-4 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                Boat Rental — With or Without Skipper
-              </h3>
+              {/* Sub-card: With Licence */}
+              <article className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)] p-5">
+                <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                  With Licence
+                </h4>
+                <ul className="mt-3 space-y-1.5 font-body text-xs text-[color:var(--gray)]">
+                  {[
+                    'Valid boating licence required',
+                    'Fuel full-in, full-out',
+                    'Deposit may apply',
+                    'Pre/post photos at handover',
+                    'Pickup at Hvar Harbour',
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex flex-col gap-2">
+                  <span className="font-body text-sm font-semibold text-[color:var(--white)]">
+                    On request
+                  </span>
+                  <WhatsAppTrackedLink
+                    href={waUrl("Hi! I'd like to ask about self-drive boat rental in Hvar. I have a valid boating licence.")}
+                    label="boat_rental_self_drive_licence"
+                    className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                  >
+                    Ask on WhatsApp
+                  </WhatsAppTrackedLink>
+                </div>
+              </article>
 
-              <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                Available for licensed skippers (self-drive) or with one of our local skippers
-                included. Fuel full-in, full-out.
-              </p>
-
-              <ul className="mt-5 space-y-2 font-body text-sm text-[color:var(--gray)]">
-                {[
-                  'Valid boating license required',
-                  'Fuel full-in, full-out',
-                  'Deposit may apply',
-                  'Pre/post photos at handover',
-                  'Pickup at Hvar Harbour',
-                ].map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-auto flex flex-col gap-3 pt-8">
-                <span className="font-body text-lg font-bold text-[color:var(--white)]">
-                  On request
-                </span>
-                <WhatsAppTrackedLink
-                  href={waUrl("Hi! I'd like to ask about self-drive boat rental in Hvar.")}
-                  label="boat_rental_self_drive"
-                  className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-5 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
-                >
-                  Ask for Availability
-                </WhatsAppTrackedLink>
-              </div>
-            </article>
-          </div>
-
-          {/* No licence callout */}
-          <div className="mt-8 rounded-2xl border border-[color:var(--accent)]/40 bg-[color:var(--surface)] p-8">
-            <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-              No Boat Licence? No Problem.
-            </h3>
-            <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-              Croatian maritime law requires a valid licence for self-drive boat rental. If you
-              don&apos;t have one, we can arrange fully equipped self-drive boats with a mandatory
-              safety briefing — no licence required. Message us on WhatsApp with your dates and
-              group size and we&apos;ll sort the rest.
-            </p>
-            <div className="mt-6">
-              <WhatsAppTrackedLink
-                href={waUrl("Hi! I'd like to rent a boat in Hvar but I don't have a boat licence.")}
-                label="boat_rental_no_licence"
-                className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-5 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
-              >
-                Ask on WhatsApp
-              </WhatsAppTrackedLink>
+              {/* Sub-card: No Licence */}
+              <article className="flex flex-col rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-5">
+                <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--accent)]">
+                  No Licence? No Problem.
+                </h4>
+                <ul className="mt-3 space-y-1.5 font-body text-xs text-[color:var(--gray)]">
+                  {[
+                    'No licence required',
+                    'Safety briefing included',
+                    'Fully equipped boat',
+                    'Croatian maritime law compliant',
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-4 flex flex-col gap-2">
+                  <span className="font-body text-sm font-semibold text-[color:var(--white)]">
+                    On request
+                  </span>
+                  <WhatsAppTrackedLink
+                    href={waUrl("Hi! I'd like to rent a boat in Hvar but I don't have a boat licence.")}
+                    label="boat_rental_no_licence"
+                    className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+                  >
+                    Ask on WhatsApp
+                  </WhatsAppTrackedLink>
+                </div>
+              </article>
             </div>
+
           </div>
         </div>
       </section>
