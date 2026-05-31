@@ -137,7 +137,7 @@ export default function RentalsPage() {
 
       {/* Rentals grid */}
       <section className="px-4 py-16 md:py-20">
-        <ul className="mx-auto grid max-w-container grid-cols-1 gap-6 lg:grid-cols-3">
+        <ul className="mx-auto grid max-w-3xl grid-cols-1 gap-6 lg:grid-cols-2">
           {RENTALS.map((r) => (
             <li key={r.id} id={r.id} className="flex scroll-mt-24">
               <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
