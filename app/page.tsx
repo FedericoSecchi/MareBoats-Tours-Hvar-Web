@@ -126,6 +126,12 @@ export default function HomePage() {
             Boat &amp; Scooter Rentals →
           </Link>
           <Link
+            href="/boat-rental"
+            className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+          >
+            Boat Rental →
+          </Link>
+          <Link
             href="/transfers"
             className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
           >

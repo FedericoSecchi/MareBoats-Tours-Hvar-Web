@@ -330,6 +330,24 @@ export default function TourDetailPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Boat rental crosslink */}
+      <div className="border-t border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-body text-sm text-[color:var(--gray)]">
+            Looking for a private boat rental in Hvar?
+          </p>
+          <p className="mt-1 font-body text-xs text-[color:var(--gray)]/70">
+            We offer speedboats with skipper included or self-drive for licensed captains.
+          </p>
+          <Link
+            href="/boat-rental/"
+            className="mt-3 inline-block font-body text-sm font-semibold text-[color:var(--accent)] transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+          >
+            See Boat Rental options →
+          </Link>
+        </div>
+      </div>
     </main>
   );
 }
