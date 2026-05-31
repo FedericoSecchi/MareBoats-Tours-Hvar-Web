@@ -94,7 +94,7 @@ const faqSchema = {
       name: 'Can I rent a boat in Hvar without a licence?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Yes — through our partner operators, we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp and we'll sort the right option for your group.",
+        text: "Yes — we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
       },
     },
   ],
@@ -119,7 +119,7 @@ const FAQS = [
   },
   {
     q: 'Can I rent a boat in Hvar without a licence?',
-    a: "Yes — through our partner operators, we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp and we'll sort the right option for your group.",
+    a: "Yes — we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
   },
 ];
 
@@ -321,9 +321,9 @@ export default function BoatRentalPage() {
           </h2>
           <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
             Croatian maritime law requires a valid licence for self-drive boat rental. If you
-            don&apos;t have one, we partner with local operators who offer fully equipped
-            self-drive boats with a mandatory safety briefing — no licence required. Ask us on
-            WhatsApp and we&apos;ll connect you with the right option.
+            don&apos;t have one, we can arrange fully equipped self-drive boats with a mandatory
+            safety briefing — no licence required. Message us on WhatsApp with your dates and
+            group size and we&apos;ll sort the rest.
           </p>
           <div className="mt-6">
             <WhatsAppTrackedLink
