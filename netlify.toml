@@ -72,3 +72,16 @@
   from = "/boat-tour-pakleni-islands"
   to = "/tours/blue-cave-pakleni-islands/"
   status = 301
+
+# /boat-rental/ merged into /rentals/ — 301 so Google transfers link equity
+[[redirects]]
+  from = "/boat-rental"
+  to = "/rentals/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/boat-rental/"
+  to = "/rentals/"
+  status = 301
+  force = true

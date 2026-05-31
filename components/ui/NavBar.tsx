@@ -12,7 +12,6 @@ const WHATSAPP_URL =
 const NAV_LINKS: { label: string; href: string }[] = [
   { label: 'Tours', href: '/tours' },
   { label: 'Rentals', href: '/rentals' },
-  { label: 'Boat Rental', href: '/boat-rental' },
   { label: 'Transfers', href: '/transfers' },
   { label: 'Guide', href: '/guide' },
   { label: 'About', href: '/about' },

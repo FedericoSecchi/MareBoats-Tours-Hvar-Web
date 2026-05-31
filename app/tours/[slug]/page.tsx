@@ -341,7 +341,7 @@ export default function TourDetailPage({ params }: PageProps) {
             We offer speedboats with skipper included or self-drive for licensed captains.
           </p>
           <Link
-            href="/boat-rental/"
+            href="/rentals/#boat-rental"
             className="mt-3 inline-block font-body text-sm font-semibold text-[color:var(--accent)] transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
           >
             See Boat Rental options →
