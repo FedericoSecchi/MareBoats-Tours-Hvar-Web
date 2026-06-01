@@ -14,41 +14,88 @@ function waUrl(text: string) {
   return `${WA_BASE}${encodeURIComponent(text)}`;
 }
 
-const MAP_EMBED_SRC = 'https://maps.google.com/maps?q=43.16903,16.44300&z=16&output=embed';
+const MAP_EMBED_SRC = 'https://maps.google.com/maps?q=43.168472,16.443000&z=16&output=embed';
 
 // ──────────────────────────────────────────────
-// Timelines
+// Tour details accordion data
 // ──────────────────────────────────────────────
-type TimelineStep = { time: string; title: string; note?: string };
+type TourRow = { label: string; value: string };
+type TourDetail = { name: string; rows: TourRow[]; extraCosts: string };
 
-const blueCaveTimeline: TimelineStep[] = [
-  { time: '10:00', title: 'Meet at the barrel, Hvar Harbour' },
-  { time: '10:15', title: 'Depart. First stop: Pakleni Islands' },
-  { time: '12:00', title: 'Blue Cave (Biševo)', note: 'Timed entry, ~30 min inside' },
-  { time: '13:30', title: 'Lunch stop at Palmižana or Ždrilca' },
-  { time: '17:00', title: 'Back in Hvar Harbour' },
-];
-
-const pakleniTimeline: TimelineStep[] = [
-  { time: '09:00', title: 'Meet at the barrel, Hvar Harbour', note: 'or 14:00 for afternoon slot' },
-  { time: '09:15', title: 'Depart toward Red Rocks (Crvena Stijena)' },
-  { time: '10:30', title: 'Pakleni Islands — Ždrilca & Taršće bays' },
-  { time: '13:00', title: 'Back in Hvar Harbour', note: 'or 18:00 for afternoon' },
-];
-
-// ──────────────────────────────────────────────
-// "What to know" notes
-// ──────────────────────────────────────────────
-const blueCaveNotes = [
-  'Blue Cave has timed entry slots — €24/person paid on site. We arrive before the tour boats from Split.',
-  'Green Cave entrance is €12/person, also paid on site.',
-  'Lunch is not included. Palmižana has restaurants — budget €15–25.',
-];
-
-const pakleniNotes = [
-  'No entrance fees on this route.',
-  'Lunch not included. There are beach bars at Ždrilca — or bring your own food.',
-  'This tour runs morning (9:00–13:00) or afternoon (14:00–18:00). Nikola will confirm your slot.',
+const tourDetails: TourDetail[] = [
+  {
+    name: '5 Islands, 4 Beaches & Blue Cave',
+    rows: [
+      { label: 'Meet', value: '09:45 at the MareBoats barrel, Hvar Harbour' },
+      { label: 'Depart', value: '10:00' },
+      { label: 'Duration', value: '7 hours — back around 17:00' },
+      {
+        label: 'Route',
+        value:
+          'Direct to Blue Cave (Biševo) first, then stops on Vis island, finishing at Pakleni Islands before returning to Hvar.',
+      },
+    ],
+    extraCosts:
+      'Blue Cave entrance €24/person · Green Cave entrance €12/person · Lunch not included (restaurants at Palmižana, budget €15–25)',
+  },
+  {
+    name: 'Red Rocks & Pakleni Islands',
+    rows: [
+      { label: 'Meet', value: '15 minutes before departure' },
+      {
+        label: 'Depart',
+        value: '09:00 (morning slot) or 14:00 (afternoon slot) — Nikola will confirm your slot',
+      },
+      { label: 'Duration', value: '4 or 6 hours depending on your booking' },
+      {
+        label: 'Route',
+        value:
+          'Direct to Red Rocks (Crvena Stijena), then east Hvar coast beaches, finishing at Pakleni Islands where you can have lunch at a restaurant.',
+      },
+    ],
+    extraCosts: 'No entrance fees · Lunch optional at Pakleni (not included)',
+  },
+  {
+    name: 'Pakleni Islands Half Day',
+    rows: [
+      { label: 'Meet', value: '15 minutes before departure' },
+      {
+        label: 'Depart',
+        value: '09:00 (morning slot) or 14:00 (afternoon slot) — Nikola will confirm your slot',
+      },
+      { label: 'Duration', value: '3–4 hours' },
+      { label: 'Route', value: 'Pakleni Islands — swimming stops at secluded bays' },
+    ],
+    extraCosts: 'None',
+  },
+  {
+    name: 'Sunset Cruise',
+    rows: [
+      { label: 'Meet', value: '19:15 at the MareBoats barrel, Hvar Harbour' },
+      { label: 'Depart', value: '19:30' },
+      { label: 'Duration', value: '2 hours — back around 21:30' },
+      { label: 'Route', value: 'Pakleni Islands at golden hour' },
+    ],
+    extraCosts: 'None',
+  },
+  {
+    name: 'Private Boat Charter',
+    rows: [
+      { label: 'Meet', value: 'Arranged directly with Nikola' },
+      { label: 'Depart', value: 'Flexible — your schedule' },
+      { label: 'Duration', value: 'Full day' },
+      { label: 'Route', value: 'You choose the destinations' },
+    ],
+    extraCosts: 'Fuel not included — discussed with Nikola at booking',
+  },
+  {
+    name: 'Split Airport Transfer',
+    rows: [
+      { label: 'Meet', value: 'On demand — Nikola will coordinate pickup time directly' },
+      { label: 'Duration', value: '~45 minutes' },
+    ],
+    extraCosts: 'None',
+  },
 ];
 
 // ──────────────────────────────────────────────
@@ -92,64 +139,6 @@ function WhatsAppIcon({ className = 'h-4 w-4' }: { className?: string }) {
   );
 }
 
-function Timeline({ steps }: { steps: TimelineStep[] }) {
-  return (
-    <ol className="flex flex-col">
-      {steps.map((step, i) => (
-        <li key={step.time} className="flex gap-5">
-          <div className="flex flex-col items-center">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-[color:var(--bg)] font-display text-sm font-bold tracking-tight text-[color:var(--accent)]">
-              {step.time}
-            </span>
-            {i < steps.length - 1 && (
-              <span
-                aria-hidden="true"
-                className="w-px flex-1 bg-[color:var(--border)]"
-                style={{ minHeight: '2rem' }}
-              />
-            )}
-          </div>
-          <div className="pb-8 pt-2">
-            <h4 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-              {step.title}
-            </h4>
-            {step.note && (
-              <p className="mt-0.5 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                {step.note}
-              </p>
-            )}
-          </div>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-function SectionDivider({ label }: { label: string }) {
-  return (
-    <div className="flex items-center gap-4">
-      <div className="h-px flex-1 bg-[color:var(--accent)]/30" />
-      <span className="shrink-0 rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--accent)]">
-        {label}
-      </span>
-      <div className="h-px flex-1 bg-[color:var(--accent)]/30" />
-    </div>
-  );
-}
-
-function GuideLink() {
-  return (
-    <div className="mt-8">
-      <Link
-        href="/guide"
-        className="font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-200 hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
-      >
-        First time in Hvar? Read the island guide →
-      </Link>
-    </div>
-  );
-}
-
 // ──────────────────────────────────────────────
 // Page
 // ──────────────────────────────────────────────
@@ -172,20 +161,76 @@ export default function PreTourPage() {
             Your MareBoats tour is confirmed. 🎉
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Here&apos;s everything you need for your day on the water.
+            Here&apos;s everything you need. Select your tour below to see your specific meeting
+            time and what to expect.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="#blue-cave" className={secondaryBtnClass}>
-              5 Islands &amp; Blue Cave →
-            </a>
-            <a href="#pakleni" className={secondaryBtnClass}>
-              Red Rocks &amp; Pakleni →
-            </a>
+        </div>
+      </section>
+
+      {/* 2. YOUR TOUR DETAILS */}
+      <section
+        id="tour-details"
+        className="scroll-mt-20 border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-3xl">
+          <header>
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              What to expect
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Your tour details
+            </h2>
+          </header>
+
+          <div className="mt-8 space-y-3">
+            {tourDetails.map((tour) => (
+              <details
+                key={tour.name}
+                className="group overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 [&::-webkit-details-marker]:hidden">
+                  <span className="font-body text-sm font-semibold text-[color:var(--white)] md:text-base">
+                    {tour.name}
+                  </span>
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-4 w-4 shrink-0 text-[color:var(--accent)] transition-transform duration-300 group-open:rotate-180"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </summary>
+                <div className="border-l-[3px] border-[color:var(--accent)] bg-[color:var(--surface)] px-6 py-6">
+                  <dl className="space-y-3">
+                    {tour.rows.map((row) => (
+                      <div key={row.label} className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
+                        <dt className="w-20 shrink-0 font-body text-sm font-medium text-[color:var(--accent)]">
+                          {row.label}:
+                        </dt>
+                        <dd className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                          {row.value}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p className="mt-4 border-t border-[color:var(--border)] pt-4 font-body text-xs leading-relaxed text-[color:var(--gray)]">
+                    <span className="font-medium text-[color:var(--white)]/60">Extra costs: </span>
+                    {tour.extraCosts}
+                  </p>
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 2. MEETING POINT */}
+      {/* 3. MEETING POINT */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
           <header>
@@ -227,31 +272,20 @@ export default function PreTourPage() {
                 Look for the MareBoats barrel at the main dock, next to the fuel station. If you
                 get lost, message Nikola on WhatsApp.
               </p>
-              <div className="flex flex-col gap-3">
-                <a
-                  href="https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={secondaryBtnClass}
-                >
-                  Open in Google Maps
-                </a>
-                <a
-                  href="https://g.page/mareboats"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Find us on Google Maps"
-                  className="inline-flex items-center justify-center gap-2 rounded-pill border border-[color:var(--border)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--gray)] transition-colors duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
-                >
-                  Find us on Google
-                </a>
-              </div>
+              <a
+                href="https://maps.app.goo.gl/k84JNBQLvqgZunEX6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={secondaryBtnClass}
+              >
+                Open in Google Maps
+              </a>
             </aside>
           </div>
         </div>
       </section>
 
-      {/* 3. UPSELL */}
+      {/* 4. UPSELL */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
           <header>
@@ -327,69 +361,7 @@ export default function PreTourPage() {
         </div>
       </section>
 
-      {/* 4. BLUE CAVE */}
-      <section
-        id="blue-cave"
-        className="scroll-mt-20 border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
-      >
-        <div className="mx-auto max-w-3xl">
-          <SectionDivider label="5 Islands, 4 Beaches & Blue Cave" />
-
-          <h3 className="mt-8 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-            How the day goes
-          </h3>
-          <div className="mt-5">
-            <Timeline steps={blueCaveTimeline} />
-          </div>
-
-          <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-            What to know
-          </h3>
-          <ul className="mt-4 space-y-3">
-            {blueCaveNotes.map((note) => (
-              <li key={note} className="flex gap-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
-                {note}
-              </li>
-            ))}
-          </ul>
-
-          <GuideLink />
-        </div>
-      </section>
-
-      {/* 5. RED ROCKS & PAKLENI */}
-      <section
-        id="pakleni"
-        className="scroll-mt-20 border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
-      >
-        <div className="mx-auto max-w-3xl">
-          <SectionDivider label="Red Rocks & Pakleni Islands" />
-
-          <h3 className="mt-8 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-            How the day goes
-          </h3>
-          <div className="mt-5">
-            <Timeline steps={pakleniTimeline} />
-          </div>
-
-          <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-            What to know
-          </h3>
-          <ul className="mt-4 space-y-3">
-            {pakleniNotes.map((note) => (
-              <li key={note} className="flex gap-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
-                {note}
-              </li>
-            ))}
-          </ul>
-
-          <GuideLink />
-        </div>
-      </section>
-
-      {/* 6. WHAT TO BRING */}
+      {/* 5. WHAT TO BRING */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
           <header>
@@ -443,7 +415,7 @@ export default function PreTourPage() {
         </div>
       </section>
 
-      {/* 7. WHAT THE ADRIATIC IS ACTUALLY LIKE */}
+      {/* 6. WHAT THE ADRIATIC IS ACTUALLY LIKE */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
           <header>
@@ -473,7 +445,7 @@ export default function PreTourPage() {
         </div>
       </section>
 
-      {/* 8. WEATHER POLICY */}
+      {/* 7. WEATHER POLICY */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-3xl">
           <div
@@ -521,7 +493,7 @@ export default function PreTourPage() {
         </div>
       </section>
 
-      {/* 9. GUIDE LINK BLOCK */}
+      {/* 8. GUIDE LINK BLOCK */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-body text-base leading-relaxed text-[color:var(--gray)]">
@@ -533,7 +505,7 @@ export default function PreTourPage() {
         </div>
       </section>
 
-      {/* 10. FINAL CTA */}
+      {/* 9. FINAL CTA */}
       <section
         className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-20"
         style={{
@@ -553,7 +525,7 @@ export default function PreTourPage() {
           </p>
           <div className="mt-7">
             <WhatsAppTrackedLink
-              href={waUrl("Hi Nikola! I have a question about my upcoming MareBoats tour.")}
+              href={waUrl('Hi Nikola! I have a question about my upcoming MareBoats tour.')}
               ctaText="pre_tour_question"
               label="final_cta"
               className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
