@@ -75,6 +75,10 @@ export default function HomePage() {
             <span className="block text-[color:var(--accent)]">Tours Hvar</span>
           </h1>
 
+          <p className="font-body text-sm text-[color:var(--gray)]">
+            Private boat tours, boat rental &amp; water scooter hire — from Hvar Harbour.
+          </p>
+
           <div className="w-full">
             <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
               <span className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)]">

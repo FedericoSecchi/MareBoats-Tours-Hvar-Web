@@ -252,11 +252,46 @@ export default function ExplorePage() {
             Hvar Town
           </p>
           <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-6xl">
-            Things to Do in Hvar Town
+            Explore Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Our skippers&apos; guide to what&apos;s worth your time on land — restaurants, history, beaches and evening spots. No tourist traps.
+            Beaches, islands, restaurants and local tips. Everything you need to make the most of your time here — on land and on the water.
           </p>
+        </div>
+        <div className="relative z-10 mx-auto mt-10 w-full max-w-container grid grid-cols-1 gap-4 px-4 md:grid-cols-3">
+          <Link
+            href="/guide/"
+            className="group flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 transition-colors duration-200 hover:border-[color:var(--accent)]"
+          >
+            <span className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-[color:var(--accent)]">
+              Boat Tour Guide
+            </span>
+            <span className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+              What to bring, where we go, rules on board and weather policy.
+            </span>
+          </Link>
+          <Link
+            href="/hvar-islands-guide/"
+            className="group flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 transition-colors duration-200 hover:border-[color:var(--accent)]"
+          >
+            <span className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-[color:var(--accent)]">
+              Hvar Islands Guide
+            </span>
+            <span className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+              Every stop explained: Blue Cave, Pakleni, Stiniva, Red Rocks and more.
+            </span>
+          </Link>
+          <Link
+            href="/explore/#where-to-eat"
+            className="group flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 transition-colors duration-200 hover:border-[color:var(--accent)]"
+          >
+            <span className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-[color:var(--accent)]">
+              Hvar Town
+            </span>
+            <span className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+              Best restaurants, sights, beaches and practical tips for Hvar town.
+            </span>
+          </Link>
         </div>
       </section>
 
