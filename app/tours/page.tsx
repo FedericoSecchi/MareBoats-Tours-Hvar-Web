@@ -219,10 +219,10 @@ export default function ToursIndexPage() {
           })}
           <li className="flex">
             <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/img/package-4.jpeg"
-                  alt="Speedboat rental Hvar — no licence required"
+                  alt="Speedboat rental Hvar, with or without licence"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -237,12 +237,12 @@ export default function ToursIndexPage() {
                     Boat Rental
                   </h2>
                   <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                    Take the helm. Rent a speedboat by the half day or full day — no licence required. You choose the route.
+                    Half day or full day. With a skipper, with your licence, or without one. Three ways to get on the water.
                   </p>
                 </div>
                 <div className="mt-auto flex flex-col gap-3">
                   <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
-                    From €150 · no licence needed
+                    From €150 · skipper optional
                   </span>
                   <Link
                     href="/rentals/"
