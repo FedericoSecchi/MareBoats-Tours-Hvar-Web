@@ -575,33 +575,6 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* RULES & RENTALS */}
-      <section
-        id="rules"
-        className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
-      >
-        <div className="mx-auto max-w-3xl">
-          <SectionHeading eyebrow="On board" title="Rules & Rentals" />
-          <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Quick rundown of what works and what does not on the boat. Tap to open.
-          </p>
-          <div className="mt-8 space-y-3">
-            {rulesAndRentals.map((rule, i) => (
-              <AccordionItem
-                key={rule.key}
-                question={rule.title}
-                defaultOpen={i === 0}
-              >
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-                  <StatusBadge status={rule.status} />
-                  <p className="flex-1">{rule.detail}</p>
-                </div>
-              </AccordionItem>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ PRE-TOUR */}
       <section
         id="faq"
@@ -653,6 +626,16 @@ export default function GuidePage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+            </div>
+            <div className="mt-4">
+              <a
+                href="https://www.google.com/maps/d/viewer?mid=1nuvwn07MXgnNuy-bwl99s361tV4PMsI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+              >
+                Open all tips in Google Maps
+              </a>
             </div>
           </div>
         </div>
@@ -760,3 +743,31 @@ export default function GuidePage() {
     </main>
   );
 }
+
+// MOVED_TO_RENTALS
+// {/* RULES & RENTALS */}
+// <section
+//   id="rules"
+//   className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
+// >
+//   <div className="mx-auto max-w-3xl">
+//     <SectionHeading eyebrow="On board" title="Rules & Rentals" />
+//     <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
+//       Quick rundown of what works and what does not on the boat. Tap to open.
+//     </p>
+//     <div className="mt-8 space-y-3">
+//       {rulesAndRentals.map((rule, i) => (
+//         <AccordionItem
+//           key={rule.key}
+//           question={rule.title}
+//           defaultOpen={i === 0}
+//         >
+//           <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+//             <StatusBadge status={rule.status} />
+//             <p className="flex-1">{rule.detail}</p>
+//           </div>
+//         </AccordionItem>
+//       ))}
+//     </div>
+//   </div>
+// </section>
