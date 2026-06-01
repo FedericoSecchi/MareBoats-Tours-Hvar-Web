@@ -237,7 +237,7 @@ export default function ToursIndexPage() {
                     Boat Rental
                   </h2>
                   <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                    Half day or full day. With a skipper, with your licence, or without one. Three ways to get on the water.
+                    Half day or full day. No licence, your own licence, or with a skipper. Three ways to get on the water.
                   </p>
                 </div>
                 <div className="mt-auto flex flex-col gap-3">
