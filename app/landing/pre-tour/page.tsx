@@ -14,7 +14,8 @@ function waUrl(text: string) {
   return `${WA_BASE}${encodeURIComponent(text)}`;
 }
 
-const MAP_EMBED_SRC = 'https://maps.google.com/maps?q=43.168472,16.443000&z=16&output=embed';
+const MAP_EMBED_SRC =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d16.4429617!3d43.1690147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1335810a66e18add%3A0x7bb6c12e07bdddde!2sMare%20Boats!5e0!3m2!1sen!2shr!4v1700000000000!5m2!1sen!2shr';
 
 // ──────────────────────────────────────────────
 // Tour details accordion data
