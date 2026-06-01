@@ -277,7 +277,7 @@ export default function AboutPage() {
             </h2>
             <ul className="mt-6 space-y-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
               {[
-                'Semi-rigid inflatable boats (RIBs), 150\u2013300\u202fhp',
+                'Modern speedboats, 150\u2013300\u202fhp',
                 '8 to 12 passengers per boat depending on the vessel',
                 'Sun canopy, music system and cooler on board',
                 'Snorkel gear and masks included for every guest',
