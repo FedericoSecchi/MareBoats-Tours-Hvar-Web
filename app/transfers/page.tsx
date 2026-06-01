@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
@@ -30,13 +30,11 @@ function waUrl(message: string) {
 
 type TransferCard = {
   id: string;
-  /** Optional override for the card heading — defaults to "Hvar ↔ {route}" */
   name?: string;
   route: string;
   price: string;
   time: string;
-  image: string;
-  imageAlt: string;
+  mapSvg: ReactNode;
   summary: string;
   waMessage: string;
   ctaLabel: string;
@@ -49,57 +47,168 @@ const TRANSFERS: TransferCard[] = [
     route: 'Split ↔ Hvar',
     price: '€500 private',
     time: '~1 hour',
-    image: '/img/destination-5.jpeg',
-    imageAlt: 'Private speedboat transfer between Split and Hvar Harbour',
     summary: 'Hvar Harbour → Split waterfront. Private boat, direct route.',
     waMessage: "Hi! I'd like to book the Split transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
+    mapSvg: (
+      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
+        <defs>
+          <linearGradient id="bg-split-hvar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#0d1b2a" />
+            <stop offset="100%" stopColor="#122236" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg-split-hvar)" />
+        {/* water */}
+        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
+        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
+        {/* route — arcs upward */}
+        <path d="M 85,195 Q 200,70 315,125" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
+        <g transform="translate(200,115) rotate(-17)">
+          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
+        </g>
+        <circle cx="85" cy="195" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="85" cy="195" r="5" fill="#3BC9DB" />
+        <text x="85" y="213" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
+        <circle cx="315" cy="125" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="315" cy="125" r="5" fill="#3BC9DB" />
+        <text x="315" y="143" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">SPLIT</text>
+      </svg>
+    ),
   },
   {
     id: 'airport-hvar',
     route: 'Split Airport ↔ Hvar',
     price: '€600 private',
     time: '~1.5 hours',
-    image: '/img/carousel-2.jpeg',
-    imageAlt: 'Split Airport to Hvar private speedboat transfer',
     summary: 'Split Airport → Hvar Harbour. We track your flight.',
     waMessage: "Hi! I'd like to book the Airport transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
+    mapSvg: (
+      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
+        <defs>
+          <linearGradient id="bg-airport-hvar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#0d1b2a" />
+            <stop offset="100%" stopColor="#122236" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg-airport-hvar)" />
+        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
+        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
+        {/* route — arcs downward */}
+        <path d="M 85,175 Q 195,260 305,175" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
+        <g transform="translate(195,218) rotate(0)">
+          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
+        </g>
+        <circle cx="85" cy="175" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="85" cy="175" r="5" fill="#3BC9DB" />
+        <text x="85" y="193" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
+        <circle cx="305" cy="175" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="305" cy="175" r="5" fill="#3BC9DB" />
+        <text x="305" y="193" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">SPLIT AIRPORT</text>
+      </svg>
+    ),
   },
   {
     id: 'brac',
     route: 'Brač',
     price: 'On request',
     time: 'Private',
-    image: '/img/destination-2.jpeg',
-    imageAlt: 'Private boat transfer from Hvar to Brač — Bol, Supetar, Milna',
     summary: 'Bol, Supetar, Milna — tell us where.',
     waMessage: "Hi! I'd like a transfer to Brač",
     ctaLabel: 'Ask on WhatsApp',
+    mapSvg: (
+      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
+        <defs>
+          <linearGradient id="bg-brac" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#0d1b2a" />
+            <stop offset="100%" stopColor="#122236" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg-brac)" />
+        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
+        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
+        {/* route — steep upward arc */}
+        <path d="M 85,215 Q 200,35 315,110" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
+        <g transform="translate(200,99) rotate(-25)">
+          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
+        </g>
+        <circle cx="85" cy="215" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="85" cy="215" r="5" fill="#3BC9DB" />
+        <text x="85" y="233" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
+        <circle cx="315" cy="110" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="315" cy="110" r="5" fill="#3BC9DB" />
+        <text x="315" y="128" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">BRAČ</text>
+      </svg>
+    ),
   },
   {
     id: 'korcula',
     route: 'Korčula',
     price: 'On request',
     time: '~2 hours',
-    image: '/img/destination-4.jpeg',
-    imageAlt: 'Private speedboat transfer from Hvar to Korčula',
     summary: 'Historic walled city. 2 hours from Hvar by speedboat.',
     waMessage: "Hi! I'd like a transfer to Korčula",
     ctaLabel: 'Ask on WhatsApp',
+    mapSvg: (
+      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
+        <defs>
+          <linearGradient id="bg-korcula" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#0d1b2a" />
+            <stop offset="100%" stopColor="#122236" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg-korcula)" />
+        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
+        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
+        {/* route — arcs downward (south route) */}
+        <path d="M 85,130 Q 200,280 315,195" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
+        <g transform="translate(200,221) rotate(16)">
+          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
+        </g>
+        <circle cx="85" cy="130" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="85" cy="130" r="5" fill="#3BC9DB" />
+        <text x="85" y="148" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
+        <circle cx="315" cy="195" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="315" cy="195" r="5" fill="#3BC9DB" />
+        <text x="315" y="213" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">KORČULA</text>
+      </svg>
+    ),
   },
   {
     id: 'bisevo',
     route: 'Biševo',
     price: 'On request',
     time: 'Private',
-    image: '/img/destination-7.jpeg',
-    imageAlt: 'Private transfer from Hvar to Biševo — Blue Cave gateway',
     summary: 'Gateway to the Blue Cave. No ferry, no crowds.',
     waMessage: "Hi! I'd like a transfer to Biševo",
     ctaLabel: 'Ask on WhatsApp',
+    mapSvg: (
+      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
+        <defs>
+          <linearGradient id="bg-bisevo" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#0d1b2a" />
+            <stop offset="100%" stopColor="#122236" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg-bisevo)" />
+        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
+        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
+        {/* route — gentle upward arc (longer crossing) */}
+        <path d="M 90,185 Q 200,65 310,150" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
+        <g transform="translate(200,116) rotate(-9)">
+          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
+        </g>
+        <circle cx="90" cy="185" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="90" cy="185" r="5" fill="#3BC9DB" />
+        <text x="90" y="203" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
+        <circle cx="310" cy="150" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="310" cy="150" r="5" fill="#3BC9DB" />
+        <text x="310" y="168" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">BIŠEVO</text>
+      </svg>
+    ),
   },
   {
     id: 'yacht-water-taxi',
@@ -107,13 +216,35 @@ const TRANSFERS: TransferCard[] = [
     route: 'Your Vessel',
     price: 'On request',
     time: 'On demand',
-    image: '/img/destination-7.jpeg',
-    imageAlt: 'Yacht and sailboat water taxi service in Hvar — private speedboat pickup',
     summary:
       'Anchored near Hvar? We come to your boat — pickup, transfer or the start of any tour.',
     waMessage: "Hi! I'd like info about the yacht water taxi",
     ctaLabel: 'Ask on WhatsApp',
     detailsHref: '/tours/yacht-sailboat-taxi',
+    mapSvg: (
+      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
+        <defs>
+          <linearGradient id="bg-yacht" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#0d1b2a" />
+            <stop offset="100%" stopColor="#122236" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg-yacht)" />
+        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
+        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
+        {/* route — gentle downward arc */}
+        <path d="M 85,155 Q 200,270 315,190" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
+        <g transform="translate(200,221) rotate(9)">
+          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
+        </g>
+        <circle cx="85" cy="155" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="85" cy="155" r="5" fill="#3BC9DB" />
+        <text x="85" y="173" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">YOUR VESSEL</text>
+        <circle cx="315" cy="190" r="9" fill="#3BC9DB" fillOpacity="0.15" />
+        <circle cx="315" cy="190" r="5" fill="#3BC9DB" />
+        <text x="315" y="208" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
+      </svg>
+    ),
   },
 ];
 
@@ -189,14 +320,7 @@ export default function TransfersPage() {
             <li key={t.id} id={t.id} className="flex scroll-mt-24">
               <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Image
-                    src={t.image}
-                    alt={t.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  {t.mapSvg}
                   <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
                     {t.time}
                   </span>
