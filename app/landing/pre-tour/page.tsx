@@ -269,8 +269,8 @@ export default function PreTourPage() {
                 </p>
               </div>
               <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                Look for the MareBoats barrel at the main dock, next to the fuel station. If you
-                get lost, message Nikola on WhatsApp.
+                3 minutes walk from the ferry terminal — head towards the cathedral. Look for the
+                MareBoats wooden barrel on the harbour. If you get lost, message Nikola on WhatsApp.
               </p>
               <a
                 href="https://maps.app.goo.gl/k84JNBQLvqgZunEX6"
