@@ -4,14 +4,17 @@ import { generateSEO } from '@/lib/seo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Things to Do in Hvar Town | Local Guide by MareBoats',
+  title: 'Things to Do in Hvar: Beaches, Sights, Islands and Local Tips | MareBoats',
   description:
-    "Beyond the sea — our skippers' guide to the best restaurants, beaches, history, and evening activities in Hvar Town, Croatia.",
+    'Complete guide to Hvar town and island: best beaches, sights, restaurants, practical tips and boat tours to Blue Cave and Pakleni Islands.',
   keywords: [
-    'things to do in hvar',
+    'things to do hvar',
+    'hvar beaches',
+    'hvar travel guide',
+    'hvar town guide',
+    'visit hvar croatia',
     'where to eat hvar',
     'best restaurants hvar town',
-    'hvar town guide',
     'hvar attractions',
     'what to see hvar',
     'hvar local tips',
@@ -91,7 +94,7 @@ const SIGHTS = [
       'Summer evenings in Hvar Town include outdoor film screenings at the Veneranda fortress, overlooking the sea. Current films, bilingual subtitles, ~5€ entry. Starts at 9pm when dark enough. One of the best things to do in Hvar that nobody has on their itinerary.',
   },
   {
-    name: "Hvar Cathedral of St. Stephen",
+    name: 'Hvar Cathedral of St. Stephen',
     entry: 'Free',
     time: '15–20 min',
     seasonal: false,
@@ -105,6 +108,83 @@ const SIGHTS = [
     seasonal: false,
     description:
       "Located at the east end of the harbor, this 15th-century monastery has one of Croatia's finest collections of Greek and Roman artifacts, historic maps, and a painting of The Last Supper that's over 8 meters wide. The cloister garden is one of the quietest places in Hvar.",
+  },
+];
+
+const BEACHES = [
+  {
+    name: 'Bonj Beach',
+    badge: '10 min walk',
+    description:
+      'The main beach club beach. Sunbeds, cocktails, white stone cabanas. 10-min walk from town. Best for groups who want comfort over solitude.',
+  },
+  {
+    name: 'Pokonji Dol',
+    badge: '25 min walk',
+    description:
+      'Wide pebble beach with pine trees, surprisingly uncrowded for how close it is. 25-min coastal walk from town. One of the best accessible beaches on the island.',
+  },
+  {
+    name: 'Malo Zaraće',
+    badge: 'By scooter',
+    description:
+      'Sheltered pebble cove on the south coast. Calm water, much quieter than Bonj. Reachable by scooter or taxi.',
+  },
+  {
+    name: 'Jerolim (Pakleni)',
+    badge: 'Taxi boat · 5 min',
+    description:
+      'Naturist island directly opposite Hvar town. Short taxi boat ride. Pine forest, clear water, relaxed crowd.',
+  },
+];
+
+const PRACTICAL_TIPS = [
+  {
+    label: 'Ferry to Split',
+    body: 'Jadrolinija runs daily ferries. Journey ~1h. Book ahead in July/August. They fill fast.',
+  },
+  {
+    label: 'Getting Around',
+    body: 'Hvar town is walkable. Rent a scooter for beaches and villages. Taxis available at the harbour.',
+  },
+  {
+    label: 'Cash & ATMs',
+    body: 'ATMs near the main square and ferry terminal. Island restaurants often prefer cash.',
+  },
+  {
+    label: 'Pharmacy',
+    body: 'Ljekarna Hvar on the main square. Open Mon-Sat.',
+  },
+  {
+    label: 'Best Time to Visit',
+    body: 'May, June and September are ideal. July/August is peak season: busy but buzzing.',
+  },
+  {
+    label: 'Language',
+    body: "Croatian, but English is spoken everywhere in tourist areas. 'Hvala' means thank you.",
+  },
+];
+
+const EXPLORE_FAQS = [
+  {
+    question: 'Is Hvar worth visiting?',
+    answer:
+      "Yes. Hvar consistently ranks among the most beautiful islands in the Mediterranean. The combination of history, beaches, nightlife and boat access to the surrounding islands makes it one of Croatia's top destinations.",
+  },
+  {
+    question: 'What is Hvar known for?',
+    answer:
+      'Hvar is known for its lavender fields, centuries-old stone architecture, some of the clearest water in the Adriatic, and as a base for exploring the surrounding islands including the Blue Cave and Pakleni Islands.',
+  },
+  {
+    question: 'How do I get to Hvar?',
+    answer:
+      'By ferry from Split (1 hour) or by catamaran from Split, Dubrovnik or Korcula. In summer, speedboat transfers from Split Airport are also available.',
+  },
+  {
+    question: 'What can I do in Hvar besides the beach?',
+    answer:
+      'Climb to the Fortress for panoramic views, visit the Arsenal and oldest public theatre in Europe, take a boat tour to the Blue Cave and Pakleni Islands, or explore the lavender fields in the interior.',
   },
 ];
 
@@ -124,6 +204,36 @@ function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: str
         {intro}
       </p>
     </header>
+  );
+}
+
+function AccordionItem({
+  question,
+  children,
+  defaultOpen = false,
+}: {
+  question: string;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+}) {
+  return (
+    <details
+      {...(defaultOpen ? { open: true } : {})}
+      className="group rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)]/60 transition-colors duration-300 open:bg-[color:var(--surface)]"
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 md:text-lg [&::-webkit-details-marker]:hidden">
+        <span>{question}</span>
+        <span
+          aria-hidden="true"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[color:var(--border)] text-[color:var(--accent)] transition-transform duration-300 group-open:rotate-45"
+        >
+          +
+        </span>
+      </summary>
+      <div className="px-5 pb-5 font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
+        {children}
+      </div>
+    </details>
   );
 }
 
@@ -231,6 +341,105 @@ export default function ExplorePage() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-4 font-body text-sm text-[color:var(--gray)]">
+            Planning a boat day?{' '}
+            <Link
+              href="/hvar-islands-guide/"
+              className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              See every island stop in detail
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Beaches */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <SectionHeading
+            eyebrow="Swimming & sun"
+            title="Beaches Near Hvar Town"
+            intro="From beach clubs to naturist coves — options within reach of town, no boat required (mostly)."
+          />
+          <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+            {BEACHES.map((b) => (
+              <li
+                key={b.name}
+                className="flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                    {b.name}
+                  </h3>
+                  <span className="shrink-0 rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-0.5 font-body text-[11px] font-semibold text-[color:var(--accent)]">
+                    {b.badge}
+                  </span>
+                </div>
+                <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {b.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Practical Info */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <SectionHeading
+            eyebrow="Before you arrive"
+            title="Good to Know"
+            intro="Quick answers to the questions guests ask most before they land on the island."
+          />
+          <ul className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+            {PRACTICAL_TIPS.map((t) => (
+              <li
+                key={t.label}
+                className="rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
+              >
+                <p className="font-display text-sm font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                  {t.label}
+                </p>
+                <p className="mt-1.5 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {t.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: EXPLORE_FAQS.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+              })),
+            }),
+          }}
+        />
+        <div className="mx-auto max-w-3xl">
+          <SectionHeading
+            eyebrow="Common questions"
+            title="Hvar FAQ"
+            intro="The most common questions from guests planning their trip."
+          />
+          <div className="mt-8 space-y-3">
+            {EXPLORE_FAQS.map((faq, i) => (
+              <AccordionItem key={faq.question} question={faq.question} defaultOpen={i === 0}>
+                <p>{faq.answer}</p>
+              </AccordionItem>
+            ))}
+          </div>
         </div>
       </section>
 
