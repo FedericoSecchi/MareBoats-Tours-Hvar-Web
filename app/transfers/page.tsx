@@ -28,6 +28,165 @@ function waUrl(message: string) {
   return `${WA_BASE}${encodeURIComponent(message)}`;
 }
 
+// ---------------------------------------------------------------------------
+// Reusable route map component — Dalmatian coastline silhouette
+// ---------------------------------------------------------------------------
+
+type Point = { x: number; y: number; label: string };
+
+function RouteSvg({
+  origin,
+  destination,
+  curvature = 60,
+  showVessel = false,
+}: {
+  origin: Point;
+  destination: Point;
+  curvature?: number;
+  showVessel?: boolean;
+}) {
+  const dx = destination.x - origin.x;
+  const dy = destination.y - origin.y;
+  const len = Math.sqrt(dx * dx + dy * dy) || 1;
+  const mid = { x: (origin.x + destination.x) / 2, y: (origin.y + destination.y) / 2 };
+  // control point: offset from midpoint along left-perpendicular by `curvature` units
+  const cp = {
+    x: Math.round((mid.x + (-dy / len) * curvature) * 10) / 10,
+    y: Math.round((mid.y + (dx / len) * curvature) * 10) / 10,
+  };
+  // midpoint of quadratic bezier at t=0.5
+  const boatX = Math.round(((origin.x + 2 * cp.x + destination.x) / 4) * 10) / 10;
+  const boatY = Math.round(((origin.y + 2 * cp.y + destination.y) / 4) * 10) / 10;
+  // tangent at t=0.5 equals destination − origin for a quadratic bezier
+  const angle = Math.round(Math.atan2(dy, dx) * (180 / Math.PI) * 10) / 10;
+  // put mainland-city labels above the dot; island/water labels below
+  const labelY = (y: number) => (y < 60 ? y - 8 : y + 16);
+
+  return (
+    <svg viewBox="0 0 400 265" aria-hidden="true" className="block h-full w-full">
+      {/* Ocean background */}
+      <rect width="400" height="265" fill="#0d1b2a" />
+
+      {/* Mainland coast */}
+      <path
+        d="M 0,40 C 50,18 100,32 160,22 C 220,12 280,28 345,15 C 375,8 395,20 400,18 L 400,0 L 0,0 Z"
+        fill="#122236"
+        stroke="#1e3048"
+        strokeWidth="1"
+      />
+
+      {/* Šolta */}
+      <polygon
+        points="52,80 60,65 82,60 112,62 120,74 108,86 78,92 54,86"
+        fill="#122236"
+        stroke="#1e3048"
+        strokeWidth="1"
+      />
+
+      {/* Brač */}
+      <polygon
+        points="125,80 132,60 172,52 235,50 290,54 318,65 320,78 295,100 232,108 172,106 136,96"
+        fill="#122236"
+        stroke="#1e3048"
+        strokeWidth="1"
+      />
+
+      {/* Hvar */}
+      <polygon
+        points="65,144 70,130 122,120 188,120 272,124 336,132 340,146 305,158 222,163 140,160 86,154"
+        fill="#122236"
+        stroke="#1e3048"
+        strokeWidth="1"
+      />
+
+      {/* Vis */}
+      <polygon
+        points="44,215 52,198 88,194 134,198 140,212 128,228 84,235 46,230"
+        fill="#122236"
+        stroke="#1e3048"
+        strokeWidth="1"
+      />
+
+      {/* Biševo */}
+      <polygon
+        points="28,232 36,220 50,222 55,232 48,244 30,242"
+        fill="#122236"
+        stroke="#1e3048"
+        strokeWidth="1"
+      />
+
+      {/* Korčula */}
+      <polygon
+        points="235,225 240,208 265,200 325,200 375,208 382,220 368,236 315,242 258,240"
+        fill="#122236"
+        stroke="#1e3048"
+        strokeWidth="1"
+      />
+
+      {/* Dashed route line */}
+      <path
+        d={`M ${origin.x},${origin.y} Q ${cp.x},${cp.y} ${destination.x},${destination.y}`}
+        fill="none"
+        stroke="#3BC9DB"
+        strokeOpacity="0.7"
+        strokeWidth="1.5"
+        strokeDasharray="6 4"
+      />
+
+      {/* Boat icon at bezier midpoint */}
+      <g transform={`translate(${boatX},${boatY}) rotate(${angle})`}>
+        <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
+      </g>
+
+      {/* Origin marker: anchor icon when showVessel, hollow circle otherwise */}
+      {showVessel ? (
+        <g
+          transform={`translate(${origin.x},${origin.y})`}
+          stroke="#3BC9DB"
+          strokeWidth="1.3"
+          strokeOpacity="0.85"
+          fill="none"
+        >
+          <circle cx="0" cy="-4" r="2.5" />
+          <line x1="0" y1="-1.5" x2="0" y2="8" />
+          <line x1="-5" y1="1" x2="5" y2="1" />
+          <path d="M -5,8 Q -5,12 0,12 Q 5,12 5,8" />
+        </g>
+      ) : (
+        <circle
+          cx={origin.x}
+          cy={origin.y}
+          r="5"
+          fill="none"
+          stroke="#3BC9DB"
+          strokeWidth="1.5"
+          strokeOpacity="0.6"
+        />
+      )}
+
+      {/* Destination marker: filled dot + label */}
+      <circle cx={destination.x} cy={destination.y} r="9" fill="#3BC9DB" fillOpacity="0.15" />
+      <circle cx={destination.x} cy={destination.y} r="5" fill="#3BC9DB" />
+      <text
+        x={destination.x}
+        y={labelY(destination.y)}
+        textAnchor="middle"
+        fill="white"
+        fontFamily="Space Grotesk, sans-serif"
+        fontSize="10"
+        fontWeight="600"
+        letterSpacing="0.08em"
+      >
+        {destination.label}
+      </text>
+    </svg>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Transfer card data
+// ---------------------------------------------------------------------------
+
 type TransferCard = {
   id: string;
   name?: string;
@@ -35,11 +194,17 @@ type TransferCard = {
   price: string;
   time: string;
   mapSvg: ReactNode;
+  hoverImage?: string | null;
   summary: string;
   waMessage: string;
   ctaLabel: string;
   detailsHref?: string;
 };
+
+// City coordinates (SVG space, viewBox 0 0 400 265):
+//   HVAR (175,148)  SPLIT (210,32)  SPLIT AIRPORT (175,28)
+//   BRAČ/Bol (255,95)  KORČULA (310,215)  BIŠEVO (38,228)
+//   YOUR VESSEL (130,185)
 
 const TRANSFERS: TransferCard[] = [
   {
@@ -51,30 +216,13 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like to book the Split transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
+    hoverImage: null,
     mapSvg: (
-      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
-        <defs>
-          <linearGradient id="bg-split-hvar" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0d1b2a" />
-            <stop offset="100%" stopColor="#122236" />
-          </linearGradient>
-        </defs>
-        <rect width="400" height="300" fill="url(#bg-split-hvar)" />
-        {/* water */}
-        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
-        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
-        {/* route — arcs upward */}
-        <path d="M 85,195 Q 200,70 315,125" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
-        <g transform="translate(200,115) rotate(-17)">
-          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
-        </g>
-        <circle cx="85" cy="195" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="85" cy="195" r="5" fill="#3BC9DB" />
-        <text x="85" y="213" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
-        <circle cx="315" cy="125" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="315" cy="125" r="5" fill="#3BC9DB" />
-        <text x="315" y="143" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">SPLIT</text>
-      </svg>
+      <RouteSvg
+        origin={{ x: 175, y: 148, label: 'HVAR' }}
+        destination={{ x: 210, y: 32, label: 'SPLIT' }}
+        curvature={60}
+      />
     ),
   },
   {
@@ -86,29 +234,13 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like to book the Airport transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
+    hoverImage: null,
     mapSvg: (
-      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
-        <defs>
-          <linearGradient id="bg-airport-hvar" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0d1b2a" />
-            <stop offset="100%" stopColor="#122236" />
-          </linearGradient>
-        </defs>
-        <rect width="400" height="300" fill="url(#bg-airport-hvar)" />
-        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
-        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
-        {/* route — arcs downward */}
-        <path d="M 85,175 Q 195,260 305,175" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
-        <g transform="translate(195,218) rotate(0)">
-          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
-        </g>
-        <circle cx="85" cy="175" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="85" cy="175" r="5" fill="#3BC9DB" />
-        <text x="85" y="193" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
-        <circle cx="305" cy="175" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="305" cy="175" r="5" fill="#3BC9DB" />
-        <text x="305" y="193" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">SPLIT AIRPORT</text>
-      </svg>
+      <RouteSvg
+        origin={{ x: 175, y: 148, label: 'HVAR' }}
+        destination={{ x: 175, y: 28, label: 'SPLIT AIRPORT' }}
+        curvature={-60}
+      />
     ),
   },
   {
@@ -119,29 +251,13 @@ const TRANSFERS: TransferCard[] = [
     summary: 'Bol, Supetar, Milna — tell us where.',
     waMessage: "Hi! I'd like a transfer to Brač",
     ctaLabel: 'Ask on WhatsApp',
+    hoverImage: null,
     mapSvg: (
-      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
-        <defs>
-          <linearGradient id="bg-brac" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0d1b2a" />
-            <stop offset="100%" stopColor="#122236" />
-          </linearGradient>
-        </defs>
-        <rect width="400" height="300" fill="url(#bg-brac)" />
-        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
-        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
-        {/* route — steep upward arc */}
-        <path d="M 85,215 Q 200,35 315,110" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
-        <g transform="translate(200,99) rotate(-25)">
-          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
-        </g>
-        <circle cx="85" cy="215" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="85" cy="215" r="5" fill="#3BC9DB" />
-        <text x="85" y="233" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
-        <circle cx="315" cy="110" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="315" cy="110" r="5" fill="#3BC9DB" />
-        <text x="315" y="128" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">BRAČ</text>
-      </svg>
+      <RouteSvg
+        origin={{ x: 175, y: 148, label: 'HVAR' }}
+        destination={{ x: 255, y: 95, label: 'BRAČ' }}
+        curvature={-60}
+      />
     ),
   },
   {
@@ -152,29 +268,13 @@ const TRANSFERS: TransferCard[] = [
     summary: 'Historic walled city. 2 hours from Hvar by speedboat.',
     waMessage: "Hi! I'd like a transfer to Korčula",
     ctaLabel: 'Ask on WhatsApp',
+    hoverImage: null,
     mapSvg: (
-      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
-        <defs>
-          <linearGradient id="bg-korcula" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0d1b2a" />
-            <stop offset="100%" stopColor="#122236" />
-          </linearGradient>
-        </defs>
-        <rect width="400" height="300" fill="url(#bg-korcula)" />
-        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
-        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
-        {/* route — arcs downward (south route) */}
-        <path d="M 85,130 Q 200,280 315,195" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
-        <g transform="translate(200,221) rotate(16)">
-          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
-        </g>
-        <circle cx="85" cy="130" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="85" cy="130" r="5" fill="#3BC9DB" />
-        <text x="85" y="148" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
-        <circle cx="315" cy="195" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="315" cy="195" r="5" fill="#3BC9DB" />
-        <text x="315" y="213" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">KORČULA</text>
-      </svg>
+      <RouteSvg
+        origin={{ x: 175, y: 148, label: 'HVAR' }}
+        destination={{ x: 310, y: 215, label: 'KORČULA' }}
+        curvature={60}
+      />
     ),
   },
   {
@@ -185,29 +285,13 @@ const TRANSFERS: TransferCard[] = [
     summary: 'Gateway to the Blue Cave. No ferry, no crowds.',
     waMessage: "Hi! I'd like a transfer to Biševo",
     ctaLabel: 'Ask on WhatsApp',
+    hoverImage: null,
     mapSvg: (
-      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
-        <defs>
-          <linearGradient id="bg-bisevo" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0d1b2a" />
-            <stop offset="100%" stopColor="#122236" />
-          </linearGradient>
-        </defs>
-        <rect width="400" height="300" fill="url(#bg-bisevo)" />
-        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
-        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
-        {/* route — gentle upward arc (longer crossing) */}
-        <path d="M 90,185 Q 200,65 310,150" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
-        <g transform="translate(200,116) rotate(-9)">
-          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
-        </g>
-        <circle cx="90" cy="185" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="90" cy="185" r="5" fill="#3BC9DB" />
-        <text x="90" y="203" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
-        <circle cx="310" cy="150" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="310" cy="150" r="5" fill="#3BC9DB" />
-        <text x="310" y="168" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">BIŠEVO</text>
-      </svg>
+      <RouteSvg
+        origin={{ x: 175, y: 148, label: 'HVAR' }}
+        destination={{ x: 38, y: 228, label: 'BIŠEVO' }}
+        curvature={-60}
+      />
     ),
   },
   {
@@ -221,29 +305,14 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like info about the yacht water taxi",
     ctaLabel: 'Ask on WhatsApp',
     detailsHref: '/tours/yacht-sailboat-taxi',
+    hoverImage: null,
     mapSvg: (
-      <svg viewBox="0 0 400 300" aria-hidden="true" className="block h-full w-full">
-        <defs>
-          <linearGradient id="bg-yacht" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0d1b2a" />
-            <stop offset="100%" stopColor="#122236" />
-          </linearGradient>
-        </defs>
-        <rect width="400" height="300" fill="url(#bg-yacht)" />
-        <path d="M 0,225 Q 80,210 200,225 Q 320,240 400,225 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.07" />
-        <path d="M 0,242 Q 80,227 200,242 Q 320,257 400,242 L 400,300 L 0,300 Z" fill="#3BC9DB" fillOpacity="0.04" />
-        {/* route — gentle downward arc */}
-        <path d="M 85,155 Q 200,270 315,190" fill="none" stroke="#3BC9DB" strokeOpacity="0.6" strokeWidth="1.5" strokeDasharray="6 4" />
-        <g transform="translate(200,221) rotate(9)">
-          <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
-        </g>
-        <circle cx="85" cy="155" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="85" cy="155" r="5" fill="#3BC9DB" />
-        <text x="85" y="173" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">YOUR VESSEL</text>
-        <circle cx="315" cy="190" r="9" fill="#3BC9DB" fillOpacity="0.15" />
-        <circle cx="315" cy="190" r="5" fill="#3BC9DB" />
-        <text x="315" y="208" textAnchor="middle" fill="white" fontFamily="Space Grotesk, sans-serif" fontSize="11" fontWeight="600" letterSpacing="0.08em">HVAR</text>
-      </svg>
+      <RouteSvg
+        origin={{ x: 130, y: 185, label: 'YOUR VESSEL' }}
+        destination={{ x: 175, y: 148, label: 'HVAR' }}
+        curvature={40}
+        showVessel={true}
+      />
     ),
   },
 ];
@@ -318,9 +387,15 @@ export default function TransfersPage() {
         <ul className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {TRANSFERS.map((t) => (
             <li key={t.id} id={t.id} className="flex scroll-mt-24">
-              <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
+              <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
                   {t.mapSvg}
+                  {t.hoverImage != null && (
+                    <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={t.hoverImage} alt="" className="h-full w-full object-cover" />
+                    </div>
+                  )}
                   <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
                     {t.time}
                   </span>
