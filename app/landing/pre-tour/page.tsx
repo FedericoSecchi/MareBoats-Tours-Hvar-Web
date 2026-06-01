@@ -1,59 +1,89 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
-import { weatherPolicy, whatToBring } from '@/lib/guide-content';
+import { whatToBring, weatherPolicy } from '@/lib/guide-content';
 
 export const metadata: Metadata = {
-  title: 'Your MareBoats Tour | Pre-Tour Info',
+  title: 'What to Expect on a Hvar Boat Tour | MareBoats',
   description:
-    'Everything you need before your MareBoats tour: meeting point, timeline, what to bring and weather policy.',
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: { index: false, follow: false },
-  },
+    'Everything you need before your MareBoats tour — meeting point, what to bring, water scooter add-on, and what the Adriatic is actually like.',
 };
 
-const WA_URL =
-  "https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour";
-const WA_WEATHER_URL =
-  'https://wa.me/385951966734?text=Hi%20Nikola!%20Quick%20question%20about%20the%20weather%20for%20our%20tour.';
+const WA_BASE = 'https://wa.me/385951966734?text=';
+function waUrl(text: string) {
+  return `${WA_BASE}${encodeURIComponent(text)}`;
+}
 
-// Google Maps public embed — no API key required. Lat/lng of Hvar Harbour main dock.
-const MAP_EMBED_SRC =
-  'https://maps.google.com/maps?q=43.16903,16.44300&z=16&output=embed';
-const MAP_DIRECTIONS_URL =
-  'https://www.google.com/maps/dir/?api=1&destination=43.16903,16.44300';
+const MAP_EMBED_SRC = 'https://maps.google.com/maps?q=43.16903,16.44300&z=16&output=embed';
 
-type TimelineStep = { time: string; title: string; detail: string };
+// ──────────────────────────────────────────────
+// Timelines
+// ──────────────────────────────────────────────
+type TimelineStep = { time: string; title: string; note?: string };
 
-const timeline: TimelineStep[] = [
+const blueCaveTimeline: TimelineStep[] = [
+  { time: '10:00', title: 'Meet at the barrel, Hvar Harbour' },
+  { time: '10:15', title: 'Depart. First stop: Pakleni Islands' },
+  { time: '12:00', title: 'Blue Cave (Biševo)', note: 'Timed entry, ~30 min inside' },
+  { time: '13:30', title: 'Lunch stop at Palmižana or Ždrilca' },
+  { time: '17:00', title: 'Back in Hvar Harbour' },
+];
+
+const pakleniTimeline: TimelineStep[] = [
+  { time: '09:00', title: 'Meet at the barrel, Hvar Harbour', note: 'or 14:00 for afternoon slot' },
+  { time: '09:15', title: 'Depart toward Red Rocks (Crvena Stijena)' },
+  { time: '10:30', title: 'Pakleni Islands — Ždrilca & Taršće bays' },
+  { time: '13:00', title: 'Back in Hvar Harbour', note: 'or 18:00 for afternoon' },
+];
+
+// ──────────────────────────────────────────────
+// "What to know" notes
+// ──────────────────────────────────────────────
+const blueCaveNotes = [
+  'Blue Cave has timed entry slots — €24/person paid on site. We arrive before the tour boats from Split.',
+  'Green Cave entrance is €12/person, also paid on site.',
+  'Lunch is not included. Palmižana has restaurants — budget €15–25.',
+];
+
+const pakleniNotes = [
+  'No entrance fees on this route.',
+  'Lunch not included. There are beach bars at Ždrilca — or bring your own food.',
+  'This tour runs morning (9:00–13:00) or afternoon (14:00–18:00). Nikola will confirm your slot.',
+];
+
+// ──────────────────────────────────────────────
+// Adriatic facts
+// ──────────────────────────────────────────────
+const adriaticFacts = [
   {
-    time: '09:00',
-    title: 'Meet at Hvar Harbour',
-    detail: 'Main dock, next to the fuel station. Arrive 15 minutes early.',
+    title: 'Calm in the morning. Windier by afternoon.',
+    body: 'The Adriatic is generally flat before noon. The jugo (south wind) or bura (north wind) can pick up by early afternoon. We watch the forecast from the night before and adjust the route if needed.',
   },
   {
-    time: '09:15',
-    title: 'Depart',
-    detail: 'Briefing on board, then we head out.',
+    title: 'Saltier than the ocean. Clearer too.',
+    body: 'More buoyancy — good for all swimmers. Visibility around Hvar is typically 15–20 metres on a clear day. Bring a mask.',
   },
   {
-    time: '11:00',
-    title: 'Blue Cave window',
-    detail: 'Entrance €20–25 per person paid on site (cave dependent on sea conditions).',
-  },
-  {
-    time: '13:00',
-    title: 'Lunch stop',
-    detail: 'Waterfront restaurant on the islands — cash or card.',
-  },
-  {
-    time: '16:00',
-    title: 'Back to Hvar',
-    detail: 'Swim stops along the way. Home relaxed.',
+    title: 'We leave at 10:00 for a reason.',
+    body: 'Blue Cave entry is timed. Leaving at 10:00 from Hvar means we arrive before the ferries from Split start unloading tour groups. Earlier = less waiting, more time inside.',
   },
 ];
 
+// ──────────────────────────────────────────────
+// Shared class strings
+// ──────────────────────────────────────────────
+const secondaryBtnClass =
+  'inline-flex items-center justify-center gap-2 rounded-pill border border-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]';
+
+const filledBtnClass =
+  'inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]';
+
+const upsellBtnClass =
+  'inline-flex items-center justify-center gap-2 rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]';
+
+// ──────────────────────────────────────────────
+// Local components
+// ──────────────────────────────────────────────
 function WhatsAppIcon({ className = 'h-4 w-4' }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,44 +92,72 @@ function WhatsAppIcon({ className = 'h-4 w-4' }: { className?: string }) {
   );
 }
 
-function CtaButton({
-  href,
-  label,
-  children,
-}: {
-  href: string;
-  label: string;
-  children: React.ReactNode;
-}) {
+function Timeline({ steps }: { steps: TimelineStep[] }) {
   return (
-    <WhatsAppTrackedLink
-      href={href}
-      label={label}
-      className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--bg)] shadow-[0_10px_32px_rgba(59,201,219,0.24)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]"
-    >
-      <WhatsAppIcon />
-      {children}
-    </WhatsAppTrackedLink>
+    <ol className="flex flex-col">
+      {steps.map((step, i) => (
+        <li key={step.time} className="flex gap-5">
+          <div className="flex flex-col items-center">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-[color:var(--bg)] font-display text-sm font-bold tracking-tight text-[color:var(--accent)]">
+              {step.time}
+            </span>
+            {i < steps.length - 1 && (
+              <span
+                aria-hidden="true"
+                className="w-px flex-1 bg-[color:var(--border)]"
+                style={{ minHeight: '2rem' }}
+              />
+            )}
+          </div>
+          <div className="pb-8 pt-2">
+            <h4 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+              {step.title}
+            </h4>
+            {step.note && (
+              <p className="mt-0.5 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                {step.note}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
   );
 }
 
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function SectionDivider({ label }: { label: string }) {
   return (
-    <header>
-      <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
-        {title}
-      </h2>
-    </header>
+    <div className="flex items-center gap-4">
+      <div className="h-px flex-1 bg-[color:var(--accent)]/30" />
+      <span className="shrink-0 rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-4 py-1.5 font-body text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--accent)]">
+        {label}
+      </span>
+      <div className="h-px flex-1 bg-[color:var(--accent)]/30" />
+    </div>
   );
 }
 
+function GuideLink() {
+  return (
+    <div className="mt-8">
+      <Link
+        href="/guide"
+        className="font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-200 hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+      >
+        First time in Hvar? Read the island guide →
+      </Link>
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────
+// Page
+// ──────────────────────────────────────────────
 export default function PreTourPage() {
   return (
     <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
-      {/* Hero */}
+
+      {/* 1. HERO */}
       <section className="relative overflow-hidden border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-20 md:py-24">
         <div
           aria-hidden="true"
@@ -110,42 +168,41 @@ export default function PreTourPage() {
           }}
         />
         <div className="relative z-10 mx-auto max-w-3xl text-center">
-          <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-            Your Tour · Quick Read
-          </p>
-          <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-6xl">
-            Your MareBoats Tour is Tomorrow! 🌊
+          <h1 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-6xl">
+            Your MareBoats tour is confirmed. 🎉
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Here is everything you need to arrive on time and ready. Save this page — you will use
-            it in the morning.
+            Here&apos;s everything you need for your day on the water.
           </p>
-          <div className="mt-7 flex justify-center">
-            <CtaButton href={WA_URL} label="landing_pre_tour_hero">
-              Message Nikola
-            </CtaButton>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="#blue-cave" className={secondaryBtnClass}>
+              5 Islands &amp; Blue Cave →
+            </a>
+            <a href="#pakleni" className={secondaryBtnClass}>
+              Red Rocks &amp; Pakleni →
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Meeting point */}
-      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+      {/* 2. MEETING POINT */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Where to go" title="Meeting Point" />
-          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Hvar Harbour, main dock — next to the fuel station.{' '}
-            <strong className="font-semibold text-[color:var(--white)]">
-              Arrive 15 minutes early.
-            </strong>{' '}
-            If you get lost, call Nikola on WhatsApp.
-          </p>
+          <header>
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              Before you leave the hotel
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Where to find us
+            </h2>
+          </header>
 
           <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[1.3fr_1fr]">
-            <div className="overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)]">
+            <div className="overflow-hidden rounded-2xl border border-[color:var(--border)]">
               <div className="aspect-[4/3] w-full md:aspect-[16/9]">
                 <iframe
                   src={MAP_EMBED_SRC}
-                  title="Hvar Harbour, main dock — meeting point"
+                  title="MareBoats barrel — Hvar Harbour main dock"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="h-full w-full border-0"
@@ -153,95 +210,208 @@ export default function PreTourPage() {
               </div>
             </div>
 
-            <aside className="flex flex-col gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 md:p-8">
+            <aside className="flex flex-col gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-6 md:p-8">
               <div>
                 <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
                   Address
                 </p>
-                <p className="mt-2 font-body text-base leading-relaxed text-[color:var(--white)]">
+                <p className="mt-2 font-body text-base font-semibold leading-relaxed text-[color:var(--white)]">
+                  MareBoats barrel
+                  <br />
                   Hvar Harbour, main dock
                   <br />
-                  Hvar, Croatia
+                  <span className="font-normal text-[color:var(--gray)]">Hvar, Croatia</span>
                 </p>
               </div>
-              <div>
-                <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-                  Coordinates
-                </p>
-                <p className="mt-2 font-body text-sm text-[color:var(--gray)]">
-                  43.16903° N, 16.44300° E
-                </p>
+              <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                Look for the MareBoats barrel at the main dock, next to the fuel station. If you
+                get lost, message Nikola on WhatsApp.
+              </p>
+              <div className="flex flex-col gap-3">
+                <a
+                  href="https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={secondaryBtnClass}
+                >
+                  Open in Google Maps
+                </a>
+                <a
+                  href="https://g.page/mareboats"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Find us on Google Maps"
+                  className="inline-flex items-center justify-center gap-2 rounded-pill border border-[color:var(--border)] px-6 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--gray)] transition-colors duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
+                >
+                  Find us on Google
+                </a>
               </div>
-              <a
-                href={MAP_DIRECTIONS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
-              >
-                Open in Google Maps
-              </a>
             </aside>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
-        <div className="mx-auto max-w-3xl">
-          <SectionHeading eyebrow="The day" title="Timeline" />
-          <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Rough plan — real times adjust to weather and how the group feels.
-          </p>
+      {/* 3. UPSELL */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <header>
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              Optional add-ons
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              Make it better
+            </h2>
+            <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+              Two add-ons available — just message us on WhatsApp.
+            </p>
+          </header>
 
-          <ol className="mt-8 flex flex-col">
-            {timeline.map((step, i) => (
-              <li key={step.time} className="flex gap-5">
-                <div className="flex flex-col items-center">
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-[color:var(--bg)] font-display text-sm font-bold tracking-tight text-[color:var(--accent)]">
-                    {step.time}
-                  </span>
-                  {i < timeline.length - 1 && (
-                    <span
-                      aria-hidden="true"
-                      className="w-px flex-1 bg-[color:var(--border)]"
-                      style={{ minHeight: '2rem' }}
-                    />
-                  )}
-                </div>
-                <div className="pb-8 pt-2">
-                  <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-1 font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
-                    {step.detail}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          <div className="mt-10 flex flex-col gap-6 md:flex-row">
+
+            {/* Card 1 — Underwater Scooter */}
+            <article className="flex flex-1 flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                  Underwater Scooter
+                </h3>
+                <span className="shrink-0 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold text-[color:var(--bg)]">
+                  €40 / unit
+                </span>
+              </div>
+              <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                Explore below the surface at your own pace. Up to 2 hours per unit — we bring it on
+                board.
+              </p>
+              <p className="mt-2 font-body text-xs text-[color:var(--gray)]/70">
+                Not available on Vis island tours.
+              </p>
+              <div className="mt-auto pt-6">
+                <WhatsAppTrackedLink
+                  href={waUrl("Hi! I'd like to add an underwater scooter to my tour — €40/unit")}
+                  ctaText="add_scooter"
+                  label="upsell"
+                  className={upsellBtnClass}
+                >
+                  Add to my tour →
+                </WhatsAppTrackedLink>
+              </div>
+            </article>
+
+            {/* Card 2 — Photo & Video */}
+            <article className="flex flex-1 flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                  Photo &amp; Video Shoot
+                </h3>
+                <span className="shrink-0 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold text-[color:var(--bg)]">
+                  €200
+                </span>
+              </div>
+              <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                We capture the whole day — on board, underwater, and from above with the drone. Full
+                gallery delivered after the tour.
+              </p>
+              <div className="mt-auto pt-6">
+                <WhatsAppTrackedLink
+                  href={waUrl("Hi! I'd like to add photo & video shooting to my tour — €200")}
+                  ctaText="add_photo"
+                  label="upsell"
+                  className={upsellBtnClass}
+                >
+                  Add to my tour →
+                </WhatsAppTrackedLink>
+              </div>
+            </article>
+
+          </div>
         </div>
       </section>
 
-      {/* What to bring — visual checklist */}
-      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+      {/* 4. BLUE CAVE */}
+      <section
+        id="blue-cave"
+        className="scroll-mt-20 border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-3xl">
+          <SectionDivider label="5 Islands, 4 Beaches & Blue Cave" />
+
+          <h3 className="mt-8 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+            How the day goes
+          </h3>
+          <div className="mt-5">
+            <Timeline steps={blueCaveTimeline} />
+          </div>
+
+          <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+            What to know
+          </h3>
+          <ul className="mt-4 space-y-3">
+            {blueCaveNotes.map((note) => (
+              <li key={note} className="flex gap-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                {note}
+              </li>
+            ))}
+          </ul>
+
+          <GuideLink />
+        </div>
+      </section>
+
+      {/* 5. RED ROCKS & PAKLENI */}
+      <section
+        id="pakleni"
+        className="scroll-mt-20 border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-3xl">
+          <SectionDivider label="Red Rocks & Pakleni Islands" />
+
+          <h3 className="mt-8 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+            How the day goes
+          </h3>
+          <div className="mt-5">
+            <Timeline steps={pakleniTimeline} />
+          </div>
+
+          <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+            What to know
+          </h3>
+          <ul className="mt-4 space-y-3">
+            {pakleniNotes.map((note) => (
+              <li key={note} className="flex gap-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                {note}
+              </li>
+            ))}
+          </ul>
+
+          <GuideLink />
+        </div>
+      </section>
+
+      {/* 6. WHAT TO BRING */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Pack list" title="What to Bring" />
-          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Tap as you pack. Nothing is saved — this is just a quick visual check.
-          </p>
+          <header>
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              Pack list
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              What to bring
+            </h2>
+            <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
+              Tap as you pack. Nothing is saved — this is just a quick visual check.
+            </p>
+          </header>
 
           <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {whatToBring.map((item) => (
               <li
                 key={item.key}
-                className="flex items-start gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5"
+                className="flex items-start gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
               >
                 <label className="flex w-full cursor-pointer items-start gap-4">
-                  <input
-                    type="checkbox"
-                    className="peer sr-only"
-                    aria-label={item.label}
-                  />
+                  <input type="checkbox" className="peer sr-only" aria-label={item.label} />
                   <span
                     aria-hidden="true"
                     className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 border-[color:var(--border)] bg-[color:var(--bg)] text-[color:var(--bg)] transition-colors duration-200 peer-checked:border-[color:var(--accent)] peer-checked:bg-[color:var(--accent)] peer-focus-visible:ring-2 peer-focus-visible:ring-[color:var(--accent)]/60"
@@ -273,7 +443,37 @@ export default function PreTourPage() {
         </div>
       </section>
 
-      {/* Weather policy — same alert box as /guide */}
+      {/* 7. WHAT THE ADRIATIC IS ACTUALLY LIKE */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <header>
+            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+              Know before you go
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+              What the Adriatic is actually like
+            </h2>
+          </header>
+
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+            {adriaticFacts.map((fact) => (
+              <div
+                key={fact.title}
+                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
+              >
+                <h3 className="font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                  {fact.title}
+                </h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  {fact.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. WEATHER POLICY */}
       <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-3xl">
           <div
@@ -305,9 +505,15 @@ export default function PreTourPage() {
                   {weatherPolicy.contactNote}
                 </p>
                 <div className="mt-6">
-                  <CtaButton href={WA_WEATHER_URL} label="landing_pre_tour_weather">
+                  <WhatsAppTrackedLink
+                    href={waUrl('Hi Nikola! Quick question about the weather for our tour.')}
+                    ctaText="weather_question"
+                    label="weather_policy"
+                    className={filledBtnClass}
+                  >
+                    <WhatsAppIcon />
                     Message Nikola on WhatsApp
-                  </CtaButton>
+                  </WhatsAppTrackedLink>
                 </div>
               </div>
             </div>
@@ -315,7 +521,19 @@ export default function PreTourPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* 9. GUIDE LINK BLOCK */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-body text-base leading-relaxed text-[color:var(--gray)]">
+            Want to know Hvar better before you arrive?
+          </p>
+          <Link href="/guide" className={`mt-6 ${secondaryBtnClass}`}>
+            Read the Hvar Guide →
+          </Link>
+        </div>
+      </section>
+
+      {/* 10. FINAL CTA */}
       <section
         className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-20"
         style={{
@@ -325,21 +543,28 @@ export default function PreTourPage() {
       >
         <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-            See you soon
+            We&apos;re here
           </p>
           <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
-            Any Last Questions?
+            Questions before the tour?
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            WhatsApp Nikola directly: <span className="font-semibold text-[color:var(--white)]">+385 95 196 6734</span>
+            Message Nikola directly — he replies fast.
           </p>
           <div className="mt-7">
-            <CtaButton href={WA_URL} label="landing_pre_tour_footer">
-              Open WhatsApp
-            </CtaButton>
+            <WhatsAppTrackedLink
+              href={waUrl("Hi Nikola! I have a question about my upcoming MareBoats tour.")}
+              ctaText="pre_tour_question"
+              label="final_cta"
+              className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98] md:text-base"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              Message Nikola on WhatsApp
+            </WhatsAppTrackedLink>
           </div>
         </div>
       </section>
+
     </main>
   );
 }
