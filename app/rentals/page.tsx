@@ -198,7 +198,7 @@ function AccordionItem({ question, children, defaultOpen = false }: { question: 
           +
         </span>
       </summary>
-      <div className="px-5 pb-5 font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
+      <div className="px-5 pb-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-base">
         {children}
       </div>
     </details>
@@ -285,11 +285,11 @@ export default function RentalsPage() {
                 With Skipper
               </h3>
 
-              <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+              <p className="mt-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
                 No licence needed. Local skipper, custom route, private group.
               </p>
 
-              <ul className="mt-5 space-y-2 font-body text-sm text-[color:var(--gray)]">
+              <ul className="mt-5 space-y-2 font-body text-base text-[color:var(--gray)]">
                 {[
                   'No licence needed',
                   'Local skipper, custom route',
@@ -429,7 +429,7 @@ export default function RentalsPage() {
                   <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
                     Water Scooter
                   </h3>
-                  <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                  <p className="mt-2 font-body text-base leading-relaxed text-[color:var(--gray)]">
                     Ride the waves. Instructor briefing included.
                   </p>
                 </div>
@@ -474,16 +474,26 @@ export default function RentalsPage() {
             On Board — Good to Know
           </h2>
           <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Quick rundown of what works and what does not on the boat. Tap to open.
+            Quick rundown of what works and what does not on the boat.
           </p>
           <div className="mt-8 space-y-3">
-            {rulesAndRentals.map((rule, i) => (
-              <AccordionItem key={rule.key} question={rule.title} defaultOpen={i === 0}>
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+            {rulesAndRentals.map((rule) => (
+              <div
+                key={rule.key}
+                className="flex items-start gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
+              >
+                <div className="shrink-0 pt-0.5">
                   <StatusBadge status={rule.status} />
-                  <p className="flex-1">{rule.detail}</p>
                 </div>
-              </AccordionItem>
+                <div className="flex-1">
+                  <h3 className="font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                    {rule.title}
+                  </h3>
+                  <p className="mt-2 font-body text-base leading-relaxed text-[color:var(--gray)]">
+                    {rule.detail}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -499,25 +509,19 @@ export default function RentalsPage() {
             What to know before you ride
           </h2>
 
-          <div className="mt-8 space-y-3">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[color:var(--border)] divide-y divide-[color:var(--border)]">
             {RENTAL_RULES.map((rule) => (
-              <details
+              <div
                 key={rule.title}
-                className="group rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5 open:bg-[color:var(--surface)]/80"
+                className="flex flex-col gap-2 bg-[color:var(--surface)] p-5 md:flex-row md:gap-0"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] focus-visible:outline-none">
-                  <span>{rule.title}</span>
-                  <span
-                    aria-hidden="true"
-                    className="text-[color:var(--accent)] transition-transform duration-200 group-open:rotate-45"
-                  >
-                    +
-                  </span>
-                </summary>
-                <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                <p className="shrink-0 font-display text-sm font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:w-44 md:border-r md:border-[color:var(--border)] md:pr-6">
+                  {rule.title}
+                </p>
+                <p className="font-body text-base leading-relaxed text-[color:var(--gray)] md:pl-6">
                   {rule.body}
                 </p>
-              </details>
+              </div>
             ))}
           </div>
         </div>
@@ -548,7 +552,7 @@ export default function RentalsPage() {
                     +
                   </span>
                 </summary>
-                <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                <p className="mt-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
                   {faq.a}
                 </p>
               </details>
@@ -579,7 +583,7 @@ export default function RentalsPage() {
           >
             Ask us on WhatsApp
           </WhatsAppTrackedLink>
-          <p className="mt-8 font-body text-sm text-[color:var(--gray)]">
+          <p className="mt-8 font-body text-base text-[color:var(--gray)]">
             Looking for a guided boat tour instead?{' '}
             <Link
               href="/tours/"
