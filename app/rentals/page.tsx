@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { rulesAndRentals, type Rule } from '@/lib/guide-content';
 
 export const metadata: Metadata = {
   ...generateSEO({
@@ -166,6 +167,43 @@ const RENTAL_RULES = [
     body: 'We do a short check-in together at the harbour. Photos are taken before and after the rental to protect both sides.',
   },
 ];
+
+function StatusBadge({ status }: { status: Rule['status'] }) {
+  const map = {
+    allowed: { label: 'Allowed', symbol: '✓', tone: 'text-[color:var(--accent)] border-[color:var(--accent)]/50' },
+    forbidden: { label: 'Not allowed', symbol: '✕', tone: 'text-red-300 border-red-400/40' },
+    note: { label: 'Heads up', symbol: '!', tone: 'text-amber-300 border-amber-400/40' },
+  } as const;
+  const s = map[status];
+  return (
+    <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-pill border px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide ${s.tone}`}>
+      <span aria-hidden="true">{s.symbol}</span>
+      {s.label}
+    </span>
+  );
+}
+
+function AccordionItem({ question, children, defaultOpen = false }: { question: string; children: React.ReactNode; defaultOpen?: boolean }) {
+  return (
+    <details
+      {...(defaultOpen ? { open: true } : {})}
+      className="group rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 transition-colors duration-300 open:bg-[color:var(--surface)]"
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 md:text-lg">
+        <span>{question}</span>
+        <span
+          aria-hidden="true"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[color:var(--border)] text-[color:var(--accent)] transition-transform duration-300 group-open:rotate-45"
+        >
+          +
+        </span>
+      </summary>
+      <div className="px-5 pb-5 font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
+        {children}
+      </div>
+    </details>
+  );
+}
 
 export default function RentalsPage() {
   return (
@@ -419,6 +457,34 @@ export default function RentalsPage() {
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* On Board — Good to Know */}
+      <section
+        id="on-board"
+        className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-3xl">
+          <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+            On board
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+            On Board — Good to Know
+          </h2>
+          <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
+            Quick rundown of what works and what does not on the boat. Tap to open.
+          </p>
+          <div className="mt-8 space-y-3">
+            {rulesAndRentals.map((rule, i) => (
+              <AccordionItem key={rule.key} question={rule.title} defaultOpen={i === 0}>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+                  <StatusBadge status={rule.status} />
+                  <p className="flex-1">{rule.detail}</p>
+                </div>
+              </AccordionItem>
+            ))}
           </div>
         </div>
       </section>
