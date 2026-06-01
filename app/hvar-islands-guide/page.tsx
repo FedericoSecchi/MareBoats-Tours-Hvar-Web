@@ -5,7 +5,7 @@ import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import IslandStopsAccordion from '@/components/sections/IslandStopsAccordion';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Hvar Islands Guide — Stops, Beaches & Hidden Coves | MareBoats',
+  title: 'Hvar Islands Guide: Stops, Beaches and Hidden Coves | MareBoats',
   description:
     'Complete guide to every stop on a Hvar boat tour: Blue Cave, Pakleni Islands, Stiniva, Red Rocks, Green Cave and more. History, tips and what to expect.',
   keywords: [
@@ -46,7 +46,7 @@ export default function HvarIslandsGuidePage() {
             Island guide
           </p>
           <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-6xl">
-            Hvar Islands — Every Stop, Every Story
+            Hvar Islands: Every Stop, Every Story
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
             From Blue Cave to Pakleni Islands. What you&apos;ll see, why it looks like that, and
@@ -55,7 +55,7 @@ export default function HvarIslandsGuidePage() {
         </div>
       </section>
 
-      {/* Accordion sections — client component */}
+      {/* Accordion sections - client component */}
       <IslandStopsAccordion />
 
       {/* Final CTA */}

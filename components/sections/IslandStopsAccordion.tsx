@@ -9,6 +9,7 @@ type Destination = {
   subtitle: string;
   paragraphs: string[];
   tips?: string[];
+  mapsUrl: string;
 };
 
 const destinations: Destination[] = [
@@ -16,25 +17,27 @@ const destinations: Destination[] = [
     id: 'hvar-harbour',
     name: 'Hvar Town & Harbour',
     subtitle: 'Starting point · 2,400+ years of history',
+    mapsUrl: 'https://www.google.com/maps?q=43.1729,16.4413',
     paragraphs: [
-      'Hvar is one of the sunniest places in Europe — about 2,726 hours of sun a year. That is why the old locals used to offer free nights in their hotels to anyone unlucky enough to get a cloudy day in summer.',
+      'Hvar is one of the sunniest places in Europe, with about 2,726 hours of sun a year. That is why the old locals used to offer free nights in their hotels to anyone unlucky enough to get a cloudy day in summer.',
       'Looking back from the water you can see the Španjola Fortress on the hill. It was built in the 16th century to protect the town from Ottoman and Venetian attacks, and the views from up there are worth the climb if you have a spare morning.',
     ],
     tips: [
-      "The big stone building on the main square is St Stephen’s Cathedral, finished in the 17th century.",
-      'Hvar has been continuously inhabited for more than 2,400 years — one of the oldest towns in Europe.',
+      "The big stone building on the main square is St Stephen's Cathedral, finished in the 17th century.",
+      'Hvar has been continuously inhabited for more than 2,400 years, one of the oldest towns in Europe.',
     ],
   },
   {
     id: 'red-rocks',
     name: 'Red Rocks',
     subtitle: 'South coast of Hvar · cliff jumping',
+    mapsUrl: 'https://www.google.com/maps?q=43.1520,16.3890',
     paragraphs: [
-      'These vertical cliffs are red because the limestone is full of iron oxide — basically slow-motion rust. The colour gets more intense late in the afternoon when the sun hits from the west.',
+      'These vertical cliffs are red because the limestone is full of iron oxide, basically slow-motion rust. The colour gets more intense late in the afternoon when the sun hits from the west.',
       'The water here is deep right up to the rock, which is what makes it perfect for cliff jumping. The classic spots are between 5 and 10 metres.',
     ],
     tips: [
-      'Always check with the skipper before jumping — depth and wind matter.',
+      'Always check with the skipper before jumping. Depth and wind matter.',
       'Best photos: lower angle from the water, looking up at the cliff.',
     ],
   },
@@ -42,8 +45,9 @@ const destinations: Destination[] = [
     id: 'dubovica',
     name: 'Dubovica Beach',
     subtitle: 'Iconic bay · 16th-century stone house',
+    mapsUrl: 'https://www.google.com/maps?q=43.1461,16.5343',
     paragraphs: [
-      'Dubovica is the postcard beach of Hvar — a pebble bay protected by a natural cove, with pine trees coming down to the water. The stone house at the beach dates back to the 16th century and was originally used by local farmers bringing the olive and grape harvest down to the boat.',
+      'Dubovica is the postcard beach of Hvar: a pebble bay protected by a natural cove, with pine trees coming down to the water. The stone house at the beach dates back to the 16th century and was originally used by local farmers bringing the olive and grape harvest down to the boat.',
       'The water stays calm here even on windy days because of the way the bay is angled to the south.',
     ],
   },
@@ -51,6 +55,7 @@ const destinations: Destination[] = [
     id: 'borce',
     name: 'Borče Bay',
     subtitle: 'Quiet cove · warm-up swim',
+    mapsUrl: 'https://www.google.com/maps?q=43.1550,16.4050',
     paragraphs: [
       'Borče is a smaller, quieter cove on the south coast. It is the perfect first stop if you want a warm-up swim before the busier spots.',
       'Crystal water, very few other boats, and a sandy patch under the water about 30 metres from the rocks.',
@@ -60,8 +65,9 @@ const destinations: Destination[] = [
     id: 'green-cave',
     name: 'Green Cave (Zelena Špilja)',
     subtitle: 'Biševo · sunlight through the roof',
+    mapsUrl: 'https://www.google.com/maps?q=43.0089,16.1156',
     paragraphs: [
-      'The Green Cave gets its name from how the sunlight reflects off the algae on the walls and turns the water a deep green. Unlike the Blue Cave, the light here comes from above — through a hole in the ceiling — so the effect is strongest around midday.',
+      'The Green Cave gets its name from how the sunlight reflects off the algae on the walls and turns the water a deep green. Unlike the Blue Cave, the light here comes from above, through a hole in the ceiling, so the effect is strongest around midday.',
       'You can usually swim inside. The cave is bigger than it looks from outside and echoes beautifully.',
     ],
     tips: [
@@ -73,31 +79,34 @@ const destinations: Destination[] = [
     id: 'blue-cave',
     name: 'Blue Cave (Modra Špilja)',
     subtitle: 'Biševo · the famous one',
+    mapsUrl: 'https://www.google.com/maps?q=42.9722,15.9989',
     paragraphs: [
       'The Blue Cave works backwards to the Green Cave: the light comes in from under the water, through a submerged opening, and lights up the whole cavern in an impossible electric blue.',
-      'It was discovered in the 19th century by a local painter who spotted the light from a small hole above. Today you enter in small rowing boats — we wait outside and you go in with the official staff.',
+      'It was discovered in the 19th century by a local painter who spotted the light from a small hole above. Today you enter in small rowing boats. We wait outside and you go in with the official staff.',
     ],
     tips: [
       'Entrance fee: €24 per person.',
       'Best colour: between 11:00 and 12:00, when the sun hits directly.',
-      'No swimming inside — only rowing boats are allowed.',
+      'No swimming inside. Only rowing boats are allowed.',
     ],
   },
   {
     id: 'stiniva',
     name: 'Stiniva Bay',
     subtitle: 'Vis · voted best beach in Europe (2016)',
+    mapsUrl: 'https://www.google.com/maps?q=43.0089,16.2156',
     paragraphs: [
       'Stiniva is what is left after a sea cave collapsed thousands of years ago. What you are left with is a cathedral-like beach closed off from the sea by two huge cliffs, with just a narrow opening to get in.',
-      'In 2016 it was voted the best beach in Europe by European Best Destinations. It gets busy at midday — going early or late is worth it.',
+      'In 2016 it was voted the best beach in Europe by European Best Destinations. It gets busy at midday, so going early or late is worth it.',
     ],
   },
   {
     id: 'pakleni',
     name: 'Pakleni Islands',
     subtitle: 'Palmižana · Ždrilca · Taršće',
+    mapsUrl: 'https://www.google.com/maps?q=43.1661,16.3750',
     paragraphs: [
-      'The Pakleni Islands — 21 islands and islets just across from Hvar town. The name comes from paklina, a kind of pine tar the old fishermen used to waterproof the wooden boats. Nothing to do with "pekao" / hell, even though Croatian makes it sound that way.',
+      'The Pakleni Islands: 21 islands and islets just across from Hvar town. The name comes from paklina, a kind of pine tar the old fishermen used to waterproof the wooden boats. Nothing to do with "pekao" / hell, even though Croatian makes it sound that way.',
       'Palmižana has the best restaurants, Ždrilca is the postcard turquoise shallow bay with two or three floating bars, Taršće is wilder and emptier.',
     ],
   },
@@ -105,28 +114,29 @@ const destinations: Destination[] = [
     id: 'budikovac',
     name: 'Budikovac (Blue Lagoon)',
     subtitle: 'Shallow · crystal clear · snorkeling',
+    mapsUrl: 'https://www.google.com/maps?q=43.0833,16.2833',
     paragraphs: [
-      'A small island between Vis and Hvar with a shallow lagoon about 1 to 3 metres deep. The visibility here is some of the best in the archipelago — on a calm day you can see every pebble on the bottom from the boat.',
+      'A small island between Vis and Hvar with a shallow lagoon about 1 to 3 metres deep. The visibility here is some of the best in the archipelago. On a calm day you can see every pebble on the bottom from the boat.',
       'Turtles, bream and the occasional octopus are spotted regularly.',
     ],
     tips: [
-      'Great spot for first-time snorkelers — shallow water, no strong currents.',
+      'Great spot for first-time snorkelers: shallow water, no strong currents.',
       'The tiny restaurant on the island serves grilled fish caught the same morning.',
     ],
   },
 ];
 
 const funFacts = [
-  'Croatia has over 1,200 islands — only about 50 are inhabited.',
-  'The Adriatic is one of the cleanest seas in the Mediterranean — visibility can reach 30+ metres on calm days.',
+  'Croatia has over 1,200 islands, and only about 50 are inhabited.',
+  'The Adriatic is one of the cleanest seas in the Mediterranean. Visibility can reach 30+ metres on calm days.',
   'Hvar lavender harvest is in late June. If the air smells sweet on the south side of the island, that is why.',
-  'The local word for "cheers" is "živjeli" — pronounced jee-vyeh-lee.',
+  'The local word for "cheers" is "živjeli", pronounced jee-vyeh-lee.',
   'Dolphin sightings are rare but possible, especially early morning between Hvar and Vis.',
 ];
 
 const LOCAL_STOPS: { category: string; stops: { name: string; detail: string }[] }[] = [
   {
-    category: '🏛️ Hvar Town — Culture & History',
+    category: '🏛️ Hvar Town: Culture and History',
     stops: [
       {
         name: 'Kino Mediteran (Open Air Cinema)',
@@ -141,7 +151,7 @@ const LOCAL_STOPS: { category: string; stops: { name: string; detail: string }[]
       {
         name: "St. Stephen's Cathedral",
         detail:
-          "16th–17th century cathedral on Hvar's main square, built on the site of a Benedictine monastery. The bell tower is 16th century. Free to enter.",
+          "16th and 17th century cathedral on Hvar's main square, built on the site of a Benedictine monastery. The bell tower is 16th century. Free to enter.",
       },
       {
         name: 'Bonj Beach (Beach Club Hvar)',
@@ -206,7 +216,7 @@ const LOCAL_STOPS: { category: string; stops: { name: string; detail: string }[]
     ],
   },
   {
-    category: '🌊 Pakleni Islands — Bays & Anchors',
+    category: '🌊 Pakleni Islands: Bays and Anchors',
     stops: [
       {
         name: 'Duboka Bay',
@@ -239,12 +249,12 @@ const LOCAL_STOPS: { category: string; stops: { name: string; detail: string }[]
     ],
   },
   {
-    category: '🔴 South Hvar — Rock & Reef',
+    category: '🔴 South Hvar: Rock and Reef',
     stops: [
       {
         name: 'Red Rocks (Crvena Stijena)',
         detail:
-          'Iron-oxide breccia cliffs that drop straight into the sea. Best cliff jumping on the island. Excellent snorkeling — sea caves, tunnels, colorful marine life. Only accessible by boat.',
+          'Iron-oxide breccia cliffs that drop straight into the sea. Best cliff jumping on the island. Excellent snorkeling, including sea caves, tunnels and colorful marine life. Only accessible by boat.',
       },
       {
         name: 'Bilo Idro',
@@ -272,7 +282,7 @@ const LOCAL_STOPS: { category: string; stops: { name: string; detail: string }[]
           'Cave formations along the coastal cliffs on the Biševo route. Visible from the water.',
       },
       {
-        name: 'Veliki Budikovac — Blue Lagoon',
+        name: 'Veliki Budikovac (Blue Lagoon)',
         detail:
           'Natural saltwater lagoon almost fully enclosed by two islands. Zero waves. The color shifts from pale aquamarine to deep jade through the day.',
       },
@@ -311,7 +321,7 @@ const LOCAL_STOPS: { category: string; stops: { name: string; detail: string }[]
     category: '🍽️ Food & Drink Stops',
     stops: [
       {
-        name: "The FisherMan's House — Sveti Klement",
+        name: "The FisherMan's House, Sveti Klement",
         detail: 'Rustic restaurant on Sveti Klement island, Pakleni. Seafood, local konoba style.',
       },
       {
@@ -394,6 +404,15 @@ export default function IslandStopsAccordion() {
                         ))}
                       </ul>
                     )}
+                    <a
+                      href={d.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-1.5 font-body text-sm font-medium text-[color:var(--accent)] transition-colors duration-200 hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+                    >
+                      <span aria-hidden="true">📍</span>
+                      View on map
+                    </a>
                   </div>
                 </details>
               </li>
