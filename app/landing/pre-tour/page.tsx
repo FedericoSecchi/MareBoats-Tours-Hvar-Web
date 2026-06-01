@@ -21,7 +21,7 @@ const MAP_EMBED_SRC =
 // Tour details accordion data
 // ──────────────────────────────────────────────
 type TourRow = { label: string; value: string };
-type TourDetail = { name: string; rows: TourRow[]; extraCosts: string };
+type TourDetail = { name: string; rows: TourRow[]; extraCosts: string; addOns?: string };
 
 const tourDetails: TourDetail[] = [
   {
@@ -37,7 +37,9 @@ const tourDetails: TourDetail[] = [
       },
     ],
     extraCosts:
-      'Blue Cave entrance €24/person · Green Cave entrance €12/person · Lunch not included (restaurants at Palmižana, budget €15–25)',
+      'Blue Cave entrance €24/person · Green Cave entrance €12/person · Lunch not included — restaurants available at Pakleni or Palmizana (budget €15-25)',
+    addOns:
+      'Water Scooter €40/person · Available at Pakleni or Palmižana stops only, not on the Vis or Bisevo leg · On request via WhatsApp',
   },
   {
     name: 'Red Rocks & Pakleni Islands',
@@ -54,7 +56,8 @@ const tourDetails: TourDetail[] = [
           'Direct to Red Rocks (Crvena Stijena), then east Hvar coast beaches, finishing at Pakleni Islands where you can have lunch at a restaurant.',
       },
     ],
-    extraCosts: 'No entrance fees · Lunch optional at Pakleni (not included)',
+    extraCosts: 'Lunch not included — restaurants available at Pakleni',
+    addOns: 'Water Scooter €40/person · On request via WhatsApp',
   },
   {
     name: 'Pakleni Islands Half Day',
@@ -68,6 +71,7 @@ const tourDetails: TourDetail[] = [
       { label: 'Route', value: 'Pakleni Islands — swimming stops at secluded bays' },
     ],
     extraCosts: 'None',
+    addOns: 'Water Scooter €40/person · On request via WhatsApp',
   },
   {
     name: 'Sunset Cruise',
@@ -78,6 +82,7 @@ const tourDetails: TourDetail[] = [
       { label: 'Route', value: 'Pakleni Islands at golden hour' },
     ],
     extraCosts: 'None',
+    addOns: 'Water Scooter €40/person · On request via WhatsApp',
   },
   {
     name: 'Private Boat Charter',
@@ -88,6 +93,7 @@ const tourDetails: TourDetail[] = [
       { label: 'Route', value: 'You choose the destinations' },
     ],
     extraCosts: 'Fuel not included — discussed with Nikola at booking',
+    addOns: 'Water Scooter €40/person · On request via WhatsApp',
   },
   {
     name: 'Split Airport Transfer',
@@ -158,7 +164,7 @@ export default function PreTourPage() {
           }}
         />
         <div className="relative z-10 mx-auto max-w-3xl text-center">
-          <h1 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-6xl">
+          <h1 className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] sm:text-4xl md:text-6xl">
             Your MareBoats tour is confirmed. 🎉
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
@@ -224,6 +230,12 @@ export default function PreTourPage() {
                     <span className="font-medium text-[color:var(--white)]/60">Extra costs: </span>
                     {tour.extraCosts}
                   </p>
+                  {tour.addOns && (
+                    <p className="mt-2 font-body text-xs leading-relaxed text-[color:var(--gray)]">
+                      <span className="font-medium text-[color:var(--accent)]/80">Add-on available: </span>
+                      {tour.addOns}
+                    </p>
+                  )}
                 </div>
               </details>
             ))}

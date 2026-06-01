@@ -411,7 +411,7 @@ export default function RentalsPage() {
             Water Scooter Rental
           </h2>
 
-          <div className="mt-8 max-w-sm">
+          <div className="mt-8 max-w-sm mx-auto">
             <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
