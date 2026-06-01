@@ -456,6 +456,16 @@ export default function GuidePage() {
               </div>
             ))}
           </div>
+
+          <p className="mt-4 font-body text-sm text-[color:var(--gray)]">
+            Want the full story on every stop?{' '}
+            <Link
+              href="/hvar-islands-guide/"
+              className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              Read the Hvar Islands Guide
+            </Link>
+          </p>
         </div>
       </section>
 
