@@ -155,11 +155,11 @@ export default function ToursIndexPage() {
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             All tours
           </p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] md:text-6xl">
+          <h1 className="mt-4 font-display text-[2rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] sm:text-4xl md:text-6xl">
             Choose Your Adventure
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Private tours from Hvar Harbour. You pick the stops — we know every corner of the
+            Private tours from Hvar Harbour. You pick the stops, we know every corner of the
             coast.
           </p>
         </div>
