@@ -355,28 +355,21 @@ export default function IslandStopsAccordion() {
                 className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)]"
               >
                 <details className="group">
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 md:px-6 md:py-5 [&::-webkit-details-marker]:hidden">
-                    <span className="flex min-w-0 flex-col">
+                  <summary className="flex cursor-pointer list-none items-start px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 md:px-6 md:py-5 [&::-webkit-details-marker]:hidden">
+                    <span className="flex min-w-0 flex-col gap-1">
                       <span className="font-body text-xs uppercase tracking-[0.12em] text-[color:var(--accent)]">
                         {d.subtitle}
                       </span>
-                      <span className="mt-1 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-xl">
-                        {d.name}
+                      <span className="flex min-w-0 items-start justify-between gap-3">
+                        <span className="min-w-0 font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)] md:text-lg">
+                          {d.name}
+                        </span>
+                        <span aria-hidden="true" className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)] text-[color:var(--accent)] transition-transform duration-200 group-open:rotate-45">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                            <path d="M12 5v14M5 12h14" />
+                          </svg>
+                        </span>
                       </span>
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)] text-[color:var(--accent)] transition-transform duration-200 group-open:rotate-45"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        className="h-4 w-4"
-                      >
-                        <path d="M12 5v14M5 12h14" />
-                      </svg>
                     </span>
                   </summary>
                   <div className="px-5 pb-5 md:px-6 md:pb-6">

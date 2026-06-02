@@ -419,7 +419,7 @@ export default function GuidePage() {
                       key={stop.name}
                       className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
                     >
-                      <div className="flex items-start justify-between gap-3">
+                      <div className="flex min-w-0 items-start justify-between gap-3">
                         <div className="flex min-w-0 items-center gap-3">
                           <span
                             aria-hidden="true"
