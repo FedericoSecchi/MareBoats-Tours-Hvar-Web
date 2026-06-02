@@ -185,7 +185,7 @@ export default function TourDetailPage({ params }: PageProps) {
           </div>
           {tour.addons && tour.addons.length > 0 && (
             <div className="md:col-span-2 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
-              <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+              <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] sm:text-2xl">
                 Add-ons <span className="text-[color:var(--accent)]">· on request</span>
               </h2>
               <p className="mt-2 font-body text-sm text-[color:var(--gray)]">
