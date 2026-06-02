@@ -227,12 +227,11 @@ export default function TransfersPage() {
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Transfers
           </p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] md:text-6xl">
+          <h1 className="mt-4 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] hyphens-none break-keep md:text-6xl">
             Private Speedboat Transfers
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            From Hvar Harbour to wherever you need to be. Private &mdash; no shared boats, no
-            waiting.
+            From Hvar Harbour to wherever you need to be. Private, no shared boats, no waiting.
           </p>
         </div>
       </section>
