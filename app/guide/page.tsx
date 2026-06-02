@@ -427,7 +427,7 @@ export default function GuidePage() {
                           >
                             {idx + 1}
                           </span>
-                          <h4 className="font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                          <h4 className="min-w-0 font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
                             {stop.name}
                           </h4>
                         </div>
