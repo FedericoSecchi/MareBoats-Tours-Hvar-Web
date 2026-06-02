@@ -30,12 +30,13 @@ export function getMapboxStaticUrl(
   to: GeoCoords,
   width = 400,
   height = 265,
+  via?: GeoCoords[],
 ): string | null {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   if (!token) return null;
 
   const accentHex = '3BC9DB';
-  const polyline = encodePolyline([from, to]);
+  const polyline = encodePolyline([from, ...(via ?? []), to]);
   const path = `path-3+${accentHex}-0.8(${encodeURIComponent(polyline)})`;
   const pinFrom = `pin-s-harbor+${accentHex}(${from.lon},${from.lat})`;
   const pinTo = `pin-l+${accentHex}(${to.lon},${to.lat})`;

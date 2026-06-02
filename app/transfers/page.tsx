@@ -52,6 +52,7 @@ type TransferCard = {
   time: string;
   mapFrom: GeoCoords;
   mapTo: GeoCoords;
+  mapVia?: GeoCoords[];
   hoverImage?: string | null;
   summary: string;
   waMessage: string;
@@ -72,6 +73,10 @@ const TRANSFERS: TransferCard[] = [
     hoverImage: null,
     mapFrom: COORDS.HVAR,
     mapTo: COORDS.SPLIT,
+    mapVia: [
+      { lon: 16.4200, lat: 43.2800 },
+      { lon: 16.4300, lat: 43.3800 },
+    ],
   },
   {
     id: 'airport-hvar',
@@ -85,6 +90,11 @@ const TRANSFERS: TransferCard[] = [
     hoverImage: null,
     mapFrom: COORDS.HVAR,
     mapTo: COORDS.SPLIT_AIRPORT,
+    mapVia: [
+      { lon: 16.4200, lat: 43.2800 },
+      { lon: 16.3500, lat: 43.4200 },
+      { lon: 16.2800, lat: 43.4800 },
+    ],
   },
   {
     id: 'brac',
@@ -97,6 +107,10 @@ const TRANSFERS: TransferCard[] = [
     hoverImage: null,
     mapFrom: COORDS.HVAR,
     mapTo: COORDS.BRAC,
+    mapVia: [
+      { lon: 16.5500, lat: 43.2200 },
+      { lon: 16.6000, lat: 43.2400 },
+    ],
   },
   {
     id: 'korcula',
@@ -109,6 +123,11 @@ const TRANSFERS: TransferCard[] = [
     hoverImage: null,
     mapFrom: COORDS.HVAR,
     mapTo: COORDS.KORCULA,
+    mapVia: [
+      { lon: 16.7500, lat: 43.1500 },
+      { lon: 16.9500, lat: 43.1200 },
+      { lon: 17.0500, lat: 43.1300 },
+    ],
   },
   {
     id: 'bisevo',
@@ -121,6 +140,10 @@ const TRANSFERS: TransferCard[] = [
     hoverImage: null,
     mapFrom: COORDS.HVAR,
     mapTo: COORDS.BISEVO,
+    mapVia: [
+      { lon: 16.2500, lat: 43.1200 },
+      { lon: 16.1000, lat: 43.0800 },
+    ],
   },
   {
     id: 'yacht-water-taxi',
@@ -208,7 +231,7 @@ export default function TransfersPage() {
       <section className="px-4 py-16 md:py-20">
         <ul className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {TRANSFERS.map((t) => {
-            const mapUrl = getMapboxStaticUrl(t.mapFrom, t.mapTo, 400, 265);
+            const mapUrl = getMapboxStaticUrl(t.mapFrom, t.mapTo, 400, 265, t.mapVia);
             return (
               <li key={t.id} id={t.id} className="flex scroll-mt-24">
                 <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
