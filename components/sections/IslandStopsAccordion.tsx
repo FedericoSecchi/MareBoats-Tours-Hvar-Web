@@ -356,12 +356,12 @@ export default function IslandStopsAccordion() {
               >
                 <details className="group">
                   <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 md:px-6 md:py-5 [&::-webkit-details-marker]:hidden">
-                    <span className="flex flex-col">
-                      <span className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-xl">
-                        {d.name}
-                      </span>
-                      <span className="mt-1 font-body text-xs uppercase tracking-[0.12em] text-[color:var(--accent)]">
+                    <span className="flex min-w-0 flex-col">
+                      <span className="font-body text-xs uppercase tracking-[0.12em] text-[color:var(--accent)]">
                         {d.subtitle}
+                      </span>
+                      <span className="mt-1 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-xl">
+                        {d.name}
                       </span>
                     </span>
                     <span
