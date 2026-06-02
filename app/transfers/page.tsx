@@ -31,13 +31,18 @@ function waUrl(message: string) {
 
 // Geographic coordinates (WGS84)
 const COORDS = {
-  HVAR:          { lon: 16.4413, lat: 43.1729 },
-  SPLIT:         { lon: 16.4402, lat: 43.5081 },
-  SPLIT_AIRPORT: { lon: 16.2997, lat: 43.5389 },
-  BRAC:          { lon: 16.6498, lat: 43.2630 },
-  KORCULA:       { lon: 17.1360, lat: 43.1508 },
-  BISEVO:        { lon: 16.0197, lat: 43.0275 },
-  YOUR_VESSEL:   { lon: 16.3800, lat: 43.1500 }, // Pakleni Islands area
+  HVAR_PORT:      { lon: 16.442918, lat: 43.169147 },
+  PAKLENI_EXIT:   { lon: 16.348409, lat: 43.191539 },
+  HVARSKI_KANAL:  { lon: 16.637960, lat: 43.243155 },
+  VIS_ROUNDABOUT: { lon: 16.440844, lat: 43.159411 },
+  KORCULA_TURN:   { lon: 16.487209, lat: 43.138280 },
+  SPLIT_PORT:     { lon: 16.437864, lat: 43.507639 },
+  SPLIT_AIRPORT:  { lon: 16.301891, lat: 43.529181 },
+  BRAC:           { lon: 16.6498,   lat: 43.2630   },
+  BISEVO:         { lon: 16.018408, lat: 43.061528 },
+  KORCULA:        { lon: 17.136184, lat: 42.959341 },
+  PAKLENI:        { lon: 16.394519, lat: 43.160476 },
+  YOUR_VESSEL:    { lon: 16.3800,   lat: 43.1500   },
 } satisfies Record<string, GeoCoords>;
 
 // ---------------------------------------------------------------------------
@@ -71,11 +76,11 @@ const TRANSFERS: TransferCard[] = [
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
     hoverImage: null,
-    mapFrom: COORDS.HVAR,
-    mapTo: COORDS.SPLIT,
+    mapFrom: COORDS.HVAR_PORT,
+    mapTo: COORDS.SPLIT_PORT,
     mapVia: [
-      { lon: 16.4200, lat: 43.2800 },
-      { lon: 16.4300, lat: 43.3800 },
+      COORDS.PAKLENI_EXIT,
+      { lon: 16.42, lat: 43.35 },
     ],
   },
   {
@@ -88,12 +93,12 @@ const TRANSFERS: TransferCard[] = [
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
     hoverImage: null,
-    mapFrom: COORDS.HVAR,
+    mapFrom: COORDS.HVAR_PORT,
     mapTo: COORDS.SPLIT_AIRPORT,
     mapVia: [
-      { lon: 16.4200, lat: 43.2800 },
-      { lon: 16.3500, lat: 43.4200 },
-      { lon: 16.2800, lat: 43.4800 },
+      COORDS.PAKLENI_EXIT,
+      { lon: 16.32, lat: 43.42 },
+      { lon: 16.30, lat: 43.48 },
     ],
   },
   {
@@ -105,11 +110,10 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like a transfer to Brač",
     ctaLabel: 'Ask on WhatsApp',
     hoverImage: null,
-    mapFrom: COORDS.HVAR,
+    mapFrom: COORDS.HVAR_PORT,
     mapTo: COORDS.BRAC,
     mapVia: [
-      { lon: 16.5500, lat: 43.2200 },
-      { lon: 16.6000, lat: 43.2400 },
+      COORDS.HVARSKI_KANAL,
     ],
   },
   {
@@ -121,12 +125,12 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like a transfer to Korčula",
     ctaLabel: 'Ask on WhatsApp',
     hoverImage: null,
-    mapFrom: COORDS.HVAR,
+    mapFrom: COORDS.HVAR_PORT,
     mapTo: COORDS.KORCULA,
     mapVia: [
-      { lon: 16.7500, lat: 43.1500 },
-      { lon: 16.9500, lat: 43.1200 },
-      { lon: 17.0500, lat: 43.1300 },
+      COORDS.KORCULA_TURN,
+      { lon: 16.65, lat: 43.08 },
+      { lon: 16.90, lat: 43.00 },
     ],
   },
   {
@@ -138,11 +142,11 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like a transfer to Biševo",
     ctaLabel: 'Ask on WhatsApp',
     hoverImage: null,
-    mapFrom: COORDS.HVAR,
+    mapFrom: COORDS.HVAR_PORT,
     mapTo: COORDS.BISEVO,
     mapVia: [
-      { lon: 16.2500, lat: 43.1200 },
-      { lon: 16.1000, lat: 43.0800 },
+      COORDS.VIS_ROUNDABOUT,
+      { lon: 16.18, lat: 43.06 },
     ],
   },
   {
@@ -158,7 +162,8 @@ const TRANSFERS: TransferCard[] = [
     detailsHref: '/tours/yacht-sailboat-taxi',
     hoverImage: null,
     mapFrom: COORDS.YOUR_VESSEL,
-    mapTo: COORDS.HVAR,
+    mapTo: COORDS.HVAR_PORT,
+    mapVia: [COORDS.PAKLENI],
   },
 ];
 
