@@ -167,9 +167,8 @@ const TRANSFERS: TransferCard[] = [
     ctaLabel: 'Ask on WhatsApp',
     detailsHref: '/tours/yacht-sailboat-taxi',
     hoverImage: null,
-    mapFrom: COORDS.YOUR_VESSEL,
-    mapTo: { lon: 16.387339, lat: 43.160840 },
-    mapVia: [COORDS.PAKLENI],
+    mapFrom: { lon: 16.443182, lat: 43.168891 },
+    mapTo: { lon: 16.393924, lat: 43.160106 },
   },
 ];
 
