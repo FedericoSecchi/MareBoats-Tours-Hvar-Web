@@ -1,9 +1,10 @@
-import type { ReactNode } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { getMapboxStaticUrl, type GeoCoords } from '@/lib/mapbox';
 
 export const metadata: Metadata = generateSEO({
   title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula — MareBoats',
@@ -28,160 +29,16 @@ function waUrl(message: string) {
   return `${WA_BASE}${encodeURIComponent(message)}`;
 }
 
-// ---------------------------------------------------------------------------
-// Reusable route map component — Dalmatian coastline silhouette
-// ---------------------------------------------------------------------------
-
-type Point = { x: number; y: number; label: string };
-
-function RouteSvg({
-  origin,
-  destination,
-  curvature = 60,
-  showVessel = false,
-}: {
-  origin: Point;
-  destination: Point;
-  curvature?: number;
-  showVessel?: boolean;
-}) {
-  const dx = destination.x - origin.x;
-  const dy = destination.y - origin.y;
-  const len = Math.sqrt(dx * dx + dy * dy) || 1;
-  const mid = { x: (origin.x + destination.x) / 2, y: (origin.y + destination.y) / 2 };
-  // control point: offset from midpoint along left-perpendicular by `curvature` units
-  const cp = {
-    x: Math.round((mid.x + (-dy / len) * curvature) * 10) / 10,
-    y: Math.round((mid.y + (dx / len) * curvature) * 10) / 10,
-  };
-  // midpoint of quadratic bezier at t=0.5
-  const boatX = Math.round(((origin.x + 2 * cp.x + destination.x) / 4) * 10) / 10;
-  const boatY = Math.round(((origin.y + 2 * cp.y + destination.y) / 4) * 10) / 10;
-  // tangent at t=0.5 equals destination − origin for a quadratic bezier
-  const angle = Math.round(Math.atan2(dy, dx) * (180 / Math.PI) * 10) / 10;
-  // put mainland-city labels above the dot; island/water labels below
-  const labelY = (y: number) => (y < 60 ? y - 8 : y + 16);
-
-  return (
-    <svg viewBox="0 0 400 265" aria-hidden="true" className="block h-full w-full">
-      {/* Ocean background */}
-      <rect width="400" height="265" fill="#0d1b2a" />
-
-      {/* Mainland coast */}
-      <path
-        d="M 0,40 C 50,18 100,32 160,22 C 220,12 280,28 345,15 C 375,8 395,20 400,18 L 400,0 L 0,0 Z"
-        fill="#122236"
-        stroke="#1e3048"
-        strokeWidth="1"
-      />
-
-      {/* Šolta */}
-      <polygon
-        points="52,80 60,65 82,60 112,62 120,74 108,86 78,92 54,86"
-        fill="#122236"
-        stroke="#1e3048"
-        strokeWidth="1"
-      />
-
-      {/* Brač */}
-      <polygon
-        points="125,80 132,60 172,52 235,50 290,54 318,65 320,78 295,100 232,108 172,106 136,96"
-        fill="#122236"
-        stroke="#1e3048"
-        strokeWidth="1"
-      />
-
-      {/* Hvar */}
-      <polygon
-        points="65,144 70,130 122,120 188,120 272,124 336,132 340,146 305,158 222,163 140,160 86,154"
-        fill="#122236"
-        stroke="#1e3048"
-        strokeWidth="1"
-      />
-
-      {/* Vis */}
-      <polygon
-        points="44,215 52,198 88,194 134,198 140,212 128,228 84,235 46,230"
-        fill="#122236"
-        stroke="#1e3048"
-        strokeWidth="1"
-      />
-
-      {/* Biševo */}
-      <polygon
-        points="28,232 36,220 50,222 55,232 48,244 30,242"
-        fill="#122236"
-        stroke="#1e3048"
-        strokeWidth="1"
-      />
-
-      {/* Korčula */}
-      <polygon
-        points="235,225 240,208 265,200 325,200 375,208 382,220 368,236 315,242 258,240"
-        fill="#122236"
-        stroke="#1e3048"
-        strokeWidth="1"
-      />
-
-      {/* Dashed route line */}
-      <path
-        d={`M ${origin.x},${origin.y} Q ${cp.x},${cp.y} ${destination.x},${destination.y}`}
-        fill="none"
-        stroke="#3BC9DB"
-        strokeOpacity="0.7"
-        strokeWidth="1.5"
-        strokeDasharray="6 4"
-      />
-
-      {/* Boat icon at bezier midpoint */}
-      <g transform={`translate(${boatX},${boatY}) rotate(${angle})`}>
-        <polygon points="-6,-4 7,0 -6,4" fill="#3BC9DB" />
-      </g>
-
-      {/* Origin marker: anchor icon when showVessel, hollow circle otherwise */}
-      {showVessel ? (
-        <g
-          transform={`translate(${origin.x},${origin.y})`}
-          stroke="#3BC9DB"
-          strokeWidth="1.3"
-          strokeOpacity="0.85"
-          fill="none"
-        >
-          <circle cx="0" cy="-4" r="2.5" />
-          <line x1="0" y1="-1.5" x2="0" y2="8" />
-          <line x1="-5" y1="1" x2="5" y2="1" />
-          <path d="M -5,8 Q -5,12 0,12 Q 5,12 5,8" />
-        </g>
-      ) : (
-        <circle
-          cx={origin.x}
-          cy={origin.y}
-          r="5"
-          fill="none"
-          stroke="#3BC9DB"
-          strokeWidth="1.5"
-          strokeOpacity="0.6"
-        />
-      )}
-
-      {/* Destination marker: filled dot + label */}
-      <circle cx={destination.x} cy={destination.y} r="9" fill="#3BC9DB" fillOpacity="0.15" />
-      <circle cx={destination.x} cy={destination.y} r="5" fill="#3BC9DB" />
-      <text
-        x={destination.x}
-        y={labelY(destination.y)}
-        textAnchor="middle"
-        fill="white"
-        fontFamily="Space Grotesk, sans-serif"
-        fontSize="10"
-        fontWeight="600"
-        letterSpacing="0.08em"
-      >
-        {destination.label}
-      </text>
-    </svg>
-  );
-}
+// Geographic coordinates (WGS84)
+const COORDS = {
+  HVAR:          { lon: 16.4413, lat: 43.1729 },
+  SPLIT:         { lon: 16.4402, lat: 43.5081 },
+  SPLIT_AIRPORT: { lon: 16.2997, lat: 43.5389 },
+  BRAC:          { lon: 16.6498, lat: 43.2630 },
+  KORCULA:       { lon: 17.1360, lat: 43.1508 },
+  BISEVO:        { lon: 16.0197, lat: 43.0275 },
+  YOUR_VESSEL:   { lon: 16.3800, lat: 43.1500 }, // Pakleni Islands area
+} satisfies Record<string, GeoCoords>;
 
 // ---------------------------------------------------------------------------
 // Transfer card data
@@ -193,7 +50,8 @@ type TransferCard = {
   route: string;
   price: string;
   time: string;
-  mapSvg: ReactNode;
+  mapFrom: GeoCoords;
+  mapTo: GeoCoords;
   hoverImage?: string | null;
   summary: string;
   waMessage: string;
@@ -201,47 +59,32 @@ type TransferCard = {
   detailsHref?: string;
 };
 
-// City coordinates (SVG space, viewBox 0 0 400 265):
-//   HVAR (175,148)  SPLIT (210,32)  SPLIT AIRPORT (175,28)
-//   BRAČ/Bol (255,95)  KORČULA (310,215)  BIŠEVO (38,228)
-//   YOUR VESSEL (130,185)
-
 const TRANSFERS: TransferCard[] = [
   {
     id: 'split-hvar',
     route: 'Split ↔ Hvar',
     price: '€500 private',
     time: '~1 hour',
-    summary: 'Hvar Harbour → Split waterfront. Private boat, direct route.',
+    summary: 'Hvar Harbour to Split waterfront. Private boat, direct route.',
     waMessage: "Hi! I'd like to book the Split transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
     hoverImage: null,
-    mapSvg: (
-      <RouteSvg
-        origin={{ x: 175, y: 148, label: 'HVAR' }}
-        destination={{ x: 210, y: 32, label: 'SPLIT' }}
-        curvature={60}
-      />
-    ),
+    mapFrom: COORDS.HVAR,
+    mapTo: COORDS.SPLIT,
   },
   {
     id: 'airport-hvar',
     route: 'Split Airport ↔ Hvar',
     price: '€600 private',
     time: '~1.5 hours',
-    summary: 'Split Airport → Hvar Harbour. We track your flight.',
+    summary: 'Split Airport to Hvar Harbour. We track your flight.',
     waMessage: "Hi! I'd like to book the Airport transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
     hoverImage: null,
-    mapSvg: (
-      <RouteSvg
-        origin={{ x: 175, y: 148, label: 'HVAR' }}
-        destination={{ x: 175, y: 28, label: 'SPLIT AIRPORT' }}
-        curvature={-60}
-      />
-    ),
+    mapFrom: COORDS.HVAR,
+    mapTo: COORDS.SPLIT_AIRPORT,
   },
   {
     id: 'brac',
@@ -252,13 +95,8 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like a transfer to Brač",
     ctaLabel: 'Ask on WhatsApp',
     hoverImage: null,
-    mapSvg: (
-      <RouteSvg
-        origin={{ x: 175, y: 148, label: 'HVAR' }}
-        destination={{ x: 255, y: 95, label: 'BRAČ' }}
-        curvature={-60}
-      />
-    ),
+    mapFrom: COORDS.HVAR,
+    mapTo: COORDS.BRAC,
   },
   {
     id: 'korcula',
@@ -269,13 +107,8 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like a transfer to Korčula",
     ctaLabel: 'Ask on WhatsApp',
     hoverImage: null,
-    mapSvg: (
-      <RouteSvg
-        origin={{ x: 175, y: 148, label: 'HVAR' }}
-        destination={{ x: 310, y: 215, label: 'KORČULA' }}
-        curvature={60}
-      />
-    ),
+    mapFrom: COORDS.HVAR,
+    mapTo: COORDS.KORCULA,
   },
   {
     id: 'bisevo',
@@ -286,13 +119,8 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like a transfer to Biševo",
     ctaLabel: 'Ask on WhatsApp',
     hoverImage: null,
-    mapSvg: (
-      <RouteSvg
-        origin={{ x: 175, y: 148, label: 'HVAR' }}
-        destination={{ x: 38, y: 228, label: 'BIŠEVO' }}
-        curvature={-60}
-      />
-    ),
+    mapFrom: COORDS.HVAR,
+    mapTo: COORDS.BISEVO,
   },
   {
     id: 'yacht-water-taxi',
@@ -306,14 +134,8 @@ const TRANSFERS: TransferCard[] = [
     ctaLabel: 'Ask on WhatsApp',
     detailsHref: '/tours/yacht-sailboat-taxi',
     hoverImage: null,
-    mapSvg: (
-      <RouteSvg
-        origin={{ x: 130, y: 185, label: 'YOUR VESSEL' }}
-        destination={{ x: 175, y: 148, label: 'HVAR' }}
-        curvature={40}
-        showVessel={true}
-      />
-    ),
+    mapFrom: COORDS.YOUR_VESSEL,
+    mapTo: COORDS.HVAR,
   },
 ];
 
@@ -385,58 +207,77 @@ export default function TransfersPage() {
       {/* Transfers grid */}
       <section className="px-4 py-16 md:py-20">
         <ul className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {TRANSFERS.map((t) => (
-            <li key={t.id} id={t.id} className="flex scroll-mt-24">
-              <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  {t.mapSvg}
-                  {t.hoverImage != null && (
-                    <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={t.hoverImage} alt="" className="h-full w-full object-cover" />
-                    </div>
-                  )}
-                  <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
-                    {t.time}
-                  </span>
-                </div>
-
-                <div className="flex flex-1 flex-col gap-4 p-6">
-                  <div>
-                    <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                      {t.name ?? `Hvar ↔ ${t.route}`}
-                    </h2>
-                    <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                      {t.summary}
-                    </p>
-                  </div>
-
-                  <div className="mt-auto flex flex-col gap-3">
-                    <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
-                      {t.price}
+          {TRANSFERS.map((t) => {
+            const mapUrl = getMapboxStaticUrl(t.mapFrom, t.mapTo, 400, 265);
+            return (
+              <li key={t.id} id={t.id} className="flex scroll-mt-24">
+                <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    {mapUrl ? (
+                      <Image
+                        src={mapUrl}
+                        alt={`Route map: ${t.name ?? `Hvar to ${t.route}`}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                        unoptimized
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-[color:var(--surface)]" />
+                    )}
+                    {t.hoverImage != null && (
+                      <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                        <Image
+                          src={t.hoverImage}
+                          alt=""
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                        />
+                      </div>
+                    )}
+                    <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
+                      {t.time}
                     </span>
-                    <div className="flex flex-col gap-2 sm:flex-row">
-                      {t.detailsHref && (
-                        <Link
-                          href={t.detailsHref}
-                          className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                  </div>
+
+                  <div className="flex flex-1 flex-col gap-4 p-6">
+                    <div>
+                      <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                        {t.name ?? `Hvar ↔ ${t.route}`}
+                      </h2>
+                      <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                        {t.summary}
+                      </p>
+                    </div>
+
+                    <div className="mt-auto flex flex-col gap-3">
+                      <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
+                        {t.price}
+                      </span>
+                      <div className="flex flex-col gap-2 sm:flex-row">
+                        {t.detailsHref && (
+                          <Link
+                            href={t.detailsHref}
+                            className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                          >
+                            See Full Details
+                          </Link>
+                        )}
+                        <WhatsAppTrackedLink
+                          href={waUrl(t.waMessage)}
+                          label={`transfers_${t.id}`}
+                          className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                         >
-                          See Full Details
-                        </Link>
-                      )}
-                      <WhatsAppTrackedLink
-                        href={waUrl(t.waMessage)}
-                        label={`transfers_${t.id}`}
-                        className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
-                      >
-                        {t.ctaLabel}
-                      </WhatsAppTrackedLink>
+                          {t.ctaLabel}
+                        </WhatsAppTrackedLink>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </article>
-            </li>
-          ))}
+                </article>
+              </li>
+            );
+          })}
         </ul>
 
         <p className="mx-auto mt-10 max-w-2xl text-center font-body text-sm leading-relaxed text-[color:var(--gray)]">
