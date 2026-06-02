@@ -471,7 +471,7 @@ export default function RentalsPage() {
             On board
           </p>
           <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
-            On Board — Good to Know
+            On Board: Good to Know
           </h2>
           <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
             Quick rundown of what works and what does not on the boat.
