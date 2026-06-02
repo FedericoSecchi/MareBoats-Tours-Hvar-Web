@@ -44,7 +44,7 @@
 - `/hvar-islands-guide/` — página nueva creada 01/06. Server Component, indexada, en sitemap (priority 0.8). 9 destinos con historia + 30 paradas locales + Google Maps links. Ataca keywords: "Hvar islands guide", "Blue Cave what to expect", "Pakleni Islands stops". NO tocar `/on-tour/` — sigue intacta para el QR del barco.
 - `/explore/` — expandida 01/06. Hub principal de contenido. 7 secciones: Where to Eat, What to See, Beaches, Practical Info, FAQ (FAQPage JSON-LD), CTA. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide".
 - `/on-tour/` — noindex, sigue intacta. Acceso via QR hub `/qr/`. NO indexar — es herramienta operativa del tour.
-- `/transfers/` — cards con SVG maps ilustrativos (coastline Dalmacia). Ver sección abajo.
+- `/transfers/` — Mapbox Static Images API implementado. Ver sección abajo.
 - Nav: Tours → Rentals → Transfers → **Explore** → About
 
 ## Cluster SEO — páginas interconectadas
@@ -186,16 +186,25 @@ Nikola
 
 ## /transfers/ — estado al 02/06/2026
 
-### SVG maps (commit 4b1eb4)
-- Componente `RouteSvg` reutilizable — coastline Dalmacia central
-- Islas: mainland Split, Brač, Šolta, Hvar, Vis, Biševo, Korčula
-- Por card: bezier punteada + icono barco · Yacht Water Taxi: icono ancla
-- `hoverImage` field listo — renderiza nada hasta asignar foto
-- **Pendiente**: Mapbox Static Images API para mapa realista (necesita cuenta + `NEXT_PUBLIC_MAPBOX_TOKEN` en Netlify)
+### Mapbox Static Images API — IMPLEMENTADO ✅
+- `lib/mapbox.ts` — función `getMapboxStaticUrl(from, to, width, height, via?)` con Google Polyline encoding
+- Estilo: `mapbox/satellite-streets-v12`
+- Token: `NEXT_PUBLIC_MAPBOX_TOKEN` en Netlify env vars
+- Fallback: `div` oscuro si el token no está seteado
+- `RouteSvg` eliminado completamente
+- `hoverImage` field intacto — renderiza foto real al asignar
 
-### Coordenadas SVG (viewBox 0 0 400 265)
-- HVAR: 175,148 · SPLIT: 210,32 · SPLIT AIRPORT: 175,28
-- BRAC/Bol: 255,95 · KORCULA: 310,215 · BISEVO: 38,228 · YOUR VESSEL: 130,185
+### Rutas y waypoints náuticos reales (WGS84)
+Todos parten de Hvar Port: `{ lon: 16.442975, lat: 43.169008 }`
+
+| Card | mapTo | mapVia (en orden) |
+|---|---|---|
+| Split | lon: 16.437864, lat: 43.507639 | PAKLENI_EXIT(16.348409, 43.191539) → (16.403727, 43.330417) → (16.408034, 43.491876) → (16.365462, 43.505258) |
+| Split Airport | lon: 16.301891, lat: 43.529181 | PAKLENI_EXIT → (16.403727, 43.330417) → (16.408034, 43.491876) → (16.365462, 43.505258) |
+| Brač | lon: 16.657026, lat: 43.261500 | (16.352940, 43.189754) → (16.364804, 43.211134) → (16.513733, 43.246498) → (16.659022, 43.254864) |
+| Korčula | lon: 17.136184, lat: 42.959341 | KORCULA_TURN(16.487209, 43.138280) → (16.65, 43.08) → (16.90, 43.00) |
+| Biševo | lon: 16.184168, lat: 43.062260 | (16.439551, 43.164991) → (16.441916, 43.159709) → (16.458060, 43.152451) → (16.193734, 43.061615) |
+| Yacht Taxi | lon: 16.393924, lat: 43.160106 | sin waypoints (ruta corta) |
 
 ---
 
@@ -223,7 +232,7 @@ Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
 - ✅ "Lunch not included" unificado site-wide
 - ✅ Water Scooter add-on en accordion pre-tour (5 tours, restricción Vis correcta)
 - ✅ /rentals/: tipografía 16px, On Board cards, Rental Rules tabla, WS card centrada
-- ✅ /transfers/: SVG maps Dalmacia con RouteSvg
+- ✅ /transfers/: Mapbox Static Images API con rutas náuticas reales
 
 ### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
 - Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
@@ -244,8 +253,7 @@ Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
 
 **Sitio:**
 - [ ] /about: cerrar con fotos shoot + historia Nikola
-- [ ] /transfers/: Mapbox Static Images API
-- [ ] /transfers/: hoverImage con fotos reales
+- [ ] /transfers/: hoverImage con fotos reales (post-shoot)
 
 **GBP:**
 - [ ] Coti: posts mayo-junio pendientes
