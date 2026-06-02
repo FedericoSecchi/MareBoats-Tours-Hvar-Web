@@ -107,7 +107,7 @@ const TRANSFERS: TransferCard[] = [
     route: 'Brač',
     price: 'On request',
     time: 'Private',
-    summary: 'Bol, Supetar, Milna — tell us where.',
+    summary: 'Bol, Supetar, Milna. Tell us where.',
     waMessage: "Hi! I'd like a transfer to Brač",
     ctaLabel: 'Ask on WhatsApp',
     hoverImage: null,
@@ -162,7 +162,7 @@ const TRANSFERS: TransferCard[] = [
     price: 'On request',
     time: 'On demand',
     summary:
-      'Anchored near Hvar? We come to your boat — pickup, transfer or the start of any tour.',
+      'Anchored near Hvar? We come to your boat: pickup, transfer or the start of any tour.',
     waMessage: "Hi! I'd like info about the yacht water taxi",
     ctaLabel: 'Ask on WhatsApp',
     detailsHref: '/tours/yacht-sailboat-taxi',
