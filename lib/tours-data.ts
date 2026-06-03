@@ -118,17 +118,15 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     tagline: 'Half day of turquoise water, hidden coves, and island hopping minutes from Hvar town.',
     shortDescription:
       'Half-day private boat tour from Hvar, Croatia. Snorkel the clearest Adriatic waters, stop at Palmižana and explore secluded Pakleni coves.',
-    description: `The Pakleni Islands half day boat tour from Hvar is the perfect option when you want maximum beauty in a shorter window - ideal for families, couples on a tight schedule, or anyone who prefers a relaxed pace without committing to a full offshore crossing.
+    description: `The Pakleni Islands sit 20 minutes from Hvar harbour. Close enough for a half day, varied enough to fill it. We take you through the archipelago, pick the stops based on wind and crowds, and leave the pace to you.
 
 Departing from Hvar Harbour, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your captain chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
 
 Because the boat is private, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and your skipper knows the quieter coves that larger boats skip.
 
-If you are searching for the best half day boat tour Hvar has to offer - combining proximity, scenery, and comfort - this is the classic route guests book again and again. Contact us on WhatsApp to confirm departure times during the season and to tailor the route to your group.
+Message us on WhatsApp with your date. We confirm fast.
 
-Because the Pakleni Islands sit so close to Hvar town, you spend less time commuting and more time enjoying the water - a practical advantage on hot summer days when you want maximum swimming time. Your captain can suggest quieter bays if the wind shifts, and you can always adjust the plan if younger guests want shallower water or if you prefer a longer stop for coffee at a waterfront venue.
-
-If you are comparing shared excursions versus a private Pakleni Islands boat, the private option usually wins on comfort, timing, and the ability to avoid the busiest pockets of the archipelago when possible.`,
+Most guests who book this tour have already done a full-day trip and want a shorter option. Others are based in Hvar for a few days and prefer to save the longer routes for later. Either way, the Pakleni Islands are worth at least a half day.`,
     duration: '3–4 hrs',
     durationIso: 'PT4H',
     price: 'On request - message us on WhatsApp',
@@ -144,9 +142,9 @@ If you are comparing shared excursions versus a private Pakleni Islands boat, th
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Multiple swimming and snorkeling stops',
-      'Scenic cruising through the Pakleni archipelago',
-      'Flexible pacing for families and small groups',
+      'Palmižana, Zdrilca and the quieter coves of the archipelago',
+      'Snorkeling in water you can see through to 10 metres',
+      'Private boat, your pace, 20 minutes from Hvar harbour',
     ],
     images: [
       {
