@@ -229,18 +229,16 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
   {
     slug: 'sunset-cruise',
     name: 'Sunset Cruise Hvar',
-    tagline: 'Golden hour on the Adriatic - wine-friendly, calm water, and unforgettable light.',
+    tagline: 'Golden hour on the Adriatic - wine-friendly, calm water, and the best light of the day.',
     shortDescription:
       'Private sunset cruise from Hvar, Croatia. Golden hour over the Dalmatian coast, drinks on board, calm waters and the best photo light of the day.',
-    description: `A sunset cruise from Hvar is the most romantic way to end a day on the island - and one of the easiest tours to enjoy if you want premium photos without a full-day commitment. As the heat softens and the light turns gold, the Adriatic takes on a completely different mood: quieter harbours, warm tones on the stone towns, and a gentle breeze that makes the sea feel brand new.
+    description: `A two-hour private cruise from Hvar Harbour, timed to the sunset. The light on the Adriatic at golden hour is different from anything you get during the day: warmer, softer, the kind that makes every photo look like it was planned.
 
-This private evening boat tour departs from Hvar Harbour and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the experience is private, you can keep the atmosphere relaxed and personal - perfect for proposals, anniversaries, families celebrating together, or friends who want a memorable night without crowds.
+This private evening boat tour departs from Hvar Harbour and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the boat is private, the pace stays yours.
 
 Your captain focuses on safety and smooth cruising as light fades, and you can bring your own wine or bubbly to enjoy responsibly on board (glass bottles are welcome). The cooler on board keeps your drinks cold, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands.
 
-Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date. If you are comparing Hvar sunset boat tour options, choose private for the best views, the calmest pace, and a route tailored to the evening sky.
-
-Evening light also makes the coastline look more cinematic - stone villages glow warmer, the sea reflects softer blues, and the breeze often settles compared to midday heat. That is why many guests schedule their sunset cruise after a busy sightseeing day on land: it is the perfect reset before dinner in Hvar town. If you are celebrating something special, tell us when you book and we will do our best to set the mood with a smooth route and plenty of time for photos.`,
+Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date. If you are comparing Hvar sunset boat tour options, choose private for the best views, the calmest pace, and a route tailored to the evening sky.`,
     duration: '2 hrs',
     durationIso: 'PT2H',
     price: '€250',
@@ -257,8 +255,8 @@ Evening light also makes the coastline look more cinematic - stone villages glow
     meetingPointMapsUrl: MAPS,
     highlights: [
       'Golden-hour cruising along the Hvar coastline',
-      'Private boat - no shared groups',
-      'Ideal for photos and relaxed evening pacing',
+      'Private boat, no shared groups',
+      'Departs at golden hour, back before dark',
     ],
     images: [
       {
@@ -324,7 +322,7 @@ A charter is also the best format if you want to combine multiple "must-see" des
     name: 'Split Airport to Hvar Speedboat Transfer',
     tagline: 'Private 45-minute speedboat transfer between Split Airport and Hvar Harbour.',
     shortDescription:
-      'Private speedboat transfer from Split Airport to Hvar in around 45 minutes. Skip ferries and queues - door-to-harbour service from Mare Boats Hvar.',
+      'Private speedboat transfer from Split Airport to Hvar in around 45 minutes. Skip ferries and queues - door-to-harbour service from MareBoats Hvar.',
     description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in around 45 minutes - with luggage handled and a flexible departure time that fits your flight.
 
 We coordinate the meeting point near Split (airport pier or Split town harbour, depending on your arrival) and confirm everything by WhatsApp the day before so there are no surprises. Your skipper monitors weather and tides, suggests the best route, and adapts the plan if your flight is delayed.
