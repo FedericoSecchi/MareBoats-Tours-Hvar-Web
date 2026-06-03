@@ -286,7 +286,7 @@ export default function AboutPage() {
             <ul className="mt-6 space-y-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
               {[
                 'Modern speedboats, 150 to 300 hp',
-                '8 to 12 passengers per boat depending on the vessel',
+                "Up to 9 passengers per boat. Full-size speedboats, small groups. We don't fill them to the limit. That's the whole idea.",
                 'Sun canopy, music system and cooler on board',
                 'Snorkel gear and masks included for every guest',
                 'Large groups: multiple boats depart together',
