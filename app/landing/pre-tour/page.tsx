@@ -6,7 +6,7 @@ import { whatToBring, weatherPolicy } from '@/lib/guide-content';
 export const metadata: Metadata = {
   title: 'What to Expect on a Hvar Boat Tour | MareBoats',
   description:
-    'Everything you need before your MareBoats tour — meeting point, what to bring, water scooter add-on, and what the Adriatic is actually like.',
+    'Everything you need before your MareBoats tour - meeting point, what to bring, water scooter add-on, and what the Adriatic is actually like.',
 };
 
 const WA_BASE = 'https://wa.me/385951966734?text=';
@@ -29,7 +29,7 @@ const tourDetails: TourDetail[] = [
     rows: [
       { label: 'Meet', value: '09:45 at the MareBoats barrel, Hvar Harbour' },
       { label: 'Depart', value: '10:00' },
-      { label: 'Duration', value: '7 hours — back around 17:00' },
+      { label: 'Duration', value: '7 hours - back around 17:00' },
       {
         label: 'Route',
         value:
@@ -37,7 +37,7 @@ const tourDetails: TourDetail[] = [
       },
     ],
     extraCosts:
-      'Blue Cave entrance €24/person · Green Cave entrance €12/person · Lunch not included — restaurants available at Pakleni or Palmizana (budget €15-25)',
+      'Blue Cave entrance €24/person · Green Cave entrance €12/person · Lunch not included - restaurants available at Pakleni or Palmizana (budget €15-25)',
     addOns:
       'Water Scooter €40/person · Available at Pakleni or Palmižana stops only, not on the Vis or Bisevo leg · On request via WhatsApp',
   },
@@ -47,7 +47,7 @@ const tourDetails: TourDetail[] = [
       { label: 'Meet', value: '15 minutes before departure' },
       {
         label: 'Depart',
-        value: '09:00 (morning slot) or 14:00 (afternoon slot) — Nikola will confirm your slot',
+        value: '09:00 (morning slot) or 14:00 (afternoon slot) - Nikola will confirm your slot',
       },
       { label: 'Duration', value: '4 or 6 hours depending on your booking' },
       {
@@ -56,7 +56,7 @@ const tourDetails: TourDetail[] = [
           'Direct to Red Rocks (Crvena Stijena), then east Hvar coast beaches, finishing at Pakleni Islands where you can have lunch at a restaurant.',
       },
     ],
-    extraCosts: 'Lunch not included — restaurants available at Pakleni',
+    extraCosts: 'Lunch not included - restaurants available at Pakleni',
     addOns: 'Water Scooter €40/person · On request via WhatsApp',
   },
   {
@@ -65,10 +65,10 @@ const tourDetails: TourDetail[] = [
       { label: 'Meet', value: '15 minutes before departure' },
       {
         label: 'Depart',
-        value: '09:00 (morning slot) or 14:00 (afternoon slot) — Nikola will confirm your slot',
+        value: '09:00 (morning slot) or 14:00 (afternoon slot) - Nikola will confirm your slot',
       },
       { label: 'Duration', value: '3–4 hours' },
-      { label: 'Route', value: 'Pakleni Islands — swimming stops at secluded bays' },
+      { label: 'Route', value: 'Pakleni Islands - swimming stops at secluded bays' },
     ],
     extraCosts: 'None',
     addOns: 'Water Scooter €40/person · On request via WhatsApp',
@@ -78,7 +78,7 @@ const tourDetails: TourDetail[] = [
     rows: [
       { label: 'Meet', value: '19:15 at the MareBoats barrel, Hvar Harbour' },
       { label: 'Depart', value: '19:30' },
-      { label: 'Duration', value: '2 hours — back around 21:30' },
+      { label: 'Duration', value: '2 hours - back around 21:30' },
       { label: 'Route', value: 'Pakleni Islands at golden hour' },
     ],
     extraCosts: 'None',
@@ -88,17 +88,17 @@ const tourDetails: TourDetail[] = [
     name: 'Private Boat Charter',
     rows: [
       { label: 'Meet', value: 'Arranged directly with Nikola' },
-      { label: 'Depart', value: 'Flexible — your schedule' },
+      { label: 'Depart', value: 'Flexible - your schedule' },
       { label: 'Duration', value: 'Full day' },
       { label: 'Route', value: 'You choose the destinations' },
     ],
-    extraCosts: 'Fuel not included — discussed with Nikola at booking',
+    extraCosts: 'Fuel not included - discussed with Nikola at booking',
     addOns: 'Water Scooter €40/person · On request via WhatsApp',
   },
   {
     name: 'Split Airport Transfer',
     rows: [
-      { label: 'Meet', value: 'On demand — Nikola will coordinate pickup time directly' },
+      { label: 'Meet', value: 'On demand - Nikola will coordinate pickup time directly' },
       { label: 'Duration', value: '~45 minutes' },
     ],
     extraCosts: 'None',
@@ -115,7 +115,7 @@ const adriaticFacts = [
   },
   {
     title: 'Saltier than the ocean. Clearer too.',
-    body: 'More buoyancy — good for all swimmers. Visibility around Hvar is typically 15–20 metres on a clear day. Bring a mask.',
+    body: 'More buoyancy - good for all swimmers. Visibility around Hvar is typically 15–20 metres on a clear day. Bring a mask.',
   },
   {
     title: 'We leave at 10:00 for a reason.',
@@ -260,7 +260,7 @@ export default function PreTourPage() {
               <div className="aspect-[4/3] w-full md:aspect-[16/9]">
                 <iframe
                   src={MAP_EMBED_SRC}
-                  title="MareBoats barrel — Hvar Harbour main dock"
+                  title="MareBoats barrel - Hvar Harbour main dock"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="h-full w-full border-0"
@@ -282,7 +282,7 @@ export default function PreTourPage() {
                 </p>
               </div>
               <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                3 minutes walk from the ferry terminal — head towards the cathedral. Look for the
+                3 minutes walk from the ferry terminal - head towards the cathedral. Look for the
                 MareBoats wooden barrel on the harbour. If you get lost, message Nikola on WhatsApp.
               </p>
               <a
@@ -309,13 +309,13 @@ export default function PreTourPage() {
               Make it better
             </h2>
             <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-              Two add-ons available — just message us on WhatsApp.
+              Two add-ons available - just message us on WhatsApp.
             </p>
           </header>
 
           <div className="mt-10 flex flex-col gap-6 md:flex-row">
 
-            {/* Card 1 — Underwater Scooter */}
+            {/* Card 1 - Underwater Scooter */}
             <article className="flex flex-1 flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
@@ -326,7 +326,7 @@ export default function PreTourPage() {
                 </span>
               </div>
               <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                Explore below the surface at your own pace. Up to 2 hours per unit — we bring it on
+                Explore below the surface at your own pace. Up to 2 hours per unit - we bring it on
                 board.
               </p>
               <p className="mt-2 font-body text-xs text-[color:var(--gray)]/70">
@@ -334,7 +334,7 @@ export default function PreTourPage() {
               </p>
               <div className="mt-auto pt-6">
                 <WhatsAppTrackedLink
-                  href={waUrl("Hi! I'd like to add an underwater scooter to my tour — €40/unit")}
+                  href={waUrl("Hi! I'd like to add an underwater scooter to my tour - €40/unit")}
                   ctaText="add_scooter"
                   label="upsell"
                   className={upsellBtnClass}
@@ -344,7 +344,7 @@ export default function PreTourPage() {
               </div>
             </article>
 
-            {/* Card 2 — Photo & Video */}
+            {/* Card 2 - Photo & Video */}
             <article className="flex flex-1 flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
@@ -355,12 +355,12 @@ export default function PreTourPage() {
                 </span>
               </div>
               <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                We capture the whole day — on board, underwater, and from above with the drone. Full
+                We capture the whole day - on board, underwater, and from above with the drone. Full
                 gallery delivered after the tour.
               </p>
               <div className="mt-auto pt-6">
                 <WhatsAppTrackedLink
-                  href={waUrl("Hi! I'd like to add photo & video shooting to my tour — €200")}
+                  href={waUrl("Hi! I'd like to add photo & video shooting to my tour - €200")}
                   ctaText="add_photo"
                   label="upsell"
                   className={upsellBtnClass}
@@ -385,7 +385,7 @@ export default function PreTourPage() {
               What to bring
             </h2>
             <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-              Tap as you pack. Nothing is saved — this is just a quick visual check.
+              Tap as you pack. Nothing is saved - this is just a quick visual check.
             </p>
           </header>
 
@@ -534,7 +534,7 @@ export default function PreTourPage() {
             Questions before the tour?
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Message Nikola directly — he replies fast.
+            Message Nikola directly - he replies fast.
           </p>
           <div className="mt-7">
             <WhatsAppTrackedLink

@@ -4,7 +4,7 @@ import MetaRedirect from '@/components/ui/MetaRedirect';
 const TARGET = '/guide/';
 
 export const metadata: Metadata = {
-  title: 'MareBoats FAQ — Hvar',
+  title: 'MareBoats FAQ - Hvar',
   description: 'Redirecting to the MareBoats Hvar Guide, which includes all FAQs.',
   alternates: { canonical: `https://mareboatshvar.com${TARGET}` },
   robots: {

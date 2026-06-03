@@ -4,7 +4,7 @@ import { permanentRedirect } from 'next/navigation';
 const TARGET = '/rentals/';
 
 export const metadata: Metadata = {
-  title: 'Scooter Rental Hvar — MareBoats',
+  title: 'Scooter Rental Hvar - MareBoats',
   description: 'Redirecting to the MareBoats rentals page.',
   alternates: { canonical: `https://mareboatshvar.com${TARGET}` },
   robots: {

@@ -33,7 +33,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     'red-rocks-pakleni-islands':
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming. Book on WhatsApp.',
     'split-airport-transfer':
-      'Skip the ferry. Private speedboat transfer from Split Airport to Hvar — fast, comfortable, scenic. Book on WhatsApp, instant confirmation.',
+      'Skip the ferry. Private speedboat transfer from Split Airport to Hvar - fast, comfortable, scenic. Book on WhatsApp, instant confirmation.',
   };
   const title = titleMap[tour.slug] ?? `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
   const description = descriptionMap[tour.slug] ?? tour.shortDescription;
@@ -154,6 +154,31 @@ export default function TourDetailPage({ params }: PageProps) {
           </p>
         </div>
       </section>
+
+      {tour.pricingOptions && tour.pricingOptions.length > 0 && (
+        <section className="bg-[color:var(--bg)] px-4 pt-10 pb-0">
+          <div className="mx-auto max-w-container">
+            <div className="rounded-2xl border border-[color:var(--accent)]/30 bg-[color:var(--surface)] p-6">
+              <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                Pricing
+              </h2>
+              <ul className="mt-4 flex flex-col gap-5 sm:flex-row sm:gap-10">
+                {tour.pricingOptions.map((opt) => (
+                  <li key={opt.label} className="flex flex-col gap-1">
+                    <span className="font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]">
+                      {opt.label}
+                    </span>
+                    <span className="font-display text-2xl font-bold text-[color:var(--white)]">
+                      {opt.price}
+                    </span>
+                    <span className="font-body text-sm text-[color:var(--gray)]">{opt.note}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container gap-10 md:grid-cols-2">
@@ -293,7 +318,7 @@ export default function TourDetailPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* Final CTA — same visual rhythm as the home CTABanner */}
+      {/* Final CTA - same visual rhythm as the home CTABanner */}
       <section
         className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-20"
         style={{
@@ -309,7 +334,7 @@ export default function TourDetailPage({ params }: PageProps) {
             Book the {tour.name}
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Send us your date and group size on WhatsApp. We confirm availability fast — usually
+            Send us your date and group size on WhatsApp. We confirm availability fast - usually
             within the hour during the season.
           </p>
 

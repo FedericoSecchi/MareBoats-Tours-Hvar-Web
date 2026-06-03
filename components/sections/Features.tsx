@@ -34,7 +34,7 @@ const features: Feature[] = [
   {
     title: 'One Group, One Boat',
     description:
-      'Up to 8 guests. No shared groups, no fixed schedule. The day moves at your pace.',
+      'Up to 9 guests. No fixed schedule. The day moves at your pace.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="9" cy="8" r="3" />
@@ -59,7 +59,7 @@ const features: Feature[] = [
   {
     title: 'Speaks Your Language',
     description:
-      'English, Croatian, Italian and Spanish. Whichever you are most comfortable in — that is how we run the tour.',
+      'English, Croatian, Italian, Spanish and German. Whichever you are most comfortable in, that is how we run the tour.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="9" />

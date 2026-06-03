@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const INSTAGRAM_URL = 'https://www.instagram.com/mareboats.hvar/';
 
 // ──────────────────────────────────────────────
-// Content — placeholder where Nikola will fill in
+// Content - placeholder where Nikola will fill in
 // ──────────────────────────────────────────────
 type ThingToDo = { title: string; detail: string; icon: 'oldTown' | 'beach' | 'beachClub' | 'nightlife' };
 
@@ -24,7 +24,7 @@ const thingsToDo: ThingToDo[] = [
   {
     title: 'Old Town & Fortress',
     detail:
-      'Walk up to Fortica Fortress at sunset — the best view of Hvar town and Pakleni Islands. Stop at the cathedral on the way down.',
+      'Walk up to Fortica Fortress at sunset - the best view of Hvar town and Pakleni Islands. Stop at the cathedral on the way down.',
     icon: 'oldTown',
   },
   {
@@ -100,7 +100,7 @@ type Tip = { label: string; value: string };
 const localTips: Tip[] = [
   {
     label: 'Currency',
-    value: 'Euro (€). Most places take cards — small restaurants and beach bars prefer cash.',
+    value: 'Euro (€). Most places take cards - small restaurants and beach bars prefer cash.',
   },
   {
     label: 'High-season hours',
@@ -186,7 +186,7 @@ export default function LandingGuideHvarPage() {
         <div className="mx-auto max-w-container">
           <SectionHeading eyebrow="On the plate" title="Where to Eat" />
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Restaurants we often stop at in Hvar town and on the islands — no official deal, just
+            Restaurants we often stop at in Hvar town and on the islands - no official deal, just
             places we like and keep coming back to.
           </p>
 
@@ -259,7 +259,7 @@ export default function LandingGuideHvarPage() {
         <div className="mx-auto max-w-container">
           <SectionHeading eyebrow="On the chart" title="Hvar Local Map" />
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Old Town, beaches, beach clubs, the local market, ATMs and the pharmacy — everything
+            Old Town, beaches, beach clubs, the local market, ATMs and the pharmacy - everything
             you might need in one place.
           </p>
 
@@ -278,7 +278,7 @@ export default function LandingGuideHvarPage() {
         </div>
       </section>
 
-      {/* Primary CTA — explore tours */}
+      {/* Primary CTA - explore tours */}
       <section
         className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-20"
         style={{

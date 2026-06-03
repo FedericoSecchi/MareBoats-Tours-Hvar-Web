@@ -7,7 +7,7 @@ export const BUSINESS_INFO = {
   googleMapsUrl: 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA',
   googleReviewUrl: 'https://g.page/r/Cd7dvQcuwbZ7EBM/review',
   hours: 'Mo-Su 08:00-21:00',
-  languages: ['English', 'Croatian', 'Italian', 'Spanish'],
+  languages: ['English', 'Croatian', 'Italian', 'Spanish', 'German'],
 } as const;
 
 export type TourImage = { src: string; alt: string };
@@ -34,6 +34,8 @@ export type TourRecord = {
   highlights: string[];
   images: TourImage[];
   keywords: string[];
+  /** Structured pricing breakdown rendered on the tour detail page */
+  pricingOptions?: { label: string; price: string; note: string }[];
 };
 
 const MEETING = 'MareBoats barrel, Hvar Harbour main dock';
@@ -169,12 +171,12 @@ The route takes you to five islands and hits three caves, four beaches and a blu
 
 After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon — shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
 
-We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants — more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for up to 10 people).
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants — more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for your group only, up to 9 guests).
 
 Message us on WhatsApp with your date and group size — we confirm fast.`,
     duration: '7 hours · Departs 10:00',
     durationIso: 'PT7H',
-    price: '€130/person (group) · €700 private (up to 10)',
+    price: '€130/person (group) · €700 private',
     priceEur: 130,
     includes: [
       'Speedboat and local skipper',
@@ -223,6 +225,10 @@ Message us on WhatsApp with your date and group size — we confirm fast.`,
       '5 islands tour hvar',
       'stiniva bay tour',
       'hvar boat excursion',
+    ],
+    pricingOptions: [
+      { label: 'Shared', price: '€130/person', note: 'up to 8 guests' },
+      { label: 'Private', price: '€700', note: 'your group only · up to 9 guests' },
     ],
   },
 

@@ -16,7 +16,7 @@ import {
 import { toursData } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Hvar Boat Tour Guide — What to Know Before You Go | MareBoats',
+  title: 'Hvar Boat Tour Guide - What to Know Before You Go | MareBoats',
   description:
     'Everything you need for your Hvar boat tour: what to bring, on-board rules, best beaches, local restaurants, and meeting point. Your complete guide.',
   keywords: [
@@ -160,7 +160,7 @@ function AccordionItem({
 }
 
 // ──────────────────────────────────────────────
-// Tour routes — ordered stops per route
+// Tour routes - ordered stops per route
 // ──────────────────────────────────────────────
 const ROUTES = [
   {
@@ -171,15 +171,15 @@ const ROUTES = [
     stops: [
       {
         name: 'Green Cave (Zelena Špilja)',
-        subtitle: 'Ravnik Island — open ceiling, emerald water',
+        subtitle: 'Ravnik Island - open ceiling, emerald water',
         badge: 'You can swim here',
         description:
-          "The Blue Cave's wilder sibling. The Green Cave creates the same optical phenomenon but its interior is larger and open at the top — so the light comes from above, giving the water an intense emerald-green tone. You can actually swim inside. Less regulated, less crowded, and for many visitors the more memorable of the two.",
+          "The Blue Cave's wilder sibling. The Green Cave creates the same optical phenomenon but its interior is larger and open at the top - so the light comes from above, giving the water an intense emerald-green tone. You can actually swim inside. Less regulated, less crowded, and for many visitors the more memorable of the two.",
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.0154069%2C16.2243444',
       },
       {
         name: 'Stiniva Bay',
-        subtitle: 'Hvar — only reachable by boat or steep hike',
+        subtitle: 'Hvar - only reachable by boat or steep hike',
         badge: 'Named Best Beach in Europe',
         description:
           'A hidden cove almost completely enclosed by towering limestone cliffs, with an entrance so narrow that only small boats can pass. The pebble beach inside is completely sheltered, the water crystal clear, and the acoustics of the cliffs create a silence that feels surreal. Named Best Beach in Europe by Which? magazine. Arriving by boat is the only way to skip the 45-minute hike down from the cliffs above.',
@@ -187,7 +187,7 @@ const ROUTES = [
       },
       {
         name: 'Blue Cave (Modra Špilja)',
-        subtitle: 'Biševo Island — 15 permanent residents',
+        subtitle: 'Biševo Island - 15 permanent residents',
         badge: 'Best at noon',
         description:
           'The electric blue glow happens when sunlight enters through an underwater opening and reflects off the white limestone seabed, absorbing red wavelengths and scattering only blue. The cave was carved by wave erosion over millennia. First documented in 1884 by Austrian painter Baron Eugen von Ransonnet, who had the entrance blasted open with dynamite so boats could enter. Biševo is one of the most remote islands in Croatia. Best light: 11am–12pm on calm days.',
@@ -195,27 +195,27 @@ const ROUTES = [
       },
       {
         name: 'Medvidina Cave',
-        subtitle: 'Biševo Island — sea cave at water level',
+        subtitle: 'Biševo Island - sea cave at water level',
         badge: 'Swim-in sea cave',
         // TODO: Nikola to confirm description
         description:
-          'A sea cave on the southern coast of Biševo, accessible by swimming or small dinghy. The interior opens onto vivid turquoise water. Less visited than the Blue Cave — a quieter, wilder stop on the same island.',
+          'A sea cave on the southern coast of Biševo, accessible by swimming or small dinghy. The interior opens onto vivid turquoise water. Less visited than the Blue Cave - a quieter, wilder stop on the same island.',
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=Medvidina%20%C5%A1pilja%2C%20Bi%C5%A1evo',
       },
       {
-        name: 'Veliki Budikovac — Blue Lagoon',
+        name: 'Veliki Budikovac - Blue Lagoon',
         subtitle: 'Natural saltwater lagoon, sheltered and calm',
         badge: 'Natural lagoon, zero waves',
         description:
-          'A natural saltwater lagoon almost entirely enclosed by two islands, creating a sheltered pool of turquoise water so calm it looks artificial. One of the best swimming spots in the region, especially for families. The color changes throughout the day depending on the sun angle — from pale aquamarine in the morning to deep jade by afternoon.',
+          'A natural saltwater lagoon almost entirely enclosed by two islands, creating a sheltered pool of turquoise water so calm it looks artificial. One of the best swimming spots in the region, especially for families. The color changes throughout the day depending on the sun angle - from pale aquamarine in the morning to deep jade by afternoon.',
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.0261501%2C16.2426532',
       },
       {
         name: 'Pakleni Islands (Palmižana / Ždrilca)',
-        subtitle: 'Archipelago of 16 islands — car-free',
+        subtitle: 'Archipelago of 16 islands - car-free',
         badge: 'Car-free, pine-covered',
         description:
-          "The name doesn't mean \"hellish\" — it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
+          "The name doesn't mean \"hellish\" - it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1622432%2C16.3686729',
       },
     ],
@@ -228,35 +228,35 @@ const ROUTES = [
     stops: [
       {
         name: 'Borče Bay',
-        subtitle: 'Milna, Hvar — sheltered bay, first stop',
+        subtitle: 'Milna, Hvar - sheltered bay, first stop',
         badge: 'Calm water',
         // TODO: Nikola to confirm description
         description:
-          'A quiet sheltered bay near Milna village — typically the first stop on the Red Rocks route. Protected from the wind, with calm and clear water. A good spot for an early swim before the main route continues east.',
+          'A quiet sheltered bay near Milna village - typically the first stop on the Red Rocks route. Protected from the wind, with calm and clear water. A good spot for an early swim before the main route continues east.',
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=Bor%C4%8De%20Bay%2C%20Hvar',
       },
       {
         name: 'Red Rocks (Crvena Stijena)',
-        subtitle: 'Hvar — iron-oxide limestone breccia',
+        subtitle: 'Hvar - iron-oxide limestone breccia',
         badge: 'Best cliff jumping on Hvar',
         description:
-          'The color is geology in action. The formations near Milna are breccia — angular limestone fragments cemented with iron-rich minerals. Tectonic forces pushed these layers upright; rain and waves eroded the softer limestone around them, leaving the harder, iron-oxide-stained breccia exposed. The iron oxidized — exactly like metal rusting. The cliffs drop straight into the sea, creating perfect conditions for cliff jumping and some of the best snorkeling on the island.',
+          'The color is geology in action. The formations near Milna are breccia - angular limestone fragments cemented with iron-rich minerals. Tectonic forces pushed these layers upright; rain and waves eroded the softer limestone around them, leaving the harder, iron-oxide-stained breccia exposed. The iron oxidized - exactly like metal rusting. The cliffs drop straight into the sea, creating perfect conditions for cliff jumping and some of the best snorkeling on the island.',
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1395393%2C16.5477497',
       },
       {
         name: 'Dubovica Beach (+ Secret Cave)',
-        subtitle: 'Hvar — 16th-century stone house on the shore',
+        subtitle: 'Hvar - 16th-century stone house on the shore',
         badge: '16th-century stone house',
         description:
-          'A stone house built by a local nobleman sits on the rocky point at the edge of the bay — one of the oldest standing structures on this part of the island. The beach is protected by a small peninsula that cuts the wind, making the water unusually calm and warm even in early season. A small sea cave just off the eastern cliff face is worth exploring by snorkel.',
+          'A stone house built by a local nobleman sits on the rocky point at the edge of the bay - one of the oldest standing structures on this part of the island. The beach is protected by a small peninsula that cuts the wind, making the water unusually calm and warm even in early season. A small sea cave just off the eastern cliff face is worth exploring by snorkel.',
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1459862%2C16.5344875',
       },
       {
         name: 'Pakleni Islands (Ždrilca & Taršće)',
-        subtitle: 'Archipelago of 16 islands — car-free',
+        subtitle: 'Archipelago of 16 islands - car-free',
         badge: 'Car-free, pine-covered',
         description:
-          "The name doesn't mean \"hellish\" — it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
+          "The name doesn't mean \"hellish\" - it comes from \"paklina,\" an old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Almost entirely uninhabited and car-free, the archipelago has the clearest water in the Adriatic, beach bars hidden between pine trees, and a quiet that's hard to find anywhere near a tourist town in summer.",
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1622432%2C16.3686729',
       },
     ],
@@ -264,14 +264,14 @@ const ROUTES = [
 ];
 
 // ──────────────────────────────────────────────
-// Restaurant data — Skipper's Picks
+// Restaurant data - Skipper's Picks
 // ──────────────────────────────────────────────
 const RESTAURANTS = [
   {
     name: 'Tri Grede',
     favorite: true,
     location: 'Uvala Ždrilca, Marinkovac Island (Pakleni)',
-    cuisine: 'Seafood & Mediterranean — boat access only',
+    cuisine: 'Seafood & Mediterranean - boat access only',
     description:
       'A beach restaurant on Marinkovac island accessible only by boat, with colorful beanbags on the pebble beach and a menu built around whatever came off the fishing boats that morning. The squid-ink risotto and grilled fish are outstanding. Family-run, relaxed, no pretension.',
     mustOrder: 'Squid ink risotto, grilled fresh catch',
@@ -281,10 +281,10 @@ const RESTAURANTS = [
   {
     name: 'Moli Onte',
     favorite: false,
-    location: 'Milna Bay, Hvar — arrive by boat, dinghy transfer included',
-    cuisine: 'Dalmatian seafood — 30+ years running',
+    location: 'Milna Bay, Hvar - arrive by boat, dinghy transfer included',
+    cuisine: 'Dalmatian seafood - 30+ years running',
     description:
-      'A family konoba terraced into the hillside above Milna bay, operating for over 30 years. You arrive by boat and they transfer you to the restaurant by dinghy — free of charge. Every table has a view of the bay. Fresh fish, grilled octopus, homemade olive oil. The kind of place with no written menu — the waiter just tells you what\'s good today.',
+      'A family konoba terraced into the hillside above Milna bay, operating for over 30 years. You arrive by boat and they transfer you to the restaurant by dinghy - free of charge. Every table has a view of the bay. Fresh fish, grilled octopus, homemade olive oil. The kind of place with no written menu - the waiter just tells you what\'s good today.',
     mustOrder: 'Fresh grilled fish of the day, octopus salad',
     skippersNote: 'Book ahead in July/August. Worth the detour every time.',
     mapsHref: 'https://www.google.com/maps/search/?api=1&query=Moli%20Onte%2C%20Milna%2C%20Hvar',
@@ -292,10 +292,10 @@ const RESTAURANTS = [
   {
     name: 'Gego',
     favorite: false,
-    location: 'Zaraće Bay, Hvar — 3 mooring buoys for boats',
-    cuisine: 'Seafood, family-run since 2002 — cash only',
+    location: 'Zaraće Bay, Hvar - 3 mooring buoys for boats',
+    cuisine: 'Seafood, family-run since 2002 - cash only',
     description:
-      'Hidden at the end of a narrow road on one of Hvar\'s best beaches — Zaraće bay. Antonella and Nikša have been running this konoba since 2002. Three black mooring buoys for boats. The Tagliatelle Gego is their signature dish and the reason half their regulars come back.',
+      'Hidden at the end of a narrow road on one of Hvar\'s best beaches - Zaraće bay. Antonella and Nikša have been running this konoba since 2002. Three black mooring buoys for boats. The Tagliatelle Gego is their signature dish and the reason half their regulars come back.',
     mustOrder: 'Tagliatelle Gego, octopus salad, panna cotta',
     skippersNote: 'Ask for a table by the rocks if you arrive by boat. Best value restaurant on the island.',
     mapsHref: 'https://www.google.com/maps/search/?api=1&query=Konoba%20Gego%2C%20Zara%C4%87e%2C%20Hvar',
@@ -304,9 +304,9 @@ const RESTAURANTS = [
     name: 'Bacchus Palmižana',
     favorite: false,
     location: 'Sveti Klement Island, Palmižana (Pakleni)',
-    cuisine: 'Traditional Dalmatian — wood-fired oven, 50+ years',
+    cuisine: 'Traditional Dalmatian - wood-fired oven, 50+ years',
     description:
-      'Set in their own olive grove on Sveti Klement island, Bacchus has been cooking with a traditional stone bread oven for over 50 years. The oven gives their meat and fish a flavor you can\'t replicate anywhere else. Good option for groups — they offer set menus. ACI Marina Palmižana is right nearby for mooring.',
+      'Set in their own olive grove on Sveti Klement island, Bacchus has been cooking with a traditional stone bread oven for over 50 years. The oven gives their meat and fish a flavor you can\'t replicate anywhere else. Good option for groups - they offer set menus. ACI Marina Palmižana is right nearby for mooring.',
     mustOrder: 'Anything from the wood-fired oven, grilled octopus',
     skippersNote: 'More suited for groups or a proper dinner. Book in advance for summer.',
     mapsHref: 'https://www.google.com/maps/search/?api=1&query=Bacchus%2C%20Palmi%C5%BEana',
@@ -350,7 +350,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* WHERE WE GO — map + 2 routes (merged) */}
+      {/* WHERE WE GO - map + 2 routes (merged) */}
       <section
         id="where-we-go"
         className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
@@ -466,7 +466,7 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* WHERE TO EAT — map + cards (merged) */}
+      {/* WHERE TO EAT - map + cards (merged) */}
       <section
         id="where-to-eat"
         className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
@@ -474,7 +474,7 @@ export default function GuidePage() {
         <div className="mx-auto max-w-container">
           <SectionHeading eyebrow="Skipper's picks" title="Where to Eat" />
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Spots we often recommend along the route — reachable only by boat or a short walk. Our
+            Spots we often recommend along the route - reachable only by boat or a short walk. Our
             skippers have been anchoring at these places for years.
           </p>
 
@@ -588,7 +588,7 @@ export default function GuidePage() {
         className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
       >
         <div className="mx-auto max-w-3xl">
-          <SectionHeading eyebrow="Common questions" title="FAQ — Before You Book" />
+          <SectionHeading eyebrow="Common questions" title="FAQ - Before You Book" />
           <div className="mt-8 space-y-3">
             {guideFaqs.map((faq, i) => (
               <AccordionItem
@@ -611,7 +611,7 @@ export default function GuidePage() {
         <div className="mx-auto max-w-container">
           <SectionHeading eyebrow="On land" title="Local Tips" />
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Pharmacy, ferry dock, ATM, Old Town landmarks — everything useful within Hvar.
+            Pharmacy, ferry dock, ATM, Old Town landmarks - everything useful within Hvar.
           </p>
           <div className="mt-10">
             <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">

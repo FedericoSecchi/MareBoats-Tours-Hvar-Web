@@ -9,7 +9,7 @@ import { TourCardImage } from '@/components/ui/TourCardImage';
 import { toursData } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Boat Tours Hvar | All Tours from Hvar Harbour — MareBoats',
+  title: 'Boat Tours Hvar | All Tours from Hvar Harbour - MareBoats',
   description:
     'All MareBoats tours: Blue Cave, Red Rocks & Pakleni, Sunset Cruise, Private Charter. Private speedboat tours from Hvar Harbour. Book via WhatsApp.',
   keywords: [
@@ -49,14 +49,14 @@ const TOUR_CARDS: TourCard[] = [
     summary:
       'Our flagship full day: Green Cave, Stiniva, Blue Cave, Budikovac and Pakleni Islands.',
     image: '/img/package-1.jpeg',
-    imageAlt: '5 Islands full day boat tour from Hvar — Blue Cave and Pakleni Islands',
+    imageAlt: '5 Islands full day boat tour from Hvar - Blue Cave and Pakleni Islands',
     waMessage: "Hi! I'd like to book the 5 Islands tour",
   },
   {
     slug: 'red-rocks-pakleni-islands',
     name: 'Red Rocks & Pakleni Islands',
     duration: '4 hours · morning or afternoon',
-    price: '€400 private (up to 8)',
+    price: '€400 private (up to 9)',
     summary:
       'Cliffs, a secret cave, Dubovica Beach and the Pakleni archipelago in one half-day.',
     image: '/img/destination-4.jpeg',
@@ -82,17 +82,17 @@ const TOUR_CARDS: TourCard[] = [
     summary:
       'Private evening cruise along the Hvar coastline. Calm water, golden light, best photos of the day.',
     image: '/img/package-5.jpeg',
-    imageAlt: 'Sunset boat cruise from Hvar — golden hour on the Adriatic',
+    imageAlt: 'Sunset boat cruise from Hvar - golden hour on the Adriatic',
     waMessage: "Hi! I'd like to book the Sunset Cruise",
   },
   {
     slug: 'private-boat-charter',
     name: 'Private Charter',
     duration: 'Full day · custom route',
-    price: '€500 + fuel · up to 8',
+    price: '€500 + fuel · up to 9',
     summary: 'Your boat, your skipper, your itinerary. Design the day you want on the Adriatic.',
     image: '/img/package-4.jpeg',
-    imageAlt: 'Private boat charter from Hvar — custom itinerary',
+    imageAlt: 'Private boat charter from Hvar - custom itinerary',
     waMessage: "Hi! I'd like to book a Private Charter",
   },
 ];
@@ -122,7 +122,7 @@ const HOW_IT_WORKS = [
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Boat Tours from Hvar — MareBoats',
+  name: 'Boat Tours from Hvar - MareBoats',
   description:
     'All private speedboat tours, sunset cruises and charters from Hvar Harbour, Croatia.',
   itemListElement: TOUR_CARDS.map((t, i) => ({

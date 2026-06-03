@@ -40,10 +40,10 @@ const sections: Section[] = [
     bullets: [
       'The boat leaves with a full tank. Please return it with a full tank.',
       'Fuel stations are in Hvar, Stari Grad, Vis and Komiža. Marina Palmižana refills on request.',
-      'Diesel/petrol type is labelled at the filler cap — ask before first refill if unsure.',
+      'Diesel/petrol type is labelled at the filler cap - ask before first refill if unsure.',
       'If the engine behaves oddly, stop and call us on WhatsApp before continuing.',
     ],
-    note: 'Tip: keep the receipt of your last refill — helps us if we ever need to check consumption.',
+    note: 'Tip: keep the receipt of your last refill - helps us if we ever need to check consumption.',
   },
   {
     id: 'speed-zones',
@@ -52,10 +52,10 @@ const sections: Section[] = [
     bullets: [
       'Low-speed zones are marked on the chart on board and with buoys on the water.',
       'Inside harbours, anchorages and near swimmers: 3 knots maximum.',
-      'Croatian maritime police patrol actively — fines under national laws are real and significant.',
+      'Croatian maritime police patrol actively - fines under national laws are real and significant.',
       'When in doubt, slow down. A slow passage protects swimmers, other boats and the hull.',
     ],
-    note: 'Low-speed zones exist because of national laws and safety — not our preference. Respect them always.',
+    note: 'Low-speed zones exist because of national laws and safety - not our preference. Respect them always.',
   },
   {
     id: 'safety',
@@ -65,7 +65,7 @@ const sections: Section[] = [
       'Life jackets for every passenger (adult + child sizes) are on board. Show your guests where they are before you leave.',
       'First-aid kit, flares and fire extinguisher are in the labelled locker.',
       'VHF radio: channel 16 for emergencies. Coast guard: 195. All-purpose emergency: 112.',
-      'Anchor + fenders are included — short instructions are printed on board.',
+      'Anchor + fenders are included - short instructions are printed on board.',
     ],
   },
   {
@@ -85,10 +85,10 @@ const sections: Section[] = [
     eyebrow: 'Section 5',
     title: 'Alcohol & Smoking',
     bullets: [
-      'The skipper/person at the helm may not drink alcohol — the same rules as driving a car apply on the water.',
+      'The skipper/person at the helm may not drink alcohol - the same rules as driving a car apply on the water.',
       'Guests can enjoy drinks responsibly. Glass bottles are fine on the deck.',
       'Smoking is only allowed outside the cabin, never inside. Use a closed container for ashes.',
-      'Please bring all rubbish back to the harbour — there are bins at the dock.',
+      'Please bring all rubbish back to the harbour - there are bins at the dock.',
     ],
   },
   {
@@ -110,7 +110,7 @@ const rentalFaqs: Faq[] = [
   {
     question: 'What if I run out of fuel?',
     answer:
-      'Call us on WhatsApp — we can arrange a fuel delivery or tow. A fuel gauge is on board; watch it and refill in good time to avoid ending the day early.',
+      'Call us on WhatsApp - we can arrange a fuel delivery or tow. A fuel gauge is on board; watch it and refill in good time to avoid ending the day early.',
   },
   {
     question: 'Can I take the boat to Italy?',
@@ -120,12 +120,12 @@ const rentalFaqs: Faq[] = [
   {
     question: 'What happens in bad weather?',
     answer:
-      "If the forecast turns unsafe, we reschedule or refund — your safety matters more than the day on the water. Don't push out against a strong wind warning.",
+      "If the forecast turns unsafe, we reschedule or refund - your safety matters more than the day on the water. Don't push out against a strong wind warning.",
   },
   {
     question: 'Can I hire a skipper if I change my mind?',
     answer:
-      'Yes. A skipper can join on short notice — message us on WhatsApp and we will confirm availability. Many first-time guests in Croatian waters prefer this.',
+      'Yes. A skipper can join on short notice - message us on WhatsApp and we will confirm availability. Many first-time guests in Croatian waters prefer this.',
   },
   {
     question: 'What licence do I need?',
@@ -135,7 +135,7 @@ const rentalFaqs: Faq[] = [
   {
     question: 'Can I swim from the boat?',
     answer:
-      'Yes — anchor in a safe cove, turn off the engine and always keep one person on board. Never swim near a running propeller.',
+      'Yes - anchor in a safe cove, turn off the engine and always keep one person on board. Never swim near a running propeller.',
   },
 ];
 
@@ -224,7 +224,7 @@ export default function LandingRentalPage() {
             Boat Rental · House rules
           </p>
           <h1 className="mt-3 font-display text-[2rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] sm:text-4xl md:text-6xl">
-            Boat Rental — Important Rules
+            Boat Rental - Important Rules
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
             We want you to have fun and stay safe. Six short sections cover everything that
@@ -238,7 +238,7 @@ export default function LandingRentalPage() {
         <SectionBlock key={s.id} s={s} index={i} />
       ))}
 
-      {/* Scooter rental — Explore by land too */}
+      {/* Scooter rental - Explore by land too */}
       <section
         id="scooter-rental"
         className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"
@@ -277,7 +277,7 @@ export default function LandingRentalPage() {
 
           <ul className="mt-6 flex flex-col gap-3">
             {[
-              '6 scooters available — book early in peak season',
+              '6 scooters available - book early in peak season',
               'Valid driver\u2019s license required (car licence accepted for 50cc)',
               'Pickup at Hvar Harbour, same meeting point as the boat tours',
               'Helmets and basic safety briefing included',
@@ -347,7 +347,7 @@ export default function LandingRentalPage() {
             Call Nikola Before You Leave
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Anything unclear? Anything odd about the boat? Message us before you set off — we
+            Anything unclear? Anything odd about the boat? Message us before you set off - we
             always reply fast.
           </p>
 

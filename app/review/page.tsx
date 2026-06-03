@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ReviewRedirectPage() {
   return (
     <>
-      {/* Instant meta refresh — fires before React hydration, works without JS. */}
+      {/* Instant meta refresh - fires before React hydration, works without JS. */}
       <meta httpEquiv="refresh" content={`0; url=${TARGET}`} />
       <main className="flex min-h-[70vh] items-center justify-center bg-[color:var(--bg)] px-4 py-20 text-center text-[color:var(--white)]">
         <div className="max-w-md">

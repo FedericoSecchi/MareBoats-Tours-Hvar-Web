@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 /**
- * /qr — single-QR hub for all physical touchpoints (stickers, cards, stand).
+ * /qr - single-QR hub for all physical touchpoints (stickers, cards, stand).
  * noindex: true (handled by <meta name="robots"> below and sitemap exclusion).
- * No navbar, no footer, no floating WhatsApp button — dedicated full-screen
+ * No navbar, no footer, no floating WhatsApp button - dedicated full-screen
  * experience optimised for mobile.
  */
 
@@ -41,7 +41,7 @@ const QR_BUTTONS: QrButton[] = [
   {
     icon: '🌊',
     label: 'On Tour',
-    description: 'Info about every stop — download for offline use',
+    description: 'Info about every stop - download for offline use',
     href: '/on-tour',
     variant: 'secondary',
     badge: '⬇ Save offline',
@@ -135,7 +135,7 @@ function Card({
 export default function QrHubPage() {
   return (
     <>
-      {/* noindex — /qr is a physical entry point only. */}
+      {/* noindex - /qr is a physical entry point only. */}
       <meta name="robots" content="noindex, nofollow" />
 
       <main className="relative min-h-[100svh] overflow-hidden bg-[color:var(--bg)] text-[color:var(--white)]">
@@ -153,7 +153,7 @@ export default function QrHubPage() {
           {/* Small logo top-left as home link */}
           <Link
             href="/"
-            aria-label="MareBoats Hvar — home"
+            aria-label="MareBoats Hvar - home"
             className="inline-flex w-fit rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60"
           >
             <Image

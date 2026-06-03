@@ -6,7 +6,7 @@ import { featuredTours, type TourRecord } from '@/lib/tours-data';
 export const metadata: Metadata = {
   title: 'Private Boat Tours Hvar | Blue Cave & Island Tours',
   description:
-    'Choose your day on the Adriatic — Blue Cave, Pakleni Islands, sunset cruise or private charter. Private boat from Hvar Harbour, book on WhatsApp.',
+    'Choose your day on the Adriatic - Blue Cave, Pakleni Islands, sunset cruise or private charter. Private boat from Hvar Harbour, book on WhatsApp.',
   robots: {
     index: false,
     follow: false,
@@ -139,7 +139,7 @@ export default function LandingExplorePage() {
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
             Four private boat tours from Hvar Harbour. Local captain, snorkeling masks and icebox
-            on every trip. Pick your day — we handle the rest.
+            on every trip. Pick your day - we handle the rest.
           </p>
         </div>
       </section>

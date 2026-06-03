@@ -7,7 +7,7 @@ import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { getMapboxStaticUrl, type GeoCoords } from '@/lib/mapbox';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula — MareBoats',
+  title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula - MareBoats',
   description:
     'Private speedboat transfers from Hvar to Split, Split Airport, Brač, Korčula and Biševo. Fast, private, door-to-dock. Book via WhatsApp.',
   keywords: [
@@ -198,7 +198,7 @@ const HOW_IT_WORKS = [
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Speedboat Transfers from Hvar — MareBoats',
+  name: 'Speedboat Transfers from Hvar - MareBoats',
   description: 'Private speedboat transfers between Hvar and Split, Brač, Korčula, Biševo.',
   itemListElement: TRANSFERS.map((t, i) => ({
     '@type': 'ListItem',

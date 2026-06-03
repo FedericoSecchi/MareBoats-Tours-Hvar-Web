@@ -8,9 +8,9 @@ import { rulesAndRentals, type Rule } from '@/lib/guide-content';
 
 export const metadata: Metadata = {
   ...generateSEO({
-    title: 'Rentals Hvar — Boat Rental & Water Scooter | MareBoats',
+    title: 'Rentals Hvar - Boat Rental & Water Scooter | MareBoats',
     description:
-      'Rent a boat in Hvar with or without skipper, or hop on a water scooter. No licence? No problem. MareBoats rentals — pickup at Hvar Harbour.',
+      'Rent a boat in Hvar with or without skipper, or hop on a water scooter. No licence? No problem. MareBoats rentals - pickup at Hvar Harbour.',
     keywords: [
       'boat rental hvar',
       'rent a boat hvar croatia',
@@ -48,7 +48,7 @@ const faqSchema = {
       name: 'Do I need a license to rent a boat in Hvar?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "For self-drive rental you need a valid boating license. If you don't have one, our skippered private tours are the perfect alternative — no license needed.",
+        text: "For self-drive rental you need a valid boating license. If you don't have one, our skippered private tours are the perfect alternative - no license needed.",
       },
     },
     {
@@ -64,7 +64,7 @@ const faqSchema = {
       name: "What's included in the boat rental?",
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Skippered tours include fuel, bottled water, icebox, and snorkel gear. Self-drive rental includes the boat only — fuel and equipment are extra.',
+        text: 'Skippered tours include fuel, bottled water, icebox, and snorkel gear. Self-drive rental includes the boat only - fuel and equipment are extra.',
       },
     },
     {
@@ -72,7 +72,7 @@ const faqSchema = {
       name: 'Do I need a boat licence to rent a boat in Hvar?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included — no licence needed.",
+        text: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included - no licence needed.",
       },
     },
     {
@@ -88,7 +88,7 @@ const faqSchema = {
       name: 'What is included in the boat rental price?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional — included in private tour packages or available on request.',
+        text: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional - included in private tour packages or available on request.',
       },
     },
     {
@@ -96,7 +96,7 @@ const faqSchema = {
       name: 'Can I choose my own route?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Yes. With a skipper, we'll suggest the best spots based on conditions that day — but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
+        text: "Yes. With a skipper, we'll suggest the best spots based on conditions that day - but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
       },
     },
     {
@@ -104,7 +104,7 @@ const faqSchema = {
       name: 'Can I rent a boat in Hvar without a licence?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Yes — we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
+        text: "Yes - we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
       },
     },
   ],
@@ -116,8 +116,8 @@ const itemListSchema = {
   name: 'Rentals from MareBoats Hvar',
   description: 'Boat rental and water scooter at Hvar Harbour, Croatia.',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-skipper`, name: 'Boat Rental — With Skipper' },
-    { '@type': 'ListItem', position: 2, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental — Self-Drive' },
+    { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-skipper`, name: 'Boat Rental - With Skipper' },
+    { '@type': 'ListItem', position: 2, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental - Self-Drive' },
     { '@type': 'ListItem', position: 3, url: `${SITE}/rentals/#water-scooter`, name: 'Water Scooter' },
   ],
 };
@@ -125,7 +125,7 @@ const itemListSchema = {
 const FAQS = [
   {
     q: 'Do I need a boat licence to rent a boat in Hvar?',
-    a: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included — no licence needed.",
+    a: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included - no licence needed.",
   },
   {
     q: 'How many people can rent a boat in Hvar?',
@@ -133,15 +133,15 @@ const FAQS = [
   },
   {
     q: 'What is included in the boat rental price?',
-    a: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional — included in private tour packages or available on request.',
+    a: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional - included in private tour packages or available on request.',
   },
   {
     q: 'Can I choose my own route?',
-    a: "Yes. With a skipper, we'll suggest the best spots based on conditions that day — but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
+    a: "Yes. With a skipper, we'll suggest the best spots based on conditions that day - but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
   },
   {
     q: 'Can I rent a boat in Hvar without a licence?',
-    a: "Yes — we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
+    a: "Yes - we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
   },
 ];
 
@@ -152,7 +152,7 @@ const RENTAL_RULES = [
   },
   {
     title: 'Speed zones',
-    body: 'Maritime police actively enforce speed limits around anchorages and swimmers. Real fines apply — please respect every zone.',
+    body: 'Maritime police actively enforce speed limits around anchorages and swimmers. Real fines apply - please respect every zone.',
   },
   {
     title: 'Alcohol & smoking',
@@ -160,7 +160,7 @@ const RENTAL_RULES = [
   },
   {
     title: 'Damage policy',
-    body: 'Report any damage immediately — small things get handled easily when flagged early. A deposit may apply on the boat rental.',
+    body: 'Report any damage immediately - small things get handled easily when flagged early. A deposit may apply on the boat rental.',
   },
   {
     title: 'Return',
@@ -229,7 +229,7 @@ export default function RentalsPage() {
             Rentals Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Boat rental, water scooter &amp; more — pickup at Hvar Harbour.
+            Boat rental, water scooter &amp; more - pickup at Hvar Harbour.
           </p>
         </div>
       </section>
@@ -245,7 +245,7 @@ export default function RentalsPage() {
           </h2>
 
           <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Two ways to rent — come with a{' '}
+            Two ways to rent - come with a{' '}
             <strong className="text-[color:var(--white)]">local skipper included</strong> for the
             full-service experience, or take the helm yourself with our{' '}
             <strong className="text-[color:var(--white)]">self-drive option</strong>. Both pickup
@@ -294,7 +294,7 @@ export default function RentalsPage() {
                   'No licence needed',
                   'Local skipper, custom route',
                   'Fuel, water & snorkel included',
-                  'Up to 8 people — private group',
+                  'Up to 8 people - private group',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
@@ -416,7 +416,7 @@ export default function RentalsPage() {
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                   src="/img/waterscooter.jpeg"
-                  alt="Water scooter rental in Hvar — ride the Adriatic waves"
+                  alt="Water scooter rental in Hvar - ride the Adriatic waves"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"
                   className="object-cover"
@@ -461,7 +461,7 @@ export default function RentalsPage() {
         </div>
       </section>
 
-      {/* On Board — Good to Know */}
+      {/* On Board - Good to Know */}
       <section
         id="on-board"
         className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-16 md:py-20"

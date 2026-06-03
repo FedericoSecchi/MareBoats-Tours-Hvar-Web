@@ -3,7 +3,7 @@ import { BUSINESS_INFO } from '@/lib/tours-data';
 
 export const metadata: Metadata = {
   title: 'Thanks for Sailing with MareBoats',
-  description: 'Leave a Google review for MareBoats Tours Hvar — it takes 30 seconds.',
+  description: 'Leave a Google review for MareBoats Tours Hvar - it takes 30 seconds.',
   robots: {
     index: false,
     follow: false,

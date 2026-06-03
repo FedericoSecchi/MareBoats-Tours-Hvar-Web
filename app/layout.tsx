@@ -14,7 +14,7 @@ import { JsonLd } from '@/components/ui/JsonLd';
 export const metadata: Metadata = {
   metadataBase: new URL('https://mareboatshvar.com'),
   title: {
-    default: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
+    default: 'Mare Boats Hvar - Private Boat Tours in Hvar, Croatia',
     template: '%s | Mare Boats Hvar',
   },
   description:
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://mareboatshvar.com',
     siteName: 'Mare Boats Hvar',
-    title: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
+    title: 'Mare Boats Hvar - Private Boat Tours in Hvar, Croatia',
     description:
       'Private boat tours from Hvar, Croatia. Blue Cave excursions, Red Rocks, Pakleni Islands, boat rental and transfers. Local skipper, WhatsApp booking.',
     images: [
@@ -58,13 +58,13 @@ export const metadata: Metadata = {
         url: '/img/mareboats-og.png',
         width: 1200,
         height: 630,
-        alt: 'Mare Boats Hvar — Private boat tours in Hvar, Croatia',
+        alt: 'Mare Boats Hvar - Private boat tours in Hvar, Croatia',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mare Boats Hvar — Private Boat Tours in Hvar, Croatia',
+    title: 'Mare Boats Hvar - Private Boat Tours in Hvar, Croatia',
     description:
       'Private boat tours from Hvar, Croatia. Blue Cave, Red Rocks, Pakleni Islands, sunset cruises and transfers. Local skipper, WhatsApp booking.',
     images: ['/img/mareboats-og.png'],

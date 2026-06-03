@@ -9,7 +9,11 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'How many people can join a private tour?',
     answer:
-      'Up to 8 guests on the boat. We do not run shared tours — every booking is private, only your group.',
+      'For private tours, up to 9 guests on one boat. The 5 Islands tour is also available as a shared group booking: you pay per seat and join other guests. All other tours are private only.',
+  },
+  {
+    question: 'What languages do you speak on board?',
+    answer: 'English, Croatian, Italian, Spanish and German.',
   },
   {
     question: 'What happens if the weather is bad?',
@@ -24,7 +28,7 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'Can we customize the route?',
     answer:
-      'Yes — every tour is private. Want more time at Blue Cave, a quieter beach or a specific lunch stop? Tell us when you book and the captain plans around it.',
+      'Yes. Want more time at Blue Cave, a quieter beach or a specific lunch stop? Tell us when you book and the captain plans around it.',
   },
   {
     question: 'How do I book a boat tour in Hvar?',

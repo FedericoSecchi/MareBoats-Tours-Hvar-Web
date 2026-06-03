@@ -35,7 +35,7 @@ const RESTAURANTS = [
     favorite: true,
     type: 'Traditional Dalmatian · Hvar Old Town',
     description:
-      "Tucked into the stone streets above the main square, Menego has been serving traditional Dalmatian food for decades. The house charcuterie board — prosciutto, sheep's cheese, olives — is the best on the island. No frills, no tourists who haven't been told about it, terrace views of the harbor.",
+      "Tucked into the stone streets above the main square, Menego has been serving traditional Dalmatian food for decades. The house charcuterie board - prosciutto, sheep's cheese, olives - is the best on the island. No frills, no tourists who haven't been told about it, terrace views of the harbor.",
     mustOrder: 'Dalmatian platter, peka (order in advance), local wine',
     note: 'Go at lunch. Dinner fills up with yacht crowd.',
   },
@@ -53,7 +53,7 @@ const RESTAURANTS = [
     favorite: false,
     type: 'Cocktails & sunset · Hvar coast',
     description:
-      "Not a restaurant — a ritual. Hula Hula is the unofficial sunset spot of Hvar. Perched on rocks above the sea west of town, it fills up from 5pm with a crowd that's there for exactly one thing: watching the sun drop into the Adriatic with a drink in hand. No food worth noting. Come for the sunset.",
+      "Not a restaurant - a ritual. Hula Hula is the unofficial sunset spot of Hvar. Perched on rocks above the sea west of town, it fills up from 5pm with a crowd that's there for exactly one thing: watching the sun drop into the Adriatic with a drink in hand. No food worth noting. Come for the sunset.",
     mustOrder: "Whatever's in a glass",
     note: 'Get there by 5:30 for a good spot. Sunset is usually around 8:30 in July.',
   },
@@ -75,7 +75,7 @@ const SIGHTS = [
     time: '1–2 hours',
     seasonal: false,
     description:
-      "The fortress above Hvar Town was built in the 13th century and expanded by the Venetians in the 16th. Climb up through the old town streets or take the path from the harbor — 20 minutes either way. The view from the top is the best panorama of the Pakleni Islands and the surrounding sea. Inside there's a small wine bar.",
+      "The fortress above Hvar Town was built in the 13th century and expanded by the Venetians in the 16th. Climb up through the old town streets or take the path from the harbor - 20 minutes either way. The view from the top is the best panorama of the Pakleni Islands and the surrounding sea. Inside there's a small wine bar.",
   },
   {
     name: 'Hvar Arsenal & Public Theatre (1612)',
@@ -83,10 +83,10 @@ const SIGHTS = [
     time: '30–45 min',
     seasonal: false,
     description:
-      'The Arsenal was built in the 14th century as a Venetian shipyard for the war galley. The theater on the upper floor, opened in 1612, is one of the oldest public theaters in Europe — built when Shakespeare was still alive. The interior has a neo-baroque auditorium with 33 boxes on two floors, restored to its 19th century appearance.',
+      'The Arsenal was built in the 14th century as a Venetian shipyard for the war galley. The theater on the upper floor, opened in 1612, is one of the oldest public theaters in Europe - built when Shakespeare was still alive. The interior has a neo-baroque auditorium with 33 boxes on two floors, restored to its 19th century appearance.',
   },
   {
-    name: 'Kino Mediteran — Open Air Cinema',
+    name: 'Kino Mediteran - Open Air Cinema',
     entry: '~€5',
     time: '2 hours',
     seasonal: true,
@@ -99,7 +99,7 @@ const SIGHTS = [
     time: '15–20 min',
     seasonal: false,
     description:
-      "The main square's cathedral, built between the 16th and 17th centuries on the foundations of a Benedictine monastery. The bell tower is 16th century. Simple interior, free entry. The square in front — Trg svetog Stjepana — is the longest in Dalmatia.",
+      "The main square's cathedral, built between the 16th and 17th centuries on the foundations of a Benedictine monastery. The bell tower is 16th century. Simple interior, free entry. The square in front - Trg svetog Stjepana - is the longest in Dalmatia.",
   },
   {
     name: 'Franciscan Monastery & Museum',
@@ -255,7 +255,7 @@ export default function ExplorePage() {
             Explore Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Beaches, islands, restaurants and local tips. Everything you need to make the most of your time here — on land and on the water.
+            Beaches, islands, restaurants and local tips. Everything you need to make the most of your time here - on land and on the water.
           </p>
         </div>
         <div className="relative z-10 mx-auto mt-10 w-full max-w-container grid grid-cols-1 gap-4 px-4 md:grid-cols-3">
@@ -395,7 +395,7 @@ export default function ExplorePage() {
           <SectionHeading
             eyebrow="Swimming & sun"
             title="Beaches Near Hvar Town"
-            intro="From beach clubs to naturist coves — options within reach of town, no boat required (mostly)."
+            intro="From beach clubs to naturist coves - options within reach of town, no boat required (mostly)."
           />
           <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
             {BEACHES.map((b) => (
@@ -491,7 +491,7 @@ export default function ExplorePage() {
             Want to see all of this from the water?
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            The best coves and restaurants are only reachable by boat. Pick your tour and we take you there — private boat, local captain.
+            The best coves and restaurants are only reachable by boat. Pick your tour and we take you there - private boat, local captain.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <WhatsAppTrackedLink
