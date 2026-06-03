@@ -47,8 +47,8 @@ const CREW: Crew[] = [
   {
     name: 'Josip',
     role: 'Head Skipper',
-    languages: ['Croatian', 'English'],
-    bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid \u2014 Hvar is home. Lived in England for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
+    languages: ['Croatian', 'English', 'German'],
+    bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid \u2014 Hvar is home. Lived in Germany for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
     image: '/img/josip-skipper.jpg',
     imageAlt: 'Josip — head skipper at MareBoats Hvar',
     objectPosition: '50% 40%',
@@ -192,7 +192,7 @@ export default function AboutPage() {
               },
               {
                 title: 'Any group size',
-                body: 'RIBs from 8 to 12 seats. For larger groups, multiple boats depart together.',
+                body: 'Speedboats fit up to 9 guests. For larger groups, multiple boats depart together.',
               },
             ].map((item) => (
               <li
@@ -221,6 +221,9 @@ export default function AboutPage() {
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
               Who you&apos;ll meet at the barrel
             </h2>
+            <p className="mt-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
+              In Hvar, tour operators work from wooden barrels on the harbour. On the day of your tour, come find us there and we&apos;ll take you to the boat.
+            </p>
           </div>
 
           <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
