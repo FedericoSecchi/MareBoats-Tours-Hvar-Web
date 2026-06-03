@@ -54,13 +54,13 @@ export const toursData: TourRecord[] = [
     tagline: 'Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming.',
     shortDescription:
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
-    description: `The Red Rocks & Pakleni Islands tour is the local route - the one Nikola takes when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
+    description: `The Red Rocks & Pakleni Islands tour is the local route: the one Nikola takes when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
-We depart from Hvar Harbour and head first to Borče Bay in Milna - a quiet cove on the southern coast, calm water, no other boats. It is the kind of place you only find if you know where to look. From there we cruise to Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
+We depart from Hvar Harbour and head first to Borče Bay in Milna, a quiet cove on the southern coast, calm water, no other boats. It is the kind of place you only find if you know where to look. From there we cruise to Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
 
-Next stop is Dubovica Beach - one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
+Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-Available as a private half-day (4 hours, 09:00–13:00), private full-day (6 hours, more time at every stop), or shared group tour (join a small group from €85 per person - requires a minimum of 4 guests to start the tour).
+Available as a private half-day (4 hours, 09:00–13:00), private full-day (6 hours, more time at every stop), or shared group tour (join a small group from €85 per person. Requires a minimum of 4 guests to start the tour).
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: '4 hours (half-day) · 6 hours (full-day)',
