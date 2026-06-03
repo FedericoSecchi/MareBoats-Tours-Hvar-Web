@@ -419,21 +419,18 @@ export default function GuidePage() {
                       key={stop.name}
                       className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
                     >
-                      <div className="flex min-w-0 items-start justify-between gap-3">
-                        <div className="flex min-w-0 items-center gap-3">
-                          <span
-                            aria-hidden="true"
-                            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)]/15 font-body text-xs font-bold tabular-nums text-[color:var(--accent)]"
-                          >
-                            {idx + 1}
+                      <div className="flex items-start gap-3">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)]/15 font-body text-xs font-bold tabular-nums text-[color:var(--accent)]">
+                          {idx + 1}
+                        </span>
+                        <div className="flex flex-col gap-1">
+                          <span className="self-start whitespace-nowrap rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                            {stop.badge}
                           </span>
-                          <h4 className="min-w-0 font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                          <h4 className="font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
                             {stop.name}
                           </h4>
                         </div>
-                        <span className="shrink-0 whitespace-nowrap rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
-                          {stop.badge}
-                        </span>
                       </div>
                       <p className="mt-1.5 font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]/70">
                         {stop.subtitle}
