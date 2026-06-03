@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 2 Junio 2026**
+**Actualizado: 3 Junio 2026**
 
 ---
 
@@ -12,7 +12,7 @@
 
 ## Equipo (para copy)
 - **Nikola** — fundador, nació y creció en Hvar, dirige las operaciones, skipper ocasional, habla inglés y croata
-- **Josip** — hermano de Nikola, ~38 años, head skipper, toda su vida en el agua, vivió en Inglaterra, muy querido por los clientes, habla inglés y croata
+- **Josip** — hermano de Nikola, ~38 años, head skipper, toda su vida en el agua, vivió en Alemania, muy querido por los clientes, habla inglés, croata y alemán
 - **Federico (Fede)** — argentino, ciudadanía italiana, empezó en Optimist a los 6 años, mundiales y sudamericanos representando Argentina, coach de la Federación de Vela de Ecuador 2 años, trabajó con la clase 69F, clásicos y cruceros hasta 90 pies, maneja el marketing de MareBoats, skipper ocasional. Habla español, italiano e inglés. Sin título/cargo en la web.
 - **Coti** — diseño, redes sociales, posts GBP
 
@@ -22,7 +22,7 @@
 - **Red Mariner**: cómodo 5 · máximo 8 personas
 - **Jolly**: cómodo 6 · máximo 9 personas
 - **Clubman**: cómodo 6 · máximo 9 personas
-- Motores: 150–300hp
+- Motores: 150-300hp
 - Equipamiento: sun canopy, sistema de música, conservadora, snorkel y máscaras
 - Tours privados (grupo propio) o compartidos (sale cuando se llena). Grupos grandes: múltiples speedboats en convoy. Máximo convoy: 14 personas (2 botes).
 - **NO mencionar "RIB" en copy** — decisión consciente de Nikola. Usar "speedboat" siempre.
@@ -37,7 +37,7 @@
 - Herramienta de código: Claude Code (reemplazó a Cursor desde 23/05)
 - NEXT_PUBLIC_ env vars son build-time — hardcodear Measurement ID directamente en layout.tsx
 
-## Arquitectura de páginas — estado al 02/06/2026
+## Arquitectura de páginas — estado al 03/06/2026
 - `/rentals/` — página unificada: Boat Rental (con/sin skipper, con/sin licencia) + Water Scooter + FAQ. Es la página SEO principal para keywords de rental.
 - `/boat-rental/` — eliminada. Redirect 301 → `/rentals/` en netlify.toml.
 - `/landing/pre-tour/` — reescrita el 01/06. Ver sección abajo.
@@ -66,13 +66,14 @@
 - No fumar a bordo
 - No hay baño a bordo — guests usan los de restaurantes en paradas
 - Formularios de contacto: NO. Solo WhatsApp
-- Water Scooter addon: €40/unit — disponible en todos los tours EXCEPTO tours a Vis (isla). Máx 2h/unit, no recargable a bordo.
+- Water Scooter addon: €40/unit — disponible en todos los tours EXCEPTO tours a Vis (isla) y Sunset Cruise. Máx 2h/unit, no recargable a bordo.
 - Photo & Video Shoot: €200 — lo hace Fede (drone + underwater + on board). Full gallery post-tour. Disponible en todos los tours.
 - NO mencionar año exacto de fundación de MareBoats
 - NO mencionar RIB ni mostrar foto del RIB — usar "speedboat" siempre.
 - Boat rental sin licencia: MareBoats lo ofrece directamente (no mencionar "partners" ni operadores externos)
 - Em-dashes (—) y en-dashes (–) prohibidos en copy del sitio — usar coma, punto, dos puntos o reescribir
 - **"Lunch not included"** — wording unificado en todo el sitio desde 02/06
+- Capacidad máxima: 9 personas por barco. Nunca mencionar 12. Framing: "full-size speedboats, small groups."
 
 ## Design tokens
 ```
@@ -116,7 +117,7 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## ✅ ESTADO REAL al 02/06/2026
+## ✅ ESTADO REAL al 03/06/2026
 
 ### GA4
 - `whatsapp_click` verificado ✅ — 41 eventos · 24 usuarios únicos (últimos 28 días)
@@ -170,7 +171,7 @@ Nikola
 | 5 Islands & Blue Cave | Blue Cave €24 · Green Cave €12 · Lunch not included (Pakleni o Palmizana) | Water Scooter €40 — solo Pakleni/Palmizana, NO leg Vis/Bisevo |
 | Red Rocks & Pakleni | Lunch not included — restaurants at Pakleni | Water Scooter €40 |
 | Pakleni Half Day | None | Water Scooter €40 |
-| Sunset Cruise | None | Water Scooter €40 |
+| Sunset Cruise | None | — |
 | Private Charter | Fuel not included | Water Scooter €40 |
 | Split Transfer | None | — |
 
@@ -208,6 +209,15 @@ Todos parten de Hvar Port: `{ lon: 16.442975, lat: 43.169008 }`
 
 ---
 
+## /about/ — estado al 03/06/2026
+- Fotos crew: `public/img/josip-skipper.jpg` y `public/img/fede-skipper.jpg` — actualizadas 03/06
+- Crew cards: `aspect-[3/4]` (portrait), `objectPosition` individual por persona
+- "The barrel" explicado: "In Hvar, tour operators work from wooden barrels on the harbour. On the day of your tour, come find us there and we'll take you to the boat."
+- Passenger copy: "Up to 9 passengers per boat." + párrafo separado: "Full-size speedboats, small groups. We don't fill them to the limit. That's the whole idea."
+- Sin RIBs, sin em-dashes, sin en-dashes en toda la página
+
+---
+
 ## Copy — "Lunch not included" unificado (02/06)
 Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
 | Tour | Wording |
@@ -220,7 +230,7 @@ Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
 
 ---
 
-## PLAN UNIFICADO — Estado al 02/06/2026
+## PLAN UNIFICADO — Estado al 03/06/2026
 
 ### ✅ BLOQUE 0 — CERRADO
 ### ✅ SEO Website — CERRADO 31/05
@@ -233,6 +243,19 @@ Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
 - ✅ Water Scooter add-on en accordion pre-tour (5 tours, restricción Vis correcta)
 - ✅ /rentals/: tipografía 16px, On Board cards, Rental Rules tabla, WS card centrada
 - ✅ /transfers/: Mapbox Static Images API con rutas náuticas reales
+
+### ✅ Mobile Audit — CERRADO 03/06
+- ✅ h1 heroes: `text-[2rem] sm:text-4xl md:text-6xl` en 10 páginas
+- ✅ Stop cards /guide/: badge arriba, nombre full width, número preservado
+- ✅ Route heading /guide/: flex-col, título arriba, Maps link abajo
+- ✅ IslandStopsAccordion (/hvar-islands-guide/): subtitle arriba, nombre wrappea correctamente en iPhone 13 mini
+- ✅ min-w-0 en todos los contenedores flex con texto largo
+- ✅ Em-dashes y RIBs eliminados de /about/ y /rentals/
+- ✅ Fotos crew actualizadas: Josip (josip-skipper.jpg) y Fede (fede-skipper.jpg)
+- ✅ Crew cards: aspect-[3/4], object-position individual por persona
+- ✅ Copy /about/: barrel explicado, passenger copy reescrito, Josip Alemania + alemán
+- ✅ Water Scooter addon en tours-data.ts (todos excepto Vis y Sunset)
+- ✅ Em-dashes removidos de /tours/ hero subtitle
 
 ### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
 - Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
