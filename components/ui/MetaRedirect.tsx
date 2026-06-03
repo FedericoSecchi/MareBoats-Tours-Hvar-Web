@@ -1,5 +1,5 @@
 /**
- * MetaRedirect — server component that renders a meta-refresh redirect.
+ * MetaRedirect - server component that renders a meta-refresh redirect.
  *
  * Why: this project builds as a static export (output: 'export'), so
  * Next.js `redirects()` and middleware cannot run. A meta refresh fires

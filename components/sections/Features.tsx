@@ -47,7 +47,7 @@ const features: Feature[] = [
   {
     title: 'Your Route',
     description:
-      'Blue Cave, snorkeling, lunch on a quiet island — tell us what matters and we build the day around it.',
+      'Blue Cave, snorkeling, lunch on a quiet island - tell us what matters and we build the day around it.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 6.5L9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5z" />

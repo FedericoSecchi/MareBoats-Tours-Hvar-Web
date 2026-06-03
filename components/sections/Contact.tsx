@@ -28,7 +28,7 @@ export default function Contact() {
             Tell Us Your Date
           </h2>
           <p className="mt-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Send a message with your date and group size. We reply fast — usually within the hour.
+            Send a message with your date and group size. We reply fast - usually within the hour.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function Contact() {
                 <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
                   Group size
                 </span>
-                <span>Up to 8 guests on a private boat — no shared tours.</span>
+                <span>Up to 8 guests on a private boat - no shared tours.</span>
               </li>
             </ul>
           </aside>

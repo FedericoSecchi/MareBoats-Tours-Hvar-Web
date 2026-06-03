@@ -67,7 +67,7 @@ export const businessSchema = {
     {
       '@type': 'TouristAttraction',
       '@id': `${SITE_URL}/#touristattraction`,
-      name: 'Mare Boats Hvar — Private Boat Tours',
+      name: 'Mare Boats Hvar - Private Boat Tours',
       description:
         'Private speedboat tours from Hvar visiting the Blue Cave, Pakleni Islands, and the Dalmatian coast. Local skipper, icebox, snorkeling masks included.',
       url: SITE_URL,

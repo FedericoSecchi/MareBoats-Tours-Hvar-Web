@@ -15,12 +15,12 @@ const photos: Photo[] = [
   {
     src: '/img/destination-1.jpeg',
     label: 'Blue Cave',
-    alt: 'Blue Cave Biševo near Hvar — turquoise light inside the sea cave',
+    alt: 'Blue Cave Biševo near Hvar - turquoise light inside the sea cave',
   },
   {
     src: '/img/destination-2.jpeg',
     label: 'Pakleni Islands',
-    alt: 'Pakleni Islands archipelago seen from the boat — Hvar, Croatia',
+    alt: 'Pakleni Islands archipelago seen from the boat - Hvar, Croatia',
   },
   {
     src: '/img/destination-3.jpeg',
@@ -30,7 +30,7 @@ const photos: Photo[] = [
   {
     src: '/img/destination-4.jpeg',
     label: 'Stiniva Bay',
-    alt: 'Stiniva Bay on Vis Island — secluded beach near Hvar',
+    alt: 'Stiniva Bay on Vis Island - secluded beach near Hvar',
   },
   {
     src: '/img/destination-5.jpeg',

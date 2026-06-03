@@ -22,7 +22,7 @@ export type TourRecord = {
   /** ISO 8601 duration for schema.org */
   durationIso: string;
   price: string;
-  /** Lowest numeric EUR price for schema.org Offer — omit when price is on request */
+  /** Lowest numeric EUR price for schema.org Offer - omit when price is on request */
   priceEur?: number;
   includes: string[];
   notIncludes: string[];
@@ -51,19 +51,19 @@ const DEFAULT_ADDONS = [
 export const toursData: TourRecord[] = [
   {
     slug: 'red-rocks-pakleni-islands',
-    name: 'Red Rocks & Pakleni Islands — Hvar Boat Tour',
+    name: 'Red Rocks & Pakleni Islands - Hvar Boat Tour',
     tagline: 'Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming.',
     shortDescription:
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
-    description: `The Red Rocks & Pakleni Islands tour is the local route — the one Nikola takes when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
+    description: `The Red Rocks & Pakleni Islands tour is the local route - the one Nikola takes when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
-We depart from Hvar Harbour and head first to Borče Bay in Milna — a quiet cove on the southern coast, calm water, no other boats. It is the kind of place you only find if you know where to look. From there we cruise to Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
+We depart from Hvar Harbour and head first to Borče Bay in Milna - a quiet cove on the southern coast, calm water, no other boats. It is the kind of place you only find if you know where to look. From there we cruise to Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
 
-Next stop is Dubovica Beach — one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
+Next stop is Dubovica Beach - one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-Available as a private half-day (4 hours, 09:00–13:00), private full-day (6 hours, more time at every stop), or shared group tour (join a small group from €85 per person — requires a minimum of 4 guests to start the tour).
+Available as a private half-day (4 hours, 09:00–13:00), private full-day (6 hours, more time at every stop), or shared group tour (join a small group from €85 per person - requires a minimum of 4 guests to start the tour).
 
-Message us on WhatsApp with your date and what sounds right — we sort the rest.`,
+Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: '4 hours (half-day) · 6 hours (full-day)',
     durationIso: 'PT4H',
     price: 'From €85/person (shared) · €400 private half-day · €500 private full-day',
@@ -76,7 +76,7 @@ Message us on WhatsApp with your date and what sounds right — we sort the rest
       'Snorkeling masks',
     ],
     notIncludes: [
-      'Lunch not included — restaurants available at Pakleni',
+      'Lunch not included - restaurants available at Pakleni',
       'Hotel pickup',
     ],
     addons: DEFAULT_ADDONS,
@@ -88,15 +88,15 @@ Message us on WhatsApp with your date and what sounds right — we sort the rest
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Borče Bay (Milna) — quiet cove, first swim, zero crowds',
-      'Red Rocks — vertical iron-red cliffs dropping straight into turquoise water',
-      'Dubovica Beach — iconic bay with a 16th-century stone house and a secret sea cave',
-      'Pakleni Islands (Palmižana or Zdrilca) — beach bars, lunch stops, calm water',
+      'Borče Bay (Milna) - quiet cove, first swim, zero crowds',
+      'Red Rocks - vertical iron-red cliffs dropping straight into turquoise water',
+      'Dubovica Beach - iconic bay with a 16th-century stone house and a secret sea cave',
+      'Pakleni Islands (Palmižana or Zdrilca) - beach bars, lunch stops, calm water',
     ],
     images: [
       {
         src: '/img/destination-4.jpeg',
-        alt: 'Red Rocks and Pakleni Islands private boat tour from Hvar — turquoise water and cliffs',
+        alt: 'Red Rocks and Pakleni Islands private boat tour from Hvar - turquoise water and cliffs',
       },
       {
         src: '/img/destination-5.jpeg',
@@ -119,27 +119,27 @@ Message us on WhatsApp with your date and what sounds right — we sort the rest
     tagline: 'Half day of turquoise water, hidden coves, and island hopping minutes from Hvar town.',
     shortDescription:
       'Half-day private boat tour from Hvar, Croatia. Snorkel the clearest Adriatic waters, stop at Palmižana and explore secluded Pakleni coves.',
-    description: `The Pakleni Islands half day boat tour from Hvar is the perfect option when you want maximum beauty in a shorter window — ideal for families, couples on a tight schedule, or anyone who prefers a relaxed pace without committing to a full offshore crossing.
+    description: `The Pakleni Islands half day boat tour from Hvar is the perfect option when you want maximum beauty in a shorter window - ideal for families, couples on a tight schedule, or anyone who prefers a relaxed pace without committing to a full offshore crossing.
 
 Departing from Hvar Harbour, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your captain chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
 
 Because the boat is private, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and your skipper knows the quieter coves that larger boats skip.
 
-If you are searching for the best half day boat tour Hvar has to offer — combining proximity, scenery, and comfort — this is the classic route guests book again and again. Contact us on WhatsApp to confirm departure times during the season and to tailor the route to your group.
+If you are searching for the best half day boat tour Hvar has to offer - combining proximity, scenery, and comfort - this is the classic route guests book again and again. Contact us on WhatsApp to confirm departure times during the season and to tailor the route to your group.
 
-Because the Pakleni Islands sit so close to Hvar town, you spend less time commuting and more time enjoying the water — a practical advantage on hot summer days when you want maximum swimming time. Your captain can suggest quieter bays if the wind shifts, and you can always adjust the plan if younger guests want shallower water or if you prefer a longer stop for coffee at a waterfront venue.
+Because the Pakleni Islands sit so close to Hvar town, you spend less time commuting and more time enjoying the water - a practical advantage on hot summer days when you want maximum swimming time. Your captain can suggest quieter bays if the wind shifts, and you can always adjust the plan if younger guests want shallower water or if you prefer a longer stop for coffee at a waterfront venue.
 
 If you are comparing shared excursions versus a private Pakleni Islands boat, the private option usually wins on comfort, timing, and the ability to avoid the busiest pockets of the archipelago when possible.`,
     duration: '3–4 hrs',
     durationIso: 'PT4H',
-    price: 'On request — message us on WhatsApp',
+    price: 'On request - message us on WhatsApp',
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the Pakleni itinerary',
       'Icebox and bottled water on board',
       'Snorkeling masks',
     ],
-    notIncludes: ['Lunch not included — restaurants available at Pakleni', 'Hotel pickup'],
+    notIncludes: ['Lunch not included - restaurants available at Pakleni', 'Hotel pickup'],
     addons: DEFAULT_ADDONS,
     whatToBring: ['Sunscreen and swimwear', 'A light layer for the breeze when cruising'],
     meetingPoint: MEETING,
@@ -161,19 +161,19 @@ If you are comparing shared excursions versus a private Pakleni Islands boat, th
 
   {
     slug: 'blue-cave-pakleni-islands',
-    name: '5 Islands, 4 Beaches & Blue Cave — Hvar Boat Tour',
-    tagline: 'Full-day speedboat tour from Hvar. Three sea caves, four beaches, Blue Cave on Biševo — and back before the day crowds hit.',
+    name: '5 Islands, 4 Beaches & Blue Cave - Hvar Boat Tour',
+    tagline: 'Full-day speedboat tour from Hvar. Three sea caves, four beaches, Blue Cave on Biševo - and back before the day crowds hit.',
     shortDescription:
       'Full-day speedboat tour from Hvar: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups. Departs 10:00.',
-    description: `This is our full-day tour from Hvar — the one that covers everything. We leave at 10:00, which means we reach the Blue Cave before the worst of the midday crowds and still have the whole afternoon for swimming, snorkelling and a long lunch on the islands.
+    description: `This is our full-day tour from Hvar - the one that covers everything. We leave at 10:00, which means we reach the Blue Cave before the worst of the midday crowds and still have the whole afternoon for swimming, snorkelling and a long lunch on the islands.
 
-The route takes you to five islands and hits three caves, four beaches and a blue lagoon. Green Cave on Biševo is first — natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos — and it delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
+The route takes you to five islands and hits three caves, four beaches and a blue lagoon. Green Cave on Biševo is first - natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos - and it delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
 
-After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon — shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
+After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
 
-We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants — more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for your group only, up to 9 guests).
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for your group only, up to 9 guests).
 
-Message us on WhatsApp with your date and group size — we confirm fast.`,
+Message us on WhatsApp with your date and group size - we confirm fast.`,
     duration: '7 hours · Departs 10:00',
     durationIso: 'PT7H',
     price: '€130/person (group) · €700 private',
@@ -186,9 +186,9 @@ Message us on WhatsApp with your date and group size — we confirm fast.`,
       'Snorkeling masks',
     ],
     notIncludes: [
-      'Green Cave entrance — €12 per person (paid on site)',
-      'Blue Cave entrance — €24 per person (paid on site)',
-      'Lunch not included — restaurants available at Pakleni or Palmizana',
+      'Green Cave entrance - €12 per person (paid on site)',
+      'Blue Cave entrance - €24 per person (paid on site)',
+      'Lunch not included - restaurants available at Pakleni or Palmizana',
       'Hotel pickup (meeting point is Hvar Harbour)',
     ],
     addons: [
@@ -204,19 +204,19 @@ Message us on WhatsApp with your date and group size — we confirm fast.`,
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Blue Cave (Biševo) — sunlight turns the water electric blue. Best between 11:00–12:00.',
-      'Green Cave — natural light through an underwater arch. Swim in from the sea.',
-      'Stiniva Bay — voted best beach in Europe. Surrounded by cliffs on three sides.',
-      'Medvidina Cave — longest sea cave on Biševo. Still, dark, unforgettable.',
-      'Budikovac Blue Lagoon — shallow, calm, turquoise. Best snorkelling of the day.',
-      'Pakleni Islands (Palmižana or Zdrilca) — lunch at a waterfront restaurant.',
+      'Blue Cave (Biševo) - sunlight turns the water electric blue. Best between 11:00–12:00.',
+      'Green Cave - natural light through an underwater arch. Swim in from the sea.',
+      'Stiniva Bay - voted best beach in Europe. Surrounded by cliffs on three sides.',
+      'Medvidina Cave - longest sea cave on Biševo. Still, dark, unforgettable.',
+      'Budikovac Blue Lagoon - shallow, calm, turquoise. Best snorkelling of the day.',
+      'Pakleni Islands (Palmižana or Zdrilca) - lunch at a waterfront restaurant.',
     ],
     images: [
       {
         src: '/img/package-1.jpeg',
         alt: '5 Islands 4 Beaches Blue Cave speedboat tour from Hvar, Croatia',
       },
-      { src: '/img/carousel-2.jpeg', alt: 'Speedboat on the Adriatic near Hvar — Blue Cave day trip' },
+      { src: '/img/carousel-2.jpeg', alt: 'Speedboat on the Adriatic near Hvar - Blue Cave day trip' },
     ],
     keywords: [
       'blue cave boat tour hvar',
@@ -235,18 +235,18 @@ Message us on WhatsApp with your date and group size — we confirm fast.`,
   {
     slug: 'sunset-cruise',
     name: 'Sunset Cruise Hvar',
-    tagline: 'Golden hour on the Adriatic — wine-friendly, calm water, and unforgettable light.',
+    tagline: 'Golden hour on the Adriatic - wine-friendly, calm water, and unforgettable light.',
     shortDescription:
       'Private sunset cruise from Hvar, Croatia. Golden hour over the Dalmatian coast, drinks on board, calm waters and the best photo light of the day.',
-    description: `A sunset cruise from Hvar is the most romantic way to end a day on the island — and one of the easiest tours to enjoy if you want premium photos without a full-day commitment. As the heat softens and the light turns gold, the Adriatic takes on a completely different mood: quieter harbours, warm tones on the stone towns, and a gentle breeze that makes the sea feel brand new.
+    description: `A sunset cruise from Hvar is the most romantic way to end a day on the island - and one of the easiest tours to enjoy if you want premium photos without a full-day commitment. As the heat softens and the light turns gold, the Adriatic takes on a completely different mood: quieter harbours, warm tones on the stone towns, and a gentle breeze that makes the sea feel brand new.
 
-This private evening boat tour departs from Hvar Harbour and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the experience is private, you can keep the atmosphere relaxed and personal — perfect for proposals, anniversaries, families celebrating together, or friends who want a memorable night without crowds.
+This private evening boat tour departs from Hvar Harbour and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the experience is private, you can keep the atmosphere relaxed and personal - perfect for proposals, anniversaries, families celebrating together, or friends who want a memorable night without crowds.
 
 Your captain focuses on safety and smooth cruising as light fades, and you can bring your own wine or bubbly to enjoy responsibly on board (glass bottles are welcome). The cooler on board keeps your drinks cold, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands.
 
 Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date. If you are comparing Hvar sunset boat tour options, choose private for the best views, the calmest pace, and a route tailored to the evening sky.
 
-Evening light also makes the coastline look more cinematic — stone villages glow warmer, the sea reflects softer blues, and the breeze often settles compared to midday heat. That is why many guests schedule their sunset cruise after a busy sightseeing day on land: it is the perfect reset before dinner in Hvar town. If you are celebrating something special, tell us when you book and we will do our best to set the mood with a smooth route and plenty of time for photos.`,
+Evening light also makes the coastline look more cinematic - stone villages glow warmer, the sea reflects softer blues, and the breeze often settles compared to midday heat. That is why many guests schedule their sunset cruise after a busy sightseeing day on land: it is the perfect reset before dinner in Hvar town. If you are celebrating something special, tell us when you book and we will do our best to set the mood with a smooth route and plenty of time for photos.`,
     duration: '2 hrs',
     durationIso: 'PT2H',
     price: '€250',
@@ -266,13 +266,13 @@ Evening light also makes the coastline look more cinematic — stone villages gl
     meetingPointMapsUrl: MAPS,
     highlights: [
       'Golden-hour cruising along the Hvar coastline',
-      'Private boat — no shared groups',
+      'Private boat - no shared groups',
       'Ideal for photos and relaxed evening pacing',
     ],
     images: [
       {
         src: '/img/package-5.jpeg',
-        alt: 'Sunset cruise from Hvar — private boat at golden hour over the Adriatic',
+        alt: 'Sunset cruise from Hvar - private boat at golden hour over the Adriatic',
       },
       { src: '/img/carousel-1.jpeg', alt: 'Evening light over the sea on a Hvar sunset boat tour' },
     ],
@@ -282,16 +282,16 @@ Evening light also makes the coastline look more cinematic — stone villages gl
   {
     slug: 'private-boat-charter',
     name: 'Private Boat Charter Hvar',
-    tagline: 'Your boat, your itinerary — full-day freedom with an experienced local skipper.',
+    tagline: 'Your boat, your itinerary - full-day freedom with an experienced local skipper.',
     shortDescription:
-      'Private boat charter from Hvar, Croatia. Your own boat, captain, route and equipment — design the day you want on the Adriatic. €500 for boat + skipper, fuel paid separately.',
+      'Private boat charter from Hvar, Croatia. Your own boat, captain, route and equipment - design the day you want on the Adriatic. €500 for boat + skipper, fuel paid separately.',
     description: `A private boat charter from Hvar is the ultimate flexible option: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your captain helps you build a realistic plan based on weather and distances.
 
-Unlike fixed itineraries, a full-day charter gives you room to adapt — spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
+Unlike fixed itineraries, a full-day charter gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
 
-Price is €500 for the boat and skipper. Fuel is paid separately at the marina based on the route you choose — usually a few hundred euros for a long day depending on distance. We discuss a realistic fuel estimate before you commit, so there are no surprises.
+Price is €500 for the boat and skipper. Fuel is paid separately at the marina based on the route you choose - usually a few hundred euros for a long day depending on distance. We discuss a realistic fuel estimate before you commit, so there are no surprises.
 
-Every charter includes snorkelling masks, an icebox with bottled water and a local skipper who knows these waters well. Private charters are especially popular for multi-generational families, groups of friends, and guests who want the best of Hvar without compromising on comfort. Contact us on WhatsApp with your dates, group size, and ideas — we help you design a day you will want to repeat next summer.
+Every charter includes snorkelling masks, an icebox with bottled water and a local skipper who knows these waters well. Private charters are especially popular for multi-generational families, groups of friends, and guests who want the best of Hvar without compromising on comfort. Contact us on WhatsApp with your dates, group size, and ideas - we help you design a day you will want to repeat next summer.
 
 A charter is also the best format if you want to combine multiple "must-see" destinations in one day without feeling rushed between them. Your captain will be honest about what is realistic given distances and sea conditions, then help you choose a route that still feels relaxed.`,
     duration: 'Full day',
@@ -304,8 +304,8 @@ A charter is also the best format if you want to combine multiple "must-see" des
       'Snorkeling masks',
     ],
     notIncludes: [
-      'Fuel — paid separately at the marina based on your route',
-      'Lunch not included — restaurants available at stops along your route',
+      'Fuel - paid separately at the marina based on your route',
+      'Lunch not included - restaurants available at stops along your route',
       'Third-party activity fees',
       'Hotel pickup',
     ],
@@ -321,7 +321,7 @@ A charter is also the best format if you want to combine multiple "must-see" des
     images: [
       {
         src: '/img/package-4.jpeg',
-        alt: 'Private boat charter Hvar — full day skippered tour in the Adriatic',
+        alt: 'Private boat charter Hvar - full day skippered tour in the Adriatic',
       },
       { src: '/img/destination-5.jpeg', alt: 'Crystal clear Adriatic sea on a private charter from Hvar' },
     ],
@@ -333,16 +333,16 @@ A charter is also the best format if you want to combine multiple "must-see" des
     name: 'Split Airport to Hvar Speedboat Transfer',
     tagline: 'Private 45-minute speedboat transfer between Split Airport and Hvar Harbour.',
     shortDescription:
-      'Private speedboat transfer from Split Airport to Hvar in around 45 minutes. Skip ferries and queues — door-to-harbour service from Mare Boats Hvar.',
-    description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in around 45 minutes — with luggage handled and a flexible departure time that fits your flight.
+      'Private speedboat transfer from Split Airport to Hvar in around 45 minutes. Skip ferries and queues - door-to-harbour service from Mare Boats Hvar.',
+    description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in around 45 minutes - with luggage handled and a flexible departure time that fits your flight.
 
 We coordinate the meeting point near Split (airport pier or Split town harbour, depending on your arrival) and confirm everything by WhatsApp the day before so there are no surprises. Your skipper monitors weather and tides, suggests the best route, and adapts the plan if your flight is delayed.
 
-Pricing is transparent: €500 for the Split harbour ↔ Hvar transfer, €600 for the Split Airport pier ↔ Hvar transfer (the airport pier route is slightly longer). Both are private — your group only, your luggage, your timing.
+Pricing is transparent: €500 for the Split harbour ↔ Hvar transfer, €600 for the Split Airport pier ↔ Hvar transfer (the airport pier route is slightly longer). Both are private - your group only, your luggage, your timing.
 
 This transfer is ideal for couples, families and groups who want to arrive on Hvar relaxed and on schedule, without losing half a day to public transport. The same service works in reverse: a private morning transfer from Hvar Harbour back to Split in time for your departure.
 
-Message us on WhatsApp with your flight number, group size and luggage to lock in your slot. Peak summer transfers fill quickly — booking ahead is the only way to guarantee the time you want.
+Message us on WhatsApp with your flight number, group size and luggage to lock in your slot. Peak summer transfers fill quickly - booking ahead is the only way to guarantee the time you want.
 
 If you are comparing Split Hvar transfer options, the speedboat is usually the most reliable choice in summer: ferries can be busy, schedules tighten in high season, and a private boat avoids almost all of that. We focus on safety, punctuality and a smooth handover so the first thing you remember about Hvar is the sea, not the queue.`,
     duration: '~45 min',
@@ -367,7 +367,7 @@ If you are comparing Split Hvar transfer options, the speedboat is usually the m
     meetingPointMapsUrl: MAPS,
     highlights: [
       'Around 45 minutes door-to-harbour vs. several hours by ferry + transfer',
-      'Private boat — no shared groups, no fixed schedule',
+      'Private boat - no shared groups, no fixed schedule',
       'Flight monitoring and WhatsApp coordination the day before',
     ],
     images: [
@@ -388,23 +388,23 @@ If you are comparing Split Hvar transfer options, the speedboat is usually the m
   {
     slug: 'yacht-sailboat-taxi',
     name: 'Yacht & Sailboat Water Taxi',
-    tagline: 'Anchored near Hvar? We come to your boat — pickup, transfer or full tour.',
+    tagline: 'Anchored near Hvar? We come to your boat - pickup, transfer or full tour.',
     shortDescription:
       'Private water taxi in Hvar for guests anchored on yachts and sailboats. We pick you up from your vessel and take you to shore, a restaurant, or any tour starting point.',
-    description: `Anchored in the area on a yacht or sailboat? We bring the speedboat to you. Our water taxi service in Hvar picks you up directly from your vessel and takes you wherever you need — Hvar Harbour, a restaurant on the islands, a quiet swimming bay, or the starting point of any MareBoats tour.
+    description: `Anchored in the area on a yacht or sailboat? We bring the speedboat to you. Our water taxi service in Hvar picks you up directly from your vessel and takes you wherever you need - Hvar Harbour, a restaurant on the islands, a quiet swimming bay, or the starting point of any MareBoats tour.
 
 This is the easiest way to enjoy Hvar when your boat is moored offshore. No tender hassle, no long swims to land, no waiting for a marina slot. We coordinate everything by WhatsApp: you send your coordinates and arrival time, we confirm the pickup window and a clear meeting plan with your skipper.
 
-Pricing is on request — every pickup is different depending on your location, group size and whether you combine it with a tour. Message us on WhatsApp with your coordinates and we send a transparent quote within the hour during the season.
+Pricing is on request - every pickup is different depending on your location, group size and whether you combine it with a tour. Message us on WhatsApp with your coordinates and we send a transparent quote within the hour during the season.
 
-The same service works in both directions. We can take you ashore for dinner in Hvar town and bring you back to your yacht later that evening, or transfer you to one of our recommended restaurants on the Pakleni Islands and back. If you want to combine the taxi with a full tour — Blue Cave in the morning, lunch on an island, sunset cruise — just tell us when you message and we will plan the whole day around your boat.
+The same service works in both directions. We can take you ashore for dinner in Hvar town and bring you back to your yacht later that evening, or transfer you to one of our recommended restaurants on the Pakleni Islands and back. If you want to combine the taxi with a full tour - Blue Cave in the morning, lunch on an island, sunset cruise - just tell us when you message and we will plan the whole day around your boat.
 
 Our local skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, Croatian, Italian and Spanish (when Fede is on board), so the handover from your charter crew to ours is always smooth.
 
-If you are searching for a private water taxi in Hvar, a yacht transfer, a sailboat pickup, or a way to start a tour without coming to the harbour first, this is the service. Message us with your boat name, your coordinates and the time window — we will reply with a quote and a plan.`,
+If you are searching for a private water taxi in Hvar, a yacht transfer, a sailboat pickup, or a way to start a tour without coming to the harbour first, this is the service. Message us with your boat name, your coordinates and the time window - we will reply with a quote and a plan.`,
     duration: 'On demand',
     durationIso: 'PT1H',
-    price: 'On request — message us on WhatsApp',
+    price: 'On request - message us on WhatsApp',
     includes: [
       'Pickup from anchored yacht or sailboat',
       'Drop-off at Hvar Harbour or any agreed destination',
@@ -420,17 +420,17 @@ If you are searching for a private water taxi in Hvar, a yacht transfer, a sailb
       'Your exact coordinates and pickup time on WhatsApp',
       'Cash or card for any onshore stops (restaurants, marina)',
     ],
-    meetingPoint: 'We come to your vessel — share coordinates on WhatsApp',
+    meetingPoint: 'We come to your vessel - share coordinates on WhatsApp',
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Direct pickup from your yacht or sailboat — no tender needed',
+      'Direct pickup from your yacht or sailboat - no tender needed',
       'Two-way service: shore for dinner, back to your boat at night',
-      'Combines with any MareBoats tour — Blue Cave, Pakleni, sunset',
+      'Combines with any MareBoats tour - Blue Cave, Pakleni, sunset',
     ],
     images: [
       {
         src: '/img/destination-7.jpeg',
-        alt: 'Yacht and sailboat water taxi service in Hvar — private speedboat pickup',
+        alt: 'Yacht and sailboat water taxi service in Hvar - private speedboat pickup',
       },
       {
         src: '/img/carousel-1.jpeg',
@@ -448,7 +448,7 @@ If you are searching for a private water taxi in Hvar, a yacht transfer, a sailb
   }
 ];
 
-/** Slugs shown in the homepage Tours grid — flagship day tour, Red Rocks, Pakleni half-day, sunset. */
+/** Slugs shown in the homepage Tours grid - flagship day tour, Red Rocks, Pakleni half-day, sunset. */
 export const FEATURED_TOUR_SLUGS = [
   'blue-cave-pakleni-islands',
   'red-rocks-pakleni-islands',

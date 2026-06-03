@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'Booked for 6 people, everything was perfect. Snorkeling, swimming, Pakleni Islands — all in one day. Will be back next summer for sure.',
+      'Booked for 6 people, everything was perfect. Snorkeling, swimming, Pakleni Islands - all in one day. Will be back next summer for sure.',
     author: 'The Johnson Family',
     origin: 'United States',
   },

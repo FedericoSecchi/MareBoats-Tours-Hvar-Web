@@ -74,7 +74,7 @@ export default function NavBar() {
 
       <nav className="mx-auto flex h-16 w-full max-w-container items-center justify-between px-4 md:px-6">
         {/* Logo */}
-        <Link href="/" className="shrink-0" aria-label="MareBoats Hvar — home">
+        <Link href="/" className="shrink-0" aria-label="MareBoats Hvar - home">
           <Image
             src="/img/mareboats-logo-horizontal.svg"
             alt="Mare Boats Hvar"
@@ -152,7 +152,7 @@ export default function NavBar() {
         </button>
       </nav>
 
-      {/* Mobile menu — fullscreen overlay */}
+      {/* Mobile menu - fullscreen overlay */}
       <div
         id="mobile-nav"
         className={`fixed inset-0 top-16 z-40 flex flex-col bg-[color:var(--bg)] transition-[opacity,transform] duration-300 lg:hidden ${
