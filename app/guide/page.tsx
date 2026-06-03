@@ -394,11 +394,11 @@ export default function GuidePage() {
               >
                 {/* Route header */}
                 <div className="flex flex-wrap items-start gap-4">
-                  <div className="flex-1">
+                  <div className="min-w-0 flex-1">
                     <p className="font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]">
                       {route.duration}
                     </p>
-                    <h3 className="mt-1 font-display text-2xl font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
+                    <h3 className="mt-1 w-full font-display text-2xl font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
                       {route.label}
                     </h3>
                   </div>
