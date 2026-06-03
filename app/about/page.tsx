@@ -55,7 +55,7 @@ const CREW: Crew[] = [
     role: 'Marketing',
     languages: ['Spanish', 'Italian', 'English'],
     bio: "Argentine. Grew up sailing \u2014 started at 6 in an Optimist, competed internationally at South American and World Championships. Trained sailors as head coach for the Ecuadorian Sailing Federation. Worked with the 69F class, classic regattas and cruising boats up to 90ft. Handles marketing for MareBoats. Occasionally on board as skipper.",
-    image: '/img/team-2.jpg',
+    image: '/img/fede-skipper.jpg',
     imageAlt: 'Federico — marketing at MareBoats Hvar',
   },
 ];
