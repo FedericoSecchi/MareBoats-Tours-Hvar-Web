@@ -165,7 +165,7 @@ If you are comparing shared excursions versus a private Pakleni Islands boat, th
     tagline: 'Full-day speedboat tour from Hvar. Three sea caves, four beaches, Blue Cave on Biševo - and back before the day crowds hit.',
     shortDescription:
       'Full-day speedboat tour from Hvar: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups. Departs 10:00.',
-    description: `This is our full-day tour from Hvar - the one that covers everything. We leave at 10:00, which means we reach the Blue Cave before the worst of the midday crowds and still have the whole afternoon for swimming, snorkelling and a long lunch on the islands.
+    description: `We leave Hvar at 10:00 and spend the day covering the most iconic stretch of the Adriatic - Blue Cave, Stiniva Bay, three sea caves, and the Pakleni Islands. One boat, your group, back by 17:00.
 
 The route takes you to five islands and hits three caves, four beaches and a blue lagoon. Green Cave on Biševo is first - natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos - and it delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
 
@@ -189,11 +189,10 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
       'Green Cave entrance - €12 per person (paid on site)',
       'Blue Cave entrance - €24 per person (paid on site)',
       'Lunch not included - restaurants available at Pakleni or Palmizana',
-      'Hotel pickup (meeting point is Hvar Harbour)',
+      'Hotel pickup',
     ],
     addons: [
-      'Aerial drone footage, on request, extra cost (when Fede is on board)',
-      'Underwater video, on request, extra cost (when Fede is on board)',
+      'Photo & Video Shoot - €200, on request (when Fede is on board). Aerial drone, underwater and on-board footage. Full gallery delivered after the tour.',
     ],
     whatToBring: [
       'Sunscreen, hat, and sunglasses',

@@ -38,8 +38,6 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts:
       'Blue Cave entrance €24/person · Green Cave entrance €12/person · Lunch not included - restaurants available at Pakleni or Palmizana (budget €15-25)',
-    addOns:
-      'Water Scooter €40/person · Available at Pakleni or Palmižana stops only, not on the Vis or Bisevo leg · On request via WhatsApp',
   },
   {
     name: 'Red Rocks & Pakleni Islands',
