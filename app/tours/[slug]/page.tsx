@@ -19,7 +19,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: PageProps): Metadata {
   const tour = getTourBySlug(params.slug);
   if (!tour) {
-    return { title: 'Tour | Mare Boats Hvar' };
+    return { title: 'Tour | MareBoats Hvar' };
   }
 
   const titleMap: Record<string, string> = {
@@ -50,7 +50,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       url: `${SITE}/tours/${tour.slug}/`,
       type: 'website',
       locale: 'en_US',
-      siteName: 'Mare Boats Hvar',
+      siteName: 'MareBoats Hvar',
       images: [{ url: ogUrl, width: 1200, height: 630, alt: tour.images[0].alt }],
     },
     twitter: {

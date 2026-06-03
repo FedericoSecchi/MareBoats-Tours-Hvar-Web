@@ -14,15 +14,15 @@ import { JsonLd } from '@/components/ui/JsonLd';
 export const metadata: Metadata = {
   metadataBase: new URL('https://mareboatshvar.com'),
   title: {
-    default: 'Mare Boats Hvar - Private Boat Tours in Hvar, Croatia',
-    template: '%s | Mare Boats Hvar',
+    default: 'MareBoats Hvar - Private Boat Tours in Hvar, Croatia',
+    template: '%s | MareBoats Hvar',
   },
   description:
     'Private boat tours from Hvar, Croatia. Blue Cave excursions, Red Rocks, Pakleni Islands, boat rental and transfers. Local skipper, WhatsApp booking.',
-  keywords: ['boat tours hvar', 'mare boats hvar', 'private boat hvar', 'hvar croatia tours'],
-  authors: [{ name: 'Mare Boats Hvar' }],
-  creator: 'Mare Boats Hvar',
-  publisher: 'Mare Boats Hvar',
+  keywords: ['boat tours hvar', 'mareboats hvar', 'private boat hvar', 'hvar croatia tours'],
+  authors: [{ name: 'MareBoats Hvar' }],
+  creator: 'MareBoats Hvar',
+  publisher: 'MareBoats Hvar',
   formatDetection: { telephone: true, email: true },
   // Syne & Space Grotesk load via @fontsource with font-display: swap in their @font-face rules.
   icons: {
@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://mareboatshvar.com',
-    siteName: 'Mare Boats Hvar',
-    title: 'Mare Boats Hvar - Private Boat Tours in Hvar, Croatia',
+    siteName: 'MareBoats Hvar',
+    title: 'MareBoats Hvar - Private Boat Tours in Hvar, Croatia',
     description:
       'Private boat tours from Hvar, Croatia. Blue Cave excursions, Red Rocks, Pakleni Islands, boat rental and transfers. Local skipper, WhatsApp booking.',
     images: [
@@ -58,13 +58,13 @@ export const metadata: Metadata = {
         url: '/img/mareboats-og.png',
         width: 1200,
         height: 630,
-        alt: 'Mare Boats Hvar - Private boat tours in Hvar, Croatia',
+        alt: 'MareBoats Hvar - Private boat tours in Hvar, Croatia',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mare Boats Hvar - Private Boat Tours in Hvar, Croatia',
+    title: 'MareBoats Hvar - Private Boat Tours in Hvar, Croatia',
     description:
       'Private boat tours from Hvar, Croatia. Blue Cave, Red Rocks, Pakleni Islands, sunset cruises and transfers. Local skipper, WhatsApp booking.',
     images: ['/img/mareboats-og.png'],
