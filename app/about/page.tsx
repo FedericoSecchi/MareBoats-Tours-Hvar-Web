@@ -31,6 +31,7 @@ type Crew = {
   bio: string;
   image: string;
   imageAlt: string;
+  objectPosition: string;
 };
 
 const CREW: Crew[] = [
@@ -41,6 +42,7 @@ const CREW: Crew[] = [
     bio: 'Born and raised in Hvar. Runs all operations — logistics, scheduling, fleet. Knows the island inside out, every bay, every season. Occasional skipper, but his real job is making sure every tour runs without a hitch.',
     image: '/img/team-1.png',
     imageAlt: 'Nikola — founder of MareBoats Hvar',
+    objectPosition: '50% 30%',
   },
   {
     name: 'Josip',
@@ -49,6 +51,7 @@ const CREW: Crew[] = [
     bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid \u2014 Hvar is home. Lived in England for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
     image: '/img/josip-skipper.jpg',
     imageAlt: 'Josip — head skipper at MareBoats Hvar',
+    objectPosition: '50% 40%',
   },
   {
     name: 'Federico',
@@ -57,6 +60,7 @@ const CREW: Crew[] = [
     bio: "Argentine. Grew up sailing \u2014 started at 6 in an Optimist, competed internationally at South American and World Championships. Trained sailors as head coach for the Ecuadorian Sailing Federation. Worked with the 69F class, classic regattas and cruising boats up to 90ft. Handles marketing for MareBoats. Occasionally on board as skipper.",
     image: '/img/fede-skipper.jpg',
     imageAlt: 'Federico — marketing at MareBoats Hvar',
+    objectPosition: '50% 20%',
   },
 ];
 
@@ -223,13 +227,14 @@ export default function AboutPage() {
             {CREW.map((c) => (
               <li key={c.name}>
                 <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/70">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden">
                     <Image
                       src={c.image}
                       alt={c.imageAlt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
+                      style={{ objectPosition: c.objectPosition }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
