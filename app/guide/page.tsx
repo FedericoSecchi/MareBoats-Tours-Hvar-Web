@@ -393,7 +393,7 @@ export default function GuidePage() {
                 className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 md:p-8"
               >
                 {/* Route header */}
-                <div className="flex flex-wrap items-start gap-4">
+                <div className="flex flex-col gap-3">
                   <div className="min-w-0 flex-1">
                     <p className="font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]">
                       {route.duration}
