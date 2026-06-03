@@ -6,7 +6,7 @@ import { whatToBring, weatherPolicy } from '@/lib/guide-content';
 export const metadata: Metadata = {
   title: 'What to Expect on a Hvar Boat Tour | MareBoats',
   description:
-    'Everything you need before your MareBoats tour - meeting point, what to bring, water scooter add-on, and what the Adriatic is actually like.',
+    'Everything you need before your MareBoats tour - meeting point, what to bring, and what the Adriatic is actually like.',
 };
 
 const WA_BASE = 'https://wa.me/385951966734?text=';
@@ -57,7 +57,7 @@ const tourDetails: TourDetail[] = [
     extraCosts: 'Lunch not included - restaurants available at Pakleni',
     addOns: [
       'Water Scooter €40/unit · On request via WhatsApp',
-      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
     ],
   },
   {
@@ -74,7 +74,7 @@ const tourDetails: TourDetail[] = [
     extraCosts: 'None',
     addOns: [
       'Water Scooter €40/unit · On request via WhatsApp',
-      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
     ],
   },
   {
@@ -87,7 +87,7 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'None',
     addOns: [
-      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
     ],
   },
   {
@@ -101,7 +101,7 @@ const tourDetails: TourDetail[] = [
     extraCosts: 'Fuel not included - discussed with Nikola at booking',
     addOns: [
       'Water Scooter €40/unit · On request via WhatsApp',
-      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
     ],
   },
   {
