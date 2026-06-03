@@ -21,7 +21,7 @@ const MAP_EMBED_SRC =
 // Tour details accordion data
 // ──────────────────────────────────────────────
 type TourRow = { label: string; value: string };
-type TourDetail = { name: string; rows: TourRow[]; extraCosts: string; addOns?: string };
+type TourDetail = { name: string; rows: TourRow[]; extraCosts: string; addOns?: string[] };
 
 const tourDetails: TourDetail[] = [
   {
@@ -55,7 +55,10 @@ const tourDetails: TourDetail[] = [
       },
     ],
     extraCosts: 'Lunch not included - restaurants available at Pakleni',
-    addOns: 'Water Scooter €40/person · On request via WhatsApp',
+    addOns: [
+      'Water Scooter €40/unit · On request via WhatsApp',
+      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+    ],
   },
   {
     name: 'Pakleni Islands Half Day',
@@ -69,7 +72,10 @@ const tourDetails: TourDetail[] = [
       { label: 'Route', value: 'Pakleni Islands - swimming stops at secluded bays' },
     ],
     extraCosts: 'None',
-    addOns: 'Water Scooter €40/person · On request via WhatsApp',
+    addOns: [
+      'Water Scooter €40/unit · On request via WhatsApp',
+      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+    ],
   },
   {
     name: 'Sunset Cruise',
@@ -80,7 +86,9 @@ const tourDetails: TourDetail[] = [
       { label: 'Route', value: 'Pakleni Islands at golden hour' },
     ],
     extraCosts: 'None',
-    addOns: 'Water Scooter €40/person · On request via WhatsApp',
+    addOns: [
+      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+    ],
   },
   {
     name: 'Private Boat Charter',
@@ -91,7 +99,10 @@ const tourDetails: TourDetail[] = [
       { label: 'Route', value: 'You choose the destinations' },
     ],
     extraCosts: 'Fuel not included - discussed with Nikola at booking',
-    addOns: 'Water Scooter €40/person · On request via WhatsApp',
+    addOns: [
+      'Water Scooter €40/unit · On request via WhatsApp',
+      'Photo & Video Shoot - €200. Aerial drone, underwater and on-board footage. Book in advance via WhatsApp.',
+    ],
   },
   {
     name: 'Split Airport Transfer',
@@ -228,11 +239,15 @@ export default function PreTourPage() {
                     <span className="font-medium text-[color:var(--white)]/60">Extra costs: </span>
                     {tour.extraCosts}
                   </p>
-                  {tour.addOns && (
-                    <p className="mt-2 font-body text-xs leading-relaxed text-[color:var(--gray)]">
-                      <span className="font-medium text-[color:var(--accent)]/80">Add-on available: </span>
-                      {tour.addOns}
-                    </p>
+                  {tour.addOns && tour.addOns.length > 0 && (
+                    <div className="mt-2 space-y-1">
+                      {tour.addOns.map((addon) => (
+                        <p key={addon} className="font-body text-xs leading-relaxed text-[color:var(--gray)]">
+                          <span className="font-medium text-[color:var(--accent)]/80">+ </span>
+                          {addon}
+                        </p>
+                      ))}
+                    </div>
                   )}
                 </div>
               </details>

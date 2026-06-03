@@ -42,11 +42,10 @@ const MEETING = 'MareBoats barrel, Hvar Harbour main dock';
 const MAPS = 'https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7';
 
 // Default on-request add-ons shared by private tours.
-const DEFAULT_ADDONS = [
-  'Aerial drone footage, on request, extra cost (when Fede is on board)',
-  'Underwater video, on request, extra cost (when Fede is on board)',
-  'Water Scooter €40/unit, on request',
-];
+const PHOTO_VIDEO_ADDON =
+  'Photo & Video Shoot - €200, on request (when Fede is on board). Aerial drone, underwater and on-board footage. Full gallery delivered after the tour. Book in advance - only available when Fede is on board and slots are limited.';
+
+const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, 'Water Scooter €40/unit, on request'];
 
 export const toursData: TourRecord[] = [
   {
@@ -191,9 +190,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
       'Lunch not included - restaurants available at Pakleni or Palmizana',
       'Hotel pickup',
     ],
-    addons: [
-      'Photo & Video Shoot - €200, on request (when Fede is on board). Aerial drone, underwater and on-board footage. Full gallery delivered after the tour.',
-    ],
+    addons: [PHOTO_VIDEO_ADDON],
     whatToBring: [
       'Sunscreen, hat, and sunglasses',
       'Swimwear and a light cover-up for breeze after swimming',
@@ -256,10 +253,7 @@ Evening light also makes the coastline look more cinematic - stone villages glow
       'Icebox and bottled water on board',
     ],
     notIncludes: ['Alcoholic drinks (bring your own if you wish)', 'Hotel pickup'],
-    addons: [
-      'Aerial drone footage, on request, extra cost (when Fede is on board)',
-      'Underwater video, on request, extra cost (when Fede is on board)',
-    ],
+    addons: [PHOTO_VIDEO_ADDON],
     whatToBring: ['A light jacket for after sunset', 'Camera or phone for photos'],
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
