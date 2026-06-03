@@ -56,7 +56,7 @@ const faqSchema = {
       name: 'How many people can fit on the boat?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Our speedboats accommodate up to 8–10 people depending on the vessel.',
+        text: 'Our speedboats accommodate up to 9 people depending on the vessel.',
       },
     },
     {
@@ -80,7 +80,7 @@ const faqSchema = {
       name: 'How many people can rent a boat in Hvar?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
+        text: "Our speedboats accommodate up to 9 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
       },
     },
     {
@@ -294,7 +294,7 @@ export default function RentalsPage() {
                   'No licence needed',
                   'Local skipper, custom route',
                   'Fuel, water & snorkel included',
-                  'Up to 8 people - private group',
+                  'Up to 9 people - private group',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
@@ -435,7 +435,7 @@ export default function RentalsPage() {
                 </div>
 
                 <ul className="space-y-1.5 font-body text-xs text-[color:var(--gray)]">
-                  {['1 battery included per rental', 'Professional masks included', 'Life jacket included'].map((rule) => (
+                  {['1 battery included per rental', 'Professional masks included'].map((rule) => (
                     <li key={rule} className="flex gap-2">
                       <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
                       <span>{rule}</span>
@@ -574,7 +574,7 @@ export default function RentalsPage() {
             Questions about a rental?
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Message us &mdash; we&apos;ll sort it out.
+            Message us - we&apos;ll sort it out.
           </p>
           <WhatsAppTrackedLink
             href={waUrl('Hi! I have a question about a rental.')}
