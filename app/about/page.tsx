@@ -39,27 +39,27 @@ const CREW: Crew[] = [
     name: 'Nikola',
     role: 'Founder',
     languages: ['Croatian', 'English'],
-    bio: 'Born and raised in Hvar. Runs all operations — logistics, scheduling, fleet. Knows the island inside out, every bay, every season. Occasional skipper, but his real job is making sure every tour runs without a hitch.',
+    bio: 'Born and raised in Hvar. Runs all operations: logistics, scheduling, fleet. Knows the island inside out, every bay, every season. Occasional skipper, but his real job is making sure every tour runs without a hitch.',
     image: '/img/team-1.png',
-    imageAlt: 'Nikola — founder of MareBoats Hvar',
+    imageAlt: 'Nikola, founder of MareBoats Hvar',
     objectPosition: '50% 30%',
   },
   {
     name: 'Josip',
     role: 'Head Skipper',
     languages: ['Croatian', 'English', 'German'],
-    bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid \u2014 Hvar is home. Lived in Germany for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
+    bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid, Hvar is home. Lived in Germany for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
     image: '/img/josip-skipper.jpg',
-    imageAlt: 'Josip — head skipper at MareBoats Hvar',
+    imageAlt: 'Josip, head skipper at MareBoats Hvar',
     objectPosition: '50% 40%',
   },
   {
     name: 'Federico',
     role: 'Marketing',
     languages: ['Spanish', 'Italian', 'English'],
-    bio: "Argentine. Grew up sailing \u2014 started at 6 in an Optimist, competed internationally at South American and World Championships. Trained sailors as head coach for the Ecuadorian Sailing Federation. Worked with the 69F class, classic regattas and cruising boats up to 90ft. Handles marketing for MareBoats. Occasionally on board as skipper.",
+    bio: "Argentine. Grew up sailing, started at 6 in an Optimist, competed internationally at South American and World Championships. Trained sailors as head coach for the Ecuadorian Sailing Federation. Worked with the 69F class, classic regattas and cruising boats up to 90ft. Handles marketing for MareBoats. Occasionally on board as skipper.",
     image: '/img/fede-skipper.jpg',
-    imageAlt: 'Federico — marketing at MareBoats Hvar',
+    imageAlt: 'Federico, marketing at MareBoats Hvar',
     objectPosition: '50% 20%',
   },
 ];
@@ -142,13 +142,13 @@ export default function AboutPage() {
             </h2>
             <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
               <p>
-                MareBoats was built by Nikola — born and raised on the island, and someone who has
+                MareBoats was built by Nikola, born and raised on the island, and someone who has
                 spent his whole life on these waters. The idea was simple: offer real boat tours from
                 Hvar, run by people who actually know the place.
               </p>
               <p>
-                Today we run a fleet of RIBs from Hvar Harbour, May through September. Tours can be
-                fully private — your group, your boat, your pace — or shared, departing when the
+                Today we run a fleet of speedboats from Hvar Harbour, May through September. Tours can be
+                fully private (your group, your boat, your pace) or shared, departing when the
                 boat fills up.
               </p>
             </div>
@@ -173,7 +173,7 @@ export default function AboutPage() {
               How we work
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
-              Private or shared — your call.
+              Private or shared. Your call.
             </h2>
           </div>
           <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -285,11 +285,11 @@ export default function AboutPage() {
             </h2>
             <ul className="mt-6 space-y-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
               {[
-                'Modern speedboats, 150\u2013300\u202fhp',
+                'Modern speedboats, 150 to 300 hp',
                 '8 to 12 passengers per boat depending on the vessel',
                 'Sun canopy, music system and cooler on board',
                 'Snorkel gear and masks included for every guest',
-                'Large groups: multiple RIBs depart together',
+                'Large groups: multiple boats depart together',
               ].map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
