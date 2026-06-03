@@ -47,7 +47,7 @@ const CREW: Crew[] = [
     role: 'Head Skipper',
     languages: ['Croatian', 'English'],
     bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid \u2014 Hvar is home. Lived in England for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
-    image: '/img/destination-2.jpeg',
+    image: '/img/josip-skipper.jpg',
     imageAlt: 'Josip — head skipper at MareBoats Hvar',
   },
   {
