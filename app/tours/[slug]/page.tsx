@@ -28,7 +28,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     'pakleni-islands': 'Pakleni Islands Half Day Boat Tour from Hvar',
     'sunset-cruise': 'Sunset Cruise Hvar',
     'private-boat-charter': 'Private Boat Charter Hvar',
-    'split-airport-transfer': 'Split Airport Transfer by Boat | MareBoats Hvar',
+    'split-airport-transfer': 'Split Airport to Hvar by Speedboat',
   };
   const descriptionMap: Record<string, string> = {
     'blue-cave-pakleni-islands':

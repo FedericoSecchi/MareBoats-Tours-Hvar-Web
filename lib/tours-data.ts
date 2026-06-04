@@ -320,18 +320,16 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
     name: 'Split Airport to Hvar Speedboat Transfer',
     tagline: 'Private 45-minute speedboat transfer between Split Airport and Hvar Harbour.',
     shortDescription:
-      'Private speedboat transfer from Split Airport to Hvar in around 45 minutes. Skip ferries and queues - door-to-harbour service from MareBoats Hvar.',
+      'Split city departure: €500 · Split Airport departure: €600 (airport pier is a short taxi from the terminal)',
     description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in around 45 minutes - with luggage handled and a flexible departure time that fits your flight.
 
 We coordinate the meeting point near Split (airport pier or Split town harbour, depending on your arrival) and confirm everything by WhatsApp the day before so there are no surprises. Your skipper monitors weather and tides, suggests the best route, and adapts the plan if your flight is delayed.
 
 Pricing is transparent: €500 for the Split harbour ↔ Hvar transfer, €600 for the Split Airport pier ↔ Hvar transfer (the airport pier route is slightly longer). Both are private - your group only, your luggage, your timing.
 
-This transfer is ideal for couples, families and groups who want to arrive on Hvar relaxed and on schedule, without losing half a day to public transport. The same service works in reverse: a private morning transfer from Hvar Harbour back to Split in time for your departure.
+Most guests book this transfer at the start or end of their trip. You land, skip the ferry queue, and arrive in Hvar in about an hour.
 
-Message us on WhatsApp with your flight number, group size and luggage to lock in your slot. Peak summer transfers fill quickly - booking ahead is the only way to guarantee the time you want.
-
-If you are comparing Split Hvar transfer options, the speedboat is usually the most reliable choice in summer: ferries can be busy, schedules tighten in high season, and a private boat avoids almost all of that. We focus on safety, punctuality and a smooth handover so the first thing you remember about Hvar is the sea, not the queue.`,
+Message us on WhatsApp with your flight number, group size and luggage to lock in your slot. Peak summer transfers fill quickly - booking ahead is the only way to guarantee the time you want.`,
     duration: '~45 min',
     durationIso: 'PT45M',
     price: 'Split–Hvar €500 · Airport–Hvar €600',
@@ -343,7 +341,7 @@ If you are comparing Split Hvar transfer options, the speedboat is usually the m
       'Flexible departure time around your flight',
     ],
     notIncludes: [
-      'Taxi between Split Airport and the boat pier',
+      'Short taxi from the airport terminal to the boat pier (not included in transfer price)',
       'Port and dock fees where applicable',
     ],
     whatToBring: [
