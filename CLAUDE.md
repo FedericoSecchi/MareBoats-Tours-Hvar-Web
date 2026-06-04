@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 3 Junio 2026**
+**Actualizado: 4 Junio 2026**
 
 ---
 
@@ -37,7 +37,7 @@
 - Herramienta de código: Claude Code (reemplazó a Cursor desde 23/05)
 - NEXT_PUBLIC_ env vars son build-time — hardcodear Measurement ID directamente en layout.tsx
 
-## Arquitectura de páginas — estado al 03/06/2026
+## Arquitectura de páginas — estado al 04/06/2026
 - `/rentals/` — página unificada: Boat Rental (con/sin skipper, con/sin licencia) + Water Scooter + FAQ. Es la página SEO principal para keywords de rental.
 - `/boat-rental/` — eliminada. Redirect 301 → `/rentals/` en netlify.toml.
 - `/landing/pre-tour/` — reescrita el 01/06. Ver sección abajo.
@@ -61,19 +61,21 @@
 
 ## Reglas inamovibles de contenido
 - Idiomas a bordo solo aplican cuando Fede es el skipper — NO prometer genéricamente en web ni OTAs
+- **Idiomas del equipo: EN + HR + IT + ES + DE** (alemán via Josip) — aplica en feature cards y FAQs del sitio
 - Botellas de vidrio: permitidas a bordo
 - Comida: permitida, pero se recomiendan restaurantes
 - No fumar a bordo
 - No hay baño a bordo — guests usan los de restaurantes en paradas
 - Formularios de contacto: NO. Solo WhatsApp
 - Water Scooter addon: €40/unit — disponible en todos los tours EXCEPTO tours a Vis (isla) y Sunset Cruise. Máx 2h/unit, no recargable a bordo.
-- Photo & Video Shoot: €200 — lo hace Fede (drone + underwater + on board). Full gallery post-tour. Disponible en todos los tours.
+- Photo & Video Shoot: €200 — lo hace Fede (drone + underwater + on board). Full gallery post-tour. Disponible en todos los tours privados. Solo cuando Fede está a bordo. Reservar con anticipación — slots limitados.
 - NO mencionar año exacto de fundación de MareBoats
 - NO mencionar RIB ni mostrar foto del RIB — usar "speedboat" siempre.
-- Boat rental sin licencia: MareBoats lo ofrece directamente (no mencionar "partners" ni operadores externos)
+- Boat rental sin licencia: MareBoats lo ofrece directamente (no mencionar "partners" ni operadores externos). El producto es una "Pasara" (bote pequeño, motor hasta 6.8 HP) — legal sin licencia en Croacia hasta 500m de la costa. Copy debe especificar el producto y el límite legal para proteger de responsabilidad.
 - Em-dashes (—) y en-dashes (–) prohibidos en copy del sitio — usar coma, punto, dos puntos o reescribir
 - **"Lunch not included"** — wording unificado en todo el sitio desde 02/06
 - Capacidad máxima: 9 personas por barco. Nunca mencionar 12. Framing: "full-size speedboats, small groups."
+- **Brand name unificado: "MareBoats Hvar"** — sin espacio (no "Mare Boats Hvar"). Aplicado en todo el sitio el 04/06.
 
 ## Design tokens
 ```
@@ -117,7 +119,7 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## ✅ ESTADO REAL al 03/06/2026
+## ✅ ESTADO REAL al 04/06/2026
 
 ### GA4
 - `whatsapp_click` verificado ✅ — 41 eventos · 24 usuarios únicos (últimos 28 días)
@@ -149,12 +151,11 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## /landing/pre-tour/ — estado al 02/06/2026
+## /landing/pre-tour/ — estado al 04/06/2026
 
 ### Mensaje de WhatsApp de Nikola (texto fijo)
 ```
 Hey! 👋 Booking confirmed, looking forward to having you on board.
-Here's everything you need for the day — meeting point, what to bring, and a few tips:
 👉 mareboatshvar.com/landing/pre-tour
 Any questions, just message me here.
 See you on the water! 🌊
@@ -165,23 +166,26 @@ Nikola
 - Coordenadas: 43.1690147, 16.4429617
 - Google Maps: https://maps.app.goo.gl/k84JNBQLvqgZunEX6
 
-### Accordion — extra costs y add-ons (estado 02/06)
+### Accordion — extra costs y add-ons (estado 04/06)
 | Tour | Extra Costs | Add-on |
 |---|---|---|
-| 5 Islands & Blue Cave | Blue Cave €24 · Green Cave €12 · Lunch not included (Pakleni o Palmizana) | Water Scooter €40 — solo Pakleni/Palmizana, NO leg Vis/Bisevo |
-| Red Rocks & Pakleni | Lunch not included — restaurants at Pakleni | Water Scooter €40 |
-| Pakleni Half Day | None | Water Scooter €40 |
-| Sunset Cruise | None | — |
-| Private Charter | Fuel not included | Water Scooter €40 |
+| 5 Islands & Blue Cave (shared) | Blue Cave €24 · Green Cave €12 · Lunch not included (Pakleni o Palmizana) | — (no add-ons en shared) |
+| 5 Islands & Blue Cave (private) | Blue Cave €24 · Green Cave €12 · Lunch not included (Pakleni o Palmizana) | Photo & Video Shoot €200 |
+| Red Rocks & Pakleni | Lunch not included - restaurants at Pakleni | Water Scooter €40 · Photo & Video Shoot €200 |
+| Pakleni Half Day | None | Water Scooter €40 · Photo & Video Shoot €200 |
+| Sunset Cruise | None | Photo & Video Shoot €200 |
+| Private Charter | Fuel not included | Water Scooter €40 · Photo & Video Shoot €200 |
 | Split Transfer | None | — |
 
 ---
 
-## /rentals/ — estado al 02/06/2026
+## /rentals/ — estado al 04/06/2026
 - Tipografía body: `text-base` (16px) unificado
 - On Board section: cards (una fila por item, badge status izquierda)
 - Rental Rules section: tabla (stacked mobile / 2 columnas desktop)
 - Water Scooter card: centrada con `mx-auto`
+- Sección "No Licence": producto es Pasara (bote pequeño, motor bajo HP). Copy especifica ley croata (6.8 HP limit) y límite de 500m de costa. H3: "No Boat Licence? Small Boat Option Available."
+- FAQ rentals: capacidad corregida a 9 personas. Respuesta "sin licencia" actualizada con copy Pasara.
 
 ---
 
@@ -207,6 +211,11 @@ Todos parten de Hvar Port: `{ lon: 16.442975, lat: 43.169008 }`
 | Biševo | lon: 16.184168, lat: 43.062260 | (16.439551, 43.164991) → (16.441916, 43.159709) → (16.458060, 43.152451) → (16.193734, 43.061615) |
 | Yacht Taxi | lon: 16.393924, lat: 43.160106 | sin waypoints (ruta corta) |
 
+### Precios transfers (estado 04/06)
+- Split ciudad: €500
+- Split Airport: €600 (incluye taxi corto del terminal al muelle — no incluido en el precio)
+- Duración aprox: 1:00-1:10h
+
 ---
 
 ## /about/ — estado al 03/06/2026
@@ -222,15 +231,118 @@ Todos parten de Hvar Port: `{ lon: 16.442975, lat: 43.169008 }`
 Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
 | Tour | Wording |
 |---|---|
-| 5 Islands | "Lunch not included — restaurants available at Pakleni or Palmizana" |
-| Red Rocks & Pakleni | "Lunch not included — restaurants available at Pakleni" |
-| Pakleni Half Day | "Lunch not included — restaurants available at Pakleni" |
-| Private Charter | "Lunch not included — restaurants available at stops along your route" |
+| 5 Islands | "Lunch not included - restaurants available at Pakleni or Palmizana" |
+| Red Rocks & Pakleni | "Lunch not included - restaurants available at Pakleni" |
+| Pakleni Half Day | "Lunch not included - restaurants available at Pakleni" |
+| Private Charter | "Lunch not included - restaurants available at stops along your route" |
 | Sunset / Transfer | Sin mención |
 
 ---
 
-## PLAN UNIFICADO — Estado al 03/06/2026
+## Copy — PHOTO_VIDEO_ADDON (constante unificada — 04/06)
+Definida en `lib/tours-data.ts` como constante `PHOTO_VIDEO_ADDON`:
+> "+Photo & Video Shoot - €200, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited."
+
+Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
+
+---
+
+## Auditoría copy site-wide — 04/06/2026
+
+### Cambios aplicados (commits 008a64 → aec1fe)
+
+**Capacidades:**
+- "up to 8" → "up to 9" en features, FAQs, rentals, Red Rocks, water scooter card, pre-tour accordion
+- "up to 10" eliminado de 5 Islands hero y tour cards
+- Shared vs private reconciliado en FAQs — texto diferencia explícitamente ambos modos
+
+**Idiomas:**
+- Alemán agregado en feature card "Speaks Your Language" y en FAQ de idiomas
+
+**Em-dashes:**
+- Limpiados en `app/`, `lib/`, `components/` — 34 archivos via sed
+- `&mdash;` HTML entity en rentals también corregida
+
+**Brand name:**
+- "Mare Boats Hvar" → "MareBoats Hvar" en todo el sitio (layout.tsx, [slug]/page.tsx, lib/seo.ts, og:siteName, meta author/creator/publisher)
+- Title tags duplicados resueltos: sufijos `| MareBoats` eliminados del titleMap para dejar que el layout template los agregue solo
+
+**Title tags corregidos (titleMap en [slug]/page.tsx):**
+- blue-cave-pakleni-islands: 'Hvar Boat Tour: 5 Islands, Blue Cave & 4 Beaches'
+- red-rocks-pakleni-islands: 'Red Rocks & Pakleni Islands Boat Tour from Hvar'
+- pakleni-islands: 'Pakleni Islands Half Day Boat Tour from Hvar'
+- sunset-cruise: 'Sunset Cruise Hvar'
+- private-boat-charter: 'Private Boat Charter Hvar'
+- split-airport-transfer: 'Split Airport to Hvar by Speedboat'
+
+**Water scooter:**
+- Eliminado del 5 Islands (decisión de Nikola: tour va a Vis, scooter solo disponible en Pakleni)
+- Eliminado del Sunset Cruise
+- "Life jacket included" eliminado de bullets del water scooter (no tiene sentido bajo el agua)
+
+**Copy por página:**
+
+`/tours/blue-cave-pakleni-islands/`:
+- P1 reescrito: sin "flagship", sin "the best"
+- P3: "up to 10 people" → "up to 9 guests"
+- P4 eliminado: "ideal for couples, families and small groups / premium / knowledgeable local captain"
+- Pricing section: shared €130/person (up to 8) · private €700 (up to 9 guests)
+- Not included: paréntesis redundante de hotel pickup eliminado
+- Add-ons: unificados en PHOTO_VIDEO_ADDON
+
+`/tours/red-rocks-pakleni-islands/`:
+- Guiones en body text reemplazados por comas/dos puntos/punto
+- Mínimo 4 guests para shared: confirmado correcto por Nikola
+- Add-ons: PHOTO_VIDEO_ADDON aplicado
+
+`/tours/pakleni-islands/`:
+- Title tag corregido
+- Highlights bullets reescritos (Palmižana/Zdrilca, visibilidad 10m, 10 min de Hvar)
+- P1 reescrito: sin "maximum beauty", sin "ideal for families/couples"
+- P4 reducido: 2 frases
+- P5 filler eliminado
+- Último párrafo reemplazado con contexto honesto del guest
+- "20 minutes" → "10 minutes" from Hvar harbour
+
+`/tours/sunset-cruise/`:
+- Title tag corregido
+- Brand name en metadata corregido
+- Tagline: "unforgettable light" → "the best light of the day"
+- Bullet 2: em-dash → coma
+- Bullet 3: reemplazado por "Departs at golden hour, back before dark"
+- P1 reescrito: sin "most romantic", sin "premium photos"
+- P2: sin "perfect for proposals, anniversaries, families..."
+- P5 filler eliminado
+- Add-ons: PHOTO_VIDEO_ADDON aplicado
+
+`/tours/private-boat-charter/`:
+- Title tag corregido
+- Eyebrow "Mare Boats Hvar · Private tour" → "MareBoats Hvar · Private tour" (estaba hardcodeado en `components/sections/TourHero.tsx` — afectaba todos los tours)
+- Tagline: "experienced local skipper" → "local skipper who knows these waters"
+- Bullets reescritos: sin "ideal for families", sin "deep knowledge"
+- P1: "ultimate flexible option" → "most flexible format we offer"
+- P4 reescrito y acortado
+- P5 filler eliminado
+
+`/tours/split-airport-transfer/`:
+- Title tag: 'Split Airport to Hvar by Speedboat' (sin sufijo duplicado)
+- shortDescription actualizado con precios y contexto del taxi
+- P4: "ideal for couples, families and groups" → "Most guests book this transfer at the start or end of their trip..."
+- P6 filler eliminado
+- notIncludes: taxi al muelle con aclaración
+
+`/rentals/`:
+- Brand name en metadata corregido (via `lib/seo.ts` — afecta todas las páginas que usan generateSEO)
+- Title sin sufijo duplicado
+- Sección "No Licence": reescrita con copy Pasara + ley croata
+- FAQ "without a licence": actualizado con copy Pasara
+- FAQ "how many people": 8 → 9
+- Card "With Skipper" bullet: 8 → 9, em-dash → coma
+- Card title: "Private Boat Tour - Skipper Included"
+
+---
+
+## PLAN UNIFICADO — Estado al 04/06/2026
 
 ### ✅ BLOQUE 0 — CERRADO
 ### ✅ SEO Website — CERRADO 31/05
@@ -256,6 +368,18 @@ Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
 - ✅ Copy /about/: barrel explicado, passenger copy reescrito, Josip Alemania + alemán
 - ✅ Water Scooter addon en tours-data.ts (todos excepto Vis y Sunset)
 - ✅ Em-dashes removidos de /tours/ hero subtitle
+
+### ✅ Copy Audit site-wide — CERRADO 04/06
+- ✅ Capacidades corregidas a 9 en todo el sitio
+- ✅ Brand name "MareBoats Hvar" unificado
+- ✅ Title tags duplicados resueltos en todas las páginas de tour
+- ✅ Em-dashes limpiados en 34 archivos (app/, lib/, components/)
+- ✅ Alemán agregado en features y FAQ
+- ✅ Water scooter eliminado de 5 Islands y Sunset
+- ✅ PHOTO_VIDEO_ADDON constante unificada, aplicada en todos los tours privados
+- ✅ Copy de todas las páginas de tour auditado: filler eliminado, clichés removidos
+- ✅ Sección Pasara en /rentals/ con copy legal correcto
+- ✅ Eyebrow "MareBoats Hvar · Private tour" corregido en TourHero.tsx (afectaba todos los tours)
 
 ### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
 - Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
@@ -311,3 +435,6 @@ US es mercado #1 en GA4. Charter premium varios miles de €. Definir producto +
 - NEXT_PUBLIC_ env vars son build-time — hardcodear Measurement ID en layout.tsx
 - NUNCA modificar listings de OTAs desde el código — eso se hace a mano con aprobación de Nikola
 - Em-dashes (—) y en-dashes (–) prohibidos en todo copy del sitio
+- Brand name: siempre "MareBoats Hvar" (sin espacio)
+- Capacidad: siempre "up to 9" por barco — nunca 8, nunca 10
+- Antes de cualquier cambio de copy: mostrar archivo completo primero, sin modificar
