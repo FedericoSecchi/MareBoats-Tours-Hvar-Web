@@ -27,6 +27,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     'red-rocks-pakleni-islands': 'Red Rocks & Pakleni Islands Boat Tour from Hvar',
     'pakleni-islands': 'Pakleni Islands Half Day Boat Tour from Hvar',
     'sunset-cruise': 'Sunset Cruise Hvar',
+    'private-boat-charter': 'Private Boat Charter Hvar',
     'split-airport-transfer': 'Split Airport Transfer by Boat | MareBoats Hvar',
   };
   const descriptionMap: Record<string, string> = {

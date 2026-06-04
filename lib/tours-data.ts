@@ -271,18 +271,16 @@ Sunset slots are limited during high season, so message us early on WhatsApp to 
   {
     slug: 'private-boat-charter',
     name: 'Private Boat Charter Hvar',
-    tagline: 'Your boat, your itinerary - full-day freedom with an experienced local skipper.',
+    tagline: 'Your boat, your itinerary - full-day freedom with a local skipper who knows these waters.',
     shortDescription:
       'Private boat charter from Hvar, Croatia. Your own boat, captain, route and equipment - design the day you want on the Adriatic. €500 for boat + skipper, fuel paid separately.',
-    description: `A private boat charter from Hvar is the ultimate flexible option: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your captain helps you build a realistic plan based on weather and distances.
+    description: `A private boat charter from Hvar is the most flexible format we offer: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your captain helps you build a realistic plan based on weather and distances.
 
 Unlike fixed itineraries, a full-day charter gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
 
 Price is €500 for the boat and skipper. Fuel is paid separately at the marina based on the route you choose - usually a few hundred euros for a long day depending on distance. We discuss a realistic fuel estimate before you commit, so there are no surprises.
 
-Every charter includes snorkelling masks, an icebox with bottled water and a local skipper who knows these waters well. Private charters are especially popular for multi-generational families, groups of friends, and guests who want the best of Hvar without compromising on comfort. Contact us on WhatsApp with your dates, group size, and ideas - we help you design a day you will want to repeat next summer.
-
-A charter is also the best format if you want to combine multiple "must-see" destinations in one day without feeling rushed between them. Your captain will be honest about what is realistic given distances and sea conditions, then help you choose a route that still feels relaxed.`,
+Every charter includes snorkelling masks, icebox and bottled water. Message us with your dates, group size and any stops you have in mind.`,
     duration: 'Full day',
     durationIso: 'PT8H',
     price: '€500 boat + skipper · fuel not included',
@@ -303,9 +301,9 @@ A charter is also the best format if you want to combine multiple "must-see" des
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Fully customizable route and pacing',
-      'Ideal for families and private groups',
-      'Local captain with deep knowledge of Hvar waters',
+      'Your route, your pace - Blue Cave, Vis, Pakleni or anywhere in between',
+      'Full day on the water with one group only',
+      'Skipper plans around weather, distances and what you actually want to see',
     ],
     images: [
       {

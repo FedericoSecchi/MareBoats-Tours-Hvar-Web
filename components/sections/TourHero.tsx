@@ -65,7 +65,7 @@ export default function TourHero({ tour }: TourHeroProps) {
         </nav>
 
         <span className="mt-6 inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 font-body text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)]">
-          Mare Boats Hvar · Private tour
+          MareBoats Hvar · Private tour
         </span>
 
         <h1 className="mt-5 font-display text-[clamp(2.5rem,8vw,6rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.02em] text-[color:var(--white)]">
