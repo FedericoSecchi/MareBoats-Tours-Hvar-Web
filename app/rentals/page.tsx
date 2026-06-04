@@ -8,7 +8,7 @@ import { rulesAndRentals, type Rule } from '@/lib/guide-content';
 
 export const metadata: Metadata = {
   ...generateSEO({
-    title: 'Rentals Hvar - Boat Rental & Water Scooter | MareBoats',
+    title: 'Rentals Hvar - Boat Rental & Water Scooter',
     description:
       'Rent a boat in Hvar with or without skipper, or hop on a water scooter. No licence? No problem. MareBoats rentals - pickup at Hvar Harbour.',
     keywords: [
@@ -104,7 +104,7 @@ const faqSchema = {
       name: 'Can I rent a boat in Hvar without a licence?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Yes - we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
+        text: "Yes - for guests without a boating licence, we offer a small open boat (Pasara) with a low-power engine. No licence required, ideal for the Pakleni Islands close to shore. Message us on WhatsApp with your dates.",
       },
     },
   ],
@@ -129,7 +129,7 @@ const FAQS = [
   },
   {
     q: 'How many people can rent a boat in Hvar?',
-    a: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
+    a: "Our speedboats accommodate up to 9 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
   },
   {
     q: 'What is included in the boat rental price?',
@@ -141,7 +141,7 @@ const FAQS = [
   },
   {
     q: 'Can I rent a boat in Hvar without a licence?',
-    a: "Yes - we can arrange fully equipped self-drive boats with a mandatory safety briefing, no licence required. Contact us on WhatsApp with your dates and group size and we'll sort the right option for your group.",
+    a: "Yes - for guests without a boating licence, we offer a small open boat (Pasara) with a low-power engine. No licence required, ideal for the Pakleni Islands close to shore. Message us on WhatsApp with your dates.",
   },
 ];
 
@@ -294,7 +294,7 @@ export default function RentalsPage() {
                   'No licence needed',
                   'Local skipper, custom route',
                   'Fuel, water & snorkel included',
-                  'Up to 9 people - private group',
+                  'Up to 9 people - private group only',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
@@ -367,21 +367,11 @@ export default function RentalsPage() {
               {/* Sub-card: No Licence */}
               <article className="flex flex-col rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-5">
                 <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--accent)]">
-                  No Licence? No Problem.
+                  No Boat Licence? Small Boat Option Available.
                 </h4>
-                <ul className="mt-3 space-y-1.5 font-body text-xs text-[color:var(--gray)]">
-                  {[
-                    'No licence required',
-                    'Safety briefing included',
-                    'Fully equipped boat',
-                    'Croatian maritime law compliant',
-                  ].map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-3 font-body text-xs leading-relaxed text-[color:var(--gray)]">
+                  Croatian maritime law requires a licence for motorboats above 6.8 HP. For guests without one, we offer a small open boat (Pasara) with a low-power engine - no licence required, ideal for exploring the Pakleni Islands close to shore. Fuel included. Message us on WhatsApp for availability.
+                </p>
                 <div className="mt-4 flex flex-col gap-2">
                   <span className="font-body text-sm font-semibold text-[color:var(--white)]">
                     On request

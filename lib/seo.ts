@@ -33,7 +33,7 @@ export function generateSEO({
       title,
       description,
       url: canonical,
-      siteName: 'Mare Boats Hvar',
+      siteName: 'MareBoats Hvar',
       images: [
         {
           url: ogImage,
