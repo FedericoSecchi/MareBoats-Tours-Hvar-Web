@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 // ──────────────────────────────────────────────
 // Data
 // ──────────────────────────────────────────────
@@ -10,6 +12,7 @@ type Destination = {
   paragraphs: string[];
   tips?: string[];
   mapsUrl: string;
+  tourHref?: string;
 };
 
 const destinations: Destination[] = [
@@ -32,6 +35,7 @@ const destinations: Destination[] = [
     name: 'Red Rocks',
     subtitle: 'South coast of Hvar · cliff jumping',
     mapsUrl: 'https://www.google.com/maps?q=43.1520,16.3890',
+    tourHref: '/tours/red-rocks-pakleni-islands/',
     paragraphs: [
       'These vertical cliffs are red because the limestone is full of iron oxide, basically slow-motion rust. The colour gets more intense late in the afternoon when the sun hits from the west.',
       'The water here is deep right up to the rock, which is what makes it perfect for cliff jumping. The classic spots are between 5 and 10 metres.',
@@ -80,6 +84,7 @@ const destinations: Destination[] = [
     name: 'Blue Cave (Modra Špilja)',
     subtitle: 'Biševo · the famous one',
     mapsUrl: 'https://www.google.com/maps?q=42.9722,15.9989',
+    tourHref: '/tours/blue-cave-pakleni-islands/',
     paragraphs: [
       'The Blue Cave works backwards to the Green Cave: the light comes in from under the water, through a submerged opening, and lights up the whole cavern in an impossible electric blue.',
       'It was discovered in the 19th century by a local painter who spotted the light from a small hole above. Today you enter in small rowing boats. We wait outside and you go in with the official staff.',
@@ -95,6 +100,7 @@ const destinations: Destination[] = [
     name: 'Stiniva Bay',
     subtitle: 'Vis · voted best beach in Europe (2016)',
     mapsUrl: 'https://www.google.com/maps?q=43.0089,16.2156',
+    tourHref: '/tours/blue-cave-pakleni-islands/',
     paragraphs: [
       'Stiniva is what is left after a sea cave collapsed thousands of years ago. What you are left with is a cathedral-like beach closed off from the sea by two huge cliffs, with just a narrow opening to get in.',
       'In 2016 it was voted the best beach in Europe by European Best Destinations. It gets busy at midday, so going early or late is worth it.',
@@ -397,15 +403,25 @@ export default function IslandStopsAccordion() {
                         ))}
                       </ul>
                     )}
-                    <a
-                      href={d.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex items-center gap-1.5 font-body text-sm font-medium text-[color:var(--accent)] transition-colors duration-200 hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
-                    >
-                      <span aria-hidden="true">📍</span>
-                      View on map
-                    </a>
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <a
+                        href={d.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-body text-sm font-medium text-[color:var(--accent)] transition-colors duration-200 hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+                      >
+                        <span aria-hidden="true">📍</span>
+                        View on map
+                      </a>
+                      {d.tourHref && (
+                        <Link
+                          href={d.tourHref}
+                          className="inline-flex items-center gap-2 rounded-pill border border-[color:var(--accent)] px-4 py-2 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                        >
+                          See this tour →
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </details>
               </li>
