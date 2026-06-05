@@ -167,14 +167,14 @@ const PRACTICAL_TIPS = [
 
 const EXPLORE_FAQS = [
   {
-    question: 'Is Hvar worth visiting?',
+    question: 'How far in advance should I book a boat tour?',
     answer:
-      "Yes. Hvar consistently ranks among the most beautiful islands in the Mediterranean. The combination of history, beaches, nightlife and boat access to the surrounding islands makes it one of Croatia's top destinations.",
+      'In June and July, popular dates fill up fast. We recommend booking at least 3-5 days ahead. In May and September you usually have more flexibility. Contact us on WhatsApp and we confirm availability same day.',
   },
   {
-    question: 'What is Hvar known for?',
+    question: 'Can I book a private tour for my group?',
     answer:
-      'Hvar is known for its lavender fields, centuries-old stone architecture, some of the clearest water in the Adriatic, and as a base for exploring the surrounding islands including the Blue Cave and Pakleni Islands.',
+      'Yes. All our tours can be booked as private - your group, your boat, your schedule. Private tours depart any time that suits you. Message us on WhatsApp with your group size and preferred date.',
   },
   {
     question: 'How do I get to Hvar?',
@@ -282,14 +282,14 @@ export default function ExplorePage() {
             </span>
           </Link>
           <Link
-            href="/explore/#where-to-eat"
+            href="/tours/"
             className="group flex flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 transition-colors duration-200 hover:border-[color:var(--accent)]"
           >
             <span className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-[color:var(--accent)]">
-              Hvar Town
+              Boat Tours
             </span>
             <span className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-              Best restaurants, sights, beaches and practical tips for Hvar town.
+              Private and shared speedboat tours to Blue Cave, Pakleni Islands and beyond.
             </span>
           </Link>
         </div>
@@ -417,6 +417,40 @@ export default function ExplorePage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Inline CTA — Beaches */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-10 md:py-12">
+        <div className="mx-auto max-w-container">
+          <div className="grid grid-cols-1 items-center gap-8 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-8 md:grid-cols-2 md:gap-12">
+            <div>
+              <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+                From the water
+              </p>
+              <h2 className="mt-3 font-display text-2xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-3xl">
+                Reach the best beaches by boat
+              </h2>
+              <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
+                The most secluded coves around Hvar are only accessible by sea.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+              <WhatsAppTrackedLink
+                href={WA_URL}
+                label="explore_beaches_cta"
+                className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_14px_36px_rgba(59,201,219,0.28)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.98]"
+              >
+                Book a tour
+              </WhatsAppTrackedLink>
+              <Link
+                href="/tours/"
+                className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-7 py-4 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.98]"
+              >
+                See all tours
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
