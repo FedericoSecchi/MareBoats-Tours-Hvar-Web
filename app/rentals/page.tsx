@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
+import { rentalServiceSchema, rentalBreadcrumbSchema } from '@/lib/schema';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { rulesAndRentals, type Rule } from '@/lib/guide-content';
 
@@ -208,6 +209,8 @@ function AccordionItem({ question, children, defaultOpen = false }: { question: 
 export default function RentalsPage() {
   return (
     <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
+      <JsonLd data={rentalServiceSchema as Record<string, unknown>} />
+      <JsonLd data={rentalBreadcrumbSchema as Record<string, unknown>} />
       <JsonLd data={faqSchema as Record<string, unknown>} />
       <JsonLd data={itemListSchema as Record<string, unknown>} />
 

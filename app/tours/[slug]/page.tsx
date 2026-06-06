@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/lib/tours-data';
 import { JsonLd } from '@/components/ui/JsonLd';
-import { buildTouristTripSchema } from '@/lib/schema';
+import { tourSchemaMap, buildTouristTripSchema } from '@/lib/schema';
 import TourHero from '@/components/sections/TourHero';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
@@ -81,15 +81,17 @@ export default function TourDetailPage({ params }: PageProps) {
       : `Hi! I'd like to book the ${tour.name}.`;
   const waUrl = `https://wa.me/385951966734?text=${encodeURIComponent(waMessage)}`;
 
-  const tripSchema = buildTouristTripSchema({
-    name: tour.name,
-    description: tour.description,
-    image: `${SITE}${hero.src}`,
-    url: `${SITE}/tours/${tour.slug}/`,
-    ...(tour.priceEur !== undefined && {
-      offers: { price: String(tour.priceEur), priceCurrency: 'EUR' },
-    }),
-  });
+  const tripSchema =
+    tourSchemaMap[tour.slug] ??
+    buildTouristTripSchema({
+      name: tour.name,
+      description: tour.description,
+      image: `${SITE}${hero.src}`,
+      url: `${SITE}/tours/${tour.slug}/`,
+      ...(tour.priceEur !== undefined && {
+        offers: { price: String(tour.priceEur), priceCurrency: 'EUR' },
+      }),
+    });
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

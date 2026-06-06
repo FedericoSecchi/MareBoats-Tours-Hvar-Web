@@ -8,7 +8,7 @@ import '@fontsource/space-grotesk/500.css';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import NavBar from '@/components/ui/NavBar';
 import Footer from '@/components/sections/Footer';
-import { businessSchema } from '@/lib/schema';
+import { businessSchema, websiteSchema } from '@/lib/schema';
 import { JsonLd } from '@/components/ui/JsonLd';
 
 export const metadata: Metadata = {
@@ -80,9 +80,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preload" as="image" href="/img/carousel-1.jpeg" />
+        <JsonLd data={businessSchema as Record<string, unknown>} />
+        <JsonLd data={websiteSchema as Record<string, unknown>} />
       </head>
       <body className="antialiased font-body">
-        <JsonLd data={businessSchema as Record<string, unknown>} />
         <NavBar />
         {children}
         <Footer />
