@@ -42,7 +42,7 @@ const QR_BUTTONS: QrButton[] = [
     icon: '🌊',
     label: 'On Tour',
     description: 'Info about every stop - download for offline use',
-    href: '/on-tour',
+    href: '/hvar-islands-guide?ref=qr',
     variant: 'secondary',
     badge: '⬇ Save offline',
   },

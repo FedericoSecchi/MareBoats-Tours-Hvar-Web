@@ -73,6 +73,12 @@
   to = "/tours/blue-cave-pakleni-islands/"
   status = 301
 
+# /on-tour/* redirects to /hvar-islands-guide/ — QR guests land on the indexed guide
+[[redirects]]
+  from = "/on-tour/*"
+  to = "/hvar-islands-guide/"
+  status = 301
+
 # /boat-rental/ merged into /rentals/ — 301 so Google transfers link equity
 [[redirects]]
   from = "/boat-rental"

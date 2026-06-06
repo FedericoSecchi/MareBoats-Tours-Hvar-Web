@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { generateSEO } from '@/lib/seo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import IslandStopsAccordion from '@/components/sections/IslandStopsAccordion';
+import OnTourBanner from '@/components/ui/OnTourBanner';
 
 export const metadata: Metadata = generateSEO({
   title: 'Hvar Islands Guide: Stops, Beaches and Hidden Coves | MareBoats',
@@ -30,6 +31,7 @@ const ctaButtonClass =
 export default function HvarIslandsGuidePage() {
   return (
     <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
+      <OnTourBanner />
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-20 md:py-24">
