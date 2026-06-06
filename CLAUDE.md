@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 4 Junio 2026**
+**Actualizado: 5 Junio 2026**
 
 ---
 
@@ -37,21 +37,27 @@
 - Herramienta de código: Claude Code (reemplazó a Cursor desde 23/05)
 - NEXT_PUBLIC_ env vars son build-time — hardcodear Measurement ID directamente en layout.tsx
 
-## Arquitectura de páginas — estado al 04/06/2026
+## Arquitectura de páginas — estado al 05/06/2026
 - `/rentals/` — página unificada: Boat Rental (con/sin skipper, con/sin licencia) + Water Scooter + FAQ. Es la página SEO principal para keywords de rental.
 - `/boat-rental/` — eliminada. Redirect 301 → `/rentals/` en netlify.toml.
 - `/landing/pre-tour/` — reescrita el 01/06. Ver sección abajo.
-- `/hvar-islands-guide/` — página nueva creada 01/06. Server Component, indexada, en sitemap (priority 0.8). 9 destinos con historia + 30 paradas locales + Google Maps links. Ataca keywords: "Hvar islands guide", "Blue Cave what to expect", "Pakleni Islands stops". NO tocar `/on-tour/` — sigue intacta para el QR del barco.
-- `/explore/` — expandida 01/06. Hub principal de contenido. 7 secciones: Where to Eat, What to See, Beaches, Practical Info, FAQ (FAQPage JSON-LD), CTA. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide".
-- `/on-tour/` — noindex, sigue intacta. Acceso via QR hub `/qr/`. NO indexar — es herramienta operativa del tour.
+- `/hvar-islands-guide/` — página indexada, en sitemap (priority 0.8). 9 destinos con historia + 30 paradas locales + Google Maps links. Ataca keywords: "Hvar islands guide", "Blue Cave what to expect", "Pakleni Islands stops". Incluye OnTourBanner: banner visible solo cuando ?ref=qr — para guests que llegan via QR del barco. Links a tours desde Blue Cave, Red Rocks y Stiniva dentro del accordion.
+- `/on-tour/` — ELIMINADA el 05/06. Redirect 301 → `/hvar-islands-guide/` en netlify.toml. El QR hub apunta a `/hvar-islands-guide?ref=qr`.
+- `/explore/` — hub principal de contenido. 7 secciones: Where to Eat, What to See, Beaches, Practical Info, FAQ (FAQPage JSON-LD), CTA. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide". Inline CTA después de Beaches. Hero card 3 apunta a /tours/. FAQ con preguntas de booking intent.
+- `/guide/` — guía pre-tour. Route cards con links a tour correspondiente. Dead code eliminado.
 - `/transfers/` — Mapbox Static Images API implementado. Ver sección abajo.
 - Nav: Tours → Rentals → Transfers → **Explore** → About
 
 ## Cluster SEO — páginas interconectadas
-- `/explore/` (hub) → cards hacia `/guide/` y `/hvar-islands-guide/`
-- `/guide/` → link hacia `/hvar-islands-guide/` al final de "Where We Go"
-- `/hvar-islands-guide/` → CTA final hacia WhatsApp + /tours/
+- `/explore/` (hub) → cards hacia `/guide/`, `/hvar-islands-guide/`, `/tours/`
+- `/guide/` → link hacia `/hvar-islands-guide/` al final de "Where We Go" + links a tours desde route cards
+- `/hvar-islands-guide/` → links a tours desde Blue Cave, Red Rocks, Stiniva + CTA final hacia WhatsApp + /tours/
 - `/tours/` → 6ta card "Boat Rental" apunta a `/rentals/`
+
+## QR Hub — /qr/
+- Acceso via QR impreso en el barco
+- Opción "On Tour" apunta a `/hvar-islands-guide?ref=qr`
+- OnTourBanner en `/hvar-islands-guide/` se activa solo con ese param
 
 ## Herramientas operativas
 - **Vesselio** — app de gestión de reservas que usa Nikola. Fede tiene acceso como Operator.
@@ -119,7 +125,7 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## ✅ ESTADO REAL al 04/06/2026
+## ✅ ESTADO REAL al 05/06/2026
 
 ### GA4
 - `whatsapp_click` verificado ✅ — 41 eventos · 24 usuarios únicos (últimos 28 días)
@@ -280,106 +286,40 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 - Eliminado del Sunset Cruise
 - "Life jacket included" eliminado de bullets del water scooter (no tiene sentido bajo el agua)
 
-**Copy por página:**
+---
 
-`/tours/blue-cave-pakleni-islands/`:
-- P1 reescrito: sin "flagship", sin "the best"
-- P3: "up to 10 people" → "up to 9 guests"
-- P4 eliminado: "ideal for couples, families and small groups / premium / knowledgeable local captain"
-- Pricing section: shared €130/person (up to 8) · private €700 (up to 9 guests)
-- Not included: paréntesis redundante de hotel pickup eliminado
-- Add-ons: unificados en PHOTO_VIDEO_ADDON
+## UX/Conversión audit — 05/06/2026 (commits 28ebd72, 0f89347, f6672cc)
 
-`/tours/red-rocks-pakleni-islands/`:
-- Guiones en body text reemplazados por comas/dos puntos/punto
-- Mínimo 4 guests para shared: confirmado correcto por Nikola
-- Add-ons: PHOTO_VIDEO_ADDON aplicado
+### /explore/
+- Hero card 3: era anchor link a sí misma → ahora apunta a /tours/
+- Inline CTA: insertado entre Beaches y Practical Info (grid 2 col md+, stacked mobile). WhatsApp primario + "See all tours" secundario. Label GA4: `explore_beaches_cta`
+- FAQ: "Is Hvar worth visiting?" y "What is Hvar known for?" reemplazadas por preguntas de booking intent: "How far in advance should I book?" y "Can I book a private tour for my group?"
 
-`/tours/pakleni-islands/`:
-- Title tag corregido
-- Highlights bullets reescritos (Palmižana/Zdrilca, visibilidad 10m, 10 min de Hvar)
-- P1 reescrito: sin "maximum beauty", sin "ideal for families/couples"
-- P4 reducido: 2 frases
-- P5 filler eliminado
-- Último párrafo reemplazado con contexto honesto del guest
-- "20 minutes" → "10 minutes" from Hvar harbour
+### /guide/
+- Route cards: cada ruta tiene link "See tour details" al tour correspondiente (Blue Cave → /tours/blue-cave-pakleni-islands/, Red Rocks → /tours/red-rocks-pakleni-islands/)
+- Dead code eliminado: bloque RULES & RENTALS comentado (28 líneas) removido
 
-`/tours/sunset-cruise/`:
-- Title tag corregido
-- Brand name en metadata corregido
-- Tagline: "unforgettable light" → "the best light of the day"
-- Bullet 2: em-dash → coma
-- Bullet 3: reemplazado por "Departs at golden hour, back before dark"
-- P1 reescrito: sin "most romantic", sin "premium photos"
-- P2: sin "perfect for proposals, anniversaries, families..."
-- P5 filler eliminado
-- Add-ons: PHOTO_VIDEO_ADDON aplicado
+### /hvar-islands-guide/
+- Links a tours desde accordions: Blue Cave, Red Rocks, Stiniva tienen "See this tour →" pill link al tour correspondiente
+- OnTourBanner: componente client que muestra banner solo si ?ref=qr
 
-`/tours/private-boat-charter/`:
-- Title tag corregido
-- Eyebrow "Mare Boats Hvar · Private tour" → "MareBoats Hvar · Private tour" (estaba hardcodeado en `components/sections/TourHero.tsx` — afectaba todos los tours)
-- Tagline: "experienced local skipper" → "local skipper who knows these waters"
-- Bullets reescritos: sin "ideal for families", sin "deep knowledge"
-- P1: "ultimate flexible option" → "most flexible format we offer"
-- P4 reescrito y acortado
-- P5 filler eliminado
-
-`/tours/split-airport-transfer/`:
-- Title tag: 'Split Airport to Hvar by Speedboat' (sin sufijo duplicado)
-- shortDescription actualizado con precios y contexto del taxi
-- P4: "ideal for couples, families and groups" → "Most guests book this transfer at the start or end of their trip..."
-- P6 filler eliminado
-- notIncludes: taxi al muelle con aclaración
-
-`/rentals/`:
-- Brand name en metadata corregido (via `lib/seo.ts` — afecta todas las páginas que usan generateSEO)
-- Title sin sufijo duplicado
-- Sección "No Licence": reescrita con copy Pasara + ley croata
-- FAQ "without a licence": actualizado con copy Pasara
-- FAQ "how many people": 8 → 9
-- Card "With Skipper" bullet: 8 → 9, em-dash → coma
-- Card title: "Private Boat Tour - Skipper Included"
+### /on-tour/ → ELIMINADA
+- Redirect 301 /on-tour/* → /hvar-islands-guide/ en netlify.toml
+- /qr/ actualizado: opción "On Tour" apunta a /hvar-islands-guide?ref=qr
+- OnTourBanner en /hvar-islands-guide/ maneja la experiencia del guest en el barco
 
 ---
 
-## PLAN UNIFICADO — Estado al 04/06/2026
+## PLAN UNIFICADO — Estado al 05/06/2026
 
 ### ✅ BLOQUE 0 — CERRADO
 ### ✅ SEO Website — CERRADO 31/05
 ### ✅ /landing/pre-tour/ — CERRADO 01/06
 ### ✅ SEO Cluster — CERRADO 01/06
-
 ### ✅ Sitio — fixes 02/06 — CERRADO
-- ✅ Hero pre-tour mobile: font-size fixed
-- ✅ "Lunch not included" unificado site-wide
-- ✅ Water Scooter add-on en accordion pre-tour (5 tours, restricción Vis correcta)
-- ✅ /rentals/: tipografía 16px, On Board cards, Rental Rules tabla, WS card centrada
-- ✅ /transfers/: Mapbox Static Images API con rutas náuticas reales
-
 ### ✅ Mobile Audit — CERRADO 03/06
-- ✅ h1 heroes: `text-[2rem] sm:text-4xl md:text-6xl` en 10 páginas
-- ✅ Stop cards /guide/: badge arriba, nombre full width, número preservado
-- ✅ Route heading /guide/: flex-col, título arriba, Maps link abajo
-- ✅ IslandStopsAccordion (/hvar-islands-guide/): subtitle arriba, nombre wrappea correctamente en iPhone 13 mini
-- ✅ min-w-0 en todos los contenedores flex con texto largo
-- ✅ Em-dashes y RIBs eliminados de /about/ y /rentals/
-- ✅ Fotos crew actualizadas: Josip (josip-skipper.jpg) y Fede (fede-skipper.jpg)
-- ✅ Crew cards: aspect-[3/4], object-position individual por persona
-- ✅ Copy /about/: barrel explicado, passenger copy reescrito, Josip Alemania + alemán
-- ✅ Water Scooter addon en tours-data.ts (todos excepto Vis y Sunset)
-- ✅ Em-dashes removidos de /tours/ hero subtitle
-
 ### ✅ Copy Audit site-wide — CERRADO 04/06
-- ✅ Capacidades corregidas a 9 en todo el sitio
-- ✅ Brand name "MareBoats Hvar" unificado
-- ✅ Title tags duplicados resueltos en todas las páginas de tour
-- ✅ Em-dashes limpiados en 34 archivos (app/, lib/, components/)
-- ✅ Alemán agregado en features y FAQ
-- ✅ Water scooter eliminado de 5 Islands y Sunset
-- ✅ PHOTO_VIDEO_ADDON constante unificada, aplicada en todos los tours privados
-- ✅ Copy de todas las páginas de tour auditado: filler eliminado, clichés removidos
-- ✅ Sección Pasara en /rentals/ con copy legal correcto
-- ✅ Eyebrow "MareBoats Hvar · Private tour" corregido en TourHero.tsx (afectaba todos los tours)
+### ✅ UX/Conversión audit cluster Explore — CERRADO 05/06
 
 ### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
 - Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
@@ -412,13 +352,13 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 - [ ] Importar conversión `whatsapp_click` desde GA4
 - [ ] 1 campaña · 3 ad groups: Boat Tours / Blue Cave / Boat Rental
 - [ ] €15-20/día · Smart Bidding después de 15-20 conversiones
-- [ ] Keywords negativas: jobs, for sale, free, cheap, ferry, ciudades ≠ Hvar
+- [ ] Keywords negativas: jobs, for sale, free, cheap, ferry, ciudades distinto de Hvar
 - [ ] Geo: Hvar + Split + radio
 - [ ] Destino: /landing/* (no la home)
 - [ ] Meta Ads: NO ahora — fase 2
 
 ### 🇺🇸 EN EL RADAR — Segmento US / alto ticket
-US es mercado #1 en GA4. Charter premium varios miles de €. Definir producto + precio + página. Después de Bloques 0-3.
+US es mercado #1 en GA4. Charter premium varios miles de euros. Definir producto + precio + página. Después de Bloques 0-3.
 
 ---
 
