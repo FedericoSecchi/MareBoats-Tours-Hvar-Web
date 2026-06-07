@@ -338,12 +338,10 @@ export default function RentalsPage() {
 
                 {/* Pasara 5hp */}
                 <article className="flex flex-col rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-4">
-                  <span className="inline-flex w-fit items-center rounded-pill border border-[color:var(--accent)]/50 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
-                    No licence needed
-                  </span>
-                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                  <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Pasara · 5hp
                   </h4>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small open boat · no licence needed</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€120 / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Calm water exploration', 'Fuel included', 'Perfect for Pakleni Islands'].map((item) => (
@@ -366,12 +364,10 @@ export default function RentalsPage() {
 
                 {/* Pasara 20hp */}
                 <article className="flex flex-col rounded-xl border border-amber-400/30 bg-[color:var(--bg)] p-4">
-                  <span className="inline-flex w-fit items-center rounded-pill border border-amber-400/40 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-amber-300">
-                    Ask us about licence
-                  </span>
-                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                  <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Pasara · 20hp
                   </h4>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small motorboat · ask us about licence</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€200 / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['More range, more speed', 'Fuel included', 'Contact us to confirm eligibility'].map((item) => (
@@ -394,12 +390,10 @@ export default function RentalsPage() {
 
                 {/* Speedboat 60hp */}
                 <article className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)] p-4">
-                  <span className="inline-flex w-fit items-center rounded-pill border border-[color:var(--gray)]/40 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--gray)]">
-                    Licence required
-                  </span>
-                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                  <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Speedboat · 60hp
                   </h4>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental · licence required</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€290 / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Fuel included', 'Valid boating licence required', 'Full day on the Adriatic'].map((item) => (
@@ -422,12 +416,10 @@ export default function RentalsPage() {
 
                 {/* Speedboat Mariner 150hp */}
                 <article className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)] p-4">
-                  <span className="inline-flex w-fit items-center rounded-pill border border-[color:var(--gray)]/40 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--gray)]">
-                    Licence required
-                  </span>
-                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                  <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Speedboat Mariner · 150hp
                   </h4>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Performance speedboat · licence required</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€350 / day + fuel</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Fuel full-in, full-out', 'Valid boating licence required', 'Maximum range and power'].map((item) => (
