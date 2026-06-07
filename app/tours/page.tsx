@@ -174,11 +174,13 @@ export default function ToursIndexPage() {
             return (
             <li key={tour.slug} className="flex">
               <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
-                <TourCardImage
-                  images={images}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  badge={tour.duration}
-                />
+                <Link href={`/tours/${tour.slug}/`} className="block">
+                  <TourCardImage
+                    images={images}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    badge={tour.duration}
+                  />
+                </Link>
 
                 <div className="flex flex-1 flex-col gap-4 p-6">
                   <div>
