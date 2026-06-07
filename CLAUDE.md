@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 07 Junio 2026**
+**Actualizado: 07 Junio 2026 (noche)**
 
 ---
 
@@ -97,6 +97,7 @@ Archivo central: `lib/schema.ts`
 - Acceso via QR impreso en el barco
 - Opción "On Tour" apunta a `/hvar-islands-guide?ref=qr`
 - OnTourBanner en `/hvar-islands-guide/` se activa solo con ese param
+- Card "Current Conditions" agregada (07/06) → `/conditions/` · sublabel "Wind, sea, Blue Cave status" · variante secondary
 
 ## Herramientas operativas
 - **Vesselio** — app de gestión de reservas que usa Nikola. Fede tiene acceso como Operator.
@@ -200,7 +201,7 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## /landing/pre-tour/ — estado al 04/06/2026
+## /landing/pre-tour/ — estado al 07/06/2026 (noche)
 
 ### Mensaje de WhatsApp de Nikola (texto fijo)
 ```
@@ -214,6 +215,11 @@ Nikola
 ### Meeting Point
 - Coordenadas: 43.1690147, 16.4429617
 - Google Maps: https://maps.app.goo.gl/k84JNBQLvqgZunEX6
+
+### Departure slots confirmados (07/06)
+- Red Rocks & Pakleni: 09:00, 11:00 or 14:00 (Nikola confirma slot)
+- Pakleni Half Day: 09:00, 11:00 or 14:00 (Nikola confirma slot)
+- Estos slots viven en app/landing/pre-tour/page.tsx — no en lib/tours-data.ts
 
 ### Accordion — extra costs y add-ons (estado 07/06)
 | Tour | Extra Costs | Add-on |
@@ -401,6 +407,12 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 ### ✅ Precios self-drive rentals — CERRADO 07/06
 ### ✅ /conditions/ page — CERRADO 07/06
 ### ✅ Copy session 07/06 — CERRADO (underwater scooter rename, cap 8, badge Pasara, capacity framing)
+### ✅ Session 07/06 noche — CERRADO
+- Idiomas: German agregado globalmente (Contact.tsx + tours-data.ts yacht taxi). Resto ya lo tenía.
+- TourHighlightsList: nuevo componente client. Reemplaza `<ul>` estático en TourHero.tsx. Cada highlight abre modal con foto Unsplash + nombre + descripción. Cierra con X, overlay click o Escape. Scroll lock activo. Mapeo por keywords con fallback Adriático genérico. Aplica en todas las tour pages.
+- Red Rocks departure: slot 11:00 agregado en app/landing/pre-tour/page.tsx (2 ocurrencias: Red Rocks y Pakleni Half Day). Wording: "09:00, 11:00 or 14:00 - Nikola will confirm your slot"
+- /qr/: card "Current Conditions" agregada → /conditions/
+- Navbar: Conditions ya estaba en NAV_LINKS — confirmado sin cambios necesarios.
 
 ### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
 - Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
