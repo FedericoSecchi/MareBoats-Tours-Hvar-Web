@@ -168,7 +168,7 @@ The route takes you to five islands and hits three caves, four beaches and a blu
 
 After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
 
-We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for your group only, up to 9 guests).
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for your group only, up to 8 guests).
 
 Message us on WhatsApp with your date and group size - we confirm fast.`,
     duration: '7 hours · Departs 10:00',
@@ -222,7 +222,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     ],
     pricingOptions: [
       { label: 'Shared', price: '€130/person', note: 'up to 8 guests' },
-      { label: 'Private', price: '€700', note: 'your group only · up to 9 guests' },
+      { label: 'Private', price: '€700', note: 'your group only · up to 8 guests' },
     ],
   },
 

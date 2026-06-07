@@ -57,7 +57,7 @@ const faqSchema = {
       name: 'How many people can fit on the boat?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Our speedboats accommodate up to 9 people depending on the vessel.',
+        text: 'Our speedboats accommodate up to 8 people depending on the vessel.',
       },
     },
     {
@@ -81,7 +81,7 @@ const faqSchema = {
       name: 'How many people can rent a boat in Hvar?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Our speedboats accommodate up to 9 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
+        text: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
       },
     },
     {
@@ -130,7 +130,7 @@ const FAQS = [
   },
   {
     q: 'How many people can rent a boat in Hvar?',
-    a: "Our speedboats accommodate up to 9 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
+    a: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
   },
   {
     q: 'What is included in the boat rental price?',
@@ -297,7 +297,7 @@ export default function RentalsPage() {
                   'No licence needed',
                   'Local skipper, custom route',
                   'Fuel, water & snorkel included',
-                  'Up to 9 people - private group only',
+                  'Up to 8 people - private group only',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />

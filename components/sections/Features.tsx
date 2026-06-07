@@ -34,7 +34,7 @@ const features: Feature[] = [
   {
     title: 'One Group, One Boat',
     description:
-      'Up to 9 guests. No fixed schedule. The day moves at your pace.',
+      'Up to 8 guests. No fixed schedule. The day moves at your pace.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="9" cy="8" r="3" />

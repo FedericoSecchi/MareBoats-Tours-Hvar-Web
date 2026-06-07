@@ -21,8 +21,8 @@
 - 4 barcos en total (corregido de 5)
 - **Blue Mariner**: cómodo 5 · máximo 8 personas
 - **Red Mariner**: cómodo 5 · máximo 8 personas
-- **Jolly**: cómodo 6 · máximo 9 personas
-- **Clubman**: cómodo 6 · máximo 9 personas
+- **Jolly**: cómodo 6 · máximo 8 personas
+- **Clubman**: cómodo 6 · máximo 8 personas
 - Motores: 150-300hp
 - Equipamiento: sun canopy, sistema de música, conservadora, snorkel y máscaras
 - Tours privados (grupo propio) o compartidos (sale cuando se llena). Grupos grandes: múltiples speedboats en convoy. Máximo convoy: 14 personas (2 botes).
@@ -117,7 +117,7 @@ Archivo central: `lib/schema.ts`
 - Boat rental sin licencia: solo la Pasara 5hp es legalmente clara. La 20hp se maneja por WhatsApp caso a caso. Copy nunca afirma "no licence needed" para la 20hp.
 - Em-dashes (—) y en-dashes (–) prohibidos en copy del sitio — usar coma, punto, dos puntos o reescribir
 - **"Lunch not included"** — wording unificado en todo el sitio desde 02/06
-- Capacidad máxima: 9 personas por barco. Nunca mencionar 12. Framing: "full-size speedboats, small groups."
+- Capacidad máxima: 8 personas por barco. Nunca mencionar 12. Framing: "full-size speedboats, small groups."
 - **Brand name unificado: "MareBoats Hvar"** — sin espacio (no "Mare Boats Hvar"). Aplicado en todo el sitio el 04/06.
 - Filler phrases prohibidas: "premium", "unforgettable", "ultimate", "ideal for", "flagship"
 
@@ -276,7 +276,7 @@ Todos parten de Hvar Port: `{ lon: 16.442975, lat: 43.169008 }`
 - Fotos crew: `public/img/josip-skipper.jpg` y `public/img/fede-skipper.jpg` — actualizadas 03/06
 - Crew cards: `aspect-[3/4]` (portrait), `objectPosition` individual por persona
 - "The barrel" explicado: "In Hvar, tour operators work from wooden barrels on the harbour. On the day of your tour, come find us there and we'll take you to the boat."
-- Passenger copy: "Up to 9 passengers per boat." + párrafo separado: "Full-size speedboats, small groups. We don't fill them to the limit. That's the whole idea."
+- Passenger copy: "Up to 8 passengers per boat." + párrafo separado: "Full-size speedboats, small groups. We don't fill them to the limit. That's the whole idea."
 - Sin RIBs, sin em-dashes, sin en-dashes en toda la página
 
 ---
@@ -306,7 +306,7 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 ### Cambios aplicados (commits 008a64 → aec1fe)
 
 **Capacidades:**
-- "up to 8" → "up to 9" en features, FAQs, rentals, Red Rocks, water scooter card, pre-tour accordion
+- "up to 8" → "up to 9" en features, FAQs, rentals, Red Rocks, water scooter card, pre-tour accordion (revertido a 8 el 07/06 — decisión Nikola)
 - "up to 10" eliminado de 5 Islands hero y tour cards
 - Shared vs private reconciliado en FAQs — texto diferencia explícitamente ambos modos
 
@@ -458,6 +458,6 @@ US es mercado #1 en GA4. Charter premium varios miles de euros. Definir producto
 - NUNCA modificar listings de OTAs desde el código — eso se hace a mano con aprobación de Nikola
 - Em-dashes (—) y en-dashes (–) prohibidos en todo copy del sitio
 - Brand name: siempre "MareBoats Hvar" (sin espacio)
-- Capacidad: siempre "up to 9" por barco — nunca 8, nunca 10
+- Capacidad: siempre "up to 8" por barco — nunca 9, nunca 10
 - Antes de cualquier cambio de copy: mostrar archivo completo primero, sin modificar
 - No usar filler phrases: "premium", "unforgettable", "ultimate", "ideal for", "flagship"

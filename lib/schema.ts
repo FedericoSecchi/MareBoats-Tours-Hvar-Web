@@ -85,7 +85,7 @@ export const tourSchemaMap: Record<string, object> = {
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
-    maximumAttendeeCapacity: 9,
+    maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: [
       {
@@ -122,7 +122,7 @@ export const tourSchemaMap: Record<string, object> = {
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
-    maximumAttendeeCapacity: 9,
+    maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: [
       {
@@ -166,7 +166,7 @@ export const tourSchemaMap: Record<string, object> = {
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
-    maximumAttendeeCapacity: 9,
+    maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: {
       '@type': 'Offer',
@@ -187,7 +187,7 @@ export const tourSchemaMap: Record<string, object> = {
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
-    maximumAttendeeCapacity: 9,
+    maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: {
       '@type': 'Offer',
@@ -207,7 +207,7 @@ export const tourSchemaMap: Record<string, object> = {
       'Full-day private speedboat charter from Hvar Harbour. Custom itinerary, local skipper, fuel extra. Your boat, your route, your pace.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
-    maximumAttendeeCapacity: 9,
+    maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: {
       '@type': 'Offer',

@@ -9,7 +9,7 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'How many people can join a private tour?',
     answer:
-      'For private tours, up to 9 guests on one boat. The 5 Islands tour is also available as a shared group booking: you pay per seat and join other guests. All other tours are private only.',
+      'For private tours, up to 8 guests on one boat. The 5 Islands tour is also available as a shared group booking: you pay per seat and join other guests. All other tours are private only.',
   },
   {
     question: 'What languages do you speak on board?',

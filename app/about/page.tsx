@@ -192,7 +192,7 @@ export default function AboutPage() {
               },
               {
                 title: 'Any group size',
-                body: 'Speedboats fit up to 9 guests. For larger groups, multiple boats depart together.',
+                body: 'Speedboats fit up to 8 guests. For larger groups, multiple boats depart together.',
               },
             ].map((item) => (
               <li
@@ -286,7 +286,7 @@ export default function AboutPage() {
             <ul className="mt-6 space-y-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
               {[
                 'Modern speedboats, 150 to 300 hp',
-                'Up to 9 passengers per boat',
+                'Up to 8 passengers per boat',
                 'Sun canopy, music system and cooler on board',
                 'Snorkel gear and masks included for every guest',
                 'Large groups: multiple boats depart together',

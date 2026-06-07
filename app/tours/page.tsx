@@ -56,7 +56,7 @@ const TOUR_CARDS: TourCard[] = [
     slug: 'red-rocks-pakleni-islands',
     name: 'Red Rocks & Pakleni Islands',
     duration: '4 hours · morning or afternoon',
-    price: '€400 private (up to 9)',
+    price: '€400 private (up to 8)',
     summary:
       'Cliffs, a secret cave, Dubovica Beach and the Pakleni archipelago in one half-day.',
     image: '/img/destination-4.jpeg',
@@ -89,7 +89,7 @@ const TOUR_CARDS: TourCard[] = [
     slug: 'private-boat-charter',
     name: 'Private Charter',
     duration: 'Full day · custom route',
-    price: '€500 + fuel · up to 9',
+    price: '€500 + fuel · up to 8',
     summary: 'Your boat, your skipper, your itinerary. Design the day you want on the Adriatic.',
     image: '/img/package-4.jpeg',
     imageAlt: 'Private boat charter from Hvar - custom itinerary',
