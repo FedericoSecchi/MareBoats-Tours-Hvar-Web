@@ -330,9 +330,13 @@ export default function RentalsPage() {
                   Self-Drive
                 </p>
                 <h3 className="mt-1 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                  Take the Helm
+                  Boat Rental Hvar
                 </h3>
               </div>
+
+              <p className="font-body text-base text-[color:var(--gray)]">
+                No licence? No problem. Our Pasara is available without a boating licence, perfect for a day around the Pakleni Islands. Licensed skippers can choose from our full speedboat fleet.
+              </p>
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 
@@ -341,7 +345,10 @@ export default function RentalsPage() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Pasara · 5hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small open boat · no licence needed</p>
+                  <span className="mt-2 inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                    No Licence Needed · Legal
+                  </span>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">No licence needed · small boat rental Hvar</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€120 / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Calm water exploration', 'Fuel included', 'Perfect for Pakleni Islands'].map((item) => (
@@ -367,7 +374,7 @@ export default function RentalsPage() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Pasara · 20hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small motorboat · ask us about licence</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small boat rental Hvar · ask us about licence</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€200 / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['More range, more speed', 'Fuel included', 'Contact us to confirm eligibility'].map((item) => (
@@ -393,7 +400,7 @@ export default function RentalsPage() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Speedboat · 60hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental · licence required</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€290 / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Fuel included', 'Valid boating licence required', 'Full day on the Adriatic'].map((item) => (
@@ -419,7 +426,7 @@ export default function RentalsPage() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Speedboat Mariner · 150hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Performance speedboat · licence required</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€350 / day + fuel</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Fuel full-in, full-out', 'Valid boating licence required', 'Maximum range and power'].map((item) => (
