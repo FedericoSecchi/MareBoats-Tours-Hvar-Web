@@ -67,6 +67,13 @@ const QR_BUTTONS: QrButton[] = [
     href: '/landing/rental',
     variant: 'secondary',
   },
+  {
+    icon: '🌤️',
+    label: 'Current Conditions',
+    description: 'Wind, sea, Blue Cave status',
+    href: '/conditions',
+    variant: 'secondary',
+  },
 ];
 
 const easeOutBack = [0.34, 1.56, 0.64, 1] as const;
