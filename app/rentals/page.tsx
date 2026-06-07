@@ -9,9 +9,9 @@ import { rulesAndRentals, type Rule } from '@/lib/guide-content';
 
 export const metadata: Metadata = {
   ...generateSEO({
-    title: 'Rentals Hvar - Boat Rental & Water Scooter',
+    title: 'Rentals Hvar - Boat Rental & Underwater Scooter',
     description:
-      'Rent a boat in Hvar with or without skipper, or hop on a water scooter. No licence? No problem. MareBoats rentals - pickup at Hvar Harbour.',
+      'Rent a boat in Hvar with or without skipper, or try an underwater scooter. No licence? No problem. MareBoats rentals - pickup at Hvar Harbour.',
     keywords: [
       'boat rental hvar',
       'rent a boat hvar croatia',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
       'boat hire hvar no licence',
       'rent a boat hvar no licence',
       'hvar boat rental without licence',
-      'water scooter hvar',
+      'underwater scooter hvar',
       'rent boat hvar croatia',
     ],
     slug: 'rentals',
@@ -115,11 +115,11 @@ const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Rentals from MareBoats Hvar',
-  description: 'Boat rental and water scooter at Hvar Harbour, Croatia.',
+  description: 'Boat rental and underwater scooter at Hvar Harbour, Croatia.',
   itemListElement: [
     { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-skipper`, name: 'Boat Rental - With Skipper' },
     { '@type': 'ListItem', position: 2, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental - Self-Drive' },
-    { '@type': 'ListItem', position: 3, url: `${SITE}/rentals/#water-scooter`, name: 'Water Scooter' },
+    { '@type': 'ListItem', position: 3, url: `${SITE}/rentals/#water-scooter`, name: 'Underwater Scooter' },
   ],
 };
 
@@ -232,7 +232,7 @@ export default function RentalsPage() {
             Rentals Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Boat rental, water scooter &amp; more - pickup at Hvar Harbour.
+            Boat rental, underwater scooter &amp; more - pickup at Hvar Harbour.
           </p>
         </div>
       </section>
@@ -454,14 +454,14 @@ export default function RentalsPage() {
         </div>
       </section>
 
-      {/* Water Scooter section */}
+      {/* Underwater Scooter section */}
       <section id="water-scooter" className="border-t border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-            Water Scooter
+            Underwater Scooter
           </p>
           <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
-            Water Scooter Rental
+            Underwater Scooter Rental
           </h2>
 
           <div className="mt-8 max-w-sm mx-auto">
@@ -469,7 +469,7 @@ export default function RentalsPage() {
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                   src="/img/waterscooter.jpeg"
-                  alt="Water scooter rental in Hvar - ride the Adriatic waves"
+                  alt="Underwater scooter rental in Hvar - explore the Adriatic"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"
                   className="object-cover"
@@ -480,7 +480,7 @@ export default function RentalsPage() {
               <div className="flex flex-1 flex-col gap-4 p-6">
                 <div>
                   <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                    Water Scooter
+                    Underwater Scooter
                   </h3>
                   <p className="mt-2 font-body text-base leading-relaxed text-[color:var(--gray)]">
                     Ride the waves. Instructor briefing included.
@@ -501,7 +501,7 @@ export default function RentalsPage() {
                     On request
                   </span>
                   <WhatsAppTrackedLink
-                    href={waUrl("Hi! I'd like info about the water scooter")}
+                    href={waUrl("Hi! I'd like info about the underwater scooter")}
                     label="rentals_water-scooter"
                     className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                   >

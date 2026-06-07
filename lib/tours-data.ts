@@ -45,7 +45,7 @@ const MAPS = 'https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7';
 const PHOTO_VIDEO_ADDON =
   'Photo & Video Shoot - €200, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited.';
 
-const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, 'Water Scooter €40/unit, on request'];
+const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, 'Underwater Scooter €40/unit, on request'];
 
 export const toursData: TourRecord[] = [
   {

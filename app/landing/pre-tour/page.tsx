@@ -56,7 +56,7 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'Lunch not included - restaurants available at Pakleni',
     addOns: [
-      'Water Scooter €40/unit · On request via WhatsApp',
+      'Underwater Scooter €40/unit · On request via WhatsApp',
       'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
     ],
   },
@@ -73,7 +73,7 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'None',
     addOns: [
-      'Water Scooter €40/unit · On request via WhatsApp',
+      'Underwater Scooter €40/unit · On request via WhatsApp',
       'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
     ],
   },
@@ -100,7 +100,7 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'Fuel not included - discussed with Nikola at booking',
     addOns: [
-      'Water Scooter €40/unit · On request via WhatsApp',
+      'Underwater Scooter €40/unit · On request via WhatsApp',
       'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
     ],
   },

@@ -76,7 +76,7 @@ export default function HomePage() {
           </h1>
 
           <p className="font-body text-sm text-[color:var(--gray)]">
-            Private boat tours, boat rental &amp; water scooter hire - from Hvar Harbour.
+            Private boat tours, boat rental &amp; underwater scooter hire - from Hvar Harbour.
           </p>
 
           <div className="w-full">
