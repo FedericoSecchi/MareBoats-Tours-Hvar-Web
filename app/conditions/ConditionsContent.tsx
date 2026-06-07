@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 interface WeatherData {
   current: {
@@ -15,6 +16,11 @@ interface WeatherData {
     temperature_2m: number[];
     weather_code: number[];
     cloud_cover: number[];
+    visibility: number[];
+  };
+  daily: {
+    sunrise: string[];
+    sunset: string[];
   };
 }
 
@@ -27,7 +33,7 @@ interface MarineData {
 }
 
 const WEATHER_URL =
-  'https://api.open-meteo.com/v1/forecast?latitude=43.1730&longitude=16.4413&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,cloud_cover&hourly=temperature_2m,weather_code,cloud_cover&forecast_days=2&timezone=Europe/Zagreb';
+  'https://api.open-meteo.com/v1/forecast?latitude=43.1730&longitude=16.4413&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,cloud_cover&hourly=temperature_2m,weather_code,cloud_cover,visibility&daily=sunrise,sunset&forecast_days=2&timezone=Europe/Zagreb';
 const MARINE_URL =
   'https://marine-api.open-meteo.com/v1/marine?latitude=43.1730&longitude=16.4413&current=sea_surface_temperature,wave_height,wave_period&timezone=Europe/Zagreb';
 const WA_URL =
@@ -59,12 +65,76 @@ function getBlueCaveStatus(wh: number | null) {
   return { label: 'ROUGH CONDITIONS', color: 'text-red-400', bg: 'bg-red-400/10' };
 }
 
-function getSunsetQuality(cc: number | null) {
-  if (cc === null) return { label: 'DATA UNAVAILABLE', color: 'text-[color:var(--gray)]' };
-  if (cc < 20) return { label: 'EXCELLENT', color: 'text-[color:var(--accent)]' };
-  if (cc < 50) return { label: 'GOOD', color: 'text-emerald-400' };
-  if (cc < 80) return { label: 'PARTLY CLOUDY', color: 'text-amber-400' };
-  return { label: 'OVERCAST', color: 'text-[color:var(--gray)]' };
+function getLightQuality(cc: number | null, visibility: number | null): {
+  label: string;
+  color: string;
+  bg: string;
+  showCruiseCta: boolean;
+  partialCloudsNote: boolean;
+} {
+  if (cc === null) {
+    return { label: 'DATA UNAVAILABLE', color: 'text-[color:var(--gray)]', bg: 'bg-[color:var(--surface)]', showCruiseCta: false, partialCloudsNote: false };
+  }
+  const visOk20 = visibility === null || visibility > 20000;
+  const visOk10 = visibility === null || visibility > 10000;
+  const partialCloudsNote = cc >= 20 && cc <= 50;
+
+  if (cc < 20 && visOk20) {
+    return { label: 'SPECTACULAR', color: 'text-[color:var(--accent)]', bg: 'bg-[color:var(--accent)]/10', showCruiseCta: true, partialCloudsNote: false };
+  }
+  if (cc < 40 && visOk10) {
+    return { label: 'EXCELLENT', color: 'text-emerald-400', bg: 'bg-emerald-400/10', showCruiseCta: true, partialCloudsNote: false };
+  }
+  if (cc < 60) {
+    return { label: 'GOOD', color: 'text-emerald-400', bg: 'bg-[color:var(--surface)]', showCruiseCta: false, partialCloudsNote };
+  }
+  if (cc < 80) {
+    return { label: 'FAIR', color: 'text-amber-400', bg: 'bg-[color:var(--surface)]', showCruiseCta: false, partialCloudsNote };
+  }
+  return { label: 'OVERCAST', color: 'text-[color:var(--gray)]', bg: 'bg-[color:var(--surface)]', showCruiseCta: false, partialCloudsNote: false };
+}
+
+function getSunsetData(weather: WeatherData) {
+  const sunsetStr = weather.daily?.sunset?.[0];
+  if (!sunsetStr) return null;
+
+  // Parse "2026-06-07T20:44" — Open-Meteo returns in specified timezone (Europe/Zagreb)
+  const [datePart, timePart] = sunsetStr.split('T');
+  const [shStr, smStr] = timePart.split(':');
+  const sunsetHour = parseInt(shStr, 10);
+
+  const sunsetDisplay = `${shStr}:${smStr}`;
+
+  // Golden hour: 1h before sunset to sunset
+  const ghHour = (sunsetHour - 1 + 24) % 24;
+  const ghStart = `${ghHour.toString().padStart(2, '0')}:${smStr}`;
+  const goldenHourRange = `${ghStart} to ${sunsetDisplay}`;
+
+  // Average cloud cover + visibility over the 2 hours before sunset, same date
+  const relevantSlots = weather.hourly.time.reduce<{ cc: number; vis: number | null }[]>((acc, t, i) => {
+    if (!t.startsWith(datePart)) return acc;
+    const hour = parseInt(t.split('T')[1].split(':')[0], 10);
+    if (hour >= sunsetHour - 2 && hour <= sunsetHour) {
+      acc.push({
+        cc: weather.hourly.cloud_cover[i],
+        vis: weather.hourly.visibility?.[i] ?? null,
+      });
+    }
+    return acc;
+  }, []);
+
+  let avgCC: number | null = null;
+  let avgVis: number | null = null;
+
+  if (relevantSlots.length > 0) {
+    avgCC = Math.round(relevantSlots.reduce((a, s) => a + s.cc, 0) / relevantSlots.length);
+    const visSlots = relevantSlots.filter((s) => s.vis !== null);
+    if (visSlots.length > 0) {
+      avgVis = Math.round(visSlots.reduce((a, s) => a + (s.vis ?? 0), 0) / visSlots.length);
+    }
+  }
+
+  return { sunsetDisplay, goldenHourRange, quality: getLightQuality(avgCC, avgVis), avgCC, avgVis };
 }
 
 function DataCard({ label, value, sub }: { label: string; value: string; sub: string }) {
@@ -94,8 +164,8 @@ function SkeletonLoader() {
           ))}
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <div className="h-40 animate-pulse rounded-2xl bg-[color:var(--surface)]" />
-          <div className="h-40 animate-pulse rounded-2xl bg-[color:var(--surface)]" />
+          <div className="h-44 animate-pulse rounded-2xl bg-[color:var(--surface)]" />
+          <div className="h-44 animate-pulse rounded-2xl bg-[color:var(--surface)]" />
         </div>
       </div>
     </div>
@@ -165,20 +235,6 @@ export default function ConditionsContent() {
     }).filter(Boolean) as { time: string; temp: number; code: number }[];
   };
 
-  const getSunsetCloudCover = (): number | null => {
-    if (!weather) return null;
-    const today = new Date().toDateString();
-    const slots = weather.hourly.time.reduce<number[]>((acc, t, i) => {
-      const d = new Date(t);
-      if (d.toDateString() === today && d.getHours() >= 18 && d.getHours() <= 20) {
-        acc.push(weather.hourly.cloud_cover[i]);
-      }
-      return acc;
-    }, []);
-    if (slots.length === 0) return null;
-    return Math.round(slots.reduce((a, b) => a + b, 0) / slots.length);
-  };
-
   if (loading) return <SkeletonLoader />;
   if (error || !weather || !marine) return <ErrorState />;
 
@@ -186,8 +242,7 @@ export default function ConditionsContent() {
   const m = marine.current;
   const waveHeight = m?.wave_height ?? null;
   const blueCave = getBlueCaveStatus(waveHeight);
-  const sunsetCC = getSunsetCloudCover();
-  const sunset = getSunsetQuality(sunsetCC);
+  const sunsetData = getSunsetData(weather);
   const nextHours = getNextHours();
 
   return (
@@ -247,6 +302,50 @@ export default function ConditionsContent() {
       {/* Status indicators */}
       <section className="border-t border-[color:var(--border)] px-4 py-10">
         <div className="mx-auto max-w-container grid gap-4 md:grid-cols-2">
+
+          {/* Sunset Conditions */}
+          {sunsetData ? (
+            <div className={`rounded-2xl border border-[color:var(--border)] ${sunsetData.quality.bg} p-6`}>
+              <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--gray)]">
+                Sunset Conditions
+              </p>
+              <p className={`mt-2 font-display text-2xl font-extrabold uppercase tracking-tight ${sunsetData.quality.color}`}>
+                {sunsetData.quality.label}
+              </p>
+              <div className="mt-3 flex flex-col gap-1">
+                <p className="font-body text-sm text-[color:var(--gray)]">
+                  Sunset: {sunsetData.sunsetDisplay}
+                </p>
+                <p className="font-body text-sm text-[color:var(--gray)]">
+                  Golden hour: {sunsetData.goldenHourRange}
+                </p>
+              </div>
+              {sunsetData.quality.partialCloudsNote && (
+                <p className="mt-3 font-body text-xs italic text-[color:var(--gray)]">
+                  Partial clouds can make for a more dramatic sunset.
+                </p>
+              )}
+              {sunsetData.quality.showCruiseCta && (
+                <Link
+                  href="/tours/sunset-cruise/"
+                  className="mt-4 inline-flex items-center font-body text-xs font-semibold text-[color:var(--accent)] hover:underline"
+                >
+                  Book the Sunset Cruise
+                </Link>
+              )}
+              <p className="mt-4 font-body text-xs leading-relaxed text-[color:var(--gray)]">
+                Light quality estimate based on cloud cover and visibility data.
+              </p>
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
+              <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--gray)]">
+                Sunset Conditions
+              </p>
+              <p className="mt-2 font-body text-sm text-[color:var(--gray)]">Data unavailable.</p>
+            </div>
+          )}
+
           {/* Blue Cave */}
           <div className={`rounded-2xl border border-[color:var(--border)] ${blueCave.bg} p-6`}>
             <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--gray)]">
@@ -256,7 +355,7 @@ export default function ConditionsContent() {
               {blueCave.label}
             </p>
             {waveHeight !== null && (
-              <p className="mt-1 font-body text-sm text-[color:var(--gray)]">
+              <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
                 Wave height: {waveHeight.toFixed(2)}m
               </p>
             )}
@@ -265,23 +364,6 @@ export default function ConditionsContent() {
             </p>
           </div>
 
-          {/* Sunset */}
-          <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
-            <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--gray)]">
-              Sunset Quality
-            </p>
-            <p className={`mt-2 font-display text-2xl font-extrabold uppercase tracking-tight ${sunset.color}`}>
-              {sunset.label}
-            </p>
-            <p className="mt-1 font-body text-sm text-[color:var(--gray)]">
-              Sunset today around 20:45 CEST
-            </p>
-            {sunsetCC !== null && (
-              <p className="mt-1 font-body text-xs text-[color:var(--gray)]">
-                Cloud cover at golden hour: {sunsetCC}%
-              </p>
-            )}
-          </div>
         </div>
       </section>
 
