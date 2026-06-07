@@ -83,7 +83,8 @@ Archivo central: `lib/schema.ts`
 - `/explore/` — hub principal de contenido. 7 secciones: Where to Eat, What to See, Beaches, Practical Info, FAQ (FAQPage JSON-LD), CTA. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide". Inline CTA después de Beaches. Hero card 3 apunta a /tours/. FAQ con preguntas de booking intent.
 - `/guide/` — guía pre-tour. Route cards con links a tour correspondiente. Dead code eliminado.
 - `/transfers/` — Mapbox Static Images API implementado. Ver sección abajo.
-- Nav: Tours → Rentals → Transfers → **Explore** → About
+- `/conditions/` — página indexada (priority 0.6, changefreq hourly). Datos live de Open-Meteo: temperatura agua/aire, viento, altura de olas, estado Blue Cave, calidad del sunset, forecast 8h. Client component con useEffect (static export — no ISR). Nav: entre Explore y About.
+- Nav: Tours → Rentals → Transfers → **Explore** → Conditions → About
 
 ## Cluster SEO — páginas interconectadas
 - `/explore/` (hub) → cards hacia `/guide/`, `/hvar-islands-guide/`, `/tours/`
@@ -110,7 +111,7 @@ Archivo central: `lib/schema.ts`
 - No fumar a bordo
 - No hay baño a bordo — guests usan los de restaurantes en paradas
 - Formularios de contacto: NO. Solo WhatsApp
-- Water Scooter addon: €40/unit — disponible en todos los tours EXCEPTO tours a Vis (isla) y Sunset Cruise. Máx 2h/unit, no recargable a bordo.
+- Underwater Scooter addon: €40/unit — disponible en todos los tours EXCEPTO tours a Vis (isla) y Sunset Cruise. Máx 2h/unit, no recargable a bordo.
 - Photo & Video Shoot: €200 — lo hace Fede (drone + underwater + on board). Full gallery post-tour. Disponible en todos los tours privados. Solo cuando Fede está a bordo. Reservar con anticipación — slots limitados.
 - NO mencionar año exacto de fundación de MareBoats
 - NO mencionar RIB ni mostrar foto del RIB — usar "speedboat" siempre.
