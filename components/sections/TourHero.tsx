@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { TourRecord } from '@/lib/tours-data';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import TourHighlightsList from '@/components/ui/TourHighlightsList';
 
 type TourHeroProps = {
   tour: TourRecord;
@@ -107,22 +108,7 @@ export default function TourHero({ tour }: TourHeroProps) {
           </Link>
         </div>
 
-        <ul
-          aria-label="Tour highlights"
-          className="mt-10 grid w-full max-w-3xl grid-cols-1 gap-3 text-left md:grid-cols-3"
-        >
-          {tour.highlights.map((h) => (
-            <li
-              key={h}
-              className="flex items-start gap-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)]/85 px-4 py-3 font-body text-sm text-[color:var(--white)] backdrop-blur-sm"
-            >
-              <span aria-hidden="true" className="mt-0.5 text-[color:var(--accent)]">
-                ✓
-              </span>
-              <span>{h}</span>
-            </li>
-          ))}
-        </ul>
+        <TourHighlightsList highlights={tour.highlights} />
       </div>
 
     </section>
