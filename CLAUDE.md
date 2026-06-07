@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 5 Junio 2026**
+**Actualizado: 07 Junio 2026**
 
 ---
 
@@ -15,6 +15,7 @@
 - **Josip** — hermano de Nikola, ~38 años, head skipper, toda su vida en el agua, vivió en Alemania, muy querido por los clientes, habla inglés, croata y alemán
 - **Federico (Fede)** — argentino, ciudadanía italiana, empezó en Optimist a los 6 años, mundiales y sudamericanos representando Argentina, coach de la Federación de Vela de Ecuador 2 años, trabajó con la clase 69F, clásicos y cruceros hasta 90 pies, maneja el marketing de MareBoats, skipper ocasional. Habla español, italiano e inglés. Sin título/cargo en la web.
 - **Coti** — diseño, redes sociales, posts GBP
+- **Sirius/Circus** — ex-tripulación, ya no trabaja en MareBoats. No mencionar en copy.
 
 ## La flota — CONFIRMADO por Nikola 29/05
 - 4 barcos en total (corregido de 5)
@@ -28,6 +29,16 @@
 - **NO mencionar "RIB" en copy** — decisión consciente de Nikola. Usar "speedboat" siempre.
 - El skipper no es un guía, pero puede ir contando y actuando de guía durante el tour.
 
+## Flota self-drive rental — precios por día completo (07/06/2026)
+| Embarcación | HP | Precio/día | Fuel | Licencia |
+|---|---|---|---|---|
+| Pasara | 5hp | €120 | Incluido | No requerida (legal hasta 5hp en Croacia) |
+| Pasara | 20hp | €200 | Incluido | Consultar por WhatsApp |
+| Speedboat | 60hp | €290 | Incluido | Requerida |
+| Speedboat Mariner | 150hp | €350 | Extra (full-in/out) | Requerida |
+
+Nota legal: En Croacia, operar sin licencia es legal solo hasta 5HP (3.7 kW). La Pasara 20hp está en zona gris — Nikola resuelve caso a caso por WhatsApp. El copy dice "ask us about licence" para la 20hp, nunca afirmar "no licence needed".
+
 ## Stack técnico
 - Next.js 14 + Tailwind CSS + TypeScript — `output: 'export'` (static export)
 - App Router en /app — componentes activos en /components/ui/ y /components/sections/
@@ -37,8 +48,34 @@
 - Herramienta de código: Claude Code (reemplazó a Cursor desde 23/05)
 - NEXT_PUBLIC_ env vars son build-time — hardcodear Measurement ID directamente en layout.tsx
 
-## Arquitectura de páginas — estado al 05/06/2026
-- `/rentals/` — página unificada: Boat Rental (con/sin skipper, con/sin licencia) + Water Scooter + FAQ. Es la página SEO principal para keywords de rental.
+## Schema markup — implementado 06/06/2026
+Archivo central: `lib/schema.ts`
+
+### Schemas globales (app/layout.tsx)
+- `businessSchema`: @type ["LocalBusiness", "TouristAttraction"] · name "MareBoats Hvar" · coordenadas 43.1690147, 16.4429617 · reviewCount: 26 · rating 5.0 · availableLanguage [EN, HR, DE, ES, IT] · openingHours mayo-septiembre · priceRange "€€"
+- `websiteSchema`: @type WebSite
+
+### Schemas por página
+- `tourSchemaMap`: map por slug con TouristAttraction + Service para los 6 tours. Cada uno tiene offers con precios reales, maximumAttendeeCapacity: 9, availableLanguage, aggregateRating.
+- `rentalServiceSchema` + `rentalBreadcrumbSchema`: Service + BreadcrumbList en /rentals/
+- BreadcrumbList en todas las tour pages
+
+### Precios en schema (tomados del sitio live)
+| Slug | Precio |
+|---|---|
+| blue-cave-pakleni-islands | €130/persona (shared) · €700 privado |
+| red-rocks-pakleni-islands | €85/persona (shared) · €400 privado half-day · €500 privado full-day |
+| pakleni-islands | On request |
+| sunset-cruise | €250 privado |
+| private-boat-charter | €500 + fuel |
+| rentals | desde €400 (con skipper) |
+
+### Validación Google Rich Results Test — 06/06/2026
+- /tours/blue-cave-pakleni-islands/: 4 elementos válidos (Breadcrumbs, Empresa local, Organización, Fragmentos de reseñas) ✅
+- /rentals/: 5 elementos válidos (Carruseles, FAQ, Empresa local, Organización, Fragmentos de reseñas) ✅
+
+## Arquitectura de páginas — estado al 07/06/2026
+- `/rentals/` — página unificada: Boat Rental (con/sin skipper, con/sin licencia) + Water Scooter + FAQ. Es la página SEO principal para keywords de rental. Sección self-drive actualizada 07/06 con 4 tarjetas de embarcaciones con precios reales y keywords SEO optimizadas.
 - `/boat-rental/` — eliminada. Redirect 301 → `/rentals/` en netlify.toml.
 - `/landing/pre-tour/` — reescrita el 01/06. Ver sección abajo.
 - `/hvar-islands-guide/` — página indexada, en sitemap (priority 0.8). 9 destinos con historia + 30 paradas locales + Google Maps links. Ataca keywords: "Hvar islands guide", "Blue Cave what to expect", "Pakleni Islands stops". Incluye OnTourBanner: banner visible solo cuando ?ref=qr — para guests que llegan via QR del barco. Links a tours desde Blue Cave, Red Rocks y Stiniva dentro del accordion.
@@ -77,11 +114,12 @@
 - Photo & Video Shoot: €200 — lo hace Fede (drone + underwater + on board). Full gallery post-tour. Disponible en todos los tours privados. Solo cuando Fede está a bordo. Reservar con anticipación — slots limitados.
 - NO mencionar año exacto de fundación de MareBoats
 - NO mencionar RIB ni mostrar foto del RIB — usar "speedboat" siempre.
-- Boat rental sin licencia: MareBoats lo ofrece directamente (no mencionar "partners" ni operadores externos). El producto es una "Pasara" (bote pequeño, motor hasta 6.8 HP) — legal sin licencia en Croacia hasta 500m de la costa. Copy debe especificar el producto y el límite legal para proteger de responsabilidad.
+- Boat rental sin licencia: solo la Pasara 5hp es legalmente clara. La 20hp se maneja por WhatsApp caso a caso. Copy nunca afirma "no licence needed" para la 20hp.
 - Em-dashes (—) y en-dashes (–) prohibidos en copy del sitio — usar coma, punto, dos puntos o reescribir
 - **"Lunch not included"** — wording unificado en todo el sitio desde 02/06
 - Capacidad máxima: 9 personas por barco. Nunca mencionar 12. Framing: "full-size speedboats, small groups."
 - **Brand name unificado: "MareBoats Hvar"** — sin espacio (no "Mare Boats Hvar"). Aplicado en todo el sitio el 04/06.
+- Filler phrases prohibidas: "premium", "unforgettable", "ultimate", "ideal for", "flagship"
 
 ## Design tokens
 ```
@@ -125,7 +163,7 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## ✅ ESTADO REAL al 05/06/2026
+## ✅ ESTADO REAL al 07/06/2026
 
 ### GA4
 - `whatsapp_click` verificado ✅ — 41 eventos · 24 usuarios únicos (últimos 28 días)
@@ -139,11 +177,14 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 - 45 clics · 1,550 impresiones · CTR 2.9% · Posición media 24.3 (últimos 28 días)
 - Keywords oportunidad: "hvar boat rental" (pos 30.1), "rent a boat hvar" (pos 32.7), "hvar boat hire" (pos 35.7)
 
-### Google Business Profile
-- Verificado · 5.0 ⭐ · +7 reviews nuevas el 30/05
+### Google Business Profile — estado al 07/06/2026
+- Verificado · 5.0 ⭐ · 26 reseñas
+- Nombre corregido a "MareBoats Hvar" (sin espacio) — aprobado por Google el 07/06
+- Descripción actualizada 07/06 (sin em-dashes, keywords integradas)
 - 400 interacciones totales (dic 2025–may 2026)
 - GBP Maps link: https://maps.app.goo.gl/k84JNBQLvqgZunEX6
-- Pendiente: 20-30 fotos reales (post-shoot) · Q&A (4-5 preguntas)
+- Servicios: cargados
+- Pendiente: 20-30 fotos reales (post-shoot) · Q&A (no disponible desde panel desktop ni app mobile — limitación de Google)
 
 ### GetYourGuide — mayo 2026
 - Revenue: €1,635 · Bookings: 7 · Rating: 5.0 ⭐
@@ -190,17 +231,15 @@ Nikola
 - On Board section: cards (una fila por item, badge status izquierda)
 - Rental Rules section: tabla (stacked mobile / 2 columnas desktop)
 - Water Scooter card: centrada con `mx-auto`
-- Sección "Take the Helm" (Self-Drive): 4 tarjetas en grid 2x2 con precios reales, badges de licencia y botones WhatsApp individuales
-- FAQ rentals: capacidad corregida a 9 personas. Respuestas actualizadas con precios y detalles de combustible.
-
-### Precios self-drive (precio por dia completo)
-
-| Embarcacion | HP | Precio/dia | Fuel | Licencia |
-|---|---|---|---|---|
-| Pasara | 5hp | €120 | Included | Not required |
-| Pasara | 20hp | €200 | Included | Ask us |
-| Speedboat | 60hp | €290 | Included | Required |
-| Speedboat Mariner | 150hp | €350 | Extra (full-in/out) | Required |
+- Sección "With Skipper": desde €400, incluye skipper local, ruta custom, fuel, agua, snorkel, hasta 9 personas
+- Sección self-drive "Boat Rental Hvar": grid 2x2 con 4 embarcaciones con precios reales, badges de licencia y keywords SEO optimizadas (07/06)
+  - Subtítulo sección: "No licence? No problem. Our Pasara is available without a boating licence — perfect for a day around the Pakleni Islands."
+  - Keywords integradas: "no licence needed", "small boat rental Hvar", "speedboat rental Hvar"
+  - Badge PASARA 5HP: "NO LICENCE NEEDED · LEGAL"
+  - Badge PASARA 20HP: "ASK US ABOUT LICENCE"
+  - Badges Speedboats: "LICENCE REQUIRED"
+- FAQ rentals: actualizado con precios Pasara y política de fuel por embarcación
+- Schema JSON-LD: Service + BreadcrumbList + FAQPage (no tocar)
 
 ---
 
@@ -319,7 +358,33 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 
 ---
 
-## PLAN UNIFICADO — Estado al 05/06/2026
+## SEO / GEO — estado al 07/06/2026
+
+### Schema markup implementado (06/06)
+- `lib/schema.ts`: businessSchema, websiteSchema, tourSchemaMap (6 tours), rentalServiceSchema, rentalBreadcrumbSchema
+- Validado con Google Rich Results Test — 0 errores en todas las páginas testeadas
+- reviewCount: 26 (actualizado mismo día)
+
+### GBP optimizado (07/06)
+- Nombre corregido: "MareBoats Hvar"
+- Descripción reescrita: keywords integradas, sin em-dashes
+- Servicios cargados
+- Q&A: no disponible desde panel — limitación de Google para esta categoría
+
+### Keywords oportunidad (GSC)
+- "hvar boat rental" pos 30.1
+- "rent a boat hvar" pos 32.7
+- "hvar boat hire" pos 35.7
+- "boat rental hvar no licence" — keyword integrada en /rentals/ el 07/06
+
+### Próximas palancas SEO/GEO (en orden de prioridad)
+1. Fotos reales en GBP, sitio y GYG (post-shoot)
+2. Backlinks earned media: contactar travel blogs que rankean "best boat tours hvar"
+3. Contenido GEO: página/sección que responda "how much does a Blue Cave tour cost from Hvar" y queries similares — estas son las que citan las IAs
+
+---
+
+## PLAN UNIFICADO — Estado al 07/06/2026
 
 ### ✅ BLOQUE 0 — CERRADO
 ### ✅ SEO Website — CERRADO 31/05
@@ -329,6 +394,9 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 ### ✅ Mobile Audit — CERRADO 03/06
 ### ✅ Copy Audit site-wide — CERRADO 04/06
 ### ✅ UX/Conversión audit cluster Explore — CERRADO 05/06
+### ✅ Schema markup completo — CERRADO 06/06
+### ✅ GBP optimizado — CERRADO 07/06
+### ✅ Precios self-drive rentals — CERRADO 07/06
 
 ### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
 - Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
@@ -353,7 +421,6 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 
 **GBP:**
 - [ ] Coti: posts mayo-junio pendientes
-- [ ] Q&A (4-5 preguntas)
 - [ ] Post-shoot: 20-30 fotos
 
 ### 🚀 BLOQUE 3 — Google Ads
@@ -368,6 +435,12 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 
 ### 🇺🇸 EN EL RADAR — Segmento US / alto ticket
 US es mercado #1 en GA4. Charter premium varios miles de euros. Definir producto + precio + página. Después de Bloques 0-3.
+
+### 🔗 EN EL RADAR — Backlinks / Earned Media
+- Contactar travel blogs que rankean "best boat tours hvar" — ofrecerles tour gratis a cambio de review + link
+- Directorios: Croatia.hr, VisitHvar.hr, TripAdvisor listing separado
+- Resolver Viator (bloqueado por seguro) — DA alto, backlink valioso
+- Reddit / TripAdvisor Q&A: respuestas genuinas de Nikola/Josip en r/croatia, r/travel
 
 ---
 
@@ -387,3 +460,4 @@ US es mercado #1 en GA4. Charter premium varios miles de euros. Definir producto
 - Brand name: siempre "MareBoats Hvar" (sin espacio)
 - Capacidad: siempre "up to 9" por barco — nunca 8, nunca 10
 - Antes de cualquier cambio de copy: mostrar archivo completo primero, sin modificar
+- No usar filler phrases: "premium", "unforgettable", "ultimate", "ideal for", "flagship"
