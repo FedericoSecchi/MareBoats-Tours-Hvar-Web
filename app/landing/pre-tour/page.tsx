@@ -45,7 +45,7 @@ const tourDetails: TourDetail[] = [
       { label: 'Meet', value: '15 minutes before departure' },
       {
         label: 'Depart',
-        value: '09:00 (morning slot) or 14:00 (afternoon slot) - Nikola will confirm your slot',
+        value: '09:00, 11:00 or 14:00 - Nikola will confirm your slot',
       },
       { label: 'Duration', value: '4 or 6 hours depending on your booking' },
       {
@@ -66,7 +66,7 @@ const tourDetails: TourDetail[] = [
       { label: 'Meet', value: '15 minutes before departure' },
       {
         label: 'Depart',
-        value: '09:00 (morning slot) or 14:00 (afternoon slot) - Nikola will confirm your slot',
+        value: '09:00, 11:00 or 14:00 - Nikola will confirm your slot',
       },
       { label: 'Duration', value: '3–4 hours' },
       { label: 'Route', value: 'Pakleni Islands - swimming stops at secluded bays' },
