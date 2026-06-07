@@ -242,7 +242,7 @@ export default function ToursIndexPage() {
                 </div>
                 <div className="mt-auto flex flex-col gap-3">
                   <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
-                    From €150 · skipper optional
+                    From €120 · skipper optional
                   </span>
                   <Link
                     href="/rentals/"
