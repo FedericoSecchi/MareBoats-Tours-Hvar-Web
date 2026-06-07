@@ -16,6 +16,7 @@ const exploreLinks = [
   { href: '/transfers', label: 'Transfers' },
   { href: '/guide', label: 'Guide' },
   { href: '/explore', label: 'Explore Hvar' },
+  { href: '/conditions', label: 'Conditions' },
 ];
 
 const infoLinks = [

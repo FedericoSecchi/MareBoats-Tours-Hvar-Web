@@ -110,6 +110,9 @@ export default function TourDetailPage({ params }: PageProps) {
 
   const related = getRelatedTours(tour.slug, 2);
 
+  const showBlueCaveConditions = tour.slug === 'blue-cave-pakleni-islands';
+  const showSunsetConditions = tour.slug === 'sunset-cruise';
+
   return (
     <main>
       <JsonLd data={tripSchema as Record<string, unknown>} />
@@ -259,6 +262,32 @@ export default function TourDetailPage({ params }: PageProps) {
               Open in Google Maps →
             </a>
           </div>
+
+          {showBlueCaveConditions && (
+            <div className="md:col-span-2 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 flex items-center justify-between gap-4 flex-wrap">
+              <div>
+                <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">Before you go</p>
+                <h2 className="mt-1 font-display text-xl font-bold uppercase text-[color:var(--white)]">Check Blue Cave conditions</h2>
+                <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Live sea state, wind and Blue Cave access indicator — updated in real time.</p>
+              </div>
+              <Link href="/conditions" className="shrink-0 inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]">
+                Check conditions →
+              </Link>
+            </div>
+          )}
+
+          {showSunsetConditions && (
+            <div className="md:col-span-2 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 flex items-center justify-between gap-4 flex-wrap">
+              <div>
+                <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">Tonight on the water</p>
+                <h2 className="mt-1 font-display text-xl font-bold uppercase text-[color:var(--white)]">Check tonight's sunset quality</h2>
+                <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Golden hour forecast, cloud cover and visibility — so you know what to expect before you board.</p>
+              </div>
+              <Link href="/conditions" className="shrink-0 inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]">
+                Check conditions →
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
