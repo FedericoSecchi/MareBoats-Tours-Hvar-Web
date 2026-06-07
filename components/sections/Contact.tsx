@@ -108,7 +108,7 @@ export default function Contact() {
                 <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
                   Languages
                 </span>
-                <span>English, Croatian, Italian, Spanish.</span>
+                <span>English, Croatian, German, Italian, Spanish.</span>
               </li>
 
               <li className="flex flex-col gap-1">
