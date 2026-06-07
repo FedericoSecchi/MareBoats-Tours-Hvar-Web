@@ -83,7 +83,7 @@ Archivo central: `lib/schema.ts`
 - `/explore/` — hub principal de contenido. 7 secciones: Where to Eat, What to See, Beaches, Practical Info, FAQ (FAQPage JSON-LD), CTA. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide". Inline CTA después de Beaches. Hero card 3 apunta a /tours/. FAQ con preguntas de booking intent.
 - `/guide/` — guía pre-tour. Route cards con links a tour correspondiente. Dead code eliminado.
 - `/transfers/` — Mapbox Static Images API implementado. Ver sección abajo.
-- `/conditions/` — página indexada (priority 0.6, changefreq hourly). Datos live de Open-Meteo: temperatura agua/aire, viento, altura de olas, estado Blue Cave, calidad del sunset, forecast 8h. Client component con useEffect (static export — no ISR). Nav: entre Explore y About.
+- `/conditions/` — página indexada (priority 0.6, changefreq hourly). Datos live de Open-Meteo: temperatura agua/aire, viento, altura de olas, estado Blue Cave, golden hour calculator (hora real de sunset de daily.sunset[0]), light quality rating (SPECTACULAR/EXCELLENT/GOOD/FAIR/OVERCAST basado en cloud_cover + visibility), forecast 8h. Client component con useEffect (static export, no ISR). Nav: entre Explore y About.
 - Nav: Tours → Rentals → Transfers → **Explore** → Conditions → About
 
 ## Cluster SEO — páginas interconectadas
