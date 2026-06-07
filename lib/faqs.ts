@@ -7,9 +7,9 @@ export const homepageFaqs: FaqItem[] = [
       'Local captain, fuel for the itinerary, snorkeling masks, icebox and bottled water on board. Lunch stops at island restaurants and cave entrance fees (Blue Cave €24, Green Cave €12) are at your own tab. Drone and underwater video are available on request as a paid add-on when Fede is on board - not included by default.',
   },
   {
-    question: 'How many people can join a private tour?',
+    question: 'How many people fit on the boat?',
     answer:
-      'For private tours, up to 8 guests on one boat. The 5 Islands tour is also available as a shared group booking: you pay per seat and join other guests. All other tours are private only.',
+      'Our speedboats are licensed for up to 12 passengers. We cap every tour at 8, so there\'s room to move, sit comfortably, and enjoy the ride without feeling packed in. That\'s the whole point of keeping groups small.',
   },
   {
     question: 'What languages do you speak on board?',

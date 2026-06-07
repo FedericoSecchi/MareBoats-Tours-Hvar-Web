@@ -118,7 +118,7 @@ Archivo central: `lib/schema.ts`
 - Boat rental sin licencia: solo la Pasara 5hp es legalmente clara. La 20hp se maneja por WhatsApp caso a caso. Copy nunca afirma "no licence needed" para la 20hp.
 - Em-dashes (—) y en-dashes (–) prohibidos en copy del sitio — usar coma, punto, dos puntos o reescribir
 - **"Lunch not included"** — wording unificado en todo el sitio desde 02/06
-- Capacidad máxima: 8 personas por barco. Nunca mencionar 12. Framing: "full-size speedboats, small groups."
+- Capacidad máxima operativa: 8 personas por barco. Capacidad legal: 12. El framing correcto es: licencia para 12, operamos con máximo 8 por elección. Usar este contraste en copy cuando sea relevante.
 - **Brand name unificado: "MareBoats Hvar"** — sin espacio (no "Mare Boats Hvar"). Aplicado en todo el sitio el 04/06.
 - Filler phrases prohibidas: "premium", "unforgettable", "ultimate", "ideal for", "flagship"
 
