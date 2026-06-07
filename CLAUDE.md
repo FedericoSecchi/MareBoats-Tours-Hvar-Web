@@ -185,13 +185,22 @@ Nikola
 
 ---
 
-## /rentals/ — estado al 04/06/2026
+## /rentals/ — estado al 07/06/2026
 - Tipografía body: `text-base` (16px) unificado
 - On Board section: cards (una fila por item, badge status izquierda)
 - Rental Rules section: tabla (stacked mobile / 2 columnas desktop)
 - Water Scooter card: centrada con `mx-auto`
-- Sección "No Licence": producto es Pasara (bote pequeño, motor bajo HP). Copy especifica ley croata (6.8 HP limit) y límite de 500m de costa. H3: "No Boat Licence? Small Boat Option Available."
-- FAQ rentals: capacidad corregida a 9 personas. Respuesta "sin licencia" actualizada con copy Pasara.
+- Sección "Take the Helm" (Self-Drive): 4 tarjetas en grid 2x2 con precios reales, badges de licencia y botones WhatsApp individuales
+- FAQ rentals: capacidad corregida a 9 personas. Respuestas actualizadas con precios y detalles de combustible.
+
+### Precios self-drive (precio por dia completo)
+
+| Embarcacion | HP | Precio/dia | Fuel | Licencia |
+|---|---|---|---|---|
+| Pasara | 5hp | €120 | Included | Not required |
+| Pasara | 20hp | €200 | Included | Ask us |
+| Speedboat | 60hp | €290 | Included | Required |
+| Speedboat Mariner | 150hp | €350 | Extra (full-in/out) | Required |
 
 ---
 

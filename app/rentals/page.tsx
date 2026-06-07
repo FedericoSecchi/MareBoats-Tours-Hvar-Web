@@ -89,7 +89,7 @@ const faqSchema = {
       name: 'What is included in the boat rental price?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional - included in private tour packages or available on request.',
+        text: 'Depends on the boat. The 60hp speedboat includes fuel. The Mariner 150hp is fuel full-in, full-out. Both Pasara options include fuel. Safety equipment and pre-rental briefing included on all boats.',
       },
     },
     {
@@ -105,7 +105,7 @@ const faqSchema = {
       name: 'Can I rent a boat in Hvar without a licence?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Yes - for guests without a boating licence, we offer a small open boat (Pasara) with a low-power engine. No licence required, ideal for the Pakleni Islands close to shore. Message us on WhatsApp with your dates.",
+        text: "For guests without a boating licence, we offer the Pasara - a small open boat available from €120/day. Contact us on WhatsApp to confirm eligibility for your group and dates.",
       },
     },
   ],
@@ -134,7 +134,7 @@ const FAQS = [
   },
   {
     q: 'What is included in the boat rental price?',
-    a: 'Speedboat, fuel (full-in full-out policy), safety equipment, and a pre-rental briefing. Skipper is optional - included in private tour packages or available on request.',
+    a: 'Depends on the boat. The 60hp speedboat includes fuel. The Mariner 150hp is fuel full-in, full-out. Both Pasara options include fuel. Safety equipment and pre-rental briefing included on all boats.',
   },
   {
     q: 'Can I choose my own route?',
@@ -142,7 +142,7 @@ const FAQS = [
   },
   {
     q: 'Can I rent a boat in Hvar without a licence?',
-    a: "Yes - for guests without a boating licence, we offer a small open boat (Pasara) with a low-power engine. No licence required, ideal for the Pakleni Islands close to shore. Message us on WhatsApp with your dates.",
+    a: "For guests without a boating licence, we offer the Pasara - a small open boat available from €120/day. Contact us on WhatsApp to confirm eligibility for your group and dates.",
   },
 ];
 
@@ -334,60 +334,121 @@ export default function RentalsPage() {
                 </h3>
               </div>
 
-              {/* Sub-card: With Licence */}
-              <article className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)] p-5">
-                <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
-                  With Licence
-                </h4>
-                <ul className="mt-3 space-y-1.5 font-body text-xs text-[color:var(--gray)]">
-                  {[
-                    'Valid boating licence required',
-                    'Fuel full-in, full-out',
-                    'Deposit may apply',
-                    'Pre/post photos at handover',
-                    'Pickup at Hvar Harbour',
-                  ].map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-4 flex flex-col gap-2">
-                  <span className="font-body text-sm font-semibold text-[color:var(--white)]">
-                    On request
-                  </span>
-                  <WhatsAppTrackedLink
-                    href={waUrl("Hi! I'd like to ask about self-drive boat rental in Hvar. I have a valid boating licence.")}
-                    label="boat_rental_self_drive_licence"
-                    className="inline-flex items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
-                  >
-                    Ask on WhatsApp
-                  </WhatsAppTrackedLink>
-                </div>
-              </article>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 
-              {/* Sub-card: No Licence */}
-              <article className="flex flex-col rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-5">
-                <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--accent)]">
-                  No Boat Licence? Small Boat Option Available.
-                </h4>
-                <p className="mt-3 font-body text-xs leading-relaxed text-[color:var(--gray)]">
-                  Croatian maritime law requires a licence for motorboats above 6.8 HP. For guests without one, we offer a small open boat (Pasara) with a low-power engine - no licence required, ideal for exploring the Pakleni Islands close to shore. Fuel included. Message us on WhatsApp for availability.
-                </p>
-                <div className="mt-4 flex flex-col gap-2">
-                  <span className="font-body text-sm font-semibold text-[color:var(--white)]">
-                    On request
+                {/* Pasara 5hp */}
+                <article className="flex flex-col rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-4">
+                  <span className="inline-flex w-fit items-center rounded-pill border border-[color:var(--accent)]/50 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                    No licence needed
                   </span>
-                  <WhatsAppTrackedLink
-                    href={waUrl("Hi! I'd like to rent a boat in Hvar but I don't have a boat licence.")}
-                    label="boat_rental_no_licence"
-                    className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
-                  >
-                    Ask on WhatsApp
-                  </WhatsAppTrackedLink>
-                </div>
-              </article>
+                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                    Pasara · 5hp
+                  </h4>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€120 / day</p>
+                  <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
+                    {['Calm water exploration', 'Fuel included', 'Perfect for Pakleni Islands'].map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-4">
+                    <WhatsAppTrackedLink
+                      href={waUrl("Hi! I'd like to rent the Pasara 5hp in Hvar.")}
+                      label="rental_pasara_5hp"
+                      className="inline-flex w-full items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+                    >
+                      Ask on WhatsApp
+                    </WhatsAppTrackedLink>
+                  </div>
+                </article>
+
+                {/* Pasara 20hp */}
+                <article className="flex flex-col rounded-xl border border-amber-400/30 bg-[color:var(--bg)] p-4">
+                  <span className="inline-flex w-fit items-center rounded-pill border border-amber-400/40 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-amber-300">
+                    Ask us about licence
+                  </span>
+                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                    Pasara · 20hp
+                  </h4>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€200 / day</p>
+                  <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
+                    {['More range, more speed', 'Fuel included', 'Contact us to confirm eligibility'].map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-4">
+                    <WhatsAppTrackedLink
+                      href={waUrl("Hi! I'd like to rent the Pasara 20hp in Hvar.")}
+                      label="rental_pasara_20hp"
+                      className="inline-flex w-full items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                    >
+                      Ask on WhatsApp
+                    </WhatsAppTrackedLink>
+                  </div>
+                </article>
+
+                {/* Speedboat 60hp */}
+                <article className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)] p-4">
+                  <span className="inline-flex w-fit items-center rounded-pill border border-[color:var(--gray)]/40 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--gray)]">
+                    Licence required
+                  </span>
+                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                    Speedboat · 60hp
+                  </h4>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€290 / day</p>
+                  <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
+                    {['Fuel included', 'Valid boating licence required', 'Full day on the Adriatic'].map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-4">
+                    <WhatsAppTrackedLink
+                      href={waUrl("Hi! I'd like to rent the Speedboat 60hp in Hvar.")}
+                      label="rental_speedboat_60hp"
+                      className="inline-flex w-full items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                    >
+                      Ask on WhatsApp
+                    </WhatsAppTrackedLink>
+                  </div>
+                </article>
+
+                {/* Speedboat Mariner 150hp */}
+                <article className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)] p-4">
+                  <span className="inline-flex w-fit items-center rounded-pill border border-[color:var(--gray)]/40 px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--gray)]">
+                    Licence required
+                  </span>
+                  <h4 className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                    Speedboat Mariner · 150hp
+                  </h4>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€350 / day + fuel</p>
+                  <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
+                    {['Fuel full-in, full-out', 'Valid boating licence required', 'Maximum range and power'].map((item) => (
+                      <li key={item} className="flex gap-2">
+                        <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-4">
+                    <WhatsAppTrackedLink
+                      href={waUrl("Hi! I'd like to rent the Speedboat Mariner 150hp in Hvar.")}
+                      label="rental_mariner_150hp"
+                      className="inline-flex w-full items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                    >
+                      Ask on WhatsApp
+                    </WhatsAppTrackedLink>
+                  </div>
+                </article>
+
+              </div>
             </div>
 
           </div>
