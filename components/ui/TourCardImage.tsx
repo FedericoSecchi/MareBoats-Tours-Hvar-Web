@@ -15,22 +15,27 @@ export function TourCardImage({ images, sizes, badge }: TourCardImageProps) {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const hasMultiple = images.length >= 2;
 
-  function startCarousel() {
+  function startInterval() {
     if (!hasMultiple) return;
+    if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % images.length);
-    }, 1200);
+    }, 4000);
   }
 
-  function stopCarousel() {
+  function startCarousel() {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-    setActiveIndex(0);
+  }
+
+  function stopCarousel() {
+    startInterval();
   }
 
   useEffect(() => {
+    startInterval();
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
