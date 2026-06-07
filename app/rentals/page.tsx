@@ -346,7 +346,7 @@ export default function RentalsPage() {
                     Pasara · 5hp
                   </h4>
                   <span className="mt-2 inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
-                    No Licence Needed · Legal
+                    No Licence Needed
                   </span>
                   <p className="mt-1 font-body text-xs text-[color:var(--gray)]">No licence needed · small boat rental Hvar</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€120 / day</p>
