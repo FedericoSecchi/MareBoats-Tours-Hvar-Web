@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 07 Junio 2026 (noche)**
+**Actualizado: 08 Junio 2026**
 
 ---
 
@@ -74,7 +74,7 @@ Archivo central: `lib/schema.ts`
 - /tours/blue-cave-pakleni-islands/: 4 elementos válidos (Breadcrumbs, Empresa local, Organización, Fragmentos de reseñas) ✅
 - /rentals/: 5 elementos válidos (Carruseles, FAQ, Empresa local, Organización, Fragmentos de reseñas) ✅
 
-## Arquitectura de páginas — estado al 07/06/2026
+## Arquitectura de páginas — estado al 08/06/2026
 - `/rentals/` — página unificada: Boat Rental (con/sin skipper, con/sin licencia) + Underwater Scooter + FAQ. Es la página SEO principal para keywords de rental. Sección self-drive actualizada 07/06 con 4 tarjetas de embarcaciones con precios reales y keywords SEO optimizadas.
 - `/boat-rental/` — eliminada. Redirect 301 → `/rentals/` en netlify.toml.
 - `/landing/pre-tour/` — reescrita el 01/06. Ver sección abajo.
@@ -84,7 +84,7 @@ Archivo central: `lib/schema.ts`
 - `/guide/` — guía pre-tour. Route cards con links a tour correspondiente. Dead code eliminado.
 - `/transfers/` — Mapbox Static Images API implementado. Ver sección abajo.
 - `/conditions/` — página indexada (priority 0.6, changefreq hourly). Live weather, sea temp, Blue Cave status (basado en wave height), sunset quality y golden hour calculator (basado en cloud cover + visibility de Open-Meteo). Usa useEffect client-side (static export). CTA "Book the Sunset Cruise" aparece cuando calidad es SPECTACULAR o EXCELLENT. Blue Cave indicator incluye disclaimer: "Based on wave data, not an official status." Nikola debe aprobar el Blue Cave indicator antes de usar en comunicación oficial.
-- Nav: Tours → Rentals → Transfers → Explore → **Conditions** → About
+- Nav: Tours → Rentals → Transfers → Explore → About (**Conditions eliminado del navbar 08/06**)
 
 ## Cluster SEO — páginas interconectadas
 - `/explore/` (hub) → cards hacia `/guide/`, `/hvar-islands-guide/`, `/tours/`
@@ -92,12 +92,15 @@ Archivo central: `lib/schema.ts`
 - `/hvar-islands-guide/` → links a tours desde Blue Cave, Red Rocks, Stiniva + CTA final hacia WhatsApp + /tours/
 - `/tours/` → 6ta card "Boat Rental" apunta a `/rentals/`
 - `/conditions/` → CTA sunset cruise → `/tours/sunset-cruise/`
+- `/tours/blue-cave-pakleni-islands/` → card "Check Blue Cave conditions" → `/conditions/`
+- `/tours/sunset-cruise/` → card "Check tonight's sunset quality" → `/conditions/`
+- Footer → link "Conditions" en columna Explore
 
 ## QR Hub — /qr/
 - Acceso via QR impreso en el barco
 - Opción "On Tour" apunta a `/hvar-islands-guide?ref=qr`
 - OnTourBanner en `/hvar-islands-guide/` se activa solo con ese param
-- Card "Current Conditions" agregada (07/06) → `/conditions/` · sublabel "Wind, sea, Blue Cave status" · variante secondary
+- Card "Current Conditions" → `/conditions/` · sublabel "Wind, sea, Blue Cave status" · variante secondary
 
 ## Herramientas operativas
 - **Vesselio** — app de gestión de reservas que usa Nikola. Fede tiene acceso como Operator.
@@ -166,7 +169,7 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## ✅ ESTADO REAL al 07/06/2026
+## ✅ ESTADO REAL al 08/06/2026
 
 ### GA4
 - `whatsapp_click` verificado ✅ — 41 eventos · 24 usuarios únicos (últimos 28 días)
@@ -309,42 +312,37 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 
 ---
 
-## Auditoría copy site-wide — 04/06/2026
+## Tour cards — componentes (estado 08/06/2026)
 
-### Cambios aplicados (commits 008a64 → aec1fe)
+### components/ui/TourCardImage.tsx
+- Carousel de imágenes con autoplay a 4000ms on mount
+- mouseEnter pausa (sin resetear índice), mouseLeave reanuda desde índice actual
+- Dots de paginación visibles en md+
+- Cleanup en unmount
 
-**Capacidades:**
-- "up to 8" → "up to 9" en features, FAQs, rentals, Red Rocks, water scooter card, pre-tour accordion (revertido a 8 el 07/06 por decisión de Nikola)
-- "up to 10" eliminado de 5 Islands hero y tour cards
-- Shared vs private reconciliado en FAQs — texto diferencia explícitamente ambos modos
+### components/sections/Tours.tsx (home)
+- `<TourCardImage>` envuelto en `<Link className="block" href="/tours/{slug}">` — imagen clickeable
+- trackEvent `tour_card_image_click` en el click
+- Botón "See This Tour" independiente, sin cambios
 
-**Idiomas:**
-- Alemán agregado en feature card "Speaks Your Language" y en FAQ de idiomas
-
-**Em-dashes:**
-- Limpiados en `app/`, `lib/`, `components/` — 34 archivos via sed
-- `&mdash;` HTML entity en rentals también corregida
-
-**Brand name:**
-- "Mare Boats Hvar" → "MareBoats Hvar" en todo el sitio (layout.tsx, [slug]/page.tsx, lib/seo.ts, og:siteName, meta author/creator/publisher)
-- Title tags duplicados resueltos: sufijos `| MareBoats` eliminados del titleMap para dejar que el layout template los agregue solo
-
-**Title tags corregidos (titleMap en [slug]/page.tsx):**
-- blue-cave-pakleni-islands: 'Hvar Boat Tour: 5 Islands, Blue Cave & 4 Beaches'
-- red-rocks-pakleni-islands: 'Red Rocks & Pakleni Islands Boat Tour from Hvar'
-- pakleni-islands: 'Pakleni Islands Half Day Boat Tour from Hvar'
-- sunset-cruise: 'Sunset Cruise Hvar'
-- private-boat-charter: 'Private Boat Charter Hvar'
-- split-airport-transfer: 'Split Airport to Hvar by Speedboat'
-
-**Underwater scooter (antes "Water Scooter" — renombrado 07/06 por Nikola):**
-- Eliminado del 5 Islands (decisión de Nikola: tour va a Vis, scooter solo disponible en Pakleni)
-- Eliminado del Sunset Cruise
-- "Life jacket included" eliminado de bullets del underwater scooter (no tiene sentido bajo el agua)
+### app/tours/page.tsx
+- `<TourCardImage>` también envuelto en `<Link className="block" href="/tours/{slug}/">` — consistente con home
 
 ---
 
-## UX/Conversión audit — 05/06/2026 (commits 28ebd72, 0f89347, f6672cc)
+## /conditions/ — entradas contextuales (08/06/2026)
+La página existe pero fue removida del navbar. Entradas al sitio:
+
+| Origen | Trigger | Destino |
+|---|---|---|
+| /tours/blue-cave-pakleni-islands/ | Card "Check Blue Cave conditions" después de Meeting Point | /conditions/ |
+| /tours/sunset-cruise/ | Card "Check tonight's sunset quality" después de Meeting Point | /conditions/ |
+| /qr/ | Card "Current Conditions" | /conditions/ |
+| Footer | Link en columna Explore | /conditions/ |
+
+---
+
+## UX/Conversión audit — 05/06/2026
 
 ### /explore/
 - Hero card 3: era anchor link a sí misma → ahora apunta a /tours/
@@ -352,21 +350,19 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 - FAQ: "Is Hvar worth visiting?" y "What is Hvar known for?" reemplazadas por preguntas de booking intent: "How far in advance should I book?" y "Can I book a private tour for my group?"
 
 ### /guide/
-- Route cards: cada ruta tiene link "See tour details" al tour correspondiente (Blue Cave → /tours/blue-cave-pakleni-islands/, Red Rocks → /tours/red-rocks-pakleni-islands/)
+- Route cards: cada ruta tiene link "See tour details" al tour correspondiente
 - Dead code eliminado: bloque RULES & RENTALS comentado (28 líneas) removido
 
 ### /hvar-islands-guide/
-- Links a tours desde accordions: Blue Cave, Red Rocks, Stiniva tienen "See this tour →" pill link al tour correspondiente
+- Links a tours desde accordions: Blue Cave, Red Rocks, Stiniva tienen "See this tour →" pill link
 - OnTourBanner: componente client que muestra banner solo si ?ref=qr
 
 ### /on-tour/ → ELIMINADA
 - Redirect 301 /on-tour/* → /hvar-islands-guide/ en netlify.toml
-- /qr/ actualizado: opción "On Tour" apunta a /hvar-islands-guide?ref=qr
-- OnTourBanner en /hvar-islands-guide/ maneja la experiencia del guest en el barco
 
 ---
 
-## SEO / GEO — estado al 07/06/2026
+## SEO / GEO — estado al 08/06/2026
 
 ### Schema markup implementado (06/06)
 - `lib/schema.ts`: businessSchema, websiteSchema, tourSchemaMap (6 tours), rentalServiceSchema, rentalBreadcrumbSchema
@@ -392,7 +388,7 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 
 ---
 
-## PLAN UNIFICADO — Estado al 07/06/2026
+## PLAN UNIFICADO — Estado al 08/06/2026
 
 ### ✅ BLOQUE 0 — CERRADO
 ### ✅ SEO Website — CERRADO 31/05
@@ -408,11 +404,17 @@ Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
 ### ✅ /conditions/ page — CERRADO 07/06
 ### ✅ Copy session 07/06 — CERRADO (underwater scooter rename, cap 8, badge Pasara, capacity framing)
 ### ✅ Session 07/06 noche — CERRADO
-- Idiomas: German agregado globalmente (Contact.tsx + tours-data.ts yacht taxi). Resto ya lo tenía.
-- TourHighlightsList: nuevo componente client. Reemplaza `<ul>` estático en TourHero.tsx. Cada highlight abre modal con foto Unsplash + nombre + descripción. Cierra con X, overlay click o Escape. Scroll lock activo. Mapeo por keywords con fallback Adriático genérico. Aplica en todas las tour pages.
-- Red Rocks departure: slot 11:00 agregado en app/landing/pre-tour/page.tsx (2 ocurrencias: Red Rocks y Pakleni Half Day). Wording: "09:00, 11:00 or 14:00 - Nikola will confirm your slot"
-- /qr/: card "Current Conditions" agregada → /conditions/
-- Navbar: Conditions ya estaba en NAV_LINKS — confirmado sin cambios necesarios.
+- TourHighlightsList: nuevo componente client con modal + foto + descripción por highlight
+- Red Rocks departure: slot 11:00 agregado en pre-tour page
+- /qr/: card "Current Conditions" agregada
+- Idiomas: German agregado globalmente
+
+### ✅ Session 08/06 — CERRADO
+- TourCardImage: autoplay 4000ms on mount, pausa en hover sin reset de índice
+- Tours home + /tours/: imagen de card clickeable → detalle del tour (Link wrapper)
+- Conditions removida del navbar
+- Entradas contextuales a /conditions/ desde tour pages Blue Cave y Sunset, y footer
+- Commit: c80589
 
 ### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
 - Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
