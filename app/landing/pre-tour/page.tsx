@@ -183,6 +183,45 @@ export default function PreTourPage() {
         </div>
       </section>
 
+      {/* 1.5. INSTAGRAM */}
+      <section className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-12">
+        <div className="mx-auto max-w-3xl">
+          <div className="flex flex-col gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 sm:flex-row sm:items-center sm:gap-8 md:p-8">
+
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[color:var(--accent)]/10 text-[color:var(--accent)]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75"
+                strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
+
+            <div className="flex-1">
+              <h2 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                Follow us on Instagram
+              </h2>
+              <p className="mt-0.5 font-body text-sm font-semibold text-[color:var(--accent)]">
+                @mareboats.hvar
+              </p>
+              <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                Tag us during the tour and we&apos;ll share your photos and videos. We&apos;ll tag you too when we post from your day.
+              </p>
+            </div>
+
+            <a
+              href="https://www.instagram.com/mareboats.hvar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={secondaryBtnClass}
+            >
+              Follow @mareboats.hvar
+            </a>
+
+          </div>
+        </div>
+      </section>
+
       {/* 2. YOUR TOUR DETAILS */}
       <section
         id="tour-details"
