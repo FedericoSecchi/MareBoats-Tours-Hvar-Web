@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { TourCardImage } from '@/components/ui/TourCardImage';
 
 export const metadata: Metadata = generateSEO({
   title: 'About MareBoats Hvar | Private Boat Tours',
@@ -109,8 +110,8 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
         <Image
-          src="/img/about.jpeg"
-          alt="MareBoats Hvar crew at Hvar Harbour"
+          src="/img/hvar-harbour-sunset-aerial-drone-2026-02.jpg"
+          alt="Hvar harbour at sunset - aerial drone view"
           fill
           priority
           sizes="100vw"
@@ -268,12 +269,11 @@ export default function AboutPage() {
       <section className="px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container items-center gap-10 md:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)] md:order-2">
-            <Image
-              src="/img/hvar-mareboats-fleet-harbour-drone-2026.jpg"
-              alt="MareBoats fleet at Hvar harbour - aerial drone view of speedboats"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
+            <TourCardImage
+              images={[
+                { src: '/img/hvar-open-sea-speedboat-aerial-drone-2026-01.jpg', alt: 'MareBoats Hvar speedboat aerial drone' },
+                { src: '/img/hvar-red-rocks-speedboat-aerial-drone-2026-01.jpg', alt: 'MareBoats Hvar speedboat Red Rocks aerial drone' },
+              ]}
             />
           </div>
           <div className="md:order-1">
