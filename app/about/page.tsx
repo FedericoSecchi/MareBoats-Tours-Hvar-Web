@@ -110,12 +110,13 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
         <Image
-          src="/img/hvar-harbour-sunset-aerial-drone-2026-02.jpg"
-          alt="Hvar harbour at sunset - aerial drone view"
+          src="/img/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg"
+          alt="MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-top"
+          className="object-cover"
+          style={{ objectPosition: 'center bottom' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)] via-[color:var(--bg)]/50 to-transparent" />
         <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-container flex-col justify-end px-4 pb-14 pt-28 md:pb-20">
@@ -156,11 +157,12 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)]">
             <Image
-              src="/img/hvar-harbour-aerial-morning-drone-2026.jpg"
-              alt="Hvar harbour aerial drone view - morning light over the waterfront"
+              src="/img/hvar-old-town-aerial-rooftops-drone-2026-02.jpg"
+              alt="Hvar old town aerial rooftops drone view"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
+              style={{ objectPosition: 'center' }}
             />
           </div>
         </div>
@@ -268,7 +270,7 @@ export default function AboutPage() {
       {/* The boat */}
       <section className="px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container items-center gap-10 md:grid-cols-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)] md:order-2">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[color:var(--border)] md:order-2">
             <TourCardImage
               images={[
                 { src: '/img/hvar-open-sea-speedboat-aerial-drone-2026-01.jpg', alt: 'MareBoats Hvar speedboat aerial drone' },
