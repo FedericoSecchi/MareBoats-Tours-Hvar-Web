@@ -216,6 +216,15 @@ export default function RentalsPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[color:var(--border)] px-4 py-20 md:py-24">
+        <Image
+          src="/img/rentals/hvar-boat-rental-pakleni-islands-drone-2026.jpg"
+          alt="Boat rental in Hvar - speedboat anchored in the Pakleni Islands aerial drone view"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-[color:var(--bg)]/70" />
         <div
           aria-hidden="true"
           className="absolute inset-0 opacity-60"

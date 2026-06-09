@@ -155,8 +155,8 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)]">
             <Image
-              src="/img/about-2.jpeg"
-              alt="MareBoats speedboat at Hvar Harbour"
+              src="/img/hvar-harbour-aerial-morning-drone-2026.jpg"
+              alt="Hvar harbour aerial drone view - morning light over the waterfront"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
@@ -269,8 +269,8 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-container items-center gap-10 md:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)] md:order-2">
             <Image
-              src="/img/package-4.jpeg"
-              alt="MareBoats speedboat on the Adriatic near Hvar"
+              src="/img/hvar-mareboats-fleet-harbour-drone-2026.jpg"
+              alt="MareBoats fleet at Hvar harbour - aerial drone view of speedboats"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
