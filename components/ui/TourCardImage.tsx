@@ -8,9 +8,10 @@ interface TourCardImageProps {
   images: TourImage[];
   sizes?: string;
   badge?: React.ReactNode;
+  objectPosition?: string;
 }
 
-export function TourCardImage({ images, sizes, badge }: TourCardImageProps) {
+export function TourCardImage({ images, sizes, badge, objectPosition }: TourCardImageProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const hasMultiple = images.length >= 2;
@@ -55,7 +56,7 @@ export function TourCardImage({ images, sizes, badge }: TourCardImageProps) {
           fill
           sizes={sizes ?? '(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw'}
           className="object-cover transition-opacity duration-500"
-          style={{ opacity: i === activeIndex ? 1 : 0 }}
+          style={{ opacity: i === activeIndex ? 1 : 0, objectPosition: objectPosition ?? 'center' }}
           priority={i === 0}
         />
       ))}
