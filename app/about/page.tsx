@@ -274,7 +274,7 @@ export default function AboutPage() {
             <TourCardImage
               images={[
                 { src: '/img/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone' },
-                { src: '/img/hvar-open-sea-speedboat-aerial-drone-2026-02.jpg', alt: 'MareBoats Hvar speedboat open sea aerial drone' },
+                { src: '/img/hvar-speedboat-open-sea-aerial-drone-2026.jpg', alt: 'MareBoats Hvar speedboat open sea south of Hvar aerial drone' },
               ]}
               objectPosition="center"
             />
