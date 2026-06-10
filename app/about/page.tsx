@@ -273,10 +273,10 @@ export default function AboutPage() {
           <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[color:var(--border)] md:order-2">
             <TourCardImage
               images={[
-                { src: '/img/hvar-open-sea-speedboat-aerial-drone-2026-01.jpg', alt: 'MareBoats Hvar speedboat aerial drone' },
-                { src: '/img/hvar-red-rocks-speedboat-aerial-drone-2026-01.jpg', alt: 'MareBoats Hvar speedboat Red Rocks aerial drone' },
+                { src: '/img/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone' },
+                { src: '/img/hvar-open-sea-speedboat-aerial-drone-2026-02.jpg', alt: 'MareBoats Hvar speedboat open sea aerial drone' },
               ]}
-              objectPosition="center bottom"
+              objectPosition="center"
             />
           </div>
           <div className="md:order-1">
