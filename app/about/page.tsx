@@ -108,7 +108,7 @@ export default function AboutPage() {
       <JsonLd data={aboutSchema as Record<string, unknown>} />
 
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
+      <section className="relative min-h-[50vh] md:min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
         <Image
           src="/img/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg"
           alt="MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone"
@@ -116,10 +116,10 @@ export default function AboutPage() {
           priority
           sizes="100vw"
           className="object-cover"
-          style={{ objectPosition: 'center bottom' }}
+          style={{ objectPosition: 'center top' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)] via-[color:var(--bg)]/50 to-transparent" />
-        <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-container flex-col justify-start px-4 pb-14 pt-20 md:pb-20">
+        <div className="relative z-10 mx-auto flex min-h-[50vh] md:min-h-[60vh] max-w-container flex-col justify-start px-4 pb-14 pt-20 md:pb-20">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             About MareBoats
           </p>
