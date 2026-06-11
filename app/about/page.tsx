@@ -115,10 +115,10 @@ export default function AboutPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-bottom md:object-center"
+          className="object-cover object-[center_70%] md:object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)] via-[color:var(--bg)]/50 to-transparent" />
-        <div className="relative z-10 mx-auto flex min-h-[50vh] md:min-h-[60vh] max-w-container flex-col justify-start px-4 pb-14 pt-20 md:pb-20">
+        <div className="relative z-10 mx-auto flex min-h-[50vh] md:min-h-[60vh] max-w-container flex-col justify-start px-4 pb-14 pt-12 md:pb-20">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             About MareBoats
           </p>
