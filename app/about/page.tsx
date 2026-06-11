@@ -116,7 +116,7 @@ export default function AboutPage() {
           priority
           sizes="100vw"
           className="object-cover"
-          style={{ objectPosition: 'center top' }}
+          style={{ objectPosition: '50% 60%' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--bg)] via-[color:var(--bg)]/50 to-transparent" />
         <div className="relative z-10 mx-auto flex min-h-[50vh] md:min-h-[60vh] max-w-container flex-col justify-start px-4 pb-14 pt-20 md:pb-20">
