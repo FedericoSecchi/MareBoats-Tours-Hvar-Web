@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 08 Junio 2026**
+**Actualizado: 15 Junio 2026**
 
 ---
 
@@ -71,61 +71,53 @@ Archivo central: `lib/schema.ts`
 | rentals | desde €400 (con skipper) |
 
 ### Validación Google Rich Results Test — 06/06/2026
-- /tours/blue-cave-pakleni-islands/: 4 elementos válidos (Breadcrumbs, Empresa local, Organización, Fragmentos de reseñas) ✅
-- /rentals/: 5 elementos válidos (Carruseles, FAQ, Empresa local, Organización, Fragmentos de reseñas) ✅
+- /tours/blue-cave-pakleni-islands/: 4 elementos válidos ✅
+- /rentals/: 5 elementos válidos ✅
 
-## Arquitectura de páginas — estado al 08/06/2026
-- `/rentals/` — página unificada: Boat Rental (con/sin skipper, con/sin licencia) + Underwater Scooter + FAQ. Es la página SEO principal para keywords de rental. Sección self-drive actualizada 07/06 con 4 tarjetas de embarcaciones con precios reales y keywords SEO optimizadas.
+## Arquitectura de páginas — estado al 11/06/2026
+- `/rentals/` — página unificada: Boat Rental + Underwater Scooter + FAQ. SEO principal para keywords de rental.
 - `/boat-rental/` — eliminada. Redirect 301 → `/rentals/` en netlify.toml.
-- `/landing/pre-tour/` — reescrita el 01/06. Ver sección abajo.
-- `/hvar-islands-guide/` — página indexada, en sitemap (priority 0.8). 9 destinos con historia + 30 paradas locales + Google Maps links. Ataca keywords: "Hvar islands guide", "Blue Cave what to expect", "Pakleni Islands stops". Incluye OnTourBanner: banner visible solo cuando ?ref=qr — para guests que llegan via QR del barco. Links a tours desde Blue Cave, Red Rocks y Stiniva dentro del accordion.
-- `/on-tour/` — ELIMINADA el 05/06. Redirect 301 → `/hvar-islands-guide/` en netlify.toml. El QR hub apunta a `/hvar-islands-guide?ref=qr`.
-- `/explore/` — hub principal de contenido. 7 secciones: Where to Eat, What to See, Beaches, Practical Info, FAQ (FAQPage JSON-LD), CTA. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide". Inline CTA después de Beaches. Hero card 3 apunta a /tours/. FAQ con preguntas de booking intent.
-- `/guide/` — guía pre-tour. Route cards con links a tour correspondiente. Dead code eliminado.
-- `/transfers/` — Mapbox Static Images API implementado. Ver sección abajo.
-- `/conditions/` — página indexada (priority 0.6, changefreq hourly). Live weather, sea temp, Blue Cave status (basado en wave height), sunset quality y golden hour calculator (basado en cloud cover + visibility de Open-Meteo). Usa useEffect client-side (static export). CTA "Book the Sunset Cruise" aparece cuando calidad es SPECTACULAR o EXCELLENT. Blue Cave indicator incluye disclaimer: "Based on wave data, not an official status." Nikola debe aprobar el Blue Cave indicator antes de usar en comunicación oficial.
-- Nav: Tours → Rentals → Transfers → Explore → About (**Conditions eliminado del navbar 08/06**)
+- `/landing/pre-tour/` — reescrita el 01/06.
+- `/hvar-islands-guide/` — indexada, priority 0.8. OnTourBanner visible solo con ?ref=qr.
+- `/on-tour/` — ELIMINADA. Redirect 301 → `/hvar-islands-guide/`.
+- `/explore/` — hub de contenido. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide".
+- `/guide/` — guía pre-tour con route cards.
+- `/transfers/` — Mapbox Static Images API. hoverImage Split asignada.
+- `/conditions/` — live weather/marine. Removida del navbar (08/06). Entradas contextuales desde tour pages y footer.
+- Nav: Tours → Rentals → Transfers → Explore → About
 
 ## Cluster SEO — páginas interconectadas
-- `/explore/` (hub) → cards hacia `/guide/`, `/hvar-islands-guide/`, `/tours/`
-- `/guide/` → link hacia `/hvar-islands-guide/` al final de "Where We Go" + links a tours desde route cards
-- `/hvar-islands-guide/` → links a tours desde Blue Cave, Red Rocks, Stiniva + CTA final hacia WhatsApp + /tours/
-- `/tours/` → 6ta card "Boat Rental" apunta a `/rentals/`
-- `/conditions/` → CTA sunset cruise → `/tours/sunset-cruise/`
-- `/tours/blue-cave-pakleni-islands/` → card "Check Blue Cave conditions" → `/conditions/`
-- `/tours/sunset-cruise/` → card "Check tonight's sunset quality" → `/conditions/`
-- Footer → link "Conditions" en columna Explore
+- `/explore/` → `/guide/`, `/hvar-islands-guide/`, `/tours/`
+- `/guide/` → `/hvar-islands-guide/` + links a tours
+- `/hvar-islands-guide/` → tours Blue Cave, Red Rocks, Stiniva + WhatsApp CTA
+- `/tours/` → 6ta card apunta a `/rentals/`
+- `/conditions/` → sunset cruise tour
+- `/tours/blue-cave-pakleni-islands/` → `/conditions/`
+- `/tours/sunset-cruise/` → `/conditions/`
+- Footer → link "Conditions"
 
 ## QR Hub — /qr/
-- Acceso via QR impreso en el barco
-- Opción "On Tour" apunta a `/hvar-islands-guide?ref=qr`
-- OnTourBanner en `/hvar-islands-guide/` se activa solo con ese param
-- Card "Current Conditions" → `/conditions/` · sublabel "Wind, sea, Blue Cave status" · variante secondary
+- "On Tour" → `/hvar-islands-guide?ref=qr`
+- "Current Conditions" → `/conditions/`
 
 ## Herramientas operativas
-- **Vesselio** — app de gestión de reservas que usa Nikola. Fede tiene acceso como Operator.
-  - URL: mareboats.vesselio.app · apikey: Fedde123
-  - Muestra flota, calendario de reservas, clima en Hvar
-  - Uso: referencia operativa (qué barcos están ocupados, cuándo). No conectar al sitio ni a GA4.
+- **Vesselio** — mareboats.vesselio.app · apikey: Fedde123. Solo referencia operativa, no conectar al sitio.
 
 ## Reglas inamovibles de contenido
-- Idiomas a bordo solo aplican cuando Fede es el skipper — NO prometer genéricamente en web ni OTAs
-- **Idiomas del equipo: EN + HR + IT + ES + DE** (alemán via Josip) — aplica en feature cards y FAQs del sitio
-- Botellas de vidrio: permitidas a bordo
-- Comida: permitida, pero se recomiendan restaurantes
-- No fumar a bordo
-- No hay baño a bordo — guests usan los de restaurantes en paradas
-- Formularios de contacto: NO. Solo WhatsApp
-- **Underwater Scooter addon**: €40/unit — disponible en todos los tours EXCEPTO tours a Vis (isla) y Sunset Cruise. Máx 2h/unit, no recargable a bordo. Nombre correcto: "Underwater Scooter" (no "Water Scooter") — cambiado 07/06 por decisión de Nikola.
-- Photo & Video Shoot: €200 — lo hace Fede (drone + underwater + on board). Full gallery post-tour. Disponible en todos los tours privados. Solo cuando Fede está a bordo. Reservar con anticipación — slots limitados.
-- NO mencionar año exacto de fundación de MareBoats
-- NO mencionar RIB ni mostrar foto del RIB — usar "speedboat" siempre.
-- Boat rental sin licencia: solo la Pasara 5hp es legalmente clara. La 20hp se maneja por WhatsApp caso a caso. Copy nunca afirma "no licence needed" para la 20hp.
-- Em-dashes (—) y en-dashes (–) prohibidos en copy del sitio — usar coma, punto, dos puntos o reescribir
-- **"Lunch not included"** — wording unificado en todo el sitio desde 02/06
-- **Capacidad máxima operativa: 8 personas por barco. Capacidad legal: 12.** El framing correcto es: "Licensed for 12. We cap at 8." Usar este contraste en copy cuando sea relevante (FAQ, features). Nunca mencionar 12 sin el contexto de por qué operamos con 8.
-- **Brand name unificado: "MareBoats Hvar"** — sin espacio (no "Mare Boats Hvar"). Aplicado en todo el sitio el 04/06.
-- Filler phrases prohibidas: "premium", "unforgettable", "ultimate", "ideal for", "flagship"
+- Idiomas a bordo solo cuando Fede es skipper — NO prometer genéricamente
+- **Idiomas equipo: EN + HR + IT + ES + DE**
+- Botellas de vidrio: permitidas. Comida: permitida. No fumar. Sin baño a bordo.
+- Formularios: NO. Solo WhatsApp.
+- **Underwater Scooter**: €40/unit. NO en tours a Vis ni Sunset Cruise. Nombre: "Underwater Scooter".
+- Photo & Video Shoot: €200. Solo tours privados, solo cuando Fede está a bordo.
+- NO mencionar año de fundación.
+- NO mencionar RIB. Usar "speedboat".
+- Boat rental sin licencia: solo Pasara 5hp es clara. 20hp por WhatsApp.
+- Em-dashes y en-dashes prohibidos.
+- "Lunch not included" — wording unificado.
+- **Capacidad: "Licensed for 12. We cap at 8."** Nunca mencionar 12 sin contexto.
+- **Brand: "MareBoats Hvar"** (sin espacio).
+- Filler prohibido: "premium", "unforgettable", "ultimate", "ideal for", "flagship".
 
 ## Design tokens
 ```
@@ -142,61 +134,40 @@ font-body: Space Grotesk (regular/medium)
 
 ---
 
-## 🔴 REGLAS INAMOVIBLES — OTAs (establecidas 25/05/2026)
+## 🔴 REGLAS INAMOVIBLES — OTAs
 
-**Nada se cambia en GYG, Booking.com, Viator ni Airbnb sin que Nikola lea y apruebe el texto PRIMERO.**
-Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → recién entonces se publica.
+**Nada se cambia en GYG, Booking.com, Viator ni Airbnb sin que Nikola apruebe PRIMERO.**
+Flujo: Fede redacta → WhatsApp a Nikola → aprobación escrita → publicar.
 
-**Lección registrada (incidente 25/05):** se modificó el listing VIP 5 Islands sin consultar. Nikola tenía 20 personas reservadas sobre el concepto original. El concepto de un tour es una decisión de negocio, no de copy. Nunca tocar un listing de OTA sin guardar el texto original antes (screenshot o copia).
+### Concepto VIP 5 Islands (no modificar)
+- Salida 10:00, 3 cuevas, grupos chicos, NO "RIB", mantener "VIP"
 
-### Concepto VIP 5 Islands — fuente de verdad (palabras de Nikola, no modificar)
-- Salida 10:00 (no 10:30 como la competencia) → evitan multitudes
-- Visitan 3 cuevas
-- Grupos chicos → mejor experiencia posible
-- NO mencionar "RIB" ni mostrar foto del RIB
-- Mantener "VIP" en el título
-
-### Reglas de copy GYG (aprendidas mayo 2026)
-- "Skipper" > "Tour Guide" en el copy.
-- "Hvar Boat Tour" > "From Hvar" como keyword en el título.
-- Blue Cave es la keyword estrella — siempre en el título y al inicio de la descripción.
-- No combinar conteo de cuevas ("3 caves") con Blue Cave en el título.
-- No escribir "contact us directly" en listings.
-- GYG permite 3000 chars en full description — usarlos.
-- Mencionar stops específicos: Stiniva Bay (Vis), Podstražje Beach, Sea-Monk Cave, Zdrilca (Pakleni), Borče Bay, Dubovica Beach, Red Rocks.
-- El espíritu de Nikola: menos tiempo navegando, más tiempo en el agua. Skipper como amigo local, no guía turístico.
-- Main listing de GYG es el contenedor — no mencionar privado/compartido ni precio ni duración. Eso va en cada opción.
+### Reglas copy GYG
+- "Skipper" > "Tour Guide". Blue Cave keyword estrella en título y primer párrafo.
+- No combinar "3 caves" con Blue Cave en título. No "contact us directly".
+- GYG: 3000 chars — usarlos. Mencionar stops específicos.
 
 ---
 
-## ✅ ESTADO REAL al 08/06/2026
+## ✅ ESTADO REAL al 11/06/2026
 
 ### GA4
-- `whatsapp_click` verificado ✅ — 41 eventos · 24 usuarios únicos (últimos 28 días)
-- 286 sesiones · 156 usuarios activos · 30s engagement medio
-- Canales: Direct 48.6% · Organic Search 32.9% · Organic Social 6.6% · Referral 6.3%
-- Páginas top: / (245 vistas) · /tours/ (84) · /tours/blue-cave-pakleni-islands/ (60) · /rentals/ (52)
-- Mercados: US #1 · Croatia · UK · Argentina · Italy · Germany
-- Google Ads: luz verde técnica. Pendiente: crear/verificar cuenta + importar conversión.
+- `whatsapp_click`: 41 eventos · 24 usuarios únicos (últimos 28 días)
+- 286 sesiones · 156 usuarios · 30s engagement. US #1, Croatia, UK, AR, IT, DE.
+- Google Ads: pendiente crear cuenta + importar conversión.
 
-### Google Search Console
-- 45 clics · 1,550 impresiones · CTR 2.9% · Posición media 24.3 (últimos 28 días)
-- Keywords oportunidad: "hvar boat rental" (pos 30.1), "rent a boat hvar" (pos 32.7), "hvar boat hire" (pos 35.7)
+### GSC
+- 45 clics · 1,550 impresiones · CTR 2.9% · pos 24.3
+- Keywords: "hvar boat rental" pos 30.1, "rent a boat hvar" pos 32.7, "hvar boat hire" pos 35.7
 
-### Google Business Profile — estado al 07/06/2026
-- Verificado · 5.0 ⭐ · 26 reseñas
-- Nombre corregido a "MareBoats Hvar" (sin espacio) — aprobado por Google el 07/06
-- Descripción actualizada 07/06 (sin em-dashes, keywords integradas)
-- 400 interacciones totales (dic 2025–may 2026)
-- GBP Maps link: https://maps.app.goo.gl/k84JNBQLvqgZunEX6
-- Servicios: cargados
-- Pendiente: 20-30 fotos reales (post-shoot) · Q&A (no disponible desde panel desktop ni app mobile — limitación de Google)
+### GBP
+- Verificado · 5.0 ⭐ · 26 reseñas. Nombre y descripción actualizados 07/06.
+- Pendiente: 20-30 fotos reales, Q&A (no disponible en panel).
 
-### GetYourGuide — mayo 2026
+### GYG — mayo 2026
 - Revenue: €1,635 · Bookings: 7 · Rating: 5.0 ⭐
 - VIP 5 Islands: €1,530 · 6 bookings · Jun 22 SOLD OUT
-- Red Rocks: €105 · 1 booking · 0 reviews
-- Underwater Scooters: ~70% completo, pendiente prueba + aprobación. Nombre actualizado a "Underwater Scooter" en sitio — pendiente actualizar en GYG listing también (requiere aprobación Nikola).
+- Red Rocks: €105 · 1 booking
 
 ### Booking.com — pendiente aprobación Nikola
 ### Viator — bloqueado por seguro
@@ -204,9 +175,9 @@ Flujo obligatorio: Fede redacta → manda por WhatsApp → Nikola aprueba → re
 
 ---
 
-## /landing/pre-tour/ — estado al 07/06/2026 (noche)
+## /landing/pre-tour/ — estado al 07/06/2026
 
-### Mensaje de WhatsApp de Nikola (texto fijo)
+### Mensaje WhatsApp Nikola
 ```
 Hey! 👋 Booking confirmed, looking forward to having you on board.
 👉 mareboatshvar.com/landing/pre-tour
@@ -216,273 +187,208 @@ Nikola
 ```
 
 ### Meeting Point
-- Coordenadas: 43.1690147, 16.4429617
-- Google Maps: https://maps.app.goo.gl/k84JNBQLvqgZunEX6
+- 43.1690147, 16.4429617 — https://maps.app.goo.gl/k84JNBQLvqgZunEX6
 
-### Departure slots confirmados (07/06)
-- Red Rocks & Pakleni: 09:00, 11:00 or 14:00 (Nikola confirma slot)
-- Pakleni Half Day: 09:00, 11:00 or 14:00 (Nikola confirma slot)
-- Estos slots viven en app/landing/pre-tour/page.tsx — no en lib/tours-data.ts
+### Departure slots (07/06)
+- Red Rocks & Pakleni: 09:00, 11:00 or 14:00
+- Pakleni Half Day: 09:00, 11:00 or 14:00
+- Viven en app/landing/pre-tour/page.tsx
 
-### Accordion — extra costs y add-ons (estado 07/06)
+### Extra costs y add-ons
 | Tour | Extra Costs | Add-on |
 |---|---|---|
-| 5 Islands & Blue Cave (shared) | Blue Cave €24 · Green Cave €12 · Lunch not included (Pakleni o Palmizana) | — (no add-ons en shared) |
-| 5 Islands & Blue Cave (private) | Blue Cave €24 · Green Cave €12 · Lunch not included (Pakleni o Palmizana) | Photo & Video Shoot €200 |
-| Red Rocks & Pakleni | Lunch not included - restaurants at Pakleni | Underwater Scooter €40 · Photo & Video Shoot €200 |
-| Pakleni Half Day | None | Underwater Scooter €40 · Photo & Video Shoot €200 |
-| Sunset Cruise | None | Photo & Video Shoot €200 |
-| Private Charter | Fuel not included | Underwater Scooter €40 · Photo & Video Shoot €200 |
+| 5 Islands shared | Blue Cave €24 · Green Cave €12 · Lunch not included | — |
+| 5 Islands private | Blue Cave €24 · Green Cave €12 · Lunch not included | Photo & Video €200 |
+| Red Rocks & Pakleni | Lunch not included | Underwater Scooter €40 · Photo & Video €200 |
+| Pakleni Half Day | None | Underwater Scooter €40 · Photo & Video €200 |
+| Sunset Cruise | None | Photo & Video €200 |
+| Private Charter | Fuel not included | Underwater Scooter €40 · Photo & Video €200 |
 | Split Transfer | None | — |
 
 ---
 
 ## /rentals/ — estado al 07/06/2026
-- Tipografía body: `text-base` (16px) unificado
-- On Board section: cards (una fila por item, badge status izquierda)
-- Rental Rules section: tabla (stacked mobile / 2 columnas desktop)
-- Underwater Scooter card: centrada con `mx-auto`
-- Sección "With Skipper": desde €400, incluye skipper local, ruta custom, fuel, agua, snorkel, hasta 8 personas
-- Sección self-drive "Boat Rental Hvar": grid 2x2 con 4 embarcaciones con precios reales, badges de licencia y keywords SEO optimizadas (07/06)
-  - Subtítulo sección: "No licence? No problem. Our Pasara is available without a boating licence — perfect for a day around the Pakleni Islands."
-  - Keywords integradas: "no licence needed", "small boat rental Hvar", "speedboat rental Hvar"
-  - Badge PASARA 5HP: "NO LICENCE NEEDED" (sin "· LEGAL" — removido 07/06)
-  - Badge PASARA 20HP: "ASK US ABOUT LICENCE"
-  - Badges Speedboats: "LICENCE REQUIRED"
-- FAQ rentals: actualizado con precios Pasara y política de fuel por embarcación
+- Grid 2x2 self-drive con precios reales y badges de licencia
+- Badge PASARA 5HP: "NO LICENCE NEEDED" · PASARA 20HP: "ASK US ABOUT LICENCE" · Speedboats: "LICENCE REQUIRED"
 - Schema JSON-LD: Service + BreadcrumbList + FAQPage (no tocar)
 
 ---
 
-## /transfers/ — estado al 02/06/2026
+## /transfers/ — estado al 11/06/2026
 
-### Mapbox Static Images API — IMPLEMENTADO ✅
-- `lib/mapbox.ts` — función `getMapboxStaticUrl(from, to, width, height, via?)` con Google Polyline encoding
-- Estilo: `mapbox/satellite-streets-v12`
-- Token: `NEXT_PUBLIC_MAPBOX_TOKEN` en Netlify env vars
-- Fallback: `div` oscuro si el token no está seteado
-- `RouteSvg` eliminado completamente
-- `hoverImage` field intacto — renderiza foto real al asignar
+### Mapbox Static Images API ✅
+- `lib/mapbox.ts` — `getMapboxStaticUrl(from, to, width, height, via?)`
+- Estilo: `mapbox/satellite-streets-v12` · Token: `NEXT_PUBLIC_MAPBOX_TOKEN`
+- `hoverImage` Split asignado: `public/images/tours/hvar-open-sea-speedboat-transfer-drone-2026.jpg` ✅
+- Resto de hoverImages: null (pendiente fotos)
 
-### Rutas y waypoints náuticos reales (WGS84)
-Todos parten de Hvar Port: `{ lon: 16.442975, lat: 43.169008 }`
-
-| Card | mapTo | mapVia (en orden) |
-|---|---|---|
-| Split | lon: 16.437864, lat: 43.507639 | PAKLENI_EXIT(16.348409, 43.191539) → (16.403727, 43.330417) → (16.408034, 43.491876) → (16.365462, 43.505258) |
-| Split Airport | lon: 16.301891, lat: 43.529181 | PAKLENI_EXIT → (16.403727, 43.330417) → (16.408034, 43.491876) → (16.365462, 43.505258) |
-| Brač | lon: 16.657026, lat: 43.261500 | (16.352940, 43.189754) → (16.364804, 43.211134) → (16.513733, 43.246498) → (16.659022, 43.254864) |
-| Korčula | lon: 17.136184, lat: 42.959341 | KORCULA_TURN(16.487209, 43.138280) → (16.65, 43.08) → (16.90, 43.00) |
-| Biševo | lon: 16.184168, lat: 43.062260 | (16.439551, 43.164991) → (16.441916, 43.159709) → (16.458060, 43.152451) → (16.193734, 43.061615) |
-| Yacht Taxi | lon: 16.393924, lat: 43.160106 | sin waypoints (ruta corta) |
-
-### Precios transfers (estado 04/06)
-- Split ciudad: €500
-- Split Airport: €600 (incluye taxi corto del terminal al muelle — no incluido en el precio)
-- Duración aprox: 1:00-1:10h
-
----
-
-## /about/ — estado al 03/06/2026
-- Fotos crew: `public/img/josip-skipper.jpg` y `public/img/fede-skipper.jpg` — actualizadas 03/06
-- Crew cards: `aspect-[3/4]` (portrait), `objectPosition` individual por persona
-- "The barrel" explicado: "In Hvar, tour operators work from wooden barrels on the harbour. On the day of your tour, come find us there and we'll take you to the boat."
-- Passenger copy: "Up to 8 passengers per boat." + párrafo separado: "Full-size speedboats, small groups. Licensed for 12. We cap at 8. More room, better experience."
-- Sin RIBs, sin em-dashes, sin en-dashes en toda la página
-
----
-
-## Copy — "Lunch not included" unificado (02/06)
-Aplicado en `lib/tours-data.ts` + `app/landing/pre-tour/page.tsx`:
-| Tour | Wording |
+### Waypoints (WGS84) — origen: Hvar Port 16.442975, 43.169008
+| Card | Destino |
 |---|---|
-| 5 Islands | "Lunch not included - restaurants available at Pakleni or Palmizana" |
-| Red Rocks & Pakleni | "Lunch not included - restaurants available at Pakleni" |
-| Pakleni Half Day | "Lunch not included - restaurants available at Pakleni" |
-| Private Charter | "Lunch not included - restaurants available at stops along your route" |
-| Sunset / Transfer | Sin mención |
+| Split | 16.437864, 43.507639 |
+| Split Airport | 16.301891, 43.529181 |
+| Brač | 16.657026, 43.261500 |
+| Korčula | 17.136184, 42.959341 |
+| Biševo | 16.184168, 43.062260 |
+| Yacht Taxi | 16.393924, 43.160106 |
+
+### Precios
+- Split ciudad: €500 · Split Airport: €600 · Duración: 1:00-1:10h
 
 ---
 
-## Copy — PHOTO_VIDEO_ADDON (constante unificada — 04/06)
-Definida en `lib/tours-data.ts` como constante `PHOTO_VIDEO_ADDON`:
-> "+Photo & Video Shoot - €200, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited."
+## /about/ — estado al 15/06/2026 ✅ CERRADO
 
-Aplica en todos los tours privados. NO aplica en shared tour del 5 Islands.
+### Fotos crew
+- `public/images/team/josip-skipper.jpg`
+- `public/images/team/fede-skipper.jpg`
+- `public/images/team/nikola-mareboats-skipper.png`
+- Crew cards: `aspect-[3/4]` (portrait), objectPosition individual
+
+### Hero
+- Imagen: `public/images/hero/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg`
+- objectPosition: `center top` mobile / `md:object-center` desktop
+- min-h: `50vh` mobile / `60vh` desktop · justify-start · pt-20
+
+### Story section
+- Imagen: `public/images/destinations/hvar-old-town-aerial-rooftops-drone-2026-02.jpg` · objectPosition: center
+
+### Fleet section
+- Componente: TourCardImage carrusel autoplay · aspect-[4/3] · cover · center
+- Imagen 1: `public/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg`
+- Imagen 2: `public/images/destinations/hvar-speedboat-open-sea-aerial-drone-2026.jpg`
 
 ---
 
-## Tour cards — componentes (estado 08/06/2026)
+## Fotos drone — estado al 15/06/2026
+
+### Shoot: mayo-junio 2026, DJI Mavic 4 Pro
+- 104 fotos · Exportadas: 2000px long edge, 80% JPG, sRGB, Screen/Standard sharpening
+- Fuente original: `/Users/federiciandres/Documents/Audiovisual/Mareboats/Exportadas/`
+- Formato SEO: `hvar-[location]-drone-2026.jpg`
+- Estructura en repo: `public/images/` — subcarpetas: `hero/`, `destinations/`, `tours/`, `team/`, `boat/`, `gallery/`
+- `public/img/` — solo logos, icons, SVGs y OG image. NO tocar.
+- Blue Cave: sin fotos propias por ahora. Placeholder: `hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg`
+
+### Clusters identificados por GPS
+| Cluster | Archivos | Ubicación |
+|---|---|---|
+| A | 1-2 | Open water S de Hvar |
+| B | 3-6 | East Hvar coast (Red Rocks/Dubovica) |
+| C | 7-25 | Pakleni E / Taršće |
+| D | 26-28 | Hvar harbour (meeting point) |
+| E | 29-37 | East Hvar south coast (Red Rocks/Dubovica) |
+| F | 38-45 | Zdrilca channel, barco en movimiento |
+| G | 46-50 | Hvar harbour golden hour |
+| H | 51-54 | Water SW harbour golden hour |
+| I | 55-59 | Above Hvar old town golden hour |
+| J | 60-70 | Hvar harbour/Spanjola fortress sunset |
+| K | 71-72 | Hvar harbour morning |
+| L/M | 73-103 | Pakleni anchorage Jerolim |
+
+### Fotos wired en el sitio
+| Archivo | Path | Uso |
+|---|---|---|
+| hvar-speedboat-pakleni-channel-drone-2026.jpg | public/images/hero/ | Hero home |
+| hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg | public/images/hero/ | About hero |
+| hvar-open-sea-speedboat-aerial-drone-2026-01.jpg | public/images/hero/ | Tours page hero |
+| hvar-harbour-sunset-aerial-drone-2026-03.jpg | public/images/hero/ | Hero general |
+| hvar-town-aerial-overview-drone-2026-01.jpg | public/images/hero/ | Explore/Guide hero |
+| hvar-old-town-aerial-rooftops-drone-2026-02.jpg | public/images/destinations/ | About story |
+| hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg | public/images/destinations/ | About fleet img 1 |
+| hvar-speedboat-open-sea-aerial-drone-2026.jpg | public/images/destinations/ | About fleet img 2 |
+| hvar-pakleni-islands-tarske-bay-drone-2026.jpg | public/images/destinations/ | Pakleni card img 1 |
+| hvar-pakleni-islands-anchorage-aerial-drone-2026.jpg | public/images/destinations/ | Pakleni card img 2 |
+| hvar-dubovica-beach-aerial-drone-2026.jpg | public/images/destinations/ | Dubovica highlight modal |
+| hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg | public/images/destinations/ | Blue Cave placeholder |
+| hvar-red-rocks-boat-tour-drone-2026.jpg | public/images/tours/ | Red Rocks card img 1 |
+| hvar-red-rocks-cliffs-aerial-drone-2026.jpg | public/images/tours/ | Red Rocks card img 2 |
+| hvar-town-sunset-spanjola-fortress-drone-2026.jpg | public/images/tours/ | Sunset card img 1 |
+| hvar-sunset-cruise-golden-hour-drone-2026.jpg | public/images/tours/ | Sunset card img 2 |
+| hvar-private-charter-pakleni-islands-drone-2026.jpg | public/images/tours/ | Charter card img 1 |
+| hvar-open-sea-speedboat-transfer-drone-2026.jpg | public/images/tours/ | Transfers Split hoverImage |
+| hvar-boat-rental-pakleni-islands-drone-2026.jpg | public/images/tours/ | Rentals hero |
+| hvar-pakleni-islands-sea-scooter-snorkel-drone-2026-01.jpg | public/images/boat/ | Rentals underwater scooter |
+| hvar-mareboats-fleet-harbour-drone-2026.jpg | public/images/boat/ | Flota en puerto |
+| nikola-mareboats-skipper.png | public/images/team/ | About — Nikola card |
+| josip-skipper.jpg | public/images/team/ | About — Josip card |
+| fede-skipper.jpg | public/images/team/ | About — Fede card |
+
+---
+
+## Tour cards — componentes (estado 11/06/2026)
 
 ### components/ui/TourCardImage.tsx
-- Carousel de imágenes con autoplay a 4000ms on mount
-- mouseEnter pausa (sin resetear índice), mouseLeave reanuda desde índice actual
-- Dots de paginación visibles en md+
-- Cleanup en unmount
+- Carousel autoplay 4000ms on mount
+- mouseEnter pausa (sin reset índice), mouseLeave reanuda
+- Dots visibles en md+, cleanup en unmount
+- **Props opcionales: `objectFit` ('cover'|'contain', default 'cover') y `objectPosition`**
 
 ### components/sections/Tours.tsx (home)
-- `<TourCardImage>` envuelto en `<Link className="block" href="/tours/{slug}">` — imagen clickeable
-- trackEvent `tour_card_image_click` en el click
-- Botón "See This Tour" independiente, sin cambios
+- TourCardImage envuelto en Link → /tours/{slug} · trackEvent `tour_card_image_click`
 
 ### app/tours/page.tsx
-- `<TourCardImage>` también envuelto en `<Link className="block" href="/tours/{slug}/">` — consistente con home
+- TourCardImage envuelto en Link → /tours/{slug}/ (consistente con home)
 
 ---
 
-## /conditions/ — entradas contextuales (08/06/2026)
-La página existe pero fue removida del navbar. Entradas al sitio:
-
+## /conditions/ — entradas contextuales
 | Origen | Trigger | Destino |
 |---|---|---|
-| /tours/blue-cave-pakleni-islands/ | Card "Check Blue Cave conditions" después de Meeting Point | /conditions/ |
-| /tours/sunset-cruise/ | Card "Check tonight's sunset quality" después de Meeting Point | /conditions/ |
+| /tours/blue-cave-pakleni-islands/ | Card "Check Blue Cave conditions" | /conditions/ |
+| /tours/sunset-cruise/ | Card "Check tonight's sunset quality" | /conditions/ |
 | /qr/ | Card "Current Conditions" | /conditions/ |
-| Footer | Link en columna Explore | /conditions/ |
+| Footer | Link columna Explore | /conditions/ |
 
 ---
 
-## UX/Conversión audit — 05/06/2026
-
-### /explore/
-- Hero card 3: era anchor link a sí misma → ahora apunta a /tours/
-- Inline CTA: insertado entre Beaches y Practical Info (grid 2 col md+, stacked mobile). WhatsApp primario + "See all tours" secundario. Label GA4: `explore_beaches_cta`
-- FAQ: "Is Hvar worth visiting?" y "What is Hvar known for?" reemplazadas por preguntas de booking intent: "How far in advance should I book?" y "Can I book a private tour for my group?"
-
-### /guide/
-- Route cards: cada ruta tiene link "See tour details" al tour correspondiente
-- Dead code eliminado: bloque RULES & RENTALS comentado (28 líneas) removido
-
-### /hvar-islands-guide/
-- Links a tours desde accordions: Blue Cave, Red Rocks, Stiniva tienen "See this tour →" pill link
-- OnTourBanner: componente client que muestra banner solo si ?ref=qr
-
-### /on-tour/ → ELIMINADA
-- Redirect 301 /on-tour/* → /hvar-islands-guide/ en netlify.toml
+## Copy — PHOTO_VIDEO_ADDON
+```
++Photo & Video Shoot - €200, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited.
+```
+Tours privados únicamente. No aplica en shared 5 Islands.
 
 ---
 
-## SEO / GEO — estado al 08/06/2026
+## PLAN UNIFICADO — Estado al 15/06/2026
 
-### Schema markup implementado (06/06)
-- `lib/schema.ts`: businessSchema, websiteSchema, tourSchemaMap (6 tours), rentalServiceSchema, rentalBreadcrumbSchema
-- Validado con Google Rich Results Test — 0 errores en todas las páginas testeadas
-- reviewCount: 26 (actualizado mismo día)
+### ✅ CERRADOS
+- Bloque 0, SEO Website, /landing/pre-tour/, SEO Cluster, fixes 02/06, Mobile Audit, Copy Audit, UX/Conversión, Schema markup, GBP, Precios self-drive, /conditions/, Copy 07/06, Session 07/06 noche, Session 08/06
+- **BLOQUE 1 Fotos drone — CERRADO** (09-15/06): 52 fotos migradas a public/images/, estructura nueva, todos los paths actualizados en componentes ✅
 
-### GBP optimizado (07/06)
-- Nombre corregido: "MareBoats Hvar"
-- Descripción reescrita: keywords integradas, sin em-dashes
-- Servicios cargados
-- Q&A: no disponible desde panel — limitación de Google para esta categoría
-
-### Keywords oportunidad (GSC)
-- "hvar boat rental" pos 30.1
-- "rent a boat hvar" pos 32.7
-- "hvar boat hire" pos 35.7
-- "boat rental hvar no licence" — keyword integrada en /rentals/ el 07/06
-
-### Próximas palancas SEO/GEO (en orden de prioridad)
-1. Fotos reales en GBP, sitio y GYG (post-shoot)
-2. Backlinks earned media: contactar travel blogs que rankean "best boat tours hvar"
-3. Contenido GEO: página/sección que responda "how much does a Blue Cave tour cost from Hvar" y queries similares — estas son las que citan las IAs
-
----
-
-## PLAN UNIFICADO — Estado al 08/06/2026
-
-### ✅ BLOQUE 0 — CERRADO
-### ✅ SEO Website — CERRADO 31/05
-### ✅ /landing/pre-tour/ — CERRADO 01/06
-### ✅ SEO Cluster — CERRADO 01/06
-### ✅ Sitio — fixes 02/06 — CERRADO
-### ✅ Mobile Audit — CERRADO 03/06
-### ✅ Copy Audit site-wide — CERRADO 04/06
-### ✅ UX/Conversión audit cluster Explore — CERRADO 05/06
-### ✅ Schema markup completo — CERRADO 06/06
-### ✅ GBP optimizado — CERRADO 07/06
-### ✅ Precios self-drive rentals — CERRADO 07/06
-### ✅ /conditions/ page — CERRADO 07/06
-### ✅ Copy session 07/06 — CERRADO (underwater scooter rename, cap 8, badge Pasara, capacity framing)
-### ✅ Session 07/06 noche — CERRADO
-- TourHighlightsList: nuevo componente client con modal + foto + descripción por highlight
-- Red Rocks departure: slot 11:00 agregado en pre-tour page
-- /qr/: card "Current Conditions" agregada
-- Idiomas: German agregado globalmente
-
-### ✅ Session 08/06 — CERRADO
-- TourCardImage: autoplay 4000ms on mount, pausa en hover sin reset de índice
-- Tours home + /tours/: imagen de card clickeable → detalle del tour (Link wrapper)
-- Conditions removida del navbar
-- Entradas contextuales a /conditions/ desde tour pages Blue Cave y Sunset, y footer
-- Commit: c80589
-
-### 📸 BLOQUE 1 — Shoot (drone DJI Mavic 4 Pro)
-- Hero del sitio, fotos por tour, barco en muelle, meeting point barrel, Nikola y Fede al timón
-- 15-20 sueltas para GBP/OTAs
-- Filmar prueba underwater scooters con Nikola
-- Post-shoot: asignar `hoverImage` en /transfers/ + actualizar fotos hero/tour pages/OTAs
-
-### 🧹 BLOQUE 2 — Cerrar lo que está al 90%
-**GYG:**
-- [ ] Cargar itinerary VIP 5 Islands (error GYG — reintentar)
-- [ ] Aumentar disponibilidad junio-julio
-- [ ] Pedir review al guest de Red Rocks
-- [ ] Underwater Scooters: terminar y publicar (nombre "Underwater Scooter" — alinear con sitio)
-- [ ] Post-shoot: actualizar fotos listings
-- [ ] Mostrar /conditions/ a Nikola — aprobar Blue Cave indicator antes de usar en comunicación
-
-**Booking.com:**
-- [ ] Aprobación Nikola → publicar
-
-**Sitio:**
-- [ ] /about: cerrar con fotos shoot + historia Nikola
-- [ ] /transfers/: hoverImage con fotos reales (post-shoot)
-
-**GBP:**
-- [ ] Coti: posts mayo-junio pendientes
-- [ ] Post-shoot: 20-30 fotos
+### 🧹 BLOQUE 2 — Pendiente
+- GYG: itinerary VIP 5 Islands, disponibilidad jun-jul, review Red Rocks, underwater scooters publicar, fotos listings
+- Booking.com: aprobación Nikola
+- Sitio: /transfers/ hoverImages resto de cards, home hero confirmar visual, tour pages revisar
+- GBP: posts Coti, 20-30 fotos
+- Blue Cave: conseguir fotos reales para reemplazar placeholder
 
 ### 🚀 BLOQUE 3 — Google Ads
-- [ ] Crear/verificar cuenta Google Ads
-- [ ] Importar conversión `whatsapp_click` desde GA4
-- [ ] 1 campaña · 3 ad groups: Boat Tours / Blue Cave / Boat Rental
-- [ ] €15-20/día · Smart Bidding después de 15-20 conversiones
-- [ ] Keywords negativas: jobs, for sale, free, cheap, ferry, ciudades distinto de Hvar
-- [ ] Geo: Hvar + Split + radio
-- [ ] Destino: /landing/* (no la home)
-- [ ] Meta Ads: NO ahora — fase 2
+- Crear cuenta · importar conversión whatsapp_click · 3 ad groups · €15-20/día · Smart Bidding post 15-20 conversiones
+- Keywords negativas: jobs, for sale, free, cheap, ferry
+- Geo: Hvar + Split + radio · Destino: /landing/*
 
-### 🤖 EN EL RADAR — n8n Automatizaciones (fase 2)
-- WhatsApp bot: inquiry handling + post-tour review requests (scoped, no construido)
-- Blue Cave status: bot que lee grupo de WhatsApp de locales y extrae estado → feed a /conditions/ (reemplazaría el indicador de olas actual con dato real)
-- GBP + Instagram post automation (GBP API configurada, Instagram connection no verificada)
-
-### 🇺🇸 EN EL RADAR — Segmento US / alto ticket
-US es mercado #1 en GA4. Charter premium varios miles de euros. Definir producto + precio + página. Después de Bloques 0-3.
-
-### 🔗 EN EL RADAR — Backlinks / Earned Media
-- Contactar travel blogs que rankean "best boat tours hvar" — ofrecerles tour gratis a cambio de review + link
-- Directorios: Croatia.hr, VisitHvar.hr, TripAdvisor listing separado
-- Resolver Viator (bloqueado por seguro) — DA alto, backlink valioso
-- Reddit / TripAdvisor Q&A: respuestas genuinas de Nikola/Josip en r/croatia, r/travel
+### 🤖 EN EL RADAR
+- n8n: WhatsApp bot, Blue Cave status automático, GBP/Instagram automation
+- Segmento US: charter premium, definir producto + página
+- Backlinks: travel blogs, Croatia.hr, VisitHvar.hr, Viator
 
 ---
 
 ## Instrucciones para Claude Code
 - Leer CLAUDE.md completo antes de empezar
-- `npm run dev` para ver estado local en localhost:3000
-- `npm run build` al terminar cada tarea — build 0 errores
-- Commit al terminar cada tarea con mensaje descriptivo
-- Mobile-first SIEMPRE — primero 375px, luego md:, lg:
+- `npm run build` al terminar cada tarea — 0 errores. Commit con mensaje descriptivo.
+- Mobile-first: 375px → md: → lg:
 - Solo `next/image` — cero `<img>` tags
 - Solo opacity y transform en animaciones — nunca transition-all
-- SEO metadata en cada página nueva
-- Redirects van en netlify.toml — NO en next.config.mjs
-- NEXT_PUBLIC_ env vars son build-time — hardcodear Measurement ID en layout.tsx
-- NUNCA modificar listings de OTAs desde el código — eso se hace a mano con aprobación de Nikola
-- Em-dashes (—) y en-dashes (–) prohibidos en todo copy del sitio
-- Brand name: siempre "MareBoats Hvar" (sin espacio)
-- Capacidad: siempre "up to 8" por barco. Capacidad legal es 12 — el framing es "Licensed for 12, we cap at 8." Nunca mencionar 12 sin este contexto.
-- Antes de cualquier cambio de copy: mostrar archivo completo primero, sin modificar
-- No usar filler phrases: "premium", "unforgettable", "ultimate", "ideal for", "flagship"
-- Underwater Scooter (no "Water Scooter") — nombre correcto desde 07/06
+- Redirects en netlify.toml — NO en next.config.mjs
+- NUNCA modificar OTA listings sin aprobación Nikola
+- Em-dashes y en-dashes prohibidos
+- Brand: "MareBoats Hvar" (sin espacio)
+- Capacidad: "up to 8" / "Licensed for 12. We cap at 8."
+- Mostrar archivo completo antes de cualquier cambio de copy
+- Filler prohibido: "premium", "unforgettable", "ultimate", "ideal for", "flagship"
+- `lib/image-paths.ts` — legacy sin importar, NO tocar
+- objectPosition como prop a TourCardImage — valores por imagen
+- Fotos drone: formato `hvar-[location]-drone-2026.jpg`
+- **Imágenes: SIEMPRE en `public/images/` — nunca en `public/img/` (ese es solo para logos/icons/SVGs/OG)**
