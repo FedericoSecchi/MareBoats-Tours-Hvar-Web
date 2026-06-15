@@ -98,7 +98,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         alt: 'Red Rocks cliffs and speedboat aerial drone view - boat tour from Hvar Croatia',
       },
       {
-        src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg',
+        src: '/images/tours/hvar-coast-crystal-water-swimming-drone-2026-02.jpg',
         alt: 'Crystal clear Adriatic water on Red Rocks & Pakleni Islands boat tour from Hvar',
       },
     ],
