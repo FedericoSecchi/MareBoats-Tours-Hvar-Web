@@ -53,8 +53,8 @@ export default function HomePage() {
 
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden text-white">
         <Image
-          src="/images/hero/hvar-boat-tour-hvar-open-sea-aerial-drone-2026.jpg"
-          alt="Private boat tour from Hvar Croatia - open Adriatic sea"
+          src="/images/hero/hvar-pakleni-islands-aerial-hero-drone-2026.jpg"
+          alt="Pakleni Islands aerial view from drone - private boat tour from Hvar Croatia"
           fill
           priority
           quality={75}
