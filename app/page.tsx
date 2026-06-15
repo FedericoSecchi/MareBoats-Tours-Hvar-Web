@@ -53,8 +53,8 @@ export default function HomePage() {
 
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden text-white">
         <Image
-          src="/img/carousel-1.jpeg"
-          alt="Private boat tour from Hvar, Croatia - crystal clear Adriatic waters"
+          src="/images/hero/hvar-speedboat-pakleni-channel-drone-2026.jpg"
+          alt="Speedboat on the Pakleni channel, Hvar Croatia - aerial drone view"
           fill
           priority={true}
           quality={75}

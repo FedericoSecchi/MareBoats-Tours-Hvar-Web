@@ -13,32 +13,32 @@ type Photo = {
 
 const photos: Photo[] = [
   {
-    src: '/img/destination-1.jpeg',
+    src: '/images/destinations/hvar-red-rocks-speedboat-aerial-drone-2026-01.jpg',
     label: 'Blue Cave',
     alt: 'Blue Cave Biševo near Hvar - turquoise light inside the sea cave',
   },
   {
-    src: '/img/destination-2.jpeg',
+    src: '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg',
     label: 'Pakleni Islands',
     alt: 'Pakleni Islands archipelago seen from the boat - Hvar, Croatia',
   },
   {
-    src: '/img/destination-3.jpeg',
+    src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-01.jpg',
     label: 'Hvar Town',
     alt: 'Hvar town and old harbour viewed from the Adriatic sea',
   },
   {
-    src: '/img/destination-4.jpeg',
+    src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
     label: 'Stiniva Bay',
     alt: 'Stiniva Bay on Vis Island - secluded beach near Hvar',
   },
   {
-    src: '/img/destination-5.jpeg',
+    src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg',
     label: 'Adriatic Sea',
     alt: 'Crystal clear Adriatic sea on a private boat tour from Hvar',
   },
   {
-    src: '/img/destination-6.jpeg',
+    src: '/images/destinations/hvar-red-rocks-cliffs-speedboat-aerial-drone-2026-01.jpg',
     label: 'Hidden Beaches',
     alt: 'Hidden beach near Hvar reachable only by private boat tour',
   },

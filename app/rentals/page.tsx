@@ -28,7 +28,7 @@ export const metadata: Metadata = {
       'rent boat hvar croatia',
     ],
     slug: 'rentals',
-    ogImage: '/img/waterscooter.jpeg',
+    ogImage: '/images/boat/hvar-pakleni-islands-sea-scooter-snorkel-drone-2026-01.jpg',
   }),
   robots: { index: true, follow: true },
 };
@@ -217,7 +217,7 @@ export default function RentalsPage() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[color:var(--border)] px-4 py-20 md:py-24">
         <Image
-          src="/img/rentals/hvar-boat-rental-pakleni-islands-drone-2026.jpg"
+          src="/images/tours/hvar-boat-rental-pakleni-islands-drone-2026.jpg"
           alt="Boat rental in Hvar - speedboat anchored in the Pakleni Islands aerial drone view"
           fill
           priority
@@ -477,7 +477,7 @@ export default function RentalsPage() {
             <article className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
-                  src="/img/waterscooter.jpeg"
+                  src="/images/boat/hvar-pakleni-islands-sea-scooter-snorkel-drone-2026-01.jpg"
                   alt="Underwater scooter rental in Hvar - explore the Adriatic"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"

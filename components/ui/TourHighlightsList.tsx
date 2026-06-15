@@ -13,7 +13,7 @@ const STOP_PHOTOS: [string, string][] = [
   ['palmižana', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
   ['palmizana', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
   ['zdrilca', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
-  ['dubovica', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
+  ['dubovica', '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg'],
   ['red rocks', 'https://images.unsplash.com/photo-1504198266287-1659872e6590?w=800&q=80'],
   ['hvar', 'https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&q=80'],
 ];

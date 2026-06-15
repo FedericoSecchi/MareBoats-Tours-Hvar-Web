@@ -19,7 +19,7 @@ export const metadata: Metadata = generateSEO({
     'hvar bisevo transfer',
   ],
   slug: 'transfers',
-  ogImage: '/img/destination-5.jpeg',
+  ogImage: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg',
 });
 
 const SITE = 'https://mareboatshvar.com';
@@ -75,7 +75,7 @@ const TRANSFERS: TransferCard[] = [
     waMessage: "Hi! I'd like to book the Split transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
-    hoverImage: null,
+    hoverImage: '/images/tours/hvar-open-sea-speedboat-transfer-drone-2026.jpg',
     mapFrom: COORDS.HVAR_PORT,
     mapTo: COORDS.SPLIT_PORT,
     mapVia: [

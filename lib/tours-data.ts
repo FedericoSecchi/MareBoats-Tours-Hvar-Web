@@ -94,12 +94,12 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     ],
     images: [
       {
-        src: '/img/destination-4.jpeg',
-        alt: 'Red Rocks and Pakleni Islands private boat tour from Hvar - turquoise water and cliffs',
+        src: '/images/tours/hvar-red-rocks-boat-tour-drone-2026.jpg',
+        alt: 'Red Rocks boat tour from Hvar - cliffs and turquoise water aerial drone view',
       },
       {
-        src: '/img/destination-5.jpeg',
-        alt: 'Dubovica Beach seen from the sea on a Red Rocks boat tour from Hvar',
+        src: '/images/tours/hvar-red-rocks-cliffs-aerial-drone-2026.jpg',
+        alt: 'Red Rocks cliffs aerial drone view - Hvar Croatia boat tour',
       },
     ],
     keywords: [
@@ -148,10 +148,13 @@ Most guests who book this tour have already done a full-day trip and want a shor
     ],
     images: [
       {
-        src: '/img/package-2.jpeg',
-        alt: 'Pakleni Islands half day boat tour from Hvar harbour',
+        src: '/images/destinations/hvar-pakleni-islands-tarske-bay-drone-2026.jpg',
+        alt: 'Pakleni Islands Tarse bay aerial drone view - half day boat tour from Hvar',
       },
-      { src: '/img/destination-2.jpeg', alt: 'Pakleni Islands archipelago seen from a private boat' },
+      {
+        src: '/images/destinations/hvar-pakleni-islands-anchorage-aerial-drone-2026.jpg',
+        alt: 'Pakleni Islands anchorage aerial drone view - private boat tour from Hvar',
+      },
     ],
     keywords: ['pakleni islands boat', 'half day tour hvar'],
   },
@@ -207,10 +210,10 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     ],
     images: [
       {
-        src: '/img/package-1.jpeg',
+        src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
         alt: '5 Islands 4 Beaches Blue Cave speedboat tour from Hvar, Croatia',
       },
-      { src: '/img/carousel-2.jpeg', alt: 'Speedboat on the Adriatic near Hvar - Blue Cave day trip' },
+      { src: '/images/hero/hvar-open-sea-speedboat-aerial-drone-2026-01.jpg', alt: 'Speedboat on the Adriatic near Hvar - Blue Cave day trip' },
     ],
     keywords: [
       'blue cave boat tour hvar',
@@ -260,10 +263,13 @@ Sunset slots are limited during high season, so message us early on WhatsApp to 
     ],
     images: [
       {
-        src: '/img/package-5.jpeg',
-        alt: 'Sunset cruise from Hvar - private boat at golden hour over the Adriatic',
+        src: '/images/tours/hvar-town-sunset-spanjola-fortress-drone-2026.jpg',
+        alt: 'Hvar town at sunset from drone - Spanjola fortress and harbour aerial view',
       },
-      { src: '/img/carousel-1.jpeg', alt: 'Evening light over the sea on a Hvar sunset boat tour' },
+      {
+        src: '/images/tours/hvar-sunset-cruise-golden-hour-drone-2026.jpg',
+        alt: 'Sunset cruise from Hvar - golden hour over the Adriatic aerial drone view',
+      },
     ],
     keywords: ['sunset cruise hvar', 'hvar sunset boat tour'],
   },
@@ -307,10 +313,10 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
     ],
     images: [
       {
-        src: '/img/package-4.jpeg',
-        alt: 'Private boat charter Hvar - full day skippered tour in the Adriatic',
+        src: '/images/tours/hvar-private-charter-pakleni-islands-drone-2026.jpg',
+        alt: 'Private boat charter Hvar - speedboat anchored in Pakleni Islands aerial drone view',
       },
-      { src: '/img/destination-5.jpeg', alt: 'Crystal clear Adriatic sea on a private charter from Hvar' },
+      { src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg', alt: 'Crystal clear Adriatic sea on a private charter from Hvar' },
     ],
     keywords: ['private boat charter hvar', 'boat rental hvar croatia'],
   },
@@ -357,10 +363,10 @@ Message us on WhatsApp with your flight number, group size and luggage to lock i
     ],
     images: [
       {
-        src: '/img/destination-5.jpeg',
+        src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg',
         alt: 'Split Airport to Hvar private speedboat transfer arriving at Hvar Harbour',
       },
-      { src: '/img/carousel-2.jpeg', alt: 'Speedboat crossing the Adriatic between Split and Hvar' },
+      { src: '/images/hero/hvar-open-sea-speedboat-aerial-drone-2026-01.jpg', alt: 'Speedboat crossing the Adriatic between Split and Hvar' },
     ],
     keywords: [
       'split to hvar transfer',
@@ -414,11 +420,11 @@ If you are searching for a private water taxi in Hvar, a yacht transfer, a sailb
     ],
     images: [
       {
-        src: '/img/destination-7.jpeg',
+        src: '/images/destinations/hvar-pakleni-islands-tarske-bay-drone-2026.jpg',
         alt: 'Yacht and sailboat water taxi service in Hvar - private speedboat pickup',
       },
       {
-        src: '/img/carousel-1.jpeg',
+        src: '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg',
         alt: 'Speedboat approaching anchored sailboat near Hvar for water taxi transfer',
       },
     ],

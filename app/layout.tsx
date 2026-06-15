@@ -79,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preload" as="image" href="/img/carousel-1.jpeg" />
+        <link rel="preload" as="image" href="/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg" />
         <JsonLd data={businessSchema as Record<string, unknown>} />
         <JsonLd data={websiteSchema as Record<string, unknown>} />
       </head>

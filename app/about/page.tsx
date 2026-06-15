@@ -18,7 +18,7 @@ export const metadata: Metadata = generateSEO({
     'private boat tours hvar',
   ],
   slug: 'about',
-  ogImage: '/img/about.jpeg',
+  ogImage: '/images/hero/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg',
 });
 
 const SITE = 'https://mareboatshvar.com';
@@ -41,7 +41,7 @@ const CREW: Crew[] = [
     role: 'Founder',
     languages: ['Croatian', 'English'],
     bio: 'Born and raised in Hvar. Runs all operations: logistics, scheduling, fleet. Knows the island inside out, every bay, every season. Occasional skipper, but his real job is making sure every tour runs without a hitch.',
-    image: '/img/team-1.png',
+    image: '/images/team/nikola-mareboats-skipper.png',
     imageAlt: 'Nikola, founder of MareBoats Hvar',
     objectPosition: '50% 30%',
   },
@@ -50,7 +50,7 @@ const CREW: Crew[] = [
     role: 'Head Skipper',
     languages: ['Croatian', 'English', 'German'],
     bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid, Hvar is home. Lived in Germany for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
-    image: '/img/josip-skipper.jpg',
+    image: '/images/team/josip-skipper.jpg',
     imageAlt: 'Josip, head skipper at MareBoats Hvar',
     objectPosition: '50% 40%',
   },
@@ -59,7 +59,7 @@ const CREW: Crew[] = [
     role: 'Marketing',
     languages: ['Spanish', 'Italian', 'English'],
     bio: "Argentine. Grew up sailing, started at 6 in an Optimist, competed internationally at South American and World Championships. Trained sailors as head coach for the Ecuadorian Sailing Federation. Worked with the 69F class, classic regattas and cruising boats up to 90ft. Handles marketing for MareBoats. Occasionally on board as skipper.",
-    image: '/img/fede-skipper.jpg',
+    image: '/images/team/fede-skipper.jpg',
     imageAlt: 'Federico, marketing at MareBoats Hvar',
     objectPosition: '50% 20%',
   },
@@ -110,7 +110,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative min-h-[50vh] md:min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
         <Image
-          src="/img/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg"
+          src="/images/hero/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg"
           alt="MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone"
           fill
           priority
@@ -156,7 +156,7 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)]">
             <Image
-              src="/img/hvar-old-town-aerial-rooftops-drone-2026-02.jpg"
+              src="/images/destinations/hvar-old-town-aerial-rooftops-drone-2026-02.jpg"
               alt="Hvar old town aerial rooftops drone view"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -272,8 +272,8 @@ export default function AboutPage() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[#0d1b2a] md:order-2">
             <TourCardImage
               images={[
-                { src: '/img/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone' },
-                { src: '/img/hvar-speedboat-open-sea-aerial-drone-2026.jpg', alt: 'MareBoats Hvar speedboat open sea south of Hvar aerial drone' },
+                { src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone' },
+                { src: '/images/destinations/hvar-speedboat-open-sea-aerial-drone-2026.jpg', alt: 'MareBoats Hvar speedboat open sea south of Hvar aerial drone' },
               ]}
               objectPosition="center"
               objectFit="cover"
