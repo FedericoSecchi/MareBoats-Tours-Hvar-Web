@@ -94,12 +94,12 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     ],
     images: [
       {
-        src: '/images/tours/hvar-red-rocks-boat-tour-drone-2026.jpg',
-        alt: 'Red Rocks boat tour from Hvar - cliffs and turquoise water aerial drone view',
+        src: '/images/tours/hvar-red-rocks-cliffs-speedboat-aerial-drone-2026-01.jpg',
+        alt: 'Red Rocks cliffs and speedboat aerial drone view - boat tour from Hvar Croatia',
       },
       {
-        src: '/images/tours/hvar-red-rocks-cliffs-aerial-drone-2026.jpg',
-        alt: 'Red Rocks cliffs aerial drone view - Hvar Croatia boat tour',
+        src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg',
+        alt: 'Crystal clear Adriatic water on Red Rocks & Pakleni Islands boat tour from Hvar',
       },
     ],
     keywords: [
@@ -148,8 +148,8 @@ Most guests who book this tour have already done a full-day trip and want a shor
     ],
     images: [
       {
-        src: '/images/destinations/hvar-pakleni-islands-tarske-bay-drone-2026.jpg',
-        alt: 'Pakleni Islands Tarse bay aerial drone view - half day boat tour from Hvar',
+        src: '/images/destinations/hvar-pakleni-islands-coastline-aerial-drone-2026.jpg',
+        alt: 'Pakleni Islands coastline aerial drone view - half day boat tour from Hvar',
       },
       {
         src: '/images/destinations/hvar-pakleni-islands-anchorage-aerial-drone-2026.jpg',
@@ -210,10 +210,13 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     ],
     images: [
       {
-        src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
-        alt: '5 Islands 4 Beaches Blue Cave speedboat tour from Hvar, Croatia',
+        src: '/images/destinations/hvar-blue-cave-interior-boat-tour-2026.jpg',
+        alt: 'Blue Cave interior - electric blue light inside Biševo cave, Hvar boat tour',
       },
-      { src: '/images/hero/hvar-open-sea-speedboat-aerial-drone-2026-01.jpg', alt: 'Speedboat on the Adriatic near Hvar - Blue Cave day trip' },
+      {
+        src: '/images/destinations/hvar-green-cave-vis-underwater-snorkeling-2026.jpg',
+        alt: 'Green Cave on Vis island - snorkeling through underwater arch on 5 Islands tour from Hvar',
+      },
     ],
     keywords: [
       'blue cave boat tour hvar',
@@ -263,12 +266,12 @@ Sunset slots are limited during high season, so message us early on WhatsApp to 
     ],
     images: [
       {
-        src: '/images/tours/hvar-town-sunset-spanjola-fortress-drone-2026.jpg',
-        alt: 'Hvar town at sunset from drone - Spanjola fortress and harbour aerial view',
+        src: '/images/tours/hvar-pakleni-islands-dusk-aerial-drone-2026-02.jpg',
+        alt: 'Pakleni Islands at dusk from drone - sunset cruise from Hvar Croatia',
       },
       {
-        src: '/images/tours/hvar-sunset-cruise-golden-hour-drone-2026.jpg',
-        alt: 'Sunset cruise from Hvar - golden hour over the Adriatic aerial drone view',
+        src: '/images/tours/hvar-town-sunset-spanjola-fortress-drone-2026.jpg',
+        alt: 'Hvar town at sunset from drone - Spanjola fortress and harbour aerial view',
       },
     ],
     keywords: ['sunset cruise hvar', 'hvar sunset boat tour'],
