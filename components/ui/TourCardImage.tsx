@@ -45,7 +45,7 @@ export function TourCardImage({ images, sizes, badge, objectPosition, objectFit 
 
   return (
     <div
-      className="relative aspect-[16/9] w-full overflow-hidden"
+      className="relative aspect-[3/4] w-full overflow-hidden"
       onMouseEnter={startCarousel}
       onMouseLeave={stopCarousel}
     >
