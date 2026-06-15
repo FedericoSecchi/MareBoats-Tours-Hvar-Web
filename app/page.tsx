@@ -52,17 +52,15 @@ export default function HomePage() {
       <FAQJsonLd faqs={homepageFaqs} />
 
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden text-white">
-        <div className="relative w-full h-screen min-h-[600px]">
-          <Image
-            src="/images/hero/hvar-boat-tour-hvar-open-sea-aerial-drone-2026.jpg"
-            alt="Speedboat on the Pakleni channel, Hvar Croatia - aerial drone view"
-            fill
-            priority={true}
-            quality={75}
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
+        <Image
+          src="/images/hero/hvar-boat-tour-hvar-open-sea-aerial-drone-2026.jpg"
+          alt="Private boat tour from Hvar Croatia - open Adriatic sea"
+          fill
+          priority
+          quality={75}
+          sizes="100vw"
+          className="absolute inset-0 object-cover object-center"
+        />
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 z-[5]"
           style={{
