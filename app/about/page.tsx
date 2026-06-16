@@ -276,7 +276,7 @@ export default function AboutPage() {
                 { src: '/images/destinations/hvar-speedboat-open-sea-aerial-drone-2026.jpg', alt: 'MareBoats Hvar speedboat open sea south of Hvar aerial drone' },
               ]}
               objectPosition="center"
-              objectFit="cover"
+              objectFit="contain"
             />
           </div>
           <div className="md:order-1">
