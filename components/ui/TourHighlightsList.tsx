@@ -4,21 +4,21 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 const STOP_PHOTOS: [string, string][] = [
-  ['blue cave', 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80'],
-  ['green cave', 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80'],
-  ['stiniva', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'],
+  ['blue cave', '/images/destinations/hvar-blue-cave-interior-boat-tour-2026.jpg'],
+  ['green cave', '/images/destinations/hvar-green-cave-vis-underwater-snorkeling-2026.jpg'],
+  ['stiniva', '/images/destinations/hvar-stiniva-bay-aerial-drone-2026.jpg'],
   ['medvidina', 'https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=800&q=80'],
   ['budikovac', 'https://images.unsplash.com/photo-1530053969600-caed2596d242?w=800&q=80'],
-  ['pakleni', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
-  ['palmižana', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
-  ['palmizana', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
-  ['zdrilca', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
+  ['pakleni', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
+  ['palmižana', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
+  ['palmizana', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
+  ['zdrilca', '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-01.jpg'],
   ['dubovica', '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg'],
-  ['red rocks', 'https://images.unsplash.com/photo-1504198266287-1659872e6590?w=800&q=80'],
-  ['hvar', 'https://images.unsplash.com/photo-1555993539-1732b0258235?w=800&q=80'],
+  ['red rocks', '/images/tours/hvar-red-rocks-cliffs-speedboat-aerial-drone-2026-01.jpg'],
+  ['hvar', '/images/destinations/hvar-old-town-aerial-spanjola-drone-2026-01.jpg'],
 ];
 
-const FALLBACK = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80';
+const FALLBACK = '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg';
 
 function getPhoto(text: string): string {
   const lower = text.toLowerCase();
