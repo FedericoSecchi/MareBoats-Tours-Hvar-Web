@@ -272,11 +272,11 @@ export default function AboutPage() {
           <div className="relative aspect-video overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[#0d1b2a] md:order-2">
             <TourCardImage
               images={[
-                { src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone' },
+                { src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat on Zdrilca channel Pakleni Islands aerial drone' },
                 { src: '/images/destinations/hvar-speedboat-open-sea-aerial-drone-2026.jpg', alt: 'MareBoats Hvar speedboat open sea south of Hvar aerial drone' },
               ]}
               objectPosition="center"
-              objectFit="contain"
+              objectFit="cover"
             />
           </div>
           <div className="md:order-1">
