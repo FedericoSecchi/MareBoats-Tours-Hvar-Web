@@ -269,7 +269,7 @@ export default function AboutPage() {
       {/* The boat */}
       <section className="px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container items-center gap-10 md:grid-cols-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[#0d1b2a] md:order-2">
+          <div className="relative aspect-video overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[#0d1b2a] md:order-2">
             <TourCardImage
               images={[
                 { src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone' },
