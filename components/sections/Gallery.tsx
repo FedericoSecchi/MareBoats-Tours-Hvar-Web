@@ -33,12 +33,12 @@ const photos: Photo[] = [
     alt: 'Stiniva Bay Vis Island aerial drone view - secluded beach near Hvar',
   },
   {
-    src: '/images/destinations/hvar-red-rocks-speedboat-aerial-drone-2026-06.jpg',
+    src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-02.jpg',
     label: 'Adriatic Sea',
-    alt: 'Speedboat on the Adriatic sea near Red Rocks cliffs - Hvar Croatia',
+    alt: 'Speedboat on the Zdrilca channel Pakleni Islands - Hvar Croatia',
   },
   {
-    src: '/images/destinations/hvar-pakleni-islands-cove-speedboat-drone-2026-04.jpg',
+    src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-03.jpg',
     label: 'Hidden Beaches',
     alt: 'Hidden cove in Pakleni Islands reachable only by private boat from Hvar',
   },
