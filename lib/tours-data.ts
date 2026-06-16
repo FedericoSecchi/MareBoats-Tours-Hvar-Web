@@ -60,10 +60,10 @@ We depart from Hvar Harbour and head first to Borče Bay in Milna, a quiet cove 
 
 Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-Available as a private half-day (4 hours, 09:00–13:00), private full-day (6 hours, more time at every stop), or shared group tour (join a small group from €85 per person. Requires a minimum of 4 guests to start the tour).
+Available as a shared tour (11:00–17:00, €85/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €400), or a private full-day (6 hours, 11:00–17:00, €500 - more time at every stop).
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
-    duration: '4 hours (half-day) · 6 hours (full-day)',
+    duration: 'Shared 11:00–17:00 · Private half-day 4 hrs · Private full-day 6 hrs',
     durationIso: 'PT4H',
     price: 'From €85/person (shared) · €400 private half-day · €500 private full-day',
     priceEur: 85,
