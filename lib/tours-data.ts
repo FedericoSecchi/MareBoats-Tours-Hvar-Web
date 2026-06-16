@@ -316,10 +316,13 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
     ],
     images: [
       {
-        src: '/images/tours/hvar-private-charter-pakleni-islands-drone-2026.jpg',
-        alt: 'Private boat charter Hvar - speedboat anchored in Pakleni Islands aerial drone view',
+        src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg',
+        alt: 'Crystal clear Adriatic water from above - private boat charter from Hvar Croatia',
       },
-      { src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg', alt: 'Crystal clear Adriatic sea on a private charter from Hvar' },
+      {
+        src: '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-02.jpg',
+        alt: 'Pakleni Islands aerial overview - private boat charter from Hvar Croatia',
+      },
     ],
     keywords: ['private boat charter hvar', 'boat rental hvar croatia'],
   },

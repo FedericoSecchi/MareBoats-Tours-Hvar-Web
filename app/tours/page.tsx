@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
@@ -221,18 +220,20 @@ export default function ToursIndexPage() {
           })}
           <li className="flex">
             <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src="/images/tours/hvar-pakleni-islands-cove-speedboat-drone-2026-01.jpg"
-                  alt="Speedboat rental Hvar, with or without licence"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <span className="absolute bottom-3 left-3 rounded-pill bg-[color:var(--bg)]/80 px-3 py-1 font-body text-[10px] font-semibold uppercase tracking-[0.12em] text-[color:var(--white)] backdrop-blur-sm">
-                  HALF DAY · FULL DAY
-                </span>
-              </div>
+              <TourCardImage
+                images={[
+                  {
+                    src: '/images/tours/hvar-pakleni-islands-cove-speedboat-drone-2026-02.jpg',
+                    alt: 'Speedboat in a Pakleni Islands cove - boat rental from Hvar Croatia',
+                  },
+                  {
+                    src: '/images/tours/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-06.jpg',
+                    alt: 'Speedboat on Zdrilca channel Pakleni Islands - boat rental Hvar Croatia',
+                  },
+                ]}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                badge="HALF DAY · FULL DAY"
+              />
               <div className="flex flex-1 flex-col gap-4 p-6">
                 <div>
                   <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
