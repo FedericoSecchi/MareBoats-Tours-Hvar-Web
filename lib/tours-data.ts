@@ -98,8 +98,8 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         alt: 'Red Rocks cliffs and speedboat aerial drone view - boat tour from Hvar Croatia',
       },
       {
-        src: '/images/tours/hvar-coast-crystal-water-swimming-drone-2026-02.jpg',
-        alt: 'Crystal clear Adriatic water on Red Rocks & Pakleni Islands boat tour from Hvar',
+        src: '/images/destinations/hvar-dubovica-secret-cave-interior-2026.jpg',
+        alt: 'Dubovica secret sea cave interior - Red Rocks boat tour from Hvar Croatia',
       },
     ],
     keywords: [
@@ -214,8 +214,8 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
         alt: 'Blue Cave interior - electric blue light inside Biševo cave, Hvar boat tour',
       },
       {
-        src: '/images/destinations/hvar-green-cave-vis-underwater-snorkeling-2026.jpg',
-        alt: 'Green Cave on Vis island - snorkeling through underwater arch on 5 Islands tour from Hvar',
+        src: '/images/destinations/hvar-mala-pritiscina-bay-aerial-2026.jpg',
+        alt: 'Mala Pritiscina bay aerial view - 5 Islands boat tour from Hvar Croatia',
       },
     ],
     keywords: [
