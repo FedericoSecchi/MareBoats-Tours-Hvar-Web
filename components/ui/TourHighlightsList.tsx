@@ -13,7 +13,9 @@ const STOP_PHOTOS: [string, string][] = [
   ['palmižana', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
   ['palmizana', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
   ['zdrilca', '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-01.jpg'],
-  ['dubovica', '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg'],
+  ['borče', '/images/destinations/hvar-coast-pebble-beach-aerial-drone-2026-02.jpg'],
+  ['borce', '/images/destinations/hvar-coast-pebble-beach-aerial-drone-2026-02.jpg'],
+  ['dubovica', '/images/destinations/hvar-dubovica-beach-aerial-drone-2026-02.jpg'],
   ['red rocks', '/images/tours/hvar-red-rocks-cliffs-speedboat-aerial-drone-2026-01.jpg'],
   ['hvar', '/images/destinations/hvar-old-town-aerial-spanjola-drone-2026-01.jpg'],
 ];
