@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/about/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${base}/explore/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/hvar-islands-guide/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    // noindex (excluded): /qr, /on-tour, /review, /landing/*
+    // noindex (excluded): /qr, /on-tour, /review, /landing/*, /crew-9f3kq2
     // redirects (excluded): /contact, /faq, /blue-cave, /sunset, /services/scooter-rental
   ];
 

@@ -91,3 +91,10 @@
   to = "/rentals/"
   status = 301
   force = true
+
+# Crew internal pricing page — X-Robots-Tag keeps crawlers out even if the URL leaks.
+# Do NOT add this path to robots.txt (listing it there would publicise it).
+[[headers]]
+  for = "/crew-9f3kq2/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
