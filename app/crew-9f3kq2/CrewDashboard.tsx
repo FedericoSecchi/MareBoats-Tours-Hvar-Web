@@ -27,10 +27,13 @@ type Service = {
   id: string;
   category: 'tour' | 'rental' | 'transfer';
   name: string;
+  quoteName: string;
   duration: string;
   maxCapacity: number;
   includes: string[];
   notIncludes: string[];
+  quoteIncluded: string;
+  quoteNotIncluded: string;
   siteExtras: SiteExtra[];
   addonScooter: boolean;
   addonPhotoVideo: boolean;
@@ -52,10 +55,13 @@ const SERVICES: Service[] = [
     id: 'blue-cave',
     category: 'tour',
     name: '5 Islands · Blue Cave',
+    quoteName: '5 Islands, 4 Beaches, 3 Caves',
     duration: '7 h · departs 10:00',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel', 'Bottled water', 'Snorkel gear (limited)', 'Cooler with ice'],
-    notIncludes: ['Lunch (restaurants at Pakleni / Palmizana, budget €15–25)'],
+    notIncludes: ['Lunch (restaurants at Pakleni / Palmizana, budget 15-25 EUR)'],
+    quoteIncluded: 'skipper, fuel, snorkel masks, icebox and bottled water',
+    quoteNotIncluded: 'lunch',
     siteExtras: [
       { name: 'Blue Cave entrance', price: EXTRAS.blueCave },
       { name: 'Green Cave entrance', price: EXTRAS.greenCave },
@@ -73,10 +79,13 @@ const SERVICES: Service[] = [
     id: 'red-rocks',
     category: 'tour',
     name: 'Red Rocks & Pakleni',
+    quoteName: 'Red Rocks and Pakleni Islands',
     duration: '4 h half-day · 6 h full-day',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel', 'Snorkel gear', 'Cooler'],
     notIncludes: ['Lunch (restaurants at Pakleni)'],
+    quoteIncluded: 'skipper, fuel, snorkel masks, icebox and bottled water',
+    quoteNotIncluded: 'lunch',
     siteExtras: [],
     addonScooter: true,
     addonPhotoVideo: true,
@@ -92,10 +101,13 @@ const SERVICES: Service[] = [
     id: 'pakleni',
     category: 'tour',
     name: 'Pakleni Islands',
-    duration: '3–4 h',
+    quoteName: 'Pakleni Islands',
+    duration: '3-4 h',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel'],
     notIncludes: [],
+    quoteIncluded: 'skipper, fuel',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: true,
     addonPhotoVideo: true,
@@ -106,28 +118,34 @@ const SERVICES: Service[] = [
     id: 'sunset',
     category: 'tour',
     name: 'Sunset Cruise',
+    quoteName: 'Sunset Cruise',
     duration: '~2 h · evening',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel'],
     notIncludes: [],
+    quoteIncluded: 'skipper, fuel',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: true,
-    notes: ['No scooter — evening tour'],
+    notes: ['No scooter. Evening tour.'],
     pricing: { kind: 'private-only', price: T['sunset-cruise'].private!, fuelExtra: false },
   },
   {
     id: 'charter',
     category: 'tour',
     name: 'Private Charter',
+    quoteName: 'Private Boat Charter',
     duration: 'Full day · custom',
     maxCapacity: 8,
     includes: ['Boat & skipper'],
     notIncludes: ['Fuel (agree with Nikola at booking)'],
+    quoteIncluded: 'skipper',
+    quoteNotIncluded: 'fuel (confirm with Nikola)',
     siteExtras: [],
     addonScooter: true,
     addonPhotoVideo: true,
-    notes: ['Fuel not fixed — discuss with Nikola'],
+    notes: ['Fuel not fixed. Discuss with Nikola.'],
     pricing: { kind: 'private-only', price: T['private-boat-charter'].private!, fuelExtra: true },
   },
   // RENTALS
@@ -135,10 +153,13 @@ const SERVICES: Service[] = [
     id: 'pasara-5hp',
     category: 'rental',
     name: 'Pasara · 5hp',
+    quoteName: 'Pasara 5hp boat rental (self-drive)',
     duration: 'Half day / Full day',
     maxCapacity: 4,
     includes: ['Boat', 'Fuel'],
     notIncludes: [],
+    quoteIncluded: 'Fuel included',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
@@ -154,10 +175,13 @@ const SERVICES: Service[] = [
     id: 'pasara-20hp',
     category: 'rental',
     name: 'Pasara · 20hp',
+    quoteName: 'Pasara 20hp boat rental (self-drive)',
     duration: 'Half day / Full day',
     maxCapacity: 4,
     includes: ['Boat', 'Fuel'],
     notIncludes: [],
+    quoteIncluded: 'Fuel included',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
@@ -167,17 +191,20 @@ const SERVICES: Service[] = [
       pricePerDay: R.pasara20hp.pricePerDay,
       fuelIncluded: R.pasara20hp.fuelIncluded,
       licenceRequired: R.pasara20hp.licenceRequired,
-      licenceNote: 'Say "ask us about licence" — NEVER "no licence needed"',
+      licenceNote: 'Say "ask us about licence". NEVER say "no licence needed".',
     },
   },
   {
     id: 'speedboat-60hp',
     category: 'rental',
     name: 'Speedboat · 60hp',
+    quoteName: 'Speedboat 60hp rental (self-drive)',
     duration: 'Full day',
     maxCapacity: 8,
     includes: ['Boat', 'Fuel'],
     notIncludes: [],
+    quoteIncluded: 'Fuel included',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
@@ -193,10 +220,13 @@ const SERVICES: Service[] = [
     id: 'mariner-150hp',
     category: 'rental',
     name: 'Speedboat Mariner · 150hp',
+    quoteName: 'Speedboat Mariner 150hp rental (self-drive)',
     duration: 'Full day',
     maxCapacity: 8,
     includes: ['Boat'],
-    notIncludes: ['Fuel — full tank in, full tank out'],
+    notIncludes: ['Fuel: full tank in, full tank out'],
+    quoteIncluded: '',
+    quoteNotIncluded: 'fuel (full tank in, full tank out)',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
@@ -212,14 +242,17 @@ const SERVICES: Service[] = [
     id: 'rental-skipper',
     category: 'rental',
     name: 'Rental with Skipper',
+    quoteName: 'Rental with Skipper',
     duration: 'Half day / Full day',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel', 'Water', 'Snorkel gear', 'Cooler with ice'],
     notIncludes: [],
+    quoteIncluded: 'skipper, fuel, water, snorkel gear, icebox',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
-    notes: ['No licence needed', 'Custom route — any of our boats'],
+    notes: ['No licence needed', 'Custom route. Any of our boats.'],
     pricing: { kind: 'rental-skipper', from: RENTAL_WITH_SKIPPER_FROM },
   },
   // TRANSFERS
@@ -227,10 +260,13 @@ const SERVICES: Service[] = [
     id: 'transfer',
     category: 'transfer',
     name: 'Split / Airport Transfer',
+    quoteName: 'Private speedboat transfer',
     duration: 'Split ~1 h · Airport ~1.5 h',
     maxCapacity: 8,
     includes: ['Private speedboat', 'Direct route'],
     notIncludes: [],
+    quoteIncluded: 'private speedboat, direct route',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
@@ -245,10 +281,13 @@ const SERVICES: Service[] = [
     id: 'yacht-taxi',
     category: 'transfer',
     name: 'Yacht & Sailboat Taxi',
+    quoteName: 'Yacht and Sailboat Taxi',
     duration: 'On demand',
     maxCapacity: 8,
     includes: ['Pickup at vessel', 'Transfer to shore or tour start'],
     notIncludes: [],
+    quoteIncluded: 'pickup at vessel, transfer to shore',
+    quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
@@ -387,10 +426,20 @@ function PriceDisplay({ pricing }: { pricing: Pricing }) {
   return null;
 }
 
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return `${dayNames[dt.getDay()]} ${d} ${monthNames[m - 1]}`;
+}
+
 // ─── QuoteBuilder ─────────────────────────────────────────────────────────────
 
 function QuoteBuilder({ service }: { service: Service }) {
-  const { pricing, siteExtras, addonScooter, addonPhotoVideo, name, maxCapacity } = service;
+  const { pricing, siteExtras, addonScooter, addonPhotoVideo, name, quoteName, maxCapacity, id, quoteIncluded, quoteNotIncluded } = service;
 
   const initMode = (): QuoteMode => {
     if (pricing.kind === 'shared-private') return 'private';
@@ -404,12 +453,13 @@ function QuoteBuilder({ service }: { service: Service }) {
   const [days, setDays] = useState(1);
   const [scooterUnits, setScooterUnits] = useState(0);
   const [photoVideo, setPhotoVideo] = useState(false);
+  const [date, setDate] = useState('');
   const [copied, setCopied] = useState(false);
 
   if (pricing.kind === 'on-request') {
     return (
       <p className="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-3 font-body text-sm text-amber-300">
-        Price on request — message Nikola on WhatsApp
+        Price on request. Message Nikola on WhatsApp.
       </p>
     );
   }
@@ -417,7 +467,7 @@ function QuoteBuilder({ service }: { service: Service }) {
   if (pricing.kind === 'rental-skipper') {
     return (
       <p className="mt-3 rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-3 font-body text-sm text-[color:var(--gray)]">
-        From €{pricing.from} — custom quote, confirm with Nikola
+        From EUR {pricing.from}. Custom quote, confirm with Nikola.
       </p>
     );
   }
@@ -444,82 +494,93 @@ function QuoteBuilder({ service }: { service: Service }) {
 
   const total = baseTotal + addonsTotal;
 
-  // ── Build clipboard text ──
   function buildQuote(): string {
-    const lines: string[] = ['🚤 MareBoats Hvar — Quote', `Service: ${name}`];
+    const lines: string[] = [quoteName];
 
     if (pricing.kind === 'rental-drive') {
-      lines.push(`Days: ${days}`);
-    }
-    if (pricing.kind !== 'rental-drive') {
-      lines.push(`Guests: ${pax}`);
-    }
-    if (pricing.kind !== 'transfer' && pricing.kind !== 'rental-drive') {
-      lines.push(`Date: [DATE]`);
+      if (date) lines.push(formatDate(date));
     } else {
-      lines.push(`Date/Time: [DATE + TIME]`);
+      const guestStr = `${pax} guest${pax !== 1 ? 's' : ''}`;
+      lines.push(date ? `${formatDate(date)}, ${guestStr}` : guestStr);
     }
+
     lines.push('');
 
-    // Pricing line
+    let addonCount = 0;
+
     if (pricing.kind === 'shared-private') {
       if (mode === 'shared') {
-        lines.push(`Shared: ${pax} × €${pricing.shared}/person = €${pricing.shared * pax}`);
+        lines.push(`Shared tour: ${pax} x ${pricing.shared} EUR = ${pricing.shared * pax} EUR`);
       } else {
-        lines.push(`Private (whole boat): €${pricing.priv}`);
+        lines.push(`Private tour: ${pricing.priv} EUR`);
       }
     } else if (pricing.kind === 'shared-half-full') {
       if (mode === 'shared') {
-        lines.push(`Shared: ${pax} × €${pricing.shared}/person = €${pricing.shared * pax}`);
+        lines.push(`Shared tour: ${pax} x ${pricing.shared} EUR = ${pricing.shared * pax} EUR`);
       } else if (mode === 'half') {
-        lines.push(`Private half-day: €${pricing.half}`);
+        lines.push(`Private half-day: ${pricing.half} EUR`);
       } else {
-        lines.push(`Private full-day: €${pricing.full}`);
+        lines.push(`Private full-day: ${pricing.full} EUR`);
       }
     } else if (pricing.kind === 'private-only') {
-      lines.push(`Private: €${pricing.price}`);
-      if (pricing.fuelExtra) lines.push('Fuel: to confirm with Nikola separately');
+      lines.push(`Private tour: ${pricing.price} EUR`);
+      if (pricing.fuelExtra) lines.push('Fuel: to confirm with Nikola');
     } else if (pricing.kind === 'transfer') {
-      const route = mode === 'split-hvar' ? 'Split ↔ Hvar' : 'Airport ↔ Hvar';
       const price = mode === 'split-hvar' ? pricing.splitHvar : pricing.airportHvar;
-      lines.push(`Route: ${route}`);
-      lines.push(`Private transfer: €${price} (any group size up to 8)`);
+      const route = mode === 'split-hvar' ? 'Split to Hvar' : 'Airport to Hvar';
+      lines.push(`Transfer ${route}: ${price} EUR`);
     } else if (pricing.kind === 'rental-drive') {
-      lines.push(
-        `${days} day${days > 1 ? 's' : ''} × €${pricing.pricePerDay}/day = €${pricing.pricePerDay * days}`
-      );
-      lines.push(`Fuel: ${pricing.fuelIncluded ? 'included' : 'NOT included — full tank in, full tank out'}`);
+      lines.push(`${days} day${days > 1 ? 's' : ''} x ${pricing.pricePerDay} EUR = ${pricing.pricePerDay * days} EUR`);
     }
 
-    // Add-ons
-    const addonLines: string[] = [];
     if (addonScooter && scooterUnits > 0) {
-      addonLines.push(`  Underwater Scooter: ${scooterUnits} × €${ADDONS.scooter} = €${scooterUnits * ADDONS.scooter}`);
+      lines.push(`Underwater scooter (${scooterUnits} unit${scooterUnits > 1 ? 's' : ''}): ${scooterUnits * ADDONS.scooter} EUR`);
+      addonCount++;
     }
     if (addonPhotoVideo && photoVideo) {
-      addonLines.push(`  Photo & Video: €${ADDONS.photoVideo}`);
+      lines.push(`Photo and video: ${ADDONS.photoVideo} EUR`);
+      addonCount++;
     }
-    if (addonLines.length > 0) {
-      lines.push('');
-      lines.push('Add-ons (paid to MareBoats):');
-      lines.push(...addonLines);
+
+    if (addonCount > 0) {
+      lines.push(`Total: ${total} EUR`);
     }
 
     lines.push('');
-    lines.push(`TOTAL to MareBoats: €${total}`);
 
-    // Site extras
-    if (siteExtras.length > 0) {
+    if (pricing.kind === 'rental-drive') {
+      if (quoteIncluded) lines.push(`${quoteIncluded}.`);
+      if (quoteNotIncluded) lines.push(`Not included: ${quoteNotIncluded}.`);
+    } else {
+      lines.push(`Included: ${quoteIncluded}.`);
+      if (quoteNotIncluded) lines.push(`Not included: ${quoteNotIncluded}.`);
+    }
+
+    if (pricing.kind === 'rental-drive') {
       lines.push('');
-      lines.push('Paid on site (NOT to MareBoats):');
-      for (const e of siteExtras) {
-        lines.push(`  ${e.name}: €${e.price}/person`);
+      lines.push('Self-drive, no skipper included.');
+      if (id === 'pasara-20hp') {
+        lines.push('Message us about the licence.');
+      } else if (pricing.licenceRequired) {
+        lines.push('A valid boating licence is required.');
+      } else {
+        lines.push('No licence needed.');
       }
     }
 
+    if (siteExtras.length > 0) {
+      lines.push('');
+      const extrasStr = siteExtras.map((e) => `${e.name} ${e.price} EUR per person`).join(', ');
+      lines.push(`Paid on site at the caves: ${extrasStr}.`);
+    }
+
     lines.push('');
-    lines.push('📍 MareBoats barrel · Hvar Harbour');
-    lines.push('⏰ Arrive 10 min early');
+
+    if (id === 'blue-cave') {
+      lines.push('Departure 10:00. Meeting point: MareBoats barrel, Hvar Harbour. Please arrive 10 minutes early.');
+    } else {
+      lines.push('Meeting point: MareBoats barrel, Hvar Harbour. Please arrive 10 minutes early.');
+    }
 
     return lines.join('\n');
   }
@@ -571,7 +632,7 @@ function QuoteBuilder({ service }: { service: Service }) {
         </div>
       )}
 
-      {/* Pax counter — shown for all non-rental-drive types */}
+      {/* Pax counter: shown for all non-rental-drive types */}
       {pricing.kind !== 'rental-drive' && (
         <div className="flex items-center gap-4">
           <span className="font-body text-sm text-[color:var(--gray)]">Guests</span>
@@ -586,7 +647,7 @@ function QuoteBuilder({ service }: { service: Service }) {
         </div>
       )}
 
-      {/* Days counter — rental-drive only */}
+      {/* Days counter: rental-drive only */}
       {pricing.kind === 'rental-drive' && (
         <div className="flex items-center gap-4">
           <span className="font-body text-sm text-[color:var(--gray)]">Days</span>
@@ -659,6 +720,19 @@ function QuoteBuilder({ service }: { service: Service }) {
             {siteExtras.map((e) => `€${e.price}/person (${e.name.split(' ')[0]})`).join(' · ')}
           </p>
         )}
+      </div>
+
+      {/* Date picker */}
+      <div>
+        <label className="mb-1 block font-body text-xs text-[color:var(--gray)]">
+          Date (optional)
+        </label>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-3 py-2 font-body text-sm text-[color:var(--white)] focus:border-[color:var(--accent)] focus:outline-none [color-scheme:dark]"
+        />
       </div>
 
       {/* Copy Quote button */}
@@ -850,13 +924,13 @@ function OpsHeader() {
         <div className="flex gap-2 font-body text-sm text-[color:var(--white)]">
           <span>🚤</span>
           <span>
-            Always say <strong>&quot;speedboat&quot;</strong> — never &quot;RIB&quot;
+            Always say <strong>&quot;speedboat&quot;</strong>, never &quot;RIB&quot;
           </span>
         </div>
         <div className="flex gap-2 rounded-lg border border-red-400/40 bg-red-400/10 px-3 py-2 font-body text-sm text-red-300">
           <span>⚠</span>
           <span>
-            <strong>Pasara 20hp:</strong> say &quot;ask us about licence&quot; — never &quot;no licence needed&quot;
+            <strong>Pasara 20hp:</strong> say &quot;ask us about licence&quot;, never &quot;no licence needed&quot;
           </span>
         </div>
       </div>
@@ -893,7 +967,7 @@ export default function CrewDashboard() {
       {/* Ops rules */}
       <OpsHeader />
 
-      {/* Search + category filters — sticky */}
+      {/* Search + category filters: sticky */}
       <div className="sticky top-0 z-10 space-y-2 border-b border-[color:var(--border)] bg-[color:var(--bg)]/95 px-4 py-3 backdrop-blur-sm">
         <input
           type="search"
