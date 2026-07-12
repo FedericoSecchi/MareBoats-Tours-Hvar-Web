@@ -1,3 +1,12 @@
+import {
+  formatPriceFull,
+  getLowestPrice,
+  getPricingOptions,
+  TOUR_PRICES,
+  EXTRAS,
+  ADDONS,
+} from '@/lib/pricing';
+
 export const BUSINESS_INFO = {
   name: 'MareBoats Tours Hvar',
   phone: '+385951966734',
@@ -41,11 +50,15 @@ export type TourRecord = {
 const MEETING = 'MareBoats barrel, Hvar Harbour main dock';
 const MAPS = 'https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7';
 
-// Default on-request add-ons shared by private tours.
-const PHOTO_VIDEO_ADDON =
-  'Photo & Video Shoot - €200, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited.';
+const PHOTO_VIDEO_ADDON = `Photo & Video Shoot - €${ADDONS.photoVideo}, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited.`;
 
-const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, 'Underwater Scooter €40/unit, on request'];
+const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, `Underwater Scooter €${ADDONS.scooter}/unit, on request`];
+
+// Shorthands for inline use in description template literals
+const RR = TOUR_PRICES['red-rocks-pakleni-islands'];
+const BC = TOUR_PRICES['blue-cave-pakleni-islands'];
+const PC = TOUR_PRICES['private-boat-charter'];
+const SAT = TOUR_PRICES['split-airport-transfer'];
 
 export const toursData: TourRecord[] = [
   {
@@ -60,13 +73,13 @@ We depart from Hvar Harbour and head first to Borče Bay in Milna, a quiet cove 
 
 Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-Available as a shared tour (11:00–17:00, €85/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €400), or a private full-day (6 hours, 11:00–17:00, €500 - more time at every stop).
+Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00–17:00, €${RR.privateFullDay} - more time at every stop).
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: 'Shared 11:00–17:00 · Private half-day 4 hrs · Private full-day 6 hrs',
     durationIso: 'PT4H',
-    price: 'From €85/person (shared) · €400 private half-day · €500 private full-day',
-    priceEur: 85,
+    price: formatPriceFull('red-rocks-pakleni-islands'),
+    priceEur: getLowestPrice('red-rocks-pakleni-islands'),
     includes: [
       'Speedboat and local skipper',
       'Fuel for the itinerary',
@@ -129,7 +142,7 @@ Message us on WhatsApp with your date. We confirm fast.
 Most guests who book this tour have already done a full-day trip and want a shorter option. Others are based in Hvar for a few days and prefer to save the longer routes for later. Either way, the Pakleni Islands are worth at least a half day.`,
     duration: '3–4 hrs',
     durationIso: 'PT4H',
-    price: 'On request - message us on WhatsApp',
+    price: formatPriceFull('pakleni-islands'),
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the Pakleni itinerary',
@@ -171,13 +184,13 @@ The route takes you to five islands and hits three caves, four beaches and a blu
 
 After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
 
-We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€130 per person) or fully private (€700 for your group only, up to 8 guests).
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€${BC.sharedPerPerson} per person) or fully private (€${BC.private} for your group only, up to 8 guests).
 
 Message us on WhatsApp with your date and group size - we confirm fast.`,
     duration: '7 hours · Departs 10:00',
     durationIso: 'PT7H',
-    price: '€130/person (group) · €700 private',
-    priceEur: 130,
+    price: formatPriceFull('blue-cave-pakleni-islands'),
+    priceEur: getLowestPrice('blue-cave-pakleni-islands'),
     includes: [
       'Speedboat and local skipper',
       'Fuel for the full itinerary',
@@ -186,8 +199,8 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
       'Snorkeling masks',
     ],
     notIncludes: [
-      'Green Cave entrance - €12 per person (paid on site)',
-      'Blue Cave entrance - €24 per person (paid on site)',
+      `Green Cave entrance - €${EXTRAS.greenCave} per person (paid on site)`,
+      `Blue Cave entrance - €${EXTRAS.blueCave} per person (paid on site)`,
       'Lunch not included - restaurants available at Pakleni or Palmizana',
       'Hotel pickup',
     ],
@@ -226,10 +239,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
       'stiniva bay tour',
       'hvar boat excursion',
     ],
-    pricingOptions: [
-      { label: 'Shared', price: '€130/person', note: 'up to 8 guests' },
-      { label: 'Private', price: '€700', note: 'your group only · up to 8 guests' },
-    ],
+    pricingOptions: getPricingOptions('blue-cave-pakleni-islands'),
   },
 
   {
@@ -247,8 +257,8 @@ Your captain focuses on safety and smooth cruising as light fades, and you can b
 Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date. If you are comparing Hvar sunset boat tour options, choose private for the best views, the calmest pace, and a route tailored to the evening sky.`,
     duration: '2 hrs',
     durationIso: 'PT2H',
-    price: '€250',
-    priceEur: 250,
+    price: formatPriceFull('sunset-cruise'),
+    priceEur: getLowestPrice('sunset-cruise'),
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the sunset itinerary',
@@ -287,13 +297,13 @@ Sunset slots are limited during high season, so message us early on WhatsApp to 
 
 Unlike fixed itineraries, a full-day charter gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
 
-Price is €500 for the boat and skipper. Fuel is paid separately at the marina based on the route you choose - usually a few hundred euros for a long day depending on distance. We discuss a realistic fuel estimate before you commit, so there are no surprises.
+Price is €${PC.private} for the boat and skipper. Fuel is paid separately at the marina based on the route you choose - usually a few hundred euros for a long day depending on distance. We discuss a realistic fuel estimate before you commit, so there are no surprises.
 
 Every charter includes snorkelling masks, icebox and bottled water. Message us with your dates, group size and any stops you have in mind.`,
     duration: 'Full day',
     durationIso: 'PT8H',
-    price: '€500 boat + skipper · fuel not included',
-    priceEur: 500,
+    price: formatPriceFull('private-boat-charter'),
+    priceEur: getLowestPrice('private-boat-charter'),
     includes: [
       'Private speedboat and local skipper',
       'Icebox and bottled water on board',
@@ -331,21 +341,20 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
     slug: 'split-airport-transfer',
     name: 'Split Airport to Hvar Speedboat Transfer',
     tagline: 'Private 45-minute speedboat transfer between Split Airport and Hvar Harbour.',
-    shortDescription:
-      'Split city departure: €500 · Split Airport departure: €600 (airport pier is a short taxi from the terminal)',
+    shortDescription: `Split city departure: €${SAT.splitHvar} · Split Airport departure: €${SAT.airportHvar} (airport pier is a short taxi from the terminal)`,
     description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in around 45 minutes - with luggage handled and a flexible departure time that fits your flight.
 
 We coordinate the meeting point near Split (airport pier or Split town harbour, depending on your arrival) and confirm everything by WhatsApp the day before so there are no surprises. Your skipper monitors weather and tides, suggests the best route, and adapts the plan if your flight is delayed.
 
-Pricing is transparent: €500 for the Split harbour ↔ Hvar transfer, €600 for the Split Airport pier ↔ Hvar transfer (the airport pier route is slightly longer). Both are private - your group only, your luggage, your timing.
+Pricing is transparent: €${SAT.splitHvar} for the Split harbour ↔ Hvar transfer, €${SAT.airportHvar} for the Split Airport pier ↔ Hvar transfer (the airport pier route is slightly longer). Both are private - your group only, your luggage, your timing.
 
 Most guests book this transfer at the start or end of their trip. You land, skip the ferry queue, and arrive in Hvar in about an hour.
 
 Message us on WhatsApp with your flight number, group size and luggage to lock in your slot. Peak summer transfers fill quickly - booking ahead is the only way to guarantee the time you want.`,
     duration: '~45 min',
     durationIso: 'PT45M',
-    price: 'Split–Hvar €500 · Airport–Hvar €600',
-    priceEur: 500,
+    price: formatPriceFull('split-airport-transfer'),
+    priceEur: getLowestPrice('split-airport-transfer'),
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the Split ↔ Hvar route',
@@ -401,7 +410,7 @@ Our local skippers know the anchorages, the wind patterns, and the smaller bays 
 If you are searching for a private water taxi in Hvar, a yacht transfer, a sailboat pickup, or a way to start a tour without coming to the harbour first, this is the service. Message us with your boat name, your coordinates and the time window - we will reply with a quote and a plan.`,
     duration: 'On demand',
     durationIso: 'PT1H',
-    price: 'On request - message us on WhatsApp',
+    price: formatPriceFull('yacht-sailboat-taxi'),
     includes: [
       'Pickup from anchored yacht or sailboat',
       'Drop-off at Hvar Harbour or any agreed destination',

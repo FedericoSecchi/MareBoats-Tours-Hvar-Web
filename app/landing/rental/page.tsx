@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { SCOOTER_RENTAL } from '@/lib/pricing';
 
 export const metadata: Metadata = {
   title: 'Boat Rental Hvar | Rules, Safety & Return Policy',
@@ -262,15 +263,15 @@ export default function LandingRentalPage() {
 
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
-              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€50</p>
+              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€{SCOOTER_RENTAL.fullDay}</p>
               <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Full day</p>
             </div>
             <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
-              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€40</p>
+              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€{SCOOTER_RENTAL.halfDayPM}</p>
               <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Half day (PM)</p>
             </div>
             <div className="rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
-              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€30</p>
+              <p className="font-display text-2xl font-bold text-[color:var(--accent)]">€{SCOOTER_RENTAL.halfDayAM}</p>
               <p className="mt-1 font-body text-sm text-[color:var(--gray)]">Half day (AM)</p>
             </div>
           </div>

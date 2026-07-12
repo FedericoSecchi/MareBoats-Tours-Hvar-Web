@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { EXTRAS } from '@/lib/pricing';
 
 // ──────────────────────────────────────────────
 // Data
@@ -75,7 +76,7 @@ const destinations: Destination[] = [
       'You can usually swim inside. The cave is bigger than it looks from outside and echoes beautifully.',
     ],
     tips: [
-      'Entrance fee: €12 per person.',
+      `Entrance fee: €${EXTRAS.greenCave} per person.`,
       'Best light: between 11:00 and 13:00 in summer.',
     ],
   },
@@ -90,7 +91,7 @@ const destinations: Destination[] = [
       'It was discovered in the 19th century by a local painter who spotted the light from a small hole above. Today you enter in small rowing boats. We wait outside and you go in with the official staff.',
     ],
     tips: [
-      'Entrance fee: €24 per person.',
+      `Entrance fee: €${EXTRAS.blueCave} per person.`,
       'Best colour: between 11:00 and 12:00, when the sun hits directly.',
       'No swimming inside. Only rowing boats are allowed.',
     ],

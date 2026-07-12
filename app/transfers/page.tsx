@@ -5,6 +5,7 @@ import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { getMapboxStaticUrl, type GeoCoords } from '@/lib/mapbox';
+import { TRANSFER_PRICES } from '@/lib/pricing';
 
 export const metadata: Metadata = generateSEO({
   title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula - MareBoats',
@@ -69,7 +70,7 @@ const TRANSFERS: TransferCard[] = [
   {
     id: 'split-hvar',
     route: 'Split ↔ Hvar',
-    price: '€500 private',
+    price: `€${TRANSFER_PRICES.splitHvar} private`,
     time: '~1 hour',
     summary: 'Hvar Harbour to Split waterfront. Private boat, direct route.',
     waMessage: "Hi! I'd like to book the Split transfer",
@@ -86,7 +87,7 @@ const TRANSFERS: TransferCard[] = [
   {
     id: 'airport-hvar',
     route: 'Split Airport ↔ Hvar',
-    price: '€600 private',
+    price: `€${TRANSFER_PRICES.airportHvar} private`,
     time: '~1.5 hours',
     summary: 'Split Airport to Hvar Harbour. We track your flight.',
     waMessage: "Hi! I'd like to book the Airport transfer",

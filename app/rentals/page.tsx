@@ -6,6 +6,7 @@ import { JsonLd } from '@/components/ui/JsonLd';
 import { rentalServiceSchema, rentalBreadcrumbSchema } from '@/lib/schema';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { rulesAndRentals, type Rule } from '@/lib/guide-content';
+import { RENTAL_SELF_DRIVE, RENTAL_WITH_SKIPPER_FROM } from '@/lib/pricing';
 
 export const metadata: Metadata = {
   ...generateSEO({
@@ -105,7 +106,7 @@ const faqSchema = {
       name: 'Can I rent a boat in Hvar without a licence?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "For guests without a boating licence, we offer the Pasara - a small open boat available from €120/day. Contact us on WhatsApp to confirm eligibility for your group and dates.",
+        text: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
       },
     },
   ],
@@ -142,7 +143,7 @@ const FAQS = [
   },
   {
     q: 'Can I rent a boat in Hvar without a licence?',
-    a: "For guests without a boating licence, we offer the Pasara - a small open boat available from €120/day. Contact us on WhatsApp to confirm eligibility for your group and dates.",
+    a: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
   },
 ];
 
@@ -317,7 +318,7 @@ export default function RentalsPage() {
 
               <div className="mt-auto flex flex-col gap-3 pt-8">
                 <span className="font-body text-lg font-bold text-[color:var(--accent)]">
-                  From €400
+                  From €{RENTAL_WITH_SKIPPER_FROM}
                 </span>
                 <WhatsAppTrackedLink
                   href={waUrl("Hi! I'd like to ask about boat rental with skipper in Hvar.")}
@@ -358,7 +359,7 @@ export default function RentalsPage() {
                     No Licence Needed
                   </span>
                   <p className="mt-1 font-body text-xs text-[color:var(--gray)]">No licence needed · small boat rental Hvar</p>
-                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€120 / day</p>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.pasara5hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Calm water exploration', 'Fuel included', 'Perfect for Pakleni Islands'].map((item) => (
                       <li key={item} className="flex gap-2">
@@ -384,7 +385,7 @@ export default function RentalsPage() {
                     Pasara · 20hp
                   </h4>
                   <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small boat rental Hvar · ask us about licence</p>
-                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€200 / day</p>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.pasara20hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['More range, more speed', 'Fuel included', 'Contact us to confirm eligibility'].map((item) => (
                       <li key={item} className="flex gap-2">
@@ -410,7 +411,7 @@ export default function RentalsPage() {
                     Speedboat · 60hp
                   </h4>
                   <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required</p>
-                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€290 / day</p>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.speedboat60hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Fuel included', 'Valid boating licence required', 'Full day on the Adriatic'].map((item) => (
                       <li key={item} className="flex gap-2">
@@ -436,7 +437,7 @@ export default function RentalsPage() {
                     Speedboat Mariner · 150hp
                   </h4>
                   <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required</p>
-                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€350 / day + fuel</p>
+                  <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.mariner150hp.pricePerDay} / day + fuel</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Fuel full-in, full-out', 'Valid boating licence required', 'Maximum range and power'].map((item) => (
                       <li key={item} className="flex gap-2">

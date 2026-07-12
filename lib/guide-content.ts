@@ -1,3 +1,5 @@
+import { EXTRAS } from '@/lib/pricing';
+
 export type GuideFaq = { question: string; answer: string };
 
 // ──────────────────────────────────────────────
@@ -9,7 +11,7 @@ export const whereWeGoIntro =
 export const whereWeGoDestinations: { name: string; detail: string }[] = [
   {
     name: 'Blue Cave (Biševo)',
-    detail: 'We time it for the quiet window so you skip the queue. Entrance €20–25 paid on site.',
+    detail: `We time it for the quiet window so you skip the queue. Entrance €${EXTRAS.blueCave} per person, paid on site.`,
   },
   {
     name: 'Pakleni Islands',
@@ -130,7 +132,7 @@ export const guideFaqs: GuideFaq[] = [
   {
     question: 'What is included in the price?',
     answer:
-      'The boat, the skipper, fuel, snorkel gear (limited quantity) and a cooler with ice. Blue Cave entrance (€20–25 per person) is paid on site. Lunch and drinks are on you - we know where to stop.',
+      `The boat, the skipper, fuel, snorkel gear (limited quantity) and a cooler with ice. Blue Cave entrance (€${EXTRAS.blueCave} per person) is paid on site. Lunch and drinks are on you - we know where to stop.`,
   },
   {
     question: 'Can I bring my own food and drinks?',

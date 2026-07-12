@@ -6,6 +6,7 @@ import { TrackedTourDetailLink } from '@/components/ui/TrackedTourDetailLink';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { TourCardImage } from '@/components/ui/TourCardImage';
 import { toursData } from '@/lib/tours-data';
+import { formatPriceShort, RENTAL_SELF_DRIVE } from '@/lib/pricing';
 
 export const metadata: Metadata = generateSEO({
   title: 'Boat Tours Hvar | All Tours from Hvar Harbour - MareBoats',
@@ -44,7 +45,7 @@ const TOUR_CARDS: TourCard[] = [
     slug: 'blue-cave-pakleni-islands',
     name: '5 Islands, 4 Beaches, 3 Caves',
     duration: '7 hours · 10:00–17:00',
-    price: 'From €130/person · €700 private',
+    price: formatPriceShort('blue-cave-pakleni-islands'),
     summary:
       'Our flagship full day: Green Cave, Stiniva, Blue Cave, Budikovac and Pakleni Islands.',
     image: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
@@ -55,7 +56,7 @@ const TOUR_CARDS: TourCard[] = [
     slug: 'red-rocks-pakleni-islands',
     name: 'Red Rocks & Pakleni Islands',
     duration: '4 hours · morning or afternoon',
-    price: '€400 private (up to 8)',
+    price: formatPriceShort('red-rocks-pakleni-islands'),
     summary:
       'Cliffs, a secret cave, Dubovica Beach and the Pakleni archipelago in one half-day.',
     image: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
@@ -66,7 +67,7 @@ const TOUR_CARDS: TourCard[] = [
     slug: 'pakleni-islands',
     name: 'Pakleni Islands',
     duration: '3–4 hours',
-    price: 'On request',
+    price: formatPriceShort('pakleni-islands'),
     summary:
       'A relaxed half-day around the Pakleni archipelago. Ideal for families and shorter visits.',
     image: '/images/tours/hvar-red-rocks-speedboat-aerial-drone-2026-02.jpg',
@@ -77,7 +78,7 @@ const TOUR_CARDS: TourCard[] = [
     slug: 'sunset-cruise',
     name: 'Sunset Cruise',
     duration: '~2 hours · golden hour',
-    price: '€250 private',
+    price: formatPriceShort('sunset-cruise'),
     summary:
       'Private evening cruise along the Hvar coastline. Calm water, golden light, best photos of the day.',
     image: '/images/tours/hvar-sunset-cruise-golden-hour-drone-2026.jpg',
@@ -88,7 +89,7 @@ const TOUR_CARDS: TourCard[] = [
     slug: 'private-boat-charter',
     name: 'Private Charter',
     duration: 'Full day · custom route',
-    price: '€500 + fuel · up to 8',
+    price: formatPriceShort('private-boat-charter'),
     summary: 'Your boat, your skipper, your itinerary. Design the day you want on the Adriatic.',
     image: '/images/tours/hvar-pakleni-islands-cove-speedboat-drone-2026-01.jpg',
     imageAlt: 'Private boat charter from Hvar - custom itinerary',
@@ -245,7 +246,7 @@ export default function ToursIndexPage() {
                 </div>
                 <div className="mt-auto flex flex-col gap-3">
                   <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
-                    From €120 · skipper optional
+                    From €{RENTAL_SELF_DRIVE.pasara5hp.pricePerDay} · skipper optional
                   </span>
                   <Link
                     href="/rentals/"

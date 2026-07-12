@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { whatToBring, weatherPolicy } from '@/lib/guide-content';
+import { EXTRAS, ADDONS } from '@/lib/pricing';
 
 export const metadata: Metadata = {
   title: 'What to Expect on a Hvar Boat Tour | MareBoats',
@@ -37,7 +38,7 @@ const tourDetails: TourDetail[] = [
       },
     ],
     extraCosts:
-      'Blue Cave entrance €24/person · Green Cave entrance €12/person · Lunch not included - restaurants available at Pakleni or Palmizana (budget €15-25)',
+      `Blue Cave entrance €${EXTRAS.blueCave}/person · Green Cave entrance €${EXTRAS.greenCave}/person · Lunch not included - restaurants available at Pakleni or Palmizana (budget €15-25)`,
   },
   {
     name: 'Red Rocks & Pakleni Islands',
@@ -56,8 +57,8 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'Lunch not included - restaurants available at Pakleni',
     addOns: [
-      'Underwater Scooter €40/unit · On request via WhatsApp',
-      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
+      `Underwater Scooter €${ADDONS.scooter}/unit · On request via WhatsApp`,
+      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -73,8 +74,8 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'None',
     addOns: [
-      'Underwater Scooter €40/unit · On request via WhatsApp',
-      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
+      `Underwater Scooter €${ADDONS.scooter}/unit · On request via WhatsApp`,
+      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -87,7 +88,7 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'None',
     addOns: [
-      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
+      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -100,8 +101,8 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'Fuel not included - discussed with Nikola at booking',
     addOns: [
-      'Underwater Scooter €40/unit · On request via WhatsApp',
-      'Photo & Video Shoot - €200. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.',
+      `Underwater Scooter €${ADDONS.scooter}/unit · On request via WhatsApp`,
+      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -374,7 +375,7 @@ export default function PreTourPage() {
                   Underwater Scooter
                 </h3>
                 <span className="shrink-0 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold text-[color:var(--bg)]">
-                  €40 / unit
+                  €{ADDONS.scooter} / unit
                 </span>
               </div>
               <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
@@ -386,7 +387,7 @@ export default function PreTourPage() {
               </p>
               <div className="mt-auto pt-6">
                 <WhatsAppTrackedLink
-                  href={waUrl("Hi! I'd like to add an underwater scooter to my tour - €40/unit")}
+                  href={waUrl(`Hi! I'd like to add an underwater scooter to my tour - €${ADDONS.scooter}/unit`)}
                   ctaText="add_scooter"
                   label="upsell"
                   className={upsellBtnClass}
@@ -403,7 +404,7 @@ export default function PreTourPage() {
                   Photo &amp; Video Shoot
                 </h3>
                 <span className="shrink-0 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold text-[color:var(--bg)]">
-                  €200
+                  €{ADDONS.photoVideo}
                 </span>
               </div>
               <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
@@ -412,7 +413,7 @@ export default function PreTourPage() {
               </p>
               <div className="mt-auto pt-6">
                 <WhatsAppTrackedLink
-                  href={waUrl("Hi! I'd like to add photo & video shooting to my tour - €200")}
+                  href={waUrl(`Hi! I'd like to add photo & video shooting to my tour - €${ADDONS.photoVideo}`)}
                   ctaText="add_photo"
                   label="upsell"
                   className={upsellBtnClass}

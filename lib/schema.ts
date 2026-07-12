@@ -1,3 +1,5 @@
+import { formatPriceSchema, RENTAL_WITH_SKIPPER_FROM } from '@/lib/pricing';
+
 const SITE_URL = 'https://mareboatshvar.com';
 
 const PROVIDER = {
@@ -87,28 +89,7 @@ export const tourSchemaMap: Record<string, object> = {
     geo: sharedGeo,
     maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
-    offers: [
-      {
-        '@type': 'Offer',
-        name: 'Shared group tour',
-        price: '130',
-        priceCurrency: 'EUR',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          price: 130,
-          priceCurrency: 'EUR',
-          unitText: 'per person',
-        },
-        availability: 'https://schema.org/InStock',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Private tour',
-        price: '700',
-        priceCurrency: 'EUR',
-        availability: 'https://schema.org/InStock',
-      },
-    ],
+    offers: formatPriceSchema('blue-cave-pakleni-islands'),
     url: `${SITE_URL}/tours/blue-cave-pakleni-islands/`,
     aggregateRating: AGGREGATE_RATING,
   },
@@ -124,35 +105,7 @@ export const tourSchemaMap: Record<string, object> = {
     geo: sharedGeo,
     maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
-    offers: [
-      {
-        '@type': 'Offer',
-        name: 'Shared tour',
-        price: '85',
-        priceCurrency: 'EUR',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          price: 85,
-          priceCurrency: 'EUR',
-          unitText: 'per person',
-        },
-        availability: 'https://schema.org/InStock',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Private half-day',
-        price: '400',
-        priceCurrency: 'EUR',
-        availability: 'https://schema.org/InStock',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Private full-day',
-        price: '500',
-        priceCurrency: 'EUR',
-        availability: 'https://schema.org/InStock',
-      },
-    ],
+    offers: formatPriceSchema('red-rocks-pakleni-islands'),
     url: `${SITE_URL}/tours/red-rocks-pakleni-islands/`,
     aggregateRating: AGGREGATE_RATING,
   },
@@ -168,12 +121,7 @@ export const tourSchemaMap: Record<string, object> = {
     geo: sharedGeo,
     maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      priceCurrency: 'EUR',
-      description: 'Price on request via WhatsApp',
-    },
+    offers: formatPriceSchema('pakleni-islands'),
     url: `${SITE_URL}/tours/pakleni-islands/`,
     aggregateRating: AGGREGATE_RATING,
   },
@@ -189,12 +137,7 @@ export const tourSchemaMap: Record<string, object> = {
     geo: sharedGeo,
     maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
-    offers: {
-      '@type': 'Offer',
-      price: '250',
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-    },
+    offers: formatPriceSchema('sunset-cruise'),
     url: `${SITE_URL}/tours/sunset-cruise/`,
     aggregateRating: AGGREGATE_RATING,
   },
@@ -209,13 +152,7 @@ export const tourSchemaMap: Record<string, object> = {
     areaServed: 'Hvar, Croatia',
     maximumAttendeeCapacity: 8,
     availableLanguage: AVAILABLE_LANGUAGES,
-    offers: {
-      '@type': 'Offer',
-      price: '500',
-      priceCurrency: 'EUR',
-      description: 'Fuel not included',
-      availability: 'https://schema.org/InStock',
-    },
+    offers: formatPriceSchema('private-boat-charter'),
     url: `${SITE_URL}/tours/private-boat-charter/`,
   },
 
@@ -241,7 +178,7 @@ export const rentalServiceSchema = {
   areaServed: 'Hvar, Croatia',
   offers: {
     '@type': 'Offer',
-    price: '400',
+    price: String(RENTAL_WITH_SKIPPER_FROM),
     priceCurrency: 'EUR',
     availability: 'https://schema.org/InStock',
   },
