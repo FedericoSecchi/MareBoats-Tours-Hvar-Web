@@ -58,6 +58,7 @@ const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, `Underwater Scooter €${ADDONS.scoot
 const RR = TOUR_PRICES['red-rocks-pakleni-islands'];
 const BC = TOUR_PRICES['blue-cave-pakleni-islands'];
 const PC = TOUR_PRICES['private-boat-charter'];
+const PK = TOUR_PRICES['pakleni-islands'];
 const SAT = TOUR_PRICES['split-airport-transfer'];
 
 export const toursData: TourRecord[] = [
@@ -73,7 +74,7 @@ We depart from Hvar Harbour and head first to Borče Bay in Milna, a quiet cove 
 
 Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00–17:00, €${RR.privateFullDay} - more time at every stop).
+Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00–17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: 'Shared 11:00–17:00 · Private half-day 4 hrs · Private full-day 6 hrs',
@@ -137,12 +138,13 @@ Departing from Hvar Harbour, you reach the Pakleni archipelago quickly, where pi
 
 Because the boat is private, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and your skipper knows the quieter coves that larger boats skip.
 
-Message us on WhatsApp with your date. We confirm fast.
+Private half-day: €${PK.private!} for your group, up to 8 guests. Groups of 9 to 16 travel on two boats sailing together - message us for availability. Message us on WhatsApp with your date. We confirm fast.
 
 Most guests who book this tour have already done a full-day trip and want a shorter option. Others are based in Hvar for a few days and prefer to save the longer routes for later. Either way, the Pakleni Islands are worth at least a half day.`,
-    duration: '3–4 hrs',
-    durationIso: 'PT4H',
+    duration: '3 hrs',
+    durationIso: 'PT3H',
     price: formatPriceFull('pakleni-islands'),
+    priceEur: getLowestPrice('pakleni-islands'),
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the Pakleni itinerary',
@@ -184,7 +186,7 @@ The route takes you to five islands and hits three caves, four beaches and a blu
 
 After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
 
-We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€${BC.sharedPerPerson} per person) or fully private (€${BC.private} for your group only, up to 8 guests).
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€${BC.sharedPerPerson} per person) or fully private (€${BC.private} for your group only, up to 8 guests). Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone as one group.
 
 Message us on WhatsApp with your date and group size - we confirm fast.`,
     duration: '7 hours · Departs 10:00',
@@ -199,7 +201,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
       'Snorkeling masks',
     ],
     notIncludes: [
-      `Green Cave entrance - €${EXTRAS.greenCave} per person (paid on site)`,
+      `Green Cave entrance - €${EXTRAS.greenCave} per person (paid on site, optional)`,
       `Blue Cave entrance - €${EXTRAS.blueCave} per person (paid on site)`,
       'Lunch not included - restaurants available at Pakleni or Palmizana',
       'Hotel pickup',

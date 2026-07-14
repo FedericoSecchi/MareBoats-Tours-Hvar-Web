@@ -12,7 +12,7 @@ import {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type SiteExtra = { name: string; price: number };
+type SiteExtra = { name: string; price: number; optional?: boolean };
 
 type Pricing =
   | { kind: 'shared-private'; shared: number; priv: number }
@@ -63,8 +63,8 @@ const SERVICES: Service[] = [
     quoteIncluded: 'skipper, fuel, snorkel masks, icebox and bottled water',
     quoteNotIncluded: 'lunch',
     siteExtras: [
-      { name: 'Blue Cave entrance', price: EXTRAS.blueCave },
-      { name: 'Green Cave entrance', price: EXTRAS.greenCave },
+      { name: 'Blue Cave entrance', price: EXTRAS.blueCave, optional: false },
+      { name: 'Green Cave entrance', price: EXTRAS.greenCave, optional: true },
     ],
     addonScooter: true,
     addonPhotoVideo: true,
@@ -102,7 +102,7 @@ const SERVICES: Service[] = [
     category: 'tour',
     name: 'Pakleni Islands',
     quoteName: 'Pakleni Islands',
-    duration: '3-4 h',
+    duration: '3 h',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel'],
     notIncludes: [],
@@ -112,7 +112,7 @@ const SERVICES: Service[] = [
     addonScooter: true,
     addonPhotoVideo: true,
     notes: [],
-    pricing: { kind: 'on-request' },
+    pricing: { kind: 'private-only', price: T['pakleni-islands'].private!, fuelExtra: false },
   },
   {
     id: 'sunset',
@@ -439,7 +439,7 @@ function formatDate(iso: string): string {
 // ─── QuoteBuilder ─────────────────────────────────────────────────────────────
 
 function QuoteBuilder({ service }: { service: Service }) {
-  const { pricing, siteExtras, addonScooter, addonPhotoVideo, name, quoteName, maxCapacity, id, quoteIncluded, quoteNotIncluded } = service;
+  const { pricing, siteExtras, addonScooter, addonPhotoVideo, name, quoteName, maxCapacity, id, quoteIncluded, quoteNotIncluded, category } = service;
 
   const initMode = (): QuoteMode => {
     if (pricing.kind === 'shared-private') return 'private';
@@ -472,16 +472,22 @@ function QuoteBuilder({ service }: { service: Service }) {
     );
   }
 
+  // ── Convoy logic: private tour + pax > 8 = 2 boats, price x2 ──
+  const isSharedMode = mode === 'shared';
+  const isPrivateMode = !isSharedMode && mode !== 'split-hvar' && mode !== 'airport-hvar';
+  const isConvoy = category === 'tour' && isPrivateMode && pax > 8;
+  const maxPax = category === 'tour' && isPrivateMode ? 16 : maxCapacity;
+
   // ── Compute base total ──
   let baseTotal = 0;
   if (pricing.kind === 'shared-private') {
-    baseTotal = mode === 'shared' ? pricing.shared * pax : pricing.priv;
+    baseTotal = mode === 'shared' ? pricing.shared * pax : (isConvoy ? pricing.priv * 2 : pricing.priv);
   } else if (pricing.kind === 'shared-half-full') {
     if (mode === 'shared') baseTotal = pricing.shared * pax;
-    else if (mode === 'half') baseTotal = pricing.half;
-    else baseTotal = pricing.full;
+    else if (mode === 'half') baseTotal = isConvoy ? pricing.half * 2 : pricing.half;
+    else baseTotal = isConvoy ? pricing.full * 2 : pricing.full;
   } else if (pricing.kind === 'private-only') {
-    baseTotal = pricing.price;
+    baseTotal = isConvoy ? pricing.price * 2 : pricing.price;
   } else if (pricing.kind === 'transfer') {
     baseTotal = mode === 'split-hvar' ? pricing.splitHvar : pricing.airportHvar;
   } else if (pricing.kind === 'rental-drive') {
@@ -511,6 +517,9 @@ function QuoteBuilder({ service }: { service: Service }) {
     if (pricing.kind === 'shared-private') {
       if (mode === 'shared') {
         lines.push(`Shared tour: ${pax} x ${pricing.shared} EUR = ${pricing.shared * pax} EUR`);
+      } else if (isConvoy) {
+        lines.push(`Private tour, 2 boats: 2 x ${pricing.priv} EUR = ${pricing.priv * 2} EUR`);
+        lines.push('Groups over 8 travel on two boats sailing together.');
       } else {
         lines.push(`Private tour: ${pricing.priv} EUR`);
       }
@@ -518,12 +527,27 @@ function QuoteBuilder({ service }: { service: Service }) {
       if (mode === 'shared') {
         lines.push(`Shared tour: ${pax} x ${pricing.shared} EUR = ${pricing.shared * pax} EUR`);
       } else if (mode === 'half') {
-        lines.push(`Private half-day: ${pricing.half} EUR`);
+        if (isConvoy) {
+          lines.push(`Private half-day, 2 boats: 2 x ${pricing.half} EUR = ${pricing.half * 2} EUR`);
+          lines.push('Groups over 8 travel on two boats sailing together.');
+        } else {
+          lines.push(`Private half-day: ${pricing.half} EUR`);
+        }
       } else {
-        lines.push(`Private full-day: ${pricing.full} EUR`);
+        if (isConvoy) {
+          lines.push(`Private full-day, 2 boats: 2 x ${pricing.full} EUR = ${pricing.full * 2} EUR`);
+          lines.push('Groups over 8 travel on two boats sailing together.');
+        } else {
+          lines.push(`Private full-day: ${pricing.full} EUR`);
+        }
       }
     } else if (pricing.kind === 'private-only') {
-      lines.push(`Private tour: ${pricing.price} EUR`);
+      if (isConvoy) {
+        lines.push(`Private tour, 2 boats: 2 x ${pricing.price} EUR = ${pricing.price * 2} EUR`);
+        lines.push('Groups over 8 travel on two boats sailing together.');
+      } else {
+        lines.push(`Private tour: ${pricing.price} EUR`);
+      }
       if (pricing.fuelExtra) lines.push('Fuel: to confirm with Nikola');
     } else if (pricing.kind === 'transfer') {
       const price = mode === 'split-hvar' ? pricing.splitHvar : pricing.airportHvar;
@@ -570,8 +594,10 @@ function QuoteBuilder({ service }: { service: Service }) {
 
     if (siteExtras.length > 0) {
       lines.push('');
-      const extrasStr = siteExtras.map((e) => `${e.name} ${e.price} EUR per person`).join(', ');
-      lines.push(`Paid on site at the caves: ${extrasStr}.`);
+      const extrasSentences = siteExtras.map(
+        (e) => `${e.name} ${e.price} EUR per person${e.optional ? ' (optional)' : ''}.`
+      );
+      lines.push(`Paid on site at the caves: ${extrasSentences.join(' ')}`);
     }
 
     lines.push('');
@@ -603,10 +629,7 @@ function QuoteBuilder({ service }: { service: Service }) {
     }
   }
 
-  const isSharedMode = mode === 'shared';
-  const showPax =
-    pricing.kind !== 'rental-drive' &&
-    (isSharedMode || pricing.kind !== 'shared-private' && pricing.kind !== 'shared-half-full' || true);
+  const showPax = pricing.kind !== 'rental-drive';
 
   return (
     <div className="mt-3 space-y-4 rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-4">
@@ -641,9 +664,9 @@ function QuoteBuilder({ service }: { service: Service }) {
             <span className="w-6 text-center font-display text-xl font-bold text-[color:var(--white)]">
               {pax}
             </span>
-            <CounterBtn onClick={() => setPax(Math.min(maxCapacity, pax + 1))}>+</CounterBtn>
+            <CounterBtn onClick={() => setPax(Math.min(maxPax, pax + 1))}>+</CounterBtn>
           </div>
-          <span className="font-body text-xs text-[color:var(--gray)]">max {maxCapacity}</span>
+          <span className="font-body text-xs text-[color:var(--gray)]">max {maxPax}</span>
         </div>
       )}
 
@@ -918,7 +941,7 @@ function OpsHeader() {
         <div className="flex gap-2 font-body text-sm text-[color:var(--white)]">
           <span>👥</span>
           <span>
-            <strong>Capacity:</strong> up to 8 per boat · convoy max 14 (2 boats)
+            <strong>Capacity:</strong> up to 8 per boat · convoy max 16 (2 boats)
           </span>
         </div>
         <div className="flex gap-2 font-body text-sm text-[color:var(--white)]">

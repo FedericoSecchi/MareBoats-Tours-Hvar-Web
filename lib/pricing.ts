@@ -45,7 +45,7 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
     privateHalfDay: 400,
     privateFullDay: 500,
   },
-  'pakleni-islands': { onRequest: true },
+  'pakleni-islands': { private: 300 },
   'sunset-cruise': { private: 250 },
   'private-boat-charter': { private: 500, fuelIncluded: false },
   'split-airport-transfer': {
@@ -74,7 +74,7 @@ export const RENTAL_WITH_SKIPPER_FROM = 400;
 
 export const EXTRAS = {
   blueCave: 24,
-  greenCave: 12,
+  greenCave: 15,
 } as const;
 
 // ──────────────────────────────────────────────

@@ -38,7 +38,7 @@ const tourDetails: TourDetail[] = [
       },
     ],
     extraCosts:
-      `Blue Cave entrance €${EXTRAS.blueCave}/person · Green Cave entrance €${EXTRAS.greenCave}/person · Lunch not included - restaurants available at Pakleni or Palmizana (budget €15-25)`,
+      `Blue Cave entrance €${EXTRAS.blueCave}/person · Green Cave entrance €${EXTRAS.greenCave}/person (optional) · Lunch not included - restaurants available at Pakleni or Palmizana (budget €15-25)`,
   },
   {
     name: 'Red Rocks & Pakleni Islands',

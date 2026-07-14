@@ -76,7 +76,7 @@ const destinations: Destination[] = [
       'You can usually swim inside. The cave is bigger than it looks from outside and echoes beautifully.',
     ],
     tips: [
-      `Entrance fee: €${EXTRAS.greenCave} per person.`,
+      `Entrance fee: €${EXTRAS.greenCave} per person (optional).`,
       'Best light: between 11:00 and 13:00 in summer.',
     ],
   },

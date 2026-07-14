@@ -6,12 +6,12 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'What is included in the tour?',
     answer:
-      `Local captain, fuel for the itinerary, snorkeling masks, icebox and bottled water on board. Lunch stops at island restaurants and cave entrance fees (Blue Cave €${EXTRAS.blueCave}, Green Cave €${EXTRAS.greenCave}) are at your own tab. Drone and underwater video are available on request as a paid add-on when Fede is on board - not included by default.`,
+      `Local captain, fuel for the itinerary, snorkeling masks, icebox and bottled water on board. Lunch stops at island restaurants and cave entrance fees (Blue Cave €${EXTRAS.blueCave}, Green Cave €${EXTRAS.greenCave} - optional) are at your own tab. Drone and underwater video are available on request as a paid add-on when Fede is on board - not included by default.`,
   },
   {
     question: 'How many people fit on the boat?',
     answer:
-      'Our speedboats are licensed for up to 12 passengers. We cap every tour at 8, so there\'s room to move, sit comfortably, and enjoy the ride without feeling packed in. That\'s the whole point of keeping groups small.',
+      'Our speedboats are licensed for up to 12 passengers. We cap every tour at 8 per boat, so there\'s room to move and sit comfortably. Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone stays as one group. Private bookings only for groups over 8.',
   },
   {
     question: 'What languages do you speak on board?',

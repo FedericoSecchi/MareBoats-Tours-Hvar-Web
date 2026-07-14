@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 15 Junio 2026**
+**Actualizado: 12 Julio 2026**
 
 ---
 
@@ -14,6 +14,7 @@
 - **Nikola** — fundador, nació y creció en Hvar, dirige las operaciones, skipper ocasional, habla inglés y croata
 - **Josip** — hermano de Nikola, ~38 años, head skipper, toda su vida en el agua, vivió en Alemania, muy querido por los clientes, habla inglés, croata y alemán
 - **Federico (Fede)** — argentino, ciudadanía italiana, empezó en Optimist a los 6 años, mundiales y sudamericanos representando Argentina, coach de la Federación de Vela de Ecuador 2 años, trabajó con la clase 69F, clásicos y cruceros hasta 90 pies, maneja el marketing de MareBoats, skipper ocasional. Habla español, italiano e inglés. Sin título/cargo en la web.
+- **Juan** — skipper nuevo, en entrenamiento con Fede. Mencionado en reviews pero sin perfil público en el sitio.
 - **Coti** — diseño, redes sociales, posts GBP
 - **Sirius/Circus** — ex-tripulación, ya no trabaja en MareBoats. No mencionar en copy.
 
@@ -25,7 +26,7 @@
 - **Clubman**: cómodo 6 · máximo 8 personas
 - Motores: 150-300hp
 - Equipamiento: sun canopy, sistema de música, conservadora, snorkel y máscaras
-- Tours privados (grupo propio) o compartidos (sale cuando se llena). Grupos grandes: múltiples speedboats en convoy. Máximo convoy: 14 personas (2 botes).
+- Tours privados (grupo propio) o compartidos (sale cuando se llena). Grupos grandes: múltiples speedboats en convoy. Máximo convoy: 16 personas (2 botes).
 - **NO mencionar "RIB" en copy** — decisión consciente de Nikola. Usar "speedboat" siempre.
 - El skipper no es un guía, pero puede ir contando y actuando de guía durante el tour.
 
@@ -48,6 +49,35 @@ Nota legal: En Croacia, operar sin licencia es legal solo hasta 5HP (3.7 kW). La
 - Herramienta de código: Claude Code (reemplazó a Cursor desde 23/05)
 - NEXT_PUBLIC_ env vars son build-time — hardcodear Measurement ID directamente en layout.tsx
 
+## 💶 Precios — fuente única de la verdad (12/07/2026)
+
+**`lib/pricing.ts` es la ÚNICA fuente de precios del proyecto. Cero precios hardcodeados en cualquier otro archivo.**
+
+Antes de este refactor los precios vivían duplicados en 11 archivos y ya se habían desincronizado (Blue Cave decía €24 en 4 archivos y €20–25 en 2; `/tours/` mostraba Red Rocks a €400 privado y omitía el €85/persona shared).
+
+### Cómo funciona
+- Los precios se guardan como **números estructurados**, nunca como strings de display: `sharedPerPerson`, `privateHalfDay`, `privateFullDay`, `private`, `onRequest`, `fuelIncluded`.
+- Los strings los **generan** formatters, así el string corto de una card y el largo de la tour page salen del mismo número y no pueden divergir:
+  - `formatPriceShort(slug)` — cards de índice
+  - `formatPriceFull(slug)` — tour pages
+  - `formatPriceSchema(slug)` — offers del JSON-LD (mantiene `UnitPriceSpecification` con `unitText: 'per person'`)
+  - `getLowestPrice(slug)` · `getPricingOptions(slug)`
+- Constantes: `TOUR_PRICES`, `RENTAL_SELF_DRIVE`, `RENTAL_WITH_SKIPPER_FROM`, `TRANSFER_PRICES`, `SCOOTER_RENTAL`, `EXTRAS` (blueCave: 24, greenCave: 15), `ADDONS` (scooter: 40, photoVideo: 200).
+
+### Archivos que consumen pricing.ts (11)
+`lib/tours-data.ts` · `lib/schema.ts` · `lib/faqs.ts` · `lib/guide-content.ts` · `app/tours/page.tsx` · `app/rentals/page.tsx` · `app/transfers/page.tsx` · `app/landing/pre-tour/page.tsx` · `app/landing/rental/page.tsx` · `components/sections/IslandStopsAccordion.tsx` · `app/crew-9f3kq2/CrewDashboard.tsx`
+
+### Regla de seguridad — INAMOVIBLE
+**Todo lo que entra al build estático es público.** Con `output: 'export'` los datos terminan en un chunk JS en `/_next/static/` que se sirve sin ninguna protección de ruta. Un `noindex` o un password en la página NO protegen nada.
+
+**NUNCA meter en `pricing.ts` ni en ningún archivo del build: costos, márgenes, precios netos, comisiones OTA, descuentos internos.** Si algún día hace falta, va detrás de una Netlify Function o Supabase con auth, nunca en el bundle.
+
+### Alcance real
+`pricing.ts` es fuente única para **precios**, no para contenido. Descripciones SEO, includes/notIncludes, horarios y keywords siguen en `tours-data.ts`, `guide-content.ts` y JSX. Deuda conocida: los **horarios de salida** (Blue Cave 10:00, Red Rocks 09:00/11:00/14:00) están duplicados entre `/landing/pre-tour/`, `tours-data.ts` y el crew dashboard. Candidatos a un futuro `lib/operations.ts`.
+
+### ⚠️ Pendiente Nikola
+Blue Cave entrance normalizada a **€24** en todo el sitio (`guide-content.ts` decía €20–25 y se corrigió). El precio lo pone el operador de la cueva, no MareBoats. **Confirmar con Nikola que sigue en €24 esta temporada.**
+
 ## Schema markup — implementado 06/06/2026
 Archivo central: `lib/schema.ts`
 
@@ -60,12 +90,14 @@ Archivo central: `lib/schema.ts`
 - `rentalServiceSchema` + `rentalBreadcrumbSchema`: Service + BreadcrumbList en /rentals/
 - BreadcrumbList en todas las tour pages
 
-### Precios en schema (tomados del sitio live)
+### Precios en schema — desde 12/07/2026 salen de `lib/pricing.ts` vía `formatPriceSchema()`
+No hardcodear offers en schema.ts. Valores actuales:
+
 | Slug | Precio |
 |---|---|
 | blue-cave-pakleni-islands | €130/persona (shared) · €700 privado |
 | red-rocks-pakleni-islands | €85/persona (shared) · €400 privado half-day · €500 privado full-day |
-| pakleni-islands | On request |
+| pakleni-islands | €300 privado |
 | sunset-cruise | €250 privado |
 | private-boat-charter | €500 + fuel |
 | rentals | desde €400 (con skipper) |
@@ -85,6 +117,25 @@ Archivo central: `lib/schema.ts`
 - `/transfers/` — Mapbox Static Images API. hoverImage Split asignada.
 - `/conditions/` — live weather/marine. Removida del navbar (08/06). Entradas contextuales desde tour pages y footer.
 - Nav: Tours → Rentals → Transfers → Explore → About
+
+## 🔒 /crew-9f3kq2/ — panel interno de precios (12/07/2026)
+
+Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `lib/pricing.ts`. Sin login, sin backend, sin datos sensibles.
+
+- Ruta: `app/crew-9f3kq2/page.tsx` + `CrewDashboard.tsx` (`'use client'`)
+- **El slug es random a propósito. NO cambiarlo por algo legible** (`/staff`, `/admin`, `/prices` están en todas las wordlists de bots).
+- Contenido: buscador, filtros (All/Tours/Rentals/Transfers), card por servicio con precios, capacidad, includes, extras, add-ons, licencia. Header fijo con reglas operativas (meeting point, "speedboat" nunca "RIB", Pasara 20hp "ask us about licence").
+- **Quote builder** por card: modo (shared/private/half/full), contador de pax o días, unidades de scooter, date picker, total en vivo, botón "Copy Quote" → mensaje en inglés listo para pegar en WhatsApp.
+- Reglas del quote: privados NO multiplican por pax. Extras de cueva (Blue €24, Green €15 - opcional) van listados aparte, **nunca sumados al total**. Scooter es €40 **por unidad**, no por persona. Cierra siempre con meeting point.
+- Campos dedicados para el copy del quote: `quoteName`, `quoteIncluded`, `quoteNotIncluded`. Escritos a mano, **no procesar copy con regex** (un `clean()` con regex mutiló "Snorkel gear (limited)" → "snorkel gear").
+
+### Invisibilidad — checklist
+- `metadata.robots: { index: false, follow: false, nocache: true }`
+- Header `X-Robots-Tag = "noindex, nofollow"` para `/crew-9f3kq2/*` en `netlify.toml`
+- Excluida de `app/sitemap.ts`
+- **NO listar en robots.txt** — poner la ruta ahí la publica, robots.txt lo lee cualquiera
+- Cero links desde el sitio público
+- `rel="noopener noreferrer"` en todo link externo (si no, el header `Referer` filtra la URL)
 
 ## Cluster SEO — páginas interconectadas
 - `/explore/` → `/guide/`, `/hvar-islands-guide/`, `/tours/`
@@ -149,7 +200,7 @@ Flujo: Fede redacta → WhatsApp a Nikola → aprobación escrita → publicar.
 
 ---
 
-## ✅ ESTADO REAL al 11/06/2026
+## ✅ ESTADO REAL al 02/07/2026
 
 ### GA4
 - `whatsapp_click`: 41 eventos · 24 usuarios únicos (últimos 28 días)
@@ -160,9 +211,10 @@ Flujo: Fede redacta → WhatsApp a Nikola → aprobación escrita → publicar.
 - 45 clics · 1,550 impresiones · CTR 2.9% · pos 24.3
 - Keywords: "hvar boat rental" pos 30.1, "rent a boat hvar" pos 32.7, "hvar boat hire" pos 35.7
 
-### GBP
-- Verificado · 5.0 ⭐ · 26 reseñas. Nombre y descripción actualizados 07/06.
-- Pendiente: 20-30 fotos reales, Q&A (no disponible en panel).
+### GBP — estado al 02/07/2026
+- Verificado · 5.0 ⭐ · ~90+ reseñas (crecimiento activo toda la temporada)
+- Nombre y descripción actualizados 07/06.
+- Pendiente: 20-30 fotos reales, Q&A.
 
 ### GYG — mayo 2026
 - Revenue: €1,635 · Bookings: 7 · Rating: 5.0 ⭐
@@ -172,6 +224,57 @@ Flujo: Fede redacta → WhatsApp a Nikola → aprobación escrita → publicar.
 ### Booking.com — pendiente aprobación Nikola
 ### Viator — bloqueado por seguro
 ### Airbnb — bloqueado por Ministerio Turismo Hvar
+
+---
+
+## GBP Reviews — Sistema y Estado
+
+### Reglas inamovibles
+- Respuestas SIEMPRE en inglés, sin importar el idioma de la review
+- Keywords integradas naturalmente — nunca forzadas
+- Tono humano, directo. Sin filler turístico.
+- No confirmar nombres de lugares cuando hay ambigüedad legal (ej: "la cueva" en vez de "Dubovica cave" si el guest la llamó Blue Cave)
+- Rental sin skipper: si hay queja por condiciones de mar, redirigir sutilmente a tours con skipper sin contradecir al reviewer directamente
+
+### Keywords por nivel de impacto SEO
+**Nivel 1 — identidad (máximo peso)**
+- MareBoats Hvar, Hvar
+
+**Nivel 2 — tipo de servicio**
+- private boat tour Hvar, boat tour Hvar, speedboat Hvar, boat rental Hvar, skipper
+
+**Nivel 3 — productos específicos (long-tail)**
+- Blue Cave, Red Rocks, Pakleni Islands, Dubovica Beach, secret cave
+
+**Nivel 4 — intención/calidad**
+- worth every euro, best tour in Hvar, private / small group, highly recommend
+
+### Estado reviews al 02/07/2026
+- 90+ reviews · 5.0 ⭐ · crecimiento sostenido durante temporada
+- Umbral 50 cruzado ✅ — perfil establecido ante Google
+- Umbral 100 en camino — estimado julio/agosto 2026
+- Efecto ranking: reviews actuales impactan posición en Maps con 4-8 semanas de delay
+
+### Por qué Google filtra reviews auténticas
+El algoritmo anti-spam es agresivo. Triggers comunes que eliminan reviews reales:
+- Muchas reviews en pocas horas (patrón de compra de reviews aunque sean auténticas)
+- Reviewers con perfil nuevo ("0 opiniones")
+- Múltiples reviews desde misma red/ubicación
+- Texto similar entre reviews del mismo día (van en el mismo barco)
+No hay forma de apelar efectivamente. Mitigación: escalonar el pedido post-tour, pedir que usen datos móviles propios.
+
+### Patrón de respuesta por tipo
+- **Review larga con keywords**: responder con 2-3 keywords específicas, personalizar con lo que menciona
+- **Review corta genérica**: respuesta corta, agregar 1-2 keywords naturales
+- **Menciona nombre del skipper**: incluirlo en la respuesta
+- **Local Guide (peso alto)**: respuesta más trabajada, siempre
+- **Review negativa**: empática pero firme, dejar contexto claro para quien la lee después
+
+### Skippers mencionados en reviews (para personalizar respuestas)
+- **Fede / Federico / Frederico** — skipper principal, más mencionado
+- **Nikola** — fundador, skipper ocasional, gestiona WhatsApp/booking
+- **Josip** — head skipper, muy querido
+- **Juan** — skipper nuevo en entrenamiento, aparece en reviews de junio 2026
 
 ---
 
@@ -350,10 +453,11 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 
 ---
 
-## PLAN UNIFICADO — Estado al 15/06/2026
+## PLAN UNIFICADO — Estado al 02/07/2026
 
 ### ✅ CERRADOS
 - Bloque 0, SEO Website, /landing/pre-tour/, SEO Cluster, fixes 02/06, Mobile Audit, Copy Audit, UX/Conversión, Schema markup, GBP, Precios self-drive, /conditions/, Copy 07/06, Session 07/06 noche, Session 08/06
+- **Fuente única de precios + crew dashboard — CERRADO (12/07)**: `lib/pricing.ts`, 11 archivos refactorizados, verificación 0 divergencias, `/crew-9f3kq2/` en producción ✅
 - **BLOQUE 1 Fotos drone — CERRADO** (09-15/06): 52 fotos migradas a public/images/, estructura nueva, todos los paths actualizados en componentes ✅
 
 ### 🧹 BLOQUE 2 — Pendiente
@@ -367,6 +471,12 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Crear cuenta · importar conversión whatsapp_click · 3 ad groups · €15-20/día · Smart Bidding post 15-20 conversiones
 - Keywords negativas: jobs, for sale, free, cheap, ferry
 - Geo: Hvar + Split + radio · Destino: /landing/*
+
+### 🔜 Pendiente inmediato (12/07)
+- Confirmar con Nikola: Blue Cave entrance sigue en €24
+- Pasar link `/crew-9f3kq2/` a Nikola y Josip por WhatsApp (explicar qué es, no compartir)
+- Probar Copy Quote en celular con datos móviles
+- Horarios de salida: unificar en `lib/operations.ts` (hoy duplicados en 3 archivos)
 
 ### 🤖 EN EL RADAR
 - n8n: WhatsApp bot, Blue Cave status automático, GBP/Instagram automation
@@ -382,6 +492,9 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Solo `next/image` — cero `<img>` tags
 - Solo opacity y transform en animaciones — nunca transition-all
 - Redirects en netlify.toml — NO en next.config.mjs
+- **Precios: SIEMPRE desde `lib/pricing.ts`. Cero números hardcodeados.**
+- **Nada sensible (costos, márgenes, comisiones) puede entrar al build estático.**
+- Refactors: verificar output, no solo que compile. Comparar strings ANTES vs DESPUÉS.
 - NUNCA modificar OTA listings sin aprobación Nikola
 - Em-dashes y en-dashes prohibidos
 - Brand: "MareBoats Hvar" (sin espacio)
