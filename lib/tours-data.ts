@@ -254,9 +254,9 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
 
 This private evening boat tour departs from Hvar Harbour and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the boat is private, the pace stays yours.
 
-Your captain focuses on safety and smooth cruising as light fades, and you can bring your own wine or bubbly to enjoy responsibly on board (glass bottles are welcome). The cooler on board keeps your drinks cold, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands.
+Your captain focuses on safety and smooth cruising as light fades, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
-Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date. If you are comparing Hvar sunset boat tour options, choose private for the best views, the calmest pace, and a route tailored to the evening sky.`,
+Pricing scales with group size: see the breakdown below. Wine is included for smaller groups, and an extra bottle is available for €30. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
     duration: '2 hrs',
     durationIso: 'PT2H',
     price: formatPriceFull('sunset-cruise'),
@@ -264,9 +264,10 @@ Sunset slots are limited during high season, so message us early on WhatsApp to 
     includes: [
       'Private speedboat and local skipper',
       'Fuel for the sunset itinerary',
-      'Icebox and bottled water on board',
+      'Bottled water and fresh fruit on board',
+      'Wine included for groups up to 6 (see pricing)',
     ],
-    notIncludes: ['Alcoholic drinks (bring your own if you wish)', 'Hotel pickup'],
+    notIncludes: ['Hotel pickup'],
     addons: [PHOTO_VIDEO_ADDON],
     whatToBring: ['A light jacket for after sunset', 'Camera or phone for photos'],
     meetingPoint: MEETING,
@@ -287,6 +288,7 @@ Sunset slots are limited during high season, so message us early on WhatsApp to 
       },
     ],
     keywords: ['sunset cruise hvar', 'hvar sunset boat tour'],
+    pricingOptions: getPricingOptions('sunset-cruise'),
   },
 
   {

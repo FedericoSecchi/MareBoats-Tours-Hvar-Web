@@ -173,7 +173,7 @@ export const rentalServiceSchema = {
   '@type': 'Service',
   name: 'Boat Rental Hvar',
   description:
-    'Rent a boat in Hvar with or without skipper. Private tour with skipper included from 400 EUR. Self-drive rental for licensed skippers. Underwater scooter hire also available. Pickup at Hvar Harbour.',
+    `Rent a boat in Hvar with or without skipper. Private tour with skipper included from ${RENTAL_WITH_SKIPPER_FROM} EUR. Self-drive rental for licensed skippers. Underwater scooter hire also available. Pickup at Hvar Harbour.`,
   provider: PROVIDER,
   areaServed: 'Hvar, Croatia',
   offers: {

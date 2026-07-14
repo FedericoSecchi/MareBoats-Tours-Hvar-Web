@@ -8,6 +8,9 @@ import {
   EXTRAS,
   ADDONS,
   TRANSFER_PRICES,
+  SUNSET_TIERS,
+  SUNSET_WINE_EXTRA,
+  getSunsetTier,
 } from '@/lib/pricing';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -21,7 +24,8 @@ type Pricing =
   | { kind: 'transfer'; splitHvar: number; airportHvar: number }
   | { kind: 'rental-drive'; pricePerDay: number; fuelIncluded: boolean; licenceRequired: boolean; licenceNote?: string }
   | { kind: 'rental-skipper'; from: number }
-  | { kind: 'on-request' };
+  | { kind: 'on-request' }
+  | { kind: 'sunset' };
 
 type Service = {
   id: string;
@@ -121,15 +125,15 @@ const SERVICES: Service[] = [
     quoteName: 'Sunset Cruise',
     duration: '~2 h · evening',
     maxCapacity: 8,
-    includes: ['Boat & skipper', 'Fuel'],
+    includes: ['Boat & skipper', 'Fuel', 'Bottled water', 'Fresh fruit'],
     notIncludes: [],
-    quoteIncluded: 'skipper, fuel',
+    quoteIncluded: 'skipper, fuel, bottled water and fresh fruit',
     quoteNotIncluded: '',
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: true,
-    notes: ['No scooter. Evening tour.'],
-    pricing: { kind: 'private-only', price: T['sunset-cruise'].private!, fuelExtra: false },
+    notes: ['No scooter. Evening tour. Max 8, no exceptions.'],
+    pricing: { kind: 'sunset' },
   },
   {
     id: 'charter',
@@ -338,6 +342,18 @@ function PriceDisplay({ pricing }: { pricing: Pricing }) {
   if (pricing.kind === 'on-request') {
     return <p className="font-display text-xl font-bold text-amber-300">On request</p>;
   }
+  if (pricing.kind === 'sunset') {
+    return (
+      <div>
+        <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">
+          Private · tiered by guests
+        </span>
+        <span className="font-display text-2xl font-bold text-[color:var(--accent)]">
+          From €{SUNSET_TIERS[0].price}
+        </span>
+      </div>
+    );
+  }
   if (pricing.kind === 'rental-skipper') {
     return (
       <p className="font-display text-2xl font-bold text-[color:var(--accent)]">
@@ -453,6 +469,7 @@ function QuoteBuilder({ service }: { service: Service }) {
   const [days, setDays] = useState(1);
   const [scooterUnits, setScooterUnits] = useState(0);
   const [photoVideo, setPhotoVideo] = useState(false);
+  const [sunsetExtraWine, setSunsetExtraWine] = useState(false);
   const [date, setDate] = useState('');
   const [copied, setCopied] = useState(false);
 
@@ -472,11 +489,11 @@ function QuoteBuilder({ service }: { service: Service }) {
     );
   }
 
-  // ── Convoy logic: private tour + pax > 8 = 2 boats, price x2 ──
+  // ── Convoy logic: private tour + pax > 8 = 2 boats, price x2. Sunset excluded. ──
   const isSharedMode = mode === 'shared';
   const isPrivateMode = !isSharedMode && mode !== 'split-hvar' && mode !== 'airport-hvar';
-  const isConvoy = category === 'tour' && isPrivateMode && pax > 8;
-  const maxPax = category === 'tour' && isPrivateMode ? 16 : maxCapacity;
+  const isConvoy = category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' && pax > 8;
+  const maxPax = category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' ? 16 : maxCapacity;
 
   // ── Compute base total ──
   let baseTotal = 0;
@@ -492,11 +509,14 @@ function QuoteBuilder({ service }: { service: Service }) {
     baseTotal = mode === 'split-hvar' ? pricing.splitHvar : pricing.airportHvar;
   } else if (pricing.kind === 'rental-drive') {
     baseTotal = pricing.pricePerDay * days;
+  } else if (pricing.kind === 'sunset') {
+    baseTotal = getSunsetTier(pax).price;
   }
 
   const addonsTotal =
     (addonScooter ? scooterUnits * ADDONS.scooter : 0) +
-    (addonPhotoVideo && photoVideo ? ADDONS.photoVideo : 0);
+    (addonPhotoVideo && photoVideo ? ADDONS.photoVideo : 0) +
+    (pricing.kind === 'sunset' && sunsetExtraWine ? SUNSET_WINE_EXTRA : 0);
 
   const total = baseTotal + addonsTotal;
 
@@ -555,6 +575,12 @@ function QuoteBuilder({ service }: { service: Service }) {
       lines.push(`Transfer ${route}: ${price} EUR`);
     } else if (pricing.kind === 'rental-drive') {
       lines.push(`${days} day${days > 1 ? 's' : ''} x ${pricing.pricePerDay} EUR = ${pricing.pricePerDay * days} EUR`);
+    } else if (pricing.kind === 'sunset') {
+      const tier = getSunsetTier(pax);
+      lines.push(`Sunset cruise: ${tier.price} EUR (${tier.minGuests}-${tier.maxGuests} guests)`);
+      if (tier.wineBottles) {
+        lines.push(`${tier.wineBottles} bottle${tier.wineBottles > 1 ? 's' : ''} of wine included.`);
+      }
     }
 
     if (addonScooter && scooterUnits > 0) {
@@ -563,6 +589,10 @@ function QuoteBuilder({ service }: { service: Service }) {
     }
     if (addonPhotoVideo && photoVideo) {
       lines.push(`Photo and video: ${ADDONS.photoVideo} EUR`);
+      addonCount++;
+    }
+    if (pricing.kind === 'sunset' && sunsetExtraWine) {
+      lines.push(`Extra bottle of wine: ${SUNSET_WINE_EXTRA} EUR`);
       addonCount++;
     }
 
@@ -685,7 +715,7 @@ function QuoteBuilder({ service }: { service: Service }) {
       )}
 
       {/* Add-ons */}
-      {(addonScooter || addonPhotoVideo) && (
+      {(addonScooter || addonPhotoVideo || pricing.kind === 'sunset') && (
         <div className="space-y-2.5">
           <p className="font-body text-[10px] font-semibold uppercase tracking-[0.15em] text-[color:var(--gray)]">
             Add-ons (paid to MareBoats)
@@ -713,6 +743,19 @@ function QuoteBuilder({ service }: { service: Service }) {
                 type="checkbox"
                 checked={photoVideo}
                 onChange={(e) => setPhotoVideo(e.target.checked)}
+                className="h-5 w-5 cursor-pointer accent-[color:var(--accent)]"
+              />
+            </label>
+          )}
+          {pricing.kind === 'sunset' && (
+            <label className="flex cursor-pointer items-center justify-between">
+              <span className="font-body text-sm text-[color:var(--white)]">
+                Extra bottle of wine · €{SUNSET_WINE_EXTRA}
+              </span>
+              <input
+                type="checkbox"
+                checked={sunsetExtraWine}
+                onChange={(e) => setSunsetExtraWine(e.target.checked)}
                 className="h-5 w-5 cursor-pointer accent-[color:var(--accent)]"
               />
             </label>

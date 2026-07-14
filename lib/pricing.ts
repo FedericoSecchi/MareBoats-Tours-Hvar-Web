@@ -16,6 +16,13 @@ export type TourPrice = {
   fuelIncluded?: boolean;
 };
 
+export type SunsetTier = {
+  minGuests: number;
+  maxGuests: number;
+  price: number;
+  wineBottles?: number;
+};
+
 export type RentalSelfDrivePrice = {
   pricePerDay: number;
   fuelIncluded: boolean;
@@ -46,7 +53,7 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
     privateFullDay: 500,
   },
   'pakleni-islands': { private: 300 },
-  'sunset-cruise': { private: 250 },
+  'sunset-cruise': { private: 250 }, // 250 = floor price used by generic formatters and schema
   'private-boat-charter': { private: 500, fuelIncluded: false },
   'split-airport-transfer': {
     splitHvar: TRANSFER_PRICES.splitHvar,
@@ -60,13 +67,32 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
 // ──────────────────────────────────────────────
 
 export const RENTAL_SELF_DRIVE: Record<string, RentalSelfDrivePrice> = {
-  pasara5hp:     { pricePerDay: 120, fuelIncluded: true,  licenceRequired: false },
+  pasara5hp:     { pricePerDay: 150, fuelIncluded: true,  licenceRequired: false },
   pasara20hp:    { pricePerDay: 200, fuelIncluded: true,  licenceRequired: true  },
   speedboat60hp: { pricePerDay: 290, fuelIncluded: true,  licenceRequired: true  },
   mariner150hp:  { pricePerDay: 350, fuelIncluded: false, licenceRequired: true  },
 };
 
-export const RENTAL_WITH_SKIPPER_FROM = 400;
+export const RENTAL_WITH_SKIPPER_FROM = 500;
+
+// ──────────────────────────────────────────────
+// Sunset cruise — tiered pricing by group size
+// ──────────────────────────────────────────────
+
+// NOTE: Nikola confirmed 4/6/8 as tier breakpoints. The rounding convention
+// (guests 5 and 7 round UP to the next tier: 5-6 = €350, 7-8 = €500)
+// is an assumption, not explicitly confirmed. Review if Nikola revisits.
+export const SUNSET_TIERS: SunsetTier[] = [
+  { minGuests: 1, maxGuests: 4, price: 250, wineBottles: 1 },
+  { minGuests: 5, maxGuests: 6, price: 350, wineBottles: 2 },
+  { minGuests: 7, maxGuests: 8, price: 500 },
+];
+
+export const SUNSET_WINE_EXTRA = 30;
+
+export function getSunsetTier(pax: number): SunsetTier {
+  return SUNSET_TIERS.find((t) => pax <= t.maxGuests) ?? SUNSET_TIERS[SUNSET_TIERS.length - 1];
+}
 
 // ──────────────────────────────────────────────
 // Third-party extras (paid on-site, not to MareBoats)
@@ -118,6 +144,7 @@ export function formatPriceFull(slug: string): string {
   if (p.sharedPerPerson !== undefined && p.private !== undefined) {
     return `€${p.sharedPerPerson}/person (group) · €${p.private} private`;
   }
+  if (slug === 'sunset-cruise') return `From €${SUNSET_TIERS[0].price}`;
   if (p.private !== undefined && p.fuelIncluded === false) {
     return `€${p.private} boat + skipper · fuel not included`;
   }
@@ -132,6 +159,7 @@ export function formatPriceShort(slug: string): string {
   const p = TOUR_PRICES[slug];
   if (!p) return '';
   if (p.onRequest) return 'On request';
+  if (slug === 'sunset-cruise') return `From €${SUNSET_TIERS[0].price}`;
   if (p.splitHvar !== undefined) return `€${p.splitHvar} private`;
   if (p.sharedPerPerson !== undefined && p.privateHalfDay !== undefined) {
     return `From €${p.sharedPerPerson}/person · €${p.privateHalfDay} private`;
@@ -166,6 +194,15 @@ export function getLowestPrice(slug: string): number | undefined {
 export function getPricingOptions(
   slug: string,
 ): { label: string; price: string; note: string }[] | undefined {
+  if (slug === 'sunset-cruise') {
+    return SUNSET_TIERS.map((t) => ({
+      label: `${t.minGuests}-${t.maxGuests} guests`,
+      price: `€${t.price}`,
+      note:
+        t.wineBottles === 1 ? '1 bottle of wine included' :
+        t.wineBottles === 2 ? '2 bottles of wine included' : '',
+    }));
+  }
   if (slug !== 'blue-cave-pakleni-islands') return undefined;
   const p = TOUR_PRICES[slug];
   if (!p || !p.sharedPerPerson || !p.private) return undefined;
