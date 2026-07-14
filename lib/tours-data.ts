@@ -5,6 +5,7 @@ import {
   TOUR_PRICES,
   EXTRAS,
   ADDONS,
+  SUNSET_WINE_EXTRA,
 } from '@/lib/pricing';
 
 export const BUSINESS_INFO = {
@@ -256,7 +257,7 @@ This private evening boat tour departs from Hvar Harbour and follows a route cho
 
 Your captain focuses on safety and smooth cruising as light fades, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
-Pricing scales with group size: see the breakdown below. Wine is included for smaller groups, and an extra bottle is available for €30. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
+Pricing scales with group size: see the breakdown below. Wine is included for smaller groups, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
     duration: '2 hrs',
     durationIso: 'PT2H',
     price: formatPriceFull('sunset-cruise'),
@@ -296,7 +297,7 @@ Pricing scales with group size: see the breakdown below. Wine is included for sm
     name: 'Private Boat Charter Hvar',
     tagline: 'Your boat, your itinerary - full-day freedom with a local skipper who knows these waters.',
     shortDescription:
-      'Private boat charter from Hvar, Croatia. Your own boat, captain, route and equipment - design the day you want on the Adriatic. €500 for boat + skipper, fuel paid separately.',
+      `Private boat charter from Hvar, Croatia. Your own boat, captain, route and equipment - design the day you want on the Adriatic. €${PC.private} for boat + skipper, fuel paid separately.`,
     description: `A private boat charter from Hvar is the most flexible format we offer: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your captain helps you build a realistic plan based on weather and distances.
 
 Unlike fixed itineraries, a full-day charter gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
