@@ -248,6 +248,15 @@ export default function TourDetailPage({ params }: PageProps) {
               ))}
             </ul>
           </div>
+          {tour.slug !== 'split-airport-transfer' && (
+            <div className="md:col-span-2 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-5 py-4 flex items-center gap-3">
+              <span className="text-2xl" aria-hidden="true">🐶</span>
+              <p className="font-body text-sm text-[color:var(--gray)]">
+                Dogs are welcome on board. Let us know when you book.
+              </p>
+            </div>
+          )}
+
           <div className="md:col-span-2 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
             <h2 className="font-display text-xl font-bold uppercase text-[color:var(--white)]">
               Meeting point

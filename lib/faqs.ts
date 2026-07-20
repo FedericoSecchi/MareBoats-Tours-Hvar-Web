@@ -37,4 +37,9 @@ export const homepageFaqs: FaqItem[] = [
     answer:
       'WhatsApp at +385 95 196 6734. Send your date, group size and the tour you want. We reply within the hour during the season and confirm the same day.',
   },
+  {
+    question: 'Are dogs allowed on the boat?',
+    answer:
+      'Dogs are welcome on board. Let us know when you book so we can plan accordingly.',
+  },
 ];

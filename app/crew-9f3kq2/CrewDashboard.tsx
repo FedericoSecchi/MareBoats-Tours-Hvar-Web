@@ -11,6 +11,8 @@ import {
   SUNSET_TIERS,
   SUNSET_WINE_EXTRA,
   getSunsetTier,
+  WATER_TAXI_PRICES,
+  getWaterTaxiPrice,
 } from '@/lib/pricing';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -22,10 +24,12 @@ type Pricing =
   | { kind: 'shared-half-full'; shared: number; half: number; full: number }
   | { kind: 'private-only'; price: number; fuelExtra: boolean }
   | { kind: 'transfer'; splitHvar: number; airportHvar: number }
-  | { kind: 'rental-drive'; pricePerDay: number; fuelIncluded: boolean; licenceRequired: boolean; licenceNote?: string }
+  | { kind: 'transfer-route'; oneWay: number; return?: number }
+  | { kind: 'rental-drive'; pricePerDay: number; fuelIncluded: boolean; licenceRequired: boolean; licenceNote?: string; deposit?: number; depositCashOnly?: boolean }
   | { kind: 'rental-skipper'; from: number }
   | { kind: 'on-request' }
-  | { kind: 'sunset' };
+  | { kind: 'sunset' }
+  | { kind: 'water-taxi' };
 
 type Service = {
   id: string;
@@ -45,7 +49,7 @@ type Service = {
   pricing: Pricing;
 };
 
-type QuoteMode = 'shared' | 'private' | 'half' | 'full' | 'split-hvar' | 'airport-hvar';
+type QuoteMode = 'shared' | 'private' | 'half' | 'full' | 'split-hvar' | 'airport-hvar' | 'yacht-harbour' | 'yacht-pakleni';
 type Category = 'all' | 'tour' | 'rental' | 'transfer';
 
 // ─── Service data ─────────────────────────────────────────────────────────────
@@ -124,7 +128,7 @@ const SERVICES: Service[] = [
     name: 'Sunset Cruise',
     quoteName: 'Sunset Cruise',
     duration: '~2 h · evening',
-    maxCapacity: 8,
+    maxCapacity: 16,
     includes: ['Boat & skipper', 'Fuel', 'Bottled water', 'Fresh fruit'],
     notIncludes: [],
     quoteIncluded: 'skipper, fuel, bottled water and fresh fruit',
@@ -132,7 +136,7 @@ const SERVICES: Service[] = [
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: true,
-    notes: ['No scooter. Evening tour. Max 8, no exceptions.'],
+    notes: ['No scooter. Evening tour. Max 8 per boat, max 16 total (2 boats).'],
     pricing: { kind: 'sunset' },
   },
   {
@@ -159,7 +163,7 @@ const SERVICES: Service[] = [
     name: 'Pasara · 5hp',
     quoteName: 'Pasara 5hp boat rental (self-drive)',
     duration: 'Half day / Full day',
-    maxCapacity: 4,
+    maxCapacity: 5,
     includes: ['Boat', 'Fuel'],
     notIncludes: [],
     quoteIncluded: 'Fuel included',
@@ -181,7 +185,7 @@ const SERVICES: Service[] = [
     name: 'Pasara · 20hp',
     quoteName: 'Pasara 20hp boat rental (self-drive)',
     duration: 'Half day / Full day',
-    maxCapacity: 4,
+    maxCapacity: 5,
     includes: ['Boat', 'Fuel'],
     notIncludes: [],
     quoteIncluded: 'Fuel included',
@@ -234,12 +238,14 @@ const SERVICES: Service[] = [
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
-    notes: ['Valid boating licence required', 'Fuel: full tank in, full tank out'],
+    notes: ['Valid boating licence required', 'Fuel: full tank in, full tank out', 'Security deposit: 300 EUR cash, returned after rental'],
     pricing: {
       kind: 'rental-drive',
       pricePerDay: R.mariner150hp.pricePerDay,
       fuelIncluded: R.mariner150hp.fuelIncluded,
       licenceRequired: R.mariner150hp.licenceRequired,
+      deposit: R.mariner150hp.deposit,
+      depositCashOnly: R.mariner150hp.depositCashOnly,
     },
   },
   {
@@ -295,8 +301,59 @@ const SERVICES: Service[] = [
     siteExtras: [],
     addonScooter: false,
     addonPhotoVideo: false,
-    notes: ['Send coordinates on WhatsApp'],
-    pricing: { kind: 'on-request' },
+    notes: ['Send coordinates on WhatsApp', `Near harbour: €${WATER_TAXI_PRICES.yachtsNearHarbour.basePrice} up to ${WATER_TAXI_PRICES.yachtsNearHarbour.baseGuests}, +€${WATER_TAXI_PRICES.yachtsNearHarbour.perExtraGuest}/extra guest`, `Pakleni Islands: €${WATER_TAXI_PRICES.pakleniIslands.basePrice} up to ${WATER_TAXI_PRICES.pakleniIslands.baseGuests}, +€${WATER_TAXI_PRICES.pakleniIslands.perExtraGuest}/extra guest`, 'Max 8 (assumed)'],
+    pricing: { kind: 'water-taxi' },
+  },
+  {
+    id: 'stari-grad',
+    category: 'transfer',
+    name: 'Transfer · Stari Grad',
+    quoteName: 'Private speedboat transfer to Stari Grad',
+    duration: '~20 min',
+    maxCapacity: 8,
+    includes: ['Private speedboat', 'Direct route'],
+    notIncludes: [],
+    quoteIncluded: 'private speedboat, direct route',
+    quoteNotIncluded: '',
+    siteExtras: [],
+    addonScooter: false,
+    addonPhotoVideo: false,
+    notes: [],
+    pricing: { kind: 'transfer-route', oneWay: TRANSFER_PRICES.stariGrad },
+  },
+  {
+    id: 'brac-transfer',
+    category: 'transfer',
+    name: 'Transfer · Brač',
+    quoteName: 'Private speedboat transfer to Brač',
+    duration: '~30 min',
+    maxCapacity: 8,
+    includes: ['Private speedboat', 'Direct route'],
+    notIncludes: [],
+    quoteIncluded: 'private speedboat, direct route',
+    quoteNotIncluded: '',
+    siteExtras: [],
+    addonScooter: false,
+    addonPhotoVideo: false,
+    notes: [],
+    pricing: { kind: 'transfer-route', oneWay: TRANSFER_PRICES.bracOneWay, return: TRANSFER_PRICES.bracReturn },
+  },
+  {
+    id: 'brac-zlatni-rat',
+    category: 'tour',
+    name: 'Brač · Zlatni Rat',
+    quoteName: 'Brač - Zlatni Rat tour',
+    duration: '6 h · private',
+    maxCapacity: 8,
+    includes: ['Boat & skipper', 'Fuel'],
+    notIncludes: ['Lunch'],
+    quoteIncluded: 'skipper, fuel',
+    quoteNotIncluded: 'lunch',
+    siteExtras: [],
+    addonScooter: true,
+    addonPhotoVideo: true,
+    notes: ['No public page yet. Crew dashboard only.'],
+    pricing: { kind: 'private-only', price: TOUR_PRICES['brac-zlatni-rat'].private!, fuelExtra: false },
   },
 ];
 
@@ -426,17 +483,58 @@ function PriceDisplay({ pricing }: { pricing: Pricing }) {
   }
   if (pricing.kind === 'rental-drive') {
     return (
-      <span>
-        <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">
-          Self-drive · {pricing.licenceRequired ? 'licence required' : 'no licence needed'}
+      <div>
+        <span>
+          <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">
+            Self-drive · {pricing.licenceRequired ? 'licence required' : 'no licence needed'}
+          </span>
+          <span className="font-display text-2xl font-bold text-[color:var(--accent)]">
+            €{pricing.pricePerDay}<span className="text-sm font-normal">/day</span>
+            {!pricing.fuelIncluded && (
+              <span className="text-sm font-normal text-amber-300"> + fuel</span>
+            )}
+          </span>
         </span>
-        <span className="font-display text-2xl font-bold text-[color:var(--accent)]">
-          €{pricing.pricePerDay}<span className="text-sm font-normal">/day</span>
-          {!pricing.fuelIncluded && (
-            <span className="text-sm font-normal text-amber-300"> + fuel</span>
-          )}
+        {pricing.deposit && (
+          <p className="mt-1 font-body text-xs font-semibold text-amber-300">
+            Security deposit: €{pricing.deposit} cash{pricing.depositCashOnly ? ' only' : ''}, returned after rental
+          </p>
+        )}
+      </div>
+    );
+  }
+  if (pricing.kind === 'transfer-route') {
+    return (
+      <div className="flex flex-wrap gap-x-5 gap-y-1">
+        <span>
+          <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">One way</span>
+          <span className="font-display text-2xl font-bold text-[color:var(--accent)]">€{pricing.oneWay}</span>
         </span>
-      </span>
+        {pricing.return !== undefined && (
+          <span>
+            <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">Return</span>
+            <span className="font-display text-2xl font-bold text-[color:var(--accent)]">€{pricing.return}</span>
+          </span>
+        )}
+      </div>
+    );
+  }
+  if (pricing.kind === 'water-taxi') {
+    return (
+      <div className="space-y-1">
+        <div className="flex flex-wrap gap-x-5">
+          <span>
+            <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">Near harbour (up to {WATER_TAXI_PRICES.yachtsNearHarbour.baseGuests})</span>
+            <span className="font-display text-2xl font-bold text-[color:var(--accent)]">€{WATER_TAXI_PRICES.yachtsNearHarbour.basePrice}</span>
+            <span className="font-body text-xs text-[color:var(--gray)]"> +€{WATER_TAXI_PRICES.yachtsNearHarbour.perExtraGuest}/extra</span>
+          </span>
+          <span>
+            <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">Pakleni Islands (up to {WATER_TAXI_PRICES.pakleniIslands.baseGuests})</span>
+            <span className="font-display text-2xl font-bold text-[color:var(--accent)]">€{WATER_TAXI_PRICES.pakleniIslands.basePrice}</span>
+            <span className="font-body text-xs text-[color:var(--gray)]"> +€{WATER_TAXI_PRICES.pakleniIslands.perExtraGuest}/extra</span>
+          </span>
+        </div>
+      </div>
     );
   }
   return null;
@@ -461,6 +559,7 @@ function QuoteBuilder({ service }: { service: Service }) {
     if (pricing.kind === 'shared-private') return 'private';
     if (pricing.kind === 'shared-half-full') return 'half';
     if (pricing.kind === 'transfer') return 'split-hvar';
+    if (pricing.kind === 'water-taxi') return 'yacht-harbour';
     return 'private';
   };
 
@@ -489,11 +588,16 @@ function QuoteBuilder({ service }: { service: Service }) {
     );
   }
 
-  // ── Convoy logic: private tour + pax > 8 = 2 boats, price x2. Sunset excluded. ──
+  // ── Convoy logic: private tour + pax > 8 = 2 boats, price x2. Sunset excluded (has own tier). ──
   const isSharedMode = mode === 'shared';
-  const isPrivateMode = !isSharedMode && mode !== 'split-hvar' && mode !== 'airport-hvar';
+  const isPrivateMode = !isSharedMode && mode !== 'split-hvar' && mode !== 'airport-hvar' && mode !== 'yacht-harbour' && mode !== 'yacht-pakleni';
   const isConvoy = category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' && pax > 8;
-  const maxPax = category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' ? 16 : maxCapacity;
+  const waterTaxiMax = pricing.kind === 'water-taxi'
+    ? (mode === 'yacht-harbour' ? WATER_TAXI_PRICES.yachtsNearHarbour.max : WATER_TAXI_PRICES.pakleniIslands.max)
+    : maxCapacity;
+  const maxPax = pricing.kind === 'water-taxi' ? waterTaxiMax
+    : category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' ? 16
+    : maxCapacity;
 
   // ── Compute base total ──
   let baseTotal = 0;
@@ -507,10 +611,15 @@ function QuoteBuilder({ service }: { service: Service }) {
     baseTotal = isConvoy ? pricing.price * 2 : pricing.price;
   } else if (pricing.kind === 'transfer') {
     baseTotal = mode === 'split-hvar' ? pricing.splitHvar : pricing.airportHvar;
+  } else if (pricing.kind === 'transfer-route') {
+    baseTotal = pricing.oneWay;
   } else if (pricing.kind === 'rental-drive') {
     baseTotal = pricing.pricePerDay * days;
   } else if (pricing.kind === 'sunset') {
     baseTotal = getSunsetTier(pax).price;
+  } else if (pricing.kind === 'water-taxi') {
+    const zone = mode === 'yacht-harbour' ? WATER_TAXI_PRICES.yachtsNearHarbour : WATER_TAXI_PRICES.pakleniIslands;
+    baseTotal = getWaterTaxiPrice(zone, pax);
   }
 
   const addonsTotal =
@@ -573,13 +682,32 @@ function QuoteBuilder({ service }: { service: Service }) {
       const price = mode === 'split-hvar' ? pricing.splitHvar : pricing.airportHvar;
       const route = mode === 'split-hvar' ? 'Split to Hvar' : 'Airport to Hvar';
       lines.push(`Transfer ${route}: ${price} EUR`);
+    } else if (pricing.kind === 'transfer-route') {
+      lines.push(`Transfer: ${pricing.oneWay} EUR one way`);
+      if (pricing.return !== undefined) {
+        lines.push(`Return: ${pricing.return} EUR`);
+      }
     } else if (pricing.kind === 'rental-drive') {
       lines.push(`${days} day${days > 1 ? 's' : ''} x ${pricing.pricePerDay} EUR = ${pricing.pricePerDay * days} EUR`);
     } else if (pricing.kind === 'sunset') {
       const tier = getSunsetTier(pax);
-      lines.push(`Sunset cruise: ${tier.price} EUR (${tier.minGuests}-${tier.maxGuests} guests)`);
-      if (tier.wineBottles) {
-        lines.push(`${tier.wineBottles} bottle${tier.wineBottles > 1 ? 's' : ''} of wine included.`);
+      if (tier.boats === 2) {
+        const perBoat = tier.price / 2;
+        lines.push(`Sunset cruise, 2 boats: 2 x ${perBoat} EUR = ${tier.price} EUR`);
+        lines.push('Groups over 8 travel on two boats sailing together.');
+      } else {
+        lines.push(`Sunset cruise: ${tier.price} EUR (${tier.minGuests}-${tier.maxGuests} guests)`);
+        if (tier.wineBottles) {
+          lines.push(`${tier.wineBottles} bottle${tier.wineBottles > 1 ? 's' : ''} of wine included.`);
+        }
+      }
+    } else if (pricing.kind === 'water-taxi') {
+      const zone = mode === 'yacht-harbour' ? WATER_TAXI_PRICES.yachtsNearHarbour : WATER_TAXI_PRICES.pakleniIslands;
+      const zoneName = mode === 'yacht-harbour' ? 'yachts anchored near Hvar harbour' : 'Pakleni Islands';
+      const price = getWaterTaxiPrice(zone, pax);
+      lines.push(`Yacht taxi (${zoneName}): ${price} EUR`);
+      if (pax > zone.baseGuests) {
+        lines.push(`${zone.basePrice} EUR base (up to ${zone.baseGuests} guests) + ${pax - zone.baseGuests} x ${zone.perExtraGuest} EUR`);
       }
     }
 
@@ -620,6 +748,9 @@ function QuoteBuilder({ service }: { service: Service }) {
       } else {
         lines.push('No licence needed.');
       }
+      if (pricing.deposit) {
+        lines.push(`Security deposit: ${pricing.deposit} EUR, cash only, returned after the rental.`);
+      }
     }
 
     if (siteExtras.length > 0) {
@@ -659,7 +790,7 @@ function QuoteBuilder({ service }: { service: Service }) {
     }
   }
 
-  const showPax = pricing.kind !== 'rental-drive';
+  const showPax = pricing.kind !== 'rental-drive' && pricing.kind !== 'transfer-route';
 
   return (
     <div className="mt-3 space-y-4 rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-4">
@@ -682,6 +813,20 @@ function QuoteBuilder({ service }: { service: Service }) {
         <div className="flex flex-wrap gap-2">
           <ModeBtn active={mode === 'split-hvar'} onClick={() => setMode('split-hvar')}>Split ↔ Hvar</ModeBtn>
           <ModeBtn active={mode === 'airport-hvar'} onClick={() => setMode('airport-hvar')}>Airport ↔ Hvar</ModeBtn>
+        </div>
+      )}
+      {pricing.kind === 'water-taxi' && (
+        <div className="flex flex-wrap gap-2">
+          <ModeBtn active={mode === 'yacht-harbour'} onClick={() => setMode('yacht-harbour')}>Near Harbour</ModeBtn>
+          <ModeBtn active={mode === 'yacht-pakleni'} onClick={() => setMode('yacht-pakleni')}>Pakleni Islands</ModeBtn>
+        </div>
+      )}
+      {pricing.kind === 'transfer-route' && (
+        <div className="rounded-lg border border-[color:var(--border)] bg-[color:var(--bg)] px-3 py-2 font-body text-sm text-[color:var(--gray)]">
+          One way: <strong className="text-[color:var(--white)]">€{pricing.oneWay}</strong>
+          {pricing.return !== undefined && (
+            <> · Return: <strong className="text-[color:var(--white)]">€{pricing.return}</strong></>
+          )}
         </div>
       )}
 
@@ -998,6 +1143,10 @@ function OpsHeader() {
           <span>
             <strong>Pasara 20hp:</strong> say &quot;ask us about licence&quot;, never &quot;no licence needed&quot;
           </span>
+        </div>
+        <div className="flex gap-2 font-body text-sm text-[color:var(--white)]">
+          <span>🐶</span>
+          <span>Dogs are welcome on board. Let us know when you book.</span>
         </div>
       </div>
     </details>

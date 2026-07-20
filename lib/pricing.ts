@@ -20,6 +20,7 @@ export type SunsetTier = {
   minGuests: number;
   maxGuests: number;
   price: number;
+  boats?: number;
   wineBottles?: number;
 };
 
@@ -27,6 +28,16 @@ export type RentalSelfDrivePrice = {
   pricePerDay: number;
   fuelIncluded: boolean;
   licenceRequired: boolean;
+  maxGuests: number;
+  deposit?: number;
+  depositCashOnly?: boolean;
+};
+
+export type WaterTaxiZone = {
+  basePrice: number;
+  baseGuests: number;
+  perExtraGuest: number;
+  max: number; // assumed by MareBoats, not confirmed by Nikola
 };
 
 // ──────────────────────────────────────────────
@@ -36,6 +47,9 @@ export type RentalSelfDrivePrice = {
 export const TRANSFER_PRICES = {
   splitHvar: 500,
   airportHvar: 600,
+  stariGrad: 400,
+  bracOneWay: 450,
+  bracReturn: 800,
 } as const;
 
 // ──────────────────────────────────────────────
@@ -60,6 +74,7 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
     airportHvar: TRANSFER_PRICES.airportHvar,
   },
   'yacht-sailboat-taxi': { onRequest: true },
+  'brac-zlatni-rat': { private: 600 }, // Brač tour, 6h, up to 8 — crew dashboard only, no public page yet
 };
 
 // ──────────────────────────────────────────────
@@ -67,10 +82,10 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
 // ──────────────────────────────────────────────
 
 export const RENTAL_SELF_DRIVE: Record<string, RentalSelfDrivePrice> = {
-  pasara5hp:     { pricePerDay: 150, fuelIncluded: true,  licenceRequired: false },
-  pasara20hp:    { pricePerDay: 200, fuelIncluded: true,  licenceRequired: true  },
-  speedboat60hp: { pricePerDay: 290, fuelIncluded: true,  licenceRequired: true  },
-  mariner150hp:  { pricePerDay: 350, fuelIncluded: false, licenceRequired: true  },
+  pasara5hp:     { pricePerDay: 150, fuelIncluded: true,  licenceRequired: false, maxGuests: 5 },
+  pasara20hp:    { pricePerDay: 200, fuelIncluded: true,  licenceRequired: true,  maxGuests: 5 },
+  speedboat60hp: { pricePerDay: 290, fuelIncluded: true,  licenceRequired: true,  maxGuests: 5 },
+  mariner150hp:  { pricePerDay: 400, fuelIncluded: false, licenceRequired: true,  maxGuests: 8, deposit: 300, depositCashOnly: true },
 };
 
 export const RENTAL_WITH_SKIPPER_FROM = 500;
@@ -79,19 +94,34 @@ export const RENTAL_WITH_SKIPPER_FROM = 500;
 // Sunset cruise — tiered pricing by group size
 // ──────────────────────────────────────────────
 
-// NOTE: Nikola confirmed 4/6/8 as tier breakpoints. The rounding convention
+// NOTE: Nikola confirmed 4/6/8 as single-boat breakpoints. The rounding convention
 // (guests 5 and 7 round UP to the next tier: 5-6 = €350, 7-8 = €500)
 // is an assumption, not explicitly confirmed. Review if Nikola revisits.
+// 9-16 = 2 boats at €500 each = €1000. Confirmed by Nikola 20/07/2026.
 export const SUNSET_TIERS: SunsetTier[] = [
   { minGuests: 1, maxGuests: 4, price: 250, wineBottles: 1 },
   { minGuests: 5, maxGuests: 6, price: 350, wineBottles: 2 },
   { minGuests: 7, maxGuests: 8, price: 500 },
+  { minGuests: 9, maxGuests: 16, price: 1000, boats: 2 },
 ];
 
 export const SUNSET_WINE_EXTRA = 30;
 
 export function getSunsetTier(pax: number): SunsetTier {
   return SUNSET_TIERS.find((t) => pax <= t.maxGuests) ?? SUNSET_TIERS[SUNSET_TIERS.length - 1];
+}
+
+// ──────────────────────────────────────────────
+// Water taxi — base price + per-extra-guest
+// ──────────────────────────────────────────────
+
+export const WATER_TAXI_PRICES: Record<string, WaterTaxiZone> = {
+  yachtsNearHarbour: { basePrice: 50,  baseGuests: 5, perExtraGuest: 10, max: 8 },
+  pakleniIslands:    { basePrice: 100, baseGuests: 5, perExtraGuest: 20, max: 8 },
+};
+
+export function getWaterTaxiPrice(zone: WaterTaxiZone, pax: number): number {
+  return zone.basePrice + Math.max(0, pax - zone.baseGuests) * zone.perExtraGuest;
 }
 
 // ──────────────────────────────────────────────
@@ -199,6 +229,7 @@ export function getPricingOptions(
       label: `${t.minGuests}-${t.maxGuests} guests`,
       price: `€${t.price}`,
       note:
+        t.boats === 2 ? '2 boats sailing together' :
         t.wineBottles === 1 ? '1 bottle of wine included' :
         t.wineBottles === 2 ? '2 bottles of wine included' : '',
     }));

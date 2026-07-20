@@ -5,7 +5,7 @@ import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { getMapboxStaticUrl, type GeoCoords } from '@/lib/mapbox';
-import { TRANSFER_PRICES } from '@/lib/pricing';
+import { TRANSFER_PRICES, WATER_TAXI_PRICES, getWaterTaxiPrice } from '@/lib/pricing';
 
 export const metadata: Metadata = generateSEO({
   title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula - MareBoats',
@@ -104,13 +104,28 @@ const TRANSFERS: TransferCard[] = [
     ],
   },
   {
+    id: 'stari-grad',
+    route: 'Stari Grad',
+    price: `€${TRANSFER_PRICES.stariGrad} one way`,
+    time: '~20 min',
+    summary: 'Hvar Harbour to Stari Grad. Fastest connection between the two towns.',
+    waMessage: "Hi! I'd like a transfer to Stari Grad",
+    ctaLabel: 'Book on WhatsApp',
+    hoverImage: null,
+    mapFrom: COORDS.HVAR_PORT,
+    mapTo: { lon: 16.597500, lat: 43.183500 },
+    mapVia: [
+      { lon: 16.521000, lat: 43.175000 },
+    ],
+  },
+  {
     id: 'brac',
     route: 'Brač',
-    price: 'On request',
-    time: 'Private',
-    summary: 'Bol, Supetar, Milna. Tell us where.',
+    price: `€${TRANSFER_PRICES.bracOneWay} one way · €${TRANSFER_PRICES.bracReturn} return`,
+    time: '~30 min',
+    summary: 'Bol, Supetar, Milna. Private speedboat, no ferry.',
     waMessage: "Hi! I'd like a transfer to Brač",
-    ctaLabel: 'Ask on WhatsApp',
+    ctaLabel: 'Book on WhatsApp',
     hoverImage: null,
     mapFrom: COORDS.HVAR_PORT,
     mapTo: { lon: 16.657026, lat: 43.261500 },
@@ -160,10 +175,10 @@ const TRANSFERS: TransferCard[] = [
     id: 'yacht-water-taxi',
     name: 'Yacht & Sailboat Water Taxi',
     route: 'Your Vessel',
-    price: 'On request',
+    price: `Near harbour from €${WATER_TAXI_PRICES.yachtsNearHarbour.basePrice} · Pakleni from €${WATER_TAXI_PRICES.pakleniIslands.basePrice}`,
     time: 'On demand',
     summary:
-      'Anchored near Hvar? We come to your boat: pickup, transfer or the start of any tour.',
+      `Anchored near Hvar or the Pakleni Islands? We come to your boat. Up to ${WATER_TAXI_PRICES.yachtsNearHarbour.baseGuests} guests base price, +€${WATER_TAXI_PRICES.yachtsNearHarbour.perExtraGuest}/person near harbour or +€${WATER_TAXI_PRICES.pakleniIslands.perExtraGuest}/person at Pakleni. Max ${WATER_TAXI_PRICES.yachtsNearHarbour.max}.`,
     waMessage: "Hi! I'd like info about the yacht water taxi",
     ctaLabel: 'Ask on WhatsApp',
     detailsHref: '/tours/yacht-sailboat-taxi',

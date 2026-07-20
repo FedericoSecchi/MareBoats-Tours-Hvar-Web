@@ -109,6 +109,22 @@ const faqSchema = {
         text: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Is there a security deposit for the Mariner 150hp?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `Yes. The Mariner 150hp requires a €${RENTAL_SELF_DRIVE.mariner150hp.deposit} security deposit, payable in cash only at pickup. It is returned in full at the end of the rental once the boat is checked.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are dogs allowed on the boat rental?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dogs are welcome on board. Let us know when you book.',
+      },
+    },
   ],
 };
 
@@ -144,6 +160,14 @@ const FAQS = [
   {
     q: 'Can I rent a boat in Hvar without a licence?',
     a: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
+  },
+  {
+    q: 'Is there a security deposit for the Mariner 150hp?',
+    a: `Yes. The Mariner 150hp requires a €${RENTAL_SELF_DRIVE.mariner150hp.deposit} security deposit paid in cash at pickup. It is returned in full at the end of the rental after a quick check of the boat. We do not accept cards for the deposit - bring cash.`,
+  },
+  {
+    q: 'Are dogs allowed on a boat rental in Hvar?',
+    a: 'Dogs are welcome on board. Let us know when you book so we can prepare accordingly.',
   },
 ];
 
@@ -262,7 +286,8 @@ export default function RentalsPage() {
             <strong className="text-[color:var(--white)]">local skipper included</strong> for the
             full-service experience, or take the helm yourself with our{' '}
             <strong className="text-[color:var(--white)]">self-drive option</strong>. Both pickup
-            at Hvar Harbour, same quality speedboat.
+            at Hvar Harbour, same quality speedboat. Dogs are welcome on board - let us know when
+            you book.
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -308,6 +333,7 @@ export default function RentalsPage() {
                   'Local skipper, custom route',
                   'Fuel, water & snorkel included',
                   'Up to 8 people - private group only',
+                  'Dogs are welcome on board',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
@@ -358,7 +384,7 @@ export default function RentalsPage() {
                   <span className="mt-2 inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
                     No Licence Needed
                   </span>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">No licence needed · small boat rental Hvar</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">No licence needed · small boat rental Hvar · up to {RENTAL_SELF_DRIVE.pasara5hp.maxGuests} people</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.pasara5hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Calm water exploration', 'Fuel included', 'Perfect for Pakleni Islands'].map((item) => (
@@ -384,7 +410,7 @@ export default function RentalsPage() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Pasara · 20hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small boat rental Hvar · ask us about licence</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small boat rental Hvar · ask us about licence · up to {RENTAL_SELF_DRIVE.pasara20hp.maxGuests} people</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.pasara20hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['More range, more speed', 'Fuel included', 'Contact us to confirm eligibility'].map((item) => (
@@ -410,7 +436,7 @@ export default function RentalsPage() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Speedboat · 60hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required · up to {RENTAL_SELF_DRIVE.speedboat60hp.maxGuests} people</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.speedboat60hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
                     {['Fuel included', 'Valid boating licence required', 'Full day on the Adriatic'].map((item) => (
@@ -436,10 +462,16 @@ export default function RentalsPage() {
                   <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Speedboat Mariner · 150hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Speedboat rental Hvar · licence required · up to {RENTAL_SELF_DRIVE.mariner150hp.maxGuests} people</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.mariner150hp.pricePerDay} / day + fuel</p>
+                  <p className="mt-1 font-body text-[10px] text-[color:var(--gray)]">Fuel full tank in, full tank out</p>
+                  <div className="mt-3 rounded-lg border border-amber-400/50 bg-amber-400/10 px-3 py-2">
+                    <p className="font-body text-xs font-semibold text-amber-300">
+                      Security deposit: €{RENTAL_SELF_DRIVE.mariner150hp.deposit} cash, returned after rental
+                    </p>
+                  </div>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
-                    {['Fuel full-in, full-out', 'Valid boating licence required', 'Maximum range and power'].map((item) => (
+                    {['Valid boating licence required', 'Maximum range and power'].map((item) => (
                       <li key={item} className="flex gap-2">
                         <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
                         <span>{item}</span>
