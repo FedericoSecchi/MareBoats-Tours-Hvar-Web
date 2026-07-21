@@ -342,7 +342,7 @@ const SERVICES: Service[] = [
     id: 'brac-zlatni-rat',
     category: 'tour',
     name: 'Brač · Zlatni Rat',
-    quoteName: 'Brač - Zlatni Rat tour',
+    quoteName: 'Zlatni Rat beach tour, Brač',
     duration: '6 h · private',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel'],
@@ -677,6 +677,7 @@ function QuoteBuilder({ service }: { service: Service }) {
       } else {
         lines.push(`Private tour: ${pricing.price} EUR`);
       }
+      if (id === 'brac-zlatni-rat') lines.push('6 hours.');
       if (pricing.fuelExtra) lines.push('Fuel: to confirm with Nikola');
     } else if (pricing.kind === 'transfer') {
       const price = mode === 'split-hvar' ? pricing.splitHvar : pricing.airportHvar;
@@ -708,6 +709,8 @@ function QuoteBuilder({ service }: { service: Service }) {
       lines.push(`Yacht taxi (${zoneName}): ${price} EUR`);
       if (pax > zone.baseGuests) {
         lines.push(`${zone.basePrice} EUR base (up to ${zone.baseGuests} guests) + ${pax - zone.baseGuests} x ${zone.perExtraGuest} EUR`);
+      } else {
+        lines.push(`Extra guests: ${zone.perExtraGuest} EUR each.`);
       }
     }
 
@@ -763,7 +766,9 @@ function QuoteBuilder({ service }: { service: Service }) {
 
     lines.push('');
 
-    if (id === 'blue-cave') {
+    if (pricing.kind === 'water-taxi') {
+      lines.push('Send us your position and the pickup time on WhatsApp and we come to you.');
+    } else if (id === 'blue-cave') {
       lines.push('Departure 10:00. Meeting point: MareBoats barrel, Hvar Harbour. Please arrive 10 minutes early.');
     } else {
       lines.push('Meeting point: MareBoats barrel, Hvar Harbour. Please arrive 10 minutes early.');
