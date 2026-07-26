@@ -1,5 +1,6 @@
 import {
   formatPriceFull,
+  formatPriceShort,
   getLowestPrice,
   getPricingOptions,
   TOUR_PRICES,
@@ -144,7 +145,7 @@ Private half-day: €${PK.private!} for your group, up to 8 guests. Groups of 9 
 Most guests who book this tour have already done a full-day trip and want a shorter option. Others are based in Hvar for a few days and prefer to save the longer routes for later. Either way, the Pakleni Islands are worth at least a half day.`,
     duration: '3 HRS',
     durationIso: 'PT3H',
-    price: formatPriceFull('pakleni-islands'),
+    price: formatPriceShort('pakleni-islands'),
     priceEur: getLowestPrice('pakleni-islands'),
     includes: [
       'Private speedboat and local skipper',
@@ -192,7 +193,7 @@ We keep the group small so the day stays relaxed. Your skipper adjusts the pace 
 Message us on WhatsApp with your date and group size - we confirm fast.`,
     duration: '7 HRS · DEPARTS 10:00',
     durationIso: 'PT7H',
-    price: formatPriceFull('blue-cave-pakleni-islands'),
+    price: formatPriceShort('blue-cave-pakleni-islands'),
     priceEur: getLowestPrice('blue-cave-pakleni-islands'),
     includes: [
       'Speedboat and local skipper',
