@@ -514,10 +514,15 @@ Nikola
 
 ## Tour cards — componentes (estado 26/07/2026)
 
-### Red Rocks card (26/07/2026)
-- Badge: `duration` en tours-data.ts y TOUR_CARDS en tours/page.tsx → `'HALF-DAY OR FULL-DAY'`
-- Precio: ahora distingue explícitamente shared y private. tours-data.ts usa template literal con `RR.sharedPerPerson` y `RR.privateHalfDay`; listing page usa `TOUR_PRICES[slug]` directamente. Resultado: "Shared from €85/person · Private from €400" en ambas cards.
-- Pendiente (no en esta tarea): agregar `pricingOptions` al Red Rocks en tours-data.ts para mostrar la tarjeta de precios estructurada (shared / half-day / full-day) en la detail page, igual que Blue Cave y Sunset.
+### Convención de tour cards (26/07/2026)
+- **Badge = solo duración, formato corto, unidad "HRS", todo en mayúsculas.** Fuente única: campo `duration` en tours-data.ts (home) y `duration` en TOUR_CARDS de app/tours/page.tsx (listado). Deben ser idénticos por tour.
+  - 5 Islands / Blue Cave: `'7 HRS · DEPARTS 10:00'`
+  - Red Rocks: `'4 OR 6 HRS'`
+  - Pakleni: `'3 HRS'` (corregido de "3-4 hours" — son 3 hrs)
+  - Sunset: `'2 HRS'`
+- **Precio en el cuerpo de la card**, no en el badge. Red Rocks: "Shared from €85/person · Private from €400" (leído de TOUR_PRICES, sin hardcodear). Full-day €500 va en la detail page, no en la card.
+- **Divergencias conocidas (no corregidas aún):** Blue Cave precio home `"€130/person (group) · €700 private"` vs listado `"From €130/person · €700 private"`. Pakleni home `"€300"` vs listado `"€300 private"`. Origen: home usa `formatPriceFull`, listado usa `formatPriceShort`.
+- Pendiente: agregar `pricingOptions` al Red Rocks en tours-data.ts para tarjeta de precios estructurada en detail page (igual que Blue Cave y Sunset).
 
 
 

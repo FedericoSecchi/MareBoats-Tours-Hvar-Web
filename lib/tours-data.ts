@@ -78,7 +78,7 @@ Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with 
 Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00–17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
-    duration: 'HALF-DAY OR FULL-DAY',
+    duration: '4 OR 6 HRS',
     durationIso: 'PT4H',
     price: `Shared from €${RR.sharedPerPerson}/person · Private from €${RR.privateHalfDay}`,
     priceEur: getLowestPrice('red-rocks-pakleni-islands'),
@@ -142,7 +142,7 @@ Because the boat is private, the route stays flexible: more time snorkeling, a l
 Private half-day: €${PK.private!} for your group, up to 8 guests. Groups of 9 to 16 travel on two boats sailing together - message us for availability. Message us on WhatsApp with your date. We confirm fast.
 
 Most guests who book this tour have already done a full-day trip and want a shorter option. Others are based in Hvar for a few days and prefer to save the longer routes for later. Either way, the Pakleni Islands are worth at least a half day.`,
-    duration: '3 hrs',
+    duration: '3 HRS',
     durationIso: 'PT3H',
     price: formatPriceFull('pakleni-islands'),
     priceEur: getLowestPrice('pakleni-islands'),
@@ -190,7 +190,7 @@ After the caves you get Medvidina, the longest sea cave on Biševo, and Budikova
 We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€${BC.sharedPerPerson} per person) or fully private (€${BC.private} for your group only, up to 8 guests). Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone as one group.
 
 Message us on WhatsApp with your date and group size - we confirm fast.`,
-    duration: '7 hours · Departs 10:00',
+    duration: '7 HRS · DEPARTS 10:00',
     durationIso: 'PT7H',
     price: formatPriceFull('blue-cave-pakleni-islands'),
     priceEur: getLowestPrice('blue-cave-pakleni-islands'),
@@ -258,7 +258,7 @@ This private evening boat tour departs from Hvar Harbour and follows a route cho
 Your captain focuses on safety and smooth cruising as light fades, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
 Pricing scales with group size: see the breakdown below. Wine is included for smaller groups, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
-    duration: '2 hrs',
+    duration: '2 HRS',
     durationIso: 'PT2H',
     price: formatPriceFull('sunset-cruise'),
     priceEur: getLowestPrice('sunset-cruise'),

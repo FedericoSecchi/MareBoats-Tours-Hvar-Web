@@ -44,7 +44,7 @@ const TOUR_CARDS: TourCard[] = [
   {
     slug: 'blue-cave-pakleni-islands',
     name: '5 Islands, 4 Beaches, 3 Caves',
-    duration: '7 hours · 10:00–17:00',
+    duration: '7 HRS · DEPARTS 10:00',
     price: formatPriceShort('blue-cave-pakleni-islands'),
     summary:
       'Our flagship full day: Green Cave, Stiniva, Blue Cave, Budikovac and Pakleni Islands.',
@@ -55,7 +55,7 @@ const TOUR_CARDS: TourCard[] = [
   {
     slug: 'red-rocks-pakleni-islands',
     name: 'Red Rocks & Pakleni Islands',
-    duration: 'HALF-DAY OR FULL-DAY',
+    duration: '4 OR 6 HRS',
     price: `Shared from €${TOUR_PRICES['red-rocks-pakleni-islands'].sharedPerPerson}/person · Private from €${TOUR_PRICES['red-rocks-pakleni-islands'].privateHalfDay}`,
     summary:
       'Cliffs, a secret cave, Dubovica Beach and the Pakleni archipelago in one half-day.',
@@ -66,7 +66,7 @@ const TOUR_CARDS: TourCard[] = [
   {
     slug: 'pakleni-islands',
     name: 'Pakleni Islands',
-    duration: '3–4 hours',
+    duration: '3 HRS',
     price: formatPriceShort('pakleni-islands'),
     summary:
       'A relaxed half-day around the Pakleni archipelago. Ideal for families and shorter visits.',
@@ -77,7 +77,7 @@ const TOUR_CARDS: TourCard[] = [
   {
     slug: 'sunset-cruise',
     name: 'Sunset Cruise',
-    duration: '~2 hours · golden hour',
+    duration: '2 HRS',
     price: formatPriceShort('sunset-cruise'),
     summary:
       'Private evening cruise along the Hvar coastline. Calm water, golden light, best photos of the day.',
