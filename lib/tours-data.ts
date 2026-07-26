@@ -126,6 +126,11 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       'dubovica beach boat hvar',
       'shared boat tour hvar',
     ],
+    pricingOptions: [
+      { label: 'Shared', price: `€${RR.sharedPerPerson}/person`, note: '11:00-17:00 · up to 8 guests' },
+      { label: 'Private half-day', price: `€${RR.privateHalfDay}`, note: '4 hrs · your group only' },
+      { label: 'Private full-day', price: `€${RR.privateFullDay}`, note: '6 hrs · your group only' },
+    ],
   },
 
   {

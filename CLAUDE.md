@@ -522,7 +522,7 @@ Nikola
   - Sunset: `'2 HRS'`
 - **Precio en el cuerpo de la card**, no en el badge. Red Rocks: "Shared from €85/person · Private from €400" (leído de TOUR_PRICES, sin hardcodear). Full-day €500 va en la detail page, no en la card.
 - **Fuente única de precio de card (26/07/2026):** tours-data.ts y TOUR_CARDS en app/tours/page.tsx usan ambos `formatPriceShort` para todas las cards, excepto Red Rocks (template manual idéntico en ambos) y tours no-featured (private-charter, transfer, yacht) que siguen con `formatPriceFull` en tours-data.ts. Strings canónicos: Blue Cave `"From €130/person · €700 private"`, Pakleni `"€300 private"`, Sunset `"From €250"`, Red Rocks `"Shared from €85/person · Private from €400"`.
-- Pendiente: agregar `pricingOptions` al Red Rocks en tours-data.ts para tarjeta de precios estructurada en detail page (igual que Blue Cave y Sunset).
+- Red Rocks ya tiene `pricingOptions` con las 3 combinaciones (26/07/2026): Shared €85/person (11:00-17:00), Private half-day €400 (4 hrs), Private full-day €500 (6 hrs). Mismo render que Blue Cave y Sunset. Numeros leidos de `RR` shorthand (TOUR_PRICES)..
 
 
 
