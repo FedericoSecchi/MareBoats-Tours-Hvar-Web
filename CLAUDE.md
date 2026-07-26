@@ -238,8 +238,20 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 - Footer → link "Conditions"
 
 ## QR Hub — /qr/
-- "On Tour" → `/hvar-islands-guide?ref=qr`
-- "Current Conditions" → `/conditions/`
+Hub de cards para QR físicos (barco, meeting point, etc.). noindex, sin navbar/footer, full-screen móvil. El floating WhatsApp button se oculta explícitamente en `/qr` (ver WhatsAppButton.tsx).
+
+| Card | Destino | Variante |
+|---|---|---|
+| Explore Tours | `/landing/explore` | primary |
+| Message Nikola | `https://wa.me/385951966734?text=Hi%2C%20I%20scanned...` | secondary · external · target _blank |
+| Pre-Tour Info | `/landing/pre-tour` | secondary |
+| On Tour | `/hvar-islands-guide?ref=qr` | secondary |
+| Leave a Review | `/landing/review` | secondary |
+| Hvar Guide | `/landing/guide-hvar` | secondary |
+| Rental Rules | `/landing/rental` | secondary |
+| Current Conditions | `/conditions` | secondary |
+
+La card de WhatsApp (26/07/2026) va en posición 2. Mensaje prellenado: "Hi, I scanned the MareBoats QR code and have a question." Usa `external: true` en `QrButton` type para que `Card` agregue `target="_blank" rel="noopener noreferrer"` al Link.
 
 ## Herramientas operativas
 - **Vesselio** — mareboats.vesselio.app · apikey: Fedde123. Solo referencia operativa, no conectar al sitio.
