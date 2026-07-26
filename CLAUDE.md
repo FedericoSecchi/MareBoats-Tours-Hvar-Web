@@ -400,10 +400,11 @@ Nikola
 
 ---
 
-## /rentals/ — estado al 07/06/2026
+## /rentals/ — estado al 26/07/2026
 - Grid 2x2 self-drive con precios reales y badges de licencia
 - Badge PASARA 5HP: "NO LICENCE NEEDED" · PASARA 20HP: "ASK US ABOUT LICENCE" · Speedboats: "LICENCE REQUIRED"
 - Schema JSON-LD: Service + BreadcrumbList + FAQPage (no tocar)
+- **Underwater Scooter (26/07/2026):** sección reescrita para dejar claro que es add-on de tours privados, NO alquiler standalone. Precio muestra `ADDONS.scooter` (€40/unit). No disponible en Sunset Cruise ni salidas compartidas. Schema description actualizado acorde.
 
 ---
 
@@ -511,7 +512,14 @@ Nikola
 
 ---
 
-## Tour cards — componentes (estado 11/06/2026)
+## Tour cards — componentes (estado 26/07/2026)
+
+### Red Rocks card (26/07/2026)
+- Badge: `duration` en tours-data.ts y TOUR_CARDS en tours/page.tsx → `'HALF-DAY OR FULL-DAY'`
+- Precio: ahora distingue explícitamente shared y private. tours-data.ts usa template literal con `RR.sharedPerPerson` y `RR.privateHalfDay`; listing page usa `TOUR_PRICES[slug]` directamente. Resultado: "Shared from €85/person · Private from €400" en ambas cards.
+- Pendiente (no en esta tarea): agregar `pricingOptions` al Red Rocks en tours-data.ts para mostrar la tarjeta de precios estructurada (shared / half-day / full-day) en la detail page, igual que Blue Cave y Sunset.
+
+
 
 ### components/ui/TourCardImage.tsx
 - Carousel autoplay 4000ms on mount

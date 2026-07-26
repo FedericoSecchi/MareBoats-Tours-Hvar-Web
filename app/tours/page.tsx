@@ -6,7 +6,7 @@ import { TrackedTourDetailLink } from '@/components/ui/TrackedTourDetailLink';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { TourCardImage } from '@/components/ui/TourCardImage';
 import { toursData } from '@/lib/tours-data';
-import { formatPriceShort, RENTAL_SELF_DRIVE } from '@/lib/pricing';
+import { formatPriceShort, RENTAL_SELF_DRIVE, TOUR_PRICES } from '@/lib/pricing';
 
 export const metadata: Metadata = generateSEO({
   title: 'Boat Tours Hvar | All Tours from Hvar Harbour - MareBoats',
@@ -55,8 +55,8 @@ const TOUR_CARDS: TourCard[] = [
   {
     slug: 'red-rocks-pakleni-islands',
     name: 'Red Rocks & Pakleni Islands',
-    duration: '4 hours · morning or afternoon',
-    price: formatPriceShort('red-rocks-pakleni-islands'),
+    duration: 'HALF-DAY OR FULL-DAY',
+    price: `Shared from €${TOUR_PRICES['red-rocks-pakleni-islands'].sharedPerPerson}/person · Private from €${TOUR_PRICES['red-rocks-pakleni-islands'].privateHalfDay}`,
     summary:
       'Cliffs, a secret cave, Dubovica Beach and the Pakleni archipelago in one half-day.',
     image: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',

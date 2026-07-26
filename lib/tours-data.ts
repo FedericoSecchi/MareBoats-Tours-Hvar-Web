@@ -78,9 +78,9 @@ Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with 
 Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00–17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
-    duration: 'Shared 11:00–17:00 · Private half-day 4 hrs · Private full-day 6 hrs',
+    duration: 'HALF-DAY OR FULL-DAY',
     durationIso: 'PT4H',
-    price: formatPriceFull('red-rocks-pakleni-islands'),
+    price: `Shared from €${RR.sharedPerPerson}/person · Private from €${RR.privateHalfDay}`,
     priceEur: getLowestPrice('red-rocks-pakleni-islands'),
     includes: [
       'Speedboat and local skipper',

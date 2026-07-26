@@ -6,7 +6,7 @@ import { JsonLd } from '@/components/ui/JsonLd';
 import { rentalServiceSchema, rentalBreadcrumbSchema } from '@/lib/schema';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { rulesAndRentals, type Rule } from '@/lib/guide-content';
-import { RENTAL_SELF_DRIVE, RENTAL_WITH_SKIPPER_FROM } from '@/lib/pricing';
+import { RENTAL_SELF_DRIVE, RENTAL_WITH_SKIPPER_FROM, ADDONS } from '@/lib/pricing';
 
 export const metadata: Metadata = {
   ...generateSEO({
@@ -503,7 +503,7 @@ export default function RentalsPage() {
             Underwater Scooter
           </p>
           <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
-            Underwater Scooter Rental
+            Underwater Scooter
           </h2>
 
           <div className="mt-8 max-w-sm mx-auto">
@@ -511,7 +511,7 @@ export default function RentalsPage() {
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                   src="/images/boat/hvar-pakleni-islands-sea-scooter-snorkel-drone-2026-01.jpg"
-                  alt="Underwater scooter rental in Hvar - explore the Adriatic"
+                  alt="Underwater scooter add-on for private boat tours in Hvar - Pakleni Islands Adriatic"
                   fill
                   sizes="(max-width: 768px) 100vw, 400px"
                   className="object-cover"
@@ -525,12 +525,16 @@ export default function RentalsPage() {
                     Underwater Scooter
                   </h3>
                   <p className="mt-2 font-body text-base leading-relaxed text-[color:var(--gray)]">
-                    Ride the waves. Instructor briefing included.
+                    Not a standalone rental. The scooter is an add-on for private tours - tell us when you book and we&apos;ll have it on board. Priced per unit, not per person.
                   </p>
                 </div>
 
                 <ul className="space-y-1.5 font-body text-xs text-[color:var(--gray)]">
-                  {['1 battery included per rental', 'Professional masks included'].map((rule) => (
+                  {[
+                    'Private tours only - not on Sunset Cruise or shared departures',
+                    'Skipper briefing on board before entering the water',
+                    'No experience needed',
+                  ].map((rule) => (
                     <li key={rule} className="flex gap-2">
                       <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
                       <span>{rule}</span>
@@ -540,10 +544,10 @@ export default function RentalsPage() {
 
                 <div className="mt-auto flex flex-col gap-3">
                   <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
-                    On request
+                    €{ADDONS.scooter}/unit - add-on only
                   </span>
                   <WhatsAppTrackedLink
-                    href={waUrl("Hi! I'd like info about the underwater scooter")}
+                    href={waUrl("Hi! I'd like to add an underwater scooter to a private tour.")}
                     label="rentals_water-scooter"
                     className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
                   >
