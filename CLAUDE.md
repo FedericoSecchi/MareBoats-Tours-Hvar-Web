@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 21 Julio 2026**
+**Actualizado: 26 Julio 2026**
 
 ---
 
@@ -254,7 +254,7 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 - NO mencionar año de fundación.
 - NO mencionar RIB. Usar "speedboat".
 - Boat rental sin licencia: solo Pasara 5hp es clara. 20hp por WhatsApp.
-- Em-dashes y en-dashes prohibidos.
+- Em-dashes y en-dashes prohibidos. **Sweep completo verificado: commit 6b7c481 (26/07/2026), 15 archivos, build limpio. Todo el copy visible usa guion simple (-). Los únicos — o – que quedan en el repo son en comentarios de código, no en copy.**
 - "Lunch not included" — wording unificado.
 - **Capacidad: "Licensed for 12. We cap at 8."** Nunca mencionar 12 sin contexto.
 - **Brand: "MareBoats Hvar"** (sin espacio).
