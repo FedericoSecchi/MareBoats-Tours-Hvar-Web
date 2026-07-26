@@ -21,7 +21,11 @@ type QrButton = {
   href: string;
   variant: Variant;
   badge?: string;
+  external?: boolean;
 };
+
+const WA_QR_HREF =
+  'https://wa.me/385951966734?text=Hi%2C%20I%20scanned%20the%20MareBoats%20QR%20code%20and%20have%20a%20question.';
 
 const QR_BUTTONS: QrButton[] = [
   {
@@ -30,6 +34,14 @@ const QR_BUTTONS: QrButton[] = [
     description: 'Browse our tours and book your day on the water',
     href: '/landing/explore',
     variant: 'primary',
+  },
+  {
+    icon: '💬',
+    label: 'Message Nikola',
+    description: 'Quick question? Tap to open WhatsApp. We reply within the hour.',
+    href: WA_QR_HREF,
+    variant: 'secondary',
+    external: true,
   },
   {
     icon: '📋',
@@ -132,7 +144,11 @@ function Card({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay, ease: easeOutBack }}
     >
-      <Link href={button.href} className={`${base} ${variantClass} block`}>
+      <Link
+        href={button.href}
+        className={`${base} ${variantClass} block`}
+        {...(button.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
         {content}
       </Link>
     </motion.div>
