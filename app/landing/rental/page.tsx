@@ -256,7 +256,7 @@ export default function LandingRentalPage() {
             Scooter Rental Hvar
           </h2>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            You have seen the coast from the water. Now explore the island. 6 scooters available —
+            You have seen the coast from the water. Now explore the island. 6 scooters available,
             pick up at Hvar Harbour, same spot as your boat tour. Perfect for Hvar Town, Stari
             Grad, Jelsa and the lavender fields.
           </p>

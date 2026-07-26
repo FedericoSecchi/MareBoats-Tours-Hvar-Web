@@ -191,7 +191,7 @@ const ROUTES = [
         subtitle: 'Biševo Island - 15 permanent residents',
         badge: 'Best at noon',
         description:
-          'The electric blue glow happens when sunlight enters through an underwater opening and reflects off the white limestone seabed, absorbing red wavelengths and scattering only blue. The cave was carved by wave erosion over millennia. First documented in 1884 by Austrian painter Baron Eugen von Ransonnet, who had the entrance blasted open with dynamite so boats could enter. Biševo is one of the most remote islands in Croatia. Best light: 11am–12pm on calm days.',
+          'The electric blue glow happens when sunlight enters through an underwater opening and reflects off the white limestone seabed, absorbing red wavelengths and scattering only blue. The cave was carved by wave erosion over millennia. First documented in 1884 by Austrian painter Baron Eugen von Ransonnet, who had the entrance blasted open with dynamite so boats could enter. Biševo is one of the most remote islands in Croatia. Best light: 11am-12pm on calm days.',
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=42.9802472%2C16.0220468',
       },
       {

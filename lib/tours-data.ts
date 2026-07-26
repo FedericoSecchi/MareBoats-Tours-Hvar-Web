@@ -76,7 +76,7 @@ We depart from Hvar Harbour and head first to Borče Bay in Milna, a quiet cove 
 
 Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00–13:00 or 14:00–18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00–17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
+Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: '4 OR 6 HRS',
@@ -223,7 +223,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Blue Cave (Biševo) - sunlight turns the water electric blue. Best between 11:00–12:00.',
+      'Blue Cave (Biševo) - sunlight turns the water electric blue. Best between 11:00-12:00.',
       'Green Cave - natural light through an underwater arch. Swim in from the sea.',
       'Stiniva Bay - voted best beach in Europe. Surrounded by cliffs on three sides.',
       'Medvidina Cave - longest sea cave on Biševo. Still, dark, unforgettable.',

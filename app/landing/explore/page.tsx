@@ -186,7 +186,7 @@ export default function LandingExplorePage() {
           </WhatsAppTrackedLink>
 
           <p className="mt-4 font-body text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
-            We reply within 1 hour · Daily 8:00–20:00 (May–September)
+            We reply within 1 hour · Daily 8:00-20:00 (May-September)
           </p>
         </div>
       </section>

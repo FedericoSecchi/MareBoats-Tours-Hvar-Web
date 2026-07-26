@@ -127,7 +127,7 @@ export const guideFaqs: GuideFaq[] = [
   {
     question: 'What time do we leave and how long is a full-day tour?',
     answer:
-      'We leave at 10:00 from Hvar Harbour, next to the fuel station. A full-day tour runs 6–8 hours depending on the route. Please arrive 10 minutes early.',
+      'We leave at 10:00 from Hvar Harbour, next to the fuel station. A full-day tour runs 6-8 hours depending on the route. Please arrive 10 minutes early.',
   },
   {
     question: 'What is included in the price?',

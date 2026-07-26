@@ -72,7 +72,7 @@ const SIGHTS = [
   {
     name: 'Hvar Fortress (Španjola)',
     entry: '~€4',
-    time: '1–2 hours',
+    time: '1-2 hours',
     seasonal: false,
     description:
       "The fortress above Hvar Town was built in the 13th century and expanded by the Venetians in the 16th. Climb up through the old town streets or take the path from the harbor - 20 minutes either way. The view from the top is the best panorama of the Pakleni Islands and the surrounding sea. Inside there's a small wine bar.",
@@ -80,7 +80,7 @@ const SIGHTS = [
   {
     name: 'Hvar Arsenal & Public Theatre (1612)',
     entry: '~€5',
-    time: '30–45 min',
+    time: '30-45 min',
     seasonal: false,
     description:
       'The Arsenal was built in the 14th century as a Venetian shipyard for the war galley. The theater on the upper floor, opened in 1612, is one of the oldest public theaters in Europe - built when Shakespeare was still alive. The interior has a neo-baroque auditorium with 33 boxes on two floors, restored to its 19th century appearance.',
@@ -96,7 +96,7 @@ const SIGHTS = [
   {
     name: 'Hvar Cathedral of St. Stephen',
     entry: 'Free',
-    time: '15–20 min',
+    time: '15-20 min',
     seasonal: false,
     description:
       "The main square's cathedral, built between the 16th and 17th centuries on the foundations of a Benedictine monastery. The bell tower is 16th century. Simple interior, free entry. The square in front - Trg svetog Stjepana - is the longest in Dalmatia.",
@@ -104,7 +104,7 @@ const SIGHTS = [
   {
     name: 'Franciscan Monastery & Museum',
     entry: '~€4',
-    time: '30–45 min',
+    time: '30-45 min',
     seasonal: false,
     description:
       "Located at the east end of the harbor, this 15th-century monastery has one of Croatia's finest collections of Greek and Roman artifacts, historic maps, and a painting of The Last Supper that's over 8 meters wide. The cloister garden is one of the quietest places in Hvar.",

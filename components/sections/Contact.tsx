@@ -101,7 +101,7 @@ export default function Contact() {
                 <span className="text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
                   Reply time
                 </span>
-                <span>Usually within 1 hour, daily 8:00–20:00 (May–Sep).</span>
+                <span>Usually within 1 hour, daily 8:00-20:00 (May-Sep).</span>
               </li>
 
               <li className="flex flex-col gap-1">

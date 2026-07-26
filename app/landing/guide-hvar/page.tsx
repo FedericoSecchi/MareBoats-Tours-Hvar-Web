@@ -104,7 +104,7 @@ const localTips: Tip[] = [
   },
   {
     label: 'High-season hours',
-    value: 'Restaurants 12:00–23:00. Most shops 09:00–21:00. Many venues close in winter.',
+    value: 'Restaurants 12:00-23:00. Most shops 09:00-21:00. Many venues close in winter.',
   },
   {
     label: 'Emergency',

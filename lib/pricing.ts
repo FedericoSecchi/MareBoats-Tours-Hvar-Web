@@ -162,7 +162,7 @@ export function formatPriceFull(slug: string): string {
   if (!p) return '';
   if (p.onRequest) return 'On request - message us on WhatsApp';
   if (p.splitHvar !== undefined && p.airportHvar !== undefined) {
-    return `Split–Hvar €${p.splitHvar} · Airport–Hvar €${p.airportHvar}`;
+    return `Split-Hvar €${p.splitHvar} · Airport-Hvar €${p.airportHvar}`;
   }
   if (
     p.sharedPerPerson !== undefined &&

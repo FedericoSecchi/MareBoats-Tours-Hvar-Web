@@ -69,7 +69,7 @@ const tourDetails: TourDetail[] = [
         label: 'Depart',
         value: '09:00, 11:00 or 14:00 - Nikola will confirm your slot',
       },
-      { label: 'Duration', value: '3–4 hours' },
+      { label: 'Duration', value: '3-4 hours' },
       { label: 'Route', value: 'Pakleni Islands - swimming stops at secluded bays' },
     ],
     extraCosts: 'None',
@@ -125,7 +125,7 @@ const adriaticFacts = [
   },
   {
     title: 'Saltier than the ocean. Clearer too.',
-    body: 'More buoyancy - good for all swimmers. Visibility around Hvar is typically 15–20 metres on a clear day. Bring a mask.',
+    body: 'More buoyancy - good for all swimmers. Visibility around Hvar is typically 15-20 metres on a clear day. Bring a mask.',
   },
   {
     title: 'We leave at 10:00 for a reason.',
