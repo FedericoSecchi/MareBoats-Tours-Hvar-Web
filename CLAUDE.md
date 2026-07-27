@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 26 Julio 2026**
+**Actualizado: 27 Julio 2026**
 
 ---
 
@@ -102,7 +102,7 @@ Todos estos valores viven en `lib/pricing.ts`. Esta tabla es referencia humana, 
 ### Tours
 | Tour | Precio | Duración | Notas |
 |---|---|---|---|
-| Red Rocks & Pakleni | €85/persona shared · €400 privado half-day · €500 privado full-day | 4h / 6h | — |
+| Red Rocks & Pakleni | €85/persona shared · €400 privado half-day · €500 privado full-day | 4h / 6h | Actualizado 27/07: `pricingOptions` agregado a `tours-data.ts` — detail page ahora muestra tarjeta de precios estructurada (igual que Blue Cave/Sunset), el full-day €500 ya no queda enterrado en el cuerpo de texto |
 | 5 Islands / Blue Cave | €130/persona shared · €700 privado | 7h, sale 10:00 | — |
 | Pakleni Islands | €300 privado | 3h | Dejó de ser "on request" el 13/07 |
 | Sunset Cruise | por tramos, ver abajo | 2h | Incluye vino, agua y fruta |
@@ -203,7 +203,7 @@ No hardcodear offers en schema.ts. Valores actuales:
 - `/hvar-islands-guide/` — indexada, priority 0.8. OnTourBanner visible solo con ?ref=qr.
 - `/on-tour/` — ELIMINADA. Redirect 301 → `/hvar-islands-guide/`.
 - `/explore/` — hub de contenido. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide".
-- `/guide/` — guía pre-tour con route cards. Las 3 secciones largas son accordion colapsable (cerradas por default, patrón `<details>`/`<summary>` nativo, mismo ícono +/× que IslandStopsAccordion): "Blue Cave, Green Cave & Vis", "Red Rocks & Pakleni" (ambas dentro de `{ROUTES.map(...)}`), y "Where to Eat" (heading como `<summary>`, map + restaurant cards colapsables). Múltiples paneles pueden estar abiertos simultáneamente.
+- `/guide/` — guía pre-tour con route cards. **Actualizado 27/07**: las 3 secciones largas ("Blue Cave, Green Cave & Vis", "Red Rocks & Pakleni", "Where to Eat") son accordion colapsable, cerradas por default. Implementado con `<details>/<summary>` nativo (Server Component, sin `'use client'`, sin `useState`), mismo patrón visual que `IslandStopsAccordion` (ícono +/× que rota). Múltiples paneles pueden estar abiertos a la vez. Contenido interno sin cambios, solo el wrapper.
 - `/transfers/` — Mapbox Static Images API. hoverImage Split asignada.
 - `/conditions/` — live weather/marine. Removida del navbar (08/06). Entradas contextuales desde tour pages y footer.
 - Nav: Tours → Rentals → Transfers → Explore → About
@@ -260,7 +260,7 @@ Hub de cards para QR físicos (barco, meeting point, etc.). noindex, sin navbar/
 - **Idiomas equipo: EN + HR + IT + ES + DE**
 - Botellas de vidrio: permitidas. Comida: permitida. No fumar. Sin baño a bordo.
 - Formularios: NO. Solo WhatsApp.
-- **Underwater Scooter**: €40/unit. NO en tours a Vis ni Sunset Cruise. Nombre: "Underwater Scooter".
+- **Underwater Scooter**: €40/unit. NO en tours a Vis ni Sunset Cruise. Nombre: "Underwater Scooter". **Actualizado 27/07**: en `/rentals/` quedó explícito que es add-on de tours privados únicamente — NO se alquila suelto por día (varios guests lo pidieron por WhatsApp y generaba confusión). Copy, FAQ y `rentalServiceSchema` en `lib/schema.ts` corregidos para reflejarlo.
 - Photo & Video Shoot: €200. Solo tours privados, solo cuando Fede está a bordo.
 - NO mencionar año de fundación.
 - NO mencionar RIB. Usar "speedboat".
@@ -411,11 +411,11 @@ Nikola
 
 ---
 
-## /rentals/ — estado al 26/07/2026
+## /rentals/ — estado al 27/07/2026
 - Grid 2x2 self-drive con precios reales y badges de licencia
 - Badge PASARA 5HP: "NO LICENCE NEEDED" · PASARA 20HP: "ASK US ABOUT LICENCE" · Speedboats: "LICENCE REQUIRED"
 - Schema JSON-LD: Service + BreadcrumbList + FAQPage (no tocar)
-- **Underwater Scooter (26/07/2026):** sección reescrita para dejar claro que es add-on de tours privados, NO alquiler standalone. Precio muestra `ADDONS.scooter` (€40/unit). No disponible en Sunset Cruise ni salidas compartidas. Schema description actualizado acorde.
+- **Underwater Scooter (27/07/2026):** sección reescrita para dejar claro que es add-on de tours privados, NO alquiler standalone. Precio muestra `ADDONS.scooter` (€40/unit). No disponible en Sunset Cruise ni salidas compartidas. Schema description actualizado acorde.
 
 ---
 
@@ -523,7 +523,7 @@ Nikola
 
 ---
 
-## Tour cards — componentes (estado 26/07/2026)
+## Tour cards — componentes (estado 27/07/2026)
 
 ### Convención de tour cards (26/07/2026)
 - **Badge = solo duración, formato corto, unidad "HRS", todo en mayúsculas.** Fuente única: campo `duration` en tours-data.ts (home) y `duration` en TOUR_CARDS de app/tours/page.tsx (listado). Deben ser idénticos por tour.
@@ -533,9 +533,7 @@ Nikola
   - Sunset: `'2 HRS'`
 - **Precio en el cuerpo de la card**, no en el badge. Red Rocks: "Shared from €85/person · Private from €400" (leído de TOUR_PRICES, sin hardcodear). Full-day €500 va en la detail page, no en la card.
 - **Fuente única de precio de card (26/07/2026):** tours-data.ts y TOUR_CARDS en app/tours/page.tsx usan ambos `formatPriceShort` para todas las cards, excepto Red Rocks (template manual idéntico en ambos) y tours no-featured (private-charter, transfer, yacht) que siguen con `formatPriceFull` en tours-data.ts. Strings canónicos: Blue Cave `"From €130/person · €700 private"`, Pakleni `"€300 private"`, Sunset `"From €250"`, Red Rocks `"Shared from €85/person · Private from €400"`.
-- Red Rocks ya tiene `pricingOptions` con las 3 combinaciones (26/07/2026): Shared €85/person (11:00-17:00), Private half-day €400 (4 hrs), Private full-day €500 (6 hrs). Mismo render que Blue Cave y Sunset. Numeros leidos de `RR` shorthand (TOUR_PRICES)..
-
-
+- Red Rocks ya tiene `pricingOptions` con las 3 combinaciones (26/07/2026): Shared €85/person (11:00-17:00), Private half-day €400 (4 hrs), Private full-day €500 (6 hrs). Mismo render que Blue Cave y Sunset. Números leídos de `RR` shorthand (TOUR_PRICES).
 
 ### components/ui/TourCardImage.tsx
 - Carousel autoplay 4000ms on mount
@@ -728,6 +726,23 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 13. No publicar fotos de huéspedes. Van a Media Drop.
 14. Si no podés cubrir un turno, avisá en General lo antes posible, no la misma mañana.
 15. El grupo es interno. Nada de acá sale del equipo.
+
+---
+
+## 🗓️ Changelog — 27 Julio 2026
+
+Sesión de tareas chicas y cerradas, una por una, todas commiteadas y pusheadas por separado:
+
+1. **`/rentals/` — Underwater Scooter**: copy reescrito para dejar explícito que es add-on de tours privados, no rental standalone. FAQ y `rentalServiceSchema` corregidos en línea. Precio sigue leyendo de `lib/pricing.ts` (`ADDONS.scooter`).
+2. **Card Red Rocks & Pakleni** (home + listado): badge pasó de un texto saturado a duración simple; precio pasó a distinguir explícito "Shared from €X/person · Private from €Y", número leído de `TOUR_PRICES`.
+3. **Badges de todas las cards normalizados** a formato `N HRS` consistente. Se corrigió Pakleni de "3-4 hours" a "3 HRS" (el tour dura 3, no 3-4).
+4. **Precio de cards unificado entre home y listado**: ambos consumen el mismo formatter (`formatPriceShort`) para Blue Cave y Pakleni, que antes divergían entre `formatPriceFull` (home) y `formatPriceShort` (listado). Sunset sigue en `formatPriceFull` en home por ahora — mismo output, no rompe nada, pendiente de unificar si se quiere prolijidad total.
+5. **Red Rocks — detail page**: agregado `pricingOptions` (shared / private half-day / private full-day) con el mismo componente que ya usan Blue Cave y Sunset. El full-day €500 ahora tiene tarjeta propia, no vive solo en el cuerpo de texto.
+6. **Barrido completo de em-dashes y en-dashes** en todo el copy visible del repo (15 archivos, 21 reemplazos) — quedaban en horarios tipo "09:00-13:00". Verificado con build limpio; los únicos guiones largos que sobreviven están en comentarios de código, no en copy.
+7. **`/qr/`**: se agregó un ícono de WhatsApp con mensaje contextual ("scanned the QR code"). Primer intento fue una card grande en el grid — se revirtió por saturar el hub y quedó como ícono compacto en el header.
+8. **`/guide/`**: las 3 secciones largas pasaron a accordion colapsable con `<details>/<summary>` nativo, cerradas por default, mismo patrón visual que `IslandStopsAccordion`.
+
+**Pendiente para la próxima sesión**: route maps por tour con Mapbox (todos los tours, nombre + descripción + foto por parada — fotos se agregan después). Preguntas para Luka/Mati/Toni ya redactadas (bio + conocimiento local + operación práctica), pendiente de enviar.
 
 ---
 
