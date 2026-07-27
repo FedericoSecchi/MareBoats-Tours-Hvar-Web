@@ -203,7 +203,7 @@ No hardcodear offers en schema.ts. Valores actuales:
 - `/hvar-islands-guide/` — indexada, priority 0.8. OnTourBanner visible solo con ?ref=qr.
 - `/on-tour/` — ELIMINADA. Redirect 301 → `/hvar-islands-guide/`.
 - `/explore/` — hub de contenido. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide".
-- `/guide/` — guía pre-tour con route cards.
+- `/guide/` — guía pre-tour con route cards. Las 3 secciones largas son accordion colapsable (cerradas por default, patrón `<details>`/`<summary>` nativo, mismo ícono +/× que IslandStopsAccordion): "Blue Cave, Green Cave & Vis", "Red Rocks & Pakleni" (ambas dentro de `{ROUTES.map(...)}`), y "Where to Eat" (heading como `<summary>`, map + restaurant cards colapsables). Múltiples paneles pueden estar abiertos simultáneamente.
 - `/transfers/` — Mapbox Static Images API. hoverImage Split asignada.
 - `/conditions/` — live weather/marine. Removida del navbar (08/06). Entradas contextuales desde tour pages y footer.
 - Nav: Tours → Rentals → Transfers → Explore → About
