@@ -387,15 +387,14 @@ export default function GuidePage() {
             </div>
           </div>
 
-          {/* Routes */}
-          <div className="mt-12 space-y-10">
+          {/* Routes — collapsible, all closed by default */}
+          <div className="mt-12 space-y-3">
             {ROUTES.map((route) => (
-              <div
+              <details
                 key={route.id}
-                className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 md:p-8"
+                className="group rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)]"
               >
-                {/* Route header */}
-                <div className="flex flex-col gap-3">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 md:p-8 [&::-webkit-details-marker]:hidden">
                   <div className="min-w-0 flex-1">
                     <p className="font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]">
                       {route.duration}
@@ -404,6 +403,16 @@ export default function GuidePage() {
                       {route.label}
                     </h3>
                   </div>
+                  <span
+                    aria-hidden="true"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)] text-[color:var(--accent)] transition-transform duration-200 group-open:rotate-45"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 md:px-8 md:pb-8">
                   <a
                     href={route.mapsUrl}
                     target="_blank"
@@ -412,57 +421,56 @@ export default function GuidePage() {
                   >
                     Open full route in Google Maps
                   </a>
-                </div>
-
-                {/* Stops */}
-                <ul className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-                  {route.stops.map((stop, idx) => (
-                    <li
-                      key={stop.name}
-                      className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
-                    >
-                      <div className="flex items-start gap-3">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)]/15 font-body text-xs font-bold tabular-nums text-[color:var(--accent)]">
-                          {idx + 1}
-                        </span>
-                        <div className="flex flex-col gap-1">
-                          <span className="self-start whitespace-nowrap rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
-                            {stop.badge}
-                          </span>
-                          <h4 className="font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
-                            {stop.name}
-                          </h4>
-                        </div>
-                      </div>
-                      <p className="mt-1.5 font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]/70">
-                        {stop.subtitle}
-                      </p>
-                      <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                        {stop.description}
-                      </p>
-                      <a
-                        href={stop.mapsHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 font-body text-xs font-medium text-[color:var(--accent)]/60 transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+                  {/* Stops */}
+                  <ul className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                    {route.stops.map((stop, idx) => (
+                      <li
+                        key={stop.name}
+                        className="flex flex-col rounded-xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-5"
                       >
-                        <span aria-hidden="true">📍</span>
-                        Open in Google Maps
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                {route.tourHref && (
-                  <div className="mt-6">
-                    <Link
-                      href={route.tourHref}
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
-                    >
-                      See tour details
-                    </Link>
-                  </div>
-                )}
-              </div>
+                        <div className="flex items-start gap-3">
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)]/15 font-body text-xs font-bold tabular-nums text-[color:var(--accent)]">
+                            {idx + 1}
+                          </span>
+                          <div className="flex flex-col gap-1">
+                            <span className="self-start whitespace-nowrap rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2.5 py-1 font-body text-[11px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                              {stop.badge}
+                            </span>
+                            <h4 className="font-display text-base font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                              {stop.name}
+                            </h4>
+                          </div>
+                        </div>
+                        <p className="mt-1.5 font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]/70">
+                          {stop.subtitle}
+                        </p>
+                        <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                          {stop.description}
+                        </p>
+                        <a
+                          href={stop.mapsHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 font-body text-xs font-medium text-[color:var(--accent)]/60 transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+                        >
+                          <span aria-hidden="true">📍</span>
+                          Open in Google Maps
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  {route.tourHref && (
+                    <div className="mt-6">
+                      <Link
+                        href={route.tourHref}
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                      >
+                        See tour details
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </details>
             ))}
           </div>
 
@@ -484,82 +492,104 @@ export default function GuidePage() {
         className="border-b border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20"
       >
         <div className="mx-auto max-w-container">
-          <SectionHeading eyebrow="Skipper's picks" title="Where to Eat" />
-          <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Spots we often recommend along the route - reachable only by boat or a short walk. Our
-            skippers have been anchoring at these places for years.
-          </p>
-
-          {/* Map */}
-          <div className="mt-10">
-            <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-              {mapsData.whereToEat.title}
-            </h3>
-            <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
-              <div
+          {/* Where to Eat — collapsible, closed by default */}
+          <details className="group">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 [&::-webkit-details-marker]:hidden">
+              <div>
+                <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
+                  Skipper&apos;s picks
+                </p>
+                <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+                  Where to Eat
+                </h2>
+              </div>
+              <span
                 aria-hidden="true"
-                className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full"
-                style={{ background: 'var(--surface)' }}
-              />
-              <iframe
-                src={mapsData.whereToEat.embedUrl}
-                title={mapsData.whereToEat.title}
-                width="100%"
-                height="100%"
-                style={{ border: 0, display: 'block' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
-
-          {/* Restaurant cards */}
-          <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
-            {RESTAURANTS.map((r) => (
-              <li
-                key={r.name}
-                className="flex flex-col rounded-2xl border border-[color:var(--border)] border-l-[3px] border-l-[color:var(--accent)] bg-[color:var(--bg)]/60 py-6 pl-5 pr-6"
+                className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)] text-[color:var(--accent)] transition-transform duration-200 group-open:rotate-45"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
-                      {r.name}
-                    </h3>
-                    {r.favorite && (
-                      <span className="mt-1 inline-block rounded-pill bg-[color:var(--accent)]/15 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
-                        ⭐ Skipper&apos;s Favorite
-                      </span>
-                    )}
-                  </div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+            </summary>
+            <div className="mt-4">
+              <p className="max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
+                Spots we often recommend along the route - reachable only by boat or a short walk. Our
+                skippers have been anchoring at these places for years.
+              </p>
+
+              {/* Map */}
+              <div className="mt-10">
+                <h3 className="mb-4 font-display text-lg font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                  {mapsData.whereToEat.title}
+                </h3>
+                <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-0 top-0 z-10 h-[60px] w-full"
+                    style={{ background: 'var(--surface)' }}
+                  />
+                  <iframe
+                    src={mapsData.whereToEat.embedUrl}
+                    title={mapsData.whereToEat.title}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, display: 'block' }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
-                <p className="mt-2 font-body text-xs font-medium uppercase tracking-[0.12em] text-[color:var(--accent)]/70">
-                  {r.location}
-                </p>
-                <p className="mt-0.5 font-body text-xs text-[color:var(--gray)]/70">{r.cuisine}</p>
-                <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                  {r.description}
-                </p>
-                <div className="mt-4 space-y-1.5">
-                  <p className="font-body text-xs text-[color:var(--white)]">
-                    <span className="font-semibold">Must order:</span> {r.mustOrder}
-                  </p>
-                  <p className="font-body text-xs italic text-[color:var(--gray)]">
-                    &ldquo;{r.skippersNote}&rdquo;
-                  </p>
-                </div>
-                <a
-                  href={r.mapsHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 font-body text-xs font-medium text-[color:var(--accent)]/60 transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
-                >
-                  <span aria-hidden="true">📍</span>
-                  Open in Google Maps
-                </a>
-              </li>
-            ))}
-          </ul>
+              </div>
+
+              {/* Restaurant cards */}
+              <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+                {RESTAURANTS.map((r) => (
+                  <li
+                    key={r.name}
+                    className="flex flex-col rounded-2xl border border-[color:var(--border)] border-l-[3px] border-l-[color:var(--accent)] bg-[color:var(--bg)]/60 py-6 pl-5 pr-6"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-[-0.01em] text-[color:var(--white)]">
+                          {r.name}
+                        </h3>
+                        {r.favorite && (
+                          <span className="mt-1 inline-block rounded-pill bg-[color:var(--accent)]/15 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
+                            ⭐ Skipper&apos;s Favorite
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <p className="mt-2 font-body text-xs font-medium uppercase tracking-[0.12em] text-[color:var(--accent)]/70">
+                      {r.location}
+                    </p>
+                    <p className="mt-0.5 font-body text-xs text-[color:var(--gray)]/70">{r.cuisine}</p>
+                    <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                      {r.description}
+                    </p>
+                    <div className="mt-4 space-y-1.5">
+                      <p className="font-body text-xs text-[color:var(--white)]">
+                        <span className="font-semibold">Must order:</span> {r.mustOrder}
+                      </p>
+                      <p className="font-body text-xs italic text-[color:var(--gray)]">
+                        &ldquo;{r.skippersNote}&rdquo;
+                      </p>
+                    </div>
+                    <a
+                      href={r.mapsHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex min-h-[44px] items-center gap-1.5 font-body text-xs font-medium text-[color:var(--accent)]/60 transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
+                    >
+                      <span aria-hidden="true">📍</span>
+                      Open in Google Maps
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </details>
         </div>
       </section>
 
