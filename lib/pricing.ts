@@ -20,8 +20,7 @@ export type SunsetTier = {
   minGuests: number;
   maxGuests: number;
   price: number;
-  boats?: number;
-  wineBottles?: number;
+  boats: number; // wineBottles always equals boats — one per boat, derived not stored
 };
 
 export type RentalSelfDrivePrice = {
@@ -94,21 +93,23 @@ export const RENTAL_WITH_SKIPPER_FROM = 500;
 // Sunset cruise — tiered pricing by group size
 // ──────────────────────────────────────────────
 
-// NOTE: Nikola confirmed 4/6/8 as single-boat breakpoints. The rounding convention
-// (guests 5 and 7 round UP to the next tier: 5-6 = €350, 7-8 = €500)
-// is an assumption, not explicitly confirmed. Review if Nikola revisits.
-// 9-16 = 2 boats at €500 each = €1000. Confirmed by Nikola 20/07/2026.
+// Confirmado Nikola 29/07/2026
+// Boats: 1-5 = 1 boat, 6-8 = 2 boats, 9+ = 3 boats.
+// Sunset prioritises comfort: from 6 guests, 2 boats even if 1 could fit all.
+// Wine bottles always equal boats (one per boat). Derived from boats in getSunsetTier, not stored here.
 export const SUNSET_TIERS: SunsetTier[] = [
-  { minGuests: 1, maxGuests: 4, price: 250, wineBottles: 1 },
-  { minGuests: 5, maxGuests: 6, price: 350, wineBottles: 2 },
-  { minGuests: 7, maxGuests: 8, price: 500 },
-  { minGuests: 9, maxGuests: 16, price: 1000, boats: 2 },
+  { minGuests: 1, maxGuests: 4, price: 250,  boats: 1 },
+  { minGuests: 5, maxGuests: 5, price: 350,  boats: 1 },
+  { minGuests: 6, maxGuests: 6, price: 500,  boats: 2 },
+  { minGuests: 7, maxGuests: 8, price: 700,  boats: 2 },
+  { minGuests: 9, maxGuests: 99, price: 1000, boats: 3 },
 ];
 
 export const SUNSET_WINE_EXTRA = 30;
 
-export function getSunsetTier(pax: number): SunsetTier {
-  return SUNSET_TIERS.find((t) => pax <= t.maxGuests) ?? SUNSET_TIERS[SUNSET_TIERS.length - 1];
+export function getSunsetTier(pax: number): SunsetTier & { wineBottles: number } {
+  const tier = SUNSET_TIERS.find((t) => pax <= t.maxGuests) ?? SUNSET_TIERS[SUNSET_TIERS.length - 1];
+  return { ...tier, wineBottles: tier.boats };
 }
 
 // ──────────────────────────────────────────────
@@ -225,14 +226,20 @@ export function getPricingOptions(
   slug: string,
 ): { label: string; price: string; note: string }[] | undefined {
   if (slug === 'sunset-cruise') {
-    return SUNSET_TIERS.map((t) => ({
-      label: `${t.minGuests}-${t.maxGuests} guests`,
-      price: `€${t.price}`,
-      note:
-        t.boats === 2 ? '2 boats sailing together' :
-        t.wineBottles === 1 ? '1 bottle of wine included' :
-        t.wineBottles === 2 ? '2 bottles of wine included' : '',
-    }));
+    return SUNSET_TIERS.map((t) => {
+      const wineBottles = t.boats;
+      const label =
+        t.maxGuests >= 99
+          ? `${t.minGuests}+ guests`
+          : t.minGuests === t.maxGuests
+          ? `${t.minGuests} guests`
+          : `${t.minGuests}-${t.maxGuests} guests`;
+      const note =
+        t.boats === 1
+          ? `${wineBottles} bottle of wine included`
+          : `${t.boats} boats sailing together - ${wineBottles} bottles of wine`;
+      return { label, price: `€${t.price}`, note };
+    });
   }
   if (slug !== 'blue-cave-pakleni-islands') return undefined;
   const p = TOUR_PRICES[slug];

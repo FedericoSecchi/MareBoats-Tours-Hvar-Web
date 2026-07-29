@@ -263,7 +263,7 @@ This private evening boat tour departs from Hvar Harbour and follows a route cho
 
 Your captain focuses on safety and smooth cruising as light fades, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
-Pricing scales with group size: see the breakdown below. Wine is included for smaller groups, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
+Pricing scales with group size: see the breakdown below. Wine is included with every booking, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
     duration: '2 HRS',
     durationIso: 'PT2H',
     price: formatPriceFull('sunset-cruise'),

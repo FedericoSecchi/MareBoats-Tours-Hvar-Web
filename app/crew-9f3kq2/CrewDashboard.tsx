@@ -692,16 +692,19 @@ function QuoteBuilder({ service }: { service: Service }) {
       lines.push(`${days} day${days > 1 ? 's' : ''} x ${pricing.pricePerDay} EUR = ${pricing.pricePerDay * days} EUR`);
     } else if (pricing.kind === 'sunset') {
       const tier = getSunsetTier(pax);
-      if (tier.boats === 2) {
-        const perBoat = tier.price / 2;
-        lines.push(`Sunset cruise, 2 boats: 2 x ${perBoat} EUR = ${tier.price} EUR`);
-        lines.push('Groups over 8 travel on two boats sailing together.');
+      const wineBottles = tier.wineBottles;
+      const tierLabel =
+        tier.maxGuests >= 99
+          ? `${tier.minGuests}+ guests`
+          : tier.minGuests === tier.maxGuests
+          ? `${tier.minGuests} guests`
+          : `${tier.minGuests}-${tier.maxGuests} guests`;
+      if (tier.boats > 1) {
+        lines.push(`Sunset cruise (${tier.boats} boats): ${tier.price} EUR`);
       } else {
-        lines.push(`Sunset cruise: ${tier.price} EUR (${tier.minGuests}-${tier.maxGuests} guests)`);
-        if (tier.wineBottles) {
-          lines.push(`${tier.wineBottles} bottle${tier.wineBottles > 1 ? 's' : ''} of wine included.`);
-        }
+        lines.push(`Sunset cruise: ${tier.price} EUR (${tierLabel})`);
       }
+      lines.push(`${wineBottles} bottle${wineBottles > 1 ? 's' : ''} of wine included.`);
     } else if (pricing.kind === 'water-taxi') {
       const zone = mode === 'yacht-harbour' ? WATER_TAXI_PRICES.yachtsNearHarbour : WATER_TAXI_PRICES.pakleniIslands;
       const zoneName = mode === 'yacht-harbour' ? 'yachts anchored near Hvar harbour' : 'Pakleni Islands';
