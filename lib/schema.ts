@@ -147,7 +147,7 @@ export const tourSchemaMap: Record<string, object> = {
     '@type': 'Service',
     name: 'Private Boat Charter Hvar',
     description:
-      'Full-day private speedboat charter from Hvar Harbour. Custom itinerary, local skipper, fuel extra. Your boat, your route, your pace.',
+      'Full-day private speedboat charter from Hvar Harbour. Custom itinerary, your skipper, fuel extra. Your boat, your route, your pace.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     maximumAttendeeCapacity: 8,

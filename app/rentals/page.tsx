@@ -74,7 +74,7 @@ const faqSchema = {
       name: 'Do I need a boat licence to rent a boat in Hvar?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included - no licence needed.",
+        text: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a skipper included - no licence needed.",
       },
     },
     {
@@ -143,7 +143,7 @@ const itemListSchema = {
 const FAQS = [
   {
     q: 'Do I need a boat licence to rent a boat in Hvar?',
-    a: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a local skipper included - no licence needed.",
+    a: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a skipper included - no licence needed.",
   },
   {
     q: 'How many people can rent a boat in Hvar?',
@@ -283,7 +283,7 @@ export default function RentalsPage() {
 
           <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
             Two ways to rent - come with a{' '}
-            <strong className="text-[color:var(--white)]">local skipper included</strong> for the
+            <strong className="text-[color:var(--white)]">skipper included</strong> for the
             full-service experience, or take the helm yourself with our{' '}
             <strong className="text-[color:var(--white)]">self-drive option</strong>. Both pickup
             at Hvar Harbour, same quality speedboat. Dogs are welcome on board - let us know when

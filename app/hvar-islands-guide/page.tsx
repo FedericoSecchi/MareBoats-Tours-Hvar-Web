@@ -76,7 +76,7 @@ export default function HvarIslandsGuidePage() {
             See it from the water
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            The best coves are only reachable by boat. Private speedboat, local skipper, your group only.
+            The best coves are only reachable by boat. Private speedboat, your skipper, your group only.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <WhatsAppTrackedLink

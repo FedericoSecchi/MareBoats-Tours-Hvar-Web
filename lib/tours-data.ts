@@ -84,7 +84,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     price: `Shared from €${RR.sharedPerPerson}/person · Private from €${RR.privateHalfDay}`,
     priceEur: getLowestPrice('red-rocks-pakleni-islands'),
     includes: [
-      'Speedboat and local skipper',
+      'Speedboat and skipper',
       'Fuel for the itinerary',
       'Icebox on board',
       'Bottled water',
@@ -153,7 +153,7 @@ Most guests who book this tour have already done a full-day trip and want a shor
     price: formatPriceShort('pakleni-islands'),
     priceEur: getLowestPrice('pakleni-islands'),
     includes: [
-      'Private speedboat and local skipper',
+      'Private speedboat and skipper',
       'Fuel for the Pakleni itinerary',
       'Icebox and bottled water on board',
       'Snorkeling masks',
@@ -202,7 +202,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     price: formatPriceShort('blue-cave-pakleni-islands'),
     priceEur: getLowestPrice('blue-cave-pakleni-islands'),
     includes: [
-      'Speedboat and local skipper',
+      'Speedboat and skipper',
       'Fuel for the full itinerary',
       'Icebox on board',
       'Bottled water',
@@ -270,7 +270,7 @@ Pricing scales with group size: see the breakdown below. Wine is included with e
     price: formatPriceFull('sunset-cruise'),
     priceEur: getLowestPrice('sunset-cruise'),
     includes: [
-      'Private speedboat and local skipper',
+      'Private speedboat and skipper',
       'Fuel for the sunset itinerary',
       'Bottled water and fresh fruit on board',
       'Wine included for groups up to 6 (see pricing)',
@@ -302,7 +302,7 @@ Pricing scales with group size: see the breakdown below. Wine is included with e
   {
     slug: 'private-boat-charter',
     name: 'Private Boat Charter Hvar',
-    tagline: 'Your boat, your itinerary - full-day freedom with a local skipper who knows these waters.',
+    tagline: 'Your boat, your itinerary - full-day freedom with a skipper who knows these waters.',
     shortDescription:
       `Private boat charter from Hvar, Croatia. Your own boat, captain, route and equipment - design the day you want on the Adriatic. €${PC.private} for boat + skipper, fuel paid separately.`,
     description: `A private boat charter from Hvar is the most flexible format we offer: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your captain helps you build a realistic plan based on weather and distances.
@@ -317,7 +317,7 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
     price: formatPriceFull('private-boat-charter'),
     priceEur: getLowestPrice('private-boat-charter'),
     includes: [
-      'Private speedboat and local skipper',
+      'Private speedboat and skipper',
       'Icebox and bottled water on board',
       'Snorkeling masks',
     ],
@@ -368,7 +368,7 @@ Message us on WhatsApp with your flight number, group size and luggage to lock i
     price: formatPriceFull('split-airport-transfer'),
     priceEur: getLowestPrice('split-airport-transfer'),
     includes: [
-      'Private speedboat and local skipper',
+      'Private speedboat and skipper',
       'Fuel for the Split ↔ Hvar route',
       'Luggage handling on board',
       'Flexible departure time around your flight',
@@ -417,7 +417,7 @@ Pricing is on request - every pickup is different depending on your location, gr
 
 The same service works in both directions. We can take you ashore for dinner in Hvar town and bring you back to your yacht later that evening, or transfer you to one of our recommended restaurants on the Pakleni Islands and back. If you want to combine the taxi with a full tour - Blue Cave in the morning, lunch on an island, sunset cruise - just tell us when you message and we will plan the whole day around your boat.
 
-Our local skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, Croatian, German, Italian and Spanish (when Fede is on board), so the handover from your charter crew to ours is always smooth.
+Our skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, Croatian, German, Italian and Spanish (when Fede is on board), so the handover from your charter crew to ours is always smooth.
 
 If you are searching for a private water taxi in Hvar, a yacht transfer, a sailboat pickup, or a way to start a tour without coming to the harbour first, this is the service. Message us with your boat name, your coordinates and the time window - we will reply with a quote and a plan.`,
     duration: 'On demand',
