@@ -174,45 +174,44 @@ export default function ToursIndexPage() {
             return (
             <li key={tour.slug} className="flex">
               <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
-                <Link href={`/tours/${tour.slug}/`} className="block">
+                {/* Single link: image + title + summary navigate to tour detail */}
+                <Link href={`/tours/${tour.slug}/`} className="flex flex-1 flex-col focus-visible:outline-none">
                   <TourCardImage
                     images={images}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     badge={tour.duration}
                   />
-                </Link>
-
-                <div className="flex flex-1 flex-col gap-4 p-6">
-                  <div>
+                  <div className="flex flex-col gap-2 p-6 pb-4">
                     <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
                       {tour.name}
                     </h2>
-                    <p className="mt-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                    <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
                       {tour.summary}
                     </p>
                   </div>
+                </Link>
 
-                  <div className="mt-auto flex flex-col gap-3">
-                    <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
-                      {tour.price}
-                    </span>
-                    <div className="flex flex-col gap-2 sm:flex-row">
-                      <TrackedTourDetailLink
-                        slug={tour.slug}
-                        className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
-                      >
-                        See Details
-                      </TrackedTourDetailLink>
-                      <WhatsAppTrackedLink
-                        href={waUrl(tour.waMessage)}
-                        label="tours_index"
-                        ctaText="Book on WhatsApp"
-                        tourName={tour.name}
-                        className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
-                      >
-                        Book on WhatsApp
-                      </WhatsAppTrackedLink>
-                    </div>
+                {/* CTA section: sibling to the Link above — no nested anchors */}
+                <div className="flex flex-col gap-3 px-6 pb-6">
+                  <span className="font-body text-sm font-semibold text-[color:var(--accent)]">
+                    {tour.price}
+                  </span>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <TrackedTourDetailLink
+                      slug={tour.slug}
+                      className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
+                    >
+                      See Details
+                    </TrackedTourDetailLink>
+                    <WhatsAppTrackedLink
+                      href={waUrl(tour.waMessage)}
+                      label="tours_index"
+                      ctaText="Book on WhatsApp"
+                      tourName={tour.name}
+                      className="inline-flex flex-1 items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+                    >
+                      Book on WhatsApp
+                    </WhatsAppTrackedLink>
                   </div>
                 </div>
               </article>

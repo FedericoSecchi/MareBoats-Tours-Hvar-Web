@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import Image from 'next/image';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { featuredTours, type TourRecord } from '@/lib/tours-data';
@@ -74,44 +75,48 @@ function WhatsAppIcon({ className = 'h-4 w-4' }: { className?: string }) {
 
 function TourCard({ tour }: { tour: TourRecord }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
-        <Image
-          src={tour.images[0].src}
-          alt={tour.images[0].alt}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
-          {tour.duration}
-        </span>
-      </div>
-
-      <div className="flex flex-1 flex-col gap-4 p-6">
-        <div>
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
+      {/* Single link: entire upper section navigates to tour detail page */}
+      <Link
+        href={`/tours/${tour.slug}`}
+        className="flex flex-1 flex-col focus-visible:outline-none"
+      >
+        <div className="relative aspect-[4/3] w-full overflow-hidden">
+          <Image
+            src={tour.images[0].src}
+            alt={tour.images[0].alt}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          <span className="absolute right-3 top-3 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] shadow-[0_6px_16px_rgba(59,201,219,0.35)]">
+            {tour.duration}
+          </span>
+        </div>
+        <div className="flex flex-col gap-2 p-6 pb-4">
           <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
             {tour.name}
           </h3>
-          <p className="mt-2 line-clamp-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+          <p className="line-clamp-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
             {tour.shortDescription}
           </p>
         </div>
+      </Link>
 
-        <div className="mt-auto flex flex-col gap-3">
-          <span className="font-body text-base font-semibold text-[color:var(--accent)]">
-            {tour.price}
-          </span>
-          <WhatsAppTrackedLink
-            href={waUrlFor(tour.name)}
-            label={`landing_explore_${tour.slug}`}
-            className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
-          >
-            <WhatsAppIcon />
-            Book on WhatsApp
-          </WhatsAppTrackedLink>
-        </div>
+      {/* CTA section: sibling to the Link above — no nested anchors */}
+      <div className="flex flex-col gap-3 px-6 pb-6">
+        <span className="font-body text-base font-semibold text-[color:var(--accent)]">
+          {tour.price}
+        </span>
+        <WhatsAppTrackedLink
+          href={waUrlFor(tour.name)}
+          label={`landing_explore_${tour.slug}`}
+          className="inline-flex items-center justify-center gap-2 rounded-pill bg-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+        >
+          <WhatsAppIcon />
+          Book on WhatsApp
+        </WhatsAppTrackedLink>
       </div>
     </article>
   );

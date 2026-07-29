@@ -50,9 +50,10 @@ export default function Tours() {
             variants={fadeInUpItem}
             className="group flex h-full transform-gpu flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]"
           >
+            {/* Single link: image + title + description navigate to tour detail */}
             <Link
               href={`/tours/${tour.slug}`}
-              className="block"
+              className="flex flex-1 flex-col focus-visible:outline-none"
               onClick={() =>
                 trackEvent({
                   action: 'tour_card_image_click',
@@ -66,36 +67,34 @@ export default function Tours() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 badge={tour.duration}
               />
-            </Link>
-
-            <div className="flex flex-1 flex-col gap-4 p-6">
-              <div>
+              <div className="flex flex-col gap-2 p-6 pb-4">
                 <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
                   {tour.name}
                 </h3>
-                <p className="mt-2 line-clamp-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                <p className="line-clamp-2 font-body text-sm leading-relaxed text-[color:var(--gray)]">
                   {tour.shortDescription}
                 </p>
               </div>
+            </Link>
 
-              <div className="mt-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-                <span className="font-body text-sm font-semibold leading-snug text-[color:var(--accent)]">
-                  {tour.price}
-                </span>
-                <Link
-                  href={`/tours/${tour.slug}`}
-                  className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
-                  onClick={() =>
-                    trackEvent({
-                      action: 'tour_card_click',
-                      category: 'engagement',
-                      label: tour.slug,
-                    })
-                  }
-                >
-                  See This Tour
-                </Link>
-              </div>
+            {/* CTA section: sibling to the Link above — no nested anchors */}
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 px-6 pb-6">
+              <span className="font-body text-sm font-semibold leading-snug text-[color:var(--accent)]">
+                {tour.price}
+              </span>
+              <Link
+                href={`/tours/${tour.slug}`}
+                className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-4 py-2 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+                onClick={() =>
+                  trackEvent({
+                    action: 'tour_card_click',
+                    category: 'engagement',
+                    label: tour.slug,
+                  })
+                }
+              >
+                See This Tour
+              </Link>
             </div>
           </motion.article>
         ))}
