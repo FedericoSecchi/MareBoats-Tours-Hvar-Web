@@ -30,7 +30,7 @@ export const businessSchema = {
   '@id': `${SITE_URL}/#localbusiness`,
   name: 'MareBoats Hvar',
   description:
-    'Private speedboat tours from Hvar Harbour. Blue Cave, Pakleni Islands, sunset cruises and custom charters. Local skipper, small groups.',
+    'Private speedboat tours from Hvar Harbour. Blue Cave, Pakleni Islands, sunset cruises and custom charters. Small groups.',
   url: SITE_URL,
   logo: `${SITE_URL}/img/mareboats-logo-horizontal.svg`,
   image: `${SITE_URL}/img/mareboats-og.png`,

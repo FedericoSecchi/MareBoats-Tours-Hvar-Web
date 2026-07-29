@@ -42,4 +42,9 @@ export const homepageFaqs: FaqItem[] = [
     answer:
       'Dogs are welcome on board. Let us know when you book so we can plan accordingly.',
   },
+  {
+    question: 'Are my belongings safe on the boat?',
+    answer:
+      'MareBoats Hvar is not responsible for loss of or damage to personal items left unattended. A secure storage area is available for your belongings. Anything left outside it is your responsibility.',
+  },
 ];

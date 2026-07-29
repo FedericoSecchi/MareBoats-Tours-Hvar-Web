@@ -183,6 +183,11 @@ export default function TourDetailPage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
+              {(tour.slug === 'blue-cave-pakleni-islands' || tour.slug === 'red-rocks-pakleni-islands') && (
+                <p className="mt-5 font-body text-sm text-[color:var(--gray)]">
+                  Shared tour spots open once the boat reaches minimum capacity. We confirm your date by WhatsApp before departure.
+                </p>
+              )}
             </div>
           </div>
         </section>

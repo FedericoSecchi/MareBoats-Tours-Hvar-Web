@@ -164,6 +164,11 @@ export const guideFaqs: GuideFaq[] = [
     answer:
       'Yes, if you have the required licence. All boats include stereo, anchor, life jackets and fenders. Respect low-speed zones - Croatian maritime police patrol and fine actively. We recommend a skipper for your first time in these waters.',
   },
+  {
+    question: 'Are my belongings safe on the boat?',
+    answer:
+      'MareBoats Hvar is not responsible for loss of or damage to personal items left unattended. A secure storage area is available for your belongings. Anything left outside it is your responsibility.',
+  },
 ];
 
 // ──────────────────────────────────────────────
