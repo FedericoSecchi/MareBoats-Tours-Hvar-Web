@@ -47,7 +47,7 @@ const TOUR_CARDS: TourCard[] = [
     duration: '7 HRS · DEPARTS 10:00',
     price: formatPriceShort('blue-cave-pakleni-islands'),
     summary:
-      'Our flagship full day: Green Cave, Stiniva, Blue Cave, Budikovac and Pakleni Islands.',
+      'Full-day route: Green Cave, Stiniva, Blue Cave, Budikovac and Pakleni Islands.',
     image: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
     imageAlt: '5 Islands full day boat tour from Hvar - Blue Cave and Pakleni Islands',
     waMessage: "Hi! I'd like to book the 5 Islands tour",
@@ -69,7 +69,7 @@ const TOUR_CARDS: TourCard[] = [
     duration: '3 OR 4 HRS',
     price: formatPriceShort('pakleni-islands'),
     summary:
-      'A relaxed half-day around the Pakleni archipelago. Ideal for families and shorter visits.',
+      'A relaxed half-day around the Pakleni archipelago. Good for families and shorter visits.',
     image: '/images/tours/hvar-red-rocks-speedboat-aerial-drone-2026-02.jpg',
     imageAlt: 'Pakleni Islands half-day boat tour from Hvar',
     waMessage: "Hi! I'd like to book the Pakleni Islands tour",
