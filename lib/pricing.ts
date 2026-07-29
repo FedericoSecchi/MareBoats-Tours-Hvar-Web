@@ -10,6 +10,7 @@ export type TourPrice = {
   privateHalfDay?: number;
   privateFullDay?: number;
   private?: number;
+  privateExtended?: number; // second private tier (e.g. Pakleni 4h vs 3h)
   splitHvar?: number;
   airportHvar?: number;
   onRequest?: boolean;
@@ -65,7 +66,7 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
     privateHalfDay: 400,
     privateFullDay: 500,
   },
-  'pakleni-islands': { private: 300 },
+  'pakleni-islands': { private: 300, privateExtended: 350 },
   'sunset-cruise': { private: 250 }, // 250 = floor price used by generic formatters and schema
   'private-boat-charter': { private: 500, fuelIncluded: false },
   'split-airport-transfer': {
@@ -176,6 +177,9 @@ export function formatPriceFull(slug: string): string {
     return `€${p.sharedPerPerson}/person (group) · €${p.private} private`;
   }
   if (slug === 'sunset-cruise') return `From €${SUNSET_TIERS[0].price}`;
+  if (p.private !== undefined && p.privateExtended !== undefined) {
+    return `€${p.private} (3h) · €${p.privateExtended} (4h) private`;
+  }
   if (p.private !== undefined && p.fuelIncluded === false) {
     return `€${p.private} boat + skipper · fuel not included`;
   }
@@ -198,6 +202,9 @@ export function formatPriceShort(slug: string): string {
   if (p.sharedPerPerson !== undefined && p.private !== undefined) {
     return `From €${p.sharedPerPerson}/person · €${p.private} private`;
   }
+  if (p.private !== undefined && p.privateExtended !== undefined) {
+    return `From €${p.private} private`;
+  }
   if (p.private !== undefined && p.fuelIncluded === false) {
     return `€${p.private} + fuel · up to 8`;
   }
@@ -216,6 +223,7 @@ export function getLowestPrice(slug: string): number | undefined {
     p.privateHalfDay,
     p.privateFullDay,
     p.private,
+    p.privateExtended,
     p.splitHvar,
   ].filter((n): n is number => n !== undefined);
   return candidates.length > 0 ? Math.min(...candidates) : undefined;
@@ -240,6 +248,14 @@ export function getPricingOptions(
           : `${t.boats} boats sailing together - ${wineBottles} bottles of wine`;
       return { label, price: `€${t.price}`, note };
     });
+  }
+  if (slug === 'pakleni-islands') {
+    const p = TOUR_PRICES[slug];
+    if (!p?.private || !p.privateExtended) return undefined;
+    return [
+      { label: '3h', price: `€${p.private}`, note: 'Pakleni Islands highlights - up to 8 guests' },
+      { label: '4h', price: `€${p.privateExtended}`, note: 'More stops, more coves - up to 8 guests' },
+    ];
   }
   if (slug !== 'blue-cave-pakleni-islands') return undefined;
   const p = TOUR_PRICES[slug];
@@ -317,6 +333,25 @@ export function formatPriceSchema(slug: string): object | object[] | undefined {
         '@type': 'Offer',
         name: 'Private full-day',
         price: String(p.privateFullDay),
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+      },
+    ];
+  }
+
+  if (slug === 'pakleni-islands' && p.private !== undefined && p.privateExtended !== undefined) {
+    return [
+      {
+        '@type': 'Offer',
+        name: 'Private 3h',
+        price: String(p.private),
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Private 4h',
+        price: String(p.privateExtended),
         priceCurrency: 'EUR',
         availability: 'https://schema.org/InStock',
       },

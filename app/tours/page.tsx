@@ -66,7 +66,7 @@ const TOUR_CARDS: TourCard[] = [
   {
     slug: 'pakleni-islands',
     name: 'Pakleni Islands',
-    duration: '3 HRS',
+    duration: '3 OR 4 HRS',
     price: formatPriceShort('pakleni-islands'),
     summary:
       'A relaxed half-day around the Pakleni archipelago. Ideal for families and shorter visits.',
