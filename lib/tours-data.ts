@@ -72,11 +72,15 @@ export const toursData: TourRecord[] = [
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
     description: `The Red Rocks & Pakleni Islands tour is the local route: the one we take when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
-We depart from Hvar Harbour and head first to Borče Bay in Milna, a quiet cove on the southern coast, calm water, no other boats. It is the kind of place you only find if you know where to look. From there we cruise to Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
+We leave Hvar Harbour heading south along the coast. On calm days we also pause at Žarače, a quiet bay on the way. First stop is Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
 
-Next stop is Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land. We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
+From Red Rocks we continue to Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land.
 
-Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 4 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
+Then Borče Bay in Milna: a quiet cove on the southern coast, calm water, no other boats. The kind of place you only find if you know where to look.
+
+We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
+
+Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 5 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: '4 OR 6 HRS',
@@ -103,9 +107,9 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Borče Bay (Milna) - quiet cove, first swim, zero crowds',
       'Red Rocks - vertical iron-red cliffs dropping straight into turquoise water',
       'Dubovica Beach - iconic bay with a 16th-century stone house and a secret sea cave',
+      'Borče Bay (Milna) - quiet cove, calm water, no crowds',
       'Pakleni Islands (Palmižana or Zdrilca) - beach bars, lunch stops, calm water',
     ],
     images: [
