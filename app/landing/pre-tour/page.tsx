@@ -478,9 +478,17 @@ export default function PreTourPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-6 font-body text-sm text-[color:var(--gray)]">
-            MareBoats Hvar is not responsible for loss of or damage to personal items left unattended. A secure storage area is available for your belongings. Anything left outside it is your responsibility.
-          </p>
+          <div className="mt-6 flex gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5">
+            <span className="mt-0.5 shrink-0 text-[color:var(--accent)]">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </span>
+            <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
+              Travel light. We keep a secure storage area on board for your phone, keys and valuables, so hand them over before you jump in. MareBoats Hvar is not responsible for items left unattended outside it.
+            </p>
+          </div>
         </div>
       </section>
 

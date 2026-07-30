@@ -167,7 +167,7 @@ export const guideFaqs: GuideFaq[] = [
   {
     question: 'Are my belongings safe on the boat?',
     answer:
-      'MareBoats Hvar is not responsible for loss of or damage to personal items left unattended. A secure storage area is available for your belongings. Anything left outside it is your responsibility.',
+      'Travel light. We keep a secure storage area on board for your phone, keys and valuables, so hand them over before you jump in. MareBoats Hvar is not responsible for items left unattended outside it.',
   },
 ];
 
