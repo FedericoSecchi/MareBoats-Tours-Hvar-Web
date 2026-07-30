@@ -69,7 +69,7 @@ const TOUR_CARDS: TourCard[] = [
     duration: '3 OR 4 HRS',
     price: formatPriceShort('pakleni-islands'),
     summary:
-      'A relaxed half-day around the Pakleni archipelago. Good for families and shorter visits.',
+      'Half-day around the Pakleni archipelago. Your group, your pace, calm water and time to swim.',
     image: '/images/tours/hvar-red-rocks-speedboat-aerial-drone-2026-02.jpg',
     imageAlt: 'Pakleni Islands half-day boat tour from Hvar',
     waMessage: "Hi! I'd like to book the Pakleni Islands tour",

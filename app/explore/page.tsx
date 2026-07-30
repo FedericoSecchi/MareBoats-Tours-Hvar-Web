@@ -44,7 +44,7 @@ const RESTAURANTS = [
     favorite: false,
     type: 'Seafood · Hvar harbor waterfront',
     description:
-      'The best fish restaurant on the waterfront, right on the harbor. Premium pricing, premium quality. Fresh daily catch, shellfish, and a wine list that takes the region seriously. Reserve a table on the water terrace for sunset.',
+      'The best fish restaurant on the waterfront, right on the harbor. Mains run around €30 to €45. Fresh daily catch, shellfish, and a wine list that takes the region seriously. Reserve a table on the water terrace for sunset.',
     mustOrder: 'Daily fresh catch, shellfish plate',
     note: 'Worth the price once. Sit on the terrace, not inside.',
   },
