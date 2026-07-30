@@ -80,7 +80,7 @@ Then Borče Bay in Milna: a quiet cove on the southern coast, calm water, no oth
 
 We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
 
-Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 5 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
+Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 6 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: '4 OR 6 HRS',
