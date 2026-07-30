@@ -70,7 +70,7 @@ export const toursData: TourRecord[] = [
     tagline: 'Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming.',
     shortDescription:
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
-    description: `The Red Rocks & Pakleni Islands tour is the local route: the one Nikola takes when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
+    description: `The Red Rocks & Pakleni Islands tour is the local route: the one we take when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
 We depart from Hvar Harbour and head first to Borče Bay in Milna, a quiet cove on the southern coast, calm water, no other boats. It is the kind of place you only find if you know where to look. From there we cruise to Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
 
