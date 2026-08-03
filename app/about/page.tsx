@@ -48,7 +48,7 @@ const CREW: Crew[] = [
   },
   {
     name: 'Josip',
-    role: 'Head Skipper',
+    role: 'Co-Founder & Head Skipper',
     languages: ['Croatian', 'English', 'German'],
     bio: "Nikola\u2019s brother. Has worked every season on the water since he was a kid, Hvar is home. Lived in Germany for a few years, so he connects easily with guests. One of the most beloved skippers on the island.",
     image: '/images/team/josip-skipper.jpg',
@@ -57,7 +57,7 @@ const CREW: Crew[] = [
   },
   {
     name: 'Federico',
-    role: 'Marketing',
+    role: 'Manager & Marketing',
     languages: ['Spanish', 'Italian', 'English'],
     bio: "Argentine. Grew up sailing, started at 6 in an Optimist, competed internationally at South American and World Championships. Trained sailors as head coach for the Ecuadorian Sailing Federation. Worked with the 69F class, classic regattas and cruising boats up to 90ft. Handles marketing for MareBoats. Occasionally on board as skipper.",
     image: '/images/team/fede-skipper.jpg',
