@@ -33,6 +33,7 @@ type Crew = {
   image: string;
   imageAlt: string;
   objectPosition: string;
+  imageStyle?: React.CSSProperties;
 };
 
 const CREW: Crew[] = [
@@ -70,7 +71,8 @@ const CREW: Crew[] = [
     bio: "From Córdoba, Argentina. Runs the barrel, the first face guests meet, explaining and closing tours. Also a skipper on the water. Behind the scenes, she's the eye for MareBoats' design. Triathlete for years, loves the sea and being outdoors. Speaks Spanish, English and Italian.",
     image: '/images/team/coti-mareboats-skipper.jpg',
     imageAlt: 'Coti, skipper and guest experience at MareBoats Hvar',
-    objectPosition: '50% 20%',
+    objectPosition: '50% 0%',
+    imageStyle: { transform: 'scale(1.35)', transformOrigin: 'top center' },
   },
   {
     name: 'Luka',
@@ -275,7 +277,7 @@ export default function AboutPage() {
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover"
-                      style={{ objectPosition: c.objectPosition }}
+                      style={{ objectPosition: c.objectPosition, ...c.imageStyle }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
