@@ -71,8 +71,8 @@ const CREW: Crew[] = [
     bio: "From Córdoba, Argentina. Runs the barrel, the first face guests meet, explaining and closing tours. Also a skipper on the water. Behind the scenes, she's the eye for MareBoats' design. Triathlete for years, loves the sea and being outdoors. Speaks Spanish, English and Italian.",
     image: '/images/team/coti-mareboats-skipper.jpg',
     imageAlt: 'Coti, skipper and guest experience at MareBoats Hvar',
-    objectPosition: '50% 0%',
-    imageStyle: { transform: 'scale(1.35)', transformOrigin: 'top center' },
+    objectPosition: '50% 15%',
+    imageStyle: { transform: 'scale(1.5) translateY(-11%)', transformOrigin: 'center center' },
   },
   {
     name: 'Luka',
