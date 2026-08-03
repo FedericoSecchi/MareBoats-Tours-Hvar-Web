@@ -63,6 +63,42 @@ const CREW: Crew[] = [
     imageAlt: 'Federico, marketing at MareBoats Hvar',
     objectPosition: '50% 20%',
   },
+  {
+    name: 'Coti',
+    role: 'Design & Guest Experience, Skipper',
+    languages: ['Spanish', 'English', 'Italian'],
+    bio: "From Córdoba, Argentina. Runs the barrel, the first face guests meet, explaining and closing tours. Also a skipper on the water. Behind the scenes, she's the eye for MareBoats' design. Triathlete for years, loves the sea and being outdoors. Speaks Spanish, English and Italian.",
+    image: '/images/team/coti-mareboats-skipper.jpg',
+    imageAlt: 'Coti, skipper and guest experience at MareBoats Hvar',
+    objectPosition: '50% 20%',
+  },
+  {
+    name: 'Luka',
+    role: 'Skipper',
+    languages: ['Croatian', 'English'],
+    bio: "From Zagreb. Friendly and easygoing, always up for a chat. His favourite stop on the tour is Zarace. Plays football semi-pro back home when he's not on the water.",
+    image: '/images/team/luka-skipper.jpg',
+    imageAlt: 'Luka, skipper at MareBoats Hvar',
+    objectPosition: '50% 20%',
+  },
+  {
+    name: 'Mati',
+    role: 'Skipper',
+    languages: ['Spanish', 'English'],
+    bio: "From Buenos Aires. Speaks Spanish and English, loves to travel. Ask him about Calma Bay. It's his pick for the best way to end the day, and guests always agree. Loves chatting with guests and taking it easy.",
+    image: '/images/team/mati-skipper.jpg',
+    imageAlt: 'Mati, skipper at MareBoats Hvar',
+    objectPosition: '50% 20%',
+  },
+  {
+    name: 'Juli',
+    role: 'Chef & Crew',
+    languages: ['Spanish', 'English'],
+    bio: "From Buenos Aires. Cooks and connects with the sea with heart, not by the book. Passionate about good food, nature and life at sea.",
+    image: '/images/team/juli-chef.png',
+    imageAlt: 'Juli, chef and crew at MareBoats Hvar',
+    objectPosition: '50% 20%',
+  },
 ];
 
 const aboutSchema = {
@@ -228,7 +264,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {CREW.map((c) => (
               <li key={c.name}>
                 <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/70">
@@ -237,16 +273,21 @@ export default function AboutPage() {
                       src={c.image}
                       alt={c.imageAlt}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover"
                       style={{ objectPosition: c.objectPosition }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
                   <div className="flex flex-1 flex-col gap-3 p-6">
-                    <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                      {c.name}
-                    </h3>
+                    <div>
+                      <h3 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                        {c.name}
+                      </h3>
+                      <p className="mt-1 font-body text-xs font-medium uppercase tracking-[0.1em] text-[color:var(--accent)]">
+                        {c.role}
+                      </p>
+                    </div>
                     <p className="flex-1 font-body text-sm leading-relaxed text-[color:var(--gray)]">
                       {c.bio}
                     </p>
@@ -260,8 +301,7 @@ export default function AboutPage() {
           </ul>
 
           <p className="mt-8 max-w-2xl font-body text-sm leading-relaxed text-[color:var(--gray)]">
-            During peak season additional skippers join the team. Language availability may vary
-            &mdash; let us know when booking if it matters.
+            During peak season additional skippers join the team. Language availability may vary. Let us know when booking if it matters.
           </p>
         </div>
       </section>
