@@ -23,6 +23,17 @@ export const BUSINESS_INFO = {
 
 export type TourImage = { src: string; alt: string };
 
+export type TourStop = {
+  name: string;
+  croatianName?: string;
+  description: string;
+  travelTime: string;
+  activities: string;
+  conditions: string;
+  isOptional?: boolean;
+  optionalNote?: string;
+};
+
 export type TourRecord = {
   slug: string;
   name: string;
@@ -47,6 +58,8 @@ export type TourRecord = {
   keywords: string[];
   /** Structured pricing breakdown rendered on the tour detail page */
   pricingOptions?: { label: string; price: string; note: string }[];
+  /** Per-stop breakdown for routes that warrant detailed stop content */
+  stops?: TourStop[];
 };
 
 const MEETING = 'MareBoats barrel, Hvar Harbour main dock';
@@ -78,7 +91,7 @@ From Red Rocks we continue to Dubovica Beach, one of the most photographed beach
 
 Then Borče Bay in Milna: a quiet cove on the southern coast, calm water, no other boats. The kind of place you only find if you know where to look.
 
-We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Zdrilca for a quieter swim before we head back.
+We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Ždrilca for a quieter swim before we head back.
 
 Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 6 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
 
@@ -110,7 +123,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       'Red Rocks - vertical iron-red cliffs dropping straight into turquoise water',
       'Dubovica Beach - iconic bay with a 16th-century stone house and a secret sea cave',
       'Borče Bay (Milna) - quiet cove, calm water, no crowds',
-      'Pakleni Islands (Palmižana or Zdrilca) - beach bars, lunch stops, calm water',
+      'Pakleni Islands (Palmižana or Ždrilca) - beach bars, lunch stops, calm water',
     ],
     images: [
       {
@@ -134,6 +147,61 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       { label: 'Shared', price: `€${RR.sharedPerPerson}/person`, note: '11:00-17:00 · up to 8 guests' },
       { label: 'Private half-day', price: `€${RR.privateHalfDay}`, note: '4 hrs · your group only' },
       { label: 'Private full-day', price: `€${RR.privateFullDay}`, note: '6 hrs · your group only' },
+    ],
+    stops: [
+      {
+        name: 'Red Rocks',
+        croatianName: 'Crvene Stijene',
+        description:
+          'A stretch of deep-red cliffs rising directly from the Adriatic, coloured by iron oxide in the limestone. The geological formation is breccia: limestone fragments cemented with iron-rich minerals that oxidized over time, exactly like rust on metal.',
+        travelTime: 'Around 20 minutes from Hvar Harbour along the south coast.',
+        activities:
+          'Swimming along the cliff face, snorkelling in deep water that reaches the rock wall without shallowing. Cliff jumping from 5 to 10 metres for groups who want it. The vertical rock drops straight into the sea with no beach or gradual entry.',
+        conditions:
+          'Westerly winds or calm. Southeast wind (jugo) sends swell directly against the cliffs and can make the approach difficult.',
+      },
+      {
+        name: 'Dubovica Beach',
+        description:
+          'A pebble cove with turquoise water and a 16th-century stone house on the rocky point at the edge of the bay, one of the oldest standing structures on this part of Hvar island.',
+        travelTime: 'Around 15 minutes east along the south coast.',
+        activities:
+          'Swimming and snorkelling. A small sea cave sits off the eastern cliff face and catches the light in a way not visible from land. Worth exploring with a mask. The small peninsula that closes the bay cuts the wind, making the water calm and warm compared to more exposed beaches on this coast.',
+        conditions:
+          'Sheltered in most conditions. The cave is most visible with direct sun, before midday.',
+      },
+      {
+        name: 'Borče Bay (Milna)',
+        description:
+          'A quiet cove on the south coast of Hvar near the village of Milna, protected from the wind. This is Milna on Hvar island, not Milna on Brač.',
+        travelTime: 'Around 10 minutes from Hvar Harbour.',
+        activities:
+          'Swimming and a relaxed stop. Deep, clear water, no facilities on shore. Typically no other boats.',
+        conditions:
+          'Protected from northwesterly wind (maestral). May get some swell with southeast wind.',
+      },
+      {
+        name: 'Žarače',
+        description:
+          'A narrow, sheltered bay on the south coast of Hvar surrounded by hills. Also written "Zarace" without the diacritic. Konoba Gego is at the end of the bay, accessible by boat.',
+        travelTime: 'Around 12 minutes from Hvar Harbour.',
+        activities: 'Swimming in calm, protected water.',
+        conditions: 'Protected in most conditions.',
+        isOptional: true,
+        optionalNote:
+          'This is not a guaranteed stop. The skipper includes Žarače depending on sea conditions and the day. If the stop does not happen, no other stop is cut.',
+      },
+      {
+        name: 'Pakleni Islands (Palmižana or Ždrilca)',
+        croatianName: 'Paklinski otoci',
+        description:
+          'An archipelago of 16 uninhabited, car-free islands 8 minutes from Hvar Harbour. The name comes from "paklina," the old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Tri Grede is at Ždrilca and Bacchus is at Palmižana, both reachable only by boat.',
+        travelTime: 'Around 8 minutes from Hvar Harbour.',
+        activities:
+          'Swimming, snorkelling, and lunch. The skipper chooses between Palmižana or Ždrilca depending on the day. Lunch is not included in the tour price.',
+        conditions:
+          'Protected in almost all conditions. Some current between islands with strong maestral.',
+      },
     ],
   },
 

@@ -193,6 +193,68 @@ export default function TourDetailPage({ params }: PageProps) {
         </section>
       )}
 
+      {tour.stops && tour.stops.length > 0 && (
+        <section className="bg-[color:var(--surface)] px-4 py-16 md:py-20">
+          <div className="mx-auto max-w-container">
+            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
+              The route
+            </h2>
+            <p className="mt-2 font-body text-sm text-[color:var(--gray)]">
+              Sailing times are averages and vary with sea conditions.
+            </p>
+            <div className="mt-10">
+              {tour.stops.map((stop) => (
+                <div
+                  key={stop.name}
+                  className="border-t border-[color:var(--border)] py-8 first:border-t-0 first:pt-0"
+                >
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                      {stop.name}
+                    </h3>
+                    {stop.croatianName && (
+                      <span className="font-body text-sm text-[color:var(--gray)]">
+                        {stop.croatianName}
+                      </span>
+                    )}
+                    {stop.isOptional && (
+                      <span className="rounded-pill border border-amber-400/40 bg-amber-400/10 px-2.5 py-0.5 font-body text-[11px] font-semibold uppercase tracking-wide text-amber-300">
+                        Weather dependent
+                      </span>
+                    )}
+                  </div>
+                  <dl className="mt-4 grid gap-4 text-sm md:grid-cols-2">
+                    <div>
+                      <dt className="font-body font-semibold text-[color:var(--white)]">What it is</dt>
+                      <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.description}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-body font-semibold text-[color:var(--white)]">From Hvar Harbour</dt>
+                      <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.travelTime}</dd>
+                    </div>
+                    <div className="md:col-span-2">
+                      <dt className="font-body font-semibold text-[color:var(--white)]">What you do here</dt>
+                      <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.activities}</dd>
+                    </div>
+                    <div className="md:col-span-2">
+                      <dt className="font-body font-semibold text-[color:var(--white)]">Best conditions</dt>
+                      <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.conditions}</dd>
+                    </div>
+                    {stop.isOptional && stop.optionalNote && (
+                      <div className="md:col-span-2">
+                        <dd className="rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-3 font-body text-sm leading-relaxed text-amber-300">
+                          {stop.optionalNote}
+                        </dd>
+                      </div>
+                    )}
+                  </dl>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container gap-10 md:grid-cols-2">
           <div className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
