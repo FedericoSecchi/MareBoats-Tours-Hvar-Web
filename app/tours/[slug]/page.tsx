@@ -263,7 +263,7 @@ export default function TourDetailPage({ params }: PageProps) {
         <section className="bg-[color:var(--bg)] px-4 py-16 md:py-20">
           <div className="mx-auto max-w-container">
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
-              Red Rocks &amp; Pakleni or the Blue Cave full-day tour
+              Red Rocks &amp; Pakleni or the 5 Islands Blue Cave tour: which one fits your day?
             </h2>
             <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-[color:var(--gray)]">
               Both tours leave from Hvar Harbour on a MareBoats Hvar speedboat. The difference is range and time on the water.
