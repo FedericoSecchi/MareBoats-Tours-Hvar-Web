@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/lib/tours-data';
 import { TOUR_PRICES, EXTRAS } from '@/lib/pricing';
 import { JsonLd } from '@/components/ui/JsonLd';
-import { tourSchemaMap, buildTouristTripSchema } from '@/lib/schema';
+import { tourSchemaMap, buildTouristTripSchema, buildFAQSchema } from '@/lib/schema';
 import TourHero from '@/components/sections/TourHero';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
@@ -121,6 +121,9 @@ export default function TourDetailPage({ params }: PageProps) {
     <main>
       <JsonLd data={tripSchema as Record<string, unknown>} />
       <JsonLd data={breadcrumbSchema as Record<string, unknown>} />
+      {tour.faqs && tour.faqs.length > 0 && (
+        <JsonLd data={buildFAQSchema(tour.faqs) as Record<string, unknown>} />
+      )}
 
       <TourHero tour={tour} />
 
@@ -416,6 +419,37 @@ export default function TourDetailPage({ params }: PageProps) {
           )}
         </div>
       </section>
+
+      {tour.faqs && tour.faqs.length > 0 && (
+        <section className="bg-[color:var(--surface)] px-4 py-16 md:py-20">
+          <div className="mx-auto max-w-container">
+            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
+              Frequently asked questions
+            </h2>
+            <div className="mt-8">
+              {tour.faqs.map((faq) => (
+                <details
+                  key={faq.question}
+                  className="group border-t border-[color:var(--border)] py-5 first:border-t-0 first:pt-0"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-body text-base font-semibold text-[color:var(--white)] [&::-webkit-details-marker]:hidden">
+                    {faq.question}
+                    <span
+                      className="shrink-0 text-xl leading-none text-[color:var(--accent)] transition-transform duration-200 group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-[color:var(--gray)]">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Related tours */}
       {related.length > 0 && (

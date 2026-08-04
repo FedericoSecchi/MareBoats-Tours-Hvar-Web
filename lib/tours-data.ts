@@ -60,6 +60,8 @@ export type TourRecord = {
   pricingOptions?: { label: string; price: string; note: string }[];
   /** Per-stop breakdown for routes that warrant detailed stop content */
   stops?: TourStop[];
+  /** FAQ pairs — single source for both visible render and FAQPage JSON-LD */
+  faqs?: { question: string; answer: string }[];
 };
 
 const MEETING = 'MareBoats barrel, Hvar Harbour main dock';
@@ -201,6 +203,58 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
           'Swimming, snorkelling, and lunch. The skipper chooses between Palmižana or Ždrilca depending on the day. Lunch is not included in the tour price.',
         conditions:
           'Protected in almost all conditions. Some current between islands with strong maestral.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is included in the Red Rocks & Pakleni Islands tour from Hvar?',
+        answer:
+          'The MareBoats Hvar speedboat and skipper are included, fuel for the full itinerary, a cooler with ice, bottled water, and snorkel masks. Lunch is not included. Restaurants are available at the Pakleni Islands at Palmižana and Ždrilca. There are no cave entrance fees on this route.',
+      },
+      {
+        question: 'What time does the Red Rocks & Pakleni Islands tour depart from Hvar?',
+        answer:
+          'Private half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The private full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking. All tours depart from Hvar Harbour at the waterfront near the taxi boats.',
+      },
+      {
+        question: 'What is the difference between the 4-hour and 6-hour Red Rocks tour?',
+        answer:
+          'Both versions visit the same stops on the south coast of Hvar: Red Rocks, Dubovica Beach, Borče Bay, and the Pakleni Islands. The 4-hour half-day moves at a steady pace with time to swim at each stop. The 6-hour full-day (11:00 to 17:00) adds more time at each location, including a proper lunch break at the Pakleni Islands.',
+      },
+      {
+        question: 'How many people are on the shared Red Rocks & Pakleni Islands tour?',
+        answer:
+          'MareBoats Hvar speedboats are licensed for up to 12 guests but capped at 8 per boat. The shared tour departs when a minimum of 6 guests have confirmed. Groups of 9 to 16 travel on two MareBoats Hvar speedboats sailing together.',
+      },
+      {
+        question: 'Is Žarače a guaranteed stop on the Red Rocks & Pakleni tour?',
+        answer:
+          'No. Žarače is a weather-dependent stop. When sea conditions allow, the skipper pauses at Žarače on the way south along the Hvar coast. It is a narrow, sheltered bay. On days with swell or wind the stop is skipped, but no other stop is removed from the itinerary.',
+      },
+      {
+        question: 'Can I book the Red Rocks & Pakleni Islands tour as a private group?',
+        answer:
+          `Yes. The private half-day (4 hours) is €${RR.privateHalfDay} per boat for your group only. The private full-day (6 hours) is €${RR.privateFullDay} per boat. Both options include the speedboat, skipper, fuel, bottled water, cooler with ice, and snorkel masks. Up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together.`,
+      },
+      {
+        question: 'Is Dubovica Beach accessible only by boat?',
+        answer:
+          'There is a narrow road to Dubovica Beach, but it is steep and parking is very limited. Most visitors arrive by boat. MareBoats Hvar stops at Dubovica on every Red Rocks & Pakleni Islands tour. A 16th-century stone house stands at the edge of the bay. A short swim from shore leads to a hidden sea cave not visible from the beach.',
+      },
+      {
+        question: 'Is there shade on a MareBoats Hvar speedboat?',
+        answer:
+          'Every MareBoats Hvar speedboat has a sun canopy over the main seating area. Shade is available from the moment you leave Hvar Harbour to the last stop of the day. The open deck at the front of the boat is in full sun.',
+      },
+      {
+        question: 'Why does MareBoats Hvar limit groups to 8 guests?',
+        answer:
+          'MareBoats Hvar speedboats are licensed for up to 12 guests but are capped at 8 per boat. At 8 guests, everyone has room to move between the shaded seating area and the open deck, and the full group can be in the water at the same time. Groups of 9 to 16 travel on two boats sailing together.',
+      },
+      {
+        question: 'Do I have to stay seated during the Red Rocks tour?',
+        answer:
+          'No. There are no assigned seats on a MareBoats Hvar speedboat. There is room to move and to choose between shade and open sun during the day.',
       },
     ],
   },
