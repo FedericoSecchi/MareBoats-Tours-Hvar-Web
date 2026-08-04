@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 27 Julio 2026**
+**Actualizado: 04 Agosto 2026**
 
 ---
 
@@ -33,19 +33,24 @@
 - **NO mencionar "RIB" en copy** — decisión consciente de Nikola. Usar "speedboat" siempre.
 - El skipper no es un guía, pero puede ir contando y actuando de guía durante el tour.
 
-## Flota self-drive rental — precios por día completo (actualizado 21/07/2026)
+## Flota self-drive rental — precios por día completo (actualizado 04/08/2026)
 | Embarcación | HP | Precio/día | Máx personas | Fuel | Licencia | Depósito |
 |---|---|---|---|---|---|---|
 | Pasara | 5hp | €150 | 5 | Incluido | No requerida (legal hasta 5hp en Croacia) | — |
-| Pasara | 20hp | €200 | 5 | Incluido | Consultar por WhatsApp | — |
+| Pasara | 20hp | €240 | 5 | Incluido | **No mencionado en copy** (ver nota abajo) | — |
 | Speedboat | 60hp | €290 | 5 | Incluido | Requerida | — |
 | Speedboat Mariner | 150hp | €400 | 8 | Extra (full-in/out) | Requerida | €300 solo efectivo |
 
-Cambios 21/07: Pasara 5hp €120 → €150. Mariner 150hp €350 → €400 (aumento deliberado para bajar volumen de rental y reducir riesgo operativo). Capacidades máximas confirmadas por Nikola.
+Cambios: Pasara 5hp €120 → €150 (21/07). Mariner 150hp €350 → €400 (21/07, aumento deliberado para bajar volumen de rental y reducir riesgo operativo). Pasara 20hp €200 → €240 (04/08). Capacidades máximas confirmadas por Nikola.
 
 Depósito Mariner 150hp: €300, **solo efectivo**, devuelto al terminar. Tiene que estar visible en la web y en el quote, nunca ser una sorpresa en el muelle: un cliente que llega sin efectivo no alquila y deja una review de una estrella.
 
-Nota legal: En Croacia, operar sin licencia es legal solo hasta 5HP (3.7 kW). La Pasara 20hp está en zona gris — Nikola resuelve caso a caso por WhatsApp. El copy dice "ask us about licence" para la 20hp, nunca afirmar "no licence needed".
+### Nota legal — licencia y Pasara 20hp (actualizada 04/08)
+Las fuentes sobre el límite real de HP para operar sin licencia en Croacia son **inconsistentes** (rangos vistos: 5kW/6.8hp, 15hp, 20hp, hasta 30hp según la fuente). No hay claridad suficiente para afirmar públicamente que el Pasara 20hp no requiere licencia.
+
+Decisión tomada (04/08): en vez de resolver la ambigüedad legal, **se sacó toda mención a "licencia" del copy del Pasara 20hp**. La card lo posiciona por beneficio (volante, potencia, preferencia de clientes — badge "Most chosen self-drive"), sin ningún claim sobre requisitos legales. Grep case-insensitive confirmó cero menciones de "licencia/licence" en la card.
+
+Esto no resuelve el bloqueante de fondo (ver abajo), pero saca el riesgo inmediato del Pasara 20hp específicamente.
 
 ### 🔴 BLOQUEANTE — Pasara 5hp "no licence needed"
 Nikola pidió sacar el texto "no licence needed" de la Pasara 5hp alegando "legal reason", y preguntó si se podía "esconder". **No se ejecutó y no se ejecuta hasta tener la razón concreta.**
@@ -103,27 +108,30 @@ Todos estos valores viven en `lib/pricing.ts`. Esta tabla es referencia humana, 
 | Tour | Precio | Duración | Notas |
 |---|---|---|---|
 | Red Rocks & Pakleni | €85/persona shared · €400 privado half-day · €500 privado full-day | 4h / 6h | Actualizado 27/07: `pricingOptions` agregado a `tours-data.ts` — detail page ahora muestra tarjeta de precios estructurada (igual que Blue Cave/Sunset), el full-day €500 ya no queda enterrado en el cuerpo de texto |
-| 5 Islands / Blue Cave | €130/persona shared · €700 privado | 7h, sale 10:00 | — |
-| Pakleni Islands | €300 privado | 3h | Dejó de ser "on request" el 13/07 |
+| 5 Islands / Blue Cave | €150/persona shared · €800 privado | 7h, sale 10:00 | Actualizado 04/08 (antes €130/€700) |
+| Pakleni Islands | €300 privado 3h · €350 privado 4h | 3h / 4h | 4h con más paradas, sumado 29/07. Ancla deliberada: al lado de Red Rocks & Pakleni €400 el guest ve que por €50 más se lleva los dos |
 | Sunset Cruise | por tramos, ver abajo | 2h | Incluye vino, agua y fruta |
 | Private Charter | €500 + fuel | día completo | Fuel aparte a propósito |
 | Zlatni Rat, Brač | €600 privado | 6h | Producto nuevo 21/07 |
 
-### Sunset Cruise — precio por tramos
-| Personas | Precio | Vino incluido |
-|---|---|---|
-| 1-4 | €250 | 1 botella |
-| 5-6 | €350 | 2 botellas |
-| 7-8 | €500 | sin especificar |
-| 9-16 | €1000 (2 botes) | sin especificar |
+### Sunset Cruise — precio por tramos (CONFIRMADO Nikola 29/07/2026)
+| Personas | Botes | Precio | Botellas |
+|---|---|---|---|
+| 1-4 | 1 | €250 | 1 |
+| 5 | 1 | €350 | 1 |
+| 6 | 2 | €500 | 2 |
+| 7-8 | 2 | €700 | 2 |
+| 9+ | 3 | €1000 | 3 |
 
 Botella extra: €30. Incluye siempre agua y fruta fresca.
 
-Los tramos de 5 y 7 personas los redondeamos hacia arriba (5 paga tramo 5-6, 7 paga tramo 7-8). Es asunción nuestra, no confirmada por Nikola, y está marcada con comentario en el código.
+**Modelo por bote, no por persona.** El sunset prioriza comodidad sobre densidad: desde 6 personas van 2 botes aunque entren en uno solo, y desde 9 van 3 botes. `getSunsetTier(pax)` devuelve precio + botes + botellas.
 
-Para 7-8 personas Nikola no dijo cuántas botellas van, así que el copy **no afirma una cantidad**. No inventar.
+**Regla dura del código:** botellas = cantidad de botes (una por bote), derivada de los botes, no como número suelto, así no pueden divergir nunca. Botes: 1-5 = 1, 6-8 = 2, 9+ = 3. El tramo 9+ es tope fijo €1000 / 3 botes.
 
-**El tramo 9-16 a €1000 fijo es intencional, no un bug.** Un grupo de 9 son dos botes de 5 y 4, que por tramos individuales daría €600. Cobramos €1000 igual porque Nikola dijo explícitamente que no quiere grupos grandes y que si van, pagan precio completo. Es una barrera de entrada. Además, cómo se reparten 9 personas (5+4 u 8+1) lo decide Nikola en el muelle, no un algoritmo, así que un precio fijo es más defendible que uno calculado.
+**El salto 5→6 es un acantilado conocido:** un grupo de 6 pasa de 1 bote/€350 a 2 botes/€500 y se reparte en dos embarcaciones. Tiene incentivo a declararse 5. Es decisión de Nikola priorizar comodidad; el riesgo es perder o irritar grupos de 6.
+
+**⚠️ Pendiente Nikola — botellas en tramos medios.** Una botella por bote deja los tramos del medio cortos de vino (5 pax = 1 copa por cabeza a €350; 8 pax = 1,25 copas a €700). Propuesta en evaluación: "una botella cada 3 personas, mínimo una por bote" → 5=2, 7-8=3, 12=4, sin excepciones. Es costo de vino, o sea decisión de Nikola. La botella NUNCA es dato público (el copy no dice cantidad), así que subirla no toca la web, solo operación y crew dashboard. Hasta que Nikola apruebe, el código queda en botella=bote. Si aprueba, la fórmula pasa a `max(botes, round(pax/3))` (sigue derivada, sin riesgo de divergencia).
 
 ### Water taxi (dejó de ser "on request" el 21/07)
 | Zona | Base | Persona extra |
@@ -138,9 +146,11 @@ Máximo 8 personas (asunción, marcada en el código). **El water taxi NO tiene 
 |---|---|
 | Split ciudad ↔ Hvar | €500 |
 | Split Airport ↔ Hvar | €600 |
-| Stari Grad | €400 one way |
+| Stari Grad | €400 one way — **valor solo interno, ver nota abajo** |
 | Brač | €450 one way · €800 ida y vuelta |
 | Korčula · Biševo | on request (pendiente Nikola) |
+
+**Hvar → Stari Grad (actualizado 04/08):** sacado del listado público de `/transfers/`. Sigue en `lib/pricing.ts` (`TRANSFER_PRICES.stariGrad: 400`) y en el crew dashboard para quotes internos por WhatsApp. No tiene página standalone, no está en el sitemap, y el `itemListSchema` de `/transfers/` ya no lo incluye. Motivo: decisión de negocio, no legal.
 
 ### Extras y add-ons
 | Ítem | Precio | Nota |
@@ -183,7 +193,7 @@ No hardcodear offers en schema.ts. Valores actuales:
 
 | Slug | Precio |
 |---|---|
-| blue-cave-pakleni-islands | €130/persona (shared) · €700 privado |
+| blue-cave-pakleni-islands | €150/persona (shared) · €800 privado |
 | red-rocks-pakleni-islands | €85/persona (shared) · €400 privado half-day · €500 privado full-day |
 | pakleni-islands | €300 privado, 3 hrs |
 | sunset-cruise | desde €250 (por tramos) |
@@ -204,7 +214,7 @@ No hardcodear offers en schema.ts. Valores actuales:
 - `/on-tour/` — ELIMINADA. Redirect 301 → `/hvar-islands-guide/`.
 - `/explore/` — hub de contenido. Keywords: "things to do in Hvar", "hvar beaches", "hvar travel guide".
 - `/guide/` — guía pre-tour con route cards. **Actualizado 27/07**: las 3 secciones largas ("Blue Cave, Green Cave & Vis", "Red Rocks & Pakleni", "Where to Eat") son accordion colapsable, cerradas por default. Implementado con `<details>/<summary>` nativo (Server Component, sin `'use client'`, sin `useState`), mismo patrón visual que `IslandStopsAccordion` (ícono +/× que rota). Múltiples paneles pueden estar abiertos a la vez. Contenido interno sin cambios, solo el wrapper.
-- `/transfers/` — Mapbox Static Images API. hoverImage Split asignada.
+- `/transfers/` — Mapbox Static Images API. hoverImage Split asignada. **Actualizado 04/08**: Hvar → Stari Grad sacado del array `TRANSFERS[]` visible (sigue en pricing.ts para uso interno, ver Transfers arriba).
 - `/conditions/` — live weather/marine. Removida del navbar (08/06). Entradas contextuales desde tour pages y footer.
 - Nav: Tours → Rentals → Transfers → Explore → About
 
@@ -214,7 +224,7 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 
 - Ruta: `app/crew-9f3kq2/page.tsx` + `CrewDashboard.tsx` (`'use client'`)
 - **El slug es random a propósito. NO cambiarlo por algo legible** (`/staff`, `/admin`, `/prices` están en todas las wordlists de bots).
-- Contenido: buscador, filtros (All/Tours/Rentals/Transfers), card por servicio con precios, capacidad, includes, extras, add-ons, licencia. Header fijo con reglas operativas (meeting point, "speedboat" nunca "RIB", Pasara 20hp "ask us about licence").
+- Contenido: buscador, filtros (All/Tours/Rentals/Transfers), card por servicio con precios, capacidad, includes, extras, add-ons, licencia. Header fijo con reglas operativas (meeting point, "speedboat" nunca "RIB"). Pasara 20hp: desde 04/08 el copy no menciona licencia en absoluto (antes decía "ask us about licence").
 - **Quote builder** por card: modo (shared/private/half/full), contador de pax o días, unidades de scooter, date picker, total en vivo, botón "Copy Quote" → mensaje en inglés listo para pegar en WhatsApp.
 - Reglas del quote: privados NO multiplican por pax. Extras de cueva (Blue €24, Green €12) van listados aparte, **nunca sumados al total**. Scooter es €40 **por unidad**, no por persona. Cierra siempre con meeting point.
 - Campos dedicados para el copy del quote: `quoteName`, `quoteIncluded`, `quoteNotIncluded`. Escritos a mano, **no procesar copy con regex** (un `clean()` con regex mutiló "Snorkel gear (limited)" → "snorkel gear").
@@ -238,19 +248,9 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 - Footer → link "Conditions"
 
 ## QR Hub — /qr/
-Hub de cards para QR físicos (barco, meeting point, etc.). noindex, sin navbar/footer, full-screen móvil. El floating WhatsApp button global se oculta explícitamente en `/qr` (ver WhatsAppButton.tsx).
-
-**WhatsApp (26/07/2026):** pill compacto en el header row, derecha del logo. SVG de WhatsApp inline (no emoji), fondo `green-500/15`, texto `green-400`. min-h-[44px] para touch target. Link a `WA_QR_HREF` con `target="_blank"`, mensaje prellenado: "Hi, I scanned the MareBoats QR code and have a question." No es una card del grid — menor peso visual que las cards principales, no compite con ellas en jerarquía.
-
-| Card del grid | Destino | Variante |
-|---|---|---|
-| Explore Tours | `/landing/explore` | primary |
-| Pre-Tour Info | `/landing/pre-tour` | secondary |
-| On Tour | `/hvar-islands-guide?ref=qr` | secondary |
-| Leave a Review | `/landing/review` | secondary |
-| Hvar Guide | `/landing/guide-hvar` | secondary |
-| Rental Rules | `/landing/rental` | secondary |
-| Current Conditions | `/conditions` | secondary |
+- "On Tour" → `/hvar-islands-guide?ref=qr`
+- "Current Conditions" → `/conditions/`
+- **Actualizado 27/07**: ícono/botón de WhatsApp compacto en el header (pill, `bg-green-500/15 text-green-400`, ícono SVG real, no emoji), link con mensaje prellenado "Hi, I scanned the MareBoats QR code and have a question." — da contexto a Nikola apenas abre el chat. **No es una card del grid** (se probó como card grande y se revirtió por saturar el hub visualmente); vive como elemento propio junto al logo. Mismo número que el resto del sitio, mismo ícono que `WhatsAppButton.tsx`.
 
 ## Herramientas operativas
 - **Vesselio** — mareboats.vesselio.app · apikey: Fedde123. Solo referencia operativa, no conectar al sitio.
@@ -264,8 +264,8 @@ Hub de cards para QR físicos (barco, meeting point, etc.). noindex, sin navbar/
 - Photo & Video Shoot: €200. Solo tours privados, solo cuando Fede está a bordo.
 - NO mencionar año de fundación.
 - NO mencionar RIB. Usar "speedboat".
-- Boat rental sin licencia: solo Pasara 5hp es clara. 20hp por WhatsApp.
-- Em-dashes y en-dashes prohibidos. **Sweep completo verificado: commit 6b7c481 (26/07/2026), 15 archivos, build limpio. Todo el copy visible usa guion simple (-). Los únicos — o – que quedan en el repo son en comentarios de código, no en copy.**
+- Boat rental sin licencia: solo Pasara 5hp lo menciona explícitamente. Pasara 20hp (desde 04/08) no toca el tema licencia en ningún lugar del copy.
+- Em-dashes y en-dashes prohibidos.
 - "Lunch not included" — wording unificado.
 - **Capacidad: "Licensed for 12. We cap at 8."** Nunca mencionar 12 sin contexto.
 - **Brand: "MareBoats Hvar"** (sin espacio).
@@ -379,7 +379,9 @@ No hay forma de apelar efectivamente. Mitigación: escalonar el pedido post-tour
 
 ---
 
-## /landing/pre-tour/ — estado al 07/06/2026
+## /landing/pre-tour/ — estado al 07/06/2026 (⚠️ parcialmente desactualizado, ver nota)
+
+> **Nota 29/07/2026:** este bloque quedó anclado al 07/06 y no refleja cambios posteriores. Cambio confirmado a incorporar en un barrido futuro: se agregó un **callout destacado de belongings** en "Good to know" (`dce45d1`) con el texto canónico "Travel light. We keep a secure storage area on board for your phone, keys and valuables, so hand them over before you jump in. MareBoats Hvar is not responsible for items left unattended outside it." CC reportó que ese texto quedó replicado en 3 archivos — verificar si es duplicación pura (candidato a centralizar) o ubicaciones legítimas. El disclaimer sigue con tinte legal: **que Nikola lo lea.** Las departure slots de abajo siguen siendo la deuda de duplicación conocida (ver línea sobre `lib/operations.ts`).
 
 ### Mensaje WhatsApp Nikola
 ```
@@ -411,11 +413,10 @@ Nikola
 
 ---
 
-## /rentals/ — estado al 27/07/2026
+## /rentals/ — estado al 07/06/2026
 - Grid 2x2 self-drive con precios reales y badges de licencia
 - Badge PASARA 5HP: "NO LICENCE NEEDED" · PASARA 20HP: "ASK US ABOUT LICENCE" · Speedboats: "LICENCE REQUIRED"
 - Schema JSON-LD: Service + BreadcrumbList + FAQPage (no tocar)
-- **Underwater Scooter (27/07/2026):** sección reescrita para dejar claro que es add-on de tours privados, NO alquiler standalone. Precio muestra `ADDONS.scooter` (€40/unit). No disponible en Sunset Cruise ni salidas compartidas. Schema description actualizado acorde.
 
 ---
 
@@ -523,17 +524,7 @@ Nikola
 
 ---
 
-## Tour cards — componentes (estado 27/07/2026)
-
-### Convención de tour cards (26/07/2026)
-- **Badge = solo duración, formato corto, unidad "HRS", todo en mayúsculas.** Fuente única: campo `duration` en tours-data.ts (home) y `duration` en TOUR_CARDS de app/tours/page.tsx (listado). Deben ser idénticos por tour.
-  - 5 Islands / Blue Cave: `'7 HRS · DEPARTS 10:00'`
-  - Red Rocks: `'4 OR 6 HRS'`
-  - Pakleni: `'3 HRS'` (corregido de "3-4 hours" — son 3 hrs)
-  - Sunset: `'2 HRS'`
-- **Precio en el cuerpo de la card**, no en el badge. Red Rocks: "Shared from €85/person · Private from €400" (leído de TOUR_PRICES, sin hardcodear). Full-day €500 va en la detail page, no en la card.
-- **Fuente única de precio de card (26/07/2026):** tours-data.ts y TOUR_CARDS en app/tours/page.tsx usan ambos `formatPriceShort` para todas las cards, excepto Red Rocks (template manual idéntico en ambos) y tours no-featured (private-charter, transfer, yacht) que siguen con `formatPriceFull` en tours-data.ts. Strings canónicos: Blue Cave `"From €130/person · €700 private"`, Pakleni `"€300 private"`, Sunset `"From €250"`, Red Rocks `"Shared from €85/person · Private from €400"`.
-- Red Rocks ya tiene `pricingOptions` con las 3 combinaciones (26/07/2026): Shared €85/person (11:00-17:00), Private half-day €400 (4 hrs), Private full-day €500 (6 hrs). Mismo render que Blue Cave y Sunset. Números leídos de `RR` shorthand (TOUR_PRICES).
+## Tour cards — componentes (estado 11/06/2026)
 
 ### components/ui/TourCardImage.tsx
 - Carousel autoplay 4000ms on mount
@@ -729,6 +720,68 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 ---
 
+## 🗓️ Changelog — 04 Agosto 2026
+
+Sesión de 3 tareas, cerradas una por una (build limpio + commit + push por separado). **Nota de proceso:** Nikola ya estaba al tanto de estos 3 cambios de antemano, así que se pusheó directo a `main` sin pasar por el gate de aprobación de siempre.
+
+1. **Pasara 20hp: €200 → €240 + copy sin claim de licencia.**
+   Precio actualizado en `lib/pricing.ts`. Motivo del copy: las fuentes sobre el límite legal real para operar sin licencia en Croacia no coinciden entre sí (van de 5hp a 30hp según la fuente), así que en vez de arriesgar un claim legal se sacó toda mención a "licencia" y se reposicionó el producto por beneficio:
+   - Badge nuevo: "Most chosen self-drive"
+   - Subtítulo: "Self-drive boat Hvar · fuel included · up to 5 people"
+   - 3 bullets: fácil de manejar, más potencia que la 5hp, preferido por los clientes
+   - Estructura semántica (H2/H3 + bullets, no párrafo corrido) pensada para que ChatGPT/Perplexity puedan citarlo — GEO explícito, ya que el ~13% del tráfico via AI referral es diferenciador estratégico
+   - Schema `Product`/`Offer` (JSON-LD) agregado a la card, leyendo el precio de `RENTAL_SELF_DRIVE.pasara20hp.pricePerDay`
+   - Grep case-insensitive de "licencia"/"licence" en la card: 0 resultados
+   - **Aprendizaje de proceso:** el primer intento de CC malinterpretó "Pasara 20hp" — no hubo error acá, pero sí en el ítem 2 de abajo. Nombrar el producto por su ID/slug exacto, no por descripción, evita esto.
+
+2. **Blue Cave / 5 Islands: shared €130→€150, privado €700→€800.**
+   Precio actualizado en `lib/pricing.ts`. **Incidente de proceso:** la instrucción original decía "Vis tour" y CC lo interpretó como un producto nuevo inexistente (`vis-island-tour`), tocando el archivo equivocado. Se corrigió apuntando al producto real ("5 Islands, 4 Beaches & Blue Cave"), se eliminó la entrada inventada, y se verificó que no quedó ninguna card/página huérfana referenciándola. Reflejado también en `lib/schema.ts` (offers del tour).
+
+3. **Transfer Hvar → Stari Grad: eliminado del sitio público, mantenido en pricing interno.**
+   Sacado del array `TRANSFERS[]` en `app/transfers/page.tsx`. `lib/pricing.ts` intacto (`TRANSFER_PRICES.stariGrad: 400`) para que el crew dashboard lo siga usando en quotes por WhatsApp. `itemListSchema` se autogeneró sin la entrada (sin señal de oferta activa para Google/AI crawlers). Sin URL individual previa, así que el sitemap no necesitó cambios. Grep final: cero referencias desde páginas públicas.
+
+**Pendiente:**
+- Confirmar que el nombre visible del tour "5 Islands, 4 Beaches & Blue Cave" en el sitio efectivamente muestra los nuevos precios (verificado en pricing.ts y schema, falta chequeo visual en producción).
+- El bloqueante de fondo de la Pasara 5hp ("no licence needed") sigue sin resolverse — ver sección de flota rental arriba.
+
+---
+
+## 🗓️ Changelog — 29 Julio 2026
+
+Sesión de 5 tareas cerradas una por una (build limpio + commit + push por separado). Cambios de precios y copy discutidos con Nikola:
+
+1. **Sunset — modelo nuevo confirmado por Nikola** (`3a22124`): `SUNSET_TIERS` reescrito entero. Tramos ahora 1-4 / 5 / 6 / 7-8 / 9+ (€250 / €350 / €500 / €700 / €1000). Modelo por bote: 1-5 = 1 bote, 6-8 = 2, 9+ = 3. Botellas derivadas de botes (una por bote). Se borraron los comentarios viejos de "asunción no confirmada" (redondeos, botellas sin especificar): ya está todo confirmado. El €700 (7-8 pax) es lo que en las notas de Nikola figuraba como "8 to 12".
+2. **Pakleni 4h €350** (`90a1658`): sumado al 3h €300 existente (conviven las dos opciones). Precio en `pricing.ts`. Card ordenada al lado de Red Rocks & Pakleni €400 como ancla.
+3. **Cards clicables** (`f0f4381`): bug en `/landing/explore` — la card entera no respondía al click (anchors anidados rompen la hidratación). Corregido para que toda la card sea un solo target. Se originó reportado desde el flujo QR.
+4. **"local skipper" eliminado** (`a96353a` + dentro de `9dd986e`): 12 ocurrencias activas + 1 en `schema.ts` con L mayúscula que el grep case-sensitive de la tarea no agarró. Ya no es del todo cierto (media tripulación es argentina). **"local company" se queda** (sigue siendo verdad). Aprendizaje: barridos de copy SIEMPRE case-insensitive.
+5. **Dos textos nuevos** (`9dd986e`):
+   - Shared tours: aclara que el cupo no se abre hasta llegar al mínimo, confirmación por WhatsApp antes de salir. En las tour pages con precio shared.
+   - Belongings disclaimer: MareBoats no se responsabiliza por objetos dejados sin atender; hay zona de guardado seguro. En info pre-tour. **⚠️ Tiene tinte legal — que Nikola lo lea antes de darlo por definitivo.**
+
+**Segunda tanda (misma fecha) — CONFIRMADO por hash:**
+
+6. **"Nikola" sacado del copy** de `/tours/red-rocks-pakleni-islands/` (`e417c1`): el nombre propio no va en copy público.
+7. **Red Rocks — recorrido reordenado** (`a54ac1`): secuencia real ahora Hvar Harbour → Red Rocks → Dubovica → Borče Bay (Milna) → Pakleni. Se reordenaron `highlights` Y se reescribió la `description` para que coincidan (antes narraban órdenes distintos). Cuidado documentado: el primer intento de CC duplicó el párrafo de Borče y dejó el orden viejo; se agarró en el before/after antes de pushear.
+8. **Žarače — parada ocasional** (`a54ac1`): sumada a la description de Red Rocks como parada según clima ("On calm days we also pause at Žarače"), en el tramo de salida antes de Red Rocks. **NO va en highlights**: los highlights son paradas garantizadas, Žarače no lo es (si no se para por clima, un highlight incumplido genera review tibia).
+9. **Mínimo shared = 5** (`a54ac1`): subido de 4 a 5 para todos los tours (Red Rocks y Blue Cave). Corregido en `tours-data.ts` (description) y en `page.tsx:188` (nota shared, aplica a ambos slugs). Grep case-insensitive confirmó cero rastros de "minimum 4" en copy visible.
+
+**Regla de convoy reconfirmada:** para tours NO-sunset el tope sigue siendo 2 botes = 16 personas. Los 3 botes son EXCLUSIVOS del sunset (comodidad). No mezclar.
+
+**Tercera tanda (misma fecha) — CONFIRMADO por hash:**
+
+10. **Mínimo shared: público 6, operativo 4** (`1c0870e`): se subió de 5 a **6** en el copy visible (`tours-data.ts` description + `page.tsx:188`, ambos slugs). El 6 es número defensivo público (evita que grupos se declaren menos para forzar salida). El **mínimo operativo real es 4** — igual que "Licensed for 12, we cap at 8": el 4 es interno, NUNCA entra al build ni al código, vive solo acá y en el crew. En el sitio solo existe el 6.
+11. **Fillers cerrados** (`ba49d95`): "unforgettable" en Medvidina Cave → "Nothing moves inside"; "Good for families / half-day" de Pakleni summary reescrito sin clavar duración; "Premium pricing, premium quality" de Gariful → reescrito con rango real (mains €30-45). "flagship" de Blue Cave ya no existía (limpiado antes o grep sobre versión vieja). `flagship` de `tours-data.ts:469` sigue intocado (comentario de código).
+12. **Belongings disclaimer** (`dce45d1`): callout destacado con el texto canónico suave, en "Good to know" pre-tour. **⚠️ Replicado en 3 archivos** — verificar si centralizar. Sigue con tinte legal → **que Nikola lo lea.**
+
+**Aprendizaje de esta sesión (patrón de CC):** dos veces CC frenó bien pidiendo confirmación (description duplicada de Borče; rango de precio de Gariful que no debía inventar). El before/after obligatorio antes de commit atrapó ambos. Mantener esa disciplina.
+
+**Pendiente Nikola:**
+- Belongings disclaimer: que lo lea (tinte legal).
+- Botellas sunset tramos medios: propuesta "1 cada 3 pax, mín 1 por bote" pendiente (costo de vino). Código en botella=bote hasta el OK. `minGuests/maxGuests` ya en `pricing.ts:102-106`, listo.
+- Confirmar origen del mínimo (Fede lo definió: público 6 / operativo 4).
+
+---
+
 ## 🗓️ Changelog — 27 Julio 2026
 
 Sesión de tareas chicas y cerradas, una por una, todas commiteadas y pusheadas por separado:
@@ -738,7 +791,7 @@ Sesión de tareas chicas y cerradas, una por una, todas commiteadas y pusheadas 
 3. **Badges de todas las cards normalizados** a formato `N HRS` consistente. Se corrigió Pakleni de "3-4 hours" a "3 HRS" (el tour dura 3, no 3-4).
 4. **Precio de cards unificado entre home y listado**: ambos consumen el mismo formatter (`formatPriceShort`) para Blue Cave y Pakleni, que antes divergían entre `formatPriceFull` (home) y `formatPriceShort` (listado). Sunset sigue en `formatPriceFull` en home por ahora — mismo output, no rompe nada, pendiente de unificar si se quiere prolijidad total.
 5. **Red Rocks — detail page**: agregado `pricingOptions` (shared / private half-day / private full-day) con el mismo componente que ya usan Blue Cave y Sunset. El full-day €500 ahora tiene tarjeta propia, no vive solo en el cuerpo de texto.
-6. **Barrido completo de em-dashes y en-dashes** en todo el copy visible del repo (15 archivos, 21 reemplazos) — quedaban en horarios tipo "09:00-13:00". Verificado con build limpio; los únicos guiones largos que sobreviven están en comentarios de código, no en copy.
+6. **Barrido completo de em-dashes y en-dashes** en todo el copy visible del repo (15 archivos, 21 reemplazos) — quedaban en horarios tipo "09:00–13:00". Verificado con build limpio; los únicos guiones largos que sobreviven están en comentarios de código, no en copy.
 7. **`/qr/`**: se agregó un ícono de WhatsApp con mensaje contextual ("scanned the QR code"). Primer intento fue una card grande en el grid — se revirtió por saturar el hub y quedó como ícono compacto en el header.
 8. **`/guide/`**: las 3 secciones largas pasaron a accordion colapsable con `<details>/<summary>` nativo, cerradas por default, mismo patrón visual que `IslandStopsAccordion`.
 
@@ -757,6 +810,8 @@ Sesión de tareas chicas y cerradas, una por una, todas commiteadas y pusheadas 
 - **Nada sensible (costos, márgenes, comisiones) puede entrar al build estático.**
 - Refactors: verificar output, no solo que compile. Comparar strings ANTES vs DESPUÉS.
 - **Verificación mental NO cuenta.** Correr el código, imprimir el output real y pegarlo. Dos veces se reportó "verificado" sin ejecutar nada, y la única vez que se corrió de verdad apareció un bug que la revisión mental no había visto.
+- **Al pedir cambios de precio, nombrar el producto por su ID/slug exacto en `pricing.ts`, no por descripción libre.** El 04/08 "Vis tour" se interpretó como producto nuevo inexistente y se creó una entrada (`vis-island-tour`) que no correspondía a nada real, en vez de tocar "5 Islands, 4 Beaches & Blue Cave" que sí existía. Si el nombre del producto en la instrucción no calza 1:1 con una key conocida de `pricing.ts`, parar y confirmar antes de crear nada nuevo.
+- **Barridos de copy SIEMPRE case-insensitive.** Un grep case-sensitive de "local skipper" (29/07) dejó pasar "Local skipper" en schema.ts. Al buscar una frase para sacar/reemplazar, cubrir todas las capitalizaciones.
 - **No procesar copy con regex.** Un `clean()` con regex mutiló "Snorkel gear (limited)" en "snorkel gear". El copy de cliente se escribe a mano en campos dedicados (`quoteName`, `quoteIncluded`, `quoteNotIncluded`).
 - NUNCA modificar OTA listings sin aprobación Nikola
 - Em-dashes y en-dashes prohibidos
