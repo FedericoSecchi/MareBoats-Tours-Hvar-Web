@@ -62,6 +62,8 @@ export type TourRecord = {
   stops?: TourStop[];
   /** FAQ pairs — single source for both visible render and FAQPage JSON-LD */
   faqs?: { question: string; answer: string }[];
+  /** Fast-facts key-value pairs. Included/Not included are injected by the render from tour.includes/notIncludes after the "Meeting point" row. */
+  fastFacts?: { label: string; value: string }[];
 };
 
 const MEETING = 'MareBoats barrel, Hvar Harbour main dock';
@@ -204,6 +206,17 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         conditions:
           'Protected in almost all conditions. Some current between islands with strong maestral.',
       },
+    ],
+    fastFacts: [
+      { label: 'Duration',      value: '4 hours (half-day) or 6 hours (full-day)' },
+      { label: 'Departs',       value: 'Hvar Harbour. 09:00 or 14:00 (half-day) · 11:00 (full-day)' },
+      { label: 'Capacity',      value: 'Licensed for 12. We cap at 8. Groups of 9 to 16 travel on two boats sailing together.' },
+      { label: 'Shared',        value: `€${RR.sharedPerPerson} per person · minimum 6 guests to depart` },
+      { label: 'Private',       value: `€${RR.privateHalfDay} half-day · €${RR.privateFullDay} full-day` },
+      { label: 'Meeting point', value: MEETING },
+      // Included and Not included are injected here by the render from tour.includes/notIncludes
+      { label: 'Extra fees',    value: 'None' },
+      { label: 'Season',        value: 'May to September' },
     ],
     faqs: [
       {

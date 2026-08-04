@@ -114,6 +114,19 @@ export default function TourDetailPage({ params }: PageProps) {
   const rrP = TOUR_PRICES['red-rocks-pakleni-islands'];
   const bcP = TOUR_PRICES['blue-cave-pakleni-islands'];
 
+  const fastFactsDisplay: { label: string; value: string }[] = [];
+  if (tour.fastFacts) {
+    for (const fact of tour.fastFacts) {
+      fastFactsDisplay.push(fact);
+      if (fact.label === 'Meeting point') {
+        if (tour.includes.length > 0)
+          fastFactsDisplay.push({ label: 'Included', value: tour.includes.join(' · ') });
+        if (tour.notIncludes.length > 0)
+          fastFactsDisplay.push({ label: 'Not included', value: tour.notIncludes.join(' · ') });
+      }
+    }
+  }
+
   const showBlueCaveConditions = tour.slug === 'blue-cave-pakleni-islands';
   const showSunsetConditions = tour.slug === 'sunset-cruise';
 
@@ -158,6 +171,29 @@ export default function TourDetailPage({ params }: PageProps) {
           </Link>
         </div>
       </nav>
+
+      {fastFactsDisplay.length > 0 && (
+        <section className="bg-[color:var(--bg)] px-4 pt-10 pb-0">
+          <div className="mx-auto max-w-container">
+            <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] px-6 py-6">
+              <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
+                Fast facts
+              </h2>
+              <dl className="mt-5 divide-y divide-[color:var(--border)]">
+                {fastFactsDisplay.map((fact) => (
+                  <div
+                    key={fact.label}
+                    className="grid grid-cols-[140px_1fr] gap-x-6 py-3 text-sm first:pt-0 last:pb-0 sm:grid-cols-[180px_1fr]"
+                  >
+                    <dt className="font-body font-semibold text-[color:var(--white)]">{fact.label}</dt>
+                    <dd className="font-body text-[color:var(--gray)]">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-[color:var(--surface)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
