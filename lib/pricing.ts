@@ -58,8 +58,8 @@ export const TRANSFER_PRICES = {
 
 export const TOUR_PRICES: Record<string, TourPrice> = {
   'blue-cave-pakleni-islands': {
-    sharedPerPerson: 130,
-    private: 700,
+    sharedPerPerson: 150,
+    private: 800,
   },
   'red-rocks-pakleni-islands': {
     sharedPerPerson: 85,
@@ -83,7 +83,7 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
 
 export const RENTAL_SELF_DRIVE: Record<string, RentalSelfDrivePrice> = {
   pasara5hp:     { pricePerDay: 150, fuelIncluded: true,  licenceRequired: false, maxGuests: 5 },
-  pasara20hp:    { pricePerDay: 200, fuelIncluded: true,  licenceRequired: true,  maxGuests: 5 },
+  pasara20hp:    { pricePerDay: 240, fuelIncluded: true,  licenceRequired: true,  maxGuests: 5 },
   speedboat60hp: { pricePerDay: 290, fuelIncluded: true,  licenceRequired: true,  maxGuests: 5 },
   mariner150hp:  { pricePerDay: 400, fuelIncluded: false, licenceRequired: true,  maxGuests: 8, deposit: 300, depositCashOnly: true },
 };
