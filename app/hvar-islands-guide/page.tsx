@@ -60,6 +60,20 @@ export default function HvarIslandsGuidePage() {
       {/* Accordion sections - client component */}
       <IslandStopsAccordion />
 
+      {/* Contextual link to Red Rocks tour */}
+      <section className="bg-[color:var(--bg)] border-b border-[color:var(--border)] px-4 py-10">
+        <p className="mx-auto max-w-2xl text-center font-body text-base leading-relaxed text-[color:var(--gray)]">
+          Red Rocks, Dubovica Beach and the Pakleni Islands are all on one tour from Hvar.{' '}
+          <Link
+            href="/tours/red-rocks-pakleni-islands/"
+            className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+          >
+            See the Red Rocks &amp; Pakleni Islands tour
+          </Link>
+          .
+        </p>
+      </section>
+
       {/* Final CTA */}
       <section
         className="relative overflow-hidden bg-[color:var(--bg)] px-4 py-20"

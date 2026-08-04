@@ -58,7 +58,7 @@ const TOUR_CARDS: TourCard[] = [
     duration: '4 OR 6 HRS',
     price: `Shared from €${TOUR_PRICES['red-rocks-pakleni-islands'].sharedPerPerson}/person · Private from €${TOUR_PRICES['red-rocks-pakleni-islands'].privateHalfDay}`,
     summary:
-      'Cliffs, a secret cave, Dubovica Beach and the Pakleni archipelago in one half-day.',
+      'The south coast of Hvar by speedboat: Red Rocks cliffs, a secret sea cave at Dubovica, and the Pakleni Islands. 4 or 6 hours.',
     image: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
     imageAlt: 'Red Rocks and Pakleni Islands half-day boat tour from Hvar',
     waMessage: "Hi! I'd like to book the Red Rocks & Pakleni tour",

@@ -227,16 +227,8 @@ const ROUTES = [
     duration: 'Half Day · 4h',
     mapsUrl: 'https://maps.app.goo.gl/XU6Gx2karGzVvebw9',
     tourHref: '/tours/red-rocks-pakleni-islands/',
+    tourLinkText: 'Red Rocks and the south coast of Hvar by speedboat',
     stops: [
-      {
-        name: 'Borče Bay',
-        subtitle: 'Milna, Hvar - sheltered bay, first stop',
-        badge: 'Calm water',
-        // TODO: Nikola to confirm description
-        description:
-          'A quiet sheltered bay near Milna village - typically the first stop on the Red Rocks route. Protected from the wind, with calm and clear water. A good spot for an early swim before the main route continues east.',
-        mapsHref: 'https://www.google.com/maps/search/?api=1&query=Bor%C4%8De%20Bay%2C%20Hvar',
-      },
       {
         name: 'Red Rocks (Crvena Stijena)',
         subtitle: 'Hvar - iron-oxide limestone breccia',
@@ -252,6 +244,15 @@ const ROUTES = [
         description:
           'A stone house built by a local nobleman sits on the rocky point at the edge of the bay - one of the oldest standing structures on this part of the island. The beach is protected by a small peninsula that cuts the wind, making the water unusually calm and warm even in early season. A small sea cave just off the eastern cliff face is worth exploring by snorkel.',
         mapsHref: 'https://www.google.com/maps/search/?api=1&query=43.1459862%2C16.5344875',
+      },
+      {
+        name: 'Borče Bay',
+        subtitle: 'Milna, Hvar - sheltered bay',
+        badge: 'Calm water',
+        // TODO: Nikola to confirm description
+        description:
+          'A quiet sheltered bay near Milna village. Protected from the wind, with calm and clear water.',
+        mapsHref: 'https://www.google.com/maps/search/?api=1&query=Bor%C4%8De%20Bay%2C%20Hvar',
       },
       {
         name: 'Pakleni Islands (Ždrilca & Taršće)',
@@ -465,7 +466,7 @@ export default function GuidePage() {
                         href={route.tourHref}
                         className="inline-flex min-h-[44px] items-center gap-2 rounded-pill border border-[color:var(--accent)] px-5 py-2.5 font-body text-sm font-semibold text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/50 active:scale-[0.97]"
                       >
-                        See tour details
+                        {route.tourLinkText ?? 'See tour details'}
                       </Link>
                     </div>
                   )}

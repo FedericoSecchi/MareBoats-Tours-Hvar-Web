@@ -386,6 +386,15 @@ export default function ExplorePage() {
               See every island stop in detail
             </Link>
           </p>
+          <p className="mt-2 font-body text-sm text-[color:var(--gray)]">
+            The south coast of Hvar in a half or full day:{' '}
+            <Link
+              href="/tours/red-rocks-pakleni-islands/"
+              className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              Red Rocks, Dubovica Beach and the Pakleni Islands by speedboat
+            </Link>
+          </p>
         </div>
       </section>
 
