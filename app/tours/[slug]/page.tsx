@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/lib/tours-data';
+import { TOUR_PRICES, EXTRAS } from '@/lib/pricing';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { tourSchemaMap, buildTouristTripSchema } from '@/lib/schema';
 import TourHero from '@/components/sections/TourHero';
@@ -109,6 +110,9 @@ export default function TourDetailPage({ params }: PageProps) {
   };
 
   const related = getRelatedTours(tour.slug, 2);
+
+  const rrP = TOUR_PRICES['red-rocks-pakleni-islands'];
+  const bcP = TOUR_PRICES['blue-cave-pakleni-islands'];
 
   const showBlueCaveConditions = tour.slug === 'blue-cave-pakleni-islands';
   const showSunsetConditions = tour.slug === 'sunset-cruise';
@@ -250,6 +254,52 @@ export default function TourDetailPage({ params }: PageProps) {
                   </dl>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {tour.slug === 'red-rocks-pakleni-islands' && (
+        <section className="bg-[color:var(--bg)] px-4 py-16 md:py-20">
+          <div className="mx-auto max-w-container">
+            <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
+              Red Rocks &amp; Pakleni or the Blue Cave full-day tour
+            </h2>
+            <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-[color:var(--gray)]">
+              Both tours leave from Hvar Harbour on a MareBoats Hvar speedboat. The difference is range and time on the water.
+            </p>
+            <div className="mt-8 overflow-x-auto rounded-2xl border border-[color:var(--border)]">
+              <table className="w-full min-w-[560px] border-collapse font-body text-sm">
+                <thead>
+                  <tr className="border-b border-[color:var(--border)] bg-[color:var(--surface)]">
+                    <th className="py-3 pl-5 pr-6 text-left text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--gray)] w-[180px]" />
+                    <th className="py-3 pr-6 text-left text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--accent)]">Red Rocks &amp; Pakleni</th>
+                    <th className="py-3 pr-5 text-left text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--white)]">
+                      <Link href="/tours/blue-cave-pakleni-islands" className="hover:text-[color:var(--accent)] transition-colors focus-visible:outline-none focus-visible:underline">
+                        Blue Cave &amp; 5 Islands
+                      </Link>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-[color:var(--surface)]">
+                  {([
+                    { label: 'Duration',           rr: '4 or 6 hours',                                                                               bc: '~8 hours' },
+                    { label: 'Departure',          rr: 'Flexible (09:00 / 11:00 / 14:00)',                                                           bc: '10:00, fixed' },
+                    { label: 'Route',              rr: 'South coast of Hvar and the Pakleni archipelago',                                            bc: 'Vis Island, Biševo and the Pakleni Islands' },
+                    { label: 'Open sea crossing',  rr: 'Short legs, always near the Hvar coast',                                                     bc: 'Crosses to Vis Island (~45 km from Hvar)' },
+                    { label: 'Shared price',       rr: `€${rrP.sharedPerPerson ?? 0} per person`,                                                    bc: `€${bcP.sharedPerPerson ?? 0} per person` },
+                    { label: 'Private price',      rr: `€${rrP.privateHalfDay ?? 0} half-day / €${rrP.privateFullDay ?? 0} full-day`,                bc: `€${bcP.private ?? 0}` },
+                    { label: 'Cave entrance fees', rr: 'None',                                                                                        bc: `Blue Cave €${EXTRAS.blueCave}/person · Green Cave €${EXTRAS.greenCave}/person optional` },
+                    { label: 'Good fit for',       rr: 'More time in the water on the south coast of Hvar, shorter sailing legs',                    bc: 'Covering more islands in one day, Blue Cave on the list' },
+                  ] as { label: string; rr: string; bc: string }[]).map((row) => (
+                    <tr key={row.label} className="border-t border-[color:var(--border)]/60">
+                      <td className="py-3 pl-5 pr-6 align-top font-semibold text-[color:var(--white)]">{row.label}</td>
+                      <td className="py-3 pr-6 align-top text-[color:var(--accent)]">{row.rr}</td>
+                      <td className="py-3 pr-5 align-top text-[color:var(--gray)]">{row.bc}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
