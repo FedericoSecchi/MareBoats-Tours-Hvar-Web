@@ -37,6 +37,21 @@ export const metadata: Metadata = {
 const SITE = 'https://mareboatshvar.com';
 const WA_BASE = 'https://wa.me/385951966734?text=';
 
+const pasara20hpSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Pasara 20hp - Self-Drive Boat Rental Hvar',
+  description: 'Self-drive small speedboat rental in Hvar, Croatia. 20hp engine, nimble and easy to handle, up to 5 guests, fuel included. Most chosen self-drive rental at MareBoats Hvar.',
+  brand: { '@type': 'Brand', name: 'MareBoats Hvar' },
+  offers: {
+    '@type': 'Offer',
+    price: String(RENTAL_SELF_DRIVE.pasara20hp.pricePerDay),
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: `${SITE}/rentals/#boat-self-drive`,
+  },
+};
+
 function waUrl(message: string) {
   return `${WA_BASE}${encodeURIComponent(message)}`;
 }
@@ -238,6 +253,7 @@ export default function RentalsPage() {
       <JsonLd data={rentalBreadcrumbSchema as Record<string, unknown>} />
       <JsonLd data={faqSchema as Record<string, unknown>} />
       <JsonLd data={itemListSchema as Record<string, unknown>} />
+      <JsonLd data={pasara20hpSchema as Record<string, unknown>} />
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[color:var(--border)] px-4 py-20 md:py-24">
@@ -407,15 +423,22 @@ export default function RentalsPage() {
 
                 {/* Pasara 20hp */}
                 <article className="flex flex-col rounded-xl border border-amber-400/30 bg-[color:var(--bg)] p-4">
-                  <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                  <span className="inline-flex items-center self-start rounded-pill border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-amber-300">
+                    Most chosen self-drive
+                  </span>
+                  <h4 className="mt-2 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Pasara · 20hp
                   </h4>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small boat rental Hvar · ask us about licence · up to {RENTAL_SELF_DRIVE.pasara20hp.maxGuests} people</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Self-drive boat Hvar · fuel included · up to {RENTAL_SELF_DRIVE.pasara20hp.maxGuests} people</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.pasara20hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
-                    {['More range, more speed', 'Fuel included', 'Contact us to confirm eligibility'].map((item) => (
+                    {[
+                      'Nimble and easy to handle',
+                      '20hp - more range and speed than the 5hp',
+                      "Our guests' first choice for self-drive",
+                    ].map((item) => (
                       <li key={item} className="flex gap-2">
-                        <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gray)]" />
+                        <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400/70" />
                         <span>{item}</span>
                       </li>
                     ))}
