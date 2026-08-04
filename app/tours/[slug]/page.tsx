@@ -7,6 +7,7 @@ import { TOUR_PRICES, EXTRAS } from '@/lib/pricing';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { tourSchemaMap, buildTouristTripSchema, buildFAQSchema } from '@/lib/schema';
 import TourHero from '@/components/sections/TourHero';
+import FleetInfo from '@/components/sections/FleetInfo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 const SITE = 'https://mareboatshvar.com';
@@ -486,6 +487,8 @@ export default function TourDetailPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      {tour.slug !== 'split-airport-transfer' && <FleetInfo />}
 
       {/* Related tours */}
       {related.length > 0 && (
