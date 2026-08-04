@@ -58,8 +58,8 @@ export const TRANSFER_PRICES = {
 
 export const TOUR_PRICES: Record<string, TourPrice> = {
   'blue-cave-pakleni-islands': {
-    sharedPerPerson: 130,
-    private: 700,
+    sharedPerPerson: 150,
+    private: 800,
   },
   'red-rocks-pakleni-islands': {
     sharedPerPerson: 85,
@@ -75,7 +75,6 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
   },
   'yacht-sailboat-taxi': { onRequest: true },
   'brac-zlatni-rat': { private: 600 }, // Brač tour, 6h, up to 8 — crew dashboard only, no public page yet
-  'vis-island-tour': { sharedPerPerson: 150, private: 800 }, // Vis Island tour — no public page yet; formatPriceSchema needs case when page is built
 };
 
 // ──────────────────────────────────────────────
