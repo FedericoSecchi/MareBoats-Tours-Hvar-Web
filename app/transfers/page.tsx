@@ -104,21 +104,6 @@ const TRANSFERS: TransferCard[] = [
     ],
   },
   {
-    id: 'stari-grad',
-    route: 'Stari Grad',
-    price: `€${TRANSFER_PRICES.stariGrad} one way`,
-    time: '~20 min',
-    summary: 'Hvar Harbour to Stari Grad. Fastest connection between the two towns.',
-    waMessage: "Hi! I'd like a transfer to Stari Grad",
-    ctaLabel: 'Book on WhatsApp',
-    hoverImage: null,
-    mapFrom: COORDS.HVAR_PORT,
-    mapTo: { lon: 16.597500, lat: 43.183500 },
-    mapVia: [
-      { lon: 16.521000, lat: 43.175000 },
-    ],
-  },
-  {
     id: 'brac',
     route: 'Brač',
     price: `€${TRANSFER_PRICES.bracOneWay} one way · €${TRANSFER_PRICES.bracReturn} return`,
