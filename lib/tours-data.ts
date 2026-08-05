@@ -66,8 +66,8 @@ export type TourRecord = {
   fastFacts?: { label: string; value: string }[];
 };
 
-const MEETING = 'MareBoats barrel, Hvar Harbour main dock';
-const MAPS = 'https://maps.app.goo.gl/3UamDy3Mh9dt4UpM7';
+const MEETING = 'Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel';
+const MAPS = 'https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA';
 
 const PHOTO_VIDEO_ADDON = `Photo & Video Shoot - €${ADDONS.photoVideo}, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited.`;
 
@@ -89,7 +89,7 @@ export const toursData: TourRecord[] = [
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
     description: `The Red Rocks & Pakleni Islands tour is the local route: the one we take when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
-We leave Hvar Harbour heading south along the coast. On calm days we also pause at Žarače, a quiet bay on the way. First stop is Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
+We leave Beach Križa heading south along the coast. On calm days we also pause at Žarače, a quiet bay on the way. First stop is Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
 
 From Red Rocks we continue to Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land.
 
@@ -209,7 +209,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     ],
     fastFacts: [
       { label: 'Duration',      value: '4 hours (half-day) or 6 hours (full-day)' },
-      { label: 'Departs',       value: 'Hvar Harbour. 09:00 or 14:00 (half-day) · 11:00 (full-day)' },
+      { label: 'Departs',       value: 'Beach Križa. 09:00 or 14:00 (half-day) · 11:00 (full-day)' },
       { label: 'Capacity',      value: 'Licensed for 12. We cap at 8. Groups of 9 to 16 travel on two boats sailing together.' },
       { label: 'Shared',        value: `€${RR.sharedPerPerson} per person · minimum 6 guests to depart` },
       { label: 'Private',       value: `€${RR.privateHalfDay} half-day · €${RR.privateFullDay} full-day` },
@@ -227,7 +227,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       {
         question: 'What time does the Red Rocks & Pakleni Islands tour depart from Hvar?',
         answer:
-          'Private half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The private full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking. All tours depart from Hvar Harbour at the waterfront near the taxi boats.',
+          'Private half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The private full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking. All tours depart from Beach Križa, at the MareBoats barrel below the Beach Bay Hvar Hotel.',
       },
       {
         question: 'What is the difference between the 4-hour and 6-hour Red Rocks tour?',

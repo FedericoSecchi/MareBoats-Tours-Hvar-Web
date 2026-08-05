@@ -187,7 +187,20 @@ export default function TourDetailPage({ params }: PageProps) {
                     className="grid grid-cols-[140px_1fr] gap-x-6 py-3 text-sm first:pt-0 last:pb-0 sm:grid-cols-[180px_1fr]"
                   >
                     <dt className="font-body font-semibold text-[color:var(--white)]">{fact.label}</dt>
-                    <dd className="font-body text-[color:var(--gray)]">{fact.value}</dd>
+                    {fact.label === 'Meeting point' ? (
+                      <dd className="font-body text-[color:var(--gray)]">
+                        <a
+                          href={tour.meetingPointMapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-2 transition-colors hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:text-[color:var(--accent)]"
+                        >
+                          {fact.value}
+                        </a>
+                      </dd>
+                    ) : (
+                      <dd className="font-body text-[color:var(--gray)]">{fact.value}</dd>
+                    )}
                   </div>
                 ))}
               </dl>

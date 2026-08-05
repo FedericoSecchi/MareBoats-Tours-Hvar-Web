@@ -772,9 +772,9 @@ function QuoteBuilder({ service }: { service: Service }) {
     if (pricing.kind === 'water-taxi') {
       lines.push('Send us your position and the pickup time on WhatsApp and we come to you.');
     } else if (id === 'blue-cave') {
-      lines.push('Departure 10:00. Meeting point: MareBoats barrel, Hvar Harbour. Please arrive 10 minutes early.');
+      lines.push('Departure 10:00. Meeting point: Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel. Please arrive 10 minutes early.');
     } else {
-      lines.push('Meeting point: MareBoats barrel, Hvar Harbour. Please arrive 10 minutes early.');
+      lines.push('Meeting point: Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel. Please arrive 10 minutes early.');
     }
 
     return lines.join('\n');
@@ -1123,9 +1123,9 @@ function OpsHeader() {
         <div className="flex gap-2 font-body text-sm text-[color:var(--white)]">
           <span>📍</span>
           <span>
-            <strong>Meeting point:</strong> MareBoats barrel, Hvar Harbour main dock.{' '}
+            <strong>Meeting point:</strong> Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel.{' '}
             <a
-              href="https://maps.app.goo.gl/k84JNBQLvqgZunEX6"
+              href="https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[color:var(--accent)] underline"

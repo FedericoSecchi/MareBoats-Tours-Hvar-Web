@@ -28,7 +28,7 @@ const tourDetails: TourDetail[] = [
   {
     name: '5 Islands, 4 Beaches & Blue Cave',
     rows: [
-      { label: 'Meet', value: '09:45 at the MareBoats barrel, Hvar Harbour' },
+      { label: 'Meet', value: '09:45 at the MareBoats barrel, Beach Križa' },
       { label: 'Depart', value: '10:00' },
       { label: 'Duration', value: '7 hours - back around 17:00' },
       {
@@ -81,7 +81,7 @@ const tourDetails: TourDetail[] = [
   {
     name: 'Sunset Cruise',
     rows: [
-      { label: 'Meet', value: '19:15 at the MareBoats barrel, Hvar Harbour' },
+      { label: 'Meet', value: '19:15 at the MareBoats barrel, Beach Križa' },
       { label: 'Depart', value: '19:30' },
       { label: 'Duration', value: '2 hours - back around 21:30' },
       { label: 'Route', value: 'Pakleni Islands at golden hour' },
@@ -313,7 +313,7 @@ export default function PreTourPage() {
               <div className="aspect-[4/3] w-full md:aspect-[16/9]">
                 <iframe
                   src={MAP_EMBED_SRC}
-                  title="MareBoats barrel - Hvar Harbour main dock"
+                  title="MareBoats barrel - Beach Križa, Hvar"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="h-full w-full border-0"
@@ -327,9 +327,9 @@ export default function PreTourPage() {
                   Address
                 </p>
                 <p className="mt-2 font-body text-base font-semibold leading-relaxed text-[color:var(--white)]">
-                  MareBoats barrel
+                  MareBoats barrel, Beach Križa
                   <br />
-                  Hvar Harbour, main dock
+                  Below the Beach Bay Hvar Hotel
                   <br />
                   <span className="font-normal text-[color:var(--gray)]">Hvar, Croatia</span>
                 </p>
@@ -339,7 +339,7 @@ export default function PreTourPage() {
                 MareBoats wooden barrel on the harbour. If you get lost, message Nikola on WhatsApp.
               </p>
               <a
-                href="https://maps.app.goo.gl/k84JNBQLvqgZunEX6"
+                href="https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={secondaryBtnClass}
