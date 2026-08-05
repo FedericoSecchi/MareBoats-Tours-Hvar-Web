@@ -241,7 +241,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       { label: 'Duration',      value: '4 hours (half-day) or 6 hours (full-day)' },
       { label: 'Distance',      value: '30 to 35 km total route' },
       { label: 'Departs',       value: 'Beach Križa. 09:00 or 14:00 (half-day) · 11:00 (full-day)' },
-      { label: 'Capacity',      value: 'Licensed for 12. We cap at 8. Groups of 9 to 16 travel on two boats sailing together.' },
+      { label: 'Capacity',      value: 'MareBoats Hvar speedboats are licensed for 12. We sail with a maximum of 8 so there is room to move, shift between shade and sun, and get in the water as a full group at the same time. Groups of 9 to 16 travel on two boats sailing together.' },
       { label: 'Shared',        value: `€${RR.sharedPerPerson} per person · minimum 6 guests to depart` },
       { label: 'Private',       value: `€${RR.privateHalfDay} half-day · €${RR.privateFullDay} full-day` },
       { label: 'Meeting point', value: MEETING },
