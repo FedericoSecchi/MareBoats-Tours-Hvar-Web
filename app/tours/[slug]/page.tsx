@@ -289,10 +289,12 @@ export default function TourDetailPage({ params }: PageProps) {
                       <dt className="font-body font-semibold text-[color:var(--white)]">Sailing time</dt>
                       <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.travelTime}</dd>
                     </div>
-                    <div className="md:col-span-2">
-                      <dt className="font-body font-semibold text-[color:var(--white)]">What you do here</dt>
-                      <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.activities}</dd>
-                    </div>
+                    {stop.activities && (
+                      <div className="md:col-span-2">
+                        <dt className="font-body font-semibold text-[color:var(--white)]">What you do here</dt>
+                        <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.activities}</dd>
+                      </div>
+                    )}
                     <div className="md:col-span-2">
                       <dt className="font-body font-semibold text-[color:var(--white)]">Best conditions</dt>
                       <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.conditions}</dd>

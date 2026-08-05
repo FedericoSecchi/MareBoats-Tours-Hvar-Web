@@ -28,7 +28,7 @@ export type TourStop = {
   croatianName?: string;
   description: string;
   travelTime: string;
-  activities: string;
+  activities?: string;
   conditions: string;
   isOptional?: boolean;
   optionalNote?: string;
@@ -216,10 +216,21 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         optionalNote: 'Occasional stop, depending on the day and the group.',
       },
       {
+        name: 'Calma Beach',
+        description:
+          'A sheltered bay on the Hvar coast, facing the Pakleni Islands.',
+        travelTime: '5 to 8 min from Ždrilca.',
+        // activities: [TO COMPLETE]
+        conditions: 'Sheltered bay.',
+        isOptional: true,
+        optionalNote:
+          'The skipper stops at either Calma Beach or Perna, not both. The choice depends on the day and the conditions.',
+      },
+      {
         name: 'Palmižana',
         description:
           'The main anchorage in the Pakleni Islands, reachable only by boat. The name "Pakleni" comes from "paklina," the old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Palmižana has a small beach, pine forest and restaurants on the water.',
-        travelTime: '5 min from Perna, or 10 to 15 min direct from Ždrilca.',
+        travelTime: '5 min from Perna or Calma Beach, or 10 to 15 min direct from Ždrilca.',
         activities:
           'Lunch at Bacchus, a restaurant at Palmižana reachable only by boat. Swimming. Return to Beach Križa: 10 to 15 min from Palmižana or Perna.',
         conditions:
