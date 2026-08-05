@@ -319,7 +319,7 @@ export default function TourDetailPage({ params }: PageProps) {
               Red Rocks &amp; Pakleni or the 5 Islands Blue Cave tour: which one fits your day?
             </h2>
             <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-              Both tours leave from Hvar Harbour on a MareBoats Hvar speedboat. The difference is range and time on the water.
+              Both tours leave from Beach Križa on a MareBoats Hvar speedboat. The difference is range and time on the water.
             </p>
             <div className="mt-8 overflow-x-auto rounded-2xl border border-[color:var(--border)]">
               <table className="w-full min-w-[560px] border-collapse font-body text-sm">
@@ -336,10 +336,11 @@ export default function TourDetailPage({ params }: PageProps) {
                 </thead>
                 <tbody className="bg-[color:var(--surface)]">
                   {([
-                    { label: 'Duration',           rr: '4 or 6 hours',                                                                               bc: '~8 hours' },
+                    { label: 'Duration',           rr: '4 or 6 hours',                                                                               bc: '7 hours' },
                     { label: 'Departure',          rr: 'Flexible (09:00 / 11:00 / 14:00)',                                                           bc: '10:00, fixed' },
                     { label: 'Route',              rr: 'South coast of Hvar and the Pakleni archipelago',                                            bc: 'Vis Island, Biševo and the Pakleni Islands' },
                     { label: 'Open sea crossing',  rr: 'Short legs, always near the Hvar coast',                                                     bc: 'Crosses to Vis Island (~45 km from Hvar)' },
+                    { label: 'Total distance',     rr: '30 to 35 km',                                                                                bc: '100 to 120 km' },
                     { label: 'Shared price',       rr: `€${rrP.sharedPerPerson ?? 0} per person`,                                                    bc: `€${bcP.sharedPerPerson ?? 0} per person` },
                     { label: 'Private price',      rr: `€${rrP.privateHalfDay ?? 0} half-day / €${rrP.privateFullDay ?? 0} full-day`,                bc: `€${bcP.private ?? 0}` },
                     { label: 'Cave entrance fees', rr: 'None',                                                                                        bc: `Blue Cave €${EXTRAS.blueCave}/person · Green Cave €${EXTRAS.greenCave}/person optional` },
