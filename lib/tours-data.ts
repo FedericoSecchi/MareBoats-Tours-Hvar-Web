@@ -158,7 +158,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         croatianName: 'Crvene Stijene',
         description:
           'A stretch of deep-red cliffs rising directly from the Adriatic, coloured by iron oxide in the limestone. The geological formation is breccia: limestone fragments cemented with iron-rich minerals that oxidized over time, exactly like rust on metal.',
-        travelTime: 'Around 20 minutes from Hvar Harbour along the south coast.',
+        travelTime: '20 to 30 min from Beach Križa along the south coast.',
         activities:
           'Swimming along the cliff face, snorkelling in deep water that reaches the rock wall without shallowing. Cliff jumping from 5 to 10 metres for groups who want it. The vertical rock drops straight into the sea with no beach or gradual entry.',
         conditions:
@@ -168,41 +168,60 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         name: 'Dubovica Beach',
         description:
           'A pebble cove with turquoise water and a 16th-century stone house on the rocky point at the edge of the bay, one of the oldest standing structures on this part of Hvar island.',
-        travelTime: 'Around 15 minutes east along the south coast.',
+        travelTime: '5 to 8 min from Red Rocks.',
         activities:
           'Swimming and snorkelling. A small sea cave sits off the eastern cliff face and catches the light in a way not visible from land. Worth exploring with a mask. The small peninsula that closes the bay cuts the wind, making the water calm and warm compared to more exposed beaches on this coast.',
         conditions:
           'Sheltered in most conditions. The cave is most visible with direct sun, before midday.',
       },
       {
-        name: 'Borče Bay (Milna)',
+        name: 'Žarače',
+        description:
+          'A narrow, sheltered bay on the south coast of Hvar surrounded by hills. Also written "Zarace" without the diacritic. Konoba Gego is at the end of the bay, accessible by boat.',
+        travelTime: '10 to 12 min from Dubovica.',
+        activities: 'Swimming in calm, protected water.',
+        conditions: 'Protected in most conditions.',
+        isOptional: true,
+        optionalNote:
+          'Weather-dependent stop. When skipped, Borče Bay is 15 min direct from Dubovica.',
+      },
+      {
+        name: 'Borče Bay',
         description:
           'A quiet cove on the south coast of Hvar near the village of Milna, protected from the wind. This is Milna on Hvar island, not Milna on Brač.',
-        travelTime: 'Around 10 minutes from Hvar Harbour.',
+        travelTime: '12 to 15 min from Žarače. The route passes through Milna bay on this stretch. The boat slows down to take in the water colour.',
         activities:
           'Swimming and a relaxed stop. Deep, clear water, no facilities on shore. Typically no other boats.',
         conditions:
           'Protected from northwesterly wind (maestral). May get some swell with southeast wind.',
       },
       {
-        name: 'Žarače',
+        name: 'Ždrilca',
         description:
-          'A narrow, sheltered bay on the south coast of Hvar surrounded by hills. Also written "Zarace" without the diacritic. Konoba Gego is at the end of the bay, accessible by boat.',
-        travelTime: 'Around 12 minutes from Hvar Harbour.',
-        activities: 'Swimming in calm, protected water.',
-        conditions: 'Protected in most conditions.',
-        isOptional: true,
-        optionalNote:
-          'This is not a guaranteed stop. The skipper includes Žarače depending on sea conditions and the day. If the stop does not happen, no other stop is cut.',
+          'A sheltered bay in the Pakleni Islands with striking water colour, protected from open sea on all sides.',
+        travelTime: '3 min from Borče Bay. Mlini is on the way — the boat slows down through this stretch for the water colour.',
+        activities:
+          'Swimming, snorkelling and lunch. Tri Grede is at Ždrilca, reachable only by boat. A good place to eat and slow down before the last stretch.',
+        conditions: 'Sheltered in almost all conditions.',
       },
       {
-        name: 'Pakleni Islands (Palmižana or Ždrilca)',
-        croatianName: 'Paklinski otoci',
+        name: 'Perna',
         description:
-          'An archipelago of 16 uninhabited, car-free islands 8 minutes from Hvar Harbour. The name comes from "paklina," the old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Tri Grede is at Ždrilca and Bacchus is at Palmižana, both reachable only by boat.',
-        travelTime: 'Around 8 minutes from Hvar Harbour.',
+          'A small sand beach in the Pakleni Islands, the only sand beach on this route. The water colour is the reason it is on the itinerary. It is rarely crowded.',
+        travelTime: '5 to 8 min from Ždrilca.',
         activities:
-          'Swimming, snorkelling, and lunch. The skipper chooses between Palmižana or Ždrilca depending on the day. Lunch is not included in the tour price.',
+          'Swimming on sand rather than pebble, which is easier with small children. An occasional stop rather than a fixed one.',
+        conditions: 'Small and sheltered. Best in calm conditions.',
+        isOptional: true,
+        optionalNote: 'Occasional stop, depending on the day and the group.',
+      },
+      {
+        name: 'Palmižana',
+        description:
+          'The main anchorage in the Pakleni Islands, reachable only by boat. The name "Pakleni" comes from "paklina," the old Croatian word for pine resin harvested here for centuries to waterproof ship hulls. Palmižana has a small beach, pine forest and restaurants on the water.',
+        travelTime: '5 min from Perna, or 10 to 15 min direct from Ždrilca.',
+        activities:
+          'Lunch at Bacchus, a restaurant at Palmižana reachable only by boat. Swimming. Return to Beach Križa: 10 to 15 min from Palmižana or Perna.',
         conditions:
           'Protected in almost all conditions. Some current between islands with strong maestral.',
       },

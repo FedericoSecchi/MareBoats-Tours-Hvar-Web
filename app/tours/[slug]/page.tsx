@@ -257,7 +257,7 @@ export default function TourDetailPage({ params }: PageProps) {
               The route
             </h2>
             <p className="mt-2 font-body text-sm text-[color:var(--gray)]">
-              Sailing times are averages and vary with sea conditions.
+              Sailing times between stops are averages and vary with sea conditions. Time at each stop adjusts to the group and the day. We do not rush between stops.
             </p>
             <div className="mt-10">
               {tour.stops.map((stop) => (
@@ -286,7 +286,7 @@ export default function TourDetailPage({ params }: PageProps) {
                       <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.description}</dd>
                     </div>
                     <div>
-                      <dt className="font-body font-semibold text-[color:var(--white)]">From Hvar Harbour</dt>
+                      <dt className="font-body font-semibold text-[color:var(--white)]">Sailing time</dt>
                       <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.travelTime}</dd>
                     </div>
                     <div className="md:col-span-2">
