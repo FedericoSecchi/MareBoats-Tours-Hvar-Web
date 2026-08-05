@@ -300,6 +300,11 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         answer:
           'No. There are no assigned seats on a MareBoats Hvar speedboat. There is room to move and to choose between shade and open sun during the day.',
       },
+      {
+        question: 'Is an underwater scooter available on the Red Rocks & Pakleni Islands tour?',
+        answer:
+          `The underwater scooter is available as an add-on on private Red Rocks & Pakleni Islands tours. The cost is €${ADDONS.scooter} per unit for the full day. The price is per unit, not per person. It is not available on the shared tour. Ask via WhatsApp when you book.`,
+      },
     ],
   },
 
