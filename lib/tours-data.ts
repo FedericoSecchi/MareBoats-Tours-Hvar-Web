@@ -218,9 +218,10 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       {
         name: 'Calma Beach',
         description:
-          'A sheltered bay on the Hvar coast, facing the Pakleni Islands.',
+          'A sheltered bay on the Hvar coast facing the Pakleni Islands.',
         travelTime: '5 to 8 min from Ždrilca.',
-        // activities: [TO COMPLETE]
+        activities:
+          'Swimming and a relaxed stop in protected water. There is a beach spot of the same name on the bay.',
         conditions: 'Sheltered bay.',
         isOptional: true,
         optionalNote:
