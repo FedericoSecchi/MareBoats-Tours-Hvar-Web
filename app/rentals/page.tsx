@@ -389,6 +389,15 @@ export default function RentalsPage() {
               <p className="font-body text-base text-[color:var(--gray)]">
                 No licence? No problem. Our Pasara is available without a boating licence, perfect for a day around the Pakleni Islands. Licensed skippers can choose from our full speedboat fleet.
               </p>
+              <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
+                Not sure what your options are?{' '}
+                <Link
+                  href="/rentals/boat-rental-hvar-without-licence/"
+                  className="font-semibold text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+                >
+                  See the full guide to renting without a licence &rarr;
+                </Link>
+              </p>
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 

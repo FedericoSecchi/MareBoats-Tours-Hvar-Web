@@ -486,6 +486,15 @@ export default function ExplorePage() {
               </li>
             ))}
           </ul>
+          <p className="mt-6 font-body text-sm text-[color:var(--gray)]">
+            No boating licence?{' '}
+            <Link
+              href="/rentals/boat-rental-hvar-without-licence/"
+              className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              See what you can do on the water in Hvar without one
+            </Link>
+          </p>
         </div>
       </section>
 
