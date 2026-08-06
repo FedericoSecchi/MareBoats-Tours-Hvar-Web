@@ -772,9 +772,9 @@ function QuoteBuilder({ service }: { service: Service }) {
     if (pricing.kind === 'water-taxi') {
       lines.push('Send us your position and the pickup time on WhatsApp and we come to you.');
     } else if (id === 'blue-cave') {
-      lines.push('Departure 10:00. Meeting point: Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel. Please arrive 10 minutes early.');
+      lines.push('Departure 10:00. Meeting point: the MareBoats barrel, on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel. About 3 min walk from the ferry towards the Franciscan Monastery. Please arrive 10 minutes early.');
     } else {
-      lines.push('Meeting point: Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel. Please arrive 10 minutes early.');
+      lines.push('Meeting point: the MareBoats barrel, on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel. About 3 min walk from the ferry towards the Franciscan Monastery. Please arrive 10 minutes early.');
     }
 
     return lines.join('\n');
@@ -1123,7 +1123,7 @@ function OpsHeader() {
         <div className="flex gap-2 font-body text-sm text-[color:var(--white)]">
           <span>📍</span>
           <span>
-            <strong>Meeting point:</strong> Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel.{' '}
+            <strong>Meeting point:</strong> The MareBoats barrel, on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel. About 3 min walk from the ferry towards the Franciscan Monastery.{' '}
             <a
               href="https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA"
               target="_blank"

@@ -259,7 +259,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       {
         question: 'What time does the Red Rocks & Pakleni Islands tour depart from Hvar?',
         answer:
-          'Private half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The private full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking. All tours depart from Beach Križa, at the MareBoats barrel below the Beach Bay Hvar Hotel.',
+          'Private half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The private full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking. All tours meet at the MareBoats barrel, on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel. About 3 minutes on foot from the ferry terminal, walking towards the Franciscan Monastery.',
       },
       {
         question: 'What is the difference between the 4-hour and 6-hour Red Rocks tour?',

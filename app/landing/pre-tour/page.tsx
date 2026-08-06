@@ -335,8 +335,9 @@ export default function PreTourPage() {
                 </p>
               </div>
               <p className="font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                3 minutes walk from the ferry terminal - head towards the cathedral. Look for the
-                MareBoats wooden barrel on the harbour. If you get lost, message Nikola on WhatsApp.
+                Walk from the ferry terminal towards the Franciscan Monastery. The MareBoats barrel
+                is on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel
+                - about 3 minutes on foot. If you get lost, message Nikola on WhatsApp.
               </p>
               <a
                 href="https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA"
