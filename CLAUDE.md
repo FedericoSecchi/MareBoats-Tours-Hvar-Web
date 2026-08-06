@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 04 Agosto 2026**
+**Actualizado: 06 Agosto 2026**
 
 ---
 
@@ -564,6 +564,7 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Bloque 0, SEO Website, /landing/pre-tour/, SEO Cluster, fixes 02/06, Mobile Audit, Copy Audit, UX/Conversión, Schema markup, GBP, Precios self-drive, /conditions/, Copy 07/06, Session 07/06 noche, Session 08/06
 - **Fuente única de precios + crew dashboard — CERRADO (12/07)**: `lib/pricing.ts`, 11 archivos refactorizados, verificación 0 divergencias, `/crew-9f3kq2/` en producción ✅
 - **BLOQUE 1 Fotos drone — CERRADO** (09-15/06): 52 fotos migradas a public/images/, estructura nueva, todos los paths actualizados en componentes ✅
+- **Fase 1 Red Rocks + Tarea H — CERRADO (06/08)**: página de referencia completa sobre la ruta sur de Hvar. Patrón stops/faqs/fastFacts en TourRecord. Meeting point corregido en 11 archivos. Ruta 7 stops en orden real. Ver changelog 06/08 para detalle. ✅
 
 ### 🧹 BLOQUE 2 — Pendiente
 - GYG: itinerary VIP 5 Islands, disponibilidad jun-jul, review Red Rocks, underwater scooters publicar, fotos listings
@@ -598,6 +599,11 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Horarios de salida: unificar en `lib/operations.ts` (hoy duplicados en 3 archivos)
 - `if (id === 'brac-zlatni-rat')` hardcodeado en el crew dashboard para imprimir la duración. Reemplazar por un campo opcional `quoteDuration` en el servicio.
 - `tour.slug === 'red-rocks-pakleni-islands'` en `app/tours/[slug]/page.tsx` (sección comparativa Tarea C). Mismo patrón que el `if (id === 'brac-zlatni-rat')` del crew dashboard. Si la comparación existe en más de un tour, migrar a un campo opcional en `TourRecord` en vez de acumular condicionales en page.tsx. No refactorizar hasta que haya un segundo caso real.
+- **Diacríticos croatas** — ~12 instancias de nombres sin marcas diacríticas fuera de `red-rocks-pakleni-islands`: "Zdrilca", "Zarace", "Palmizana", "Bisevo" aparecen sin tilde en `tours-data.ts`, `lib/schema.ts`, `app/landing/pre-tour/`, `/about/`, `/tours/page`, Gallery y posiblemente más. Las formas correctas son Ždrilca, Žarače, Palmižana, Biševo. Tarea pendiente: barrido completo case-insensitive de estos 4 nombres, antes/después, un commit.
+- **`reviewCount: 26` en `businessSchema`** (`lib/schema.ts`) — el recuento real es **134**. No se corrigió en esta sesión para no mezclarlo con Tarea H. Actualizar con el número real antes de la próxima revisión de schema.
+- **GBP vs. schema — horario de temporada** — GBP declara horario todo el año. El `businessSchema` en `lib/schema.ts` declara `openingHours` mayo a septiembre. Son contradictorios. Resolver con Nikola cuál es el horario oficial y unificar.
+- **TripAdvisor listing dice "RIB speedboats"** — incorrecto según la regla de marca (usar "speedboat", nunca "RIB"). Requiere aprobación de Nikola antes de tocar. Flujo: Fede redacta corrección → Nikola aprueba por escrito → publicar.
+- **GetYourGuide — precios divergen del sitio** — GYG publica €95/persona (shared) y €160/persona (5 Islands), contra €85 y €150 en el sitio. Decisión deliberada de Fede (margen OTA), registrada acá como tal. No es un error. No tocar sin instrucción explícita.
 
 ### 🤖 EN EL RADAR
 - n8n: WhatsApp bot, Blue Cave status automático, GBP/Instagram automation
@@ -718,6 +724,43 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 13. No publicar fotos de huéspedes. Van a Media Drop.
 14. Si no podés cubrir un turno, avisá en General lo antes posible, no la misma mañana.
 15. El grupo es interno. Nada de acá sale del equipo.
+
+---
+
+## 🗓️ Changelog — 06 Agosto 2026
+
+### Fase 1 — Red Rocks como entidad (Tareas B a G)
+
+Objetivo: convertir `/tours/red-rocks-pakleni-islands/` en la página de referencia más completa sobre la ruta sur de Hvar, estructurada para ser citable por modelos de lenguaje.
+
+**Patrón arquitectónico nuevo — `stops`, `faqs`, `fastFacts` en `TourRecord`:**
+Los tres son campos opcionales tipados. El render en `app/tours/[slug]/page.tsx` es genérico: sin condicionales por slug, los datos dirigen el output. Mismo principio que `lib/pricing.ts`: una fuente, varios consumidores. El array `faqs` es fuente única para el render visible y el `FAQPage` JSON-LD: cero divergencia posible.
+
+- **Tarea B** — Sección "The route" con stops, markup H3+dl.
+- **Tarea C** — Tabla comparativa Red Rocks vs. 5 Islands Blue Cave.
+- **Tarea D** — 10 FAQs + FAQPage JSON-LD desde el mismo array.
+- **Tarea E** — Fast Facts `<dl>` data-driven. Included/Not included inyectados desde `tour.includes`/`tour.notIncludes` después de "Meeting point".
+- **Tarea F** — Links internos en /explore, /guide, /hvar-islands-guide, /tours. Corrección de orden de stops en /guide.
+- **Tarea G** — `components/sections/FleetInfo.tsx` Server Component, rendereado en todas las tour pages excepto `split-airport-transfer`.
+
+### Tarea H — Correcciones de datos (06/08/2026)
+
+**H1 — Meeting point corregido en 11 archivos:**
+El punto de encuentro publicado era incorrecto toda la temporada. "Hvar Harbour main dock" y "at the waterfront near the taxi boats" reemplazados por **Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel**. URL: `https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA`. Archivos: `lib/tours-data.ts` (constante MEETING, MAPS, fastFacts Departs, FAQ Q2, descripción), `app/landing/pre-tour/page.tsx` (Meet rows x2, iframe title, address block, Maps URL), `app/crew-9f3kq2/CrewDashboard.tsx` (quote builder x2, display), `app/tours/[slug]/page.tsx` (intro comparativa, Fast Facts Meeting point como link clickable).
+
+**H2 — Ruta reescrita con tiempos de tramo y 7 stops en orden real:**
+Antes: 5 stops desordenados (Red Rocks, Dubovica, Borče Bay, Žarače, Pakleni combinado). Después: Red Rocks, Dubovica, Žarače, Borče Bay, Ždrilca, Perna, Palmižana en orden de navegación. Todos los `travelTime` son tramo a tramo, no "from Hvar Harbour". "Borče Bay (Milna)" → "Borče Bay". Stop combinado "Pakleni Islands (Palmižana or Ždrilca)" dividido en tres stops independientes. Dt `"From Hvar Harbour"` → `"Sailing time"`. Subtítulo de la sección expandido con nota de tiempos aproximados y pace.
+
+**H3 — Tabla comparativa y distancias:**
+Duración 5 Islands corregida: "~8 hours" → "7 hours". Fila "Total distance" agregada en tabla (30-35 km / 100-120 km) y en Fast Facts (30 to 35 km total route).
+
+**H4** — Capacity fastFact reescrito para explicar la decisión de los 8 guests, no solo enunciar la regla. Subject explícito ("MareBoats Hvar speedboats") para que sea citable fuera de contexto.
+
+**H5** — FAQ underwater scooter: add-on en privados, €`ADDONS.scooter`/unit, per unit not per person, no disponible en shared.
+
+**H6** — FleetInfo bloque de música: playlist histórica + Spotify Jam disponible con app (no garantizado).
+
+**H7** — Calma Beach: parada ocasional, alternativa a Perna, mismo tramo desde Ždrilca (5-8 min). `TourStop.activities` hecho opcional. Palmižana `travelTime` actualizado para funcionar viniendo de Perna, de Calma, o directo desde Ždrilca.
 
 ---
 
