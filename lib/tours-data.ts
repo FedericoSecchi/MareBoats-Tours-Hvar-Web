@@ -535,9 +535,9 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
   {
     slug: 'split-airport-transfer',
     name: 'Split Airport to Hvar Speedboat Transfer',
-    tagline: 'Private 45-minute speedboat transfer between Split Airport and Hvar Harbour.',
+    tagline: 'Private speedboat transfer between Split Airport and Hvar. 1 to 1.5 hours by boat, depending on sea conditions.',
     shortDescription: `Split city departure: €${SAT.splitHvar} · Split Airport departure: €${SAT.airportHvar} (airport pier is a short taxi from the terminal)`,
-    description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in around 45 minutes - with luggage handled and a flexible departure time that fits your flight.
+    description: `A Split Airport to Hvar transfer by private speedboat is the fastest, most comfortable way to start or end your trip on the island. Instead of taxis, ferries and waiting times, you go straight from the mainland to Hvar Harbour in 1 to 1.5 hours, depending on sea conditions - with luggage handled and a flexible departure time that fits your flight.
 
 We coordinate the meeting point near Split (airport pier or Split town harbour, depending on your arrival) and confirm everything by WhatsApp the day before so there are no surprises. Your skipper monitors weather and tides, suggests the best route, and adapts the plan if your flight is delayed.
 
@@ -546,8 +546,8 @@ Pricing is transparent: €${SAT.splitHvar} for the Split harbour ↔ Hvar trans
 Most guests book this transfer at the start or end of their trip. You land, skip the ferry queue, and arrive in Hvar in about an hour.
 
 Message us on WhatsApp with your flight number, group size and luggage to lock in your slot. Peak summer transfers fill quickly - booking ahead is the only way to guarantee the time you want.`,
-    duration: '~45 min',
-    durationIso: 'PT45M',
+    duration: '1-1.5 HRS',
+    durationIso: 'PT1H30M',
     price: formatPriceFull('split-airport-transfer'),
     priceEur: getLowestPrice('split-airport-transfer'),
     includes: [
@@ -567,7 +567,7 @@ Message us on WhatsApp with your flight number, group size and luggage to lock i
     meetingPoint: 'Split Airport pier / Split harbour ↔ Hvar Harbour',
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Around 45 minutes door-to-harbour vs. several hours by ferry + transfer',
+      '1 to 1.5 hours door-to-harbour by boat, depending on sea conditions, vs. 2 to 3 hours by ferry and transfer',
       'Private boat - no shared groups, no fixed schedule',
       'Flight monitoring and WhatsApp coordination the day before',
     ],

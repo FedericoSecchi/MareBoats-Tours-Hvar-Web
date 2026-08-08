@@ -109,7 +109,7 @@ const tourDetails: TourDetail[] = [
     name: 'Split Airport Transfer',
     rows: [
       { label: 'Meet', value: 'On demand - Nikola will coordinate pickup time directly' },
-      { label: 'Duration', value: '~45 minutes' },
+      { label: 'Duration', value: '1 to 1.5 hours by boat, depending on sea conditions' },
     ],
     extraCosts: 'None',
   },
