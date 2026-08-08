@@ -59,7 +59,7 @@ export const businessSchema = {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     opens: '08:00',
-    closes: '20:00',
+    closes: '21:00',
     validFrom: '2026-04-01',
     validThrough: '2026-10-31',
   },
