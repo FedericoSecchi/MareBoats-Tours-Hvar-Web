@@ -64,6 +64,8 @@ export type TourRecord = {
   faqs?: { question: string; answer: string }[];
   /** Fast-facts key-value pairs. Included/Not included are injected by the render from tour.includes/notIncludes after the "Meeting point" row. */
   fastFacts?: { label: string; value: string }[];
+  /** Contextual link to a related decision or guide page */
+  relatedGuide?: { href: string; label: string; description: string };
 };
 
 const MEETING = 'Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel';
@@ -307,6 +309,11 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
           `The underwater scooter is available as an add-on on private Red Rocks & Pakleni Islands tours. The cost is €${ADDONS.scooter} per unit for the full day. The price is per unit, not per person. It is not available on the shared tour. Ask via WhatsApp when you book.`,
       },
     ],
+    relatedGuide: {
+      href: '/explore/private-boat-tour-hvar-families/',
+      label: 'Planning a private boat day for your group or family?',
+      description: 'How a private speedboat works for families and groups in Hvar',
+    },
   },
 
   {

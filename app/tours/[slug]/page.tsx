@@ -506,6 +506,22 @@ export default function TourDetailPage({ params }: PageProps) {
 
       {tour.slug !== 'split-airport-transfer' && <FleetInfo />}
 
+      {tour.relatedGuide && (
+        <div className="bg-[color:var(--bg)] px-4 pb-10 md:pb-12">
+          <div className="mx-auto max-w-container">
+            <p className="font-body text-sm text-[color:var(--gray)]">
+              {tour.relatedGuide.label}{' '}
+              <Link
+                href={tour.relatedGuide.href}
+                className="font-semibold text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+              >
+                {tour.relatedGuide.description} &rarr;
+              </Link>
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Related tours */}
       {related.length > 0 && (
         <section className="bg-[color:var(--surface)] px-4 py-16 md:py-20">

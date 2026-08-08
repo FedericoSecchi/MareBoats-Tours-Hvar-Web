@@ -495,6 +495,15 @@ export default function ExplorePage() {
               See what you can do on the water in Hvar without one
             </Link>
           </p>
+          <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
+            Planning a private boat day for your group?{' '}
+            <Link
+              href="/explore/private-boat-tour-hvar-families/"
+              className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              How a private speedboat works for families and groups in Hvar
+            </Link>
+          </p>
         </div>
       </section>
 
