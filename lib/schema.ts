@@ -60,8 +60,8 @@ export const businessSchema = {
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     opens: '08:00',
     closes: '20:00',
-    validFrom: '2026-05-01',
-    validThrough: '2026-09-30',
+    validFrom: '2026-04-01',
+    validThrough: '2026-10-31',
   },
   areaServed: {
     '@type': 'GeoCircle',

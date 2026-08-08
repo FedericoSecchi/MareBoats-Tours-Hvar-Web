@@ -250,7 +250,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       { label: 'Meeting point', value: MEETING },
       // Included and Not included are injected here by the render from tour.includes/notIncludes
       { label: 'Extra fees',    value: 'None' },
-      { label: 'Season',        value: 'May to September' },
+      { label: 'Season',        value: 'April to October' },
     ],
     faqs: [
       {

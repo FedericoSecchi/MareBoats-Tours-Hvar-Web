@@ -45,7 +45,7 @@ export default function CTABanner() {
         </WhatsAppTrackedLink>
 
         <p className="mt-4 font-body text-xs uppercase tracking-[0.18em] text-[color:var(--gray)]">
-          Peak season May-September · Reply within the hour · Daily 8:00-20:00
+          April-October · Reply within the hour · Daily 8:00-20:00
         </p>
       </motion.div>
     </section>

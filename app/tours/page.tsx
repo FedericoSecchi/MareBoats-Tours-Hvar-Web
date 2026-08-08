@@ -110,7 +110,7 @@ const HOW_IT_WORKS = [
   {
     n: '2',
     title: 'Message us on WhatsApp',
-    body: 'We reply within an hour during the season (May-September).',
+    body: 'We reply within an hour during the season (April-October).',
   },
   {
     n: '3',

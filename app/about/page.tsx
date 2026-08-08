@@ -186,7 +186,7 @@ export default function AboutPage() {
                 Hvar, run by people who actually know the place.
               </p>
               <p>
-                Today we run a fleet of speedboats from Hvar Harbour, May through September. Tours can be
+                Today we run a fleet of speedboats from Hvar Harbour, April through October. Tours can be
                 fully private (your group, your boat, your pace) or shared, departing when the
                 boat fills up.
               </p>

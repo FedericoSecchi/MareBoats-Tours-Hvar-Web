@@ -158,7 +158,7 @@ export default function Footer() {
               >
                 @mareboats.hvar
               </a>
-              <span>Daily May-September · replies within 1h</span>
+              <span>Daily April-October · replies within 1h</span>
             </address>
           </div>
         </div>
