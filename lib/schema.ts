@@ -19,7 +19,7 @@ const AGGREGATE_RATING = {
   ratingValue: '5.0',
   bestRating: '5',
   worstRating: '1',
-  reviewCount: '26',
+  reviewCount: '144',
 } as const;
 
 const AVAILABLE_LANGUAGES = ['English', 'Croatian', 'German', 'Spanish', 'Italian'];
