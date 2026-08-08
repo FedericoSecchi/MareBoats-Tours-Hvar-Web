@@ -18,7 +18,6 @@ function buildContent(): string {
   const bc = TOUR_PRICES['blue-cave-pakleni-islands'];
   const rr = TOUR_PRICES['red-rocks-pakleni-islands'];
   const pk = TOUR_PRICES['pakleni-islands'];
-  const sc = TOUR_PRICES['sunset-cruise'];
   const ch = TOUR_PRICES['private-boat-charter'];
 
   const wtHarbour = WATER_TAXI_PRICES['yachtsNearHarbour'];
@@ -36,15 +35,20 @@ function buildContent(): string {
 
   return `# MareBoats Hvar
 
-MareBoats Hvar runs private speedboat tours and boat rentals from Hvar Harbour, Croatia.
+MareBoats Hvar runs private speedboat tours and boat rentals from Hvar, Croatia.
 
 ## About
 
-- Location: Hvar Harbour, Hvar, Croatia
+- Departs from: Hvar, Croatia
 - Season: April to October
-- Capacity: up to 8 guests per boat
+- Capacity: licensed for 12, we sail with a maximum of 8 guests per boat
 - Languages: English, Croatian, German, Spanish, Italian
 - Contact: WhatsApp +385 95 196 6734
+
+## Boats
+
+All speedboats include: sun canopy, cold water and ice on board, snorkel gear and masks, music system.
+Open deck layout. No assigned seats.
 
 ## Tours
 
@@ -60,6 +64,14 @@ MareBoats Hvar runs private speedboat tours and boat rentals from Hvar Harbour, 
 - Shared: €${rr.sharedPerPerson}/person (group tour, minimum 6 guests)
 - Private half-day: €${rr.privateHalfDay} (up to 8 guests, ~4 hours)
 - Private full-day: €${rr.privateFullDay} (up to 8 guests, ~6 hours)
+- Route (in sailing order):
+  1. Red Rocks (Crvene Stijene) -- iron-red cliffs dropping into turquoise water, cliff jumping 5 to 10 m (20 to 30 min from Beach Križa)
+  2. Dubovica Beach -- iconic bay with a 16th-century stone house and a hidden sea cave (5 to 8 min from Red Rocks)
+  3. Žarače -- sheltered bay, weather-dependent stop (10 to 12 min from Dubovica)
+  4. Borče Bay (Milna) -- quiet cove, calm water, no crowds (12 to 15 min from Žarače)
+  5. Ždrilca channel -- swimming, snorkelling, lunch at Tri Grede restaurant (3 min from Borče Bay)
+  6. Perna or Calma Beach -- skipper chooses based on conditions (5 to 8 min from Ždrilca)
+  7. Palmižana -- main Pakleni anchorage, lunch at Bacchus restaurant (5 to 15 min from Perna)
 - Page: ${SITE_URL}/tours/red-rocks-pakleni-islands/
 
 ### Pakleni Islands
@@ -101,10 +113,10 @@ ${sunsetLines}
 
 ## Boat Rentals (Self-Drive)
 
-- Pasara 5hp: €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day, up to ${RENTAL_SELF_DRIVE.pasara5hp.maxGuests} guests, fuel included, no boating licence required
+- Pasara 5hp: €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day, up to ${RENTAL_SELF_DRIVE.pasara5hp.maxGuests} guests, fuel included
 - Pasara 20hp: €${RENTAL_SELF_DRIVE.pasara20hp.pricePerDay}/day, up to ${RENTAL_SELF_DRIVE.pasara20hp.maxGuests} guests, fuel included
-- Speedboat 60hp: €${RENTAL_SELF_DRIVE.speedboat60hp.pricePerDay}/day, up to ${RENTAL_SELF_DRIVE.speedboat60hp.maxGuests} guests, fuel included, boating licence required
-- Speedboat Mariner 150hp: €${RENTAL_SELF_DRIVE.mariner150hp.pricePerDay}/day, up to ${RENTAL_SELF_DRIVE.mariner150hp.maxGuests} guests, fuel extra, boating licence required, €${RENTAL_SELF_DRIVE.mariner150hp.deposit} cash deposit
+- Speedboat 60hp: €${RENTAL_SELF_DRIVE.speedboat60hp.pricePerDay}/day, up to ${RENTAL_SELF_DRIVE.speedboat60hp.maxGuests} guests, fuel included
+- Speedboat Mariner 150hp: €${RENTAL_SELF_DRIVE.mariner150hp.pricePerDay}/day, up to ${RENTAL_SELF_DRIVE.mariner150hp.maxGuests} guests, fuel extra, €${RENTAL_SELF_DRIVE.mariner150hp.deposit} cash deposit required
 - Private tour with skipper: from €${RENTAL_WITH_SKIPPER_FROM}
 - Page: ${SITE_URL}/rentals/
 
@@ -120,9 +132,10 @@ WhatsApp: https://wa.me/385951966734
 
 ## Meeting Point
 
-Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel
+Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel.
+3 minutes on foot from the ferry port, walking towards the Franciscan Monastery.
 GPS: 43.1690147, 16.4429617
-Map: https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA
+Google Maps: https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA
 
 Note: Water taxi has no fixed meeting point. We come to your anchored boat.
 
