@@ -91,7 +91,6 @@ export const tourSchemaMap: Record<string, object> = {
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: formatPriceSchema('blue-cave-pakleni-islands'),
     url: `${SITE_URL}/tours/blue-cave-pakleni-islands/`,
-    aggregateRating: AGGREGATE_RATING,
   },
 
   'red-rocks-pakleni-islands': {
@@ -107,7 +106,6 @@ export const tourSchemaMap: Record<string, object> = {
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: formatPriceSchema('red-rocks-pakleni-islands'),
     url: `${SITE_URL}/tours/red-rocks-pakleni-islands/`,
-    aggregateRating: AGGREGATE_RATING,
   },
 
   'pakleni-islands': {
@@ -123,7 +121,6 @@ export const tourSchemaMap: Record<string, object> = {
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: formatPriceSchema('pakleni-islands'),
     url: `${SITE_URL}/tours/pakleni-islands/`,
-    aggregateRating: AGGREGATE_RATING,
   },
 
   'sunset-cruise': {
@@ -139,7 +136,6 @@ export const tourSchemaMap: Record<string, object> = {
     availableLanguage: AVAILABLE_LANGUAGES,
     offers: formatPriceSchema('sunset-cruise'),
     url: `${SITE_URL}/tours/sunset-cruise/`,
-    aggregateRating: AGGREGATE_RATING,
   },
 
   'private-boat-charter': {
