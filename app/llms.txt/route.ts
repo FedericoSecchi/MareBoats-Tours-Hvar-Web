@@ -56,6 +56,7 @@ Open deck layout. No assigned seats.
 - Shared: €${bc.sharedPerPerson}/person (group tour, minimum 6 guests)
 - Private: €${bc.private} (up to 8 guests)
 - Duration: 7 hours, departs 10:00
+- Total distance: 100 to 120 km round trip
 - Includes: snorkel gear, cold drinks, skipper
 - Not included: Blue Cave entrance €${EXTRAS.blueCave}/person, Green Cave entrance €${EXTRAS.greenCave}/person (optional), lunch
 - Page: ${SITE_URL}/tours/blue-cave-pakleni-islands/
@@ -64,14 +65,15 @@ Open deck layout. No assigned seats.
 - Shared: €${rr.sharedPerPerson}/person (group tour, minimum 6 guests)
 - Private half-day: €${rr.privateHalfDay} (up to 8 guests, ~4 hours)
 - Private full-day: €${rr.privateFullDay} (up to 8 guests, ~6 hours)
+- Total distance: 30 to 35 km round trip
 - Route (in sailing order):
-  1. Red Rocks (Crvene Stijene) -- iron-red cliffs dropping into turquoise water, cliff jumping 5 to 10 m (20 to 30 min from Beach Križa)
-  2. Dubovica Beach -- iconic bay with a 16th-century stone house and a hidden sea cave (5 to 8 min from Red Rocks)
-  3. Žarače -- sheltered bay, weather-dependent stop (10 to 12 min from Dubovica)
-  4. Borče Bay (Milna) -- quiet cove, calm water, no crowds (12 to 15 min from Žarače)
-  5. Ždrilca channel -- swimming, snorkelling, lunch at Tri Grede restaurant (3 min from Borče Bay)
-  6. Perna or Calma Beach -- skipper chooses based on conditions (5 to 8 min from Ždrilca)
-  7. Palmižana -- main Pakleni anchorage, lunch at Bacchus restaurant (5 to 15 min from Perna)
+  1. Red Rocks (Crvene Stijene): iron-red cliffs dropping into turquoise water, cliff jumping 5 to 10 m (20 to 30 min from Beach Križa)
+  2. Dubovica Beach: iconic bay with a 16th-century stone house and a hidden sea cave (5 to 8 min from Red Rocks)
+  3. Žarače: sheltered bay, weather-dependent stop (10 to 12 min from Dubovica)
+  4. Borče Bay (Milna): quiet cove, calm water, no crowds (12 to 15 min from Žarače)
+  5. Ždrilca channel: swimming, snorkelling, lunch at Tri Grede restaurant (3 min from Borče Bay)
+  6. Perna or Calma Beach: skipper chooses based on conditions (5 to 8 min from Ždrilca)
+  7. Palmižana: main Pakleni anchorage, lunch at Bacchus restaurant (5 to 15 min from Perna)
 - Page: ${SITE_URL}/tours/red-rocks-pakleni-islands/
 
 ### Pakleni Islands
@@ -147,6 +149,8 @@ Note: Water taxi has no fixed meeting point. We come to your anchored boat.
 - Transfers: ${SITE_URL}/transfers/
 - About: ${SITE_URL}/about/
 - Explore Hvar: ${SITE_URL}/explore/
+- Boat rental without a licence: ${SITE_URL}/rentals/boat-rental-hvar-without-licence/
+- Private boat tour for families and groups: ${SITE_URL}/explore/private-boat-tour-hvar-families/
 `;
 }
 
