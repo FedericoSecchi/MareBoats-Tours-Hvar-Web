@@ -49,6 +49,7 @@ export const businessSchema = {
   sameAs: [
     'https://maps.app.goo.gl/k84JNBQLvqgZunEX6',
     'https://www.instagram.com/mareboats.hvar/',
+    'https://www.facebook.com/profile.php?id=100093516814322',
   ],
   priceRange: '€€',
   currenciesAccepted: 'EUR',
