@@ -50,6 +50,7 @@ export const businessSchema = {
     'https://maps.app.goo.gl/k84JNBQLvqgZunEX6',
     'https://www.instagram.com/mareboats.hvar/',
     'https://www.facebook.com/profile.php?id=100093516814322',
+    'https://www.getyourguide.com/mareboatshvar-s613289/',
   ],
   priceRange: '€€',
   currenciesAccepted: 'EUR',

@@ -6,6 +6,7 @@ import { getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/li
 import { TOUR_PRICES, EXTRAS } from '@/lib/pricing';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { tourSchemaMap, buildTouristTripSchema, buildFAQSchema } from '@/lib/schema';
+import { getLastModified } from '@/lib/git-dates';
 import TourHero from '@/components/sections/TourHero';
 import FleetInfo from '@/components/sections/FleetInfo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
@@ -83,17 +84,20 @@ export default function TourDetailPage({ params }: PageProps) {
       : `Hi! I'd like to book the ${tour.name}.`;
   const waUrl = `https://wa.me/385951966734?text=${encodeURIComponent(waMessage)}`;
 
-  const tripSchema =
-    tourSchemaMap[tour.slug] ??
-    buildTouristTripSchema({
-      name: tour.name,
-      description: tour.description,
-      image: `${SITE}${hero.src}`,
-      url: `${SITE}/tours/${tour.slug}/`,
-      ...(tour.priceEur !== undefined && {
-        offers: { price: String(tour.priceEur), priceCurrency: 'EUR' },
-      }),
-    });
+  const dateModified = getLastModified('lib/tours-data.ts');
+  const tripSchema = {
+    ...(tourSchemaMap[tour.slug] ??
+      buildTouristTripSchema({
+        name: tour.name,
+        description: tour.description,
+        image: `${SITE}${hero.src}`,
+        url: `${SITE}/tours/${tour.slug}/`,
+        ...(tour.priceEur !== undefined && {
+          offers: { price: String(tour.priceEur), priceCurrency: 'EUR' },
+        }),
+      })),
+    dateModified,
+  };
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
