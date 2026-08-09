@@ -558,13 +558,14 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 
 ---
 
-## PLAN UNIFICADO — Estado al 02/07/2026
+## PLAN UNIFICADO — Estado al 09/08/2026
 
 ### ✅ CERRADOS
 - Bloque 0, SEO Website, /landing/pre-tour/, SEO Cluster, fixes 02/06, Mobile Audit, Copy Audit, UX/Conversión, Schema markup, GBP, Precios self-drive, /conditions/, Copy 07/06, Session 07/06 noche, Session 08/06
 - **Fuente única de precios + crew dashboard — CERRADO (12/07)**: `lib/pricing.ts`, 11 archivos refactorizados, verificación 0 divergencias, `/crew-9f3kq2/` en producción ✅
 - **BLOQUE 1 Fotos drone — CERRADO** (09-15/06): 52 fotos migradas a public/images/, estructura nueva, todos los paths actualizados en componentes ✅
 - **Fase 1 Red Rocks + Tarea H — CERRADO (06/08)**: página de referencia completa sobre la ruta sur de Hvar. Patrón stops/faqs/fastFacts en TourRecord. Meeting point corregido en 11 archivos. Ruta 7 stops en orden real. Ver changelog 06/08 para detalle. ✅
+- **Fase 3 SEO/GEO — CERRADO (09/08)**: tareas A a F + llms.txt. `llms.txt` para crawlers de IA con precios en tiempo real desde `pricing.ts`. Crawlers de IA verificados (no bloqueados en robots.txt). `sameAs` ampliado a 5 URLs (Google Maps, Instagram, Facebook, GetYourGuide, TripAdvisor). `dateModified` en JSON-LD vía `lib/git-dates.ts` (se emite solo en deploys CLI con git completo; en CI Netlify se omite correctamente). Diacríticos croatas corregidos en 8 archivos: Ždrilca, Žarače, Palmižana, Biševo. Deploy por CLI operativo. Ver changelog 09/08 para detalle. ✅
 
 ### 🧹 BLOQUE 2 — Pendiente
 - GYG: itinerary VIP 5 Islands, disponibilidad jun-jul, review Red Rocks, underwater scooters publicar, fotos listings
@@ -599,11 +600,13 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Horarios de salida: unificar en `lib/operations.ts` (hoy duplicados en 3 archivos)
 - `if (id === 'brac-zlatni-rat')` hardcodeado en el crew dashboard para imprimir la duración. Reemplazar por un campo opcional `quoteDuration` en el servicio.
 - `tour.slug === 'red-rocks-pakleni-islands'` en `app/tours/[slug]/page.tsx` (sección comparativa Tarea C). Mismo patrón que el `if (id === 'brac-zlatni-rat')` del crew dashboard. Si la comparación existe en más de un tour, migrar a un campo opcional en `TourRecord` en vez de acumular condicionales en page.tsx. No refactorizar hasta que haya un segundo caso real.
-- **Diacríticos croatas** — ~12 instancias de nombres sin marcas diacríticas fuera de `red-rocks-pakleni-islands`: "Zdrilca", "Zarace", "Palmizana", "Bisevo" aparecen sin tilde en `tours-data.ts`, `lib/schema.ts`, `app/landing/pre-tour/`, `/about/`, `/tours/page`, Gallery y posiblemente más. Las formas correctas son Ždrilca, Žarače, Palmižana, Biševo. Tarea pendiente: barrido completo case-insensitive de estos 4 nombres, antes/después, un commit.
 - **`reviewCount: 26` en `businessSchema`** (`lib/schema.ts`) — el recuento real es **134**. No se corrigió en esta sesión para no mezclarlo con Tarea H. Actualizar con el número real antes de la próxima revisión de schema.
 - **GBP vs. schema — horario de temporada** — GBP declara horario todo el año. El `businessSchema` en `lib/schema.ts` declara `openingHours` mayo a septiembre. Son contradictorios. Resolver con Nikola cuál es el horario oficial y unificar.
 - **TripAdvisor listing dice "RIB speedboats"** — incorrecto según la regla de marca (usar "speedboat", nunca "RIB"). Requiere aprobación de Nikola antes de tocar. Flujo: Fede redacta corrección → Nikola aprueba por escrito → publicar.
 - **GetYourGuide — precios divergen del sitio** — GYG publica €95/persona (shared) y €160/persona (5 Islands), contra €85 y €150 en el sitio. Decisión deliberada de Fede (margen OTA), registrada acá como tal. No es un error. No tocar sin instrucción explícita.
+- **Deploy por CLI** (`netlify deploy --prod --dir=out`) — saltea la cola de builds de Netlify. Usarlo solo con todo commiteado y pusheado; si no, producción diverge del repo. El CLI buildea localmente, donde git tiene historial completo.
+- **`git fetch --unshallow` en el build command de Netlify** — cuelga el build indefinidamente. No reintentarlo. `|| true` captura errores pero no timeouts/hangs.
+- **`dateModified` en JSON-LD solo se emite en deploys por CLI** — el build de Netlify CI usa shallow clone, `getLastModified` devuelve `null`, y el campo se omite. Esto es correcto (null → sin campo, no fecha falsa). Si algún día se quiere `dateModified` en CI, la única vía viable es un mapa de fechas generado en tiempo de commit.
 
 ### 🤖 EN EL RADAR
 - n8n: WhatsApp bot, Blue Cave status automático, GBP/Instagram automation
@@ -724,6 +727,26 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 13. No publicar fotos de huéspedes. Van a Media Drop.
 14. Si no podés cubrir un turno, avisá en General lo antes posible, no la misma mañana.
 15. El grupo es interno. Nada de acá sale del equipo.
+
+---
+
+## 🗓️ Changelog — 09 Agosto 2026
+
+### Fase 3 SEO/GEO — Tareas A a F + llms.txt
+
+Objetivo: mejorar la visibilidad del sitio para crawlers de IA y buscadores. Todo deployado por CLI (`netlify deploy --prod --dir=out`), que saltea la cola de builds de Netlify.
+
+**llms.txt (Tarea A/B):** `app/llms.txt/route.ts` — archivo generado en build con precios en tiempo real desde `lib/pricing.ts`. Incluye: About, Boats, todos los tours con precios y rutas (Red Rocks con 7 stops y diacríticos), transfers, rentals, meeting point corregido, páginas de decisión. `export const dynamic = 'force-static'` lo convierte en archivo estático en `out/llms.txt`.
+
+**AI crawlers (Tarea C):** Verificado que `User-Agent: * / Allow: /` en robots.txt cubre todos los crawlers de IA. `/crew-9f3kq2/` protegido solo por `X-Robots-Tag` en netlify.toml — correcto, no listarlo en robots.txt lo publicaría.
+
+**sameAs (Tarea D):** `businessSchema.sameAs` ampliado de 2 a 5 URLs: Google Maps, Instagram, Facebook (`profile.php?id=100093516814322`), GetYourGuide (`mareboatshvar-s613289`), TripAdvisor (Attraction_Review-g659912-d34371535).
+
+**dateModified (Tarea E):** `lib/git-dates.ts` — `getLastModified(filePath)` lee la fecha del último commit por archivo vía `git log --format=%aI -1`. Tour pages inyectan `dateModified` en el JSON-LD condicionalmente (`...(dateModified !== null && { dateModified })`). En deploys CLI (git completo) se emite la fecha real. En CI Netlify (shallow clone) devuelve `null` y el campo se omite — correcto, campo ausente > fecha falsa. Intento de `git fetch --unshallow` en el build command colgó el build indefinidamente; revertido. Tarea E cerrada como funcional.
+
+**Diacríticos croatas (Tarea F):** Barrido case-insensitive de Zdrilca/Zarace/Palmizana/Bisevo en 8 archivos. Formas correctas: Ždrilca, Žarače, Palmižana, Biševo. Filenames de imágenes y claves internas (`BISEVO:`, `id: 'bisevo'`) sin tocar. `TourHighlightsList.tsx`: agregado `'ždrilca'` al map de lookup (el form sin tilde ya no matchea el texto corregido). Verificado en producción: Ždrilca ×19, Žarače ×20, Palmižana ×17, Biševo ×4 en `/tours/red-rocks-pakleni-islands/`.
+
+**Netlify CLI:** `netlify-cli@27.1.1` instalado globalmente. Login por browser. Link a sitio `mareboatshvar` (ID `b577ea86-f053-4c3d-bff2-f89fedcd1bce`). Deploy desbloquea la cuenta cuando la cola de builds tiene un build fantasma colgado.
 
 ---
 
