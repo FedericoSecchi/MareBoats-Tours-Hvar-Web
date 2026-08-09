@@ -131,7 +131,7 @@ ${sunsetLines}
 ## How to Book
 
 WhatsApp: https://wa.me/385951966734
-Response time: within the hour during the season (Nikola manages WhatsApp directly and is not on the water)
+Response time: within the hour during the season
 
 ## Meeting Point
 
