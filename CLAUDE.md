@@ -270,6 +270,7 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 - **Capacidad: "Licensed for 12. We cap at 8."** Nunca mencionar 12 sin contexto.
 - **Brand: "MareBoats Hvar"** (sin espacio).
 - Filler prohibido: "premium", "unforgettable", "ultimate", "ideal for", "flagship".
+- **llms.txt tiene el mismo status que copy público.** Nombres propios del equipo, información operativa interna y todo lo que no iría en una página del sitio tampoco va ahí. Es el archivo que los modelos citan literalmente.
 
 ## Design tokens
 ```

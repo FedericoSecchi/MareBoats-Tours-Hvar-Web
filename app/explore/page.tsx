@@ -4,9 +4,9 @@ import { generateSEO } from '@/lib/seo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Things to Do in Hvar: Beaches, Sights, Islands and Local Tips | MareBoats',
+  title: 'Things to Do in Hvar: Beaches, Pakleni Islands & Local Tips',
   description:
-    'Complete guide to Hvar town and island: best beaches, sights, restaurants, practical tips and boat tours to Blue Cave and Pakleni Islands.',
+    'Hvar beaches, restaurants, sights and boat tours. Local guide with specific tips - Stiniva, Dubovica, Hvar Fortress, Blue Cave. Written by the MareBoats Hvar team.',
   keywords: [
     'things to do hvar',
     'hvar beaches',
@@ -252,7 +252,7 @@ export default function ExplorePage() {
             Hvar Town
           </p>
           <h1 className="mt-3 font-display text-[2rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] sm:text-4xl md:text-6xl">
-            Explore Hvar
+            Things to Do in Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
             Beaches, islands, restaurants and local tips. Everything you need to make the most of your time here - on land and on the water.
