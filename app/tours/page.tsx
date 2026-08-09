@@ -228,7 +228,7 @@ export default function ToursIndexPage() {
                   },
                   {
                     src: '/images/tours/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-06.jpg',
-                    alt: 'Speedboat on Zdrilca channel Pakleni Islands - boat rental Hvar Croatia',
+                    alt: 'Speedboat on Ždrilca channel Pakleni Islands - boat rental Hvar Croatia',
                   },
                 ]}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -35,7 +35,7 @@ const photos: Photo[] = [
   {
     src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-02.jpg',
     label: 'Adriatic Sea',
-    alt: 'Speedboat on the Zdrilca channel Pakleni Islands - Hvar Croatia',
+    alt: 'Speedboat on the Ždrilca channel Pakleni Islands - Hvar Croatia',
   },
   {
     src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-03.jpg',

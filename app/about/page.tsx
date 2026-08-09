@@ -78,7 +78,7 @@ const CREW: Crew[] = [
     name: 'Luka',
     role: 'Skipper',
     languages: ['Croatian', 'English'],
-    bio: "From Zagreb. Friendly and easygoing, always up for a chat. His favourite stop on the tour is Zarace. Plays football semi-pro back home when he's not on the water.",
+    bio: "From Zagreb. Friendly and easygoing, always up for a chat. His favourite stop on the tour is Žarače. Plays football semi-pro back home when he's not on the water.",
     image: '/images/team/luka-skipper.jpg',
     imageAlt: 'Luka, skipper at MareBoats Hvar',
     objectPosition: '50% 20%',
@@ -149,7 +149,7 @@ export default function AboutPage() {
       <section className="relative min-h-[50vh] md:min-h-[60vh] overflow-hidden border-b border-[color:var(--border)]">
         <Image
           src="/images/hero/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-03.jpg"
-          alt="MareBoats Hvar speedboat Pakleni Islands Zdrilca channel aerial drone"
+          alt="MareBoats Hvar speedboat Pakleni Islands Ždrilca channel aerial drone"
           fill
           priority
           sizes="100vw"
@@ -314,7 +314,7 @@ export default function AboutPage() {
           <div className="relative aspect-video overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[#0d1b2a] md:order-2">
             <TourCardImage
               images={[
-                { src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat on Zdrilca channel Pakleni Islands aerial drone' },
+                { src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-07.jpg', alt: 'MareBoats Hvar speedboat on Ždrilca channel Pakleni Islands aerial drone' },
                 { src: '/images/destinations/hvar-speedboat-open-sea-aerial-drone-2026.jpg', alt: 'MareBoats Hvar speedboat open sea south of Hvar aerial drone' },
               ]}
               objectPosition="bottom center"

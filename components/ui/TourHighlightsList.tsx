@@ -12,6 +12,7 @@ const STOP_PHOTOS: [string, string][] = [
   ['pakleni', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
   ['palmižana', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
   ['palmizana', '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg'],
+  ['ždrilca', '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-01.jpg'],
   ['zdrilca', '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-01.jpg'],
   ['borče', '/images/destinations/hvar-coast-pebble-beach-aerial-drone-2026-02.jpg'],
   ['borce', '/images/destinations/hvar-coast-pebble-beach-aerial-drone-2026-02.jpg'],

@@ -67,7 +67,7 @@ const SERVICES: Service[] = [
     duration: '7 h · departs 10:00',
     maxCapacity: 8,
     includes: ['Boat & skipper', 'Fuel', 'Bottled water', 'Snorkel gear (limited)', 'Cooler with ice'],
-    notIncludes: ['Lunch (restaurants at Pakleni / Palmizana, budget 15-25 EUR)'],
+    notIncludes: ['Lunch (restaurants at Pakleni / Palmižana, budget 15-25 EUR)'],
     quoteIncluded: 'skipper, fuel, snorkel masks, icebox and bottled water',
     quoteNotIncluded: 'lunch',
     siteExtras: [

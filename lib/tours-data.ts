@@ -347,7 +347,7 @@ Most guests who book this tour have already done a full-day trip and want a shor
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
     highlights: [
-      'Palmižana, Zdrilca and the quieter coves of the archipelago',
+      'Palmižana, Ždrilca and the quieter coves of the archipelago',
       'Snorkeling in water you can see through to 10 metres',
       'Private boat, your pace, 10 minutes from Hvar harbour',
     ],
@@ -375,7 +375,7 @@ Most guests who book this tour have already done a full-day trip and want a shor
 
 The route takes you to five islands and hits three caves, four beaches and a blue lagoon. Green Cave on Biševo is first - natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos - and it delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
 
-After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Zdrilca, both only reachable by boat.
+After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Ždrilca, both only reachable by boat.
 
 We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€${BC.sharedPerPerson} per person) or fully private (€${BC.private} for your group only, up to 8 guests). Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone as one group.
 
@@ -394,7 +394,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     notIncludes: [
       `Green Cave entrance - €${EXTRAS.greenCave} per person (paid on site, optional)`,
       `Blue Cave entrance - €${EXTRAS.blueCave} per person (paid on site)`,
-      'Lunch not included - restaurants available at Pakleni or Palmizana',
+      'Lunch not included - restaurants available at Pakleni or Palmižana',
       'Hotel pickup',
     ],
     addons: [PHOTO_VIDEO_ADDON],
@@ -412,7 +412,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
       'Stiniva Bay - voted best beach in Europe. Surrounded by cliffs on three sides.',
       'Medvidina Cave - longest sea cave on Biševo. Still and dark. Nothing moves inside.',
       'Budikovac Blue Lagoon - shallow, calm, turquoise. Best snorkelling of the day.',
-      'Pakleni Islands (Palmižana or Zdrilca) - lunch at a waterfront restaurant.',
+      'Pakleni Islands (Palmižana or Ždrilca) - lunch at a waterfront restaurant.',
     ],
     images: [
       {

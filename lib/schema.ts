@@ -86,7 +86,7 @@ export const tourSchemaMap: Record<string, object> = {
     '@type': ['TouristAttraction', 'Service'],
     name: '5 Islands, 4 Beaches & Blue Cave - Hvar Boat Tour',
     description:
-      'Full-day speedboat tour from Hvar Harbour. Green Cave, Stiniva Bay, Blue Cave on Bisevo, Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups, departs 10:00.',
+      'Full-day speedboat tour from Hvar Harbour. Green Cave, Stiniva Bay, Blue Cave on Biševo, Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups, departs 10:00.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
@@ -116,7 +116,7 @@ export const tourSchemaMap: Record<string, object> = {
     '@type': ['TouristAttraction', 'Service'],
     name: 'Pakleni Islands Half Day Boat Tour from Hvar',
     description:
-      'Half-day private speedboat tour from Hvar Harbour around the Pakleni Islands. Snorkeling, secluded coves and Palmizana. 3 to 4 hours.',
+      'Half-day private speedboat tour from Hvar Harbour around the Pakleni Islands. Snorkeling, secluded coves and Palmižana. 3 to 4 hours.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
