@@ -51,6 +51,7 @@ export const businessSchema = {
     'https://www.instagram.com/mareboats.hvar/',
     'https://www.facebook.com/profile.php?id=100093516814322',
     'https://www.getyourguide.com/mareboatshvar-s613289/',
+    'https://www.tripadvisor.com/Attraction_Review-g659912-d34371535-Reviews-MareBoats-Hvar_Island_Split_Dalmatia_County_Dalmatia.html',
   ],
   priceRange: '€€',
   currenciesAccepted: 'EUR',

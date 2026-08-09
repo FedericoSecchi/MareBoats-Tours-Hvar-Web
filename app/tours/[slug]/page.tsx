@@ -96,7 +96,7 @@ export default function TourDetailPage({ params }: PageProps) {
           offers: { price: String(tour.priceEur), priceCurrency: 'EUR' },
         }),
       })),
-    dateModified,
+    ...(dateModified !== null && { dateModified }),
   };
 
   const breadcrumbSchema = {
