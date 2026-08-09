@@ -603,7 +603,7 @@ The same service works in both directions. We can take you ashore for dinner in 
 
 Our skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, Croatian, German, Italian and Spanish (when Fede is on board), so the handover from your charter crew to ours is always smooth.
 
-The water taxi runs on available capacity around our tour schedule. Afternoon slots, once the day tours are back, usually have the most room. Message us the morning of with your coordinates and time window and we confirm by WhatsApp as soon as we know if it fits the day.
+The water taxi runs on available capacity around our tour schedule. Afternoon slots, once the day tours are back, usually have the most room. Message us the morning of with your coordinates and time window and we reply on WhatsApp within the hour.
 
 If you are searching for a private water taxi in Hvar, a yacht transfer or a sailboat pickup, this is the service. Message us with your boat name, your coordinates and the time window.`,
     duration: 'On demand',
@@ -668,7 +668,7 @@ If you are searching for a private water taxi in Hvar, a yacht transfer or a sai
       {
         question: 'How much notice do we need to book?',
         answer:
-          "Same-day is fine if we have capacity. Send us your coordinates and time window on WhatsApp and we confirm as soon as we know if it fits the day's schedule. A few hours' notice helps if you have a specific departure time in mind.",
+          "Same-day is fine if we have capacity. Send us your coordinates and time window on WhatsApp and we reply within the hour. A few hours' notice helps if you have a specific departure time in mind.",
       },
     ],
     relatedGuide: {
