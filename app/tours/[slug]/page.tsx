@@ -32,6 +32,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     'sunset-cruise': 'Sunset Cruise Hvar',
     'private-boat-charter': 'Private Boat Charter Hvar',
     'split-airport-transfer': 'Split Airport to Hvar by Speedboat',
+    'yacht-sailboat-taxi': 'Hvar Water Taxi - We Come to Your Anchored Boat | from €50',
   };
   const descriptionMap: Record<string, string> = {
     'blue-cave-pakleni-islands':
@@ -40,6 +41,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming. Book on WhatsApp.',
     'split-airport-transfer':
       'Skip the ferry. Private speedboat transfer from Split Airport to Hvar - fast, comfortable, scenic. Book on WhatsApp, instant confirmation.',
+    'yacht-sailboat-taxi':
+      'Water taxi in Hvar from €50. We pick you up directly from your anchored yacht or sailboat - no tender, no harbour. Hvar town, Pakleni Islands or any tour start. Message us on WhatsApp.',
   };
   const title = titleMap[tour.slug] ?? `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
   const description = descriptionMap[tour.slug] ?? tour.shortDescription;

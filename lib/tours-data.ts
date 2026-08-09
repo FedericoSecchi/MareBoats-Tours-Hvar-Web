@@ -7,6 +7,7 @@ import {
   EXTRAS,
   ADDONS,
   SUNSET_WINE_EXTRA,
+  WATER_TAXI_PRICES,
 } from '@/lib/pricing';
 
 export const BUSINESS_INFO = {
@@ -596,13 +597,15 @@ Message us on WhatsApp with your flight number, group size and luggage to lock i
 
 This is the easiest way to enjoy Hvar when your boat is moored offshore. No tender hassle, no long swims to land, no waiting for a marina slot. We coordinate everything by WhatsApp: you send your coordinates and arrival time, we confirm the pickup window and a clear meeting plan with your skipper.
 
-Pricing is on request - every pickup is different depending on your location, group size and whether you combine it with a tour. Message us on WhatsApp with your coordinates and we send a transparent quote within the hour during the season.
+Pricing is on request - every pickup is different depending on your location, group size and whether you combine it with a tour. Message us on WhatsApp with your coordinates and we send a transparent quote during the season.
 
 The same service works in both directions. We can take you ashore for dinner in Hvar town and bring you back to your yacht later that evening, or transfer you to one of our recommended restaurants on the Pakleni Islands and back. If you want to combine the taxi with a full tour - Blue Cave in the morning, lunch on an island, sunset cruise - just tell us when you message and we will plan the whole day around your boat.
 
 Our skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, Croatian, German, Italian and Spanish (when Fede is on board), so the handover from your charter crew to ours is always smooth.
 
-If you are searching for a private water taxi in Hvar, a yacht transfer, a sailboat pickup, or a way to start a tour without coming to the harbour first, this is the service. Message us with your boat name, your coordinates and the time window - we will reply with a quote and a plan.`,
+The water taxi runs on available capacity around our tour schedule. Afternoon slots, once the day tours are back, usually have the most room. Message us the morning of with your coordinates and time window and we confirm by WhatsApp as soon as we know if it fits the day.
+
+If you are searching for a private water taxi in Hvar, a yacht transfer or a sailboat pickup, this is the service. Message us with your boat name, your coordinates and the time window.`,
     duration: 'On demand',
     durationIso: 'PT1H',
     price: formatPriceFull('yacht-sailboat-taxi'),
@@ -646,6 +649,33 @@ If you are searching for a private water taxi in Hvar, a yacht transfer, a sailb
       'boat pickup hvar harbour',
       'speedboat taxi hvar sailing',
     ],
+    faqs: [
+      {
+        question: 'How does the pickup from an anchored boat work?',
+        answer:
+          'Send us your boat name, GPS coordinates and a time window on WhatsApp. Our skipper comes to you in a MareBoats speedboat - no tender needed on your end. We dock alongside, you board, and we take you wherever you need to go.',
+      },
+      {
+        question: 'How much does the water taxi cost?',
+        answer:
+          `For yachts anchored near Hvar, the rate is €${WATER_TAXI_PRICES.yachtsNearHarbour.basePrice} for up to ${WATER_TAXI_PRICES.yachtsNearHarbour.baseGuests} people, then €${WATER_TAXI_PRICES.yachtsNearHarbour.perExtraGuest} per extra person up to ${WATER_TAXI_PRICES.yachtsNearHarbour.max}. For pickups in the Pakleni Islands, it is €${WATER_TAXI_PRICES.pakleniIslands.basePrice} for up to ${WATER_TAXI_PRICES.pakleniIslands.baseGuests} people, then €${WATER_TAXI_PRICES.pakleniIslands.perExtraGuest} per extra person up to ${WATER_TAXI_PRICES.pakleniIslands.max}. Both directions are priced separately. Share your location on WhatsApp and we send a clear quote.`,
+      },
+      {
+        question: 'How many people can the water taxi take?',
+        answer:
+          `Up to ${WATER_TAXI_PRICES.yachtsNearHarbour.max} guests per boat.`,
+      },
+      {
+        question: 'How much notice do we need to book?',
+        answer:
+          "Same-day is fine if we have capacity. Send us your coordinates and time window on WhatsApp and we confirm as soon as we know if it fits the day's schedule. A few hours' notice helps if you have a specific departure time in mind.",
+      },
+    ],
+    relatedGuide: {
+      href: '/tours/',
+      label: 'Anchored near Hvar and thinking about a private tour the next day?',
+      description: 'See all available tours',
+    },
   }
 ];
 
