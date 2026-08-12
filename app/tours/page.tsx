@@ -9,7 +9,7 @@ import { toursData } from '@/lib/tours-data';
 import { formatPriceShort, RENTAL_SELF_DRIVE, TOUR_PRICES } from '@/lib/pricing';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Boat Tours Hvar | All Tours from Hvar Harbour - MareBoats',
+  title: 'Boat Tours from Hvar: All Options',
   description:
     'All MareBoats tours: Blue Cave, Red Rocks & Pakleni, Sunset Cruise, Private Charter. Private speedboat tours from Hvar Harbour. Book via WhatsApp.',
   keywords: [

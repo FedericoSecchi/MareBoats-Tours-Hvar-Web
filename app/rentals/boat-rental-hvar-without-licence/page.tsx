@@ -9,7 +9,7 @@ import { PriceComparisonTable } from '@/components/ui/PriceComparisonTable';
 
 export const metadata: Metadata = {
   ...generateSEO({
-    title: 'Can You Rent a Boat in Hvar Without a Licence? | MareBoats Hvar',
+    title: 'Rent a Boat in Hvar Without a Licence?',
     description:
       'Most self-drive rentals in Croatia require a boating licence, and public sources on the threshold do not agree. The practical option without a licence is a private speedboat with a skipper. From €300 for the whole boat.',
     keywords: [

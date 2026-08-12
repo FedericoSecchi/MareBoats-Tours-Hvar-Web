@@ -6,7 +6,7 @@ import IslandStopsAccordion from '@/components/sections/IslandStopsAccordion';
 import OnTourBanner from '@/components/ui/OnTourBanner';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Hvar Islands Guide: Stops, Beaches and Hidden Coves | MareBoats',
+  title: 'Hvar Islands: Beaches, Stops & Hidden Coves',
   description:
     'Complete guide to every stop on a Hvar boat tour: Blue Cave, Pakleni Islands, Stiniva, Red Rocks, Green Cave and more. History, tips and what to expect.',
   keywords: [

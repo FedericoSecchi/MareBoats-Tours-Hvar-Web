@@ -16,7 +16,7 @@ import {
 import { toursData } from '@/lib/tours-data';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Hvar Boat Tour Guide - What to Know Before You Go | MareBoats',
+  title: 'Hvar Boat Tour Guide: What to Know',
   description:
     'Everything you need for your Hvar boat tour: what to bring, on-board rules, best beaches, local restaurants, and meeting point. Your complete guide.',
   keywords: [

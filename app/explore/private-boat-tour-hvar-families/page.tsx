@@ -10,7 +10,7 @@ import FleetInfo from '@/components/sections/FleetInfo';
 
 export const metadata: Metadata = {
   ...generateSEO({
-    title: 'Private Boat Tour Hvar: How It Works for Families and Groups | MareBoats',
+    title: 'Private Boat Tour Hvar: Families & Groups',
     description:
       'Your group, your boat, your schedule. Private speedboat tours from Hvar for families and groups of any size. From €300 for the whole boat. No other passengers.',
     keywords: [

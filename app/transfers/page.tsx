@@ -8,7 +8,7 @@ import { getMapboxStaticUrl, type GeoCoords } from '@/lib/mapbox';
 import { TRANSFER_PRICES, WATER_TAXI_PRICES, getWaterTaxiPrice } from '@/lib/pricing';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Speedboat Transfers from Hvar | Split, Airport, Brač, Korčula - MareBoats',
+  title: 'Transfers from Hvar: Split & Airport',
   description:
     'Private speedboat transfers from Hvar to Split, Split Airport, Brač, Korčula and Biševo. Fast, private, door-to-dock. Book via WhatsApp.',
   keywords: [

@@ -5,7 +5,7 @@ import { whatToBring, weatherPolicy } from '@/lib/guide-content';
 import { EXTRAS, ADDONS } from '@/lib/pricing';
 
 export const metadata: Metadata = {
-  title: 'What to Expect on a Hvar Boat Tour | MareBoats',
+  title: 'What to Expect on a Hvar Boat Tour',
   description:
     'Everything you need before your MareBoats tour - meeting point, what to bring, and what the Adriatic is actually like.',
 };
