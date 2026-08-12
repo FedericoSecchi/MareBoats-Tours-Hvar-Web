@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 06 Agosto 2026**
+**Actualizado: 09 Agosto 2026**
 
 ---
 
@@ -598,6 +598,7 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Vender bien el Private Charter: hoy es "€500 + fuel" al lado de un Red Rocks full-day de "€500 con fuel incluido", o sea parece el mismo producto pero peor. El fuel aparte no es una desventaja, es la consecuencia de elegir vos la ruta. Hay que decirlo, no dejarlo como letra chica.
 
 **Deuda técnica**
+- **Title template doble sufijo — RESUELTO (09/08):** `app/layout.tsx` usa `template: '%s | MareBoats Hvar'` (17 chars adicionales). Los page source titles NUNCA deben incluir `| MareBoats`, `- MareBoats` ni `| MareBoats Hvar`. Regla permanente: source ≤44 chars → rendered ≤60 chars. Auditado en `out/` y corregido en 7 páginas el 09/08.
 - Horarios de salida: unificar en `lib/operations.ts` (hoy duplicados en 3 archivos)
 - `if (id === 'brac-zlatni-rat')` hardcodeado en el crew dashboard para imprimir la duración. Reemplazar por un campo opcional `quoteDuration` en el servicio.
 - `tour.slug === 'red-rocks-pakleni-islands'` en `app/tours/[slug]/page.tsx` (sección comparativa Tarea C). Mismo patrón que el `if (id === 'brac-zlatni-rat')` del crew dashboard. Si la comparación existe en más de un tour, migrar a un campo opcional en `TourRecord` en vez de acumular condicionales en page.tsx. No refactorizar hasta que haya un segundo caso real.
@@ -728,6 +729,45 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 13. No publicar fotos de huéspedes. Van a Media Drop.
 14. Si no podés cubrir un turno, avisá en General lo antes posible, no la misma mañana.
 15. El grupo es interno. Nada de acá sale del equipo.
+
+---
+
+## 🗓️ Changelog — 09 Agosto 2026 — CTR Optimization + Title Fix
+
+### CTR: /tours/yacht-sailboat-taxi/
+
+Objetivo: mejorar CTR desde GSC (baja visibilidad, 0 FAQs, sin estructura para ser citado por IA).
+
+- **Title y description:** `'Hvar Water Taxi - We Come to Your Anchored Boat | from €50'` + description con precio anchor. Vía `titleMap` / `descriptionMap` en `app/tours/[slug]/page.tsx`.
+- **4 FAQs** añadidas en `lib/tours-data.ts` (array `faqs`): pickup flow, precios dinámicos desde `WATER_TAXI_PRICES`, capacidad, tiempo de reserva. FAQPage JSON-LD autogenerado desde el mismo array — cero divergencia posible.
+- **Availability paragraph** en description: water taxi opera con capacidad sobrante post-tours, slots de tarde, respuesta en menos de una hora por WhatsApp.
+- **relatedGuide** añadido: enlace a `/tours/` para guests fondeados que piensen en un tour al día siguiente.
+- **Regla confirmada:** Nikola atiende WhatsApp full-time y no sale al agua — "within the hour during the season" es una promesa mantenible. Revocación anterior corregida.
+
+### CTR: /explore/
+
+Objetivo: 978 impresiones, posición 7.81, CTR 0.31%, 3 clics en 3 meses.
+
+- **Title**: `'Things to Do in Hvar: Beaches, Pakleni Islands & Local Tips'` — resuelve también el double-suffix bug (title anterior incluía `| MareBoats`).
+- **Description**: `'Hvar beaches, restaurants, sights and boat tours. Local guide with specific tips - Stiniva, Dubovica, Hvar Fortress, Blue Cave. Written by the MareBoats Hvar team.'` — "Hula Hula" eliminado (negocio de terceros, riesgo reputacional), reemplazado por "Hvar Fortress" (lugar, no negocio).
+- **H1**: `'Explore Hvar'` → `'Things to Do in Hvar'` — "Explore Hvar" es el nombre de una agencia competidora; el H1 anterior posicionaba para su marca, no para la keyword real de la página.
+- Footer nav "Explore Hvar", botón /guide, llms.txt: **no tocados** — son navegación, no headings semánticos.
+
+### Title Audit — Double Brand Suffix (7 páginas)
+
+El template `'%s | MareBoats Hvar'` en `app/layout.tsx` agrega la marca a todos los titles automáticamente. Barrido del HTML en `out/` reveló 7 páginas con el sufijo `| MareBoats` o `- MareBoats` hardcodeado en el source title, causando doble marca en el rendered `<title>`.
+
+Fix: sacar la marca inline de los 7 source titles, shortear para que rendered ≤60 chars (source ≤44 chars, template agrega 17).
+
+| Ruta | Rendered antes | Chars | Rendered después | Chars |
+|---|---|---|---|---|
+| /rentals/boat-rental-hvar-without-licence | Can You Rent a Boat...MareBoats Hvar \| MareBoats Hvar | 80 | Rent a Boat in Hvar Without a Licence? \| MareBoats Hvar | 55 |
+| /explore/private-boat-tour-hvar-families | Private Boat Tour Hvar: How It Works...MareBoats \| MareBoats Hvar | 89 | Private Boat Tour Hvar: Families & Groups \| MareBoats Hvar | 58 |
+| /guide | Hvar Boat Tour Guide - What to Know...MareBoats \| MareBoats Hvar | 78 | Hvar Boat Tour Guide: What to Know \| MareBoats Hvar | 51 |
+| /hvar-islands-guide | Hvar Islands Guide: Stops, Beaches...MareBoats \| MareBoats Hvar | 80 | Hvar Islands: Beaches, Stops & Hidden Coves \| MareBoats Hvar | 60 |
+| /landing/pre-tour | What to Expect on a Hvar Boat Tour \| MareBoats \| MareBoats Hvar | 63 | What to Expect on a Hvar Boat Tour \| MareBoats Hvar | 51 |
+| /tours | Boat Tours Hvar \| All Tours from Hvar Harbour - MareBoats \| MareBoats Hvar | 74 | Boat Tours from Hvar: All Options \| MareBoats Hvar | 50 |
+| /transfers | Speedboat Transfers from Hvar \| Split, Airport, Brač, Korčula - MareBoats \| MareBoats Hvar | 90 | Transfers from Hvar: Split & Airport \| MareBoats Hvar | 53 |
 
 ---
 
