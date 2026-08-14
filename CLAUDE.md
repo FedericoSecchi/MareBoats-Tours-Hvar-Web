@@ -9,6 +9,20 @@
 - WhatsApp único canal de conversión: +385 95 196 6734 → https://wa.me/385951966734
 - URL live: https://mareboatshvar.com
 - Repo: https://github.com/FedericoSecchi/MareBoats-Tours-Hvar-Web
+- Temporada: **abril a octubre** (actualizado 09/08, antes mayo-septiembre)
+
+## 📍 Meeting point — CORREGIDO 09/08/2026
+**Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel.**
+3 minutos caminando desde el ferry port, hacia el lado del Franciscan Monastery.
+Google Maps: https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA
+
+El barril NO está en la playa: está en el camino entre el puerto de Hvar y Beach Križa, bajo el hotel, desde donde se ve la playa.
+
+**PROHIBIDO en copy**: "Hvar Harbour main dock", "at the waterfront near the taxi boats", "next to the fuel station", o cualquier variante que ubique la salida en el puerto principal. Estuvo mal publicado en 11 archivos durante toda la temporada hasta el 09/08.
+
+"Hvar Harbour" sigue siendo válido como referencia amplia de origen ("tours from Hvar Harbour" en títulos SEO), nunca como punto de encuentro.
+
+Excepción: el **water taxi no tiene meeting point**, vamos al barco del cliente.
 
 ## Equipo (para copy)
 - **Nikola** — fundador, nació y creció en Hvar, dirige las operaciones, skipper ocasional, habla inglés y croata
@@ -38,10 +52,10 @@
 |---|---|---|---|---|---|---|
 | Pasara | 5hp | €150 | 5 | Incluido | No requerida (legal hasta 5hp en Croacia) | — |
 | Pasara | 20hp | €240 | 5 | Incluido | **No mencionado en copy** (ver nota abajo) | — |
-| Speedboat | 60hp | €290 | 5 | Incluido | Requerida | — |
+| Speedboat | 60hp | €320 | 5 | Incluido | Requerida | — |
 | Speedboat Mariner | 150hp | €400 | 8 | Extra (full-in/out) | Requerida | €300 solo efectivo |
 
-Cambios: Pasara 5hp €120 → €150 (21/07). Mariner 150hp €350 → €400 (21/07, aumento deliberado para bajar volumen de rental y reducir riesgo operativo). Pasara 20hp €200 → €240 (04/08). Capacidades máximas confirmadas por Nikola.
+Cambios: Pasara 5hp €120 → €150 (21/07). Mariner 150hp €350 → €400 (21/07, aumento deliberado para bajar volumen de rental y reducir riesgo operativo). Pasara 20hp €200 → €240 (04/08). Speedboat 60hp €290 → €320 (09/08, aprobado por Nikola). Capacidades máximas confirmadas por Nikola.
 
 Depósito Mariner 150hp: €300, **solo efectivo**, devuelto al terminar. Tiene que estar visible en la web y en el quote, nunca ser una sorpresa en el muelle: un cliente que llega sin efectivo no alquila y deja una review de una estrella.
 
@@ -180,7 +194,7 @@ Escribirlo como frase natural ("Dogs are welcome on board. Let us know when you 
 Archivo central: `lib/schema.ts`
 
 ### Schemas globales (app/layout.tsx)
-- `businessSchema`: @type ["LocalBusiness", "TouristAttraction"] · name "MareBoats Hvar" · coordenadas 43.1690147, 16.4429617 · reviewCount: 26 · rating 5.0 · availableLanguage [EN, HR, DE, ES, IT] · openingHours mayo-septiembre · priceRange "€€"
+- `businessSchema`: @type ["LocalBusiness", "TouristAttraction"] · name "MareBoats Hvar" · coordenadas 43.1690147, 16.4429617 · reviewCount: 152 · rating 5.0 · availableLanguage [EN, HR, DE, ES, IT] · openingHours abril-octubre · priceRange "€€"
 - `websiteSchema`: @type WebSite
 
 ### Schemas por página
@@ -270,7 +284,12 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 - **Capacidad: "Licensed for 12. We cap at 8."** Nunca mencionar 12 sin contexto.
 - **Brand: "MareBoats Hvar"** (sin espacio).
 - Filler prohibido: "premium", "unforgettable", "ultimate", "ideal for", "flagship".
-- **llms.txt tiene el mismo status que copy público.** Nombres propios del equipo, información operativa interna y todo lo que no iría en una página del sitio tampoco va ahí. Es el archivo que los modelos citan literalmente.
+- **`llms.txt` tiene el mismo status que copy público.** Nombres propios del equipo, información operativa interna y todo lo que no iría en una página del sitio tampoco va ahí. Es el archivo que los modelos citan literalmente.
+- **NO mencionar cuántos botes tiene la flota** en copy público. El foco es la experiencia, no el tamaño.
+- **NO publicar autorizaciones de circulación a bordo**: nada de ir parado en la proa, moverse durante la navegación, ni enumerar zonas del barco (plataforma de baño, proa). Se puede decir que no hay asientos asignados y que hay lugar para elegir entre sombra y sol.
+- **NO nombrar negocios de terceros** (restaurantes, beach clubs) con datos que no controlamos: años de apertura, cantidad de amarres, horarios. Solo nombre y ubicación, y solo si ya estaba publicado.
+- **Nombres croatas con diacríticos**: Ždrilca, Žarače, Palmižana, Borče, Biševo, Crvene Stijene, Brač, Križa. Corregido en todo el sitio el 09/08. Excepción: nombres de archivo de imágenes y claves internas de código.
+- **El sufijo de marca lo agrega el template del layout.** Los titles de página NO deben incluir "| MareBoats" ni "- MareBoats". Regla: source ≤44 chars → rendered ≤60.
 
 ## Design tokens
 ```
@@ -394,7 +413,8 @@ Nikola
 ```
 
 ### Meeting Point
-- 43.1690147, 16.4429617 — https://maps.app.goo.gl/k84JNBQLvqgZunEX6
+- Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel — https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA
+- Coordenadas del negocio (businessSchema / GBP, NO del meeting point): 43.1690147, 16.4429617 — https://maps.app.goo.gl/k84JNBQLvqgZunEX6
 
 ### Departure slots (07/06)
 - Red Rocks & Pakleni: 09:00, 11:00 or 14:00
@@ -565,8 +585,10 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Bloque 0, SEO Website, /landing/pre-tour/, SEO Cluster, fixes 02/06, Mobile Audit, Copy Audit, UX/Conversión, Schema markup, GBP, Precios self-drive, /conditions/, Copy 07/06, Session 07/06 noche, Session 08/06
 - **Fuente única de precios + crew dashboard — CERRADO (12/07)**: `lib/pricing.ts`, 11 archivos refactorizados, verificación 0 divergencias, `/crew-9f3kq2/` en producción ✅
 - **BLOQUE 1 Fotos drone — CERRADO** (09-15/06): 52 fotos migradas a public/images/, estructura nueva, todos los paths actualizados en componentes ✅
-- **Fase 1 Red Rocks + Tarea H — CERRADO (06/08)**: página de referencia completa sobre la ruta sur de Hvar. Patrón stops/faqs/fastFacts en TourRecord. Meeting point corregido en 11 archivos. Ruta 7 stops en orden real. Ver changelog 06/08 para detalle. ✅
-- **Fase 3 SEO/GEO — CERRADO (09/08)**: tareas A a F + llms.txt. `llms.txt` para crawlers de IA con precios en tiempo real desde `pricing.ts`. Crawlers de IA verificados (no bloqueados en robots.txt). `sameAs` ampliado a 5 URLs (Google Maps, Instagram, Facebook, GetYourGuide, TripAdvisor). `dateModified` en JSON-LD vía `lib/git-dates.ts` (se emite solo en deploys CLI con git completo; en CI Netlify se omite correctamente). Diacríticos croatas corregidos en 8 archivos: Ždrilca, Žarače, Palmižana, Biševo. Deploy por CLI operativo. Ver changelog 09/08 para detalle. ✅
+- **Fase 1 Red Rocks + Tarea H — CERRADO (06/08)**: página de referencia completa sobre la ruta sur. Patrón `stops`/`faqs`/`fastFacts` en `TourRecord`. Meeting point corregido en 11 archivos. Ver changelog 06/08.
+- **Fase 2 páginas de decisión — CERRADO parcial (08/08)**: `/rentals/boat-rental-hvar-without-licence/` y `/explore/private-boat-tour-hvar-families/` en producción. Falta la de Split Airport (bloqueada por Nikola).
+- **Fase 3 infraestructura GEO — CERRADO (09/08)**: `llms.txt`, crawlers verificados, `sameAs` con 5 URLs, `reviewCount` 26 → 144, diacríticos, `dateModified`. Ver changelog 09/08.
+- **Fase 4 CTR — CERRADO (09/08)**: water taxi, `/explore/`, y 7 titles con doble sufijo de marca. Ver changelog 09/08.
 
 ### 🧹 BLOQUE 2 — Pendiente
 - GYG: itinerary VIP 5 Islands, disponibilidad jun-jul, review Red Rocks, underwater scooters publicar, fotos listings
@@ -601,14 +623,17 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - **Title template doble sufijo — RESUELTO (09/08):** `app/layout.tsx` usa `template: '%s | MareBoats Hvar'` (17 chars adicionales). Los page source titles NUNCA deben incluir `| MareBoats`, `- MareBoats` ni `| MareBoats Hvar`. Regla permanente: source ≤44 chars → rendered ≤60 chars. Auditado en `out/` y corregido en 7 páginas el 09/08.
 - Horarios de salida: unificar en `lib/operations.ts` (hoy duplicados en 3 archivos)
 - `if (id === 'brac-zlatni-rat')` hardcodeado en el crew dashboard para imprimir la duración. Reemplazar por un campo opcional `quoteDuration` en el servicio.
-- `tour.slug === 'red-rocks-pakleni-islands'` en `app/tours/[slug]/page.tsx` (sección comparativa Tarea C). Mismo patrón que el `if (id === 'brac-zlatni-rat')` del crew dashboard. Si la comparación existe en más de un tour, migrar a un campo opcional en `TourRecord` en vez de acumular condicionales en page.tsx. No refactorizar hasta que haya un segundo caso real.
-- **`reviewCount: 26` en `businessSchema`** (`lib/schema.ts`) — el recuento real es **134**. No se corrigió en esta sesión para no mezclarlo con Tarea H. Actualizar con el número real antes de la próxima revisión de schema.
-- **GBP vs. schema — horario de temporada** — GBP declara horario todo el año. El `businessSchema` en `lib/schema.ts` declara `openingHours` mayo a septiembre. Son contradictorios. Resolver con Nikola cuál es el horario oficial y unificar.
-- **TripAdvisor listing dice "RIB speedboats"** — incorrecto según la regla de marca (usar "speedboat", nunca "RIB"). Requiere aprobación de Nikola antes de tocar. Flujo: Fede redacta corrección → Nikola aprueba por escrito → publicar.
-- **GetYourGuide — precios divergen del sitio** — GYG publica €95/persona (shared) y €160/persona (5 Islands), contra €85 y €150 en el sitio. Decisión deliberada de Fede (margen OTA), registrada acá como tal. No es un error. No tocar sin instrucción explícita.
-- **Deploy por CLI** (`netlify deploy --prod --dir=out`) — saltea la cola de builds de Netlify. Usarlo solo con todo commiteado y pusheado; si no, producción diverge del repo. El CLI buildea localmente, donde git tiene historial completo.
-- **`git fetch --unshallow` en el build command de Netlify** — cuelga el build indefinidamente. No reintentarlo. `|| true` captura errores pero no timeouts/hangs.
-- **`dateModified` en JSON-LD solo se emite en deploys por CLI** — el build de Netlify CI usa shallow clone, `getLastModified` devuelve `null`, y el campo se omite. Esto es correcto (null → sin campo, no fecha falsa). Si algún día se quiere `dateModified` en CI, la única vía viable es un mapa de fechas generado en tiempo de commit.
+- `tour.slug === 'red-rocks-pakleni-islands'` en `app/tours/[slug]/page.tsx` (sección comparativa). Mismo patrón que el anterior. Cuando la comparación exista en más de un tour, migrar a campo opcional en `TourRecord`. No refactorizar hasta que haya un segundo caso real.
+- **Titles sobre 60 chars sin doble marca** (~18 páginas restantes). Los 7 con doble sufijo se corrigieron el 09/08; el resto queda pendiente caso por caso.
+- **GBP vs schema**: GBP declara horario todo el año, el schema declara abril-octubre. Resolver con Nikola y unificar.
+- **GetYourGuide publica €95 y €160** contra €85 y €150 del sitio. Decisión deliberada de Fede (margen OTA), registrada como tal. Costo conocido: Google muestra el precio de GYG en el panel de la ficha, así que es el precio percibido por el turista.
+- **TripAdvisor dice "RIB speedboats"** en algún listado o meta cacheado. Requiere aprobación de Nikola antes de corregir.
+
+**Notas de entorno Netlify (aprendidas por experiencia — no reintentar)**
+- `git fetch --unshallow` en el build command **cuelga el build**. Revertido el 09/08.
+- `dateModified` solo se emite en deploys por CLI (en CI no hay historial de git por archivo). El fallback devuelve `null`, que es correcto: mejor sin campo que con fecha falsa.
+- Deploy por CLI: `npm run build && netlify deploy --prod --dir=out`. **Solo con todo commiteado y pusheado**, o producción diverge del repo.
+- Bug conocido de Netlify: un deploy ya publicado puede quedar reportado como "Building" y ocupar el único slot concurrente del plan Starter, bloqueando la cola entera. No se puede cancelar desde el panel. Requiere ticket a soporte. Workaround: deploy por CLI, que saltea la cola.
 
 ### 🤖 EN EL RADAR
 - n8n: WhatsApp bot, Blue Cave status automático, GBP/Instagram automation
@@ -732,32 +757,28 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 ---
 
-## 🗓️ Changelog — 09 Agosto 2026 — CTR Optimization + Title Fix
+## 🗓️ Changelog — 09 Agosto 2026
 
-### CTR: /tours/yacht-sailboat-taxi/
+### Fase 3 — Infraestructura GEO
 
-Objetivo: mejorar CTR desde GSC (baja visibilidad, 0 FAQs, sin estructura para ser citado por IA).
+- **`llms.txt`** (`app/llms.txt/route.ts`, `force-static`): productos, precios, ruta de Red Rocks con las 7 paradas, meeting point, distancias, tiempo de respuesta, links canónicos. **Los precios se leen de `lib/pricing.ts` en tiempo de build**, así que no se desincroniza. Sin nombres del equipo, sin tamaño de flota.
+- **Crawlers de IA**: verificado que `robots.txt` no bloquea GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, CCBot, Applebot-Extended. Sin cambios necesarios. `/crew-9f3kq2/` protegido por header `X-Robots-Tag` en `netlify.toml`, no por robots.txt (ponerlo ahí lo publicaría).
+- **`aggregateRating`**: eliminado de los 4 `tourSchemaMap` (blue-cave, red-rocks, pakleni, sunset). Las 144 reseñas son del negocio, no de cada tour: declararlas por tour es structured data engañoso y arriesga el rich result de estrellas. Queda solo en `businessSchema`.
+- **`reviewCount`**: 26 → **144** (valor real de GBP).
+- **`openingHours`**: `closes` 20:00 → 21:00 para coincidir con GBP.
+- **`sameAs`** con 5 URLs: Google Maps, Instagram, Facebook (`profile.php?id=100093516814322`), GetYourGuide (`mareboatshvar-s613289`), TripAdvisor (`Attraction_Review-g659912-d34371535`).
+- **`dateModified`** en JSON-LD vía `lib/git-dates.ts` — `getLastModified(filePath)` lee la fecha del último commit por archivo vía `git log --format=%aI -1`. Tour pages inyectan `dateModified` condicionalmente (`...(dateModified !== null && { dateModified })`). Solo se emite en deploys por CLI (git completo); fallback a `null` en CI (correcto: campo ausente > fecha falsa). `git fetch --unshallow` en el build command colgó indefinidamente; revertido.
+- **Diacríticos croatas**: 12 instancias corregidas fuera de red-rocks en `tours-data.ts`, `schema.ts`, `/about/`, `/tours/page`, `Gallery.tsx`, `/landing/pre-tour/`, crew dashboard. Agregado `'ždrilca'` al lookup de `TourHighlightsList` (el form sin tilde ya no matchea el texto corregido). Verificado en producción: Ždrilca ×19, Žarače ×20, Palmižana ×17, Biševo ×4 en `/tours/red-rocks-pakleni-islands/`.
+- **Netlify CLI**: `netlify-cli@27.1.1` instalado globalmente. Login por browser. Link a sitio `mareboatshvar` (ID `b577ea86-f053-4c3d-bff2-f89fedcd1bce`). Deploy desbloquea la cola cuando hay un build fantasma colgado.
+- **Temporada** mayo-septiembre → **abril-octubre** en 7 lugares, incluido `validFrom`/`validThrough` del schema.
+- **Precio 60hp** €290 → €320.
+- **Tiempo Split Airport** unificado a "1 to 1.5 hours" (había tres valores distintos publicados: 45 min, 1:00-1:10, 1,5 h).
 
-- **Title y description:** `'Hvar Water Taxi - We Come to Your Anchored Boat | from €50'` + description con precio anchor. Vía `titleMap` / `descriptionMap` en `app/tours/[slug]/page.tsx`.
-- **4 FAQs** añadidas en `lib/tours-data.ts` (array `faqs`): pickup flow, precios dinámicos desde `WATER_TAXI_PRICES`, capacidad, tiempo de reserva. FAQPage JSON-LD autogenerado desde el mismo array — cero divergencia posible.
-- **Availability paragraph** en description: water taxi opera con capacidad sobrante post-tours, slots de tarde, respuesta en menos de una hora por WhatsApp.
-- **relatedGuide** añadido: enlace a `/tours/` para guests fondeados que piensen en un tour al día siguiente.
-- **Regla confirmada:** Nikola atiende WhatsApp full-time y no sale al agua — "within the hour during the season" es una promesa mantenible. Revocación anterior corregida.
+### Fase 4 — CTR de páginas con impresiones desperdiciadas
 
-### CTR: /explore/
-
-Objetivo: 978 impresiones, posición 7.81, CTR 0.31%, 3 clics en 3 meses.
-
-- **Title**: `'Things to Do in Hvar: Beaches, Pakleni Islands & Local Tips'` — resuelve también el double-suffix bug (title anterior incluía `| MareBoats`).
-- **Description**: `'Hvar beaches, restaurants, sights and boat tours. Local guide with specific tips - Stiniva, Dubovica, Hvar Fortress, Blue Cave. Written by the MareBoats Hvar team.'` — "Hula Hula" eliminado (negocio de terceros, riesgo reputacional), reemplazado por "Hvar Fortress" (lugar, no negocio).
-- **H1**: `'Explore Hvar'` → `'Things to Do in Hvar'` — "Explore Hvar" es el nombre de una agencia competidora; el H1 anterior posicionaba para su marca, no para la keyword real de la página.
-- Footer nav "Explore Hvar", botón /guide, llms.txt: **no tocados** — son navegación, no headings semánticos.
-
-### Title Audit — Double Brand Suffix (7 páginas)
-
-El template `'%s | MareBoats Hvar'` en `app/layout.tsx` agrega la marca a todos los titles automáticamente. Barrido del HTML en `out/` reveló 7 páginas con el sufijo `| MareBoats` o `- MareBoats` hardcodeado en el source title, causando doble marca en el rendered `<title>`.
-
-Fix: sacar la marca inline de los 7 source titles, shortear para que rendered ≤60 chars (source ≤44 chars, template agrega 17).
+- **`/tours/yacht-sailboat-taxi/`** (1.478 impresiones, pos 10,19, CTR 1,15%): title nuevo con precio y diferencial, nota de disponibilidad (el water taxi es capacidad ociosa de la tarde, no producto promocionado), 4 FAQ con `FAQPage`, cross-link a `/tours/`.
+- **`/explore/`** (978 impresiones, pos 7,81, **CTR 0,31%**, 3 clics en 3 meses): title y description nuevos con lugares concretos. **H1 "Explore Hvar" → "Things to Do in Hvar"**: el anterior coincidía con el nombre de una agencia competidora, lo que explicaba el ranking para "explore hvar agency" con cero clics.
+- **Bug de titles**: 7 páginas tenían el sufijo de marca duplicado ("| MareBoats | MareBoats Hvar"), llegando hasta 90 caracteres. Google corta cerca de 60, así que la parte visible del snippet se perdía. Corregido sacando la marca del title de cada página y dejando que la ponga el template. Las 7 quedaron entre 50 y 60 renderizados.
 
 | Ruta | Rendered antes | Chars | Rendered después | Chars |
 |---|---|---|---|---|
@@ -769,43 +790,28 @@ Fix: sacar la marca inline de los 7 source titles, shortear para que rendered �
 | /tours | Boat Tours Hvar \| All Tours from Hvar Harbour - MareBoats \| MareBoats Hvar | 74 | Boat Tours from Hvar: All Options \| MareBoats Hvar | 50 |
 | /transfers | Speedboat Transfers from Hvar \| Split, Airport, Brač, Korčula - MareBoats \| MareBoats Hvar | 90 | Transfers from Hvar: Split & Airport \| MareBoats Hvar | 53 |
 
----
+### Fuera del código
 
-## 🗓️ Changelog — 09 Agosto 2026
-
-### Fase 3 SEO/GEO — Tareas A a F + llms.txt
-
-Objetivo: mejorar la visibilidad del sitio para crawlers de IA y buscadores. Todo deployado por CLI (`netlify deploy --prod --dir=out`), que saltea la cola de builds de Netlify.
-
-**llms.txt (Tarea A/B):** `app/llms.txt/route.ts` — archivo generado en build con precios en tiempo real desde `lib/pricing.ts`. Incluye: About, Boats, todos los tours con precios y rutas (Red Rocks con 7 stops y diacríticos), transfers, rentals, meeting point corregido, páginas de decisión. `export const dynamic = 'force-static'` lo convierte en archivo estático en `out/llms.txt`.
-
-**AI crawlers (Tarea C):** Verificado que `User-Agent: * / Allow: /` en robots.txt cubre todos los crawlers de IA. `/crew-9f3kq2/` protegido solo por `X-Robots-Tag` en netlify.toml — correcto, no listarlo en robots.txt lo publicaría.
-
-**sameAs (Tarea D):** `businessSchema.sameAs` ampliado de 2 a 5 URLs: Google Maps, Instagram, Facebook (`profile.php?id=100093516814322`), GetYourGuide (`mareboatshvar-s613289`), TripAdvisor (Attraction_Review-g659912-d34371535).
-
-**dateModified (Tarea E):** `lib/git-dates.ts` — `getLastModified(filePath)` lee la fecha del último commit por archivo vía `git log --format=%aI -1`. Tour pages inyectan `dateModified` en el JSON-LD condicionalmente (`...(dateModified !== null && { dateModified })`). En deploys CLI (git completo) se emite la fecha real. En CI Netlify (shallow clone) devuelve `null` y el campo se omite — correcto, campo ausente > fecha falsa. Intento de `git fetch --unshallow` en el build command colgó el build indefinidamente; revertido. Tarea E cerrada como funcional.
-
-**Diacríticos croatas (Tarea F):** Barrido case-insensitive de Zdrilca/Zarace/Palmizana/Bisevo en 8 archivos. Formas correctas: Ždrilca, Žarače, Palmižana, Biševo. Filenames de imágenes y claves internas (`BISEVO:`, `id: 'bisevo'`) sin tocar. `TourHighlightsList.tsx`: agregado `'ždrilca'` al map de lookup (el form sin tilde ya no matchea el texto corregido). Verificado en producción: Ždrilca ×19, Žarače ×20, Palmižana ×17, Biševo ×4 en `/tours/red-rocks-pakleni-islands/`.
-
-**Netlify CLI:** `netlify-cli@27.1.1` instalado globalmente. Login por browser. Link a sitio `mareboatshvar` (ID `b577ea86-f053-4c3d-bff2-f89fedcd1bce`). Deploy desbloquea la cuenta cuando la cola de builds tiene un build fantasma colgado.
+- **Google Ads**: agregados 20 términos negativos (jet ski, ferry, jadrolinija, marina, port, beach, old town, mario rent, y destinos donde no operamos). Agregados temas "red rocks hvar" y "south coast hvar boat tour". Eliminado "private boat charter". Desperdicio identificado: ~20-25% del gasto.
+- **Hallazgo Ads**: la campaña es tipo **Smart**, con 11 acciones de conversión todas marcadas como Principales y no modificables. El 98% de las conversiones que reporta (4.105) son eventos automáticos; solo 69 son `whatsapp_click`. Para optimizar de verdad hace falta migrar a **Búsqueda estándar**: proyecto de octubre, fuera de temporada.
+- **Corrección al informe previo**: la campaña NO apuntaba a `/landing/pre-tour`. Apunta a la home con UTMs. La "fuga" que se buscaba no existía.
 
 ---
 
 ## 🗓️ Changelog — 06 Agosto 2026
 
-### Fase 1 — Red Rocks como entidad (Tareas B a G)
+### Fase 1 — Red Rocks como entidad citable
 
-Objetivo: convertir `/tours/red-rocks-pakleni-islands/` en la página de referencia más completa sobre la ruta sur de Hvar, estructurada para ser citable por modelos de lenguaje.
+Objetivo: convertir `/tours/red-rocks-pakleni-islands/` en la fuente de referencia sobre la ruta de la costa sur, estructurada para ser citada por modelos de lenguaje.
 
-**Patrón arquitectónico nuevo — `stops`, `faqs`, `fastFacts` en `TourRecord`:**
-Los tres son campos opcionales tipados. El render en `app/tours/[slug]/page.tsx` es genérico: sin condicionales por slug, los datos dirigen el output. Mismo principio que `lib/pricing.ts`: una fuente, varios consumidores. El array `faqs` es fuente única para el render visible y el `FAQPage` JSON-LD: cero divergencia posible.
+**Patrón arquitectónico nuevo — `stops`, `faqs`, `fastFacts`, `relatedGuide` en `TourRecord`.** Campos opcionales tipados, render genérico en `app/tours/[slug]/page.tsx`, sin condicionales por slug. Mismo principio que `lib/pricing.ts`: una fuente, varios consumidores. El array `faqs` alimenta el render visible **y** el `FAQPage` JSON-LD, así que no pueden divergir.
 
-- **Tarea B** — Sección "The route" con stops, markup H3+dl.
-- **Tarea C** — Tabla comparativa Red Rocks vs. 5 Islands Blue Cave.
-- **Tarea D** — 10 FAQs + FAQPage JSON-LD desde el mismo array.
-- **Tarea E** — Fast Facts `<dl>` data-driven. Included/Not included inyectados desde `tour.includes`/`tour.notIncludes` después de "Meeting point".
-- **Tarea F** — Links internos en /explore, /guide, /hvar-islands-guide, /tours. Corrección de orden de stops en /guide.
-- **Tarea G** — `components/sections/FleetInfo.tsx` Server Component, rendereado en todas las tour pages excepto `split-airport-transfer`.
+- Sección "The route" con las paradas, H3 + `<dl>`.
+- Tabla comparativa Red Rocks vs 5 Islands Blue Cave (duración, ruta, mar abierto, paradas, precios, distancia total).
+- 11 FAQ + `FAQPage` JSON-LD desde el mismo array.
+- Bloque "Fast facts" con datos duros derivados de `pricing.ts` y de `tour.includes`/`notIncludes`.
+- Links internos entrantes desde `/explore/`, `/guide/`, `/hvar-islands-guide/`, `/tours/`.
+- `components/sections/FleetInfo.tsx` (Server Component) en todas las tour pages excepto `split-airport-transfer`: sombra, espacio (12 licenciados / navegamos con 8), cubierta abierta, agua fría, audio y Spotify Jam.
 
 ### Tarea H — Correcciones de datos (06/08/2026)
 
@@ -907,6 +913,148 @@ Sesión de tareas chicas y cerradas, una por una, todas commiteadas y pusheadas 
 
 ---
 
+## 📊 LÍNEA DE BASE — 09 Agosto 2026 (para medir el trabajo de agosto)
+
+Todo el trabajo de SEO/GEO se publicó entre el 05 y el 09 de agosto. Google tarda 1-3 semanas en reindexar; los asistentes de IA, más (al 05/08 ChatGPT todavía citaba precios de julio). **Primera medición: 09 septiembre 2026.** Antes de esa fecha cualquier lectura es ruido.
+
+> **Nota sobre reseñas:** todos los números de reseñas en esta sección son la foto del 09/08/2026 (144 en GBP). El conteo sigue subiendo durante la temporada. El valor vivo del schema (`reviewCount` en `lib/schema.ts`) se actualiza por separado y puede diferir de esta línea de base.
+
+**Regla: no hacer cambios grandes de contenido hasta la primera medición**, o no se va a poder separar qué movió qué.
+
+### GEO — Test de ChatGPT (indicador principal)
+
+Método: chat nuevo en **modo temporal**, sin contexto, búsqueda web activada, las 8 preguntas **una por chat**, sin corregir al modelo.
+
+1. What are the best boat tours from Hvar, Croatia? Give me specific companies.
+2. I want to rent a boat in Hvar without a skipper. What are my options and what does it cost?
+3. Can I rent a boat in Hvar without a boating licence? What kind of boat and what power?
+4. Who runs speedboat tours to the Blue Cave and Pakleni Islands from Hvar? Compare the operators.
+5. What is MareBoats Hvar? What do they offer, what do they charge, and how do I book?
+6. I'm a family of 6 in Hvar for two days. Plan me a private boat day and tell me who to book it with.
+7. What's the best way to get from Split airport to Hvar by boat, and roughly what does a private transfer cost?
+8. Compare the top 3 boat tour operators in Hvar on price, group size and what's included.
+
+**Resultado 05/08: aparece en 3 de 8** (preguntas 2, 5 y 8). Ausente en las 4 de descubrimiento puro (1, 4, 6, 7). En la 2 aparece 5º de 5.
+
+Competidores que sí aparecen: Mario Rent (1.500+ reseñas), Delfina Hvar (900+), Hvar Boats (580+), Kabina, Hvar Charter, Arta. **MareBoats: 144 (al 09/08, en aumento).**
+
+**Hipótesis:** la ausencia no es por falta de contenido (ChatGPT describe el sitio con precisión en la pregunta 5), es por falta de corroboración externa. El proxy dominante es volumen de reseñas.
+
+Errores del modelo al 05/08 a verificar si se corrigieron: citaba Blue Cave €130/€700 (reales €150/€800), Pasara 20hp €200 (real €240), meeting point en Hvar Harbour, y advertía sobre el claim "no licence" de MareBoats.
+
+Objetivo a 30 días: entrar en la 6 y en la 1. La 4 probablemente no se mueva sin más reseñas.
+
+### GSC — 08 mayo a 09 agosto 2026
+
+497 clics · 14.304 impresiones · 479 queries · 12% de impresiones de marca.
+Móvil: 337 clics / 7.005 impr / CTR 4,81% / pos 11,69. Desktop: 152 / 7.248 / 2,10% / 17,11.
+
+**Demanda no-branded por categoría:**
+
+| Categoría | Impresiones | Clics |
+|---|---|---|
+| **RENTAL** | **3.237** | **37** |
+| Water taxi | 351 | 4 |
+| Tour genérico | 328 | 2 |
+| Pakleni | 277 | 0 |
+| Sin licencia | 211 | 8 |
+| Red Rocks | 156 | 0 |
+| Transfer/Split | 146 | 3 |
+| Sunset | 80 | 1 |
+| Blue Cave | 46 | 0 |
+
+**El rental es el 64% de la demanda no-branded y está en posición 20-36. Es la brecha más grande del sitio y NO se trabajó en agosto** (decisión deliberada: se priorizó tours).
+
+**Queries a batir:**
+
+| Query | Impr | Pos | Clics |
+|---|---|---|---|
+| hvar boat rental | 565 | 25,81 | 3 |
+| rent a boat hvar | 294 | 29,25 | 5 |
+| boat hire hvar | 261 | 20,02 | 0 |
+| boat rental hvar | 257 | 24,82 | 9 |
+| **red rocks hvar** | **126** | **17,58** | **0** |
+| **boat rental hvar no license** | **100** | **9,20** | **5** |
+| water taxi hvar | 74 | 19,84 | 1 |
+| hvar boat rental no license | 42 | 10,93 | 1 |
+
+**Páginas a batir:**
+
+| Página | Clics | Impr | CTR | Pos | ¿Tocada 08/26? |
+|---|---|---|---|---|---|
+| / | 229 | 3.985 | 5,75% | 22,69 | no |
+| /rentals/ | 56 | 2.778 | 2,02% | 16,65 | no |
+| **/tours/red-rocks-pakleni-islands/** | 27 | 942 | 2,87% | 6,90 | reescrita |
+| /tours/pakleni-islands/ | 20 | 887 | 2,25% | 10,12 | no |
+| **/tours/yacht-sailboat-taxi/** | 17 | 1.478 | 1,15% | 10,19 | sí |
+| /guide/ | 11 | 873 | 1,26% | 7,84 | title |
+| /tours/sunset-cruise/ | 6 | 629 | 0,95% | 8,19 | no |
+| /hvar-islands-guide/ | 4 | 689 | 0,58% | 10,49 | title |
+| **/explore/** | 3 | 978 | **0,31%** | 7,81 | sí |
+| /tours/private-boat-charter/ | 2 | 1.031 | **0,19%** | 21,28 | no |
+
+Peores CTR pendientes: private-boat-charter (0,19% con 1.031 impresiones), sunset-cruise (0,95% en posición 8), hvar-islands-guide.
+
+Rankeamos para marcas de competidores sin sacar clics: "rent a boat mate hvar" (50 impr, pos 8,78, 0 clics) y "explore hvar agency" (43, pos 9,91, 0 clics). Por la segunda se cambió el H1 de `/explore/`.
+
+Países: Croacia 125 clics / 3.024 impr · **EE.UU. 75 / 2.727** · UK 50 / 1.473 · España 29 · Eslovenia 21 (CTR 7,37%) · Países Bajos 18 / 1.192.
+
+### GA4 — 90 días previos
+
+3.359 usuarios · 5.854 sesiones · 84% mobile · 40 s de interacción media · 764 `whatsapp_click` de 576 usuarios · **17,15% de conversión global**.
+
+| Canal | Sesiones | Interacción | Conversión |
+|---|---|---|---|
+| Direct | 2.815 (48%) | 28 s | 6,57% |
+| Organic Search | 1.281 (22%) | 1:05 | 18,42% |
+| Paid Search | 812 (14%) | 41 s | 6,40% |
+| **AI Assistant** | **333 (5,7%)** | **54 s** | **27,33%** |
+| Display | 171 (3%) | 5 s | 4,09% |
+| Organic Social | 96 | — | 10,42% |
+
+**El canal de asistentes de IA convierte 4x mejor que el promedio con el 5,7% del tráfico.** Ese es todo el argumento del trabajo de GEO.
+
+Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explore` 12,00% · red-rocks 9,29% · `/qr` 8,10% · `/tours` 7,17% · blue-cave 5,59% · `/guide` 3,33% · **`/landing/pre-tour` 2,46%**.
+
+### Google Ads — 20 abril a 09 agosto
+
+232.941 impresiones · 3.878 clics · CTR 1,66% · CPC €0,23 · €890,50 invertidos · €15/día.
+
+11 acciones de conversión, todas Principales y no modificables (limitación de Smart Campaign). De 4.105 conversiones reportadas: Other engagements 2.956, Directions 840, Website visits 210, **`whatsapp_click` 69**, Clicks to call 21. **El 98% no son consultas reales.**
+
+### Perfiles externos
+
+| Plataforma | Estado 09/08 |
+|---|---|
+| Google Business Profile | 5,0 · **144 reseñas (al 09/08, en aumento)** · pos media 7,14 |
+| **TripAdvisor** | **#84 de 122 · 0 reseñas** |
+| GetYourGuide | activo · publica €95 y €160 |
+| Instagram | @mareboats.hvar · 140+ |
+
+**El volumen de reseñas es el cuello de botella del GEO.** TripAdvisor con 0 reseñas es donde el impacto marginal por reseña es más alto: en Google la reseña 145 no mueve nada, en TripAdvisor las primeras 10 sacan el perfil del fondo.
+
+### Calendario
+
+**09/09/2026 (30 días):** repetir las 8 preguntas (base 3/8) · posición de "red rocks hvar" (17,58) y "boat rental hvar no license" (9,20) · CTR de `/explore/` (0,31%) y water taxi (1,15%) · gasto en términos irrelevantes tras los negativos.
+
+**09/10/2026 (60 días):** lo anterior más posición de las keywords de rental (20-36) · % y conversión del canal AI Assistant (5,7% y 27,33%) · reseñas de TripAdvisor (0) y posición (#84).
+
+**Noviembre:** decisión sobre migrar Ads a Búsqueda estándar y sobre trabajar el cluster de rental.
+
+### Pendientes que bloquean trabajo
+
+| Pendiente | De quién |
+|---|---|
+| Build fantasma de Netlify ocupando el slot | ticket a soporte |
+| Política de vuelos demorados | Nikola |
+| Política de mal tiempo | Nikola |
+| Motivo legal Pasara 5hp "no licence" | Nikola (desde julio) |
+| Rango de combustible Private Charter | Nikola |
+| Corregir "RIB speedboats" en TripAdvisor | Nikola (aprobación) |
+| Horario de temporada en GBP | Fede |
+
+---
+
 ## Instrucciones para Claude Code
 - Leer CLAUDE.md completo antes de empezar
 - `npm run build` al terminar cada tarea — 0 errores. Commit con mensaje descriptivo.
@@ -931,3 +1079,11 @@ Sesión de tareas chicas y cerradas, una por una, todas commiteadas y pusheadas 
 - objectPosition como prop a TourCardImage — valores por imagen
 - Fotos drone: formato `hvar-[location]-drone-2026.jpg`
 - **Imágenes: SIEMPRE en `public/images/` — nunca en `public/img/` (ese es solo para logos/icons/SVGs/OG)**
+- **Meeting point: Beach Križa, nunca "Hvar Harbour main dock".** Ver la sección de meeting point arriba. Estuvo mal en 11 archivos toda la temporada.
+- **`llms.txt` es copy público.** Sin nombres del equipo, sin datos operativos internos. Los modelos lo citan literalmente.
+- **Titles: no incluir el sufijo de marca**, lo agrega el template. Source ≤44 chars → rendered ≤60.
+- **Nombres croatas con diacríticos** en copy renderizado: Ždrilca, Žarače, Palmižana, Borče, Biševo, Križa, Brač. No en nombres de archivo ni claves internas.
+- **Datos que no están en el código no se inventan.** Tiempos de navegación, restaurantes, legislación, edades mínimas, políticas: si no está en `pricing.ts`, `tours-data.ts` o CLAUDE.md, parar y preguntar. El 08/08 se redactó una explicación de derecho marítimo croata con leyes, fechas y organismos inexistentes, en una página escrita para ser citada por modelos de IA.
+- **Nombres de terceros solo si ya estaban publicados.** Restaurantes, beach clubs y negocios de terceros: solo nombre y ubicación, nunca datos que no controlamos (año de apertura, amarres, horarios).
+- **Si se cambia copy ya aprobado, marcarlo explícitamente** en vez de mostrar la versión nueva como si fuera la misma. Pasó varias veces el 06/08.
+- **Deploys**: mientras la cola de Netlify esté bloqueada, usar `npm run build && netlify deploy --prod --dir=out`, siempre con todo commiteado y pusheado antes.
