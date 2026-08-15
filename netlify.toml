@@ -98,3 +98,10 @@
   for = "/crew-9f3kq2/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Crew handbook internal page — same pattern as /crew-9f3kq2/.
+# Do NOT add this path to robots.txt.
+[[headers]]
+  for = "/crew-handbook-7x2m9p/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
