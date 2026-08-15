@@ -269,6 +269,27 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 ## Herramientas operativas
 - **Vesselio** — mareboats.vesselio.app · apikey: Fedde123. Solo referencia operativa, no conectar al sitio.
 
+## IndexNow — Bing Webmaster Tools
+
+ChatGPT Search recupera del índice de Bing. IndexNow avisa a Bing (y a Yandex, Seznam) en el momento de un deploy, sin esperar a que el crawler llegue solo.
+
+- **Clave:** `46eb323b675072007d355ac6f582c8e3`
+- **Archivo de verificación:** `public/46eb323b675072007d355ac6f582c8e3.txt` → accesible en `https://mareboatshvar.com/46eb323b675072007d355ac6f582c8e3.txt`
+- **Script:** `scripts/indexnow.mjs` — lee las URLs de `out/sitemap.xml` y las envía por POST a `https://api.indexnow.org/indexnow`
+- **Prerequisito:** el sitio tiene que estar verificado en [Bing Webmaster Tools](https://www.bing.com/webmasters/) antes de la primera ejecución
+
+### Cómo correrlo
+
+```bash
+node scripts/indexnow.mjs
+```
+
+Respuesta 200 o 202 = correcto. Imprime la lista de URLs enviadas y el código de respuesta.
+
+### Regla
+
+Correr `node scripts/indexnow.mjs` después de cada deploy con cambios de contenido (tours, precios, copy, páginas nuevas). No hace falta correrlo para cambios de código sin impacto en el contenido visible (refactors, schema interno, CLAUDE.md).
+
 ## Reglas inamovibles de contenido
 - Idiomas a bordo solo cuando Fede es skipper — NO prometer genéricamente
 - **Idiomas equipo: EN + HR + IT + ES + DE**
