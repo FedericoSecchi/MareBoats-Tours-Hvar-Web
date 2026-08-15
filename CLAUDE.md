@@ -778,6 +778,13 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 ---
 
+## 🗓️ Changelog — 15 Agosto 2026
+
+- **`/careers/skipper/`** — pública, indexada, priority 0.4. `JobPosting` schema en `lib/schema.ts` con `validThrough: 2027-03-31`. Footer link "Join the Crew". Cuando se cierre la búsqueda: sacar el schema (`jobPostingSkipperSchema` de `lib/schema.ts`), dejar la página como "join the crew" estática sin schema.
+- **`/crew-handbook-7x2m9p/`** — noindex, mismo checklist de invisibilidad que `/crew-9f3q2/`: `metadata.robots noindex`, `X-Robots-Tag` en `netlify.toml`, excluida del sitemap, cero links desde páginas públicas. Server Component con `<details>/<summary>` colapsable. Sin nombres propios del equipo, sin datos operativos internos (va al static export y es públicamente accesible para quien conozca la URL).
+
+---
+
 ## 🗓️ Changelog — 09 Agosto 2026
 
 ### Fase 3 — Infraestructura GEO
