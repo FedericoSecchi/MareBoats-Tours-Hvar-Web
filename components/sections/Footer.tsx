@@ -23,6 +23,7 @@ const infoLinks = [
   { href: '/about', label: 'About' },
   { href: '/on-tour', label: 'On Tour' },
   { href: '/guide#weather', label: 'Weather Policy' },
+  { href: '/careers/skipper/', label: 'Join the Crew' },
 ];
 
 export default function Footer() {

@@ -226,6 +226,43 @@ export function buildTouristTripSchema({
   };
 }
 
+export const jobPostingSkipperSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: 'Skipper',
+  description:
+    '<p>You run a speedboat with up to 8 guests on board. You pick them up at Beach Križa, you sail the route, you look after the people, you bring them back. You load ice, water and drinks before the first tour. You wash the boat. You check the engine, the bilge pump, the fenders and the lines. At the end of the day you close your own boat and report it in writing.</p><ul><li>A nautical licence. Croatian category B, or an international licence at the same level.</li><li>English. You are talking to guests all day, every day.</li><li>The right attitude. This matters more to us than your CV.</li></ul>',
+  datePosted: '2026-08-15',
+  validThrough: '2027-03-31',
+  employmentType: ['FULL_TIME', 'SEASONAL'],
+  hiringOrganization: {
+    '@type': 'LocalBusiness',
+    name: 'MareBoats Hvar',
+    url: SITE_URL,
+  },
+  jobLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Hvar',
+      addressRegion: 'Split-Dalmatia',
+      addressCountry: 'HR',
+    },
+  },
+  baseSalary: {
+    '@type': 'MonetaryAmount',
+    currency: 'EUR',
+    value: {
+      '@type': 'QuantitativeValue',
+      minValue: 1200,
+      maxValue: 1500,
+      unitText: 'MONTH',
+    },
+  },
+  jobBenefits: 'Shared accommodation and daily lunch included',
+  directApply: false,
+};
+
 export function buildFAQSchema(faqs: { question: string; answer: string }[]) {
   return {
     '@context': 'https://schema.org',
