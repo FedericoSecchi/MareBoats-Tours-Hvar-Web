@@ -82,7 +82,7 @@ export default function HomePage() {
           <div className="w-full">
             <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
               <span className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)]">
-                ⭐ 100+ happy guests
+                ⭐ 140+ happy guests
               </span>
 
               <p className="max-w-2xl text-base leading-relaxed text-[color:var(--gray)] md:text-xl">

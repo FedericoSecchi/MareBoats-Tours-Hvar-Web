@@ -260,7 +260,7 @@ export default function QrHubPage() {
               onClick={() => {
                 // Navigate to /on-tour then trigger print. Simplest UX: just remind.
                 if (typeof window !== 'undefined') {
-                  window.open('/on-tour', '_blank');
+                  window.open('/hvar-islands-guide/', '_blank');
                 }
               }}
               className="font-body text-xs text-[color:var(--gray)] underline underline-offset-4 transition-colors hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:text-[color:var(--accent)]"

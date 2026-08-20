@@ -21,7 +21,7 @@ const exploreLinks = [
 
 const infoLinks = [
   { href: '/about', label: 'About' },
-  { href: '/on-tour', label: 'On Tour' },
+  { href: '/hvar-islands-guide/', label: 'On Tour' },
   { href: '/guide#weather', label: 'Weather Policy' },
   { href: '/careers/skipper/', label: 'Join the Crew' },
 ];
@@ -142,7 +142,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline active:opacity-90"
               >
-                MareBoats barrel · Hvar Harbour
+                MareBoats barrel · Beach Križa
               </a>
               <WhatsAppTrackedLink
                 href={WA_BOOK}
