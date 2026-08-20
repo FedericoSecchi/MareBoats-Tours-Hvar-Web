@@ -778,9 +778,17 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 ---
 
+## 🗓️ Changelog — 20 Agosto 2026
+
+- **Footer "On Tour" link** — corregido de `/on-tour/` (ruta eliminada con 301) a `/hvar-islands-guide/`. Label sin cambios.
+- **QR hub "save offline" button** — corregido `window.open('/on-tour')` a `/hvar-islands-guide/`. Elimina el round-trip del redirect para huéspedes con señal mala.
+- **Footer "Find Us" label** — `MareBoats barrel · Hvar Harbour` → `MareBoats barrel · Beach Križa`. Solo el label operativo; "Hvar Harbour" en el párrafo descriptivo y metas no se tocó.
+- **Contador de reviews** — `100+ happy guests` → `140+ happy guests` en `app/page.tsx` y `app/landing/explore/page.tsx`.
+- **`directApply: false` → `true` en `jobPostingSkipperSchema`** — el CTA de WhatsApp con mensaje prellenado al número de la empresa califica como direct apply según Google.
+
 ## 🗓️ Changelog — 15 Agosto 2026
 
-- **`/careers/skipper/`** — pública, indexada, priority 0.4. `JobPosting` schema en `lib/schema.ts` con `validThrough: 2027-03-31`. Footer link "Join the Crew". Cuando se cierre la búsqueda: sacar el schema (`jobPostingSkipperSchema` de `lib/schema.ts`), dejar la página como "join the crew" estática sin schema.
+- **`/careers/skipper/`** — pública, indexada, priority 0.4. `JobPosting` schema en `lib/schema.ts` con `validThrough: 2027-03-31`. Footer link "Join the Crew". Cuando se cierre la búsqueda: sacar el schema (`jobPostingSkipperSchema` de `lib/schema.ts`), dejar la página como "join the crew" estática sin schema. `directApply: true` (20/08). Croacia NO está en la lista de países con experiencia Google Jobs — el JobPosting sirve para candidatos que buscan desde afuera (Latinoamérica, Europa occidental), no desde Hvar.
 - **`/crew-handbook-7x2m9p/`** — noindex, mismo checklist de invisibilidad que `/crew-9f3q2/`: `metadata.robots noindex`, `X-Robots-Tag` en `netlify.toml`, excluida del sitemap, cero links desde páginas públicas. Server Component con `<details>/<summary>` colapsable. Sin nombres propios del equipo, sin datos operativos internos (va al static export y es públicamente accesible para quien conozca la URL).
 
 ---
