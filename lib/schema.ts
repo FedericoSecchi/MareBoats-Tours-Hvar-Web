@@ -260,7 +260,7 @@ export const jobPostingSkipperSchema = {
     },
   },
   jobBenefits: 'Shared accommodation and daily lunch included',
-  directApply: false,
+  directApply: true,
 };
 
 export function buildFAQSchema(faqs: { question: string; answer: string }[]) {
