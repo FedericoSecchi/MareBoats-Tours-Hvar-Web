@@ -125,6 +125,22 @@ export default function SkipperCareersPage() {
       <section className="border-t border-[color:var(--border)] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-container">
           <h2 className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
+            Who fits here
+          </h2>
+          <div className="mt-6 max-w-2xl space-y-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
+            <p>The product is calm. Guests come to Hvar for a quiet day on the water, and your job is to protect that. If you want to run a party boat, this is not it.</p>
+            <p>No alcohol before or during work. Your nights are your own, but the season is long and the mornings are early.</p>
+            <p>You pick plastic out of the water when you see it. You carry ice, you wash the boat, you close it at the end of the day. None of that is beneath the job, it is the job.</p>
+            <p>When your boat is done and someone else is still working, you stay. Ice, hoses, fenders, none of it belongs to one person.</p>
+            <p>Roles here are clear and decisions have an owner. Ask before you improvise, especially on prices and schedules. That is not about hierarchy, it is so that nobody gets blamed for a call they did not make.</p>
+            <p>There is a dog. She comes on tours.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-container">
+          <h2 className="font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-4xl">
             What we pay
           </h2>
           <div className="mt-6 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
