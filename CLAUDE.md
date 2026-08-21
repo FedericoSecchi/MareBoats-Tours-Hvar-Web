@@ -778,6 +778,12 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 ---
 
+## 🗓️ Changelog — 21 Agosto 2026
+
+- **`/privacy/`** — Privacy Policy publicada. Indexada, priority 0.2, changeFrequency yearly. Link "Privacy" en columna Info del footer. Data controller: Josip Mlačić, OIB HR48474408245. Base legal GDPR 6(1)(b). Datos de candidatos: se borran el 31/03/2027. Pendiente revisión por el asesor de Josip.
+- **`/careers/skipper/` — sección "Who fits here"** — insertada entre "What the job actually is" y "What we pay". Copy aprobado.
+- **`/careers/skipper/` — form de aplicación** — `components/careers/SkipperApplicationForm.tsx` (`'use client'`). Postea a `https://federicosecchi.app.n8n.cloud/webhook/skipper-application` via fetch POST JSON. Campos: nombre, email, nationalidad, licencia, temporadas, fecha disponible, 5 preguntas (maxLength 500 con contador), dayPreference radio, pregunta opcional. Honeypot `website` off-screen (position absolute, sin display:none). Consent checkbox no pre-marcado, link a `/privacy/`. WhatsApp ya NO es canal de aplicacion — un solo canal, a proposito. La URL del webhook queda visible en el bundle (static export): mitigacion via honeypot + validacion en n8n.
+
 ## 🗓️ Changelog — 20 Agosto 2026
 
 - **Footer "On Tour" link** — corregido de `/on-tour/` (ruta eliminada con 301) a `/hvar-islands-guide/`. Label sin cambios.
@@ -788,7 +794,7 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 ## 🗓️ Changelog — 15 Agosto 2026
 
-- **`/careers/skipper/`** — pública, indexada, priority 0.4. `JobPosting` schema en `lib/schema.ts` con `validThrough: 2027-03-31`. Footer link "Join the Crew". Cuando se cierre la búsqueda: sacar el schema (`jobPostingSkipperSchema` de `lib/schema.ts`), dejar la página como "join the crew" estática sin schema. `directApply: true` (20/08). Croacia NO está en la lista de países con experiencia Google Jobs — el JobPosting sirve para candidatos que buscan desde afuera (Latinoamérica, Europa occidental), no desde Hvar.
+- **`/careers/skipper/`** — pública, indexada, priority 0.4. `JobPosting` schema en `lib/schema.ts` con `validThrough: 2027-03-31`. Footer link "Join the Crew". Cuando se cierre la búsqueda: sacar el schema (`jobPostingSkipperSchema` de `lib/schema.ts`), dejar la página como "join the crew" estática sin schema. `directApply: true` (20/08). Croacia NO está en la lista de países con experiencia Google Jobs — el JobPosting sirve para candidatos que buscan desde afuera (Latinoamérica, Europa occidental), no desde Hvar. El form postea a webhook de n8n. La URL queda visible en el bundle (static export). Mitigacion: honeypot + validacion en n8n. No hay credenciales expuestas. WhatsApp ya NO es canal de aplicacion en esta pagina. Un solo canal, a proposito. Privacy Policy en /privacy/. Pendiente de revision por el asesor de Josip. Datos de candidatos: se borran el 31/03/2027 segun lo publicado. Es un compromiso, cumplirlo.
 - **`/crew-handbook-7x2m9p/`** — noindex, mismo checklist de invisibilidad que `/crew-9f3q2/`: `metadata.robots noindex`, `X-Robots-Tag` en `netlify.toml`, excluida del sitemap, cero links desde páginas públicas. Server Component con `<details>/<summary>` colapsable. Sin nombres propios del equipo, sin datos operativos internos (va al static export y es públicamente accesible para quien conozca la URL).
 
 ---
