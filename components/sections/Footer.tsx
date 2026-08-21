@@ -24,6 +24,7 @@ const infoLinks = [
   { href: '/hvar-islands-guide/', label: 'On Tour' },
   { href: '/guide#weather', label: 'Weather Policy' },
   { href: '/careers/skipper/', label: 'Join the Crew' },
+  { href: '/privacy/', label: 'Privacy' },
 ];
 
 export default function Footer() {
