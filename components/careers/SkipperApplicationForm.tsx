@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 const WEBHOOK_URL = 'https://federicosecchi.app.n8n.cloud/webhook/skipper-application';
@@ -148,11 +148,23 @@ export default function SkipperApplicationForm() {
     }
   }
 
+  const successRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (state === 'success') {
+      successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [state]);
+
   if (state === 'success') {
     return (
-      <p className="font-body text-base leading-relaxed text-[color:var(--gray)]">
-        Thanks. We have your application and we will get back to you.
-      </p>
+      <div
+        ref={successRef}
+        className="flex min-h-[200px] items-center rounded-lg border border-[color:var(--accent)]/40 bg-[color:var(--surface)] px-8 py-10"
+      >
+        <p className="font-body text-base leading-relaxed text-[color:var(--white)]">
+          Thanks. We have your application and we will get back to you.
+        </p>
+      </div>
     );
   }
 
