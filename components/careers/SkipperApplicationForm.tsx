@@ -98,7 +98,9 @@ function CharTextarea({
 
 export default function SkipperApplicationForm() {
   const formRef = useRef<HTMLFormElement>(null);
+  const availableFromRef = useRef<HTMLInputElement>(null);
   const [state, setState] = useState<FormState>('idle');
+  const [dateError, setDateError] = useState<string | null>(null);
   const [fields, setFields] = useState<FormFields>({
     name: '',
     email: '',
@@ -121,6 +123,7 @@ export default function SkipperApplicationForm() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) {
     const { name, value, type } = e.target;
+    if (name === 'availableFrom') setDateError(null);
     setFields((prev) => ({
       ...prev,
       [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
@@ -130,6 +133,17 @@ export default function SkipperApplicationForm() {
   async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (!formRef.current?.reportValidity()) return;
+
+    const todayStr = new Date().toISOString().split('T')[0];
+    const dateOk =
+      /^\d{4}-\d{2}-\d{2}$/.test(fields.availableFrom) &&
+      fields.availableFrom >= todayStr &&
+      fields.availableFrom <= '2027-12-31';
+    if (!dateOk) {
+      setDateError('Please choose a valid date.');
+      availableFromRef.current?.focus();
+      return;
+    }
 
     setState('submitting');
     try {
@@ -291,8 +305,14 @@ export default function SkipperApplicationForm() {
             value={fields.availableFrom}
             onChange={handleChange}
             required
+            min={new Date().toISOString().split('T')[0]}
+            max="2027-12-31"
+            ref={availableFromRef}
             className={inputClass}
           />
+          {dateError && (
+            <p className="mt-1 font-body text-xs text-red-400">{dateError}</p>
+          )}
         </div>
       </div>
 
