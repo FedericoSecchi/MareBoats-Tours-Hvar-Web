@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 09 Agosto 2026**
+**Actualizado: 22 Agosto 2026**
 
 ---
 
@@ -194,7 +194,7 @@ Escribirlo como frase natural ("Dogs are welcome on board. Let us know when you 
 Archivo central: `lib/schema.ts`
 
 ### Schemas globales (app/layout.tsx)
-- `businessSchema`: @type ["LocalBusiness", "TouristAttraction"] · name "MareBoats Hvar" · coordenadas 43.1690147, 16.4429617 · reviewCount: 152 · rating 5.0 · availableLanguage [EN, HR, DE, ES, IT] · openingHours abril-octubre · priceRange "€€"
+- `businessSchema`: @type ["LocalBusiness", "TouristAttraction"] · name "MareBoats Hvar" · coordenadas 43.1690147, 16.4429617 · reviewCount: 26 · rating 5.0 · availableLanguage [EN, HR, DE, ES, IT] · openingHours mayo-septiembre · priceRange "€€"
 - `websiteSchema`: @type WebSite
 
 ### Schemas por página
@@ -230,6 +230,9 @@ No hardcodear offers en schema.ts. Valores actuales:
 - `/guide/` — guía pre-tour con route cards. **Actualizado 27/07**: las 3 secciones largas ("Blue Cave, Green Cave & Vis", "Red Rocks & Pakleni", "Where to Eat") son accordion colapsable, cerradas por default. Implementado con `<details>/<summary>` nativo (Server Component, sin `'use client'`, sin `useState`), mismo patrón visual que `IslandStopsAccordion` (ícono +/× que rota). Múltiples paneles pueden estar abiertos a la vez. Contenido interno sin cambios, solo el wrapper.
 - `/transfers/` — Mapbox Static Images API. hoverImage Split asignada. **Actualizado 04/08**: Hvar → Stari Grad sacado del array `TRANSFERS[]` visible (sigue en pricing.ts para uso interno, ver Transfers arriba).
 - `/conditions/` — live weather/marine. Removida del navbar (08/06). Entradas contextuales desde tour pages y footer.
+- `/careers/skipper/` — **nueva 21/08/2026**. Pública, indexada, con `JobPosting` schema. Link en el footer, columna Info ("Join the Crew"). NO va en el navbar. Ver sección de careers abajo.
+- `/privacy/` — **nueva 21/08/2026**. Política de privacidad. Indexada, priority 0.2. Link en el footer, columna Info. Obligatoria porque el form de careers recolecta datos personales de candidatos en la UE.
+- `/crew-handbook-7x2m9p/` — **nueva 21/08/2026**. Handbook interno del crew. noindex, slug random, mismo checklist de invisibilidad que `/crew-9f3kq2/`. Ver sección de careers abajo.
 - Nav: Tours → Rentals → Transfers → Explore → About
 
 ## 🔒 /crew-9f3kq2/ — panel interno de precios (12/07/2026)
@@ -251,6 +254,105 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 - Cero links desde el sitio público
 - `rel="noopener noreferrer"` en todo link externo (si no, el header `Referer` filtra la URL)
 
+## 🧭 Careers y contratación de skippers (21/08/2026)
+
+Sistema completo para recibir y filtrar candidatos a skipper. Tres piezas: una página pública, un handbook interno y un pipeline automatizado.
+
+### `/careers/skipper/` — pública, indexada
+
+Búsqueda abierta para lo que queda de 2026 y para la temporada completa 2027 (abril a octubre).
+
+Condiciones publicadas, todas aprobadas para copy público:
+- **1.200 a 1.500 EUR/mes** según experiencia
+- Alojamiento compartido en Hvar + almuerzo todos los días trabajados
+- Licencia náutica croata categoría B o internacional equivalente. **VHF no requerido.**
+- Inglés obligatorio
+- Se entrena desde cero: la actitud pesa más que el CV
+- Gestión de papeles de trabajo croatas **solo para 2027**. Para 2026 se evalúa caso por caso
+
+**Lo que NO se publica y por qué:**
+- **Días libres.** El copy dice que la temporada es intensa y que los días libres dependen de la agenda. No se pone por escrito "se trabaja todos los días": la ley laboral croata exige descanso semanal y dejarlo escrito en un `JobPosting` es evidencia en contra. Se conversa en la entrevista.
+- **Contrato para 2026.** No está confirmado, así que no se menciona. Si Nikola confirma, se cambia una línea.
+- **Consumo de alcohol o drogas del candidato.** No se pregunta: en la UE es dato de salud, categoría especial bajo GDPR. Lo que sí se publica es la condición del puesto ("no alcohol before or during work"), que es una regla laboral perfectamente exigible y filtra mucho más.
+
+### Sección "Who fits here"
+
+Bloque de autoselección entre "What the job actually is" y "What we pay". Producto tranquilo, cero alcohol en horario, juntar plástico del agua, quedarse cuando otro sigue trabajando, roles claros, hay una perra que va en los tours.
+
+**Principio de diseño: si la respuesta correcta es obvia, la pregunta no filtra, va en la página.** "¿Qué hacés si ves basura en el mar?" tiene una sola respuesta posible y hasta el peor candidato la acierta. Como condición publicada, en cambio, el que la lee y le molesta no aplica.
+
+### Form de aplicación
+
+Vive al final de `/careers/skipper/`. `components/careers/SkipperApplicationForm.tsx`, único `'use client'` de la página.
+
+**WhatsApp dejó de ser canal de aplicación en esta página.** Dos canales dejan la mitad de las candidaturas estructuradas y la otra mitad como mensajes sueltos en el chat de ventas de Nikola. Un solo canal, a propósito.
+
+Campos factuales: nombre, mail, nacionalidad, licencia, temporadas previas, disponibilidad.
+
+Cinco preguntas abiertas, 500 caracteres cada una:
+1. La hélice a las 7pm (única concreta: mide honestidad cuando esconder es más cómodo)
+2. Describe a good day at work
+3. What kind of person do you not want to work next to
+4. When you finish a season, what do you want to be able to say about it
+5. Why Hvar, and why on a boat
+
+Cierre: elección A/B entre dos días de trabajo igualmente legítimos (día movido vs familia tranquila) y "What do you want to know about us?" opcional.
+
+**Por qué abiertas y no multiple choice:** el MC en preguntas de valores es transparente, todos marcan la respuesta correcta y no queda nada para leer. La señal real está en *cómo* escribe, no en qué eligió. El límite de 500 caracteres es deliberado: obliga a elegir qué contar y una respuesta generada por IA se nota más corta que larga.
+
+**No se pide CV ni foto de la licencia.** La foto de una licencia trae número de documento y fecha de nacimiento, sube el nivel de dato personal manejado y no cambia ninguna decisión en la etapa de filtro. Se pide al contratar, por privado. Referencias laborales: en la entrevista, nunca en el form (son datos de un tercero).
+
+### Pipeline
+
+```
+Form → POST JSON → webhook n8n → validación → Notion → aviso Telegram → respuesta OK
+```
+
+- **Webhook**: `https://federicosecchi.app.n8n.cloud/webhook/skipper-application`
+- **Notion**: base `Skipper Applications`, `cb5e08fb-a0ea-4575-a542-2ef35e0bfeea`
+- **Telegram**: topic Crew Applications de MareBoats Core, **mensaje en inglés** para que lo lean Nikola y Jozo
+
+La URL del webhook queda visible en el bundle. Es inevitable con static export. Mitigación: campo honeypot (`website`, oculto fuera de pantalla, **no** con `display:none`) más validación en n8n. No hay credenciales expuestas ni forma de sacar datos.
+
+**Validación de fecha en tres capas** (una fecha imposible como `11111-11-11` rompía el nodo de Notion y tiraba abajo la ejecución entera, perdiendo la candidatura):
+1. `min`/`max` en el input date
+2. Validación en JS antes del fetch, con mensaje y focus en el campo
+3. Regex en el nodo Validate de n8n: si no matchea `^(202[6-9])-\d{2}-\d{2}$`, manda vacío en vez de romper
+
+La tercera capa no es redundante: cualquiera puede mandar un POST directo al webhook salteándose el navegador.
+
+### Google Jobs — alcance real
+
+**Croacia NO está en la lista de países con experiencia Google Jobs.** En Europa están Austria, Bélgica, Dinamarca, Francia, Alemania, Grecia, Italia, Países Bajos, Portugal, España, Suiza y Reino Unido. Latinoamérica está entera.
+
+O sea que el candidato que busca desde Hvar no ve el recuadro de empleos; el que busca desde Buenos Aires, Milán, Madrid o Berlín sí. Y ese es el pool real: el diferencial que ofrecemos (papeles, alojamiento) apunta a gente que viene de afuera.
+
+`validThrough: 2027-03-31` es obligatorio. Un `JobPosting` vencido y todavía publicado llena Search Console de errores. **Cuando se cierre la búsqueda: sacar el schema y dejar la página como "join the crew".**
+
+`directApply: true` (corregido 21/08, estaba en `false`).
+
+### Privacy Policy
+
+`/privacy/`. Responsable del tratamiento: Josip Mlačić. Base legal: artículo 6(1)(b) del GDPR, medidas precontractuales a pedido del interesado. Encargados declarados: n8n y Notion.
+
+**🔴 Pendiente: revisión del asesor legal de Josip.** Es su entidad la que figura como responsable.
+
+**🔴 Compromiso publicado: los datos de candidatos se borran el 31/03/2027.** Está escrito en la política. Hay que cumplirlo.
+
+### `/crew-handbook-7x2m9p/` — interno, noindex
+
+Estándar de trabajo del equipo en inglés: las diez reglas, rutina de mañana, checklist de cierre, conducta a bordo y trato con el huésped.
+
+Mismo checklist de invisibilidad que `/crew-9f3kq2/`: `robots` en false, `X-Robots-Tag` en `netlify.toml`, fuera del sitemap, sin links públicos, **no listado en robots.txt**.
+
+**Va al static export, o sea que es públicamente accesible para quien conozca la URL.** Por eso el contenido está filtrado: sin nombres propios, sin nombres ni cantidad de barcos, sin credenciales, sin asignaciones de persona a tarea, sin márgenes ni mínimos operativos. Lo que cambia semana a semana (grilla, taxi al Clubman) vive en Telegram, no acá.
+
+### Filosofía de contratación
+
+Actitud sobre experiencia, valores sobre credenciales. El form ahorra entrevistas, no elige gente.
+
+Empatía, compañerismo y amabilidad no se detectan por escrito ni por videollamada: aparecen en las dos primeras semanas a bordo. **El filtro más efectivo no es de entrada, es de salida:** estar dispuesto a cortar en la semana dos.
+
 ## Cluster SEO — páginas interconectadas
 - `/explore/` → `/guide/`, `/hvar-islands-guide/`, `/tours/`
 - `/guide/` → `/hvar-islands-guide/` + links a tours
@@ -267,34 +369,16 @@ Página de precios para el equipo de ventas (Nikola, Josip, skippers). Lee de `l
 - **Actualizado 27/07**: ícono/botón de WhatsApp compacto en el header (pill, `bg-green-500/15 text-green-400`, ícono SVG real, no emoji), link con mensaje prellenado "Hi, I scanned the MareBoats QR code and have a question." — da contexto a Nikola apenas abre el chat. **No es una card del grid** (se probó como card grande y se revirtió por saturar el hub visualmente); vive como elemento propio junto al logo. Mismo número que el resto del sitio, mismo ícono que `WhatsAppButton.tsx`.
 
 ## Herramientas operativas
-- **Vesselio** — mareboats.vesselio.app · apikey: Fedde123. Solo referencia operativa, no conectar al sitio.
-
-## IndexNow — Bing Webmaster Tools
-
-ChatGPT Search recupera del índice de Bing. IndexNow avisa a Bing (y a Yandex, Seznam) en el momento de un deploy, sin esperar a que el crawler llegue solo.
-
-- **Clave:** `46eb323b675072007d355ac6f582c8e3`
-- **Archivo de verificación:** `public/46eb323b675072007d355ac6f582c8e3.txt` → accesible en `https://mareboatshvar.com/46eb323b675072007d355ac6f582c8e3.txt`
-- **Script:** `scripts/indexnow.mjs` — lee las URLs de `out/sitemap.xml` y las envía por POST a `https://api.indexnow.org/indexnow`
-- **Prerequisito:** el sitio tiene que estar verificado en [Bing Webmaster Tools](https://www.bing.com/webmasters/) antes de la primera ejecución
-
-### Cómo correrlo
-
-```bash
-node scripts/indexnow.mjs
-```
-
-Respuesta 200 o 202 = correcto. Imprime la lista de URLs enviadas y el código de respuesta.
-
-### Regla
-
-Correr `node scripts/indexnow.mjs` después de cada deploy con cambios de contenido (tours, precios, copy, páginas nuevas). No hace falta correrlo para cambios de código sin impacto en el contenido visible (refactors, schema interno, CLAUDE.md).
+- **Vesselio** — mareboats.vesselio.app. Sistema de bookings. Solo referencia operativa, no conectar al sitio. **Las credenciales NO van en este archivo**: este documento se pega entero en sesiones de Claude Code y se comparte. Guardar en gestor de contraseñas.
+- **n8n** — `federicosecchi.app.n8n.cloud` (plan pago). Workflow `MareBoats - Skipper Applications`. Ver sección de careers abajo.
+- **Notion** — base `Skipper Applications`, `database_id` `cb5e08fb-a0ea-4575-a542-2ef35e0bfeea`, dentro de la página del proyecto MareBoats. Integración conectada: `Kosmos n8n`.
+- **Telegram bot** — `@mareboatsOps_bot` (creado 21/08/2026). Bot propio de MareBoats, separado de los bots de Kosmos. Miembro de MareBoats Core y MareBoats Crew.
 
 ## Reglas inamovibles de contenido
 - Idiomas a bordo solo cuando Fede es skipper — NO prometer genéricamente
 - **Idiomas equipo: EN + HR + IT + ES + DE**
 - Botellas de vidrio: permitidas. Comida: permitida. No fumar. Sin baño a bordo.
-- Formularios: NO. Solo WhatsApp.
+- Formularios: NO en el flujo de reserva. Solo WhatsApp. **Excepción única: `/careers/skipper/`** (ver sección de careers). La regla existe para conversión de huéspedes, donde la fricción cuesta reservas; en contratación la fricción es el objetivo.
 - **Underwater Scooter**: €40/unit. NO en tours a Vis ni Sunset Cruise. Nombre: "Underwater Scooter". **Actualizado 27/07**: en `/rentals/` quedó explícito que es add-on de tours privados únicamente — NO se alquila suelto por día (varios guests lo pidieron por WhatsApp y generaba confusión). Copy, FAQ y `rentalServiceSchema` en `lib/schema.ts` corregidos para reflejarlo.
 - Photo & Video Shoot: €200. Solo tours privados, solo cuando Fede está a bordo.
 - NO mencionar año de fundación.
@@ -600,7 +684,7 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 
 ---
 
-## PLAN UNIFICADO — Estado al 09/08/2026
+## PLAN UNIFICADO — Estado al 02/07/2026
 
 ### ✅ CERRADOS
 - Bloque 0, SEO Website, /landing/pre-tour/, SEO Cluster, fixes 02/06, Mobile Audit, Copy Audit, UX/Conversión, Schema markup, GBP, Precios self-drive, /conditions/, Copy 07/06, Session 07/06 noche, Session 08/06
@@ -641,11 +725,10 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Vender bien el Private Charter: hoy es "€500 + fuel" al lado de un Red Rocks full-day de "€500 con fuel incluido", o sea parece el mismo producto pero peor. El fuel aparte no es una desventaja, es la consecuencia de elegir vos la ruta. Hay que decirlo, no dejarlo como letra chica.
 
 **Deuda técnica**
-- **Title template doble sufijo — RESUELTO (09/08):** `app/layout.tsx` usa `template: '%s | MareBoats Hvar'` (17 chars adicionales). Los page source titles NUNCA deben incluir `| MareBoats`, `- MareBoats` ni `| MareBoats Hvar`. Regla permanente: source ≤44 chars → rendered ≤60 chars. Auditado en `out/` y corregido en 7 páginas el 09/08.
 - Horarios de salida: unificar en `lib/operations.ts` (hoy duplicados en 3 archivos)
 - `if (id === 'brac-zlatni-rat')` hardcodeado en el crew dashboard para imprimir la duración. Reemplazar por un campo opcional `quoteDuration` en el servicio.
 - `tour.slug === 'red-rocks-pakleni-islands'` en `app/tours/[slug]/page.tsx` (sección comparativa). Mismo patrón que el anterior. Cuando la comparación exista en más de un tour, migrar a campo opcional en `TourRecord`. No refactorizar hasta que haya un segundo caso real.
-- **Titles sobre 60 chars sin doble marca** (~18 páginas restantes). Los 7 con doble sufijo se corrigieron el 09/08; el resto queda pendiente caso por caso.
+- **Titles sobre 60 chars sin doble marca** (~18 páginas). Los 7 con doble sufijo se corrigieron el 09/08; el resto queda pendiente caso por caso.
 - **GBP vs schema**: GBP declara horario todo el año, el schema declara abril-octubre. Resolver con Nikola y unificar.
 - **GetYourGuide publica €95 y €160** contra €85 y €150 del sitio. Decisión deliberada de Fede (margen OTA), registrada como tal. Costo conocido: Google muestra el precio de GYG en el panel de la ficha, así que es el precio percibido por el turista.
 - **TripAdvisor dice "RIB speedboats"** en algún listado o meta cacheado. Requiere aprobación de Nikola antes de corregir.
@@ -743,8 +826,13 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 | Fleet & Purchases | Upgrades, repuestos, presupuestos, proyectos de audio y eléctrica. |
 | Numbers | Bookings, ocupación, revenue, performance de OTAs. Revisión semanal. |
 | Ideas | Productos nuevos, rutas, partnerships. Nada urgente. |
+| **Crew Applications** | Avisos automáticos de candidaturas de skipper. Escribe `@mareboatsOps_bot`, nadie más. Creado 21/08/2026. |
 
 **Decisions es el topic más importante de los dos grupos**: es el rastro escrito y buscable de lo que Nikola aprobó. Después del incidente del listing de GYG, esto es cobertura.
+
+**Crew Applications aísla datos personales de candidatos.** No es sólo orden: son datos de terceros bajo GDPR y conviene que vivan en un solo lugar, no mezclados en General. Si un candidato pide que borremos sus datos, hay que poder hacerlo limpio.
+
+**IDs para automatizaciones:** MareBoats Core `-1004479127955`, topic Crew Applications `1098`. En el nodo de Telegram de n8n el topic va en el campo opcional **Message Thread ID**, no en el Chat ID.
 
 ### Grupo 2 — MareBoats Crew (los 7)
 
@@ -778,24 +866,57 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 ---
 
-## 🗓️ Changelog — 21 Agosto 2026
+## 🗓️ Changelog — 21 y 22 Agosto 2026
 
-- **`/privacy/`** — Privacy Policy publicada. Indexada, priority 0.2, changeFrequency yearly. Link "Privacy" en columna Info del footer. Data controller: Josip Mlačić, OIB HR48474408245. Base legal GDPR 6(1)(b). Datos de candidatos: se borran el 31/03/2027. Pendiente revisión por el asesor de Josip.
-- **`/careers/skipper/` — sección "Who fits here"** — insertada entre "What the job actually is" y "What we pay". Copy aprobado.
-- **`/careers/skipper/` — form de aplicación** — `components/careers/SkipperApplicationForm.tsx` (`'use client'`). Postea a `https://federicosecchi.app.n8n.cloud/webhook/skipper-application` via fetch POST JSON. Campos: nombre, email, nationalidad, licencia, temporadas, fecha disponible, 5 preguntas (maxLength 500 con contador), dayPreference radio, pregunta opcional. Honeypot `website` off-screen (position absolute, sin display:none). Consent checkbox no pre-marcado, link a `/privacy/`. WhatsApp ya NO es canal de aplicacion — un solo canal, a proposito. La URL del webhook queda visible en el bundle (static export): mitigacion via honeypot + validacion en n8n.
+### Careers, handbook y privacy
 
-## 🗓️ Changelog — 20 Agosto 2026
+- **`/careers/skipper/`** en producción: página pública indexada con `JobPosting` schema (`validThrough` 2027-03-31, `baseSalary` 1200-1500 EUR/mes), link "Join the Crew" en el footer, ruta en el sitemap con priority 0.4.
+- **`/crew-handbook-7x2m9p/`**: handbook interno noindex, `<details>/<summary>` colapsable, mismo patrón que `/guide/`.
+- **`/privacy/`**: política de privacidad publicada, requisito para poder recolectar datos de candidatos.
+- **Sección "Who fits here"** en careers, entre "What the job actually is" y "What we pay".
+- **Form de aplicación** posteando a n8n. WhatsApp sacado como canal de aplicación de esa página.
+- **`directApply`** del `JobPosting`: `false` → `true`.
+- **Validación de fecha en tres capas** tras un fallo real con `11111-11-11`.
+- **Mensaje de éxito**: pasó de `<p>` suelto a bloque con `min-h`, borde y fondo propio, más `scrollIntoView` automático. Antes el form desaparecía y el candidato no veía confirmación, que es justo el momento donde alguien reenvía dos veces o se va pensando que falló.
 
-- **Footer "On Tour" link** — corregido de `/on-tour/` (ruta eliminada con 301) a `/hvar-islands-guide/`. Label sin cambios.
-- **QR hub "save offline" button** — corregido `window.open('/on-tour')` a `/hvar-islands-guide/`. Elimina el round-trip del redirect para huéspedes con señal mala.
-- **Footer "Find Us" label** — `MareBoats barrel · Hvar Harbour` → `MareBoats barrel · Beach Križa`. Solo el label operativo; "Hvar Harbour" en el párrafo descriptivo y metas no se tocó.
-- **Contador de reviews** — `100+ happy guests` → `140+ happy guests` en `app/page.tsx` y `app/landing/explore/page.tsx`.
-- **`directApply: false` → `true` en `jobPostingSkipperSchema`** — el CTA de WhatsApp con mensaje prellenado al número de la empresa califica como direct apply según Google.
+### Fixes de footer (arrastrados de sesiones previas)
 
-## 🗓️ Changelog — 15 Agosto 2026
+- **Link "On Tour"** del footer apuntaba a `/on-tour/`, que está eliminada con 301. Todas las páginas del sitio linkeaban a un redirect. Corregido a `/hvar-islands-guide/` en el footer y en `app/qr/page.tsx` (ese botón lo abren huéspedes a bordo con datos móviles, donde el round trip extra se nota).
+- **Bloque "Find Us"** del footer decía "MareBoats barrel · Hvar Harbour", contradiciendo la corrección de Beach Križa. Corregido. "Hvar Harbour" se mantiene como keyword de zona de salida en hero y metas: el cambio fue sólo en el label operativo.
+- **Contador de reseñas** `100+` → `140+` en home y `/landing/explore/`. El valor real es 144.
 
-- **`/careers/skipper/`** — pública, indexada, priority 0.4. `JobPosting` schema en `lib/schema.ts` con `validThrough: 2027-03-31`. Footer link "Join the Crew". Cuando se cierre la búsqueda: sacar el schema (`jobPostingSkipperSchema` de `lib/schema.ts`), dejar la página como "join the crew" estática sin schema. `directApply: true` (20/08). Croacia NO está en la lista de países con experiencia Google Jobs — el JobPosting sirve para candidatos que buscan desde afuera (Latinoamérica, Europa occidental), no desde Hvar. El form postea a webhook de n8n. La URL queda visible en el bundle (static export). Mitigacion: honeypot + validacion en n8n. No hay credenciales expuestas. WhatsApp ya NO es canal de aplicacion en esta pagina. Un solo canal, a proposito. Privacy Policy en /privacy/. Pendiente de revision por el asesor de Josip. Datos de candidatos: se borran el 31/03/2027 segun lo publicado. Es un compromiso, cumplirlo.
-- **`/crew-handbook-7x2m9p/`** — noindex, mismo checklist de invisibilidad que `/crew-9f3q2/`: `metadata.robots noindex`, `X-Robots-Tag` en `netlify.toml`, excluida del sitemap, cero links desde páginas públicas. Server Component con `<details>/<summary>` colapsable. Sin nombres propios del equipo, sin datos operativos internos (va al static export y es públicamente accesible para quien conozca la URL).
+### Infraestructura nueva
+
+- Bot de Telegram propio: **`@mareboatsOps_bot`**. Antes se iba a reusar un bot de Kosmos; se creó uno separado para no mezclar proyectos ni tokens.
+- Topic **Crew Applications** en MareBoats Core.
+- Base de Notion **Skipper Applications** con las respuestas largas y anotaciones de qué señal buscar en cada una, para que Josip y Nikola lean con el mismo criterio.
+- Workflow n8n `MareBoats - Skipper Applications`: Webhook → Validate → IF → HTTP Request a la API de Notion → Telegram → Respond.
+
+### 🔴 Incidente de seguridad
+
+Un token de bot de Telegram (`kosmosDaily_bot`) quedó expuesto en texto plano en una captura de pantalla. **Revocar con `/revoke` en BotFather y actualizar la credencial en n8n.** Regla nueva: tapar tokens en capturas de BotFather y de cualquier panel de credenciales.
+
+También se sacó de este archivo la apikey de Vesselio que estaba en texto plano. Este documento se pega entero en sesiones de Claude Code: no es lugar para credenciales.
+
+### Aprendizajes de n8n (repetidos, anotar)
+
+- **Editar no es publicar.** Costó tres vueltas: el CORS, el chat ID y el mensaje en inglés. Guardar tampoco alcanza. Hay que **publicar una versión**, y el workflow tiene que aparecer con la etiqueta verde `Published` en el listado.
+- **Al pegar expresiones se pierden los `$`.** Si el panel derecho dice `[invalid syntax]`, mirar primero si desaparecieron los signos de pesos de `$('Nodo')`.
+- **`allowedOrigins` del webhook** tiene que ser `https://mareboatshvar.com` o el navegador bloquea por CORS y el form falla en silencio.
+- **El MCP de n8n conectado es un MCP Server Trigger**: expone workflows como herramientas hacia una IA, no permite crear ni editar workflows desde afuera. Para eso haría falta la API de n8n con key, que es otro proyecto.
+- El nodo de Notion se implementó como **HTTP Request con credencial predefinida** en vez del nodo nativo: más estable entre versiones y control total del JSON.
+- **Notion devuelve 404 aunque el token sea válido** si la base no está compartida explícitamente con la integración (tres puntos de la página → Conexiones).
+
+### 🔴 Pendientes abiertos de estas sesiones
+
+| Pendiente | Estado |
+|---|---|
+| Revocar token de `kosmosDaily_bot` | sin confirmar |
+| Borrar las ~8 filas de prueba en Notion | sin confirmar |
+| Rich Results Test sobre `/careers/skipper/` | nunca se corrió |
+| Aprobación de Nikola sobre el copy de careers | publicado desde el 21/08 sin confirmar |
+| Revisión legal de `/privacy/` por el asesor de Josip | pendiente |
+| Borrado de datos de candidatos el 31/03/2027 | compromiso publicado, poner recordatorio |
 
 ---
 
@@ -808,10 +929,9 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 - **`aggregateRating`**: eliminado de los 4 `tourSchemaMap` (blue-cave, red-rocks, pakleni, sunset). Las 144 reseñas son del negocio, no de cada tour: declararlas por tour es structured data engañoso y arriesga el rich result de estrellas. Queda solo en `businessSchema`.
 - **`reviewCount`**: 26 → **144** (valor real de GBP).
 - **`openingHours`**: `closes` 20:00 → 21:00 para coincidir con GBP.
-- **`sameAs`** con 5 URLs: Google Maps, Instagram, Facebook (`profile.php?id=100093516814322`), GetYourGuide (`mareboatshvar-s613289`), TripAdvisor (`Attraction_Review-g659912-d34371535`).
-- **`dateModified`** en JSON-LD vía `lib/git-dates.ts` — `getLastModified(filePath)` lee la fecha del último commit por archivo vía `git log --format=%aI -1`. Tour pages inyectan `dateModified` condicionalmente (`...(dateModified !== null && { dateModified })`). Solo se emite en deploys por CLI (git completo); fallback a `null` en CI (correcto: campo ausente > fecha falsa). `git fetch --unshallow` en el build command colgó indefinidamente; revertido.
-- **Diacríticos croatas**: 12 instancias corregidas fuera de red-rocks en `tours-data.ts`, `schema.ts`, `/about/`, `/tours/page`, `Gallery.tsx`, `/landing/pre-tour/`, crew dashboard. Agregado `'ždrilca'` al lookup de `TourHighlightsList` (el form sin tilde ya no matchea el texto corregido). Verificado en producción: Ždrilca ×19, Žarače ×20, Palmižana ×17, Biševo ×4 en `/tours/red-rocks-pakleni-islands/`.
-- **Netlify CLI**: `netlify-cli@27.1.1` instalado globalmente. Login por browser. Link a sitio `mareboatshvar` (ID `b577ea86-f053-4c3d-bff2-f89fedcd1bce`). Deploy desbloquea la cola cuando hay un build fantasma colgado.
+- **`sameAs`** con 5 URLs: Google Maps, Instagram, Facebook, GetYourGuide (`/mareboatshvar-s613289/`), TripAdvisor.
+- **`dateModified`** en JSON-LD vía `lib/git-dates.ts`. Solo se emite en deploys por CLI; fallback a `null` en CI.
+- **Diacríticos croatas**: 12 instancias corregidas fuera de red-rocks en `tours-data.ts`, `schema.ts`, `/about/`, `/tours/page`, `Gallery.tsx`, `/landing/pre-tour/`, crew dashboard. Agregado `ždrilca` al lookup de `TourHighlightsList`.
 - **Temporada** mayo-septiembre → **abril-octubre** en 7 lugares, incluido `validFrom`/`validThrough` del schema.
 - **Precio 60hp** €290 → €320.
 - **Tiempo Split Airport** unificado a "1 to 1.5 hours" (había tres valores distintos publicados: 45 min, 1:00-1:10, 1,5 h).
@@ -821,16 +941,6 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 - **`/tours/yacht-sailboat-taxi/`** (1.478 impresiones, pos 10,19, CTR 1,15%): title nuevo con precio y diferencial, nota de disponibilidad (el water taxi es capacidad ociosa de la tarde, no producto promocionado), 4 FAQ con `FAQPage`, cross-link a `/tours/`.
 - **`/explore/`** (978 impresiones, pos 7,81, **CTR 0,31%**, 3 clics en 3 meses): title y description nuevos con lugares concretos. **H1 "Explore Hvar" → "Things to Do in Hvar"**: el anterior coincidía con el nombre de una agencia competidora, lo que explicaba el ranking para "explore hvar agency" con cero clics.
 - **Bug de titles**: 7 páginas tenían el sufijo de marca duplicado ("| MareBoats | MareBoats Hvar"), llegando hasta 90 caracteres. Google corta cerca de 60, así que la parte visible del snippet se perdía. Corregido sacando la marca del title de cada página y dejando que la ponga el template. Las 7 quedaron entre 50 y 60 renderizados.
-
-| Ruta | Rendered antes | Chars | Rendered después | Chars |
-|---|---|---|---|---|
-| /rentals/boat-rental-hvar-without-licence | Can You Rent a Boat...MareBoats Hvar \| MareBoats Hvar | 80 | Rent a Boat in Hvar Without a Licence? \| MareBoats Hvar | 55 |
-| /explore/private-boat-tour-hvar-families | Private Boat Tour Hvar: How It Works...MareBoats \| MareBoats Hvar | 89 | Private Boat Tour Hvar: Families & Groups \| MareBoats Hvar | 58 |
-| /guide | Hvar Boat Tour Guide - What to Know...MareBoats \| MareBoats Hvar | 78 | Hvar Boat Tour Guide: What to Know \| MareBoats Hvar | 51 |
-| /hvar-islands-guide | Hvar Islands Guide: Stops, Beaches...MareBoats \| MareBoats Hvar | 80 | Hvar Islands: Beaches, Stops & Hidden Coves \| MareBoats Hvar | 60 |
-| /landing/pre-tour | What to Expect on a Hvar Boat Tour \| MareBoats \| MareBoats Hvar | 63 | What to Expect on a Hvar Boat Tour \| MareBoats Hvar | 51 |
-| /tours | Boat Tours Hvar \| All Tours from Hvar Harbour - MareBoats \| MareBoats Hvar | 74 | Boat Tours from Hvar: All Options \| MareBoats Hvar | 50 |
-| /transfers | Speedboat Transfers from Hvar \| Split, Airport, Brač, Korčula - MareBoats \| MareBoats Hvar | 90 | Transfers from Hvar: Split & Airport \| MareBoats Hvar | 53 |
 
 ### Fuera del código
 
@@ -855,24 +965,14 @@ Objetivo: convertir `/tours/red-rocks-pakleni-islands/` en la fuente de referenc
 - Links internos entrantes desde `/explore/`, `/guide/`, `/hvar-islands-guide/`, `/tours/`.
 - `components/sections/FleetInfo.tsx` (Server Component) en todas las tour pages excepto `split-airport-transfer`: sombra, espacio (12 licenciados / navegamos con 8), cubierta abierta, agua fría, audio y Spotify Jam.
 
-### Tarea H — Correcciones de datos (06/08/2026)
+### Tarea H — Correcciones de datos
 
-**H1 — Meeting point corregido en 11 archivos:**
-El punto de encuentro publicado era incorrecto toda la temporada. "Hvar Harbour main dock" y "at the waterfront near the taxi boats" reemplazados por **Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel**. URL: `https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA`. Archivos: `lib/tours-data.ts` (constante MEETING, MAPS, fastFacts Departs, FAQ Q2, descripción), `app/landing/pre-tour/page.tsx` (Meet rows x2, iframe title, address block, Maps URL), `app/crew-9f3kq2/CrewDashboard.tsx` (quote builder x2, display), `app/tours/[slug]/page.tsx` (intro comparativa, Fast Facts Meeting point como link clickable).
-
-**H2 — Ruta reescrita con tiempos de tramo y 7 stops en orden real:**
-Antes: 5 stops desordenados (Red Rocks, Dubovica, Borče Bay, Žarače, Pakleni combinado). Después: Red Rocks, Dubovica, Žarače, Borče Bay, Ždrilca, Perna, Palmižana en orden de navegación. Todos los `travelTime` son tramo a tramo, no "from Hvar Harbour". "Borče Bay (Milna)" → "Borče Bay". Stop combinado "Pakleni Islands (Palmižana or Ždrilca)" dividido en tres stops independientes. Dt `"From Hvar Harbour"` → `"Sailing time"`. Subtítulo de la sección expandido con nota de tiempos aproximados y pace.
-
-**H3 — Tabla comparativa y distancias:**
-Duración 5 Islands corregida: "~8 hours" → "7 hours". Fila "Total distance" agregada en tabla (30-35 km / 100-120 km) y en Fast Facts (30 to 35 km total route).
-
-**H4** — Capacity fastFact reescrito para explicar la decisión de los 8 guests, no solo enunciar la regla. Subject explícito ("MareBoats Hvar speedboats") para que sea citable fuera de contexto.
-
-**H5** — FAQ underwater scooter: add-on en privados, €`ADDONS.scooter`/unit, per unit not per person, no disponible en shared.
-
-**H6** — FleetInfo bloque de música: playlist histórica + Spotify Jam disponible con app (no garantizado).
-
-**H7** — Calma Beach: parada ocasional, alternativa a Perna, mismo tramo desde Ždrilca (5-8 min). `TourStop.activities` hecho opcional. Palmižana `travelTime` actualizado para funcionar viniendo de Perna, de Calma, o directo desde Ždrilca.
+- **Meeting point corregido en 11 archivos.** Ver sección propia arriba. Estuvo mal toda la temporada.
+- **Ruta reescrita**: 7 paradas en orden real con tiempos de tramo (no "desde Hvar Harbour"). Red Rocks → Dubovica → Žarače (opcional) → Borče Bay → Ždrilca → Perna o Calma (opcional) → Palmižana. Milna y Mlini no son paradas: se ven de paso.
+- **Duración 5 Islands** corregida de ~8h a 7h. Distancias totales agregadas: Red Rocks 30-35 km, 5 Islands 100-120 km.
+- Capacidad reformulada para explicar la decisión, no solo enunciar la regla.
+- FAQ de underwater scooter (€40/unidad, solo privados).
+- Calma Beach como parada ocasional, alternativa a Perna.
 
 ---
 
@@ -959,8 +1059,6 @@ Sesión de tareas chicas y cerradas, una por una, todas commiteadas y pusheadas 
 
 Todo el trabajo de SEO/GEO se publicó entre el 05 y el 09 de agosto. Google tarda 1-3 semanas en reindexar; los asistentes de IA, más (al 05/08 ChatGPT todavía citaba precios de julio). **Primera medición: 09 septiembre 2026.** Antes de esa fecha cualquier lectura es ruido.
 
-> **Nota sobre reseñas:** todos los números de reseñas en esta sección son la foto del 09/08/2026 (144 en GBP). El conteo sigue subiendo durante la temporada. El valor vivo del schema (`reviewCount` en `lib/schema.ts`) se actualiza por separado y puede diferir de esta línea de base.
-
 **Regla: no hacer cambios grandes de contenido hasta la primera medición**, o no se va a poder separar qué movió qué.
 
 ### GEO — Test de ChatGPT (indicador principal)
@@ -978,7 +1076,7 @@ Método: chat nuevo en **modo temporal**, sin contexto, búsqueda web activada, 
 
 **Resultado 05/08: aparece en 3 de 8** (preguntas 2, 5 y 8). Ausente en las 4 de descubrimiento puro (1, 4, 6, 7). En la 2 aparece 5º de 5.
 
-Competidores que sí aparecen: Mario Rent (1.500+ reseñas), Delfina Hvar (900+), Hvar Boats (580+), Kabina, Hvar Charter, Arta. **MareBoats: 144 (al 09/08, en aumento).**
+Competidores que sí aparecen: Mario Rent (1.500+ reseñas), Delfina Hvar (900+), Hvar Boats (580+), Kabina, Hvar Charter, Arta. **MareBoats: 144.**
 
 **Hipótesis:** la ausencia no es por falta de contenido (ChatGPT describe el sitio con precisión en la pregunta 5), es por falta de corroboración externa. El proxy dominante es volumen de reseñas.
 
@@ -1068,7 +1166,7 @@ Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explo
 
 | Plataforma | Estado 09/08 |
 |---|---|
-| Google Business Profile | 5,0 · **144 reseñas (al 09/08, en aumento)** · pos media 7,14 |
+| Google Business Profile | 5,0 · **144 reseñas** · pos media 7,14 |
 | **TripAdvisor** | **#84 de 122 · 0 reseñas** |
 | GetYourGuide | activo · publica €95 y €160 |
 | Instagram | @mareboats.hvar · 140+ |
@@ -1094,6 +1192,12 @@ Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explo
 | Rango de combustible Private Charter | Nikola |
 | Corregir "RIB speedboats" en TripAdvisor | Nikola (aprobación) |
 | Horario de temporada en GBP | Fede |
+| Aprobación del copy de `/careers/skipper/` | Nikola (publicado desde 21/08) |
+| Revisión legal de `/privacy/` | asesor de Josip |
+| Contrato croata para skippers 2026 | Nikola (si confirma, cambia una línea de la página) |
+| Revocar token de `kosmosDaily_bot` | Fede (seguridad) |
+| Borrar filas de prueba en Notion | Fede |
+| Rich Results Test de `/careers/skipper/` | Fede |
 
 ---
 
@@ -1129,3 +1233,7 @@ Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explo
 - **Nombres de terceros solo si ya estaban publicados.** Restaurantes, beach clubs y negocios de terceros: solo nombre y ubicación, nunca datos que no controlamos (año de apertura, amarres, horarios).
 - **Si se cambia copy ya aprobado, marcarlo explícitamente** en vez de mostrar la versión nueva como si fuera la misma. Pasó varias veces el 06/08.
 - **Deploys**: mientras la cola de Netlify esté bloqueada, usar `npm run build && netlify deploy --prod --dir=out`, siempre con todo commiteado y pusheado antes.
+- **Cuando el prompt dice "parar y preguntar", hay que parar de verdad.** El 21/08 el prompt marcaba la URL del webhook como `WEBHOOK_URL_PENDIENTE` con instrucción explícita de frenar. CC no frenó y escribió una URL por su cuenta. Acertó por casualidad. Si un prompt marca un valor como pendiente, no se inventa: se pregunta.
+- **Al reportar un grep, mostrar la línea encontrada, no sólo la cantidad de resultados.** "Un solo resultado en la línea 6" no permite verificar nada.
+- **Datos personales de terceros**: nada de candidatos, huéspedes ni referencias entra al build estático. Sólo a Notion, y sólo lo mínimo necesario.
+- **Formularios**: la única excepción a "solo WhatsApp" es `/careers/skipper/`. Cualquier otro form se consulta antes.
