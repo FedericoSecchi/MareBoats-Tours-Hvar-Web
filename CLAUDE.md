@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 22 Agosto 2026**
+**Actualizado: 23 Agosto 2026**
 
 ---
 
@@ -370,9 +370,9 @@ Empatía, compañerismo y amabilidad no se detectan por escrito ni por videollam
 
 ## Herramientas operativas
 - **Vesselio** — mareboats.vesselio.app. Sistema de bookings. Solo referencia operativa, no conectar al sitio. **Las credenciales NO van en este archivo**: este documento se pega entero en sesiones de Claude Code y se comparte. Guardar en gestor de contraseñas.
-- **n8n** — `federicosecchi.app.n8n.cloud` (plan pago). Workflow `MareBoats - Skipper Applications`. Ver sección de careers abajo.
+- **n8n** — `federicosecchi.app.n8n.cloud` (plan pago). Workflows: `MareBoats - Skipper Applications` + los 4 del sistema de clima (ver sección de clima abajo). El MCP de n8n permite crear, editar y publicar workflows desde claude.ai.
 - **Notion** — base `Skipper Applications`, `database_id` `cb5e08fb-a0ea-4575-a542-2ef35e0bfeea`, dentro de la página del proyecto MareBoats. Integración conectada: `Kosmos n8n`.
-- **Telegram bot** — `@mareboatsOps_bot` (creado 21/08/2026). Bot propio de MareBoats, separado de los bots de Kosmos. Miembro de MareBoats Core y MareBoats Crew.
+- **Telegram bot** — `@mareboatsOps_bot` (creado 21/08/2026). Bot propio de MareBoats, separado de los bots de Kosmos. Miembro de MareBoats Core y MareBoats Crew. Corre el pipeline de skipper applications y el sistema de clima. Credencial en n8n: `Telegram account` (id `M8r3l97dYY5yLdbN`).
 
 ## Reglas inamovibles de contenido
 - Idiomas a bordo solo cuando Fede es skipper — NO prometer genéricamente
@@ -740,7 +740,9 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - Bug conocido de Netlify: un deploy ya publicado puede quedar reportado como "Building" y ocupar el único slot concurrente del plan Starter, bloqueando la cola entera. No se puede cancelar desde el panel. Requiere ticket a soporte. Workaround: deploy por CLI, que saltea la cola.
 
 ### 🤖 EN EL RADAR
-- n8n: WhatsApp bot, Blue Cave status automático, GBP/Instagram automation
+- n8n: sistema de clima al Crew **HECHO** (22-23/08, ver sección de clima). Pendiente: sectores de los stops de Blue Cave, afinar umbrales con uso real, y el per-boat del brief cuando Vesselio exponga los endpoints read-only.
+- n8n: WhatsApp bot, GBP/Instagram automation. Blue Cave status en vivo NO por scraping (modraspilja.hr es propietario, ver sección de clima); si se quiere, pedir acceso oficial a la cueva.
+- Vesselio: el developer ofreció crear endpoints read-only a medida (booking list por fecha, vessel list, availability). Pedido: booking list por fecha para el brief per-boat y alerta de overbooking. Solo lectura, el bot no escribe en la app.
 - Segmento US: charter premium, definir producto + página
 - Backlinks: travel blogs, Croatia.hr, VisitHvar.hr, Viator
 
@@ -832,13 +834,14 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 
 **Crew Applications aísla datos personales de candidatos.** No es sólo orden: son datos de terceros bajo GDPR y conviene que vivan en un solo lugar, no mezclados en General. Si un candidato pide que borremos sus datos, hay que poder hacerlo limpio.
 
-**IDs para automatizaciones:** MareBoats Core `-1004479127955`, topic Crew Applications `1098`. En el nodo de Telegram de n8n el topic va en el campo opcional **Message Thread ID**, no en el Chat ID.
+**IDs para automatizaciones:** MareBoats Core `-1004479127955` (topic Crew Applications `1098`, topic de Nikola `632`). MareBoats Crew `-1003705239256` (topic Weather `735`). User ID de Nikola `8394549439` (no tiene @username, se tagea con `tg://user?id=` en HTML). En el nodo de Telegram de n8n el topic va en el campo opcional **Message Thread ID**, no en el Chat ID.
 
 ### Grupo 2 — MareBoats Crew (los 7)
 
 | Topic | Para qué |
 |---|---|
 | Announcements | Solo Nikola, Jozo o Fede postean. Cambios de horario, reglas nuevas. No se responde acá. |
+| **Weather** | Brief matutino (07:30), alertas de empeoramiento (cada 2h) y night mooring check (18:00). Automático, `@mareboatsOps_bot`. |
 | **Today** | Plan del día, morning check, reportes de cierre, aviso del taxi al Clubman. |
 | Damage Report | Todo lo roto, con foto y nombre del barco, el mismo día. |
 | Supplies | Hielo, agua, bebidas, combustible, limpieza. |
@@ -863,6 +866,49 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 13. No publicar fotos de huéspedes. Van a Media Drop.
 14. Si no podés cubrir un turno, avisá en General lo antes posible, no la misma mañana.
 15. El grupo es interno. Nada de acá sale del equipo.
+
+---
+
+## 🌦️ Sistema de clima automatizado (n8n) — 22-23/08/2026
+
+Cuatro workflows en `federicosecchi.app.n8n.cloud`, todos activos, todos por `@mareboatsOps_bot` (credencial `Telegram account`, id `M8r3l97dYY5yLdbN`). Timezone Europe/Zagreb en los cuatro. Datos de Open-Meteo (forecast API + marine API, gratis, sin key). Construidos, validados y publicados directamente por el MCP de n8n desde claude.ai.
+
+| Workflow | ID | Horario | Destino |
+|---|---|---|---|
+| Nightly Schedule Reminder | `SuUhIipMVsgOc78O` | 22:30 | Core, topic Nikola (632), lo tagea por ID |
+| Morning Weather Brief | `AaFkiapBO79vrXyM` | 07:30 | Crew, topic Weather (735) |
+| Weather Alert (2h ahead) | `RbZoDUNutuw6cD60` | 08-18h c/2h | Crew, topic Weather (735) |
+| Night Mooring Check | `qFKs5xB9ejjEeqO3` | 18:00 | Crew, topic Weather (735) |
+
+**Reminder Nikola** — send-only. Recuerda cargar el schedule y lo tagea con `<a href="tg://user?id=8394549439">Nikola</a>` (parse HTML) porque no tiene @username.
+
+**Morning Brief** — muestrea 12 puntos: Hvar, Red Rocks, Dubovica, Borče, Mlini, Ždrilca, Perna, Blue Cave, Pritišćina, Stiniva, Green Cave, West-Vis. Da viento AM/PM + ráfagas, lluvia (con horario), visibilidad, y por tour:
+- Red Rocks + Pakleni: punto de navegación por pierna (popa/través/proa, calculado del rumbo real de cada pierna vs el viento del día). Stops solo si NO están calmos.
+- Blue Cave tour: lado protegido de Vis (geometría, opuesto al viento; el modelo a 8km no distingue los dos lados, así que el lado protegido es teórico), semáforo de la cueva, y stops solo si son notables.
+- Pasara: semáforo 🟢🟡🔴 AM/PM con nudos y hora de cambio ("back by ~HH").
+- Tips de manejo según condición (peso atrás y centrado, guardar en compartimentos, tomar ráfagas de proa, etc.).
+
+**Alerta 2h** — vigila el pronóstico de +2h y avisa solo al cruzar umbral: viento >18kn o ráfagas >25, rotación al sur en Biševo (riesgo cueva), o un stop pasando a rough. Anti-spam vía workflow static data (cada gatillo una vez por día; el static data solo persiste en corridas automáticas, no en Execute manual). No manda nada si no hay empeoramiento.
+
+**Night Mooring Check** — a las 18:00 mira la noche (20-07h) en Hvar. Si vienen ráfagas ≥25kn u ola ≥1m avisa asegurar los botes en las boyas y revisar amarras. Silencioso si la noche es calma.
+
+### Sectores de exposición (confirmados por Fede)
+Un stop está expuesto si el viento o el swell viene de su sector abierto:
+- **Red Rocks, Dubovica, Borče** (costa sur de Hvar): abiertos al S [135-225]. Calmos con Bura/Maestral (la isla los tapa), feos con Jugo/Lebić.
+- **Mlini / Ždrilca**: siempre calmos (laguna protegida entre islotes).
+- **Perna**: abierto al S. **Palmižana**: abierta al SW.
+- **PENDIENTE**: sectores de Pritišćina, Stiniva y Green Cave (stops del tour Blue Cave). Hasta tenerlos, salen con números crudos, sin semáforo.
+
+### Umbrales (punto de partida, afinar con uso real)
+- Stop: viento ≥16kn o swell ≥0.8m = rough; ≥10kn o ≥0.4m = choppy.
+- Pasara semáforo: <10kn verde, 10-15 amarillo, >15 rojo.
+- Alerta 2h: viento >18kn / ráfagas >25. Night: ráfagas ≥25 = windy, ≥35 = strong; ola ≥1m suma.
+
+### Decisiones de diseño (no revertir sin motivo)
+- **Corriente descartada como variable de ruteo.** Open-Meteo a 8km no resuelve corriente costera (ellos mismos lo desaconsejan). El driver real de combustible y confort es viento + ola relativos al rumbo.
+- **modraspilja.hr (Blue Cave) NO se scrapea.** Sistema propietario de Nautički centar Komiža, ToS restrictivo ("todos los derechos reservados"), y scrapearlo pone en riesgo la relación con la administración de la cueva de la que dependemos. El estado real llega por el canal de operadores; el brief da la predicción por Jugo. Si se quiere estado en vivo, se pide acceso oficial a la cueva.
+- **El bot recomienda, no decide seguridad.** Nunca dice "arrimate X metros a la costa": el modelo no ve bajos ni rocas, y pegado a la costa es donde están las piedras. Todos los mensajes cierran con "Skipper decides, mind shoals near shore".
+- **Token sin rotar.** Fede decidió mantener el token de `@mareboatsOps_bot` (credencial `Telegram account`) sin rotar. Decisión informada, documentada.
 
 ---
 
@@ -903,7 +949,9 @@ También se sacó de este archivo la apikey de Vesselio que estaba en texto plan
 - **Editar no es publicar.** Costó tres vueltas: el CORS, el chat ID y el mensaje en inglés. Guardar tampoco alcanza. Hay que **publicar una versión**, y el workflow tiene que aparecer con la etiqueta verde `Published` en el listado.
 - **Al pegar expresiones se pierden los `$`.** Si el panel derecho dice `[invalid syntax]`, mirar primero si desaparecieron los signos de pesos de `$('Nodo')`.
 - **`allowedOrigins` del webhook** tiene que ser `https://mareboatshvar.com` o el navegador bloquea por CORS y el form falla en silencio.
-- **El MCP de n8n conectado es un MCP Server Trigger**: expone workflows como herramientas hacia una IA, no permite crear ni editar workflows desde afuera. Para eso haría falta la API de n8n con key, que es otro proyecto.
+- **El MCP de n8n SÍ permite crear, editar y publicar workflows desde claude.ai** (corregido 22/08, la nota vieja decía lo contrario). Los 4 workflows de clima se armaron enteros por el MCP. Patrón: `validate_workflow` → `create_workflow_from_code` → `setWorkflowSettings` (timezone Europe/Zagreb) → `publish_workflow`. **Editar un workflow ya publicado crea un draft; hay que volver a llamar `publish_workflow` o sigue corriendo la versión vieja.**
+- **El Code node de n8n no tiene acceso a red.** Las llamadas a APIs (Open-Meteo, etc.) van por nodos HTTP Request; el Code node solo procesa su salida.
+- **Verificar el jsCode antes de subirlo.** El código de un Code node se escribió, se corrió con `node --check` y con datos simulados localmente, y recién ahí se subió. Un `update_workflow` no ejecuta el JS, así que un error de sintaxis pasa silencioso hasta que corre. Ya pasó una vez (un paréntesis faltante).
 - El nodo de Notion se implementó como **HTTP Request con credencial predefinida** en vez del nodo nativo: más estable entre versiones y control total del JSON.
 - **Notion devuelve 404 aunque el token sea válido** si la base no está compartida explícitamente con la integración (tres puntos de la página → Conexiones).
 
