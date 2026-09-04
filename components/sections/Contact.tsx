@@ -4,10 +4,11 @@ import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
 import { fadeInUpContainer } from '@/lib/motion';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { BUSINESS_INFO } from '@/lib/tours-data';
 
 const WA_URL =
   'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20boat%20tour%20from%20Hvar.';
-const MAPS_URL = 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA';
+const MAPS_URL = BUSINESS_INFO.googleMapsUrl;
 
 export default function Contact() {
   const { ref, inView } = useScrollAnimation();

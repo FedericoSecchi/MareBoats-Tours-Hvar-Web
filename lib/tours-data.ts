@@ -16,7 +16,7 @@ export const BUSINESS_INFO = {
   whatsapp: 'https://wa.me/385951966734',
   address: 'Janka Žagjala 56, Hvar, Croacia',
   coordinates: { lat: 43.16903, lng: 16.44300 },
-  googleMapsUrl: 'https://maps.app.goo.gl/U6kgAaRG81KZmqUEA',
+  googleMapsUrl: 'https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA',
   googleReviewUrl: 'https://g.page/r/Cd7dvQcuwbZ7EBM/review',
   hours: 'Mo-Su 08:00-21:00',
   languages: ['English', 'Croatian', 'Italian', 'Spanish', 'German'],
