@@ -35,8 +35,25 @@ export type TourStop = {
   optionalNote?: string;
 };
 
+export type ProductType =
+  | 'tour-shared-private'
+  | 'tour-private'
+  | 'charter'
+  | 'transfer'
+  | 'water-taxi';
+
+/** Eyebrow label rendered above the H1 on tour detail pages. Single source; breadcrumb and schema will read from here when they migrate to productType. */
+export const EYEBROW: Record<ProductType, string> = {
+  'tour-shared-private': 'Private or shared',
+  'tour-private': 'Private tour',
+  charter: 'Private charter',
+  transfer: 'Private transfer',
+  'water-taxi': 'Water taxi',
+};
+
 export type TourRecord = {
   slug: string;
+  productType: ProductType;
   name: string;
   tagline: string;
   shortDescription: string;
@@ -86,6 +103,7 @@ const SAT = TOUR_PRICES['split-airport-transfer'];
 export const toursData: TourRecord[] = [
   {
     slug: 'red-rocks-pakleni-islands',
+    productType: 'tour-shared-private',
     name: 'Red Rocks & Pakleni Islands - Hvar Boat Tour',
     tagline: 'Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming.',
     shortDescription:
@@ -319,6 +337,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
 
   {
     slug: 'pakleni-islands',
+    productType: 'tour-private',
     name: 'Pakleni Islands Half Day Tour',
     tagline: 'Half day of turquoise water, hidden coves, and island hopping minutes from Hvar town.',
     shortDescription:
@@ -368,6 +387,7 @@ Most guests who book this tour have already done a full-day trip and want a shor
 
   {
     slug: 'blue-cave-pakleni-islands',
+    productType: 'tour-shared-private',
     name: '5 Islands, 4 Beaches & Blue Cave - Hvar Boat Tour',
     tagline: 'Full-day speedboat tour from Hvar. Three sea caves, four beaches, Blue Cave on Biševo - and back before the day crowds hit.',
     shortDescription:
@@ -438,6 +458,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
 
   {
     slug: 'sunset-cruise',
+    productType: 'tour-private',
     name: 'Sunset Cruise Hvar',
     tagline: 'Golden hour on the Adriatic - wine-friendly, calm water, and the best light of the day.',
     shortDescription:
@@ -485,6 +506,7 @@ Pricing scales with group size: see the breakdown below. Wine is included with e
 
   {
     slug: 'private-boat-charter',
+    productType: 'charter',
     name: 'Private Boat Charter Hvar',
     tagline: 'Your boat, your itinerary - full-day freedom with a skipper who knows these waters.',
     shortDescription:
@@ -535,6 +557,7 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
 
   {
     slug: 'split-airport-transfer',
+    productType: 'transfer',
     name: 'Split Airport to Hvar Speedboat Transfer',
     tagline: 'Private speedboat transfer between Split Airport and Hvar. 1 to 1.5 hours by boat, depending on sea conditions.',
     shortDescription: `Split city departure: €${SAT.splitHvar} · Split Airport departure: €${SAT.airportHvar} (airport pier is a short taxi from the terminal)`,
@@ -589,6 +612,7 @@ Message us on WhatsApp with your flight number, group size and luggage to lock i
 
   {
     slug: 'yacht-sailboat-taxi',
+    productType: 'water-taxi',
     name: 'Yacht & Sailboat Water Taxi',
     tagline: 'Anchored near Hvar? We come to your boat - pickup, transfer or full tour.',
     shortDescription:
