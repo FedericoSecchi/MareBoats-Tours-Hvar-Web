@@ -40,7 +40,7 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'Are dogs allowed on the boat?',
     answer:
-      'Dogs are welcome on board. Let us know when you book so we can plan accordingly.',
+      'Dogs are welcome on private tours, on request. Message us before you book. Not available on the shared tour.',
   },
   {
     question: 'Are my belongings safe on the boat?',

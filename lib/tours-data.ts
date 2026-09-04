@@ -51,6 +51,16 @@ export const EYEBROW: Record<ProductType, string> = {
   'water-taxi': 'Water taxi',
 };
 
+/** Dog policy copy per product type. Full record so TypeScript flags any new productType that ships without a declared policy. */
+export const DOG_POLICY: Record<ProductType, string> = {
+  'tour-shared-private':
+    'Dogs are welcome on private tours, on request. Message us before you book. Not available on the shared tour.',
+  'tour-private': 'Dogs are welcome on board, on request. Message us before you book.',
+  charter: 'Dogs are welcome on board, on request. Message us before you book.',
+  transfer: 'Dogs are welcome on board, on request. Message us before you book.',
+  'water-taxi': 'Dogs are welcome on board, on request. Message us before you book.',
+};
+
 export type TourRecord = {
   slug: string;
   productType: ProductType;

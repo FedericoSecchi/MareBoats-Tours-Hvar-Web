@@ -1154,7 +1154,7 @@ function OpsHeader() {
         </div>
         <div className="flex gap-2 font-body text-sm text-[color:var(--white)]">
           <span>🐶</span>
-          <span>Dogs are welcome on board. Let us know when you book.</span>
+          <span>Dogs: allowed on anything private (tours, transfers, rentals), always on request. Never on a shared departure.</span>
         </div>
       </div>
     </details>

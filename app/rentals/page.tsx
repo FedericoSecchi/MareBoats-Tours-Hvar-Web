@@ -137,7 +137,7 @@ const faqSchema = {
       name: 'Are dogs allowed on the boat rental?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Dogs are welcome on board. Let us know when you book.',
+        text: 'Dogs are welcome on board, on request. Message us before you book so we can prepare accordingly.',
       },
     },
   ],
@@ -182,7 +182,7 @@ const FAQS = [
   },
   {
     q: 'Are dogs allowed on a boat rental in Hvar?',
-    a: 'Dogs are welcome on board. Let us know when you book so we can prepare accordingly.',
+    a: 'Dogs are welcome on board, on request. Message us before you book so we can prepare accordingly.',
   },
 ];
 
@@ -302,8 +302,8 @@ export default function RentalsPage() {
             <strong className="text-[color:var(--white)]">skipper included</strong> for the
             full-service experience, or take the helm yourself with our{' '}
             <strong className="text-[color:var(--white)]">self-drive option</strong>. Both pickup
-            at Hvar Harbour, same quality speedboat. Dogs are welcome on board - let us know when
-            you book.
+            at Hvar Harbour, same quality speedboat. Dogs are welcome on board, on request. Message
+            us before you book.
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -349,7 +349,7 @@ export default function RentalsPage() {
                   'Local skipper, custom route',
                   'Fuel, water & snorkel included',
                   'Up to 8 people - private group only',
-                  'Dogs are welcome on board',
+                  'Dogs welcome, on request',
                 ].map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />

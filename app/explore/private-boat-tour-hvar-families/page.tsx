@@ -63,7 +63,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: 'Are private tours available for families with children?',
     answer:
-      'Yes. Dogs are welcome on board as well. Let us know when you book.',
+      'Yes. Private tours work well for families: your group has the boat to itself, the pace adapts to the kids, and the skipper picks calm bays for swimming. Dogs are welcome on private tours as well, on request. Message us before you book.',
   },
   {
     question: 'What is the meeting point?',
