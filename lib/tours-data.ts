@@ -89,9 +89,9 @@ export type TourRecord = {
 const MEETING = 'Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel';
 const MAPS = 'https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA';
 
-const PHOTO_VIDEO_ADDON = `Photo & Video Shoot - €${ADDONS.photoVideo}, on request (when Fede is on board). Drone, underwater and on-board footage. Full gallery after the tour. Book in advance - slots are limited.`;
+const PHOTO_VIDEO_ADDON = `Photo & Video Shoot - €${ADDONS.photoVideo}, on request. Drone, underwater and on-board footage. Full gallery after the tour. Must be booked in advance, subject to availability. Private tours only.`;
 
-const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, `Underwater Scooter €${ADDONS.scooter}/unit, on request`];
+const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, `Underwater Scooter - €${ADDONS.scooter}/unit, on request. Private tours only.`];
 
 // Shorthands for inline use in description template literals
 const RR = TOUR_PRICES['red-rocks-pakleni-islands'];
