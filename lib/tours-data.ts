@@ -100,7 +100,7 @@ const MAPS = 'https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA';
 
 const PHOTO_VIDEO_ADDON = `Photo & Video Shoot - €${ADDONS.photoVideo}, on request. Drone, underwater and on-board footage. Full gallery after the tour. Must be booked in advance, subject to availability. Private tours only.`;
 
-const DEFAULT_ADDONS = [PHOTO_VIDEO_ADDON, `Underwater Scooter - €${ADDONS.scooter}/unit, on request. Private tours only.`];
+const UNDERWATER_SCOOTER_ADDON = `Underwater Scooter - €${ADDONS.scooter}/unit, on request. Red Rocks and Pakleni Islands private tours only.`;
 
 // Shorthands for inline use in description template literals
 const RR = TOUR_PRICES['red-rocks-pakleni-islands'];
@@ -145,7 +145,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       'Lunch not included - restaurants available at Pakleni',
       'Hotel pickup',
     ],
-    addons: DEFAULT_ADDONS,
+    addons: [PHOTO_VIDEO_ADDON, UNDERWATER_SCOOTER_ADDON],
     whatToBring: [
       'Sunscreen, hat and sunglasses',
       'Swimwear and a light layer for the breeze',
@@ -371,7 +371,7 @@ Most guests who book this tour have already done a full-day trip and want a shor
       'Snorkeling masks',
     ],
     notIncludes: ['Lunch not included - restaurants available at Pakleni', 'Hotel pickup'],
-    addons: DEFAULT_ADDONS,
+    addons: [PHOTO_VIDEO_ADDON, UNDERWATER_SCOOTER_ADDON],
     whatToBring: ['Sunscreen and swimwear', 'A light layer for the breeze when cruising'],
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
@@ -542,7 +542,7 @@ Every charter includes snorkelling masks, icebox and bottled water. Message us w
       'Third-party activity fees',
       'Hotel pickup',
     ],
-    addons: DEFAULT_ADDONS,
+    addons: [PHOTO_VIDEO_ADDON],
     whatToBring: ['Sun protection and swimwear', 'Cash or card for fuel and optional restaurant stops'],
     meetingPoint: MEETING,
     meetingPointMapsUrl: MAPS,
