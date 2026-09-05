@@ -14,14 +14,6 @@ const sharedGeo = {
   longitude: 16.443,
 } as const;
 
-const AGGREGATE_RATING = {
-  '@type': 'AggregateRating',
-  ratingValue: '5.0',
-  bestRating: '5',
-  worstRating: '1',
-  reviewCount: '152',
-} as const;
-
 const AVAILABLE_LANGUAGES = ['English', 'Croatian', 'German', 'Spanish', 'Italian'];
 
 export const businessSchema = {
@@ -56,7 +48,6 @@ export const businessSchema = {
   currenciesAccepted: 'EUR',
   paymentAccepted: 'Cash, Bank Transfer',
   availableLanguage: AVAILABLE_LANGUAGES,
-  aggregateRating: AGGREGATE_RATING,
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
