@@ -78,9 +78,9 @@ const QR_BUTTONS: QrButton[] = [
     variant: 'secondary',
   },
   {
-    icon: '🛵',
+    icon: '🛥️',
     label: 'Rental Rules',
-    description: 'What to know before your boat or scooter rental',
+    description: 'What to know before your boat rental',
     href: '/landing/rental',
     variant: 'secondary',
   },

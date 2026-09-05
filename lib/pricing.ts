@@ -146,6 +146,9 @@ export const ADDONS = {
 
 // ──────────────────────────────────────────────
 // Land scooter rental (separate service, not a boat)
+// DISCONTINUED since 2026. The landing section that consumed this
+// constant was removed. Kept in case the product is reactivated
+// next season - do NOT re-wire without confirming with Nikola.
 // ──────────────────────────────────────────────
 
 export const SCOOTER_RENTAL = {
