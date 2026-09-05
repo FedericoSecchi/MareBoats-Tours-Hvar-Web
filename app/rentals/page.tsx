@@ -475,15 +475,15 @@ export default function RentalsPage() {
                     Underwater Scooter
                   </h3>
                   <p className="mt-2 font-body text-base leading-relaxed text-[color:var(--gray)]">
-                    Not a standalone rental. The scooter is an add-on for private tours - tell us when you book and we&apos;ll have it on board. Priced per unit, not per person.
+                    Move through the water without swimming. You watch the fish instead of working to keep up with them, and because you are not kicking, you last longer under.
                   </p>
                 </div>
 
                 <ul className="space-y-1.5 font-body text-xs text-[color:var(--gray)]">
                   {[
-                    'Private tours only - not on Sunset Cruise or shared departures',
-                    'Skipper briefing on board before entering the water',
-                    'No experience needed',
+                    'Nothing to learn, you hold on and go',
+                    'Short briefing from the skipper before you get in',
+                    'Red Rocks and Pakleni Islands private tours only',
                   ].map((rule) => (
                     <li key={rule} className="flex gap-2">
                       <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />

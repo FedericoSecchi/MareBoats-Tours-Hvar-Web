@@ -334,7 +334,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       {
         question: 'Is an underwater scooter available on the Red Rocks & Pakleni Islands tour?',
         answer:
-          `The underwater scooter is available as an add-on on private Red Rocks & Pakleni Islands tours. The cost is €${ADDONS.scooter} per unit for the full day. The price is per unit, not per person. It is not available on the shared tour. Ask via WhatsApp when you book.`,
+          `The underwater scooter is available as an add-on on private Red Rocks & Pakleni Islands tours. The cost is €${ADDONS.scooter} per unit for the full day. The price is per unit, not per person. Ask via WhatsApp when you book.`,
       },
     ],
     relatedGuide: {

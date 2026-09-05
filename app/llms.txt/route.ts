@@ -124,7 +124,7 @@ ${sunsetLines}
 
 ## Add-ons
 
-- Underwater Scooter: €${ADDONS.scooter}/unit (private tours only, not available on shared tours or Sunset Cruise)
+- Underwater Scooter: €${ADDONS.scooter}/unit (Red Rocks and Pakleni Islands private tours only)
 - Photo & Video Shoot: €${ADDONS.photoVideo} (private tours only, on request)
 - Extra wine bottle (Sunset Cruise only): €${SUNSET_WINE_EXTRA}
 
