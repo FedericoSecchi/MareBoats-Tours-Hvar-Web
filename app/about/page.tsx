@@ -105,39 +105,14 @@ const CREW: Crew[] = [
 
 const aboutSchema = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'LocalBusiness',
-      '@id': `${SITE}/#localbusiness`,
-      name: 'MareBoats Tours Hvar',
-      url: SITE,
-      telephone: '+385951966734',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Janka Žagjala 56',
-        addressLocality: 'Hvar',
-        postalCode: '21450',
-        addressCountry: 'HR',
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 43.16847,
-        longitude: 16.44300,
-      },
-      openingHours: 'Mo-Su 08:00-21:00',
-      priceRange: '€€',
-      image: `${SITE}/img/mareboats-og.png`,
-      sameAs: ['https://www.instagram.com/mareboats.hvar/'],
-    },
-    ...CREW.map((c) => ({
-      '@type': 'Person',
-      name: c.name,
-      jobTitle: c.role,
-      knowsLanguage: c.languages,
-      image: `${SITE}${c.image}`,
-      worksFor: { '@id': `${SITE}/#localbusiness` },
-    })),
-  ],
+  '@graph': CREW.map((c) => ({
+    '@type': 'Person',
+    name: c.name,
+    jobTitle: c.role,
+    knowsLanguage: c.languages,
+    image: `${SITE}${c.image}`,
+    worksFor: { '@id': `${SITE}/#localbusiness` },
+  })),
 };
 
 export default function AboutPage() {

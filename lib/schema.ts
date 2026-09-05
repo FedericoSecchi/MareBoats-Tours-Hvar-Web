@@ -10,8 +10,8 @@ const PROVIDER = {
 
 const sharedGeo = {
   '@type': 'GeoCoordinates',
-  latitude: 43.1690147,
-  longitude: 16.4429617,
+  latitude: 43.169028,
+  longitude: 16.443,
 } as const;
 
 const AGGREGATE_RATING = {
@@ -30,7 +30,7 @@ export const businessSchema = {
   '@id': `${SITE_URL}/#localbusiness`,
   name: 'MareBoats Hvar',
   description:
-    'Private speedboat tours from Hvar Harbour. Blue Cave, Pakleni Islands, sunset cruises and custom charters. Small groups.',
+    'Speedboat tours from Hvar. Red Rocks, Blue Cave, Pakleni Islands, sunset cruises and custom charters. Private or shared, small groups.',
   url: SITE_URL,
   logo: `${SITE_URL}/img/mareboats-logo-horizontal.svg`,
   image: `${SITE_URL}/img/mareboats-og.png`,
@@ -38,7 +38,6 @@ export const businessSchema = {
   email: 'mare.boatshvar@gmail.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Hvar Harbour',
     addressLocality: 'Hvar',
     addressRegion: 'Split-Dalmatia County',
     postalCode: '21450',
