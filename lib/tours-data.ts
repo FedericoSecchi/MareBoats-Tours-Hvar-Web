@@ -19,7 +19,6 @@ export const BUSINESS_INFO = {
   googleMapsUrl: 'https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA',
   googleReviewUrl: 'https://g.page/r/Cd7dvQcuwbZ7EBM/review',
   hours: 'Mo-Su 08:00-21:00',
-  languages: ['English', 'Croatian', 'Italian', 'Spanish', 'German'],
 } as const;
 
 export type TourImage = { src: string; alt: string };

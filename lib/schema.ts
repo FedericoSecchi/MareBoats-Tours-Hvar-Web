@@ -14,7 +14,7 @@ const sharedGeo = {
   longitude: 16.443,
 } as const;
 
-const AVAILABLE_LANGUAGES = ['English', 'Croatian', 'German', 'Spanish', 'Italian'];
+const AVAILABLE_LANGUAGES = ['English', 'Croatian'];
 
 export const businessSchema = {
   '@context': 'https://schema.org',
