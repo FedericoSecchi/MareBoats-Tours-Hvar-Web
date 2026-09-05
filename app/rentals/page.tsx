@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
 import { JsonLd } from '@/components/ui/JsonLd';
-import { rentalServiceSchema, rentalBreadcrumbSchema } from '@/lib/schema';
+import { rentalServiceSchema, rentalBreadcrumbSchema, buildFAQSchema } from '@/lib/schema';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { rulesAndRentals, type Rule } from '@/lib/guide-content';
 import { RENTAL_SELF_DRIVE, RENTAL_WITH_SKIPPER_FROM, ADDONS } from '@/lib/pricing';
@@ -56,93 +56,6 @@ function waUrl(message: string) {
   return `${WA_BASE}${encodeURIComponent(message)}`;
 }
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Do I need a license to rent a boat in Hvar?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "For self-drive rental you need a valid boating license. If you don't have one, our skippered private tours are the perfect alternative - no license needed.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How many people can fit on the boat?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Our speedboats accommodate up to 8 people depending on the vessel.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: "What's included in the boat rental?",
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Skippered tours include fuel, bottled water, icebox, and snorkel gear. Self-drive rental includes the boat only - fuel and equipment are extra.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do I need a boat licence to rent a boat in Hvar?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a skipper included - no licence needed.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How many people can rent a boat in Hvar?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is included in the boat rental price?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Depends on the boat. The 60hp speedboat includes fuel. The Mariner 150hp is fuel full-in, full-out. Both Pasara options include fuel. Safety equipment and pre-rental briefing included on all boats.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can I choose my own route?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "Yes. With a skipper, we'll suggest the best spots based on conditions that day - but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can I rent a boat in Hvar without a licence?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is there a security deposit for the Mariner 150hp?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Yes. The Mariner 150hp requires a €${RENTAL_SELF_DRIVE.mariner150hp.deposit} security deposit, payable in cash only at pickup. It is returned in full at the end of the rental once the boat is checked.`,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Are dogs allowed on the boat rental?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Dogs are welcome on board, on request. Message us before you book so we can prepare accordingly.',
-      },
-    },
-  ],
-};
-
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -155,41 +68,46 @@ const itemListSchema = {
   ],
 };
 
-const FAQS = [
+const FAQS: { question: string; answer: string }[] = [
   {
-    q: 'Do I need a boat licence to rent a boat in Hvar?',
-    a: "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a skipper included - no licence needed.",
+    question: 'Do I need a boat licence to rent a boat in Hvar?',
+    answer:
+      "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a skipper included - no licence needed.",
   },
   {
-    q: 'How many people can rent a boat in Hvar?',
-    a: "Our speedboats accommodate up to 8 people. For larger groups, contact us on WhatsApp and we'll arrange a solution.",
+    question: 'How many people can rent a boat in Hvar?',
+    answer:
+      'Depends on the boat. The Pasaras and the 60hp speedboat are licensed for 6 and we rent them for up to 5, so nobody is squeezed. The Mariner 150hp is licensed for 12 and we keep it at 8. For larger groups we go out with two or three boats together, message us on WhatsApp.',
   },
   {
-    q: 'What is included in the boat rental price?',
-    a: 'Depends on the boat. The 60hp speedboat includes fuel. The Mariner 150hp is fuel full-in, full-out. Both Pasara options include fuel. Safety equipment and pre-rental briefing included on all boats.',
+    question: 'What is included in the boat rental price?',
+    answer:
+      'Depends on the boat. The 60hp speedboat includes fuel. The Mariner 150hp is fuel full-in, full-out. Both Pasara options include fuel. Safety equipment and pre-rental briefing included on all boats.',
   },
   {
-    q: 'Can I choose my own route?',
-    a: "Yes. With a skipper, we'll suggest the best spots based on conditions that day - but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
+    question: 'Can I choose my own route?',
+    answer:
+      "Yes. With a skipper, we'll suggest the best spots based on conditions that day - but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
   },
   {
-    q: 'Can I rent a boat in Hvar without a licence?',
-    a: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
+    question: 'Can I rent a boat in Hvar without a licence?',
+    answer: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
   },
   {
-    q: 'Is there a security deposit for the Mariner 150hp?',
-    a: `Yes. The Mariner 150hp requires a €${RENTAL_SELF_DRIVE.mariner150hp.deposit} security deposit paid in cash at pickup. It is returned in full at the end of the rental after a quick check of the boat. We do not accept cards for the deposit - bring cash.`,
+    question: 'Is there a security deposit for the Mariner 150hp?',
+    answer: `Yes. The Mariner 150hp requires a €${RENTAL_SELF_DRIVE.mariner150hp.deposit} security deposit paid in cash at pickup. It is returned in full at the end of the rental after a quick check of the boat. We do not accept cards for the deposit - bring cash.`,
   },
   {
-    q: 'Are dogs allowed on a boat rental in Hvar?',
-    a: 'Dogs are welcome on board, on request. Message us before you book so we can prepare accordingly.',
+    question: 'Are dogs allowed on a boat rental in Hvar?',
+    answer:
+      'Dogs are welcome on board, on request. Message us before you book so we can prepare accordingly.',
   },
 ];
 
 const RENTAL_RULES = [
   {
     title: 'Fuel policy',
-    body: 'Full tank in, full tank out. Refuel at Hvar marina on your way back so we can get the next group out on time.',
+    body: 'The Pasaras and the 60hp speedboat come with fuel included, nothing to do. The Mariner 150hp is full-in full-out, and we refuel together when you bring the boat back, so you do not have to sort it out on your own.',
   },
   {
     title: 'Speed zones',
@@ -251,7 +169,7 @@ export default function RentalsPage() {
     <main className="bg-[color:var(--bg)] text-[color:var(--white)]">
       <JsonLd data={rentalServiceSchema as Record<string, unknown>} />
       <JsonLd data={rentalBreadcrumbSchema as Record<string, unknown>} />
-      <JsonLd data={faqSchema as Record<string, unknown>} />
+      <JsonLd data={buildFAQSchema(FAQS) as Record<string, unknown>} />
       <JsonLd data={itemListSchema as Record<string, unknown>} />
       <JsonLd data={pasara20hpSchema as Record<string, unknown>} />
 
@@ -671,11 +589,11 @@ export default function RentalsPage() {
           <div className="mt-8 space-y-3">
             {FAQS.map((faq) => (
               <details
-                key={faq.q}
+                key={faq.question}
                 className="group rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5 open:bg-[color:var(--surface)]/80"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] focus-visible:outline-none">
-                  <span>{faq.q}</span>
+                  <span>{faq.question}</span>
                   <span
                     aria-hidden="true"
                     className="shrink-0 text-[color:var(--accent)] transition-transform duration-200 group-open:rotate-45"
@@ -684,7 +602,7 @@ export default function RentalsPage() {
                   </span>
                 </summary>
                 <p className="mt-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
-                  {faq.a}
+                  {faq.answer}
                 </p>
               </details>
             ))}
