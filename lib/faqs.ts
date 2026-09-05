@@ -15,7 +15,8 @@ export const homepageFaqs: FaqItem[] = [
   },
   {
     question: 'What languages do you speak on board?',
-    answer: 'English, Croatian, Italian, Spanish and German.',
+    answer:
+      'Every skipper speaks English. Croatian, German, Italian and Spanish depend on who is on board that day. If one of these matters to you, message us before you book.',
   },
   {
     question: 'What happens if the weather is bad?',

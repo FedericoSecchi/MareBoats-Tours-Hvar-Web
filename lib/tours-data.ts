@@ -634,7 +634,7 @@ Pricing is on request - every pickup is different depending on your location, gr
 
 The same service works in both directions. We can take you ashore for dinner in Hvar town and bring you back to your yacht later that evening, or transfer you to one of our recommended restaurants on the Pakleni Islands and back. If you want to combine the taxi with a full tour - Blue Cave in the morning, lunch on an island, sunset cruise - just tell us when you message and we will plan the whole day around your boat.
 
-Our skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, Croatian, German, Italian and Spanish (when Fede is on board), so the handover from your charter crew to ours is always smooth.
+Our skippers know the anchorages, the wind patterns, and the smaller bays around Hvar, Vis, Brač and the Pakleni archipelago. We are licensed for Croatian waters and we communicate clearly in English, and depending on the day also in Croatian, German, Italian or Spanish, so the handover from your charter crew to ours is always smooth.
 
 The water taxi runs on available capacity around our tour schedule. Afternoon slots, once the day tours are back, usually have the most room. Message us the morning of with your coordinates and time window and we reply on WhatsApp within the hour.
 

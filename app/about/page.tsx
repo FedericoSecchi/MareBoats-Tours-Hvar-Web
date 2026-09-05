@@ -278,7 +278,7 @@ export default function AboutPage() {
           </ul>
 
           <p className="mt-8 max-w-2xl font-body text-sm leading-relaxed text-[color:var(--gray)]">
-            During peak season additional skippers join the team. Language availability may vary. Let us know when booking if it matters.
+            Every skipper speaks English. The rest depends on who is on board that day, and the team changes through the season. If a specific language matters to you, tell us when you book and we will try to match it.
           </p>
         </div>
       </section>
