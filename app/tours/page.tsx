@@ -115,7 +115,7 @@ const HOW_IT_WORKS = [
   {
     n: '3',
     title: 'Meet at the barrel',
-    body: 'Hvar Harbour, at your agreed time. We take care of the rest.',
+    body: 'Beach Križa, at the MareBoats barrel, at your agreed time. We take care of the rest.',
   },
 ];
 
