@@ -258,13 +258,13 @@ export default function RentalsPage() {
               </h3>
 
               <p className="mt-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
-                No licence needed. Local skipper, custom route, private group.
+                No licence needed. A skipper who knows the island, custom route, private group.
               </p>
 
               <ul className="mt-5 space-y-2 font-body text-base text-[color:var(--gray)]">
                 {[
                   'No licence needed',
-                  'Local skipper, custom route',
+                  'Skipper included, custom route',
                   'Fuel, water & snorkel included',
                   'Up to 8 people - private group only',
                   'Dogs welcome, on request',

@@ -49,7 +49,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-              Private boat tours, transfers and rentals from Hvar Harbour, Croatia. Local skipper,
+              Private boat tours, transfers and rentals from Hvar, Croatia. Skipper,
               icebox and snorkeling masks on every trip.
             </p>
 

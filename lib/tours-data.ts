@@ -645,7 +645,7 @@ If you are searching for a private water taxi in Hvar, a yacht transfer or a sai
     includes: [
       'Pickup from anchored yacht or sailboat',
       'Drop-off at Hvar Harbour or any agreed destination',
-      'Local skipper familiar with anchorages around Hvar',
+      'Skipper familiar with the anchorages around Hvar',
       'WhatsApp coordination with your charter crew',
       'Can connect directly to any MareBoats tour',
     ],

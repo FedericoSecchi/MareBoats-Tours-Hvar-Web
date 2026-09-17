@@ -143,7 +143,7 @@ export default function LandingExplorePage() {
             Choose Your Adventure
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Four private boat tours from Hvar Harbour. Local captain, snorkeling masks and icebox
+            Four private boat tours from Beach Križa. A skipper who knows the island, snorkeling masks and icebox
             on every trip. Pick your day - we handle the rest.
           </p>
         </div>

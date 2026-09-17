@@ -86,8 +86,8 @@ export default function HomePage() {
               </span>
 
               <p className="max-w-2xl text-base leading-relaxed text-[color:var(--gray)] md:text-xl">
-                We sail from Hvar Harbour. You pick the day, the stops and the pace - Blue Cave, Red
-                Rocks, Pakleni Islands, sunset or all of it. Private boat, local captain.
+                We sail from Beach Križa. You pick the day, the stops and the pace - Blue Cave, Red
+                Rocks, Pakleni Islands, sunset or all of it. Private boat, skipper who knows the island.
               </p>
 
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">

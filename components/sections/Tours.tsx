@@ -27,7 +27,7 @@ export default function Tours() {
             Choose Your Day on the Adriatic
           </h2>
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Four routes, one private boat. Local captain, fuel, icebox and snorkeling masks on every
+            Four routes, one private boat. A skipper who knows the island, fuel, icebox and snorkeling masks on every
             trip.
           </p>
         </motion.div>

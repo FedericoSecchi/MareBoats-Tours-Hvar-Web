@@ -552,7 +552,7 @@ export default function ExplorePage() {
             Want to see all of this from the water?
           </h2>
           <p className="mt-5 max-w-xl font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            The best coves and restaurants are only reachable by boat. Pick your tour and we take you there - private boat, local captain.
+            The best coves and restaurants are only reachable by boat. Pick your tour and we take you there - private boat, skipper who knows where the crowds are not.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <WhatsAppTrackedLink

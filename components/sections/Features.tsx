@@ -13,7 +13,7 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: 'Local Captain',
+    title: 'Knows the island',
     description:
       'Born in Hvar. Knows every cove, every wind, and which beach is empty in the morning.',
     icon: (

@@ -202,7 +202,7 @@ export default function AboutPage() {
                 body: 'Pay per seat. The boat fills up and departs. Great for solo travellers and small groups.',
               },
               {
-                title: 'Local skippers',
+                title: 'Skippers who know the water',
                 body: 'Nikola and Josip grew up on these waters. They know every cave, bay and when to avoid the crowds.',
               },
               {
