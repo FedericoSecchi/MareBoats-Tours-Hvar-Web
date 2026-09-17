@@ -38,12 +38,13 @@ const sections: Section[] = [
     eyebrow: 'Section 1',
     title: 'Fuel & Maintenance',
     bullets: [
-      'The boat leaves with a full tank. Please return it with a full tank.',
+      'The Pasaras and the 60hp speedboat come with fuel included. Nothing to refill, nothing to check.',
+      'The Mariner 150hp is full-in full-out. We hand it over with a full tank and we refuel together when you bring it back.',
+      'All our boats run on petrol, never diesel.',
       'Fuel stations are in Hvar, Stari Grad, Vis and Komiža. Marina Palmižana refills on request.',
-      'Diesel/petrol type is labelled at the filler cap - ask before first refill if unsure.',
       'If the engine behaves oddly, stop and call us on WhatsApp before continuing.',
     ],
-    note: 'Tip: keep the receipt of your last refill - helps us if we ever need to check consumption.',
+    note: 'Tip: if you refuel on the way, keep the receipt.',
   },
   {
     id: 'speed-zones',
@@ -97,9 +98,9 @@ const sections: Section[] = [
     title: 'Return Process',
     bullets: [
       'Return on time. Late returns may carry a fee because the next guests are waiting.',
-      'Checklist before you return: full tank, anchor stowed, fenders secured, cabin tidy.',
+      'Checklist before you return: anchor stowed, fenders secured, deck tidy.',
       'We take before/after photos together. Takes 2 minutes and protects both sides.',
-      'Deposit is released once the boat is checked and fuel is confirmed.',
+      'On the Mariner 150hp we refuel together at the end and the deposit is released once the boat is checked.',
     ],
   },
 ];
@@ -110,7 +111,7 @@ const rentalFaqs: Faq[] = [
   {
     question: 'What if I run out of fuel?',
     answer:
-      'Call us on WhatsApp - we can arrange a fuel delivery or tow. A fuel gauge is on board; watch it and refill in good time to avoid ending the day early.',
+      'The Pasaras and the 60hp speedboat come with fuel included for the day, so this is not something you need to manage. On the Mariner 150hp there is a fuel gauge on board - keep an eye on it, and if anything happens call us on WhatsApp and we arrange a delivery or a tow.',
   },
   {
     question: 'Can I take the boat to Italy?',
@@ -130,7 +131,7 @@ const rentalFaqs: Faq[] = [
   {
     question: 'What licence do I need?',
     answer:
-      'A valid boat licence (Croatian Boat Skipper or recognised international equivalent) plus a VHF licence for boats above the regulated threshold. Bring the originals to check-out.',
+      'A valid boat licence, either the Croatian Boat Skipper or a recognised international equivalent. Bring the original to check-out. If you do not have one, every boat is available with a skipper included.',
   },
   {
     question: 'Can I swim from the boat?',
