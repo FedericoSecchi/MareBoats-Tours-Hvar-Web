@@ -353,7 +353,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       'Half-day private boat tour from Hvar, Croatia. Snorkel the clearest Adriatic waters, stop at Palmižana and explore secluded Pakleni coves.',
     description: `The Pakleni Islands sit 10 minutes from Hvar. Close enough for a half day, varied enough to fill it. We take you through the archipelago, pick the stops based on wind and crowds, and leave the pace to you.
 
-Departing from Beach Križa, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your captain chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
+Departing from Beach Križa, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your skipper chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
 
 Because the boat is private, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and your skipper knows the quieter coves that larger boats skip.
 
@@ -476,7 +476,7 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
 
 This private evening boat tour departs from Beach Križa and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the boat is private, the pace stays yours.
 
-Your captain focuses on safety and smooth cruising as light fades, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
+Your skipper focuses on safety and smooth cruising as light fades, and chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
 Pricing scales with group size: see the breakdown below. Wine is included with every booking, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
     duration: '2 HRS',
@@ -519,8 +519,8 @@ Pricing scales with group size: see the breakdown below. Wine is included with e
     name: 'Private Boat Charter Hvar',
     tagline: 'Your boat, your itinerary - full-day freedom with a skipper who knows these waters.',
     shortDescription:
-      `Private boat charter from Hvar, Croatia. Your own boat, captain, route and equipment - design the day you want on the Adriatic. €${PC.private} for boat + skipper, fuel paid separately.`,
-    description: `A private boat charter from Hvar is the most flexible format we offer: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your captain helps you build a realistic plan based on weather and distances.
+      `Private boat charter from Hvar, Croatia. Your own boat, skipper, route and equipment - design the day you want on the Adriatic. €${PC.private} for boat + skipper, fuel paid separately.`,
+    description: `A private boat charter from Hvar is the most flexible format we offer: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your skipper helps you build a realistic plan based on weather and distances.
 
 Unlike fixed itineraries, a full-day charter gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
 

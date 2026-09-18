@@ -21,7 +21,7 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'What happens if the weather is bad?',
     answer:
-      'If wind or sea conditions are unsafe, the captain reschedules at no extra cost. If we cancel, you choose: full refund or a new date. We confirm by WhatsApp the evening before.',
+      'If wind or sea conditions are unsafe, the skipper reschedules at no extra cost. If we cancel, you choose: full refund or a new date. We confirm by WhatsApp the evening before.',
   },
   {
     question: 'What should I bring?',
@@ -31,7 +31,7 @@ export const homepageFaqs: FaqItem[] = [
   {
     question: 'Can we customize the route?',
     answer:
-      'Yes. Want more time at Blue Cave, a quieter beach or a specific lunch stop? Tell us when you book and the captain plans around it.',
+      'Yes. Want more time at Blue Cave, a quieter beach or a specific lunch stop? Tell us when you book and the skipper plans around it.',
   },
   {
     question: 'How do I book a boat tour in Hvar?',

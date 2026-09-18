@@ -633,7 +633,7 @@ export default function TourDetailPage({ params }: PageProps) {
             Looking for a private boat rental in Hvar?
           </p>
           <p className="mt-1 font-body text-xs text-[color:var(--gray)]/70">
-            We offer speedboats with skipper included or self-drive for licensed captains.
+            We offer speedboats with skipper included or self-drive for licensed skippers.
           </p>
           <Link
             href="/rentals/#boat-rental"

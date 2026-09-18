@@ -176,7 +176,7 @@ export const guideFaqs: GuideFaq[] = [
 // ──────────────────────────────────────────────
 export const weatherPolicy = {
   title: 'Weather Policy & Cancellations',
-  body: "The captain checks weather and sea conditions every morning before departure. If the wind, waves or visibility are not safe, we reschedule for another day at no cost - or refund in full if you can't reschedule. Safety always wins over the schedule.",
+  body: "The skipper checks weather and sea conditions every morning before departure. If the wind, waves or visibility are not safe, we reschedule for another day at no cost - or refund in full if you can't reschedule. Safety always wins over the schedule.",
   contactNote:
     'For last-minute weather questions or changes, message Nikola directly on WhatsApp.',
 };
