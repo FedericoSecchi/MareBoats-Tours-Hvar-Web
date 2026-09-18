@@ -17,6 +17,9 @@ de1da23  A2/A3/A5: Hvar Harbour cleanup, 29 menciones por contexto
 34af879  C: Features card "Born in Hvar" reencuadrado por experiencia
 99ccb28  docs: PENDING_TASKS update (bloque anterior)
 6896a84  captain -> skipper en copy publico (8 lugares, 4 archivos)
+58ed8f3  docs: PENDING captain done + 2 new locked-in decisions
+8e6fa97  NIKOLA_WHATSAPP_TEMPLATES full audit + rewrite
+15eb906  BUSINESS_INFO trimmed to consumed fields
 
 ## Hechas (17-18 sept)
 - Landing rental: fuel real por tipo de bote, return process, FAQ "run out of fuel"
@@ -38,6 +41,17 @@ de1da23  A2/A3/A5: Hvar Harbour cleanup, 29 menciones por contexto
   Sunset description reescrita porque mezclaba las dos palabras para la misma
   persona. Keywords SEO, testimonials atribuidos y "captain" del yate del
   cliente en el water taxi no se tocan.
+- T4 BUSINESS_INFO: 6 campos muertos borrados (.name, .phone, .whatsapp,
+  .address, .coordinates, .hours). Grep confirmo 0 consumidores. Los dos
+  campos vivos (.googleMapsUrl, .googleReviewUrl) quedan.
+- T5 NIKOLA_WHATSAPP_TEMPLATES: auditoria completa del archivo, no solo
+  las 4 lineas flageadas. Meeting point corregido en 3 templates (era
+  "Hvar Harbour main dock" prohibido con link a punto anonimo), template
+  de precios reescrito desde pricing.ts (5 Islands cotizaba €130 vs real
+  €150, sunset sin tiered, faltaban Pakleni Half Day y Zlatni Rat),
+  temporada mayo-sept -> abril-oct, tiempos de transfer, land scooter
+  removido, linea de fumar sacada y reemplazada por "No smoking on
+  board" (regla de CLAUDE.md).
 
 ## Pendientes
 
@@ -59,19 +73,6 @@ corrigio el copy y la FAQ de /rentals/ en el commit 4f135b8, falta este.
 ### TripAdvisor dice "RIB speedboats"
 No es codigo. Requiere aprobacion de Nikola y edicion en el portal. Sigue en
 el radar desde julio.
-
-### T4 BUSINESS_INFO campos muertos
-lib/tours-data.ts: 6 de 8 campos sin consumidores (.name, .phone, .whatsapp,
-.address, .coordinates, .hours). .name dice "MareBoats Tours Hvar" vs schema
-"MareBoats Hvar". .coordinates desactualizadas vs sharedGeo. .address dice
-"Croacia" en español.
-
-### T5 NIKOLA_WHATSAPP_TEMPLATES.md
-Lineas 45,60,95,215: link de meeting point 3UamDy3Mh9dt4UpM7 (abre punto
-anonimo). Correcto: https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA
-Linea 216: U6kgAaRG81KZmqUEA etiquetado como "Google Business (reviews)".
-El real es BUSINESS_INFO.googleReviewUrl.
-Lineas 121-134 y 222: template del scooter de tierra (discontinuado).
 
 ### Pendientes de decision del cliente
 - Testimonials con "Fede": components/sections/Testimonials.tsx:22 y
