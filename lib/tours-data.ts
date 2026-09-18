@@ -3,9 +3,11 @@ import {
   formatPriceShort,
   getLowestPrice,
   getPricingOptions,
+  getScenicPrice,
   TOUR_PRICES,
   EXTRAS,
   ADDONS,
+  SCENIC_PROSECCO,
   SUNSET_WINE_EXTRA,
   WATER_TAXI_PRICES,
 } from '@/lib/pricing';
@@ -21,7 +23,8 @@ export type TourStop = {
   name: string;
   croatianName?: string;
   description: string;
-  travelTime: string;
+  /** Position of this stop along the route. Optional: omit when leg times are not published. */
+  travelTime?: string;
   activities?: string;
   conditions: string;
   isOptional?: boolean;
@@ -52,6 +55,16 @@ export const DOG_POLICY: Record<ProductType, string> = {
   charter: 'Dogs are welcome on board, on request. Message us before you book.',
   transfer: 'Dogs are welcome on board, on request. Message us before you book.',
   'water-taxi': 'Dogs are welcome on board, on request. Message us before you book.',
+};
+
+/** Side-by-side comparison against another tour, rendered as a table on the detail page. Same shape drives GEO citability — feed the modeled comparison from one place. */
+export type TourComparison = {
+  heading: string;
+  intro: string;
+  thisLabel: string;
+  otherLabel: string;
+  otherHref: string;
+  rows: { label: string; thisValue: string; otherValue: string }[];
 };
 
 export type TourRecord = {
@@ -87,6 +100,10 @@ export type TourRecord = {
   fastFacts?: { label: string; value: string }[];
   /** Contextual link to a related decision or guide page */
   relatedGuide?: { href: string; label: string; description: string };
+  /** Rendered as a table below "About this tour". Same pattern for every tour that needs one — no slug conditionals. */
+  comparison?: TourComparison;
+  /** Short contextual link out to another tour or page. Rendered as a one-line paragraph near the bottom of the detail page. */
+  crossLink?: { href: string; before: string; anchor: string; after?: string };
 };
 
 const MEETING = 'Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel';
@@ -102,6 +119,7 @@ const BC = TOUR_PRICES['blue-cave-pakleni-islands'];
 const PC = TOUR_PRICES['private-boat-charter'];
 const PK = TOUR_PRICES['pakleni-islands'];
 const SAT = TOUR_PRICES['split-airport-transfer'];
+const SC = TOUR_PRICES['scenic-coast-cruise'];
 
 export const toursData: TourRecord[] = [
   {
@@ -335,6 +353,31 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       href: '/explore/private-boat-tour-hvar-families/',
       label: 'Planning a private boat day for your group or family?',
       description: 'How a private speedboat works for families and groups in Hvar',
+    },
+    crossLink: {
+      href: '/tours/scenic-coast-cruise/',
+      before: 'Only have a couple of hours on the island? ',
+      anchor: 'See the shorter two-hour version of this route',
+      after: ', with the engine off at each bay instead of anchoring.',
+    },
+    comparison: {
+      heading: 'Red Rocks & Pakleni or the 5 Islands Blue Cave tour: which one fits your day?',
+      intro:
+        'Both tours leave from Beach Križa on a MareBoats Hvar speedboat. The difference is range and time on the water.',
+      thisLabel: 'Red Rocks & Pakleni',
+      otherLabel: 'Blue Cave & 5 Islands',
+      otherHref: '/tours/blue-cave-pakleni-islands',
+      rows: [
+        { label: 'Duration',           thisValue: '4 or 6 hours',                                                                               otherValue: '7 hours' },
+        { label: 'Departure',          thisValue: 'Flexible (09:00 / 11:00 / 14:00)',                                                           otherValue: '10:00, fixed' },
+        { label: 'Route',              thisValue: 'South coast of Hvar and the Pakleni archipelago',                                            otherValue: 'Vis Island, Biševo and the Pakleni Islands' },
+        { label: 'Open sea crossing',  thisValue: 'Short legs, always near the Hvar coast',                                                     otherValue: 'Crosses to Vis Island (~45 km from Hvar)' },
+        { label: 'Total distance',     thisValue: '30 to 35 km',                                                                                otherValue: '100 to 120 km' },
+        { label: 'Shared price',       thisValue: `€${RR.sharedPerPerson ?? 0} per person`,                                                     otherValue: `€${BC.sharedPerPerson ?? 0} per person` },
+        { label: 'Private price',      thisValue: `€${RR.privateHalfDay ?? 0} half-day / €${RR.privateFullDay ?? 0} full-day`,                  otherValue: `€${BC.private ?? 0}` },
+        { label: 'Cave entrance fees', thisValue: 'None',                                                                                        otherValue: `Blue Cave €${EXTRAS.blueCave}/person · Green Cave €${EXTRAS.greenCave}/person optional` },
+        { label: 'Good fit for',       thisValue: 'More time in the water on the south coast of Hvar, shorter sailing legs',                    otherValue: 'Covering more islands in one day, Blue Cave on the list' },
+      ],
     },
   },
 
@@ -703,15 +746,203 @@ If you are searching for a private water taxi in Hvar, a yacht transfer or a sai
       label: 'Anchored near Hvar and thinking about a private tour the next day?',
       description: 'See all available tours',
     },
-  }
+  },
+
+  {
+    slug: 'scenic-coast-cruise',
+    productType: 'tour-private',
+    name: 'Scenic Coast Cruise in Hvar',
+    tagline: 'Two hours along the south coast. Engine off at every bay.',
+    shortDescription:
+      'Two-hour private boat cruise from Beach Križa along the south coast of Hvar. Four bays, engine off at each, no anchoring and no landing. Private boat.',
+    description: `We leave from Beach Križa and follow the south coast of Hvar: Red Rocks, Dubovica, Borče Bay, and the Pakleni channel.
+
+At each one the engine goes off and the boat drifts. You get a few minutes of nothing but water and rock before we move on.
+
+Two hours, start to finish. Up to 4 people on board, 6 if you need it. The boat is yours for the morning.
+
+Over from Split for the day? Tell us when your ferry leaves and we will fit the cruise around it. Departures from 9am to 3pm, and two hours means two hours. You will be back at Križa with time to spare.`,
+    duration: '2 HRS',
+    durationIso: 'PT2H',
+    price: formatPriceFull('scenic-coast-cruise'),
+    priceEur: getLowestPrice('scenic-coast-cruise'),
+    includes: [
+      'Private speedboat and skipper',
+      'Fuel for the route',
+      'Bottled water',
+    ],
+    notIncludes: [],
+    addons: [`Bottle of prosecco - €${SCENIC_PROSECCO}, on request when you book.`],
+    whatToBring: [
+      'Sunscreen, hat and sunglasses',
+      'A light layer for the breeze on the water',
+      'Camera or phone for photos',
+    ],
+    meetingPoint: MEETING,
+    meetingPointMapsUrl: MAPS,
+    highlights: [
+      'Red Rocks - iron-red cliffs on the south side of Hvar, visible only from the water',
+      'Dubovica - the bay most people photograph from the road, seen from the water instead',
+      'Borče Bay - quiet, sheltered water on the south coast',
+      'The Pakleni channel - the clearest water on the route',
+    ],
+    images: [
+      {
+        src: '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg',
+        alt: 'Dubovica Beach aerial view from a scenic boat cruise on the south coast of Hvar',
+      },
+      {
+        src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-01.jpg',
+        alt: 'Pakleni channel from a speedboat - two-hour scenic cruise from Hvar Croatia',
+      },
+    ],
+    keywords: [
+      'scenic boat tour hvar',
+      'short boat tour hvar',
+      '2 hour boat tour hvar',
+      'private boat cruise hvar',
+      'hvar day trip from split',
+      'hvar afternoon boat trip',
+    ],
+    pricingOptions: getPricingOptions('scenic-coast-cruise'),
+    stops: [
+      {
+        name: 'Red Rocks',
+        croatianName: 'Crvene Stijene',
+        description:
+          'Iron-red cliffs on the south side of Hvar. The colour comes from iron oxide in the limestone. From the road you cannot see them. From the water they run for a stretch of coast.',
+        activities: 'Engine off, the boat drifts along the cliff face for a few minutes. No landing.',
+        conditions:
+          'Best in calm conditions or with northerly wind, when the island shelters the coast. Southeast wind (jugo) can send swell against the cliffs.',
+      },
+      {
+        name: 'Dubovica',
+        description:
+          'A cove with a 16th-century stone house at the edge of the bay. Most photos of Dubovica are taken from the road above. From the boat you see it from the water, which is the other angle.',
+        activities: 'Engine off, drifting in the bay. No landing at the beach.',
+        conditions: 'Sheltered in most conditions.',
+      },
+      {
+        name: 'Žarače',
+        description:
+          'A narrow sheltered bay on the south coast, hemmed in by hills. Also written "Zarace" without the diacritic.',
+        activities: 'Engine off, drifting in protected water. No landing.',
+        conditions: 'Sheltered in most conditions.',
+        isOptional: true,
+        optionalNote:
+          'Occasional stop depending on the sea and the day. Not counted among the four bays on the route.',
+      },
+      {
+        name: 'Borče Bay',
+        description:
+          'A quiet cove near the village of Milna on the south coast of Hvar, protected from the wind. This is Milna on Hvar island, not Milna on Brač.',
+        activities: 'Engine off, drifting in calm water. This is usually where people stop talking. No landing.',
+        conditions:
+          'Protected from northwesterly wind (maestral). May get some swell with southeast wind.',
+      },
+      {
+        name: 'The Pakleni channel',
+        description:
+          'The stretch of water between Hvar and the Pakleni Islands. The clearest water on the route.',
+        activities: 'The boat slows down through the channel for the water colour. Engine off in a sheltered spot before the return leg. No landing on the islands.',
+        conditions:
+          'Sheltered in almost all conditions. Some current between islands with strong maestral.',
+      },
+    ],
+    fastFacts: [
+      { label: 'Duration',      value: '2 hours, Križa to Križa' },
+      { label: 'Departs',       value: 'Beach Križa. Any time between 9am and 3pm' },
+      { label: 'Capacity',      value: `Private boat, one group. €${SC.privateBase} for up to ${SC.privateBaseGuests} guests. Guests ${SC.privateBaseGuests! + 1} and ${SC.privateMaxGuests}, €${SC.privatePerExtraGuest} each. Maximum ${SC.privateMaxGuests}.` },
+      { label: 'Route',         value: 'Four bays on the south coast of Hvar, engine off at each. No anchoring and no landing.' },
+      { label: 'Meeting point', value: MEETING },
+      // Included and Not included are injected here by the render from tour.includes/notIncludes
+      { label: 'Cancellation',  value: 'Free if MareBoats cancels for weather. Bookings cancelled by guests are not refunded.' },
+      { label: 'Season',        value: 'April to October' },
+    ],
+    faqs: [
+      {
+        question: 'How long is the Scenic Coast Cruise and can I make an afternoon ferry back to Split?',
+        answer:
+          'The cruise runs two hours, start to finish. Departures are from 9am to 3pm, so we can fit the cruise around the ferry schedule. Tell us your ferry time when you book and we will give you the departure slot that leaves you back at Beach Križa with time to walk to the ferry terminal.',
+      },
+      {
+        question: 'What is the difference between this and the 4-hour Red Rocks & Pakleni tour?',
+        answer:
+          'Different tour, not a shorter one. The Scenic Coast Cruise runs two hours along the south coast with the engine off at each of four bays. The boat drifts, it does not anchor, and there is no landing. The 4-hour Red Rocks & Pakleni tour anchors at Red Rocks, Dubovica and the Pakleni Islands for swimming, snorkelling and a lunch stop. If you want beach time and swimming, book the 4-hour tour. If you want the coast from the water with no swimming, book the Scenic.',
+      },
+      {
+        question: 'Do we stop to swim on the Scenic Coast Cruise?',
+        answer:
+          'No. The boat drifts at each bay with the engine off, but it does not anchor for swimming and it does not land anywhere. The route is on the move for two hours. If swimming is what you are after, the 4-hour Red Rocks & Pakleni tour is the one to book.',
+      },
+      {
+        question: 'Can we bring someone with limited mobility?',
+        answer:
+          "There is a dock at Beach Križa, so you board from the dock and not from the water. It is not an adapted facility, but the crew helps guests on and off the boat.\n\nOnce on board you stay seated for the whole two hours. We don't land anywhere, so there is no climbing in or out during the tour.\n\nMessage us before you book and tell us what the person needs. We'll tell you straight if it works.",
+      },
+      {
+        question: 'How many people fit on the boat?',
+        answer:
+          `Up to ${SC.privateMaxGuests} guests. The base price of €${SC.privateBase} is for a group of up to ${SC.privateBaseGuests}. Guests ${SC.privateBaseGuests! + 1} and ${SC.privateMaxGuests} are €${SC.privatePerExtraGuest} each. The tour is private, so the boat is yours regardless of group size.`,
+      },
+      {
+        question: 'What time do you leave?',
+        answer:
+          'Departures are any time between 9am and 3pm. You pick the slot when you book. We confirm the time by WhatsApp before the day.',
+      },
+      {
+        question: 'What happens if the weather is bad on the day?',
+        answer:
+          'If the sea is up, the skipper may move the route to the sheltered Pakleni side of the coast, or cancel if conditions are unsafe. If MareBoats cancels for weather, you get a full refund. Bookings cancelled by guests are not refunded.',
+      },
+      {
+        question: 'Where do we meet for the Scenic Coast Cruise?',
+        answer:
+          'The MareBoats barrel, on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel. About 3 minutes on foot from the ferry terminal, walking towards the Franciscan Monastery.',
+      },
+      {
+        question: 'Can we book the Scenic Coast Cruise the same day?',
+        answer:
+          'Same-day booking is possible if a slot is free. Message us on WhatsApp with the time you want and we confirm availability fast.',
+      },
+      {
+        question: 'Is the Scenic Coast Cruise private or shared with other guests?',
+        answer:
+          `Private. One group, one boat, one skipper. The base price of €${SC.privateBase} is for the whole boat for up to ${SC.privateBaseGuests} guests.`,
+      },
+    ],
+    comparison: {
+      heading: 'Scenic Coast Cruise or the 4-hour Red Rocks & Pakleni tour: which one fits your day?',
+      intro:
+        'Both tours leave from Beach Križa and follow the south coast of Hvar. The difference is what you do at each bay.',
+      thisLabel: 'Scenic Coast Cruise',
+      otherLabel: 'Red Rocks & Pakleni',
+      otherHref: '/tours/red-rocks-pakleni-islands',
+      rows: [
+        { label: 'Duration',             thisValue: '2 hours',                                                                                                                     otherValue: '4 hours (half-day) or 6 hours (full-day)' },
+        { label: 'Bays on the route',    thisValue: 'Four: Red Rocks, Dubovica, Borče Bay, Pakleni channel',                                                                       otherValue: 'Red Rocks, Dubovica, Borče Bay, and stops in the Pakleni Islands' },
+        { label: 'Does the boat anchor', thisValue: 'No. Engine off at each bay, boat drifts a few minutes',                                                                       otherValue: 'Yes. Anchors at Red Rocks, Dubovica and the Pakleni Islands for swimming' },
+        { label: 'Landing on shore',     thisValue: 'No landing at any stop',                                                                                                       otherValue: 'Optional lunch stop at Palmižana or Ždrilca in the Pakleni Islands' },
+        { label: 'Swimming',             thisValue: 'No',                                                                                                                           otherValue: 'Yes, at every anchored stop' },
+        { label: 'Price',                thisValue: `€${SC.privateBase} up to ${SC.privateBaseGuests} guests · +€${SC.privatePerExtraGuest} per extra guest to ${SC.privateMaxGuests}`, otherValue: `€${RR.privateHalfDay ?? 0} half-day · €${RR.privateFullDay ?? 0} full-day, private` },
+        { label: 'Good fit for',         thisValue: 'A short private cruise, or a slot that fits between ferries',                                                                 otherValue: 'A full half or full day in the water with swimming and lunch' },
+      ],
+    },
+    relatedGuide: {
+      href: '/tours/red-rocks-pakleni-islands/',
+      label: 'Want the full day, with swimming and a lunch stop?',
+      description: 'See the 4-hour Red Rocks & Pakleni Islands tour',
+    },
+  },
 ];
 
-/** Slugs shown in the homepage Tours grid - flagship day tour, Red Rocks, Pakleni half-day, sunset. */
+/** Slugs shown in the homepage Tours grid. */
 export const FEATURED_TOUR_SLUGS = [
   'blue-cave-pakleni-islands',
   'red-rocks-pakleni-islands',
   'pakleni-islands',
   'sunset-cruise',
+  'scenic-coast-cruise',
 ] as const;
 
 export const featuredTours: TourRecord[] = FEATURED_TOUR_SLUGS

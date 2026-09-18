@@ -10,6 +10,8 @@ import {
   WATER_TAXI_PRICES,
   EXTRAS,
   ADDONS,
+  SCENIC_PROSECCO,
+  getScenicPrice,
 } from '@/lib/pricing';
 
 const SITE_URL = 'https://mareboatshvar.com';
@@ -19,6 +21,7 @@ function buildContent(): string {
   const rr = TOUR_PRICES['red-rocks-pakleni-islands'];
   const pk = TOUR_PRICES['pakleni-islands'];
   const ch = TOUR_PRICES['private-boat-charter'];
+  const sc = TOUR_PRICES['scenic-coast-cruise'];
 
   const wtHarbour = WATER_TAXI_PRICES['yachtsNearHarbour'];
   const wtPakleni = WATER_TAXI_PRICES['pakleniIslands'];
@@ -80,6 +83,17 @@ Open deck layout. No assigned seats.
 - Private 3h: €${pk.private} (up to 8 guests)
 - Private 4h: €${pk.privateExtended} (up to 8 guests)
 - Page: ${SITE_URL}/tours/pakleni-islands/
+
+### Scenic Coast Cruise
+- Private: €${sc.privateBase} for up to ${sc.privateBaseGuests} guests, +€${sc.privatePerExtraGuest} per extra guest to a maximum of ${sc.privateMaxGuests} (€${getScenicPrice('scenic-coast-cruise', sc.privateBaseGuests! + 1)} for ${sc.privateBaseGuests! + 1}, €${getScenicPrice('scenic-coast-cruise', sc.privateMaxGuests!)} for ${sc.privateMaxGuests})
+- Duration: 2 hours
+- Route (in sailing order): Red Rocks, Dubovica, Borče Bay, the Pakleni channel. Engine off at each bay; no anchoring, no landing.
+- Departures: any time between 9am and 3pm
+- Includes: private boat, skipper, fuel, bottled water
+- On request: bottle of prosecco €${SCENIC_PROSECCO}
+- Cancellation: full refund if MareBoats cancels for weather; guest cancellations are not refunded
+- Difference vs Red Rocks & Pakleni: the Scenic runs 2 hours with the engine off at each bay and does not anchor or land anywhere. The Red Rocks & Pakleni tour runs 4 or 6 hours and anchors for swimming, snorkelling and a lunch stop at the Pakleni Islands. Book the Scenic for a short private cruise or an afternoon between ferries. Book Red Rocks & Pakleni for a half or full day in the water.
+- Page: ${SITE_URL}/tours/scenic-coast-cruise/
 
 ### Sunset Cruise
 ${sunsetLines}
@@ -152,6 +166,7 @@ Note: Water taxi has no fixed meeting point. We come to your anchored boat.
 - Explore Hvar: ${SITE_URL}/explore/
 - Boat rental without a licence: ${SITE_URL}/rentals/boat-rental-hvar-without-licence/
 - Private boat tour for families and groups: ${SITE_URL}/explore/private-boat-tour-hvar-families/
+- Short boat tour from Hvar (few hours between ferries): ${SITE_URL}/explore/short-boat-tour-hvar-few-hours/
 `;
 }
 

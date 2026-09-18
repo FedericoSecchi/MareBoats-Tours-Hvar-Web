@@ -14,12 +14,12 @@ export default function Tours() {
   return (
     <section id="tours" ref={ref} className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
       <motion.div
-        className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+        className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={staggerListOnly}
       >
-        <motion.div variants={fadeInUpItem} className="col-span-full mb-2 md:col-span-2 lg:col-span-4">
+        <motion.div variants={fadeInUpItem} className="col-span-full mb-2 md:col-span-2 lg:col-span-3">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Our Tours
           </p>
@@ -27,14 +27,14 @@ export default function Tours() {
             Choose Your Day on the Adriatic
           </h2>
           <p className="mt-4 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Four routes, one private boat. A skipper who knows the island, fuel, icebox and snorkeling masks on every
+            Five routes, one private boat. A skipper who knows the island, fuel, icebox and snorkeling masks on every
             trip.
           </p>
         </motion.div>
 
         <motion.div
           variants={fadeInUpItem}
-          className="col-span-full flex justify-end md:col-span-2 lg:col-span-4 -mt-2"
+          className="col-span-full flex justify-end md:col-span-2 lg:col-span-3 -mt-2"
         >
           <Link
             href="/tours"

@@ -484,6 +484,15 @@ export default function GuidePage() {
               Read the Hvar Islands Guide
             </Link>
           </p>
+          <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
+            Only have a couple of hours?{' '}
+            <Link
+              href="/tours/scenic-coast-cruise/"
+              className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              A short boat trip from Hvar along the south coast
+            </Link>
+          </p>
         </div>
       </section>
 

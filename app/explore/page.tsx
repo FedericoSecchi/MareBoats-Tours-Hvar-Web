@@ -504,6 +504,15 @@ export default function ExplorePage() {
               How a private speedboat works for families and groups in Hvar
             </Link>
           </p>
+          <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
+            Over from Split for the day, or an afternoon before the ferry back?{' '}
+            <Link
+              href="/tours/scenic-coast-cruise/"
+              className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              A two-hour cruise along the south coast
+            </Link>
+          </p>
         </div>
       </section>
 

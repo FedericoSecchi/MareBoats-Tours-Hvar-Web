@@ -86,6 +86,17 @@ const TOUR_CARDS: TourCard[] = [
     waMessage: "Hi! I'd like to book the Sunset Cruise",
   },
   {
+    slug: 'scenic-coast-cruise',
+    name: 'Scenic Coast Cruise',
+    duration: '2 HRS',
+    price: formatPriceShort('scenic-coast-cruise'),
+    summary:
+      'Two hours along the south coast of Hvar with the engine off at each bay. Four bays, no anchoring, no landing.',
+    image: '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg',
+    imageAlt: 'Scenic Coast Cruise from Hvar - south coast bays from the water',
+    waMessage: "Hi! I'd like to book the Scenic Coast Cruise",
+  },
+  {
     slug: 'private-boat-charter',
     name: 'Private Charter',
     duration: 'Full day · custom route',

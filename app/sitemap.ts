@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/rentals/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/rentals/boat-rental-hvar-without-licence/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/explore/private-boat-tour-hvar-families/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/explore/short-boat-tour-hvar-few-hours/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/transfers/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/guide/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/conditions/`, lastModified: new Date(), changeFrequency: 'hourly', priority: 0.6 },

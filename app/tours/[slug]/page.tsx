@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { DOG_POLICY, getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/lib/tours-data';
-import { TOUR_PRICES, EXTRAS } from '@/lib/pricing';
+import { TOUR_PRICES } from '@/lib/pricing';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { tourSchemaMap, buildTouristTripSchema, buildFAQSchema } from '@/lib/schema';
 import { getLastModified } from '@/lib/git-dates';
@@ -33,6 +33,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     'private-boat-charter': 'Private Boat Charter Hvar',
     'split-airport-transfer': 'Split Airport to Hvar by Speedboat',
     'yacht-sailboat-taxi': 'Hvar Water Taxi - We Come to Your Anchored Boat | from €50',
+    'scenic-coast-cruise': '2-Hour Scenic Boat Cruise Hvar',
   };
   const descriptionMap: Record<string, string> = {
     'blue-cave-pakleni-islands':
@@ -43,6 +44,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
       'Skip the ferry. Private speedboat transfer from Split Airport to Hvar - fast, comfortable, scenic. Book on WhatsApp, instant confirmation.',
     'yacht-sailboat-taxi':
       'Water taxi in Hvar from €50. We pick you up directly from your anchored yacht or sailboat - no tender, no harbour. Hvar town, Pakleni Islands or any tour start. Message us on WhatsApp.',
+    'scenic-coast-cruise':
+      `Private 2-hour boat cruise from Beach Križa. Four bays on the south coast of Hvar, engine off at each. Up to ${TOUR_PRICES['scenic-coast-cruise'].privateMaxGuests} guests. Departures 9am to 3pm. From €${TOUR_PRICES['scenic-coast-cruise'].privateBase}.`,
   };
   const title = titleMap[tour.slug] ?? `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
   const description = descriptionMap[tour.slug] ?? tour.shortDescription;
@@ -118,9 +121,6 @@ export default function TourDetailPage({ params }: PageProps) {
   };
 
   const related = getRelatedTours(tour.slug, 2);
-
-  const rrP = TOUR_PRICES['red-rocks-pakleni-islands'];
-  const bcP = TOUR_PRICES['blue-cave-pakleni-islands'];
 
   const fastFactsDisplay: { label: string; value: string }[] = [];
   if (tour.fastFacts) {
@@ -288,14 +288,16 @@ export default function TourDetailPage({ params }: PageProps) {
                     )}
                   </div>
                   <dl className="mt-4 grid gap-4 text-sm md:grid-cols-2">
-                    <div>
+                    <div className={stop.travelTime ? '' : 'md:col-span-2'}>
                       <dt className="font-body font-semibold text-[color:var(--white)]">What it is</dt>
                       <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.description}</dd>
                     </div>
-                    <div>
-                      <dt className="font-body font-semibold text-[color:var(--white)]">Sailing time</dt>
-                      <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.travelTime}</dd>
-                    </div>
+                    {stop.travelTime && (
+                      <div>
+                        <dt className="font-body font-semibold text-[color:var(--white)]">Sailing time</dt>
+                        <dd className="mt-1 font-body leading-relaxed text-[color:var(--gray)]">{stop.travelTime}</dd>
+                      </div>
+                    )}
                     {stop.activities && (
                       <div className="md:col-span-2">
                         <dt className="font-body font-semibold text-[color:var(--white)]">What you do here</dt>
@@ -321,44 +323,39 @@ export default function TourDetailPage({ params }: PageProps) {
         </section>
       )}
 
-      {tour.slug === 'red-rocks-pakleni-islands' && (
+      {tour.comparison && (
         <section className="bg-[color:var(--bg)] px-4 py-16 md:py-20">
           <div className="mx-auto max-w-container">
             <h2 className="font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] md:text-3xl">
-              Red Rocks &amp; Pakleni or the 5 Islands Blue Cave tour: which one fits your day?
+              {tour.comparison.heading}
             </h2>
             <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-              Both tours leave from Beach Križa on a MareBoats Hvar speedboat. The difference is range and time on the water.
+              {tour.comparison.intro}
             </p>
             <div className="mt-8 overflow-x-auto rounded-2xl border border-[color:var(--border)]">
               <table className="w-full min-w-[560px] border-collapse font-body text-sm">
                 <thead>
                   <tr className="border-b border-[color:var(--border)] bg-[color:var(--surface)]">
                     <th className="py-3 pl-5 pr-6 text-left text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--gray)] w-[180px]" />
-                    <th className="py-3 pr-6 text-left text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--accent)]">Red Rocks &amp; Pakleni</th>
+                    <th className="py-3 pr-6 text-left text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--accent)]">
+                      {tour.comparison.thisLabel}
+                    </th>
                     <th className="py-3 pr-5 text-left text-xs font-semibold uppercase tracking-[0.12em] text-[color:var(--white)]">
-                      <Link href="/tours/blue-cave-pakleni-islands" className="hover:text-[color:var(--accent)] transition-colors focus-visible:outline-none focus-visible:underline">
-                        Blue Cave &amp; 5 Islands
+                      <Link
+                        href={tour.comparison.otherHref}
+                        className="hover:text-[color:var(--accent)] transition-colors focus-visible:outline-none focus-visible:underline"
+                      >
+                        {tour.comparison.otherLabel}
                       </Link>
                     </th>
                   </tr>
                 </thead>
                 <tbody className="bg-[color:var(--surface)]">
-                  {([
-                    { label: 'Duration',           rr: '4 or 6 hours',                                                                               bc: '7 hours' },
-                    { label: 'Departure',          rr: 'Flexible (09:00 / 11:00 / 14:00)',                                                           bc: '10:00, fixed' },
-                    { label: 'Route',              rr: 'South coast of Hvar and the Pakleni archipelago',                                            bc: 'Vis Island, Biševo and the Pakleni Islands' },
-                    { label: 'Open sea crossing',  rr: 'Short legs, always near the Hvar coast',                                                     bc: 'Crosses to Vis Island (~45 km from Hvar)' },
-                    { label: 'Total distance',     rr: '30 to 35 km',                                                                                bc: '100 to 120 km' },
-                    { label: 'Shared price',       rr: `€${rrP.sharedPerPerson ?? 0} per person`,                                                    bc: `€${bcP.sharedPerPerson ?? 0} per person` },
-                    { label: 'Private price',      rr: `€${rrP.privateHalfDay ?? 0} half-day / €${rrP.privateFullDay ?? 0} full-day`,                bc: `€${bcP.private ?? 0}` },
-                    { label: 'Cave entrance fees', rr: 'None',                                                                                        bc: `Blue Cave €${EXTRAS.blueCave}/person · Green Cave €${EXTRAS.greenCave}/person optional` },
-                    { label: 'Good fit for',       rr: 'More time in the water on the south coast of Hvar, shorter sailing legs',                    bc: 'Covering more islands in one day, Blue Cave on the list' },
-                  ] as { label: string; rr: string; bc: string }[]).map((row) => (
+                  {tour.comparison.rows.map((row) => (
                     <tr key={row.label} className="border-t border-[color:var(--border)]/60">
                       <td className="py-3 pl-5 pr-6 align-top font-semibold text-[color:var(--white)]">{row.label}</td>
-                      <td className="py-3 pr-6 align-top text-[color:var(--accent)]">{row.rr}</td>
-                      <td className="py-3 pr-5 align-top text-[color:var(--gray)]">{row.bc}</td>
+                      <td className="py-3 pr-6 align-top text-[color:var(--accent)]">{row.thisValue}</td>
+                      <td className="py-3 pr-5 align-top text-[color:var(--gray)]">{row.otherValue}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -510,6 +507,23 @@ export default function TourDetailPage({ params }: PageProps) {
       )}
 
       {tour.slug !== 'split-airport-transfer' && <FleetInfo />}
+
+      {tour.crossLink && (
+        <div className="bg-[color:var(--bg)] px-4 pb-6 pt-4">
+          <div className="mx-auto max-w-container">
+            <p className="font-body text-sm text-[color:var(--gray)]">
+              {tour.crossLink.before}
+              <Link
+                href={tour.crossLink.href}
+                className="font-semibold text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+              >
+                {tour.crossLink.anchor}
+              </Link>
+              {tour.crossLink.after ?? ''}
+            </p>
+          </div>
+        </div>
+      )}
 
       {tour.relatedGuide && (
         <div className="bg-[color:var(--bg)] px-4 pb-10 md:pb-12">

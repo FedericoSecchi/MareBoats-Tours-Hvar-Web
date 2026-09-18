@@ -72,6 +72,16 @@ export default function HvarIslandsGuidePage() {
           </Link>
           .
         </p>
+        <p className="mx-auto mt-4 max-w-2xl text-center font-body text-base leading-relaxed text-[color:var(--gray)]">
+          Short on time?{' '}
+          <Link
+            href="/tours/scenic-coast-cruise/"
+            className="text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)] focus-visible:outline-none focus-visible:underline"
+          >
+            Seeing the south coast by boat in two hours
+          </Link>
+          .
+        </p>
       </section>
 
       {/* Final CTA */}

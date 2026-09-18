@@ -13,6 +13,8 @@ import {
   getSunsetTier,
   WATER_TAXI_PRICES,
   getWaterTaxiPrice,
+  getScenicPrice,
+  SCENIC_PROSECCO,
 } from '@/lib/pricing';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -29,6 +31,7 @@ type Pricing =
   | { kind: 'rental-skipper'; from: number }
   | { kind: 'on-request' }
   | { kind: 'sunset' }
+  | { kind: 'scenic-tiered'; slug: string; base: number; baseGuests: number; perExtra: number; maxGuests: number; proseccoAddon: number }
   | { kind: 'water-taxi' };
 
 type Service = {
@@ -138,6 +141,34 @@ const SERVICES: Service[] = [
     addonPhotoVideo: true,
     notes: ['No scooter. Evening tour. Max 8 per boat, max 16 total (2 boats).'],
     pricing: { kind: 'sunset' },
+  },
+  {
+    id: 'scenic-coast-cruise',
+    category: 'tour',
+    name: 'Scenic Coast Cruise',
+    quoteName: 'Scenic Coast Cruise',
+    duration: '2 h · departs 9am to 3pm',
+    maxCapacity: TOUR_PRICES['scenic-coast-cruise'].privateMaxGuests!,
+    includes: ['Boat & skipper', 'Fuel', 'Bottled water'],
+    notIncludes: [],
+    quoteIncluded: 'private boat, skipper, fuel and bottled water',
+    quoteNotIncluded: '',
+    siteExtras: [],
+    addonScooter: false,
+    addonPhotoVideo: false,
+    notes: [
+      'No swim stops. Engine off at Red Rocks, Dubovica, Borče Bay, Pakleni channel. No anchoring, no landing.',
+      'Cancellation: direct bookings — full refund only if MareBoats cancels for weather. Guest cancellations not refunded. GYG bookings run under the GYG 24h policy (cannot be overridden from the listing). Confirm the channel before answering a cancellation.',
+    ],
+    pricing: {
+      kind: 'scenic-tiered',
+      slug: 'scenic-coast-cruise',
+      base: TOUR_PRICES['scenic-coast-cruise'].privateBase!,
+      baseGuests: TOUR_PRICES['scenic-coast-cruise'].privateBaseGuests!,
+      perExtra: TOUR_PRICES['scenic-coast-cruise'].privatePerExtraGuest!,
+      maxGuests: TOUR_PRICES['scenic-coast-cruise'].privateMaxGuests!,
+      proseccoAddon: SCENIC_PROSECCO,
+    },
   },
   {
     id: 'charter',
@@ -411,6 +442,20 @@ function PriceDisplay({ pricing }: { pricing: Pricing }) {
       </div>
     );
   }
+  if (pricing.kind === 'scenic-tiered') {
+    return (
+      <div>
+        <span className="block font-body text-[10px] uppercase tracking-[0.12em] text-[color:var(--gray)]">
+          Private · base + per extra guest
+        </span>
+        <span className="font-display text-2xl font-bold text-[color:var(--accent)]">
+          €{pricing.base}
+          <span className="text-sm font-normal"> up to {pricing.baseGuests}</span>
+          <span className="text-sm font-normal text-[color:var(--white)]"> · +€{pricing.perExtra}/extra to {pricing.maxGuests}</span>
+        </span>
+      </div>
+    );
+  }
   if (pricing.kind === 'rental-skipper') {
     return (
       <p className="font-display text-2xl font-bold text-[color:var(--accent)]">
@@ -569,6 +614,7 @@ function QuoteBuilder({ service }: { service: Service }) {
   const [scooterUnits, setScooterUnits] = useState(0);
   const [photoVideo, setPhotoVideo] = useState(false);
   const [sunsetExtraWine, setSunsetExtraWine] = useState(false);
+  const [scenicProsecco, setScenicProsecco] = useState(false);
   const [date, setDate] = useState('');
   const [copied, setCopied] = useState(false);
 
@@ -588,14 +634,15 @@ function QuoteBuilder({ service }: { service: Service }) {
     );
   }
 
-  // ── Convoy logic: private tour + pax > 8 = 2 boats, price x2. Sunset excluded (has own tier). ──
+  // ── Convoy logic: private tour + pax > 8 = 2 boats, price x2. Sunset and Scenic excluded (own pricing model, own cap). ──
   const isSharedMode = mode === 'shared';
   const isPrivateMode = !isSharedMode && mode !== 'split-hvar' && mode !== 'airport-hvar' && mode !== 'yacht-harbour' && mode !== 'yacht-pakleni';
-  const isConvoy = category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' && pax > 8;
+  const isConvoy = category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' && pricing.kind !== 'scenic-tiered' && pax > 8;
   const waterTaxiMax = pricing.kind === 'water-taxi'
     ? (mode === 'yacht-harbour' ? WATER_TAXI_PRICES.yachtsNearHarbour.max : WATER_TAXI_PRICES.pakleniIslands.max)
     : maxCapacity;
   const maxPax = pricing.kind === 'water-taxi' ? waterTaxiMax
+    : pricing.kind === 'scenic-tiered' ? pricing.maxGuests
     : category === 'tour' && isPrivateMode && pricing.kind !== 'sunset' ? 16
     : maxCapacity;
 
@@ -617,6 +664,8 @@ function QuoteBuilder({ service }: { service: Service }) {
     baseTotal = pricing.pricePerDay * days;
   } else if (pricing.kind === 'sunset') {
     baseTotal = getSunsetTier(pax).price;
+  } else if (pricing.kind === 'scenic-tiered') {
+    baseTotal = getScenicPrice(pricing.slug, pax);
   } else if (pricing.kind === 'water-taxi') {
     const zone = mode === 'yacht-harbour' ? WATER_TAXI_PRICES.yachtsNearHarbour : WATER_TAXI_PRICES.pakleniIslands;
     baseTotal = getWaterTaxiPrice(zone, pax);
@@ -625,7 +674,8 @@ function QuoteBuilder({ service }: { service: Service }) {
   const addonsTotal =
     (addonScooter ? scooterUnits * ADDONS.scooter : 0) +
     (addonPhotoVideo && photoVideo ? ADDONS.photoVideo : 0) +
-    (pricing.kind === 'sunset' && sunsetExtraWine ? SUNSET_WINE_EXTRA : 0);
+    (pricing.kind === 'sunset' && sunsetExtraWine ? SUNSET_WINE_EXTRA : 0) +
+    (pricing.kind === 'scenic-tiered' && scenicProsecco ? pricing.proseccoAddon : 0);
 
   const total = baseTotal + addonsTotal;
 
@@ -705,6 +755,15 @@ function QuoteBuilder({ service }: { service: Service }) {
         lines.push(`Sunset cruise: ${tier.price} EUR (${tierLabel})`);
       }
       lines.push(`${wineBottles} bottle${wineBottles > 1 ? 's' : ''} of wine included.`);
+    } else if (pricing.kind === 'scenic-tiered') {
+      const total = getScenicPrice(pricing.slug, pax);
+      if (pax <= pricing.baseGuests) {
+        lines.push(`Scenic Coast Cruise: ${total} EUR (private boat, up to ${pricing.baseGuests} guests)`);
+      } else {
+        const extras = pax - pricing.baseGuests;
+        lines.push(`Scenic Coast Cruise: ${total} EUR (${pricing.base} base + ${extras} x ${pricing.perExtra} EUR for guests ${pricing.baseGuests + 1}-${pax})`);
+      }
+      lines.push('2 hours. Engine off at each of four bays. No anchoring, no swim stops.');
     } else if (pricing.kind === 'water-taxi') {
       const zone = mode === 'yacht-harbour' ? WATER_TAXI_PRICES.yachtsNearHarbour : WATER_TAXI_PRICES.pakleniIslands;
       const zoneName = mode === 'yacht-harbour' ? 'yachts anchored near Hvar harbour' : 'Pakleni Islands';
@@ -727,6 +786,10 @@ function QuoteBuilder({ service }: { service: Service }) {
     }
     if (pricing.kind === 'sunset' && sunsetExtraWine) {
       lines.push(`Extra bottle of wine: ${SUNSET_WINE_EXTRA} EUR`);
+      addonCount++;
+    }
+    if (pricing.kind === 'scenic-tiered' && scenicProsecco) {
+      lines.push(`Bottle of prosecco: ${pricing.proseccoAddon} EUR`);
       addonCount++;
     }
 
@@ -868,7 +931,7 @@ function QuoteBuilder({ service }: { service: Service }) {
       )}
 
       {/* Add-ons */}
-      {(addonScooter || addonPhotoVideo || pricing.kind === 'sunset') && (
+      {(addonScooter || addonPhotoVideo || pricing.kind === 'sunset' || pricing.kind === 'scenic-tiered') && (
         <div className="space-y-2.5">
           <p className="font-body text-[10px] font-semibold uppercase tracking-[0.15em] text-[color:var(--gray)]">
             Add-ons (paid to MareBoats)
@@ -909,6 +972,19 @@ function QuoteBuilder({ service }: { service: Service }) {
                 type="checkbox"
                 checked={sunsetExtraWine}
                 onChange={(e) => setSunsetExtraWine(e.target.checked)}
+                className="h-5 w-5 cursor-pointer accent-[color:var(--accent)]"
+              />
+            </label>
+          )}
+          {pricing.kind === 'scenic-tiered' && (
+            <label className="flex cursor-pointer items-center justify-between">
+              <span className="font-body text-sm text-[color:var(--white)]">
+                Bottle of prosecco · €{pricing.proseccoAddon}
+              </span>
+              <input
+                type="checkbox"
+                checked={scenicProsecco}
+                onChange={(e) => setScenicProsecco(e.target.checked)}
                 className="h-5 w-5 cursor-pointer accent-[color:var(--accent)]"
               />
             </label>

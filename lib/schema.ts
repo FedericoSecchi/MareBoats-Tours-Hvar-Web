@@ -155,6 +155,69 @@ export const tourSchemaMap: Record<string, object> = {
     areaServed: 'Hvar, Croatia',
     url: `${SITE_URL}/tours/yacht-sailboat-taxi/`,
   },
+
+  'scenic-coast-cruise': {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    name: 'Scenic Coast Cruise in Hvar',
+    description:
+      'Private two-hour boat cruise from Beach Križa along the south coast of Hvar. Four bays with the engine off at each: Red Rocks, Dubovica, Borče Bay and the Pakleni channel. No anchoring and no landing. Up to 6 guests.',
+    provider: PROVIDER,
+    areaServed: 'Hvar, Croatia',
+    geo: sharedGeo,
+    availableLanguage: AVAILABLE_LANGUAGES,
+    offers: formatPriceSchema('scenic-coast-cruise'),
+    validFrom: '2026-04-01',
+    validThrough: '2026-10-31',
+    url: `${SITE_URL}/tours/scenic-coast-cruise/`,
+    itinerary: {
+      '@type': 'ItemList',
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      numberOfItems: 4,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@type': 'TouristAttraction',
+            name: 'Red Rocks',
+            description:
+              'Iron-red cliffs on the south side of Hvar. The engine goes off and the boat drifts along the cliff face.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@type': 'TouristAttraction',
+            name: 'Dubovica',
+            description:
+              'A cove with a 16th-century stone house at the edge of the bay, seen from the water instead of from the road above.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          item: {
+            '@type': 'TouristAttraction',
+            name: 'Borče Bay',
+            description:
+              'A quiet cove near the village of Milna on the south coast of Hvar, protected from the wind.',
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          item: {
+            '@type': 'TouristAttraction',
+            name: 'The Pakleni channel',
+            description:
+              'The stretch of water between Hvar and the Pakleni Islands, the clearest water on the route.',
+          },
+        },
+      ],
+    },
+  },
 };
 
 export const rentalServiceSchema = {

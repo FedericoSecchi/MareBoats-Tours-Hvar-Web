@@ -15,6 +15,11 @@ export type TourPrice = {
   airportHvar?: number;
   onRequest?: boolean;
   fuelIncluded?: boolean;
+  /** Private tour priced as base for N guests + surcharge per extra guest up to a cap. */
+  privateBase?: number;
+  privateBaseGuests?: number;
+  privatePerExtraGuest?: number;
+  privateMaxGuests?: number;
 };
 
 export type SunsetTier = {
@@ -75,7 +80,16 @@ export const TOUR_PRICES: Record<string, TourPrice> = {
   },
   'yacht-sailboat-taxi': { onRequest: true },
   'brac-zlatni-rat': { private: 600 }, // Brač tour, 6h, up to 8 — crew dashboard only, no public page yet
+  'scenic-coast-cruise': {
+    privateBase: 250,
+    privateBaseGuests: 4,
+    privatePerExtraGuest: 40,
+    privateMaxGuests: 6,
+  },
 };
+
+/** Add-on prices tied to a specific tour. Kept next to TOUR_PRICES so consumers read one source. */
+export const SCENIC_PROSECCO = 30;
 
 // ──────────────────────────────────────────────
 // Rental prices — self-drive
@@ -186,6 +200,13 @@ export function formatPriceFull(slug: string): string {
   if (p.private !== undefined && p.fuelIncluded === false) {
     return `€${p.private} boat + skipper · fuel not included`;
   }
+  if (
+    p.privateBase !== undefined &&
+    p.privateBaseGuests !== undefined &&
+    p.privatePerExtraGuest !== undefined
+  ) {
+    return `€${p.privateBase} for up to ${p.privateBaseGuests} guests · +€${p.privatePerExtraGuest} per extra guest`;
+  }
   if (p.private !== undefined) {
     return `€${p.private}`;
   }
@@ -211,6 +232,9 @@ export function formatPriceShort(slug: string): string {
   if (p.private !== undefined && p.fuelIncluded === false) {
     return `€${p.private} + fuel · up to 8`;
   }
+  if (p.privateBase !== undefined && p.privateBaseGuests !== undefined) {
+    return `€${p.privateBase} for up to ${p.privateBaseGuests}`;
+  }
   if (p.private !== undefined) {
     return `€${p.private} private`;
   }
@@ -228,8 +252,24 @@ export function getLowestPrice(slug: string): number | undefined {
     p.private,
     p.privateExtended,
     p.splitHvar,
+    p.privateBase,
   ].filter((n): n is number => n !== undefined);
   return candidates.length > 0 ? Math.min(...candidates) : undefined;
+}
+
+/** Compute total price for a scenic-style tiered private tour. */
+export function getScenicPrice(slug: string, pax: number): number {
+  const p = TOUR_PRICES[slug];
+  if (
+    !p ||
+    p.privateBase === undefined ||
+    p.privateBaseGuests === undefined ||
+    p.privatePerExtraGuest === undefined
+  ) {
+    return 0;
+  }
+  const extras = Math.max(0, pax - p.privateBaseGuests);
+  return p.privateBase + extras * p.privatePerExtraGuest;
 }
 
 /** Structured pricing options for the tour detail page pricing card. */
@@ -258,6 +298,22 @@ export function getPricingOptions(
     return [
       { label: '3h', price: `€${p.private}`, note: 'Pakleni Islands highlights - up to 8 guests' },
       { label: '4h', price: `€${p.privateExtended}`, note: 'More stops, more coves - up to 8 guests' },
+    ];
+  }
+  if (slug === 'scenic-coast-cruise') {
+    const p = TOUR_PRICES[slug];
+    if (
+      p?.privateBase === undefined ||
+      p.privateBaseGuests === undefined ||
+      p.privatePerExtraGuest === undefined ||
+      p.privateMaxGuests === undefined
+    ) {
+      return undefined;
+    }
+    return [
+      { label: `Up to ${p.privateBaseGuests} guests`, price: `€${p.privateBase}`, note: 'private boat, one group' },
+      { label: `${p.privateBaseGuests + 1} guests`, price: `€${getScenicPrice(slug, p.privateBaseGuests + 1)}`, note: `+€${p.privatePerExtraGuest} per extra guest` },
+      { label: `${p.privateMaxGuests} guests`, price: `€${getScenicPrice(slug, p.privateMaxGuests)}`, note: `${p.privateMaxGuests} is the maximum on this boat` },
     ];
   }
   if (slug !== 'blue-cave-pakleni-islands') return undefined;
@@ -367,6 +423,20 @@ export function formatPriceSchema(slug: string): object | object[] | undefined {
       price: String(p.private),
       priceCurrency: 'EUR',
       description: 'Fuel not included',
+      availability: 'https://schema.org/InStock',
+    };
+  }
+
+  if (
+    p.privateBase !== undefined &&
+    p.privateBaseGuests !== undefined &&
+    p.privatePerExtraGuest !== undefined
+  ) {
+    return {
+      '@type': 'Offer',
+      price: String(p.privateBase),
+      priceCurrency: 'EUR',
+      description: `Private boat for up to ${p.privateBaseGuests} guests. Each additional guest €${p.privatePerExtraGuest}${p.privateMaxGuests ? `, up to ${p.privateMaxGuests}` : ''}.`,
       availability: 'https://schema.org/InStock',
     };
   }
