@@ -21,8 +21,8 @@ export const ALT_TEXT = {
     fede: 'Federico, marketing and occasional skipper at MareBoats Hvar',
   },
   boat: {
-    main: 'MareBoats RIB speedboat - private tours from Hvar Harbour Croatia',
+    main: 'MareBoats speedboat - private tours from Hvar, Croatia',
     water: 'MareBoats speedboat on the Adriatic Sea near Hvar island Croatia',
-    interior: 'Inside a MareBoats RIB - sun canopy, music system, cooler, snorkel gear',
+    interior: 'Inside a MareBoats speedboat - sun canopy, music system, cooler, snorkel gear',
   },
 } as const;
