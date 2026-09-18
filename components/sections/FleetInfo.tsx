@@ -1,7 +1,7 @@
 const BLOCKS = [
   {
     title: 'Shade on every boat',
-    body: 'Every MareBoats Hvar speedboat has a sun canopy over the main seating area. The canopy provides shade from the moment you leave Hvar Harbour to the last stop of the day. All four boats in the MareBoats Hvar fleet carry it as standard.',
+    body: 'Every MareBoats Hvar speedboat has a sun canopy over the main seating area. The canopy provides shade from the moment you leave the dock to the last stop of the day. All four boats in the MareBoats Hvar fleet carry it as standard.',
   },
   {
     title: 'Room to move',

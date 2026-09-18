@@ -9,7 +9,7 @@ import { TourCardImage } from '@/components/ui/TourCardImage';
 export const metadata: Metadata = generateSEO({
   title: 'About MareBoats Hvar | Private Boat Tours',
   description:
-    'MareBoats runs private speedboat tours from Hvar Harbour. Licensed Croatian skippers, insured boats, zero shared groups. Meet the team and find out why guests come back.',
+    'MareBoats runs private speedboat tours from Hvar. Licensed Croatian skippers, insured boats, zero shared groups. Meet the team and find out why guests come back.',
   keywords: [
     'mareboats hvar',
     'hvar boat captain',
@@ -161,7 +161,7 @@ export default function AboutPage() {
                 Hvar, run by people who actually know the place.
               </p>
               <p>
-                Today we run a fleet of speedboats from Hvar Harbour, April through October. Tours can be
+                Today we run a fleet of speedboats from Hvar, April through October. Tours can be
                 fully private (your group, your boat, your pace) or shared, departing when the
                 boat fills up.
               </p>

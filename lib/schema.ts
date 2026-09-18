@@ -76,7 +76,7 @@ export const tourSchemaMap: Record<string, object> = {
     '@type': ['TouristAttraction', 'Service'],
     name: '5 Islands, 4 Beaches & Blue Cave - Hvar Boat Tour',
     description:
-      'Full-day speedboat tour from Hvar Harbour. Green Cave, Stiniva Bay, Blue Cave on Biševo, Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups, departs 10:00.',
+      'Full-day speedboat tour from Hvar. Green Cave, Stiniva Bay, Blue Cave on Biševo, Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups, departs 10:00.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
@@ -106,7 +106,7 @@ export const tourSchemaMap: Record<string, object> = {
     '@type': ['TouristAttraction', 'Service'],
     name: 'Pakleni Islands Half Day Boat Tour from Hvar',
     description:
-      'Half-day private speedboat tour from Hvar Harbour around the Pakleni Islands. Snorkeling, secluded coves and Palmižana. 3 to 4 hours.',
+      'Half-day private speedboat tour from Hvar around the Pakleni Islands. Snorkeling, secluded coves and Palmižana. 3 to 4 hours.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
@@ -121,7 +121,7 @@ export const tourSchemaMap: Record<string, object> = {
     '@type': ['TouristAttraction', 'Service'],
     name: 'Sunset Cruise Hvar',
     description:
-      'Private sunset cruise from Hvar Harbour. Golden hour over the Dalmatian coast, drinks on board, calm waters. Approximately 2 hours.',
+      'Private sunset cruise from Hvar. Golden hour over the Dalmatian coast, drinks on board, calm waters. Approximately 2 hours.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     geo: sharedGeo,
@@ -136,7 +136,7 @@ export const tourSchemaMap: Record<string, object> = {
     '@type': 'Service',
     name: 'Private Boat Charter Hvar',
     description:
-      'Full-day private speedboat charter from Hvar Harbour. Custom itinerary, your skipper, fuel extra. Your boat, your route, your pace.',
+      'Full-day private speedboat charter from Hvar. Custom itinerary, your skipper, fuel extra. Your boat, your route, your pace.',
     provider: PROVIDER,
     areaServed: 'Hvar, Croatia',
     maximumAttendeeCapacity: 8,
@@ -162,7 +162,7 @@ export const rentalServiceSchema = {
   '@type': 'Service',
   name: 'Boat Rental Hvar',
   description:
-    `Rent a boat in Hvar with or without skipper. Private tour with skipper included from ${RENTAL_WITH_SKIPPER_FROM} EUR. Self-drive rental for licensed skippers. Underwater scooter available as an add-on on private tours. Pickup at Hvar Harbour.`,
+    `Rent a boat in Hvar with or without skipper. Private tour with skipper included from ${RENTAL_WITH_SKIPPER_FROM} EUR. Self-drive rental for licensed skippers. Underwater scooter available as an add-on on private tours. Pickup at Beach Križa.`,
   provider: PROVIDER,
   areaServed: 'Hvar, Croatia',
   offers: {

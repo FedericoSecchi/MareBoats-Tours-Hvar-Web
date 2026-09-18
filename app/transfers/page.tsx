@@ -72,7 +72,7 @@ const TRANSFERS: TransferCard[] = [
     route: 'Split ↔ Hvar',
     price: `€${TRANSFER_PRICES.splitHvar} private`,
     time: '~1 hour',
-    summary: 'Hvar Harbour to Split waterfront. Private boat, direct route.',
+    summary: 'Hvar to Split waterfront. Private boat, direct route.',
     waMessage: "Hi! I'd like to book the Split transfer",
     ctaLabel: 'Book on WhatsApp',
     detailsHref: '/tours/split-airport-transfer',
@@ -187,7 +187,7 @@ const HOW_IT_WORKS = [
   {
     n: '3',
     title: 'Meet at the barrel',
-    body: 'Hvar Harbour, or we pick you up at your hotel dock.',
+    body: 'Beach Križa, or we pick you up at your hotel dock.',
   },
   {
     n: '4',
@@ -232,7 +232,7 @@ export default function TransfersPage() {
             Private Speedboat Transfers
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            From Hvar Harbour to wherever you need to be. Private, no shared boats, no waiting.
+            From Hvar to wherever you need to be. Private, no shared boats, no waiting.
           </p>
         </div>
       </section>

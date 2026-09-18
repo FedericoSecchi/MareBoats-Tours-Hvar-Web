@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   ...generateSEO({
     title: 'Rentals Hvar - Boat Rental & Underwater Scooter',
     description:
-      'Rent a boat in Hvar with or without skipper, or try an underwater scooter. No licence? No problem. MareBoats rentals - pickup at Hvar Harbour.',
+      'Rent a boat in Hvar with or without skipper, or try an underwater scooter. No licence? No problem. MareBoats rentals - pickup at Beach Križa.',
     keywords: [
       'boat rental hvar',
       'rent a boat hvar croatia',
@@ -60,7 +60,7 @@ const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Rentals from MareBoats Hvar',
-  description: 'Boat rental and underwater scooter at Hvar Harbour, Croatia.',
+  description: 'Boat rental and underwater scooter in Hvar, Croatia.',
   itemListElement: [
     { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-skipper`, name: 'Boat Rental - With Skipper' },
     { '@type': 'ListItem', position: 2, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental - Self-Drive' },
@@ -200,7 +200,7 @@ export default function RentalsPage() {
             Rentals Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Boat rental, underwater scooter &amp; more - pickup at Hvar Harbour.
+            Boat rental, underwater scooter &amp; more - pickup at Beach Križa.
           </p>
         </div>
       </section>
@@ -220,7 +220,7 @@ export default function RentalsPage() {
             <strong className="text-[color:var(--white)]">skipper included</strong> for the
             full-service experience, or take the helm yourself with our{' '}
             <strong className="text-[color:var(--white)]">self-drive option</strong>. Both pickup
-            at Hvar Harbour, same quality speedboat. Dogs are welcome on board, on request. Message
+            at Beach Križa, same quality speedboat. Dogs are welcome on board, on request. Message
             us before you book.
           </p>
 

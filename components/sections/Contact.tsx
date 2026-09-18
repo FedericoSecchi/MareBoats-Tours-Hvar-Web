@@ -94,7 +94,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="font-semibold text-[color:var(--white)] hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline active:opacity-90"
                 >
-                  Hvar Harbour, Croatia →
+                  Beach Križa, at the MareBoats barrel →
                 </a>
               </li>
 

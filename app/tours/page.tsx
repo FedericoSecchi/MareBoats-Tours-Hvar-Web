@@ -11,7 +11,7 @@ import { formatPriceShort, RENTAL_SELF_DRIVE, TOUR_PRICES } from '@/lib/pricing'
 export const metadata: Metadata = generateSEO({
   title: 'Boat Tours from Hvar: All Options',
   description:
-    'All MareBoats tours: Blue Cave, Red Rocks & Pakleni, Sunset Cruise, Private Charter. Private speedboat tours from Hvar Harbour. Book via WhatsApp.',
+    'All MareBoats tours: Blue Cave, Red Rocks & Pakleni, Sunset Cruise, Private Charter. Private speedboat tours from Hvar. Book via WhatsApp.',
   keywords: [
     'boat tours hvar',
     'hvar tours',
@@ -124,7 +124,7 @@ const itemListSchema = {
   '@type': 'ItemList',
   name: 'Boat Tours from Hvar - MareBoats',
   description:
-    'All private speedboat tours, sunset cruises and charters from Hvar Harbour, Croatia.',
+    'All private speedboat tours, sunset cruises and charters from Hvar, Croatia.',
   itemListElement: TOUR_CARDS.map((t, i) => ({
     '@type': 'ListItem',
     position: i + 1,
@@ -159,7 +159,7 @@ export default function ToursIndexPage() {
             Choose Your Adventure
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Private tours from Hvar Harbour. You pick the stops, we know every corner of the
+            Private tours from Beach Križa. You pick the stops, we know every corner of the
             coast.
           </p>
         </div>

@@ -1,6 +1,6 @@
 export const ALT_TEXT = {
   hero: {
-    main: 'Private speedboat tour from Hvar Harbour, Croatia - MareBoats',
+    main: 'Private speedboat tour from Hvar, Croatia - MareBoats',
   },
   tours: {
     blueCave:

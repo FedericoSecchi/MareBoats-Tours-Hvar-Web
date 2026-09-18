@@ -319,7 +319,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       {
         question: 'Is there shade on a MareBoats Hvar speedboat?',
         answer:
-          'Every MareBoats Hvar speedboat has a sun canopy over the main seating area. Shade is available from the moment you leave Hvar Harbour to the last stop of the day. The open deck at the front of the boat is in full sun.',
+          'Every MareBoats Hvar speedboat has a sun canopy over the main seating area. Shade is available from the moment you leave the dock to the last stop of the day. The open deck at the front of the boat is in full sun.',
       },
       {
         question: 'Why does MareBoats Hvar limit groups to 8 guests?',
@@ -351,9 +351,9 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     tagline: 'Half day of turquoise water, hidden coves, and island hopping minutes from Hvar town.',
     shortDescription:
       'Half-day private boat tour from Hvar, Croatia. Snorkel the clearest Adriatic waters, stop at Palmižana and explore secluded Pakleni coves.',
-    description: `The Pakleni Islands sit 10 minutes from Hvar harbour. Close enough for a half day, varied enough to fill it. We take you through the archipelago, pick the stops based on wind and crowds, and leave the pace to you.
+    description: `The Pakleni Islands sit 10 minutes from Hvar. Close enough for a half day, varied enough to fill it. We take you through the archipelago, pick the stops based on wind and crowds, and leave the pace to you.
 
-Departing from Hvar Harbour, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your captain chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
+Departing from Beach Križa, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your captain chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
 
 Because the boat is private, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and your skipper knows the quieter coves that larger boats skip.
 
@@ -378,7 +378,7 @@ Most guests who book this tour have already done a full-day trip and want a shor
     highlights: [
       'Palmižana, Ždrilca and the quieter coves of the archipelago',
       'Snorkeling in water you can see through to 10 metres',
-      'Private boat, your pace, 10 minutes from Hvar harbour',
+      'Private boat, your pace, 10 minutes from Hvar',
     ],
     images: [
       {
@@ -472,9 +472,9 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     tagline: 'Golden hour on the Adriatic - wine-friendly, calm water, and the best light of the day.',
     shortDescription:
       'Private sunset cruise from Hvar, Croatia. Golden hour over the Dalmatian coast, drinks on board, calm waters and the best photo light of the day.',
-    description: `A two-hour private cruise from Hvar Harbour, timed to the sunset. The light on the Adriatic at golden hour is different from anything you get during the day: warmer, softer, the kind that makes every photo look like it was planned.
+    description: `A two-hour private cruise from Beach Križa, timed to the sunset. The light on the Adriatic at golden hour is different from anything you get during the day: warmer, softer, the kind that makes every photo look like it was planned.
 
-This private evening boat tour departs from Hvar Harbour and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the boat is private, the pace stays yours.
+This private evening boat tour departs from Beach Križa and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the boat is private, the pace stays yours.
 
 Your captain focuses on safety and smooth cruising as light fades, and your skipper chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
