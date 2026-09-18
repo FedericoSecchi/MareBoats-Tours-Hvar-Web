@@ -15,6 +15,8 @@ eaad20f  A1 critico: 2 meeting-point residuos a Beach Križa
 de1da23  A2/A3/A5: Hvar Harbour cleanup, 29 menciones por contexto
 6a759a1  B: RIB fuera del alt-text (regla inamovible)
 34af879  C: Features card "Born in Hvar" reencuadrado por experiencia
+99ccb28  docs: PENDING_TASKS update (bloque anterior)
+6896a84  captain -> skipper en copy publico (8 lugares, 4 archivos)
 
 ## Hechas (17-18 sept)
 - Landing rental: fuel real por tipo de bote, return process, FAQ "run out of fuel"
@@ -31,6 +33,11 @@ de1da23  A2/A3/A5: Hvar Harbour cleanup, 29 menciones por contexto
   yates fondeados -> se queda.
 - Features "Born in Hvar" -> "Thousands of hours on this stretch of coast":
   cierto para todo el equipo, mantiene peso.
+- "captain" -> "skipper" en 8 lugares (4 archivos). Criterio: todo pasa a
+  skipper (Voditelj brodice / Boat Skipper, termino de la licencia croata).
+  Sunset description reescrita porque mezclaba las dos palabras para la misma
+  persona. Keywords SEO, testimonials atribuidos y "captain" del yate del
+  cliente en el water taxi no se tocan.
 
 ## Pendientes
 
@@ -43,17 +50,6 @@ de1da23  A2/A3/A5: Hvar Harbour cleanup, 29 menciones por contexto
 - Hace falta una pasada por TODAS las meta descriptions y schema descriptions
   con ese filtro, no solo estas dos.
 - Es la misma familia del error que costo un privado regalado en GetYourGuide.
-
-### "captain" en copy publico (nunca grepeado)
-El cluster de skipper busco "local captain", no "captain" solo. Confirmado
-al menos:
-- lib/tours-data.ts, descripcion de Pakleni: "Your captain chooses the best
-  stops"
-- lib/tours-data.ts, descripcion de Sunset: "Your captain focuses on safety...
-  and your skipper chooses the stops" - usa las dos palabras para la misma
-  persona en una oracion, parece que hubiera dos personas a bordo.
-Falta grep completo case-insensitive de "captain" y decidir criterio: o todo
-"skipper" o todo "captain", no mezclado dentro de la misma tour.
 
 ### Underwater scooter con alcance viejo en schema
 lib/schema.ts, rental schema: "Underwater scooter available as an add-on on
@@ -102,3 +98,11 @@ Lineas 121-134 y 222: template del scooter de tierra (discontinuado).
 - Meeting point label en Contact.tsx: "Beach Križa, at the MareBoats barrel"
   (el header ya dice "Meeting point" y el link ya apunta al barril, el label
   puede ser exacto sin costo de keyword).
+- Testimonials atribuidos a "Sarah M." (Testimonials.tsx:16 y
+  landing/explore/page.tsx:32): "Captain" dentro de la cita no se toca.
+  Cambiar la palabra dentro de una cita es falsificarla, y en ingles
+  coloquial "Captain" es lo natural para el rol.
+- yacht-sailboat-taxi notIncludes "handled by your captain" (tours-data.ts:654):
+  "captain" se queda. Ahi es el capitan del yate del CLIENTE, no MareBoats.
+  Cambiarlo a "skipper" lo confundiria con el nuestro justo en la linea que
+  explica quien paga el combustible.
