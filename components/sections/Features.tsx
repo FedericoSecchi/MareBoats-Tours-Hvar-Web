@@ -15,7 +15,7 @@ const features: Feature[] = [
   {
     title: 'Knows the island',
     description:
-      'Born in Hvar. Knows every cove, every wind, and which beach is empty in the morning.',
+      'Thousands of hours on this stretch of coast. Knows every cove, every wind, and which beach is empty in the morning.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="9" />
