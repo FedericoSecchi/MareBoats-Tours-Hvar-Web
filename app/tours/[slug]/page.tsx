@@ -49,7 +49,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
   const title = titleMap[tour.slug] ?? `${tour.name} from Hvar, Croatia | MareBoats Hvar`;
   const description = descriptionMap[tour.slug] ?? tour.shortDescription;
-  const ogUrl = `${SITE}${tour.images[0].src}`;
+  const ogImage = tour.heroImage ?? tour.images[0];
+  const ogUrl = `${SITE}${ogImage.src}`;
 
   return {
     title,
@@ -63,7 +64,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       type: 'website',
       locale: 'en_US',
       siteName: 'MareBoats Hvar',
-      images: [{ url: ogUrl, width: 1200, height: 630, alt: tour.images[0].alt }],
+      images: [{ url: ogUrl, width: 1200, height: 630, alt: ogImage.alt }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -83,7 +84,7 @@ export default function TourDetailPage({ params }: PageProps) {
   const tour = getTourBySlug(params.slug);
   if (!tour) notFound();
 
-  const hero = tour.images[0];
+  const hero = tour.heroImage ?? tour.images[0];
   const waMessage =
     tour.slug === 'yacht-sailboat-taxi'
       ? 'Hi! I need a water taxi from my yacht. My location is: [coordinates]'

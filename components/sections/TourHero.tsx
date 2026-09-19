@@ -9,7 +9,7 @@ type TourHeroProps = {
 };
 
 export default function TourHero({ tour }: TourHeroProps) {
-  const hero = tour.images[0];
+  const hero = tour.heroImage ?? tour.images[0];
   const waMessage =
     tour.slug === 'yacht-sailboat-taxi'
       ? 'Hi! I need a water taxi from my yacht. My location is: [coordinates]'

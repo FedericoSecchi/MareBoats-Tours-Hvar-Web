@@ -106,6 +106,8 @@ export type TourRecord = {
   crossLink?: { href: string; before: string; anchor: string; after?: string };
   /** Pass-through to <TourCardImage objectPosition>. Use for portrait/panorama images where 'center' cover crops the subject. Any valid CSS object-position ('center', 'top', 'center 30%'). */
   cardImagePosition?: string;
+  /** Optional dedicated hero/OG image. Falls back to images[0] when unset. Use when the card carousel should show close-ups but the hero needs a wide establishing shot. */
+  heroImage?: TourImage;
 };
 
 const MEETING = 'Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel';
@@ -794,15 +796,15 @@ Over from Split for the day? Tell us when your ferry leaves and we will fit the 
         alt: 'Hidden cove in the Pakleni Islands seen from the water',
       },
       {
-        src: '/images/tours/hvar-red-rocks-cliffs-aerial-drone-2026.jpg',
-        alt: 'Red Rocks iron-red cliffs on the south coast of Hvar from above',
-      },
-      {
-        src: '/images/destinations/hvar-pakleni-islands-cove-speedboat-drone-2026-03.jpg',
-        alt: 'Speedboat drifting in a Pakleni Islands cove on a calm day',
+        src: '/images/tours/hvar-red-rocks-cliffs-speedboat-aerial-drone-2026-02.jpg',
+        alt: 'Iron-red cliffs at Red Rocks with a speedboat drifting below',
       },
     ],
     cardImagePosition: 'center',
+    heroImage: {
+      src: '/images/destinations/hvar-open-sea-speedboat-aerial-drone-2026-02.jpg',
+      alt: 'Speedboat cruising in open sea off the south coast of Hvar',
+    },
     keywords: [
       'scenic boat tour hvar',
       'short boat tour hvar',
