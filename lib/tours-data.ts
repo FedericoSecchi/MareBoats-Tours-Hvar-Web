@@ -104,6 +104,8 @@ export type TourRecord = {
   comparison?: TourComparison;
   /** Short contextual link out to another tour or page. Rendered as a one-line paragraph near the bottom of the detail page. */
   crossLink?: { href: string; before: string; anchor: string; after?: string };
+  /** Pass-through to <TourCardImage objectPosition>. Use for portrait/panorama images where 'center' cover crops the subject. Any valid CSS object-position ('center', 'top', 'center 30%'). */
+  cardImagePosition?: string;
 };
 
 const MEETING = 'Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel';
@@ -754,14 +756,14 @@ If you are searching for a private water taxi in Hvar, a yacht transfer or a sai
     name: 'Scenic Coast Cruise in Hvar',
     tagline: 'Two hours along the south coast. Engine off at every bay.',
     shortDescription:
-      'Two-hour private boat cruise from Beach Križa along the south coast of Hvar. Four bays, engine off at each, no anchoring and no landing. Private boat.',
-    description: `We leave from Beach Križa and follow the south coast of Hvar: Red Rocks, Dubovica, Borče Bay, and the Pakleni channel.
+      'Two-hour private boat cruise from Hvar along the south coast. Four bays, engine off at each, no anchoring and no landing. Private boat. Meet at Beach Križa, a few minutes from Hvar town.',
+    description: `We leave Hvar and follow the south coast: Red Rocks, Dubovica, Borče Bay, and the Pakleni channel. At each one the engine goes off and the boat drifts. You get a few minutes of nothing but water and rock before we move on.
 
-At each one the engine goes off and the boat drifts. You get a few minutes of nothing but water and rock before we move on.
+Depending on the sea we also pass Žarače, Milna, Mlini and Ždrilca along the way. We do not stop at those; they are part of the route.
 
-Two hours, start to finish. Up to 4 people on board, 6 if you need it. The boat is yours for the morning.
+Two hours, start to finish. Up to 4 people on board, 6 if you need it. The boat is yours for the morning, and you are back in Hvar two hours later.
 
-Over from Split for the day? Tell us when your ferry leaves and we will fit the cruise around it. Departures from 9am to 3pm, and two hours means two hours. You will be back at Križa with time to spare.`,
+Over from Split for the day? Tell us when your ferry leaves and we will fit the cruise around it. Departures from 9am to 3pm, and two hours means two hours. You will be back at Beach Križa with time to spare.`,
     duration: '2 HRS',
     durationIso: 'PT2H',
     price: formatPriceFull('scenic-coast-cruise'),
@@ -788,14 +790,19 @@ Over from Split for the day? Tell us when your ferry leaves and we will fit the 
     ],
     images: [
       {
-        src: '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg',
-        alt: 'Dubovica Beach aerial view from a scenic boat cruise on the south coast of Hvar',
+        src: '/images/tours/hvar-pakleni-islands-hidden-cove-drone-2026-02.jpg',
+        alt: 'Hidden cove in the Pakleni Islands seen from the water',
       },
       {
-        src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-01.jpg',
-        alt: 'Pakleni channel from a speedboat - two-hour scenic cruise from Hvar Croatia',
+        src: '/images/tours/hvar-red-rocks-cliffs-aerial-drone-2026.jpg',
+        alt: 'Red Rocks iron-red cliffs on the south coast of Hvar from above',
+      },
+      {
+        src: '/images/destinations/hvar-pakleni-islands-cove-speedboat-drone-2026-03.jpg',
+        alt: 'Speedboat drifting in a Pakleni Islands cove on a calm day',
       },
     ],
+    cardImagePosition: 'center',
     keywords: [
       'scenic boat tour hvar',
       'short boat tour hvar',
@@ -819,23 +826,13 @@ Over from Split for the day? Tell us when your ferry leaves and we will fit the 
         name: 'Dubovica',
         description:
           'A cove with a 16th-century stone house at the edge of the bay. Most photos of Dubovica are taken from the road above. From the boat you see it from the water, which is the other angle.',
-        activities: 'Engine off, drifting in the bay. No landing at the beach.',
+        activities: 'Engine off, drifting in the bay. No landing at the beach. From Dubovica we continue past Žarače and Milna without stopping.',
         conditions: 'Sheltered in most conditions.',
-      },
-      {
-        name: 'Žarače',
-        description:
-          'A narrow sheltered bay on the south coast, hemmed in by hills. Also written "Zarace" without the diacritic.',
-        activities: 'Engine off, drifting in protected water. No landing.',
-        conditions: 'Sheltered in most conditions.',
-        isOptional: true,
-        optionalNote:
-          'Occasional stop depending on the sea and the day. Not counted among the four bays on the route.',
       },
       {
         name: 'Borče Bay',
         description:
-          'A quiet cove near the village of Milna on the south coast of Hvar, protected from the wind. This is Milna on Hvar island, not Milna on Brač.',
+          'A quiet cove on the south coast of Hvar, protected from the wind. Do not confuse it with Milna: Milna is the village we pass just before reaching Borče, and it is on Hvar island, not on Brač.',
         activities: 'Engine off, drifting in calm water. This is usually where people stop talking. No landing.',
         conditions:
           'Protected from northwesterly wind (maestral). May get some swell with southeast wind.',
@@ -844,14 +841,14 @@ Over from Split for the day? Tell us when your ferry leaves and we will fit the 
         name: 'The Pakleni channel',
         description:
           'The stretch of water between Hvar and the Pakleni Islands. The clearest water on the route.',
-        activities: 'The boat slows down through the channel for the water colour. Engine off in a sheltered spot before the return leg. No landing on the islands.',
+        activities: 'The boat slows down through the channel for the water colour. Engine off in a sheltered spot before the return leg. On the way back we pass Mlini and Ždrilca without stopping. No landing on the islands.',
         conditions:
           'Sheltered in almost all conditions. Some current between islands with strong maestral.',
       },
     ],
     fastFacts: [
-      { label: 'Duration',      value: '2 hours, Križa to Križa' },
-      { label: 'Departs',       value: 'Beach Križa. Any time between 9am and 3pm' },
+      { label: 'Duration',      value: '2 hours, Hvar to Hvar' },
+      { label: 'Departs',       value: 'Beach Križa, a few minutes from Hvar town. Any time between 9am and 3pm.' },
       { label: 'Capacity',      value: `Private boat, one group. €${SC.privateBase} for up to ${SC.privateBaseGuests} guests. Guests ${SC.privateBaseGuests! + 1} and ${SC.privateMaxGuests}, €${SC.privatePerExtraGuest} each. Maximum ${SC.privateMaxGuests}.` },
       { label: 'Route',         value: 'Four bays on the south coast of Hvar, engine off at each. No anchoring and no landing.' },
       { label: 'Meeting point', value: MEETING },
@@ -863,7 +860,7 @@ Over from Split for the day? Tell us when your ferry leaves and we will fit the 
       {
         question: 'How long is the Scenic Coast Cruise and can I make an afternoon ferry back to Split?',
         answer:
-          'The cruise runs two hours, start to finish. Departures are from 9am to 3pm, so we can fit the cruise around the ferry schedule. Tell us your ferry time when you book and we will give you the departure slot that leaves you back at Beach Križa with time to walk to the ferry terminal.',
+          'The cruise runs two hours, start to finish, and returns to Hvar. Departures are from 9am to 3pm, so we can fit the cruise around the ferry schedule. Tell us your ferry time when you book and we will give you the departure slot that leaves you back at Beach Križa (a few minutes from the ferry terminal) with time to walk over.',
       },
       {
         question: 'What is the difference between this and the 4-hour Red Rocks & Pakleni tour?',
@@ -914,7 +911,7 @@ Over from Split for the day? Tell us when your ferry leaves and we will fit the 
     comparison: {
       heading: 'Scenic Coast Cruise or the 4-hour Red Rocks & Pakleni tour: which one fits your day?',
       intro:
-        'Both tours leave from Beach Križa and follow the south coast of Hvar. The difference is what you do at each bay.',
+        'Both tours leave Hvar and follow the south coast. The difference is what you do at each bay.',
       thisLabel: 'Scenic Coast Cruise',
       otherLabel: 'Red Rocks & Pakleni',
       otherHref: '/tours/red-rocks-pakleni-islands',

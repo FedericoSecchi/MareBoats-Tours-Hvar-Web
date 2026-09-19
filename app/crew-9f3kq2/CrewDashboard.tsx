@@ -157,7 +157,8 @@ const SERVICES: Service[] = [
     addonScooter: false,
     addonPhotoVideo: false,
     notes: [
-      'No swim stops. Engine off at Red Rocks, Dubovica, Borče Bay, Pakleni channel. No anchoring, no landing.',
+      'Engine off at Red Rocks, Dubovica, Borče Bay, Pakleni channel (the four bays we sell). No anchoring, no landing.',
+      'Sailing pass-bys (no stop): Žarače and Milna between Dubovica and Borče, then Mlini and Ždrilca on the return leg from Pakleni. Depends on the sea.',
       'Cancellation: direct bookings — full refund only if MareBoats cancels for weather. Guest cancellations not refunded. GYG bookings run under the GYG 24h policy (cannot be overridden from the listing). Confirm the channel before answering a cancellation.',
     ],
     pricing: {

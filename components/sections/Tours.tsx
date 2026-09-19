@@ -14,12 +14,12 @@ export default function Tours() {
   return (
     <section id="tours" ref={ref} className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
       <motion.div
-        className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6 [&>article]:lg:col-span-2 [&>article:nth-last-child(2)]:lg:col-start-2 [&>article:nth-last-child(1)]:lg:col-start-4"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={staggerListOnly}
       >
-        <motion.div variants={fadeInUpItem} className="col-span-full mb-2 md:col-span-2 lg:col-span-3">
+        <motion.div variants={fadeInUpItem} className="col-span-full mb-2 md:col-span-2 lg:col-span-6">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Our Tours
           </p>
@@ -34,7 +34,7 @@ export default function Tours() {
 
         <motion.div
           variants={fadeInUpItem}
-          className="col-span-full flex justify-end md:col-span-2 lg:col-span-3 -mt-2"
+          className="col-span-full flex justify-end md:col-span-2 lg:col-span-6 -mt-2"
         >
           <Link
             href="/tours"
@@ -66,6 +66,7 @@ export default function Tours() {
                 images={tour.images}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 badge={tour.duration}
+                objectPosition={tour.cardImagePosition}
               />
               <div className="flex flex-col gap-2 p-6 pb-4">
                 <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">

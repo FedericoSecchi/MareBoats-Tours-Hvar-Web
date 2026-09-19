@@ -86,9 +86,11 @@ Open deck layout. No assigned seats.
 
 ### Scenic Coast Cruise
 - Private: €${sc.privateBase} for up to ${sc.privateBaseGuests} guests, +€${sc.privatePerExtraGuest} per extra guest to a maximum of ${sc.privateMaxGuests} (€${getScenicPrice('scenic-coast-cruise', sc.privateBaseGuests! + 1)} for ${sc.privateBaseGuests! + 1}, €${getScenicPrice('scenic-coast-cruise', sc.privateMaxGuests!)} for ${sc.privateMaxGuests})
-- Duration: 2 hours
-- Route (in sailing order): Red Rocks, Dubovica, Borče Bay, the Pakleni channel. Engine off at each bay; no anchoring, no landing.
+- Duration: 2 hours (Hvar to Hvar)
+- Stops (engine off, in sailing order): Red Rocks, Dubovica, Borče Bay, the Pakleni channel. No anchoring, no landing.
+- Sailing pass-bys (no stop, no engine off): Žarače and Milna between Dubovica and Borče, then Mlini and Ždrilca on the return leg from Pakleni. Passed depending on the sea.
 - Departures: any time between 9am and 3pm
+- Meeting point: Beach Križa, a few minutes from Hvar town
 - Includes: private boat, skipper, fuel, bottled water
 - On request: bottle of prosecco €${SCENIC_PROSECCO}
 - Cancellation: full refund if MareBoats cancels for weather; guest cancellations are not refunded

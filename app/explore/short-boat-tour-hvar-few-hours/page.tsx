@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   ...generateSEO({
     title: 'Short Boat Tour Hvar: A Few Hours on the Water',
     description:
-      `Two-hour private boat cruise from Beach Križa. Four bays on the south coast of Hvar, engine off at each. Fits a day trip from Split or an afternoon before the ferry. From €${SCENIC_BASE} private.`,
+      `Two-hour private boat cruise from Hvar. Four bays on the south coast, engine off at each. Fits a day trip from Split or an afternoon before the ferry. Meet at Beach Križa, a few minutes from town. From €${SCENIC_BASE} private.`,
     keywords: [
       'short boat tour hvar',
       'scenic boat tour hvar',
@@ -47,12 +47,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: 'I only have a few hours in Hvar. What can I do on the water?',
     answer:
-      'The two-hour Scenic Coast Cruise. You leave from Beach Križa, follow the south coast of Hvar past Red Rocks, Dubovica and Borče Bay, and cross into the Pakleni channel. The engine goes off at each bay. Two hours, start to finish. Departures any time between 9am and 3pm.',
+      'The two-hour Scenic Coast Cruise. You leave Hvar, follow the south coast past Red Rocks, Dubovica and Borče Bay, and cross into the Pakleni channel. The engine goes off at each of those four bays. Depending on the sea we also pass Žarače, Milna, Mlini and Ždrilca along the way. Two hours, start to finish. Departures any time between 9am and 3pm from Beach Križa, a few minutes from Hvar town.',
   },
   {
     question: 'I am coming over from Split for the day. Can this fit around my ferry?',
     answer:
-      'Yes. Tell us when your ferry leaves and we pick the slot. The cruise runs two hours from Beach Križa back to Beach Križa, and the last departure is at 3pm, so it fits before an afternoon or evening ferry back to Split.',
+      'Yes. Tell us when your ferry leaves and we pick the slot. The cruise runs two hours from Hvar back to Hvar, and the last departure is at 3pm, so it fits before an afternoon or evening ferry back to Split.',
   },
   {
     question: 'Do we stop to swim?',
@@ -101,7 +101,7 @@ export default function ShortBoatTourPage() {
             What can I do in Hvar for a few hours on the water?
           </h1>
           <p className="mt-6 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            A two-hour private cruise along the south coast. You leave from Beach Križa, pass Red Rocks, Dubovica and Borče Bay, and cross into the Pakleni channel. The engine goes off at each of four bays. No anchoring, no landing. Two hours, start to finish.
+            A two-hour private cruise along the south coast. You leave Hvar, pass Red Rocks, Dubovica and Borče Bay, and cross into the Pakleni channel. The engine goes off at each of those four bays. Depending on the sea we also pass Žarače, Milna, Mlini and Ždrilca along the way, without stopping. No anchoring, no landing. Two hours, start to finish. Meet at Beach Križa, a few minutes from Hvar town.
           </p>
         </div>
       </section>
@@ -142,13 +142,13 @@ export default function ShortBoatTourPage() {
           </h2>
           <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-[color:var(--gray)]">
             <p>
-              Departures are any time between 9am and 3pm. Tell us when your ferry leaves. We pick the slot that gets you back at Beach Križa with time to walk to the ferry terminal.
+              Departures are any time between 9am and 3pm. Tell us when your ferry leaves. We pick the slot that gets you back in Hvar with time to walk to the ferry terminal.
             </p>
             <p>
               Two hours means two hours. You will not be told a boat is running late because the last group stayed longer at a beach. There is no last group. The tour has no anchoring stop, so the return time is a return time.
             </p>
             <p>
-              The MareBoats meeting point at Beach Križa is a three-minute walk from the Hvar ferry terminal, along the coastal path towards the Franciscan Monastery.
+              The MareBoats meeting point is at Beach Križa, a few minutes from Hvar town: three minutes on foot from the ferry terminal, along the coastal path towards the Franciscan Monastery.
             </p>
           </div>
         </div>

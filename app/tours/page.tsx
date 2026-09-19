@@ -92,8 +92,8 @@ const TOUR_CARDS: TourCard[] = [
     price: formatPriceShort('scenic-coast-cruise'),
     summary:
       'Two hours along the south coast of Hvar with the engine off at each bay. Four bays, no anchoring, no landing.',
-    image: '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg',
-    imageAlt: 'Scenic Coast Cruise from Hvar - south coast bays from the water',
+    image: '/images/tours/hvar-pakleni-islands-hidden-cove-drone-2026-02.jpg',
+    imageAlt: 'Hidden cove in the Pakleni Islands seen from the water',
     waMessage: "Hi! I'd like to book the Scenic Coast Cruise",
   },
   {
@@ -191,6 +191,7 @@ export default function ToursIndexPage() {
                     images={images}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     badge={tour.duration}
+                    objectPosition={record?.cardImagePosition}
                   />
                   <div className="flex flex-col gap-2 p-6 pb-4">
                     <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
