@@ -178,12 +178,12 @@ export default function ToursIndexPage() {
 
       {/* Tours grid */}
       <section className="px-4 py-16 md:py-20">
-        <ul className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mx-auto flex max-w-container flex-wrap justify-center gap-6">
           {cards.map((tour) => {
             const record = toursBySlug.get(tour.slug);
             const images = record?.images ?? [{ src: tour.image, alt: tour.imageAlt }];
             return (
-            <li key={tour.slug} className="flex">
+            <li key={tour.slug} className="flex w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
               <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
                 {/* Single link: image + title + summary navigate to tour detail */}
                 <Link href={`/tours/${tour.slug}/`} className="flex flex-1 flex-col focus-visible:outline-none">
@@ -230,7 +230,7 @@ export default function ToursIndexPage() {
             </li>
             );
           })}
-          <li className="flex">
+          <li className="flex w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
             <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]">
               <TourCardImage
                 images={[
