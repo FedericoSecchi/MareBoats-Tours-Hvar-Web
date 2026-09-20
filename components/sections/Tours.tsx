@@ -14,12 +14,12 @@ export default function Tours() {
   return (
     <section id="tours" ref={ref} className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
       <motion.div
-        className="mx-auto grid max-w-container grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6 [&>article]:lg:col-span-2 [&>article:nth-last-child(2)]:lg:col-start-2 [&>article:nth-last-child(1)]:lg:col-start-4"
+        className="mx-auto flex max-w-container flex-wrap justify-center gap-6"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={staggerListOnly}
       >
-        <motion.div variants={fadeInUpItem} className="col-span-full mb-2 md:col-span-2 lg:col-span-6">
+        <motion.div variants={fadeInUpItem} className="w-full mb-2">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
             Our Tours
           </p>
@@ -34,7 +34,7 @@ export default function Tours() {
 
         <motion.div
           variants={fadeInUpItem}
-          className="col-span-full flex justify-end md:col-span-2 lg:col-span-6 -mt-2"
+          className="w-full flex justify-end -mt-2"
         >
           <Link
             href="/tours"
@@ -48,7 +48,7 @@ export default function Tours() {
           <motion.article
             key={tour.slug}
             variants={fadeInUpItem}
-            className="group flex h-full transform-gpu flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)]"
+            className="group flex h-full w-full transform-gpu flex-col overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.25)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(59,201,219,0.18)] focus-within:-translate-y-1.5 focus-within:shadow-[0_20px_40px_rgba(59,201,219,0.18)] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
           >
             {/* Single link: image + title + description navigate to tour detail */}
             <Link
@@ -64,7 +64,7 @@ export default function Tours() {
             >
               <TourCardImage
                 images={tour.images}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 badge={tour.duration}
                 objectPosition={tour.cardImagePosition}
               />
