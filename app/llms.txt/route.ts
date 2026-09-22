@@ -140,8 +140,8 @@ ${sunsetLines}
 
 ## Add-ons
 
-- Underwater Scooter: €${ADDONS.scooter}/unit (Red Rocks and Pakleni Islands private tours only)
-- Photo & Video Shoot: €${ADDONS.photoVideo} (private tours only, on request)
+- Tour Memories: Drone & Underwater Photos. Optional add-on for private tours. Drone, underwater and on board photos of the tour: up to 20 edited photos and up to 90 seconds of edited video, delivered within one week. €${ADDONS.photoVideo} per tour. Book via WhatsApp at least one day ahead, limited availability. ${SITE_URL}/hvar-boat-tour-photos/
+- Underwater scooters. Optional add-on for private tours, €${ADDONS.scooter} per scooter. Suitable for anyone comfortable floating in the water; battery lasts around one hour.
 - Extra wine bottle (Sunset Cruise only): €${SUNSET_WINE_EXTRA}
 
 ## How to Book
