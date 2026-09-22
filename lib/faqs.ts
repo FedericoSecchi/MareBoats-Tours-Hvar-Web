@@ -1,4 +1,4 @@
-import { EXTRAS } from '@/lib/pricing';
+import { ADDONS, EXTRAS } from '@/lib/pricing';
 
 export type FaqItem = { question: string; answer: string };
 
@@ -47,5 +47,25 @@ export const homepageFaqs: FaqItem[] = [
     question: 'Are my belongings safe on the boat?',
     answer:
       'Travel light. We keep a secure storage area on board for your phone, keys and valuables, so hand them over before you jump in. MareBoats Hvar is not responsible for items left unattended outside it.',
+  },
+  {
+    question: 'Do I need to be a strong swimmer to use an underwater scooter?',
+    answer:
+      'No. If you are comfortable floating in the water, you can use one.',
+  },
+  {
+    question: 'Can I use an underwater scooter with a life jacket?',
+    answer:
+      'Yes. It works best without one, but with a life jacket you simply stay at the surface.',
+  },
+  {
+    question: 'How long does the underwater scooter battery last?',
+    answer:
+      'Around one hour depending on use, which is more than enough for the swim stops.',
+  },
+  {
+    question: 'How do I add underwater scooters to my tour?',
+    answer:
+      `Message us on WhatsApp when you book or before your tour. €${ADDONS.scooter} per scooter.`,
   },
 ];

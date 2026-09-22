@@ -58,7 +58,7 @@ const tourDetails: TourDetail[] = [
     extraCosts: 'Lunch not included - restaurants available at Pakleni',
     addOns: [
       `Underwater Scooter €${ADDONS.scooter}/unit · On request via WhatsApp`,
-      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
+      `Tour Memories: Drone & Underwater Photos - €${ADDONS.photoVideo}. Up to 20 edited photos and up to 90 seconds of edited video. Delivered within one week. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -75,7 +75,7 @@ const tourDetails: TourDetail[] = [
     extraCosts: 'None',
     addOns: [
       `Underwater Scooter €${ADDONS.scooter}/unit · On request via WhatsApp`,
-      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
+      `Tour Memories: Drone & Underwater Photos - €${ADDONS.photoVideo}. Up to 20 edited photos and up to 90 seconds of edited video. Delivered within one week. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -88,7 +88,7 @@ const tourDetails: TourDetail[] = [
     ],
     extraCosts: 'None',
     addOns: [
-      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
+      `Tour Memories: Drone & Underwater Photos - €${ADDONS.photoVideo}. Up to 20 edited photos and up to 90 seconds of edited video. Delivered within one week. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -102,7 +102,7 @@ const tourDetails: TourDetail[] = [
     extraCosts: 'Fuel not included - discussed with Nikola at booking',
     addOns: [
       `Underwater Scooter €${ADDONS.scooter}/unit · On request via WhatsApp`,
-      `Photo & Video Shoot - €${ADDONS.photoVideo}. Drone, underwater and on-board. Full gallery after the tour. Book in advance via WhatsApp.`,
+      `Tour Memories: Drone & Underwater Photos - €${ADDONS.photoVideo}. Up to 20 edited photos and up to 90 seconds of edited video. Delivered within one week. Book in advance via WhatsApp.`,
     ],
   },
   {
@@ -398,24 +398,24 @@ export default function PreTourPage() {
               </div>
             </article>
 
-            {/* Card 2 - Photo & Video */}
+            {/* Card 2 - Tour Memories */}
             <article className="flex flex-1 flex-col rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                  Photo &amp; Video Shoot
+                  Tour Memories: Drone &amp; Underwater Photos
                 </h3>
                 <span className="shrink-0 rounded-pill bg-[color:var(--accent)] px-3 py-1 font-body text-xs font-semibold text-[color:var(--bg)]">
                   €{ADDONS.photoVideo}
                 </span>
               </div>
               <p className="mt-3 font-body text-sm leading-relaxed text-[color:var(--gray)]">
-                We capture the whole day - on board, underwater, and from above with the drone. Full
-                gallery delivered after the tour.
+                Up to 20 edited photos and up to 90 seconds of edited video. Drone, underwater and
+                on board shots, delivered within one week.
               </p>
               <div className="mt-auto pt-6">
                 <WhatsAppTrackedLink
-                  href={waUrl(`Hi! I'd like to add photo & video shooting to my tour - €${ADDONS.photoVideo}`)}
-                  ctaText="add_photo"
+                  href={waUrl("Hi! I'd like to add Tour Memories to my private tour on [date].")}
+                  ctaText="add_tour_memories"
                   label="upsell"
                   className={upsellBtnClass}
                 >

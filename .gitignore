@@ -17,3 +17,9 @@ out
 # TypeScript
 tsconfig.tsbuildinfo
 next-env.d.ts
+
+# Video masters — never commit uncompressed originals.
+# Masters live outside the repo (see public/videos/README.md).
+*.mov
+master-*.mp4
+*-master.mp4

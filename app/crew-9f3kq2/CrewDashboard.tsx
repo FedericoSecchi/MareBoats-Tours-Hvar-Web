@@ -782,7 +782,7 @@ function QuoteBuilder({ service }: { service: Service }) {
       addonCount++;
     }
     if (addonPhotoVideo && photoVideo) {
-      lines.push(`Photo and video: ${ADDONS.photoVideo} EUR`);
+      lines.push(`Tour Memories (drone and underwater photos): ${ADDONS.photoVideo} EUR`);
       addonCount++;
     }
     if (pricing.kind === 'sunset' && sunsetExtraWine) {
@@ -954,7 +954,7 @@ function QuoteBuilder({ service }: { service: Service }) {
           {addonPhotoVideo && (
             <label className="flex cursor-pointer items-center justify-between">
               <span className="font-body text-sm text-[color:var(--white)]">
-                Photo &amp; Video · €{ADDONS.photoVideo}
+                Tour Memories · €{ADDONS.photoVideo}
               </span>
               <input
                 type="checkbox"
@@ -1130,8 +1130,8 @@ function ServiceCard({ service }: { service: Service }) {
           </p>
           <p className="mt-0.5 font-body text-xs text-[color:var(--gray)]">
             {[
-              service.addonScooter && `Scooter €${ADDONS.scooter}/unit`,
-              service.addonPhotoVideo && `Photo & Video €${ADDONS.photoVideo}`,
+              service.addonScooter && `Underwater scooter €${ADDONS.scooter}/unit`,
+              service.addonPhotoVideo && `Tour Memories €${ADDONS.photoVideo}`,
             ]
               .filter(Boolean)
               .join(' · ')}

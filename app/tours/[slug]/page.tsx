@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { DOG_POLICY, getAllTourSlugs, getTourBySlug, toursData, type TourRecord } from '@/lib/tours-data';
-import { TOUR_PRICES } from '@/lib/pricing';
+import { ADDONS, TOUR_PRICES } from '@/lib/pricing';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { tourSchemaMap, buildTouristTripSchema, buildFAQSchema } from '@/lib/schema';
 import { getLastModified } from '@/lib/git-dates';
@@ -138,6 +138,9 @@ export default function TourDetailPage({ params }: PageProps) {
 
   const showBlueCaveConditions = tour.slug === 'blue-cave-pakleni-islands';
   const showSunsetConditions = tour.slug === 'sunset-cruise';
+  const showTourMemoriesLink = tour.addons?.some((a) => a.startsWith('Tour Memories')) ?? false;
+  const showUnderwaterScooterModule =
+    tour.addons?.some((a) => a.startsWith('Underwater Scooter')) ?? false;
 
   return (
     <main>
@@ -411,6 +414,55 @@ export default function TourDetailPage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+          {showTourMemoriesLink && (
+            <div className="md:col-span-2 rounded-2xl border border-[color:var(--accent)]/30 bg-[color:var(--surface)] p-6">
+              <p className="font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
+                Want photos of your day? Add Tour Memories: drone, underwater and on board photos,
+                €200 per tour.{' '}
+                <Link
+                  href="/hvar-boat-tour-photos/"
+                  className="font-semibold text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+                >
+                  See Tour Memories
+                </Link>
+              </p>
+            </div>
+          )}
+          {showUnderwaterScooterModule && (
+            <div className="md:col-span-2 overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)]">
+              <div className="grid gap-0 md:grid-cols-2">
+                <div className="relative aspect-[4/3] w-full overflow-hidden md:aspect-auto md:min-h-[240px]">
+                  <Image
+                    src="/images/boat/hvar-pakleni-islands-sea-scooter-snorkel-drone-2026-01.jpg"
+                    alt="Underwater scooter add-on for private boat tours in Hvar - Pakleni Islands Adriatic"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-center gap-4 p-6">
+                  <h2 className="font-display text-xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)] sm:text-2xl">
+                    Add underwater scooters
+                  </h2>
+                  <p className="font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
+                    Glide through the clear water of the coves without getting tired. If you can
+                    float, you can ride one. €{ADDONS.scooter} per scooter, private tours only. Ask
+                    us on WhatsApp when you book.
+                  </p>
+                  <div>
+                    <WhatsAppTrackedLink
+                      href={`https://wa.me/385951966734?text=${encodeURIComponent("Hi! I'd like to add an underwater scooter to my private tour.")}`}
+                      label="tour_page_underwater_scooter"
+                      ctaText="Ask on WhatsApp"
+                      className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
+                    >
+                      Ask on WhatsApp
+                    </WhatsAppTrackedLink>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
           <div className="md:col-span-2 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6">

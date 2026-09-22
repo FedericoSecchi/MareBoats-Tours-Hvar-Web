@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { homepageFaqs } from '@/lib/faqs';
@@ -78,6 +79,19 @@ export default function FAQ() {
               );
             })}
           </ul>
+
+          <div className="mt-8 rounded-2xl border border-[color:var(--accent)]/30 bg-[color:var(--surface)] p-6">
+            <p className="font-body text-sm leading-relaxed text-[color:var(--gray)] md:text-base">
+              Want photos of your day? Add Tour Memories: drone, underwater and on board photos,
+              €200 per tour.{' '}
+              <Link
+                href="/hvar-boat-tour-photos/"
+                className="font-semibold text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+              >
+                See Tour Memories
+              </Link>
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -113,7 +113,7 @@ export type TourRecord = {
 const MEETING = 'Beach Križa, at the MareBoats barrel, below the Beach Bay Hvar Hotel';
 const MAPS = 'https://maps.app.goo.gl/6AJmDACw4ZU1MnSKA';
 
-const PHOTO_VIDEO_ADDON = `Photo & Video Shoot - €${ADDONS.photoVideo}, on request. Drone, underwater and on-board footage. Full gallery after the tour. Must be booked in advance, subject to availability. Private tours only.`;
+const PHOTO_VIDEO_ADDON = `Tour Memories: Drone & Underwater Photos - €${ADDONS.photoVideo}, on request. Up to 20 edited photos and up to 90 seconds of edited video. Delivered within one week. Book at least one day ahead, availability is limited. Private tours only.`;
 
 const UNDERWATER_SCOOTER_ADDON = `Underwater Scooter - €${ADDONS.scooter}/unit, on request. Red Rocks and Pakleni Islands private tours only.`;
 
@@ -348,9 +348,24 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
           'No. There are no assigned seats on a MareBoats Hvar speedboat. There is room to move and to choose between shade and open sun during the day.',
       },
       {
-        question: 'Is an underwater scooter available on the Red Rocks & Pakleni Islands tour?',
+        question: 'Do I need to be a strong swimmer to use an underwater scooter?',
         answer:
-          `The underwater scooter is available as an add-on on private Red Rocks & Pakleni Islands tours. The cost is €${ADDONS.scooter} per unit for the full day. The price is per unit, not per person. Ask via WhatsApp when you book.`,
+          'No. If you are comfortable floating in the water, you can use one.',
+      },
+      {
+        question: 'Can I use an underwater scooter with a life jacket?',
+        answer:
+          'Yes. It works best without one, but with a life jacket you simply stay at the surface.',
+      },
+      {
+        question: 'How long does the underwater scooter battery last?',
+        answer:
+          'Around one hour depending on use, which is more than enough for the swim stops.',
+      },
+      {
+        question: 'How do I add underwater scooters to my tour?',
+        answer:
+          `Message us on WhatsApp when you book or before your tour. €${ADDONS.scooter} per scooter.`,
       },
     ],
     relatedGuide: {
@@ -433,6 +448,28 @@ Most guests who book this tour have already done a full-day trip and want a shor
     ],
     keywords: ['pakleni islands boat', 'half day tour hvar'],
     pricingOptions: getPricingOptions('pakleni-islands'),
+    faqs: [
+      {
+        question: 'Do I need to be a strong swimmer to use an underwater scooter?',
+        answer:
+          'No. If you are comfortable floating in the water, you can use one.',
+      },
+      {
+        question: 'Can I use an underwater scooter with a life jacket?',
+        answer:
+          'Yes. It works best without one, but with a life jacket you simply stay at the surface.',
+      },
+      {
+        question: 'How long does the underwater scooter battery last?',
+        answer:
+          'Around one hour depending on use, which is more than enough for the swim stops.',
+      },
+      {
+        question: 'How do I add underwater scooters to my tour?',
+        answer:
+          `Message us on WhatsApp when you book or before your tour. €${ADDONS.scooter} per scooter.`,
+      },
+    ],
   },
 
   {
