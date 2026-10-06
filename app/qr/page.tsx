@@ -184,14 +184,20 @@ export default function QrHubPage() {
               aria-label="MareBoats Hvar - home"
               className="inline-flex w-fit rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60"
             >
-              <Image
-                src="/img/mareboats-logo-horizontal.svg"
-                alt="MareBoats Hvar"
-                width={140}
-                height={20}
-                className="h-6 w-auto opacity-80"
-                priority
-              />
+              <picture>
+                <source
+                  media="(dynamic-range: high)"
+                  srcSet="/logo-hdr-horizontal-800.png"
+                />
+                <img
+                  src="/img/mareboats-logo-horizontal.svg"
+                  alt="MareBoats Hvar"
+                  width={140}
+                  height={20}
+                  fetchPriority="high"
+                  className="h-6 w-auto opacity-80"
+                />
+              </picture>
             </Link>
             <a
               href={WA_QR_HREF}
