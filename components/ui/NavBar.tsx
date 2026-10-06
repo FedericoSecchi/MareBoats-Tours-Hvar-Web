@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { trackWhatsAppClick } from '@/lib/analytics';
@@ -75,14 +74,20 @@ export default function NavBar() {
       <nav className="mx-auto flex h-16 w-full max-w-container items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="shrink-0" aria-label="MareBoats Hvar - home">
-          <Image
-            src="/img/mareboats-logo-horizontal.svg"
-            alt="Mare Boats Hvar"
-            width={200}
-            height={26}
-            className="h-7 w-auto object-contain object-left"
-            priority
-          />
+          <picture>
+            <source
+              media="(dynamic-range: high)"
+              srcSet="/logo-hdr-horizontal-800.png"
+            />
+            <img
+              src="/img/mareboats-logo-horizontal.svg"
+              alt="Mare Boats Hvar"
+              width={200}
+              height={26}
+              fetchPriority="high"
+              className="h-7 w-auto object-contain object-left"
+            />
+          </picture>
         </Link>
 
         {/* Desktop nav */}
