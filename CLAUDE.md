@@ -1255,6 +1255,8 @@ Antes de tocar cualquier cosa de esta sección, leer `docs/brief-seccion-premium
 
 Nota de nombre: la palabra "premium" sigue prohibida en copy público. "Premium" es solo el nombre interno de la sección; el término de cara al cliente es "private yacht" / "day yacht charter".
 
+**Estado 12/10/2026 (rama `yacht-2027`, PR #1):** fase 1 construida. Rutas `/private-yacht-hvar/`, `/blue-cave-half-day/`, `/boat-tour-with-lunch/`, `/request/`, `/request/thanks/`. Datos y copy en `lib/yacht-data.ts`; precios en `YACHT_PRICES` (hoy `null`). Interruptor único `YACHT_SECTION_LIVE` (hoy `false`): mientras esté apagado todo es noindex, fuera del sitemap y de `llms.txt`, y la card de `/transfers/` solo se ve en deploy previews. Formulario → n8n `MareBoats - Yacht Requests 2027` (`JPOWzdATbQG6zXo5`) → Notion `Yacht Requests 2027` → Telegram Core. Pendientes y bitácora en `docs/plan-yacht-loop.md`. Análisis de precio en el Project de Claude (nunca en el repo).
+
 ## Instrucciones para Claude Code
 - Leer CLAUDE.md completo antes de empezar
 - `npm run build` al terminar cada tarea — 0 errores. Commit con mensaje descriptivo.
