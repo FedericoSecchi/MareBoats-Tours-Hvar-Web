@@ -1249,7 +1249,7 @@ Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explo
 
 ---
 
-## 🛥️ Sección Saxdor (test de demanda 2027) — en preparación, 12/10/2026
+## 🛥️ Sección yacht (test de demanda 2027) — en preparación, 12/10/2026
 
 Antes de tocar cualquier cosa de esta sección, leer `docs/brief-seccion-premium.md`. Lo que figura ahí como **pendiente** (precios, fichas de producto, menús, mensaje 2027) no se escribe ni se inventa: se pregunta.
 

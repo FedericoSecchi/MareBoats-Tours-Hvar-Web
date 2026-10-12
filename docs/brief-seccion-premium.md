@@ -1,4 +1,4 @@
-# Brief sección premium (Saxdor) para Claude Code
+# Brief sección premium (yacht, temporada 2027) para Claude Code
 
 Estado al 12-oct-2026. Leer junto con CLAUDE.md. Las reglas de copy del sitio aplican sin excepción.
 
@@ -10,19 +10,27 @@ Estado al 12-oct-2026. Leer junto con CLAUDE.md. Las reglas de copy del sitio ap
 - Capacidad: **máximo 8 invitados** en todos los textos y en el schema.
 - Políticas: **iguales al sitio original** (reembolso total si MareBoats cancela por clima u operación; sin reembolso si cancela el cliente).
 - Chef: Juli, del equipo propio 2027. Foto real.
-- Experiencias que se mantienen: Blue Cave y Wine & Islands (el Saxdor llega más lejos).
+- Experiencias que se mantienen: Blue Cave y Wine & Islands (el barco nuevo llega más lejos).
 - Textos: los escriben Fede y Claude Code; lo que hay en Figma es relleno.
+
+### Decisiones del 12/10/2026 (aprobadas por Fede)
+
+- **El barco no se nombra** en copy, títulos, alt, schema ni `llms.txt`: ni marca ni modelo hasta que esté comprado. Se describe por lo que ofrece. Sin datos que identifiquen el modelo (eslora exacta, motorización). Sin fotos ni plano del fabricante. Las características que se pueden prometer las confirma Fede (pendiente).
+- **Escalera de producto, no canibalización**: cada página nueva apunta a una búsqueda distinta de las existentes y linkea a la versión speedboat actual. Nunca dos páginas para la misma búsqueda.
+- **Precio**: posicionado por encima de los tours actuales, mostrado como "desde €X" (nunca "on request"). El número sale de un análisis de costo pendiente; no se escribe hasta tenerlo.
+- **Formulario de solicitud 2027**: aprobado como segunda excepción a la regla "solo WhatsApp" (la primera es careers), porque es la herramienta de medición del test. WhatsApp va siempre al lado.
 
 ## Arquitectura (aprobada), orientada a la demanda real
 
-Fase 1:
-1. Hub: day yacht charter privado en Hvar (término de búsqueda: "yacht", no "luxury")
-2. Blue Cave privado desde Hvar: día completo y medio día (argumento: llegar antes por velocidad; decir la verdad sobre la espera y los botes oficiales)
-3. Almuerzo a bordo con Juli (término: "private boat tour with lunch"; "chef" no se busca)
-4. Transfer privado Split / aeropuerto de Split a Hvar
-5. Página del barco: Saxdor 320
+Fase 1 (3 páginas y 1 card):
+1. **Hub** "private yacht Hvar". Palabras: "private yacht Hvar", "Hvar yacht day", "Hvar yacht tour". Incluye un bloque sobre el barco (sin marca) y el FAQ con celebraciones.
+2. **Blue Cave medio día en yacht**. Palabras: "blue cave half day from Hvar" (la página actual de 7 h ya cubre "private"). Argumento: llegar antes por velocidad; decir la verdad sobre la espera y los botes oficiales. Linkea a `/tours/blue-cave-pakleni-islands/`.
+3. **Almuerzo a bordo con Juli**. Palabras: "private boat tour with lunch Hvar" ("chef" no se busca).
+4. **Card de transfer en yacht dentro de `/transfers/`**, no página nueva (ya existen `/transfers/` y `/tours/split-airport-transfer/`).
 
-Fase 2: Red Rocks privado, Sunset. Celebraciones va como FAQ del hub, no como página.
+Guardado hasta la compra: página del barco (diseño de Coti con plano de cubierta). Se publica con nombre cuando el barco exista.
+
+Fase 2: Red Rocks, Sunset y Wine & Islands con el template de experiencia.
 
 Slugs: proponer siguiendo el ruteo actual del repo (revisar antes de crear). No inventar rutas nuevas sin grep.
 
@@ -30,7 +38,7 @@ Slugs: proponer siguiendo el ruteo actual del repo (revisar antes de crear). No 
 
 Reglas:
 - Solo reseñas reales de Google, con nombre tal como figura, fecha, link al perfil de Google y rating real del perfil.
-- Presentarlas como reseñas de **MareBoats Hvar (temporada 2026)**, nunca como reseñas del Saxdor ni del almuerzo con chef: esos productos todavía no existen y en la UE está prohibido atribuir reseñas de un producto a otro.
+- Presentarlas como reseñas de **MareBoats Hvar (temporada 2026)**, nunca como reseñas del barco nuevo ni del almuerzo con chef: esos productos todavía no existen y en la UE está prohibido atribuir reseñas de un producto a otro.
 - Se puede recortar con "…" sin cambiar el sentido. No reescribir.
 - Las que están traducidas llevan la marca "Traducido por Google".
 
@@ -68,4 +76,5 @@ Eventos GA4 por página de la sección:
 - Precios de todos los productos en `lib/pricing.ts` (requiere análisis)
 - Ficha de cada producto: duración, horario de salida, punto de encuentro del Saxdor, qué incluye (requiere análisis)
 - Menús de Juli, dietas y alergias, bio (requiere análisis)
-- Mensaje 2027: qué pasa después de la solicitud y respuesta si no se compra el Saxdor (requiere análisis)
+- Mensaje 2027: qué pasa después de la solicitud y respuesta si no se compra el barco (requiere análisis)
+- Características del barco que se pueden prometer sin conocer el modelo final (Fede)
