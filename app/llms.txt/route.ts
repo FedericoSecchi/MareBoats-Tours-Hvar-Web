@@ -12,9 +12,29 @@ import {
   ADDONS,
   SCENIC_PROSECCO,
   getScenicPrice,
+  formatYachtFrom,
 } from '@/lib/pricing';
+import { YACHT_SECTION_LIVE, YACHT_EXPERIENCES, YACHT_BASE } from '@/lib/yacht-data';
 
 const SITE_URL = 'https://mareboatshvar.com';
+
+// Private yacht section: only listed once it is live (prices set, indexable).
+function buildYachtSection(): string {
+  if (!YACHT_SECTION_LIVE) return '';
+  const lines = YACHT_EXPERIENCES.map((e) => {
+    const price = formatYachtFrom(e.priceKey);
+    return `- ${e.h1}${price ? `: ${price} for the whole boat` : ''}. ${SITE_URL}${YACHT_BASE}/${e.slug}/`;
+  });
+  const transfer = formatYachtFrom('transfer');
+  return `## Private Yacht (season 2027)
+
+Private days on a larger boat, up to 8 guests, from Beach Križa. Bathroom on board, shade for every seat, lunch cooked on board on request. Requests for April to October 2027, nothing to pay until the date is confirmed.
+${lines.join('\n')}
+- Private yacht transfer Split or Split Airport to Hvar${transfer ? `: ${transfer}` : ''}. ${SITE_URL}/transfers/
+- Page: ${SITE_URL}${YACHT_BASE}/
+
+`;
+}
 
 function buildContent(): string {
   const bc = TOUR_PRICES['blue-cave-pakleni-islands'];
@@ -138,7 +158,7 @@ ${sunsetLines}
 - Private tour with skipper: from €${RENTAL_WITH_SKIPPER_FROM}
 - Page: ${SITE_URL}/rentals/
 
-## Add-ons
+${buildYachtSection()}## Add-ons
 
 - Tour Memories: Drone & Underwater Photos. Optional add-on for private tours. Drone, underwater and on board photos of the tour: up to 20 edited photos and up to 90 seconds of edited video, delivered within one week. €${ADDONS.photoVideo} per tour. Book via WhatsApp at least one day ahead, limited availability. ${SITE_URL}/hvar-boat-tour-photos/
 - Underwater scooters. Optional add-on for private tours, €${ADDONS.scooter} per scooter. Suitable for anyone comfortable floating in the water; battery lasts around one hour.
@@ -169,7 +189,7 @@ Note: Water taxi has no fixed meeting point. We come to your anchored boat.
 - Boat rental without a licence: ${SITE_URL}/rentals/boat-rental-hvar-without-licence/
 - Private boat tour for families and groups: ${SITE_URL}/explore/private-boat-tour-hvar-families/
 - Short boat tour from Hvar (few hours between ferries): ${SITE_URL}/explore/short-boat-tour-hvar-few-hours/
-`;
+${YACHT_SECTION_LIVE ? `- Private yacht days (season 2027): ${SITE_URL}${YACHT_BASE}/\n` : ''}`;
 }
 
 export function GET() {

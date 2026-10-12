@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { toursData } from '@/lib/tours-data';
+import { YACHT_SECTION_LIVE, YACHT_EXPERIENCES, YACHT_BASE } from '@/lib/yacht-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://mareboatshvar.com';
@@ -31,5 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...tourPages];
+  // Private yacht section: only once it is live. Request and thanks pages never.
+  const yachtPages: MetadataRoute.Sitemap = YACHT_SECTION_LIVE
+    ? [
+        { url: `${base}${YACHT_BASE}/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+        ...YACHT_EXPERIENCES.map((e) => ({
+          url: `${base}${YACHT_BASE}/${e.slug}/`,
+          lastModified: new Date(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.7,
+        })),
+      ]
+    : [];
+
+  return [...staticPages, ...tourPages, ...yachtPages];
 }

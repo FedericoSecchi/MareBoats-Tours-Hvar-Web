@@ -50,47 +50,69 @@ Pasar a `true` es decisión de Fede, con precios cargados. No lo hace el loop.
 ## Tareas
 
 ### A. Base
-- [ ] **A1. Datos.** `lib/yacht-data.ts` con el interruptor, las 2 experiencias y el hub como datos tipados (título, meta, H1, secciones, FAQ, includes), siguiendo el patrón de `TourRecord` (`stops`, `faqs`, `fastFacts`). En `lib/pricing.ts` agregar `YACHT_PRICES` con valores `null` y un formatter que devuelva `null` si no hay precio (el componente no muestra nada; nunca "on request"). Terminado: build ok, grep de que no hay números de precio en `yacht-data.ts`.
-- [ ] **A2. GSAP.** Instalar `gsap` (versión fija). Helper `lib/motion.ts` que respete `prefers-reduced-motion` y solo use `opacity` y `transform`. Terminado: build ok, peso del chunk anotado en bitácora.
+- [x] **A1. Datos.** `lib/yacht-data.ts` con el interruptor, las 2 experiencias y el hub como datos tipados (título, meta, H1, secciones, FAQ, includes), siguiendo el patrón de `TourRecord` (`stops`, `faqs`, `fastFacts`). En `lib/pricing.ts` agregar `YACHT_PRICES` con valores `null` y un formatter que devuelva `null` si no hay precio (el componente no muestra nada; nunca "on request"). Terminado: build ok, grep de que no hay números de precio en `yacht-data.ts`.
+- [x] **A2. GSAP.** Instalar `gsap` (versión fija). Helper `lib/yacht-motion.ts` (`lib/motion.ts` ya existía, es de framer-motion) que respete `prefers-reduced-motion` y solo use `opacity` y `transform`. Terminado: build ok, peso del chunk anotado en bitácora.
 
 ### B. Páginas
-- [ ] **B1. Hub** `/private-yacht-hvar/`. Bloques del Figma de Coti en orden; bloque del barco sin marca (solo las características permitidas arriba); experiencias; Juli; reseñas; FAQ (incluye celebraciones y "what happens after you request"); CTA doble (form + WhatsApp). Schema: `Service` + `BreadcrumbList` + `FAQPage`, sin `offers` mientras no haya precio, `maximumAttendeeCapacity: 8`, sin `aggregateRating` (ver regla del 09/08).
-- [ ] **B2. Template de experiencia** + `/private-yacht-hvar/blue-cave-half-day/`. Argumento: llegar antes por velocidad, decir la verdad sobre la espera y los botes oficiales de la cueva. Cross-link a `/tours/blue-cave-pakleni-islands/` ("prefer the full day by speedboat?"). Entrada de la cueva desde `EXTRAS.blueCave`.
-- [ ] **B3.** `/private-yacht-hvar/boat-tour-with-lunch/` con el mismo template. Juli (foto y bio de `/about/`), sample menu marcado pendiente. Cross-link a Red Rocks full day.
-- [ ] **B4. Reseñas.** Componente con las 6 del brief. Nombre, fecha, link al perfil si se tiene (si no, `[PENDIENTE: link]`), "Traducido por Google" en la de Sandra. Recortar con "…" las partes con nombres de skippers y los em-dashes de las citas (no reemplazar por otro signo: recortar). Encabezado: "What guests said about MareBoats Hvar in 2026". Las palabras prohibidas que aparezcan dentro de citas son del cliente: se dejan.
-- [ ] **B5. Menú de la sección** (referencia kam_UIX), solo en rutas `/private-yacht-hvar/*`. El header global sigue intacto.
+- [x] **B1. Hub** `/private-yacht-hvar/`. Bloques del Figma de Coti en orden; bloque del barco sin marca (solo las características permitidas arriba); experiencias; Juli; reseñas; FAQ (incluye celebraciones y "what happens after you request"); CTA doble (form + WhatsApp). Schema: `Service` + `BreadcrumbList` + `FAQPage`, sin `offers` mientras no haya precio, `maximumAttendeeCapacity: 8`, sin `aggregateRating` (ver regla del 09/08).
+- [x] **B2. Template de experiencia** + `/private-yacht-hvar/blue-cave-half-day/`. Argumento: llegar antes por velocidad, decir la verdad sobre la espera y los botes oficiales de la cueva. Cross-link a `/tours/blue-cave-pakleni-islands/` ("prefer the full day by speedboat?"). Entrada de la cueva desde `EXTRAS.blueCave`.
+- [x] **B3.** `/private-yacht-hvar/boat-tour-with-lunch/` con el mismo template. Juli (foto y bio de `/about/`), sample menu marcado pendiente. Cross-link a Red Rocks full day.
+- [x] **B4. Reseñas.** Componente con las 6 del brief. Nombre, fecha, link al perfil si se tiene (si no, `[PENDIENTE: link]`), "Traducido por Google" en la de Sandra. Recortar con "…" las partes con nombres de skippers y los em-dashes de las citas (no reemplazar por otro signo: recortar). Encabezado: "What guests said about MareBoats Hvar in 2026". Las palabras prohibidas que aparezcan dentro de citas son del cliente: se dejan.
+- [x] **B5. Menú de la sección** (referencia kam_UIX), solo en rutas `/private-yacht-hvar/*`. El header global sigue intacto.
 
 ### C. Formulario y medición
-- [ ] **C1. Notion.** Base "Yacht Requests 2027" junto a "Skipper Applications" (misma página padre). Campos: nombre, mail, WhatsApp, experiencia, fecha deseada, flexibilidad, personas (1-8), ocasión, alergias/dietas, mensaje, idioma, página de origen, UTMs, fecha de envío. Compartirla con la integración `Kosmos n8n`.
-- [ ] **C2. Telegram.** Crear el topic "Yacht Requests" en MareBoats Core (`-1004479127955`) con el bot (`createForumTopic`). Si el bot no tiene permiso, usar el topic General de Core y anotarlo en Bloqueos.
-- [ ] **C3. n8n.** Workflow `MareBoats - Yacht Requests 2027` copiando el patrón de `MareBoats - Skipper Applications` (`1tq81P7T3YNYVTQ7`): Webhook (`allowedOrigins` = `https://mareboatshvar.com` **y** el dominio de deploy preview de Netlify) → Validate (honeypot, fecha con regex `^(202[7])-\d{2}-\d{2}$`, personas 1-8) → IF → Notion por HTTP Request → Telegram en inglés → Respond. Validar, crear, timezone Europe/Zagreb, **publicar**. Probar con un POST real y borrar la fila de prueba de Notion.
-- [ ] **C4. Form** `/private-yacht-hvar/request/` (`'use client'` solo el form). Fecha con validación en tres capas como careers (rango: abril a octubre 2027). Honeypot `website` fuera de pantalla. Botón de WhatsApp al lado con mensaje prellenado por experiencia. Al enviar: redirige a `/request/thanks/`.
-- [ ] **C5. GA4.** `premium_form_submit` con `experience`; `whatsapp_click` con `page_section=premium` y `experience`; evento propio en la página de gracias. Verificar en el build que los `gtag` se llaman (log o test).
-- [ ] **C6. Privacy.** Agregar a `/privacy/` el tratamiento de las solicitudes de yacht (misma base legal, mismos encargados, borrado el 31/03/2028 o al terminar la temporada 2027). Marcar en Bloqueos que esto también lo tiene que ver el asesor de Josip.
+- [x] **C1. Notion.** Base "Yacht Requests 2027" junto a "Skipper Applications" (misma página padre). Campos: nombre, mail, WhatsApp, experiencia, fecha deseada, flexibilidad, personas (1-8), ocasión, alergias/dietas, mensaje, idioma, página de origen, UTMs, fecha de envío. Compartirla con la integración `Kosmos n8n`.
+- [x] **C2. Telegram.** Crear el topic "Yacht Requests" en MareBoats Core (`-1004479127955`) con el bot (`createForumTopic`). Si el bot no tiene permiso, usar el topic General de Core y anotarlo en Bloqueos.
+- [x] **C3. n8n.** Workflow `MareBoats - Yacht Requests 2027` copiando el patrón de `MareBoats - Skipper Applications` (`1tq81P7T3YNYVTQ7`): Webhook (`allowedOrigins` = `https://mareboatshvar.com` **y** el dominio de deploy preview de Netlify) → Validate (honeypot, fecha con regex `^(202[7])-\d{2}-\d{2}$`, personas 1-8) → IF → Notion por HTTP Request → Telegram en inglés → Respond. Validar, crear, timezone Europe/Zagreb, **publicar**. Probar con un POST real y borrar la fila de prueba de Notion.
+- [x] **C4. Form** `/private-yacht-hvar/request/` (`'use client'` solo el form). Fecha con validación en tres capas como careers (rango: abril a octubre 2027). Honeypot `website` fuera de pantalla. Botón de WhatsApp al lado con mensaje prellenado por experiencia. Al enviar: redirige a `/request/thanks/`.
+- [x] **C5. GA4.** `premium_form_submit` con `experience`; `whatsapp_click` con `page_section=premium` y `experience`; evento propio en la página de gracias. Verificar en el build que los `gtag` se llaman (log o test).
+- [x] **C6. Privacy.** Agregar a `/privacy/` el tratamiento de las solicitudes de yacht (misma base legal, mismos encargados, borrado el 31/03/2028 o al terminar la temporada 2027). Marcar en Bloqueos que esto también lo tiene que ver el asesor de Josip.
 
 ### D. Animaciones (probar primero, simplificar si pesan)
-- [ ] **D1. Hero zoom** (GSAP YzbPYMx) en el hub.
-- [ ] **D2. Life on the water** (William-shao bNBeRMe) reconstruido con ScrollTrigger `pin`, sin secuestrar el scroll.
-- [ ] **D3. Día de Juli** (vii120, clip-path sticky) en la página de almuerzo.
-- [ ] **D4. Revelados de texto** (SplitText) en H1/H2 de la sección, sutiles.
+- [x] **D1. Hero zoom** (GSAP YzbPYMx) en el hub.
+- [x] **D2. Life on the water** (William-shao bNBeRMe) reconstruido con ScrollTrigger `pin`, sin secuestrar el scroll.
+- [x] **D3. Día de Juli** (vii120, clip-path sticky) en la página de almuerzo.
+- [x] **D4. Revelados de texto** (SplitText) en H1/H2 de la sección, sutiles.
 
 ### E. Transfer
-- [ ] **E1.** Card "Private yacht transfer" dentro de `/transfers/`, renderizada solo si `YACHT_SECTION_LIVE`. Sin página propia. Precio `null` por ahora.
+- [x] **E1.** Card "Private yacht transfer" dentro de `/transfers/`, renderizada solo si `YACHT_SECTION_LIVE`. Sin página propia. Precio `null` por ahora.
 
 ### F. Precio (fuera del repo)
-- [ ] **F1.** Documento `claude/analisis-precio-yacht-2027.md` en el Project de Claude (no en el repo): referencias de mercado de `Mercado de tours en Hvar 2027` y `plan-invierno/03-compra-barco.md`, escalera contra los precios actuales de `pricing.ts`, y rangos propuestos marcados "a confirmar". Las celdas de costo (cuota, consumo, Juli, comida) quedan vacías para Fede.
+- [x] **F1.** Documento `claude/analisis-precio-yacht-2027.md` en el Project de Claude (no en el repo): referencias de mercado de `Mercado de tours en Hvar 2027` y `plan-invierno/03-compra-barco.md`, escalera contra los precios actuales de `pricing.ts`, y rangos propuestos marcados "a confirmar". Las celdas de costo (cuota, consumo, Juli, comida) quedan vacías para Fede.
 
 ### G. QA y entrega
-- [ ] **G1. Diseño.** Si existe la carpeta de Drive `MareBoats yacht diseño` con los PNG de Coti, comparar cada página contra su frame y ajustar. Si no existe, construir con los tokens del sitio y anotar en Bloqueos.
-- [ ] **G2. Capturas** con Playwright a 375 px y 1440 px de cada página. Revisarlas de verdad (Read de la imagen). Sin scroll horizontal.
-- [ ] **G3. Barridos case-insensitive** sobre los archivos nuevos, mostrando las líneas encontradas: `saxdor`, `rib`, `premium` (solo debe aparecer en nombres internos de evento y en este doc), `unforgettable`, `ultimate`, `ideal for`, `flagship`, em-dash y en-dash, "Hvar Harbour" como punto de encuentro, eslora/motor/nudos.
-- [ ] **G4. Rendimiento.** Lighthouse mobile del hub contra la home actual. Si el hub queda más de 10 puntos abajo, simplificar animaciones (D) y volver a medir.
+- [~] **G1. Diseño.** Si existe la carpeta de Drive `MareBoats yacht diseño` con los PNG de Coti, comparar cada página contra su frame y ajustar. Si no existe, construir con los tokens del sitio y anotar en Bloqueos.
+- [x] **G2. Capturas** con Playwright a 375 px y 1440 px de cada página. Revisarlas de verdad (Read de la imagen). Sin scroll horizontal.
+- [x] **G3. Barridos case-insensitive** sobre los archivos nuevos, mostrando las líneas encontradas: `saxdor`, `rib`, `premium` (solo debe aparecer en nombres internos de evento y en este doc), `unforgettable`, `ultimate`, `ideal for`, `flagship`, em-dash y en-dash, "Hvar Harbour" como punto de encuentro, eslora/motor/nudos.
+- [x] **G4. Rendimiento.** Lighthouse mobile del hub contra la home actual. Si el hub queda más de 10 puntos abajo, simplificar animaciones (D) y volver a medir.
 - [ ] **G5. PR** de `yacht-2027` a `main` (sin mergear). Esperar el deploy preview de Netlify, revisar que cargue, y mandar a Fede: link del preview, capturas clave, lista de Bloqueos. Frenar el loop.
 
 ## Bloqueos
 
-(se completan durante el loop)
+Lo que quedó pendiente porque necesita un dato o una decisión de otra persona. Nada de esto se inventó.
+
+| Pendiente | De quién | Qué falta |
+|---|---|---|
+| Precios de los tres productos | Fede | Completar la tabla de costos en `claude/analisis-precio-yacht-2027.md` (Project). Sin precio la sección no se publica |
+| Duración y horario de salida de cada experiencia | Fede / Nikola | Campos `duration` y `departureTime` en `lib/yacht-data.ts` (hoy `null`, no se muestran) |
+| Qué incluye cada día (combustible, agua, snorkel, bebidas) | Fede / Nikola | Hoy solo dice yacht + skipper (+ almuerzo). Ampliar `includes` |
+| Menú de ejemplo | Juli | `JULI.sampleMenu` (hoy `null`, oculto) |
+| Diseño de Coti | Coti | No hay export en Drive (`MareBoats yacht diseño`) y el conector de Figma no tiene permiso. La sección está armada con los tokens del sitio |
+| Topic "Yacht Requests" en Telegram Core | Fede | El bot no puede crear topics desde n8n. Hoy avisa al General de Core. Crear el topic, copiar su link (t.me/c/4479127955/NNN) y poner NNN en `message_thread_id` del nodo "Notify Core" |
+| Fila de prueba en Notion | Fede | "TEST Claude (borrar)" en Yacht Requests 2027. El conector de Notion no borra filas |
+| Revisión legal de `/privacy/` | asesor de Josip | Se sumaron las solicitudes de yacht y Telegram como encargado. Telegram ya se usaba para candidatos y no figuraba en la política |
+| Quién responde cada solicitud | Nikola / Fede | La página de gracias promete confirmar recepción por WhatsApp o mail. Alguien tiene que hacerlo con cada aviso de Telegram |
+| Espera y cierre de la Blue Cave | Fede | El texto dice que en julio y agosto suele haber espera y que cierra con viento del sur. Confirmar que el wording es el que usamos con los guests |
+| `&mdash;` en `/transfers/` | Fede | Línea preexistente ("Hotels with private docks — Podstine…") con em-dash. No se tocó porque es copy aprobado fuera de la sección |
+| Links de entrada desde páginas speedboat | al publicar | Cuando la sección esté viva, sumar link desde `/tours/blue-cave-pakleni-islands/` y Red Rocks hacia las versiones yacht |
 
 ## Bitácora
 
-(una línea por tarea: fecha, tarea, commit, hallazgo)
+- 12/10 · A1-A2 · `dc1eb9d` · datos tipados en `lib/yacht-data.ts`, `YACHT_PRICES` en null, GSAP 3.15.0 fijo. `lib/motion.ts` existía (framer-motion): el helper nuevo es `lib/yacht-motion.ts`.
+- 12/10 · B1-B5, D1-D4 · `dc1eb9d`, `d6f9cf6` · hub, Blue Cave medio día, almuerzo, reseñas recortadas sin nombres de skippers, menú de sección. Animaciones solo con transform y opacity (el clip-path del pen vii120 se reemplazó por tarjetas sticky que se apilan).
+- 12/10 · C1-C5 · `d6f9cf6` · Notion "Yacht Requests 2027" (`667af6b5-efda-4673-abdd-6778553c953d`), workflow n8n `JPOWzdATbQG6zXo5` publicado, CORS para mareboatshvar.com y deploy-preview-1. Probado con POST real: fila en Notion y aviso en Telegram. Formulario probado con Playwright: preselección por query, validación de fecha, redirect a gracias, eventos `premium_form_submit` y `premium_request_thanks` en dataLayer.
+- 12/10 · C6 · `d6f9cf6` · `/privacy/` con solicitudes de yacht, borrado 31/12/2027.
+- 12/10 · E1 · `d6f9cf6` · card en `/transfers/` con `SHOW_YACHT_LINKS` (visible en previews, en producción solo con la sección viva).
+- 12/10 · F1 · Project `claude/analisis-precio-yacht-2027.md` · rangos a confirmar, costos vacíos.
+- 12/10 · sitemap y llms.txt · se suman solos cuando `YACHT_SECTION_LIVE = true`. Probado en los dos estados.
+- 12/10 · G2-G4 · capturas 375 y 1440 sin scroll horizontal ni errores de consola. Barridos limpios (las palabras prohibidas que aparecen son citas de clientes). Lighthouse mobile local: hub 68, tour Blue Cave 75, home 42 (servidor local sin compresión, sirve para comparar, no como valor absoluto).
