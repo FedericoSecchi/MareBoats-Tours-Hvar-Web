@@ -159,6 +159,33 @@ export const ADDONS = {
 } as const;
 
 // ──────────────────────────────────────────────
+// Private yacht section (2027 demand test)
+// null = price not decided yet. Components render NO price line at all
+// (never "on request"). The section stays noindex until these are set.
+// Cost analysis lives OUTSIDE the repo. Only customer-facing prices here.
+// ──────────────────────────────────────────────
+
+export type YachtPriceKey = 'blue-cave-half-day' | 'boat-tour-with-lunch' | 'transfer';
+
+export const YACHT_PRICES: Record<YachtPriceKey, number | null> = {
+  'blue-cave-half-day': null,
+  'boat-tour-with-lunch': null,
+  transfer: null,
+};
+
+/** "From €X" for a yacht product, or null when the price is not set. */
+export function formatYachtFrom(key: YachtPriceKey): string | null {
+  const price = YACHT_PRICES[key];
+  return price == null ? null : `From €${price}`;
+}
+
+/** Lowest set yacht price, or null when none is set. */
+export function getYachtLowestPrice(): number | null {
+  const set = Object.values(YACHT_PRICES).filter((p): p is number => p != null);
+  return set.length ? Math.min(...set) : null;
+}
+
+// ──────────────────────────────────────────────
 // Land scooter rental (separate service, not a boat)
 // DISCONTINUED since 2026. The landing section that consumed this
 // constant was removed. Kept in case the product is reactivated
