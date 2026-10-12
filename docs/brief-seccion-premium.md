@@ -62,7 +62,7 @@ Seleccionadas (6):
 6. **Sandra Blasco**, 12-sep-2026 (sunset + fotos y video; traducida por Google)
    "100% recommended! We took a sunset tour with them … The sunset was amazing … We also opted for the photo and video package for the sunset tour, which is a fantastic memory to cherish forever. …"
 
-Pendiente de Fede: confirmar si se muestran los nombres de skippers que aparecen dentro de las reseñas (la regla de copy los saca del texto propio, pero estas son palabras del cliente).
+Decidido 12/10: **sin nombres de skippers**. Se recortan con "…" las partes que los nombran.
 
 ## Medición (aprobado)
 
@@ -70,6 +70,10 @@ Eventos GA4 por página de la sección:
 - `premium_form_submit` (con parámetro `experience`)
 - `whatsapp_click` (ya existe; agregar parámetro `page_section=premium` y `experience`)
 - Página de gracias propia para la solicitud, con su propio evento de conversión.
+
+## Respuestas del 12/10 (16:47)
+
+Detalle en `docs/plan-yacht-loop.md`. Resumen: sale del barril de Križa; características del barco = criterios eliminatorios de compra, sin nombrar modelo; Juli con foto y bio de `/about/`; después de la solicitud se confirma fecha y precio en marzo 2027 sin pago; si no hay barco, misma experiencia en speedboat; avisos por n8n → Notion → Telegram; menú animado solo en la sección; animaciones a prueba.
 
 ## Pendiente (no escribir hasta definir)
 
