@@ -74,7 +74,7 @@ Eventos GA4 por página de la sección:
 ## Pendiente (no escribir hasta definir)
 
 - Precios de todos los productos en `lib/pricing.ts` (requiere análisis)
-- Ficha de cada producto: duración, horario de salida, punto de encuentro del Saxdor, qué incluye (requiere análisis)
+- Ficha de cada producto: duración, horario de salida, punto de encuentro del barco nuevo, qué incluye (requiere análisis)
 - Menús de Juli, dietas y alergias, bio (requiere análisis)
 - Mensaje 2027: qué pasa después de la solicitud y respuesta si no se compra el barco (requiere análisis)
 - Características del barco que se pueden prometer sin conocer el modelo final (Fede)
