@@ -6,6 +6,8 @@ import { JsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { getMapboxStaticUrl, type GeoCoords } from '@/lib/mapbox';
 import { TRANSFER_PRICES, WATER_TAXI_PRICES, getWaterTaxiPrice } from '@/lib/pricing';
+import { SHOW_YACHT_LINKS } from '@/lib/yacht-data';
+import { YachtTransferCard } from '@/components/yacht/YachtTransferCard';
 
 export const metadata: Metadata = generateSEO({
   title: 'Transfers from Hvar: Split & Airport',
@@ -312,6 +314,8 @@ export default function TransfersPage() {
             );
           })}
         </ul>
+
+        {SHOW_YACHT_LINKS && <YachtTransferCard />}
 
         <p className="mx-auto mt-10 max-w-2xl text-center font-body text-sm leading-relaxed text-[color:var(--gray)]">
           All transfers are private. Your group, your boat, your schedule. Hotels with private

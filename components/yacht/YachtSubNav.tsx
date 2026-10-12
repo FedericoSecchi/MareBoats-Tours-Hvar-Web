@@ -67,7 +67,8 @@ export function YachtSubNav() {
             href={`${YACHT_BASE}/`}
             className="truncate font-body text-xs font-medium uppercase tracking-[0.24em] text-[color:var(--white)] transition-colors hover:text-[color:var(--accent)]"
           >
-            Private yacht <span className="text-[color:var(--accent)]">· 2027</span>
+            <span className="hidden sm:inline">Private </span>yacht{' '}
+            <span className="text-[color:var(--accent)]">· 2027</span>
           </Link>
           <div className="flex shrink-0 items-center gap-2">
             {!isRequest && (

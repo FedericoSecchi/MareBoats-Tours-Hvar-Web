@@ -21,22 +21,31 @@ export function RevealHeading({ as: Tag = 'h2', className, children, immediate =
     const { gsap, SplitText } = getMotion();
 
     let split: InstanceType<typeof SplitText> | null = null;
-    const ctx = gsap.context(() => {
-      split = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'yacht-line' });
-      gsap.from(split.lines, {
-        yPercent: 110,
-        opacity: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        stagger: 0.08,
-        ...(immediate
-          ? { delay: 0.15 }
-          : { scrollTrigger: { trigger: el, start: 'top 88%', once: true } }),
-      });
-    }, el);
+    let ctx: ReturnType<typeof gsap.context> | null = null;
+    let cancelled = false;
+
+    // Split only after the web fonts are in, or the line breaks are measured
+    // with the fallback font and come out wrong.
+    document.fonts.ready.then(() => {
+      if (cancelled) return;
+      ctx = gsap.context(() => {
+        split = SplitText.create(el, { type: 'lines', mask: 'lines', linesClass: 'yacht-line' });
+        gsap.from(split.lines, {
+          yPercent: 110,
+          opacity: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.08,
+          ...(immediate
+            ? { delay: 0.15 }
+            : { scrollTrigger: { trigger: el, start: 'top 88%', once: true } }),
+        });
+      }, el);
+    });
 
     return () => {
-      ctx.revert();
+      cancelled = true;
+      ctx?.revert();
       split?.revert();
     };
   }, [immediate]);
