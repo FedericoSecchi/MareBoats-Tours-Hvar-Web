@@ -85,7 +85,7 @@ Pasar a `true` es decisión de Fede, con precios cargados. No lo hace el loop.
 - [x] **G2. Capturas** con Playwright a 375 px y 1440 px de cada página. Revisarlas de verdad (Read de la imagen). Sin scroll horizontal.
 - [x] **G3. Barridos case-insensitive** sobre los archivos nuevos, mostrando las líneas encontradas: `saxdor`, `rib`, `premium` (solo debe aparecer en nombres internos de evento y en este doc), `unforgettable`, `ultimate`, `ideal for`, `flagship`, em-dash y en-dash, "Hvar Harbour" como punto de encuentro, eslora/motor/nudos.
 - [x] **G4. Rendimiento.** Lighthouse mobile del hub contra la home actual. Si el hub queda más de 10 puntos abajo, simplificar animaciones (D) y volver a medir.
-- [ ] **G5. PR** de `yacht-2027` a `main` (sin mergear). Esperar el deploy preview de Netlify, revisar que cargue, y mandar a Fede: link del preview, capturas clave, lista de Bloqueos. Frenar el loop.
+- [x] **G5. PR** de `yacht-2027` a `main` (sin mergear). Esperar el deploy preview de Netlify, revisar que cargue, y mandar a Fede: link del preview, capturas clave, lista de Bloqueos. Frenar el loop.
 
 ## Bloqueos
 
@@ -116,3 +116,4 @@ Lo que quedó pendiente porque necesita un dato o una decisión de otra persona.
 - 12/10 · F1 · Project `claude/analisis-precio-yacht-2027.md` · rangos a confirmar, costos vacíos.
 - 12/10 · sitemap y llms.txt · se suman solos cuando `YACHT_SECTION_LIVE = true`. Probado en los dos estados.
 - 12/10 · G2-G4 · capturas 375 y 1440 sin scroll horizontal ni errores de consola. Barridos limpios (las palabras prohibidas que aparecen son citas de clientes). Lighthouse mobile local: hub 68, tour Blue Cave 75, home 42 (servidor local sin compresión, sirve para comparar, no como valor absoluto).
+- 12/10 · G5 · PR #1 en draft, preview https://deploy-preview-1--mareboatshvar.netlify.app/private-yacht-hvar/ · formulario probado en el preview con envío real (segunda fila de prueba en Notion: "TEST preview Claude (borrar)").
