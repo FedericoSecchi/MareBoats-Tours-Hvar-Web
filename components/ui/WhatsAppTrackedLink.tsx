@@ -15,6 +15,10 @@ type WhatsAppTrackedLinkProps = {
   ctaText?: string;
   /** Tour name, only for tour-specific CTAs. */
   tourName?: string;
+  /** GA4 `page_section` (e.g. 'premium'). Optional. */
+  pageSection?: string;
+  /** GA4 `experience` (yacht section). Optional. */
+  experience?: string;
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'onClick' | 'children' | 'className'>;
 
 export function WhatsAppTrackedLink({
@@ -25,6 +29,8 @@ export function WhatsAppTrackedLink({
   'aria-label': ariaLabel,
   ctaText = 'Book on WhatsApp',
   tourName,
+  pageSection,
+  experience,
   ...rest
 }: WhatsAppTrackedLinkProps) {
   const pathname = usePathname();
@@ -43,6 +49,8 @@ export function WhatsAppTrackedLink({
           page_location: pathname ?? undefined,
           tour_name: tourName,
           section: label,
+          page_section: pageSection,
+          experience,
         })
       }
     >
