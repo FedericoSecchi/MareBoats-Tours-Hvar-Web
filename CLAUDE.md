@@ -1249,6 +1249,12 @@ Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explo
 
 ---
 
+## 🛥️ Sección Saxdor (test de demanda 2027) — en preparación, 12/10/2026
+
+Antes de tocar cualquier cosa de esta sección, leer `docs/brief-seccion-premium.md`. Lo que figura ahí como **pendiente** (precios, fichas de producto, menús, mensaje 2027) no se escribe ni se inventa: se pregunta.
+
+Nota de nombre: la palabra "premium" sigue prohibida en copy público. "Premium" es solo el nombre interno de la sección; el término de cara al cliente es "private yacht" / "day yacht charter".
+
 ## Instrucciones para Claude Code
 - Leer CLAUDE.md completo antes de empezar
 - `npm run build` al terminar cada tarea — 0 errores. Commit con mensaje descriptivo.
