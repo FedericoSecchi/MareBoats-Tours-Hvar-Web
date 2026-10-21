@@ -2,8 +2,8 @@
 // Copy is Coti's, with three changes: the hero label "Real photo, Pakleni cove, no stock" is
 // gone (the photo is not ours), "cigarette ends" is gone (no smoking on board), and the FAQ
 // answers only repeat what the page already says (the Figma answer was a Spanish placeholder).
-// Every claim here is PENDING confirmation by Nikola: biodegradable products, cleanups,
-// slow speed in the bays. Until then the page stays noindex, out of the sitemap and unlinked.
+// Biodegradable cleaning products: confirmed by Fede 21/10. Still PENDING confirmation by
+// Nikola: support for local cleanups, slow speed in the bays. Until then the page stays noindex, out of the sitemap and unlinked.
 
 import type { Metadata } from 'next';
 import Image from 'next/image';
