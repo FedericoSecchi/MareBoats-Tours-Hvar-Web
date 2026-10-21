@@ -27,6 +27,8 @@ const config: Config = {
         sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        // Private yacht section only (Coti's design). Loaded in app/private-yacht-hvar/layout.tsx.
+        serif: ['"Libre Caslon Text"', 'Georgia', 'serif'],
       },
       spacing: {
         'section-py': '5rem',

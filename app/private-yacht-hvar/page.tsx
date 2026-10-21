@@ -7,16 +7,19 @@ import {
   YACHT_BASE,
   YACHT_EXPERIENCES,
   YACHT_HUB,
+  YACHT_JOURNAL,
   yachtRobots,
   yachtWhatsAppUrl,
 } from '@/lib/yacht-data';
 import { YachtHero } from '@/components/yacht/YachtHero';
-import { LifeOnWater } from '@/components/yacht/LifeOnWater';
+import { Journal } from '@/components/yacht/Journal';
+import { ReservePanel } from '@/components/yacht/ReservePanel';
 import {
-  BoatFeatures,
+  Benefits,
+  BoatPresentation,
   ExperienceCards,
-  JuliBlock,
-  YachtCTA,
+  FeaturedLunch,
+  FinalCTA,
   YachtFAQList,
   YachtReviews,
   type ExperienceCard,
@@ -56,6 +59,9 @@ export default function PrivateYachtHubPage() {
       href: `${YACHT_BASE}/${e.slug}/`,
       name: e.name,
       summary: e.cardSummary,
+      highlights: e.highlights,
+      badge: e.badge,
+      chips: ['Private', 'Up to 8 guests', ...(e.duration ? [e.duration] : [])],
       image: e.heroImage,
       priceLine: formatYachtFrom(e.priceKey),
     })),
@@ -63,6 +69,9 @@ export default function PrivateYachtHubPage() {
       href: YACHT_HUB.transferCard.href,
       name: YACHT_HUB.transferCard.name,
       summary: YACHT_HUB.transferCard.summary,
+      highlights: YACHT_HUB.transferCard.highlights,
+      badge: 'New for 2027',
+      chips: ['Private', 'Up to 8 guests'],
       image: {
         src: '/images/destinations/hvar-old-town-aerial-spanjola-drone-2026-01.jpg',
         alt: 'Hvar old town and the Spanjola fortress from above',
@@ -115,13 +124,19 @@ export default function PrivateYachtHubPage() {
         whatsappUrl={wa}
         priceLine={lowest != null ? `From €${lowest}` : null}
       />
-      <BoatFeatures intro="For 2027 we are bringing a larger boat to the MareBoats Hvar fleet, for private days only. This is what every day on it includes." />
       <ExperienceCards cards={cards} />
-      <LifeOnWater steps={YACHT_HUB.dayFlow} />
-      <JuliBlock />
+      <BoatPresentation requestHref="#reserve" />
+      <FeaturedLunch
+        priceLine={formatYachtFrom('boat-tour-with-lunch')}
+        ctaHref={`${YACHT_BASE}/boat-tour-with-lunch/`}
+        ctaLabel="See the day"
+      />
+      <Benefits />
       <YachtReviews />
+      <Journal rows={YACHT_JOURNAL} />
       <YachtFAQList faqs={faqs} />
-      <YachtCTA experience="hub" whatsappUrl={wa} />
+      <ReservePanel />
+      <FinalCTA href="#reserve" experience="hub" whatsappUrl={wa} />
     </main>
   );
 }

@@ -117,3 +117,12 @@ Lo que quedó pendiente porque necesita un dato o una decisión de otra persona.
 - 12/10 · sitemap y llms.txt · se suman solos cuando `YACHT_SECTION_LIVE = true`. Probado en los dos estados.
 - 12/10 · G2-G4 · capturas 375 y 1440 sin scroll horizontal ni errores de consola. Barridos limpios (las palabras prohibidas que aparecen son citas de clientes). Lighthouse mobile local: hub 68, tour Blue Cave 75, home 42 (servidor local sin compresión, sirve para comparar, no como valor absoluto).
 - 12/10 · G5 · PR #1 en draft, preview https://deploy-preview-1--mareboatshvar.netlify.app/private-yacht-hvar/ · formulario probado en el preview con envío real (segunda fila de prueba en Notion: "TEST preview Claude (borrar)").
+- 21/10 · Diseño de Coti aplicado (Figma copia `4FbVWLkr00fcDFEVmKzu59`, frames `296:14537` desktop y `382:470` mobile): títulos en Libre Caslon Text, cards de experiencias, bloque del barco sin marca, "Lunch on board" con pasos sin horarios, grilla "Why the yacht", reseñas en serif, journal de fotos, FAQ en cards, formulario embebido en cada página (#reserve) y cierre full-bleed. El stack sticky pasó a cards alternadas: las largas se cortaban en pantallas bajas.
+
+### Bloqueos nuevos (21/10)
+
+| Pendiente | De quién | Qué falta |
+|---|---|---|
+| Fotos del Figma | Coti / Fede | No se usaron: fotos de fábrica de Saxdor (logo visible), banco de imágenes y lugares que no son Hvar (cascadas tipo Krka, una "Pakleni" que no es Pakleni). Se usan nuestras fotos de drone hasta tener fotos propias del yacht y de Juli cocinando |
+| Neue Montreal | Fede | Tipografía de texto del diseño, paga para uso comercial web. Se usa Space Grotesk (la del sitio). Si se compra la licencia, cambia una línea en `tailwind.config.ts` |
+| Página Sea care | Fede | Diseñada por Coti, fuera del plan. La foto principal dice "REAL PHOTO, NO STOCK" y parece generada: no se publica con ese texto si no es nuestra |

@@ -55,34 +55,71 @@ export const MEETING_POINT =
 // The boat (unbranded)
 // ──────────────────────────────────────────────
 
-export type YachtFeature = { title: string; text: string };
+export type YachtIcon =
+  | 'private'
+  | 'bathroom'
+  | 'shade'
+  | 'galley'
+  | 'speed'
+  | 'swim'
+  | 'guests'
+  | 'dog';
 
+export type YachtFeature = { title: string; text: string; icon: YachtIcon };
+
+/** "The difference" grid (Coti's design: 4 x 2). */
 export const BOAT_FEATURES: YachtFeature[] = [
   {
+    icon: 'private',
+    title: 'Private only',
+    text: 'The whole boat is yours. No other passengers, ever.',
+  },
+  {
+    icon: 'bathroom',
     title: 'A bathroom on board',
     text: 'An enclosed toilet, so nobody has to plan the day around the next beach bar.',
   },
   {
+    icon: 'shade',
     title: 'Shade for every seat',
     text: 'Everyone can sit in the shade at the same time, not in turns.',
   },
   {
+    icon: 'galley',
     title: 'A galley',
     text: 'A real kitchen area on board. It is what makes lunch cooked at anchor possible.',
   },
   {
+    icon: 'speed',
     title: 'Larger and faster',
     text: 'A bigger boat than our speedboats. It reaches Vis and Biševo sooner and rides the open sea more comfortably.',
   },
   {
-    title: 'Swim platform and ladder',
+    icon: 'swim',
+    title: 'Swim platform',
     text: 'Step into the water and climb back on board without a struggle.',
   },
   {
+    icon: 'guests',
     title: 'Eight guests, never more',
     text: 'Room for your group to choose between sun and shade all day.',
   },
+  {
+    icon: 'dog',
+    title: 'Dogs welcome',
+    text: 'Bring your dog. Let us know when you send your request.',
+  },
 ];
+
+/** Spec rows for the boat presentation. Only what any final model guarantees. */
+export const BOAT_SPECS: { label: string; value: string }[] = [
+  { label: 'Guests', value: 'Up to 8' },
+  { label: 'Bathroom', value: 'Enclosed, on board' },
+  { label: 'Shade', value: 'For every seat' },
+  { label: 'Galley', value: 'On board' },
+];
+
+export const BOAT_CHIPS = ['Swim platform', 'Shade', 'Galley', 'WC', 'Private only'];
 
 // ──────────────────────────────────────────────
 // Juli (bio and photo from /about/)
@@ -118,6 +155,9 @@ export type YachtExperience = {
   /** Short name used in cards, WhatsApp messages and GA4 `experience`. */
   name: string;
   cardSummary: string;
+  /** Three short lines for the card bullets. */
+  highlights: string[];
+  badge?: string;
   seoTitle: string; // ≤44 chars, the layout template adds the brand
   seoDescription: string;
   keywords: string[];
@@ -147,6 +187,8 @@ export const YACHT_EXPERIENCES: YachtExperience[] = [
     name: 'Blue Cave half day',
     cardSummary:
       'Biševo and the Blue Cave in half a day. The crossing goes faster, so the morning goes to the cave and the water.',
+    highlights: ['Blue Cave, Biševo', 'A faster open sea crossing', 'A swim on the way back'],
+    badge: 'New for 2027',
     seoTitle: 'Blue Cave Half Day from Hvar by Yacht',
     seoDescription:
       'Private yacht from Hvar to the Blue Cave on Biševo and back in half a day. Up to 8 guests, bathroom and shade on board. Requests open for the 2027 season.',
@@ -237,6 +279,8 @@ export const YACHT_EXPERIENCES: YachtExperience[] = [
     name: 'Lunch on board',
     cardSummary:
       'A private day around Hvar with lunch cooked on board by Juli, at anchor in a bay picked for the wind that day.',
+    highlights: ['Lunch cooked on board by Juli', 'Swim stops at anchor', 'A route shaped around the wind'],
+    badge: 'New for 2027',
     seoTitle: 'Private Boat Tour with Lunch in Hvar',
     seoDescription:
       'Private yacht day from Hvar with lunch cooked on board by our chef. Swim stops in the Pakleni Islands, up to 8 guests. Requests open for the 2027 season.',
@@ -383,6 +427,7 @@ export const YACHT_HUB = {
   ],
   transferCard: {
     name: 'Private yacht transfer',
+    highlights: ['Split or Split Airport to Hvar', 'A bathroom on board', 'Shade for every seat'],
     summary:
       'Split or Split Airport to Hvar on the yacht: shade for everyone and a bathroom on board for the crossing.',
     href: '/transfers/#yacht-transfer',
@@ -424,6 +469,67 @@ export const YACHT_HUB = {
     },
   ] as YachtFAQ[],
 };
+
+// ──────────────────────────────────────────────
+// Lunch day, step by step (no clock times until the product sheet exists)
+// ──────────────────────────────────────────────
+
+export const LUNCH_STEPS = [
+  'Meet at Beach Križa, at the MareBoats barrel',
+  'Anchor in a quiet bay, picked for the wind that day',
+  'Swim while Juli cooks in the galley',
+  'Lunch at anchor',
+  'An afternoon swim, then back to Hvar',
+];
+
+// ──────────────────────────────────────────────
+// "Life on the water" photo journal. Our own photos only, true captions.
+// Layout follows Coti's design: wide, pair, wide, pair...
+// ──────────────────────────────────────────────
+
+export type JournalPhoto = { src: string; alt: string; caption: string };
+
+export const YACHT_JOURNAL: (JournalPhoto | [JournalPhoto, JournalPhoto])[] = [
+  {
+    src: '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg',
+    alt: 'The Pakleni Islands seen from above',
+    caption: 'Pakleni Islands',
+  },
+  [
+    {
+      src: '/images/destinations/hvar-coast-crystal-water-swimming-drone-2026-01.jpg',
+      alt: 'Swimmer in clear water off the Hvar coast',
+      caption: 'Clear water off Hvar',
+    },
+    {
+      src: '/images/destinations/hvar-pakleni-islands-zdrilca-channel-speedboat-drone-2026-02.jpg',
+      alt: 'The Ždrilca channel in the Pakleni Islands from above',
+      caption: 'Ždrilca channel',
+    },
+  ],
+  {
+    src: '/images/tours/hvar-red-rocks-cliffs-aerial-drone-2026.jpg',
+    alt: 'The Red Rocks cliffs on the south coast of Hvar from above',
+    caption: 'Red Rocks, south coast of Hvar',
+  },
+  [
+    {
+      src: '/images/destinations/hvar-dubovica-beach-aerial-drone-2026.jpg',
+      alt: 'Dubovica beach from above',
+      caption: 'Dubovica',
+    },
+    {
+      src: '/images/destinations/hvar-harbour-sunset-aerial-drone-2026-04.jpg',
+      alt: 'Hvar town at golden hour from above',
+      caption: 'Hvar at golden hour',
+    },
+  ],
+  {
+    src: '/images/destinations/hvar-blue-cave-interior-turquoise-light-2026.jpg',
+    alt: 'Turquoise light inside the Blue Cave on Biševo',
+    caption: 'Blue Cave, Biševo',
+  },
+];
 
 // ──────────────────────────────────────────────
 // Reviews (real Google reviews of MareBoats Hvar)

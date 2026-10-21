@@ -13,7 +13,8 @@ import {
 } from '@/lib/yacht-data';
 import { YachtHero } from './YachtHero';
 import { StickyStack, type StackItem } from './StickyStack';
-import { CrossLink, FactsStrip, IncludesList, YachtCTA, YachtFAQList, YachtReviews } from './Blocks';
+import { CrossLink, FactsStrip, FinalCTA, IncludesList, YachtFAQList, YachtReviews } from './Blocks';
+import { ReservePanel } from './ReservePanel';
 
 const SITE = 'https://mareboatshvar.com';
 
@@ -88,7 +89,6 @@ export function ExperienceTemplate({ exp, withJuli = false }: { exp: YachtExperi
         image={exp.heroImage}
         experience={exp.slug}
         whatsappUrl={wa}
-        requestQuery={exp.slug}
         priceLine={priceLine}
       />
       <FactsStrip facts={facts} />
@@ -97,7 +97,8 @@ export function ExperienceTemplate({ exp, withJuli = false }: { exp: YachtExperi
       <CrossLink {...exp.crossLink} />
       <YachtReviews />
       <YachtFAQList faqs={faqs} />
-      <YachtCTA experience={exp.slug} whatsappUrl={wa} requestQuery={exp.slug} />
+      <ReservePanel defaultExperience={exp.slug} />
+      <FinalCTA href="#reserve" experience={exp.slug} whatsappUrl={wa} />
     </main>
   );
 }

@@ -61,7 +61,7 @@ export function YachtSubNav() {
 
   return (
     <>
-      <div className="no-print sticky top-16 z-40 border-b border-[color:var(--border)] bg-[color:var(--bg)]/85 backdrop-blur-md">
+      <div className="no-print sticky top-16 z-40 border-b border-[color:var(--border)] bg-[rgba(13,27,42,0.85)] backdrop-blur-md">
         <div className="mx-auto flex h-12 max-w-5xl items-center justify-between gap-3 px-4 md:px-6">
           <Link
             href={`${YACHT_BASE}/`}

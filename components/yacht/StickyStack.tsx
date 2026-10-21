@@ -12,9 +12,9 @@ export type StackItem = {
 };
 
 /**
- * Cards that stick and stack as you scroll. When the next card arrives, the
- * previous one settles back (scale and opacity only). Pure CSS sticky does the
- * layout; GSAP only adds the depth effect, so it degrades to a normal list.
+ * Split cards (photo + text), Coti's "featured experience" layout, alternating
+ * sides. Each card fades up once as it enters (opacity and transform only).
+ * They used to stick and stack, but long cards got cut on short screens.
  */
 export function StickyStack({ items }: { items: StackItem[] }) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -24,15 +24,13 @@ export function StickyStack({ items }: { items: StackItem[] }) {
     if (!root || prefersReducedMotion()) return;
     const { gsap } = getMotion();
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>('[data-stack-card]');
-      cards.forEach((card, i) => {
-        const next = cards[i + 1];
-        if (!next) return;
-        gsap.to(card, {
-          scale: 0.94,
-          opacity: 0.45,
-          ease: 'none',
-          scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top+=160', scrub: true },
+      gsap.utils.toArray<HTMLElement>('[data-stack-card]').forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 48,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: card, start: 'top 88%', once: true },
         });
       });
     }, root);
@@ -40,15 +38,15 @@ export function StickyStack({ items }: { items: StackItem[] }) {
   }, []);
 
   return (
-    <div ref={rootRef} className="border-b border-[color:var(--border)] bg-[color:var(--bg)] px-4 py-20 md:px-6 md:py-28">
-      <div className="mx-auto max-w-5xl space-y-8">
-        {items.map((item) => (
+    <div ref={rootRef} className="border-t border-[rgba(245,240,232,0.08)] bg-[color:var(--bg)] px-4 py-20 md:px-20 md:py-[104px]">
+      <div className="mx-auto max-w-[1280px] space-y-8">
+        {items.map((item, i) => (
           <article
             key={item.heading}
             data-stack-card
-            className="sticky top-32 origin-top overflow-hidden rounded-3xl border border-[color:var(--border)] bg-[color:var(--surface)] will-change-transform"
+            className="overflow-hidden rounded-2xl border border-[rgba(245,240,232,0.08)] bg-[color:var(--surface)] will-change-transform"
           >
-            <div className={`grid ${item.image ? 'md:grid-cols-2' : ''}`}>
+            <div className={`grid ${item.image ? 'md:grid-cols-2' : ''} ${i % 2 === 1 ? 'md:[&>*:first-child]:order-2' : ''}`}>
               {item.image && (
                 <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[420px]">
                   <Image
@@ -62,15 +60,15 @@ export function StickyStack({ items }: { items: StackItem[] }) {
                 </div>
               )}
               <div className="p-7 md:p-12">
-                <p className="font-body text-xs font-medium uppercase tracking-[0.28em] text-[color:var(--accent)]">
+                <p className="font-body text-xs font-medium uppercase tracking-[0.14em] text-[color:var(--accent)]">
                   {item.eyebrow}
                 </p>
-                <h2 className="mt-4 font-display text-2xl font-bold leading-[1.1] tracking-[-0.03em] text-[color:var(--white)] md:text-4xl">
+                <h2 className="mt-4 font-serif text-[2rem] font-normal leading-[1.08] text-[color:var(--white)] md:text-5xl">
                   {item.heading}
                 </h2>
                 <div className="mt-6 space-y-4">
                   {item.paragraphs.map((p) => (
-                    <p key={p} className="font-body text-base leading-relaxed text-[color:var(--gray)]">
+                    <p key={p} className="font-body text-base leading-relaxed text-[rgba(245,240,232,0.7)]">
                       {p}
                     </p>
                   ))}

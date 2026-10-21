@@ -47,7 +47,7 @@ export function YachtTransferCard() {
               ctaText="Ask on WhatsApp"
               pageSection="premium"
               experience="transfer"
-              className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10"
+              className="inline-flex flex-1 items-center justify-center rounded-pill border border-[color:var(--accent)] px-4 py-2.5 font-body text-xs font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[rgba(59,201,219,0.1)]"
             >
               Ask on WhatsApp
             </WhatsAppTrackedLink>

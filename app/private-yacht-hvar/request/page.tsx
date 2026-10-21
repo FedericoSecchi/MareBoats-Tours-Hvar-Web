@@ -19,10 +19,10 @@ export default function YachtRequestPage() {
     <main className="bg-[color:var(--bg)] px-4 pb-24 pt-16 text-[color:var(--white)] md:px-6 md:pt-24">
       <div className="mx-auto grid max-w-5xl gap-14 md:grid-cols-[minmax(0,4fr)_minmax(0,7fr)]">
         <div>
-          <p className="font-body text-xs font-medium uppercase tracking-[0.28em] text-[color:var(--accent)]">
+          <p className="font-body text-xs font-medium uppercase tracking-[0.14em] text-[color:var(--accent)]">
             Season 2027
           </p>
-          <h1 className="mt-5 font-display text-4xl font-bold leading-[1.02] tracking-[-0.03em] md:text-5xl">
+          <h1 className="mt-5 font-serif text-[2.75rem] font-normal leading-[1.05] md:text-6xl">
             Request your yacht day
           </h1>
           <p className="mt-6 font-body text-base leading-relaxed text-[color:var(--gray)]">
@@ -44,7 +44,9 @@ export default function YachtRequestPage() {
             </div>
           </dl>
         </div>
-        <YachtRequestForm />
+        <div className="rounded-2xl border border-[rgba(245,240,232,0.08)] bg-[color:var(--surface)] p-6 md:p-10">
+          <YachtRequestForm />
+        </div>
       </div>
     </main>
   );

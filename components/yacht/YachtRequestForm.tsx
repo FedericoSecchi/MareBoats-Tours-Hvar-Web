@@ -36,11 +36,13 @@ type Fields = {
   consent: boolean;
 };
 
+// Coti's design: dark fields on the card, 2 columns, full-width pill submit.
 const inputClass =
-  'w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-3 font-body text-base text-[color:var(--white)] placeholder-[color:var(--gray)]/60 transition-colors duration-200 focus:border-[color:var(--accent)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/30';
-const labelClass = 'mb-2 block font-body text-sm font-medium text-[color:var(--white)]';
+  'h-[52px] w-full rounded-lg border border-[rgba(245,240,232,0.1)] bg-[color:var(--bg)] px-4 font-body text-[15px] text-[color:var(--white)] placeholder-[rgba(245,240,232,0.4)] transition-colors duration-200 focus:border-[color:var(--accent)] focus:outline-none focus:ring-2 focus:ring-[rgba(59,201,219,0.3)]';
+const labelClass = 'mb-2 block font-body text-sm text-[color:var(--white)]';
+const optional = <span className="text-[rgba(245,240,232,0.5)]"> (optional)</span>;
 
-export function YachtRequestForm() {
+export function YachtRequestForm({ defaultExperience }: { defaultExperience?: string }) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const dateRef = useRef<HTMLInputElement>(null);
@@ -50,7 +52,7 @@ export function YachtRequestForm() {
     name: '',
     email: '',
     whatsapp: '',
-    experience: 'not-sure',
+    experience: defaultExperience ?? 'not-sure',
     date: '',
     flexibility: '',
     guests: '',
@@ -125,7 +127,7 @@ export function YachtRequestForm() {
   const waUrl = yachtWhatsAppUrl(fields.experience === 'not-sure' ? undefined : expLabel);
 
   return (
-    <form ref={formRef} onSubmit={(e) => e.preventDefault()} noValidate className="space-y-6">
+    <form ref={formRef} onSubmit={(e) => e.preventDefault()} noValidate>
       {/* Honeypot: off-screen, not display:none */}
       <div
         style={{ position: 'absolute', left: '-9999px', top: '-9999px', width: 1, height: 1, overflow: 'hidden' }}
@@ -135,23 +137,22 @@ export function YachtRequestForm() {
         <input id="website" name="website" type="text" value={fields.website} onChange={onChange} tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div>
-        <label htmlFor="experience" className={labelClass}>
-          Which day are you interested in?
-        </label>
-        <select id="experience" name="experience" value={fields.experience} onChange={onChange} className={`${inputClass} appearance-none`}>
-          {EXPERIENCES.map((e) => (
-            <option key={e.value} value={e.value}>
-              {e.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-x-4 gap-y-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="experience" className={labelClass}>
+            Experience
+          </label>
+          <select id="experience" name="experience" value={fields.experience} onChange={onChange} className={`${inputClass} appearance-none`}>
+            {EXPERIENCES.map((e) => (
+              <option key={e.value} value={e.value}>
+                {e.label}
+              </option>
+            ))}
+          </select>
+        </div>
         <div>
           <label htmlFor="date" className={labelClass}>
-            Preferred date <span className="text-[color:var(--gray)]">(optional)</span>
+            Date{optional}
           </label>
           <input
             ref={dateRef}
@@ -162,9 +163,24 @@ export function YachtRequestForm() {
             max={SEASON_MAX}
             value={fields.date}
             onChange={onChange}
-            className={inputClass}
+            className={`${inputClass} [color-scheme:dark]`}
           />
           {dateError && <p className="mt-1 font-body text-xs text-red-400">{dateError}</p>}
+        </div>
+        <div>
+          <label htmlFor="guests" className={labelClass}>
+            Guests
+          </label>
+          <select id="guests" name="guests" value={fields.guests} onChange={onChange} required className={`${inputClass} appearance-none`}>
+            <option value="" disabled>
+              How many guests? (up to 8)
+            </option>
+            {Array.from({ length: 8 }, (_, i) => i + 1).map((n) => (
+              <option key={n} value={n}>
+                {n}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label htmlFor="flexibility" className={labelClass}>
@@ -177,36 +193,9 @@ export function YachtRequestForm() {
             <option value="flexible">Flexible</option>
           </select>
         </div>
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="guests" className={labelClass}>
-            Guests (up to 8)
-          </label>
-          <select id="guests" name="guests" value={fields.guests} onChange={onChange} required className={`${inputClass} appearance-none`}>
-            <option value="" disabled>
-              Select
-            </option>
-            {Array.from({ length: 8 }, (_, i) => i + 1).map((n) => (
-              <option key={n} value={n}>
-                {n}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="occasion" className={labelClass}>
-            Celebrating something? <span className="text-[color:var(--gray)]">(optional)</span>
-          </label>
-          <input id="occasion" name="occasion" type="text" maxLength={300} value={fields.occasion} onChange={onChange} placeholder="Birthday, anniversary…" className={inputClass} />
-        </div>
-      </div>
-
-      <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>
-            Your name
+            Name
           </label>
           <input id="name" name="name" type="text" autoComplete="name" value={fields.name} onChange={onChange} required className={inputClass} />
         </div>
@@ -214,32 +203,44 @@ export function YachtRequestForm() {
           <label htmlFor="email" className={labelClass}>
             Email
           </label>
-          <input id="email" name="email" type="email" autoComplete="email" value={fields.email} onChange={onChange} required className={inputClass} />
+          <input id="email" name="email" type="email" autoComplete="email" value={fields.email} onChange={onChange} required placeholder="you@email.com" className={inputClass} />
+        </div>
+        <div>
+          <label htmlFor="whatsapp" className={labelClass}>
+            WhatsApp{optional}
+          </label>
+          <input id="whatsapp" name="whatsapp" type="tel" autoComplete="tel" maxLength={30} value={fields.whatsapp} onChange={onChange} placeholder="+44 7700 900123" className={inputClass} />
+        </div>
+        <div>
+          <label htmlFor="occasion" className={labelClass}>
+            Celebrating something?{optional}
+          </label>
+          <input id="occasion" name="occasion" type="text" maxLength={300} value={fields.occasion} onChange={onChange} placeholder="Birthday, anniversary…" className={inputClass} />
+        </div>
+        <div className="sm:col-span-2">
+          <label htmlFor="dietary" className={labelClass}>
+            Allergies or dietary needs{optional}
+          </label>
+          <input id="dietary" name="dietary" type="text" maxLength={500} value={fields.dietary} onChange={onChange} className={inputClass} />
+        </div>
+        <div className="sm:col-span-2">
+          <label htmlFor="message" className={labelClass}>
+            Special requests{optional}
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            maxLength={1000}
+            value={fields.message}
+            onChange={onChange}
+            placeholder="The route you have in mind, a celebration, anything we should know…"
+            className={`${inputClass} h-auto resize-y py-3`}
+          />
         </div>
       </div>
 
-      <div>
-        <label htmlFor="whatsapp" className={labelClass}>
-          WhatsApp number <span className="text-[color:var(--gray)]">(optional, with country code)</span>
-        </label>
-        <input id="whatsapp" name="whatsapp" type="tel" autoComplete="tel" maxLength={30} value={fields.whatsapp} onChange={onChange} placeholder="+44 7700 900123" className={inputClass} />
-      </div>
-
-      <div>
-        <label htmlFor="dietary" className={labelClass}>
-          Allergies or dietary needs <span className="text-[color:var(--gray)]">(optional)</span>
-        </label>
-        <input id="dietary" name="dietary" type="text" maxLength={500} value={fields.dietary} onChange={onChange} className={inputClass} />
-      </div>
-
-      <div>
-        <label htmlFor="message" className={labelClass}>
-          Anything else we should know? <span className="text-[color:var(--gray)]">(optional)</span>
-        </label>
-        <textarea id="message" name="message" rows={4} maxLength={1000} value={fields.message} onChange={onChange} className={`${inputClass} resize-y`} />
-      </div>
-
-      <label className="flex cursor-pointer items-start gap-3">
+      <label className="mt-6 flex cursor-pointer items-start gap-3">
         <input
           type="checkbox"
           name="consent"
@@ -248,7 +249,7 @@ export function YachtRequestForm() {
           required
           className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-[color:var(--accent)]"
         />
-        <span className="font-body text-sm leading-snug text-[color:var(--gray)]">
+        <span className="font-body text-sm leading-snug text-[rgba(245,240,232,0.6)]">
           I agree that MareBoats Hvar can store this information to answer my request for the 2027 season. See the{' '}
           <Link href="/privacy/" className="underline underline-offset-4 transition-colors hover:text-[color:var(--accent)]">
             Privacy Policy
@@ -258,32 +259,34 @@ export function YachtRequestForm() {
       </label>
 
       {state === 'error' && (
-        <p role="alert" className="font-body text-sm text-red-400">
+        <p role="alert" className="mt-5 font-body text-sm text-red-400">
           Something went wrong. Please try again in a moment, or send us your request on WhatsApp.
         </p>
       )}
 
-      <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
-        <button
-          type="button"
-          onClick={onSubmit}
-          disabled={state === 'submitting'}
-          className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-8 py-4 font-body text-sm font-semibold tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {state === 'submitting' ? 'Sending…' : 'Send request'}
-        </button>
+      <button
+        type="button"
+        onClick={onSubmit}
+        disabled={state === 'submitting'}
+        className="mt-6 flex w-full items-center justify-center gap-3 rounded-pill bg-[color:var(--accent)] px-8 py-4 font-body text-base font-medium text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(59,201,219,0.6)] disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        {state === 'submitting' ? 'Sending…' : 'Request your date'}
+        <span aria-hidden="true">↗</span>
+      </button>
+      <p className="mt-4 text-center font-body text-xs text-[rgba(245,240,232,0.6)]">No payment now · We confirm date and final price in March 2027</p>
+      <p className="mt-3 text-center font-body text-sm text-[rgba(245,240,232,0.6)]">
+        Prefer to talk?{' '}
         <WhatsAppTrackedLink
           href={waUrl}
           label="yacht_form"
           ctaText="Ask on WhatsApp instead"
           pageSection="premium"
           experience={fields.experience}
-          className="inline-flex items-center justify-center rounded-pill border border-[color:var(--border)] px-8 py-4 font-body text-sm font-semibold tracking-wide text-[color:var(--white)] transition-colors duration-300 hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+          className="font-medium text-[color:var(--accent)] transition-colors hover:text-[color:var(--white)]"
         >
-          Ask on WhatsApp instead
+          Ask on WhatsApp
         </WhatsAppTrackedLink>
-      </div>
-      <p className="font-body text-sm text-[color:var(--gray)]">Nothing to pay now. We confirm your date and the final price in March 2027.</p>
+      </p>
     </form>
   );
 }

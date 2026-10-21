@@ -13,10 +13,10 @@ export default function YachtThanksPage() {
     <main className="flex min-h-[70svh] items-center bg-[color:var(--bg)] px-4 py-24 text-[color:var(--white)] md:px-6">
       <ThanksTracker />
       <div className="mx-auto max-w-2xl text-center">
-        <p className="font-body text-xs font-medium uppercase tracking-[0.28em] text-[color:var(--accent)]">
+        <p className="font-body text-xs font-medium uppercase tracking-[0.14em] text-[color:var(--accent)]">
           Request received
         </p>
-        <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-[-0.03em] md:text-5xl">
+        <h1 className="mt-5 font-serif text-[2.75rem] font-normal leading-[1.05] md:text-6xl">
           Thank you. We have your request.
         </h1>
         <p className="mt-6 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
