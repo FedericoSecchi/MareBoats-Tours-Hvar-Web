@@ -415,6 +415,19 @@ export function getYachtExperience(slug: YachtExperience['slug']): YachtExperien
 // Hub
 // ──────────────────────────────────────────────
 
+/** Hub hero background: our own drone footage (Fede, 21/10/2026), 12 s loop. */
+export const YACHT_HUB_HERO_VIDEO = {
+  desktop: {
+    video: '/videos/hvar-aerial-rain-drone-2026-desktop.mp4',
+    poster: '/images/hero/hvar-aerial-rain-drone-2026-poster-desktop.jpg',
+  },
+  mobile: {
+    video: '/videos/hvar-aerial-rain-drone-2026-mobile.mp4',
+    poster: '/images/hero/hvar-aerial-rain-drone-2026-poster-mobile.jpg',
+  },
+  alt: 'Waves breaking on the rocky coast of Hvar, seen from above',
+};
+
 export const YACHT_HUB = {
   seoTitle: 'Private Yacht Hvar: Day Charter 2027',
   seoDescription:

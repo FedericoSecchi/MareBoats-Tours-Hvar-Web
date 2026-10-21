@@ -7,6 +7,7 @@ import {
   YACHT_BASE,
   YACHT_EXPERIENCES,
   YACHT_HUB,
+  YACHT_HUB_HERO_VIDEO,
   YACHT_JOURNAL,
   photo,
   yachtRobots,
@@ -121,6 +122,7 @@ export default function PrivateYachtHubPage() {
         title={YACHT_HUB.h1}
         intro={YACHT_HUB.intro}
         image={YACHT_HUB.heroImage}
+        video={YACHT_HUB_HERO_VIDEO}
         experience="hub"
         whatsappUrl={wa}
         priceLine={lowest != null ? `From €${lowest}` : null}

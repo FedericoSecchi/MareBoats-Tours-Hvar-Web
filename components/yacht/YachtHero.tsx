@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getMotion, prefersReducedMotion } from '@/lib/yacht-motion';
 import { RevealHeading } from './RevealHeading';
+import { HeroVideo, type HeroVideoSource } from '@/components/ui/HeroVideo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
   title: string;
   intro: string;
   image: { src: string; alt: string };
+  /** Background video. The image prop stays as the fallback for pages without one. */
+  video?: HeroVideoSource;
   /** GA4 `experience` and WhatsApp prefill. 'hub' on the hub. */
   experience: string;
   whatsappUrl: string;
@@ -27,6 +30,7 @@ export function YachtHero({
   title,
   intro,
   image,
+  video,
   experience,
   whatsappUrl,
   requestHref = '#reserve',
@@ -80,7 +84,11 @@ export function YachtHero({
       }`}
     >
       <div ref={mediaRef} className="absolute inset-0 -z-10 will-change-transform">
-        <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="object-cover" />
+        {video ? (
+          <HeroVideo source={video} />
+        ) : (
+          <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="object-cover" />
+        )}
       </div>
       <div
         aria-hidden="true"
