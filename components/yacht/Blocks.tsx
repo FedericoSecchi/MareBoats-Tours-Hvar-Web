@@ -27,6 +27,7 @@ import {
   BOAT_SPECS,
   GOOGLE_REVIEWS_URL,
   JULI,
+  photo,
   LUNCH_STEPS,
   YACHT_BASE,
   YACHT_REVIEWS,
@@ -167,6 +168,16 @@ export function ExperienceCards({ cards }: { cards: ExperienceCard[] }) {
 
 // ── The boat ("Our fleet"), unbranded ──
 
+const BOAT_IMG = photo('boat', {
+  src: '/images/destinations/hvar-pakleni-islands-coastline-aerial-drone-2026.jpg',
+  alt: 'Pakleni Islands coastline from above, off Hvar',
+});
+const FINAL_CTA_IMG = photo('finalCta', {
+  src: '/images/destinations/hvar-pakleni-islands-cove-speedboat-drone-2026-03.jpg',
+  alt: 'A cove in the Pakleni Islands from above',
+});
+const JULI_IMG = photo('featuredLunch', { src: JULI.image, alt: JULI.imageAlt, objectPosition: JULI.objectPosition });
+
 export function BoatPresentation({ requestHref }: { requestHref: string }) {
   return (
     <SectionShell id="the-boat">
@@ -174,8 +185,8 @@ export function BoatPresentation({ requestHref }: { requestHref: string }) {
       <div className={`mt-12 grid overflow-hidden ${CARD} bg-[color:var(--bg)] lg:grid-cols-[664fr_616fr]`}>
         <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[577px]">
           <Image
-            src="/images/destinations/hvar-pakleni-islands-coastline-aerial-drone-2026.jpg"
-            alt="Pakleni Islands coastline from above, off Hvar"
+            src={BOAT_IMG.src}
+            alt={BOAT_IMG.alt}
             fill
             sizes="(min-width: 1024px) 664px, 100vw"
             className="object-cover"
@@ -235,12 +246,12 @@ export function FeaturedLunch({
       <div className={`grid overflow-hidden ${CARD} lg:grid-cols-[640fr_640fr]`}>
         <div className="relative aspect-[4/5] lg:aspect-auto lg:min-h-[708px]">
           <Image
-            src={JULI.image}
-            alt={JULI.imageAlt}
+            src={JULI_IMG.src}
+            alt={JULI_IMG.alt}
             fill
             sizes="(min-width: 1024px) 640px, 100vw"
             className="object-cover"
-            style={{ objectPosition: JULI.objectPosition }}
+            style={JULI_IMG.objectPosition ? { objectPosition: JULI_IMG.objectPosition } : undefined}
           />
         </div>
         <div className="flex flex-col p-6 md:p-10">
@@ -416,8 +427,8 @@ export function FinalCTA({
     <section className="bg-[color:var(--bg)] px-4 pb-6 pt-6 md:px-20 md:pb-6">
       <div className="relative mx-auto flex min-h-[486px] max-w-[1280px] items-center justify-center overflow-hidden rounded-2xl md:min-h-[560px]">
         <Image
-          src="/images/destinations/hvar-pakleni-islands-cove-speedboat-drone-2026-03.jpg"
-          alt="A cove in the Pakleni Islands from above"
+          src={FINAL_CTA_IMG.src}
+          alt={FINAL_CTA_IMG.alt}
           fill
           sizes="(min-width: 1280px) 1280px, 100vw"
           className="object-cover"

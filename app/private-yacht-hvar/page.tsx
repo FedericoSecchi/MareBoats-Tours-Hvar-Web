@@ -8,6 +8,7 @@ import {
   YACHT_EXPERIENCES,
   YACHT_HUB,
   YACHT_JOURNAL,
+  photo,
   yachtRobots,
   yachtWhatsAppUrl,
 } from '@/lib/yacht-data';
@@ -72,10 +73,10 @@ export default function PrivateYachtHubPage() {
       highlights: YACHT_HUB.transferCard.highlights,
       badge: 'New for 2027',
       chips: ['Private', 'Up to 8 guests'],
-      image: {
+      image: photo('transfer', {
         src: '/images/destinations/hvar-old-town-aerial-spanjola-drone-2026-01.jpg',
         alt: 'Hvar old town and the Spanjola fortress from above',
-      },
+      }),
       priceLine: formatYachtFrom('transfer'),
     },
   ];

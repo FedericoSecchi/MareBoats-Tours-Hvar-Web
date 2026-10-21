@@ -6,7 +6,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatYachtFrom } from '@/lib/pricing';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
-import { YACHT_BASE, YACHT_REQUEST_PATH, yachtWhatsAppUrl } from '@/lib/yacht-data';
+import { YACHT_BASE, YACHT_REQUEST_PATH, photo, yachtWhatsAppUrl } from '@/lib/yacht-data';
+
+const IMG = photo('transfer', {
+  src: '/images/destinations/hvar-old-town-aerial-spanjola-drone-2026-01.jpg',
+  alt: 'Hvar old town and the Spanjola fortress from above',
+});
 
 export function YachtTransferCard() {
   const price = formatYachtFrom('transfer');
@@ -15,8 +20,8 @@ export function YachtTransferCard() {
       <article className="grid overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] md:grid-cols-2">
         <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[320px]">
           <Image
-            src="/images/destinations/hvar-old-town-aerial-spanjola-drone-2026-01.jpg"
-            alt="Hvar old town and the Spanjola fortress from above"
+            src={IMG.src}
+            alt={IMG.alt}
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"

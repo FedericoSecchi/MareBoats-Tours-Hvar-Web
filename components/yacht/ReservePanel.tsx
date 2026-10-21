@@ -3,13 +3,14 @@
 
 import Image from 'next/image';
 import { YachtRequestForm } from './YachtRequestForm';
+import { photo } from '@/lib/yacht-data';
 
 export function ReservePanel({
   defaultExperience,
-  image = {
+  image = photo('reserve', {
     src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-03.jpg',
     alt: 'A quiet cove in the Pakleni Islands from above',
-  },
+  }),
 }: {
   defaultExperience?: string;
   image?: { src: string; alt: string };

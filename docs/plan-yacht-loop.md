@@ -119,10 +119,13 @@ Lo que quedó pendiente porque necesita un dato o una decisión de otra persona.
 - 12/10 · G5 · PR #1 en draft, preview https://deploy-preview-1--mareboatshvar.netlify.app/private-yacht-hvar/ · formulario probado en el preview con envío real (segunda fila de prueba en Notion: "TEST preview Claude (borrar)").
 - 21/10 · Diseño de Coti aplicado (Figma copia `4FbVWLkr00fcDFEVmKzu59`, frames `296:14537` desktop y `382:470` mobile): títulos en Libre Caslon Text, cards de experiencias, bloque del barco sin marca, "Lunch on board" con pasos sin horarios, grilla "Why the yacht", reseñas en serif, journal de fotos, FAQ en cards, formulario embebido en cada página (#reserve) y cierre full-bleed. El stack sticky pasó a cards alternadas: las largas se cortaban en pantallas bajas.
 
+- 21/10 · Fotos del Figma de Coti cableadas como provisorias, solo en previews (14 slots + journal). Producción verificada: 0 HTML con `figma-temp`.
+- 21/10 · `/sea-care/` construida desde los frames `354:1802` y `386:1235`, verificada en 1440 y 390.
+
 ### Bloqueos nuevos (21/10)
 
 | Pendiente | De quién | Qué falta |
 |---|---|---|
-| Fotos del Figma | Coti / Fede | No se usaron: fotos de fábrica de Saxdor (logo visible), banco de imágenes y lugares que no son Hvar (cascadas tipo Krka, una "Pakleni" que no es Pakleni). Se usan nuestras fotos de drone hasta tener fotos propias del yacht y de Juli cocinando |
+| Fotos del Figma | Coti / Fede | Desde el 21/10 están puestas como provisorias, **solo en previews** (`USE_FIGMA_PHOTOS = IS_PREVIEW_BUILD` en `lib/yacht-data.ts`, archivos en `public/images/figma-temp/`). Un build de producción usa nuestras fotos aunque se mergee. Problemas: fotos de fábrica de Saxdor con logo visible, banco de imágenes, cascadas tipo Krka, la cocina de "Juli" es otra persona. Cuando haya fotos propias: reemplazar slot por slot y borrar `figma-temp/` |
 | Neue Montreal | Fede | Tipografía de texto del diseño, paga para uso comercial web. Se usa Space Grotesk (la del sitio). Si se compra la licencia, cambia una línea en `tailwind.config.ts` |
-| Página Sea care | Fede | Diseñada por Coti, fuera del plan. La foto principal dice "REAL PHOTO, NO STOCK" y parece generada: no se publica con ese texto si no es nuestra |
+| Página Sea care | Nikola | Construida el 21/10 en `/sea-care/` (noindex, fuera del sitemap, sin links; interruptor `SEA_CARE_LIVE`). Sacado el rótulo "Real photo, no stock" (la foto no es nuestra y parece generada) y "cigarette ends" (no se fuma a bordo). Respuestas del FAQ escritas solo con lo que ya dice la página (la del Figma era un placeholder en castellano). A confirmar: productos biodegradables, apoyo a limpiezas, baja velocidad en las bahías |

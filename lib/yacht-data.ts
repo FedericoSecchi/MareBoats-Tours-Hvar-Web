@@ -28,6 +28,42 @@ const IS_PREVIEW_BUILD =
 
 export const SHOW_YACHT_LINKS = YACHT_SECTION_LIVE || IS_PREVIEW_BUILD;
 
+// ──────────────────────────────────────────────
+// Coti's Figma photos as TEMPORARY placeholders (decision 21/10: "add them all,
+// we replace them later"). Preview builds only. A production build always uses
+// our own photos, so a merge to main never publishes stock or manufacturer images.
+// Files: public/images/figma-temp/. Delete the folder once every slot has our own photo.
+// ──────────────────────────────────────────────
+
+export const USE_FIGMA_PHOTOS = IS_PREVIEW_BUILD;
+
+type Img = { src: string; alt: string; objectPosition?: string };
+const F = '/images/figma-temp';
+
+export const FIGMA_PHOTOS = {
+  hubHero: { src: `${F}/aerial-bay-boats.jpg`, alt: 'Boats in a bay from above' },
+  blueCaveHero: { src: `${F}/blue-cave.jpg`, alt: 'Blue light inside a sea cave' },
+  blueCave1: { src: `${F}/boat-over-reef.jpg`, alt: 'A boat over clear water from above' },
+  blueCave2: { src: `${F}/blue-cave.jpg`, alt: 'Blue light inside a sea cave' },
+  lunchHero: { src: `${F}/anchored-yachts.jpg`, alt: 'Yachts at anchor in a quiet bay' },
+  lunch1: { src: `${F}/chef-on-board.jpg`, alt: 'Lunch being cooked in the galley' },
+  lunch2: { src: `${F}/wine-toast.jpg`, alt: 'A toast on board' },
+  transfer: { src: `${F}/couple-on-deck.jpg`, alt: 'Guests on deck at sea' },
+  boat: { src: `${F}/boat-at-sea.jpg`, alt: 'The boat at sea' },
+  featuredLunch: { src: `${F}/chef-on-board.jpg`, alt: 'Lunch being cooked in the galley' },
+  reserve: { src: `${F}/waterfall.jpg`, alt: 'Waterfalls and green water' },
+  finalCta: { src: `${F}/aerial-bay-boats.jpg`, alt: 'Boats in a bay from above' },
+  seaCareHero: { src: `${F}/sea-care-cleanup.jpg`, alt: 'People collecting litter on a beach' },
+  seaCareBottles: { src: `${F}/sea-care-bottles.jpg`, alt: 'A bag of plastic bottles collected from a beach' },
+} satisfies Record<string, Img>;
+
+export type PhotoSlot = keyof typeof FIGMA_PHOTOS;
+
+/** Our photo in production, Coti's placeholder in previews. */
+export function photo(slot: PhotoSlot, own: Img): Img {
+  return USE_FIGMA_PHOTOS ? FIGMA_PHOTOS[slot] : own;
+}
+
 export const YACHT_BASE = '/private-yacht-hvar';
 export const YACHT_SEASON = '2027';
 export const YACHT_SEASON_RANGE = 'April to October 2027';
@@ -203,20 +239,20 @@ export const YACHT_EXPERIENCES: YachtExperience[] = [
     h1: 'Blue Cave half day from Hvar, by private yacht',
     intro:
       'Biševo and back in half a day. A larger, faster boat than our speedboats covers the open sea crossing sooner, so your morning goes to the cave and the water, not the ride. Up to 8 guests, departing from Beach Križa.',
-    heroImage: {
+    heroImage: photo('blueCaveHero', {
       src: '/images/destinations/hvar-blue-cave-interior-turquoise-light-2026.jpg',
       alt: 'Blue Cave on Biševo, turquoise light inside the cave',
-    },
+    }),
     duration: null,
     departureTime: null,
     sections: [
       {
         eyebrow: 'Why half a day',
         heading: 'Built around the cave',
-        image: {
+        image: photo('blueCave1', {
           src: '/images/destinations/hvar-medvidina-cave-bisevo-2026.jpg',
           alt: 'Sea cave on the island of Biševo',
-        },
+        }),
         paragraphs: [
           'Our speedboat tour to the Blue Cave is a full 7-hour day across five islands. This one is built around the cave itself. The yacht crosses to Vis and Biševo faster, and that is what turns a full day into half of one.',
           'You get the Blue Cave, a swim on the way back and the afternoon free in Hvar.',
@@ -225,10 +261,10 @@ export const YACHT_EXPERIENCES: YachtExperience[] = [
       {
         eyebrow: 'Before you go',
         heading: 'What the Blue Cave visit is really like',
-        image: {
+        image: photo('blueCave2', {
           src: '/images/destinations/hvar-blue-cave-interior-boat-tour-2026.jpg',
           alt: "Inside the Blue Cave on Biševo, on one of the cave's own small boats",
-        },
+        }),
         paragraphs: [
           `Private boats do not go inside the Blue Cave. At Biševo you pay the entrance (€${EXTRAS.blueCave} per person, paid on site) and go in on one of the cave's own small boats.`,
           'In July and August there is often a wait for your turn, and nobody can skip it, us included. What we can control is when we get there. A faster boat means an earlier arrival, and an earlier arrival usually means a shorter wait.',
@@ -295,20 +331,20 @@ export const YACHT_EXPERIENCES: YachtExperience[] = [
     h1: 'Private boat tour with lunch cooked on board',
     intro:
       'A private day on the water around Hvar, with lunch cooked on board by Juli. You swim, lunch is ready at anchor, and nobody has to hunt for a table at a restaurant only reachable by boat. Up to 8 guests, departing from Beach Križa.',
-    heroImage: {
+    heroImage: photo('lunchHero', {
       src: '/images/destinations/hvar-pakleni-islands-anchorage-aerial-drone-2026.jpg',
       alt: 'Boats at anchor in the Pakleni Islands, seen from above',
-    },
+    }),
     duration: null,
     departureTime: null,
     sections: [
       {
         eyebrow: 'Lunch at anchor',
         heading: 'Lunch without leaving the boat',
-        image: {
+        image: photo('lunch1', {
           src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
           alt: 'Quiet anchorage in the Pakleni Islands, from above',
-        },
+        }),
         paragraphs: [
           'On our speedboat tours lunch is not included: guests eat at restaurants at Palmižana or Ždrilca. On this day lunch happens on board, at anchor, in a bay the skipper picks for the wind that day.',
           'The galley on board is what makes it possible. Between swims, the table is set.',
@@ -317,10 +353,10 @@ export const YACHT_EXPERIENCES: YachtExperience[] = [
       {
         eyebrow: 'Your day',
         heading: 'The route is yours to shape',
-        image: {
+        image: photo('lunch2', {
           src: '/images/destinations/hvar-pakleni-islands-tarske-bay-drone-2026.jpg',
           alt: 'Taršće bay in the Pakleni Islands, from above',
-        },
+        }),
         paragraphs: [
           'The Pakleni Islands, the south coast of Hvar, or farther out. The skipper reads the conditions and suggests the bays. You decide the pace.',
           'Tell us about allergies and dietary needs when you send your request, and Juli plans the menu with that in mind.',
@@ -395,10 +431,10 @@ export const YACHT_HUB = {
   h1: 'Private yacht days from Hvar',
   intro:
     'A larger boat for the days that ask for more: lunch cooked on board, the Blue Cave in half a day, a transfer from Split with a bathroom on board. Up to 8 guests, from Beach Križa. Requests are open for April to October 2027.',
-  heroImage: {
+  heroImage: photo('hubHero', {
     src: '/images/hero/hvar-pakleni-islands-aerial-hero-drone-2026.jpg',
     alt: 'Pakleni Islands seen from above, turquoise water off Hvar',
-  },
+  }),
   dayFlow: [
     {
       title: 'Meet at Beach Križa',
@@ -489,7 +525,7 @@ export const LUNCH_STEPS = [
 
 export type JournalPhoto = { src: string; alt: string; caption: string };
 
-export const YACHT_JOURNAL: (JournalPhoto | [JournalPhoto, JournalPhoto])[] = [
+const OWN_JOURNAL: (JournalPhoto | [JournalPhoto, JournalPhoto])[] = [
   {
     src: '/images/destinations/hvar-pakleni-islands-aerial-overview-drone-2026-01.jpg',
     alt: 'The Pakleni Islands seen from above',
@@ -530,6 +566,27 @@ export const YACHT_JOURNAL: (JournalPhoto | [JournalPhoto, JournalPhoto])[] = [
     caption: 'Blue Cave, Biševo',
   },
 ];
+
+// Coti's journal, same order as the Figma. Neutral captions: these are not our places.
+const FIGMA_JOURNAL: (JournalPhoto | [JournalPhoto, JournalPhoto])[] = [
+  { src: `${F}/islands-lake-aerial.jpg`, alt: 'Islands and a lake from above', caption: 'Islands from above' },
+  [
+    { src: `${F}/cove-swimmers.jpg`, alt: 'Swimmers in a turquoise cove', caption: 'Crystal-clear water' },
+    { src: `${F}/boat-over-reef.jpg`, alt: 'A boat over clear water from above', caption: 'On the Adriatic' },
+  ],
+  { src: `${F}/anchored-yachts.jpg`, alt: 'Yachts at anchor in a quiet bay', caption: 'Anchored yachts' },
+  [
+    { src: `${F}/wine-toast.jpg`, alt: 'A toast on board', caption: 'Wine on board' },
+    { src: `${F}/golden-hour-dinghy.jpg`, alt: 'A small boat on golden water', caption: 'Golden hour' },
+  ],
+  { src: `${F}/secluded-bay.jpg`, alt: 'A quiet bay with clear water', caption: 'A secluded bay' },
+  [
+    { src: `${F}/couple-on-deck.jpg`, alt: 'Guests on deck at sea', caption: 'Time together' },
+    { src: `${F}/superyacht-open-water.jpg`, alt: 'A large yacht in open water', caption: 'Open water' },
+  ],
+];
+
+export const YACHT_JOURNAL = USE_FIGMA_PHOTOS ? FIGMA_JOURNAL : OWN_JOURNAL;
 
 // ──────────────────────────────────────────────
 // Reviews (real Google reviews of MareBoats Hvar)
