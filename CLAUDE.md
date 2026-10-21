@@ -3,6 +3,16 @@
 
 ---
 
+## 📘 Reglas del negocio — LEER ANTES DE TOCAR PRECIOS, PRODUCTOS O TEXTOS (21/10/2026)
+
+`docs/reglas-negocio.md` es la fuente única de verdad sobre cómo opera el negocio hoy: quién decide, flota, productos y precios, horarios, extras, políticas, cobro y canales.
+
+- **Leerlo completo antes de cualquier cambio de precios, productos o textos.** Si este archivo (`CLAUDE.md`) dice algo distinto, gana `docs/reglas-negocio.md`.
+- **Cada cambio que se haga se anota en su registro de decisiones (sección 9)**, con fecha, motivo y fuente, y se corrige la sección afectada en el mismo commit.
+- Precios, horarios y ofertas los manda el portal de reservas de Fran. `lib/pricing.ts` tiene que coincidir con el portal.
+- Decide Fede. No hace falta aprobación de Nikola.
+- La versión completa del documento (con datos internos) vive solo en el Proyecto de claude.ai. Nunca copiar al repo comisiones, reparto de socios, descuentos internos ni el mínimo real de los compartidos: el repo es público.
+
 ## Negocio
 - Tours privados y compartidos en speedboat desde Hvar, Croacia
 - Propietario: Nikola (fundador, operaciones). Josip (hermano de Nikola, head skipper). Fede = skipper ocasional + marketing + tech
@@ -145,7 +155,7 @@ Botella extra: €30. Incluye siempre agua y fruta fresca.
 
 **El salto 5→6 es un acantilado conocido:** un grupo de 6 pasa de 1 bote/€350 a 2 botes/€500 y se reparte en dos embarcaciones. Tiene incentivo a declararse 5. Es decisión de Nikola priorizar comodidad; el riesgo es perder o irritar grupos de 6.
 
-**⚠️ Pendiente Nikola — botellas en tramos medios.** Una botella por bote deja los tramos del medio cortos de vino (5 pax = 1 copa por cabeza a €350; 8 pax = 1,25 copas a €700). Propuesta en evaluación: "una botella cada 3 personas, mínimo una por bote" → 5=2, 7-8=3, 12=4, sin excepciones. Es costo de vino, o sea decisión de Nikola. La botella NUNCA es dato público (el copy no dice cantidad), así que subirla no toca la web, solo operación y crew dashboard. Hasta que Nikola apruebe, el código queda en botella=bote. Si aprueba, la fórmula pasa a `max(botes, round(pax/3))` (sigue derivada, sin riesgo de divergencia).
+**⚠️ Pendiente (decide Fede) — botellas en tramos medios.** Una botella por bote deja los tramos del medio cortos de vino (5 pax = 1 copa por cabeza a €350; 8 pax = 1,25 copas a €700). Propuesta en evaluación: "una botella cada 3 personas, mínimo una por bote" → 5=2, 7-8=3, 12=4, sin excepciones. Es costo de vino; desde octubre de 2026 lo decide Fede. La botella NUNCA es dato público (el copy no dice cantidad), así que subirla no toca la web, solo operación y crew dashboard. Hasta que se apruebe, el código queda en botella=bote. Si aprueba, la fórmula pasa a `max(botes, round(pax/3))` (sigue derivada, sin riesgo de divergencia).
 
 ### Water taxi (dejó de ser "on request" el 21/07)
 | Zona | Base | Persona extra |
@@ -413,8 +423,7 @@ font-body: Space Grotesk (regular/medium)
 
 ## 🔴 REGLAS INAMOVIBLES — OTAs
 
-**Nada se cambia en GYG, Booking.com, Viator ni Airbnb sin que Nikola apruebe PRIMERO.**
-Flujo: Fede redacta → WhatsApp a Nikola → aprobación escrita → publicar.
+**Nada se cambia en GYG, Booking.com, Viator ni Airbnb sin que Fede apruebe PRIMERO.** Desde octubre de 2026 decide Fede; no hace falta aprobación de Nikola (ver `docs/reglas-negocio.md`).
 
 ### Concepto VIP 5 Islands (no modificar)
 - Salida 10:00, 3 cuevas, grupos chicos, NO "RIB", mantener "VIP"
@@ -447,7 +456,7 @@ Flujo: Fede redacta → WhatsApp a Nikola → aprobación escrita → publicar.
 - VIP 5 Islands: €1,530 · 6 bookings · Jun 22 SOLD OUT
 - Red Rocks: €105 · 1 booking
 
-### Booking.com — pendiente aprobación Nikola
+### Booking.com — pendiente aprobación de Fede
 ### Viator — bloqueado por seguro
 ### Airbnb — bloqueado por Ministerio Turismo Hvar
 
@@ -697,7 +706,7 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 
 ### 🧹 BLOQUE 2 — Pendiente
 - GYG: itinerary VIP 5 Islands, disponibilidad jun-jul, review Red Rocks, underwater scooters publicar, fotos listings
-- Booking.com: aprobación Nikola
+- Booking.com: aprobación de Fede
 - Sitio: /transfers/ hoverImages resto de cards, home hero confirmar visual, tour pages revisar
 - GBP: posts Coti, 20-30 fotos
 - Blue Cave: conseguir fotos reales para reemplazar placeholder
@@ -731,7 +740,7 @@ Tours privados únicamente. No aplica en shared 5 Islands.
 - **Titles sobre 60 chars sin doble marca** (~18 páginas). Los 7 con doble sufijo se corrigieron el 09/08; el resto queda pendiente caso por caso.
 - **GBP vs schema**: GBP declara horario todo el año, el schema declara abril-octubre. Resolver con Nikola y unificar.
 - **GetYourGuide publica €95 y €160** contra €85 y €150 del sitio. Decisión deliberada de Fede (margen OTA), registrada como tal. Costo conocido: Google muestra el precio de GYG en el panel de la ficha, así que es el precio percibido por el turista.
-- **TripAdvisor dice "RIB speedboats"** en algún listado o meta cacheado. Requiere aprobación de Nikola antes de corregir.
+- **TripAdvisor dice "RIB speedboats"** en algún listado o meta cacheado. Requiere aprobación de Fede antes de corregir.
 
 **Notas de entorno Netlify (aprendidas por experiencia — no reintentar)**
 - `git fetch --unshallow` en el build command **cuelga el build**. Revertido el 09/08.
@@ -822,7 +831,7 @@ Dos grupos con topics. **Core es para decisiones, Crew es para ejecución.** Lo 
 | Topic | Para qué |
 |---|---|
 | General | Lo que no entra en otro lado. Coordinación rápida, links. |
-| **Decisions** | Todo lo que necesita aprobación de Nikola: precios, OTA listings, copy público, compras grandes. Un mensaje = una decisión. Se marca "APPROVED". |
+| **Decisions** | Todo lo que necesita aprobación (desde octubre de 2026, de Fede): precios, OTA listings, copy público, compras grandes. Un mensaje = una decisión. Se marca "APPROVED". |
 | Website & Marketing | Web, SEO, Google Ads, analytics. |
 | Media | Contenido terminado, posts, reviews. El material crudo va al Crew. |
 | Fleet & Purchases | Upgrades, repuestos, presupuestos, proyectos de audio y eléctrica. |
@@ -962,7 +971,7 @@ También se sacó de este archivo la apikey de Vesselio que estaba en texto plan
 | Revocar token de `kosmosDaily_bot` | sin confirmar |
 | Borrar las ~8 filas de prueba en Notion | sin confirmar |
 | Rich Results Test sobre `/careers/skipper/` | nunca se corrió |
-| Aprobación de Nikola sobre el copy de careers | publicado desde el 21/08 sin confirmar |
+| Aprobación de Fede sobre el copy de careers | publicado desde el 21/08 sin confirmar |
 | Revisión legal de `/privacy/` por el asesor de Josip | pendiente |
 | Borrado de datos de candidatos el 31/03/2027 | compromiso publicado, poner recordatorio |
 
@@ -1238,9 +1247,9 @@ Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explo
 | Política de mal tiempo | Nikola |
 | Motivo legal Pasara 5hp "no licence" | Nikola (desde julio) |
 | Rango de combustible Private Charter | Nikola |
-| Corregir "RIB speedboats" en TripAdvisor | Nikola (aprobación) |
+| Corregir "RIB speedboats" en TripAdvisor | Fede (aprobación) |
 | Horario de temporada en GBP | Fede |
-| Aprobación del copy de `/careers/skipper/` | Nikola (publicado desde 21/08) |
+| Aprobación del copy de `/careers/skipper/` | Fede (publicado desde 21/08) |
 | Revisión legal de `/privacy/` | asesor de Josip |
 | Contrato croata para skippers 2026 | Nikola (si confirma, cambia una línea de la página) |
 | Revocar token de `kosmosDaily_bot` | Fede (seguridad) |
@@ -1269,7 +1278,7 @@ Nota de nombre: la palabra "premium" sigue prohibida en copy público. "Premium"
 - **Al pedir cambios de precio, nombrar el producto por su ID/slug exacto en `pricing.ts`, no por descripción libre.** El 04/08 "Vis tour" se interpretó como producto nuevo inexistente y se creó una entrada (`vis-island-tour`) que no correspondía a nada real, en vez de tocar "5 Islands, 4 Beaches & Blue Cave" que sí existía. Si el nombre del producto en la instrucción no calza 1:1 con una key conocida de `pricing.ts`, parar y confirmar antes de crear nada nuevo.
 - **Barridos de copy SIEMPRE case-insensitive.** Un grep case-sensitive de "local skipper" (29/07) dejó pasar "Local skipper" en schema.ts. Al buscar una frase para sacar/reemplazar, cubrir todas las capitalizaciones.
 - **No procesar copy con regex.** Un `clean()` con regex mutiló "Snorkel gear (limited)" en "snorkel gear". El copy de cliente se escribe a mano en campos dedicados (`quoteName`, `quoteIncluded`, `quoteNotIncluded`).
-- NUNCA modificar OTA listings sin aprobación Nikola
+- NUNCA modificar OTA listings sin aprobación de Fede
 - Em-dashes y en-dashes prohibidos
 - Brand: "MareBoats Hvar" (sin espacio)
 - Capacidad: "up to 8" / "Licensed for 12. We cap at 8."
