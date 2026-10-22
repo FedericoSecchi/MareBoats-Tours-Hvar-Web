@@ -93,7 +93,7 @@ export default function HomePage() {
                 ⭐ 140+ happy guests
               </span>
 
-              <p className="max-w-2xl text-base leading-relaxed text-[color:var(--gray)] md:text-xl">
+              <p className="max-w-2xl rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(13,27,42,0.7)_0%,rgba(13,27,42,0.45)_55%,rgba(13,27,42,0)_100%)] px-6 py-4 text-base leading-relaxed text-[color:var(--gray)] md:px-10 md:py-6 md:text-xl">
                 We sail from Beach Križa. You pick the day, the stops and the pace - Blue Cave, Red
                 Rocks, Pakleni Islands, sunset or all of it. Private boat, skipper who knows the island.
               </p>
