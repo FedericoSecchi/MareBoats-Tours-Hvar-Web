@@ -67,8 +67,6 @@ export default function HomePage() {
 
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden text-white">
         <HeroVideo source={HOME_HERO_VIDEO} />
-        {/* Scrim: the sunny footage is much brighter than the old photo, the type needs it. */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[rgba(13,27,42,0.42)]" />
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 z-[5]"
           style={{
@@ -76,7 +74,7 @@ export default function HomePage() {
             background: 'linear-gradient(to top, #0d1b2a 0%, transparent 100%)',
           }}
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[rgba(13,27,42,0.75)] via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[color:var(--bg)]/75 via-transparent to-transparent" />
         <div className="relative z-10 mx-auto flex w-full max-w-container flex-col items-center gap-8 px-4 py-20 text-center">
           <h1 className="font-display text-[clamp(3rem,10vw,8rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.02em]">
             <span className="block text-[color:var(--white)]">Private Boat</span>
