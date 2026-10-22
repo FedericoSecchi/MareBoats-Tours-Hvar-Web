@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { generateSEO } from '@/lib/seo';
 import { FAQJsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { HeroVideo } from '@/components/ui/HeroVideo';
 import Tours from '@/components/sections/Tours';
 import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
@@ -27,6 +27,20 @@ const CTABanner = dynamic(() => import('@/components/sections/CTABanner'), {
   ssr: false,
   loading: () => <div className="min-h-[200px]" />,
 });
+
+// Hero background: our own drone footage (Fede, 11/10/2026), 12 s loop.
+// Phones get the native vertical framing, md+ a 16:9 crop of the same shot.
+const HOME_HERO_VIDEO = {
+  desktop: {
+    video: '/videos/hvar-aerial-sunny-drone-2026-desktop.mp4',
+    poster: '/images/hero/hvar-aerial-sunny-drone-2026-poster-desktop.jpg',
+  },
+  mobile: {
+    video: '/videos/hvar-aerial-sunny-drone-2026-mobile.mp4',
+    poster: '/images/hero/hvar-aerial-sunny-drone-2026-poster-mobile.jpg',
+  },
+  alt: 'Islands off Hvar from a drone on a clear day, private boat tours from Hvar Croatia',
+};
 
 export const metadata: Metadata = generateSEO({
   title: 'Private Boat Tours Hvar Croatia | MareBoats - Book on WhatsApp',
@@ -52,15 +66,9 @@ export default function HomePage() {
       <FAQJsonLd faqs={homepageFaqs} />
 
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden text-white">
-        <Image
-          src="/images/hero/hvar-pakleni-islands-aerial-hero-drone-2026.jpg"
-          alt="Pakleni Islands aerial view from drone - private boat tour from Hvar Croatia"
-          fill
-          priority
-          quality={75}
-          sizes="100vw"
-          className="absolute inset-0 object-cover object-center"
-        />
+        <HeroVideo source={HOME_HERO_VIDEO} />
+        {/* Scrim: the sunny footage is much brighter than the old photo, the type needs it. */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[rgba(13,27,42,0.42)]" />
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 z-[5]"
           style={{
@@ -68,7 +76,7 @@ export default function HomePage() {
             background: 'linear-gradient(to top, #0d1b2a 0%, transparent 100%)',
           }}
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[color:var(--bg)]/75 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[rgba(13,27,42,0.75)] via-transparent to-transparent" />
         <div className="relative z-10 mx-auto flex w-full max-w-container flex-col items-center gap-8 px-4 py-20 text-center">
           <h1 className="font-display text-[clamp(3rem,10vw,8rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.02em]">
             <span className="block text-[color:var(--white)]">Private Boat</span>
@@ -85,7 +93,7 @@ export default function HomePage() {
                 ⭐ 140+ happy guests
               </span>
 
-              <p className="max-w-2xl text-base leading-relaxed text-[color:var(--gray)] md:text-xl">
+              <p className="max-w-2xl rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(13,27,42,0.7)_0%,rgba(13,27,42,0.45)_55%,rgba(13,27,42,0)_100%)] px-6 py-4 text-base leading-relaxed text-[color:var(--gray)] md:px-10 md:py-6 md:text-xl">
                 We sail from Beach Križa. You pick the day, the stops and the pace - Blue Cave, Red
                 Rocks, Pakleni Islands, sunset or all of it. Private boat, skipper who knows the island.
               </p>

@@ -23,6 +23,7 @@ const infoLinks = [
   { href: '/about', label: 'About' },
   { href: '/hvar-islands-guide/', label: 'On Tour' },
   { href: '/guide#weather', label: 'Weather Policy' },
+  { href: '/sea-care/', label: 'Sea Care' },
   { href: '/careers/skipper/', label: 'Join the Crew' },
   { href: '/privacy/', label: 'Privacy' },
 ];

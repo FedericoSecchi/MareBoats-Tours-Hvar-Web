@@ -3,18 +3,17 @@
 // gone (the photo is not ours), "cigarette ends" is gone (no smoking on board), and the FAQ
 // answers only repeat what the page already says (the Figma answer was a Spanish placeholder).
 // Every claim confirmed by Fede: biodegradable cleaning products (21/10), support for local
-// cleanups and slow speed in the bays (22/10). Still noindex, out of the sitemap and unlinked
-// until it is published.
+// cleanups and slow speed in the bays (22/10). Published 22/10: indexed, in the sitemap and
+// linked from the footer. Photos are our own drone shots (Coti's design used stock).
 
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ArrowUpRight, Gauge, Leaf, Plus, Recycle, Trash2 } from 'lucide-react';
 import { generateSEO } from '@/lib/seo';
-import { photo } from '@/lib/yacht-data';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
-/** Flip to true to publish: indexable. Then add it to the sitemap and the footer. */
-const SEA_CARE_LIVE = false;
+/** false hides it again: noindex. Also take it out of the sitemap and the footer. */
+const SEA_CARE_LIVE = true;
 
 export const metadata: Metadata = {
   ...generateSEO({
@@ -27,14 +26,14 @@ export const metadata: Metadata = {
   robots: SEA_CARE_LIVE ? { index: true, follow: true } : { index: false, follow: false, nocache: true },
 };
 
-const HERO = photo('seaCareHero', {
+const HERO = {
   src: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
   alt: 'A quiet cove in the Pakleni Islands from above',
-});
-const CLEANUP = photo('seaCareBottles', {
+};
+const CLEANUP = {
   src: '/images/destinations/hvar-pakleni-islands-tarske-bay-drone-2026.jpg',
   alt: 'A bay in the Pakleni Islands from above',
-});
+};
 
 const BELIEFS = [
   {
@@ -170,7 +169,6 @@ export default function SeaCarePage() {
               href={WA_URL}
               label="sea_care"
               ctaText="Write to us on WhatsApp"
-              pageSection="sea_care"
               className="mt-9 inline-flex min-h-[48px] items-center gap-2 rounded-pill bg-[color:var(--bg)] px-[22px] font-body text-base font-medium tracking-[0.05em] text-[color:var(--white)] transition-opacity duration-300 hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--bg)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--accent)]"
             >
               Write to us on WhatsApp
