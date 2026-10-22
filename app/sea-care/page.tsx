@@ -2,8 +2,9 @@
 // Copy is Coti's, with three changes: the hero label "Real photo, Pakleni cove, no stock" is
 // gone (the photo is not ours), "cigarette ends" is gone (no smoking on board), and the FAQ
 // answers only repeat what the page already says (the Figma answer was a Spanish placeholder).
-// Biodegradable cleaning products: confirmed by Fede 21/10. Still PENDING confirmation by
-// Nikola: support for local cleanups, slow speed in the bays. Until then the page stays noindex, out of the sitemap and unlinked.
+// Every claim confirmed by Fede: biodegradable cleaning products (21/10), support for local
+// cleanups and slow speed in the bays (22/10). Still noindex, out of the sitemap and unlinked
+// until it is published.
 
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -12,7 +13,7 @@ import { generateSEO } from '@/lib/seo';
 import { photo } from '@/lib/yacht-data';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 
-/** Flip to true once Nikola confirms every claim on the page. Then add it to the sitemap. */
+/** Flip to true to publish: indexable. Then add it to the sitemap and the footer. */
 const SEA_CARE_LIVE = false;
 
 export const metadata: Metadata = {
