@@ -169,6 +169,7 @@ Note: Water taxi has no fixed meeting point. We come to your anchored boat.
 - Boat rental without a licence: ${SITE_URL}/rentals/boat-rental-hvar-without-licence/
 - Private boat tour for families and groups: ${SITE_URL}/explore/private-boat-tour-hvar-families/
 - Short boat tour from Hvar (few hours between ferries): ${SITE_URL}/explore/short-boat-tour-hvar-few-hours/
+- Sea care (how we look after the sea): ${SITE_URL}/sea-care/
 `;
 }
 
