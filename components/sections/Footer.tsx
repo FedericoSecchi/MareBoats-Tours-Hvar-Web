@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { BUSINESS_INFO } from '@/lib/tours-data';
+import { SHOW_YACHT_LINKS, YACHT_BASE } from '@/lib/yacht-flags';
 
 const MAPS_URL = BUSINESS_INFO.googleMapsUrl;
 const WA_BOOK = 'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour';
@@ -18,6 +19,9 @@ const exploreLinks = [
   { href: '/explore', label: 'Explore Hvar' },
   { href: '/conditions', label: 'Conditions' },
 ];
+
+// Private yacht section: listed only in previews until YACHT_SECTION_LIVE.
+if (SHOW_YACHT_LINKS) exploreLinks.splice(3, 0, { href: `${YACHT_BASE}/`, label: 'Private Yacht' });
 
 const infoLinks = [
   { href: '/about', label: 'About' },

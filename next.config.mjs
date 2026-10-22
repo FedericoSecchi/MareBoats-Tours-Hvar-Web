@@ -15,6 +15,9 @@ const useGhPagesBase =
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  // Netlify deploy context, inlined so client components agree with the server render
+  // (the yacht-section preview switches read it).
+  env: { CONTEXT: process.env.CONTEXT ?? '' },
   compress: true,
   images: {
     unoptimized: true,

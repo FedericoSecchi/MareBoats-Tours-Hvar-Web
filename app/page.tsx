@@ -5,6 +5,8 @@ import { generateSEO } from '@/lib/seo';
 import { FAQJsonLd } from '@/components/ui/JsonLd';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { HeroVideo } from '@/components/ui/HeroVideo';
+import { HomeYachtTeaser } from '@/components/yacht/HomeYachtTeaser';
+import { SHOW_YACHT_LINKS } from '@/lib/yacht-flags';
 import Tours from '@/components/sections/Tours';
 import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
@@ -124,6 +126,8 @@ export default function HomePage() {
       </section>
 
       <Tours />
+
+      {SHOW_YACHT_LINKS && <HomeYachtTeaser />}
 
       {/* Quick links to other services - internal link equity */}
       <section className="border-y border-[color:var(--border)] bg-[color:var(--surface)] px-4 py-6">

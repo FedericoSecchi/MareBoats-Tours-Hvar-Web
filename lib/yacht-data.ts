@@ -13,20 +13,10 @@
 import type { Metadata } from 'next';
 import { EXTRAS, type YachtPriceKey } from './pricing';
 
-/** Publication switch. Only Fede flips this, once prices are set. */
-export const YACHT_SECTION_LIVE = false;
-
-/**
- * Netlify deploy previews and branch deploys (and local dev) show the links
- * into the section from public pages, so Fede can review them before launch.
- * Production shows them only when YACHT_SECTION_LIVE is true.
- */
-const IS_PREVIEW_BUILD =
-  process.env.CONTEXT === 'deploy-preview' ||
-  process.env.CONTEXT === 'branch-deploy' ||
-  process.env.NODE_ENV === 'development';
-
-export const SHOW_YACHT_LINKS = YACHT_SECTION_LIVE || IS_PREVIEW_BUILD;
+// Switches live in a tiny module so site-wide client components (footer, home)
+// can read them without pulling this whole file into every page's bundle.
+import { YACHT_SECTION_LIVE, IS_PREVIEW_BUILD, SHOW_YACHT_LINKS, YACHT_BASE } from './yacht-flags';
+export { YACHT_SECTION_LIVE, SHOW_YACHT_LINKS, YACHT_BASE };
 
 // ──────────────────────────────────────────────
 // Coti's Figma photos as TEMPORARY placeholders (decision 21/10: "add them all,
@@ -64,7 +54,6 @@ export function photo(slot: PhotoSlot, own: Img): Img {
   return USE_FIGMA_PHOTOS ? FIGMA_PHOTOS[slot] : own;
 }
 
-export const YACHT_BASE = '/private-yacht-hvar';
 export const YACHT_SEASON = '2027';
 export const YACHT_SEASON_RANGE = 'April to October 2027';
 export const YACHT_REQUEST_PATH = `${YACHT_BASE}/request/`;
