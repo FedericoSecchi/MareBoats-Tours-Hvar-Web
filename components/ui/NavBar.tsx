@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { trackWhatsAppClick } from '@/lib/analytics';
+import { SHOW_YACHT_LINKS, YACHT_BASE } from '@/lib/yacht-flags';
 
 const WHATSAPP_URL =
   'https://wa.me/385951966734?text=Hi!%20I%27d%20like%20to%20book%20a%20tour';
@@ -15,6 +16,11 @@ const NAV_LINKS: { label: string; href: string }[] = [
   { label: 'Explore', href: '/explore' },
   { label: 'About', href: '/about' },
 ];
+
+// Private Yacht sits right after Transfers, only while SHOW_YACHT_LINKS.
+if (SHOW_YACHT_LINKS) {
+  NAV_LINKS.splice(3, 0, { label: 'Private Yacht', href: `${YACHT_BASE}/` });
+}
 
 function isActive(pathname: string | null, href: string) {
   if (!pathname) return false;

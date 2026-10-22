@@ -1,6 +1,6 @@
 // Entry point from the home page into the private yacht section.
 // Rendered only while SHOW_YACHT_LINKS (previews now, production once the section is live).
-// Copy comes from YACHT_HUB so the teaser and the hub never say different things.
+// The teaser deliberately uses shorter copy than the hub hero; h1 stays shared.
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -24,12 +24,14 @@ export function HomeYachtTeaser() {
         </div>
         <div className="flex flex-col justify-center p-7 md:p-12">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-            {YACHT_HUB.eyebrow}
+            New for 2027
           </p>
           <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
             {YACHT_HUB.h1}
           </h2>
-          <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)]">{YACHT_HUB.intro}</p>
+          <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)]">
+            Lunch cooked on board, the Blue Cave in half a day, a bathroom on board. Up to 8 guests, from Beach Križa.
+          </p>
           <span className="mt-8 inline-flex w-fit items-center gap-2 rounded-pill bg-[color:var(--accent)] px-6 py-3 font-body text-sm font-semibold text-[color:var(--bg)] transition-colors duration-300 group-hover:bg-[color:var(--white)]">
             See the yacht days
             <span aria-hidden="true">→</span>
