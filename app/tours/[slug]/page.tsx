@@ -10,6 +10,23 @@ import { getLastModified } from '@/lib/git-dates';
 import TourHero from '@/components/sections/TourHero';
 import FleetInfo from '@/components/sections/FleetInfo';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
+import { SHOW_YACHT_LINKS, YACHT_BASE } from '@/lib/yacht-flags';
+
+// Entries into the yacht section from the two tours that have a yacht variant.
+// Rendered just before the FAQ, gated by SHOW_YACHT_LINKS so the block disappears
+// cleanly if the section is turned off.
+const YACHT_UPSELL: Record<string, { question: string; linkText: string; href: string }> = {
+  'blue-cave-pakleni-islands': {
+    question: 'Want the Blue Cave in half a day, with a bathroom on board?',
+    linkText: 'See the private yacht version for 2027 →',
+    href: `${YACHT_BASE}/blue-cave-half-day/`,
+  },
+  'red-rocks-pakleni-islands': {
+    question: 'Want lunch cooked on board instead of a stop ashore?',
+    linkText: 'See the private yacht day with lunch for 2027 →',
+    href: `${YACHT_BASE}/boat-tour-with-lunch/`,
+  },
+};
 
 const SITE = 'https://mareboatshvar.com';
 
@@ -141,6 +158,7 @@ export default function TourDetailPage({ params }: PageProps) {
   const showTourMemoriesLink = tour.addons?.some((a) => a.startsWith('Tour Memories')) ?? false;
   const showUnderwaterScooterModule =
     tour.addons?.some((a) => a.startsWith('Underwater Scooter')) ?? false;
+  const yachtUpsell = SHOW_YACHT_LINKS ? YACHT_UPSELL[tour.slug] : undefined;
 
   return (
     <main>
@@ -527,6 +545,22 @@ export default function TourDetailPage({ params }: PageProps) {
           )}
         </div>
       </section>
+
+      {yachtUpsell && (
+        <div className="bg-[color:var(--bg)] px-4 pb-10 pt-6 md:pb-14 md:pt-8">
+          <div className="mx-auto max-w-container">
+            <p className="font-body text-sm text-[color:var(--gray)]">
+              {yachtUpsell.question}{' '}
+              <Link
+                href={yachtUpsell.href}
+                className="font-semibold text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+              >
+                {yachtUpsell.linkText}
+              </Link>
+            </p>
+          </div>
+        </div>
+      )}
 
       {tour.faqs && tour.faqs.length > 0 && (
         <section className="bg-[color:var(--surface)] px-4 py-16 md:py-20">
