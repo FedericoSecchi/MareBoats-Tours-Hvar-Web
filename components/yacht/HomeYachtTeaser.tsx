@@ -2,9 +2,21 @@
 // Rendered only while SHOW_YACHT_LINKS (previews now, production once the section is live).
 // The teaser deliberately uses shorter copy than the hub hero; h1 stays shared.
 
-import Image from 'next/image';
 import Link from 'next/link';
+import { HeroVideo } from '@/components/ui/HeroVideo';
 import { YACHT_BASE, YACHT_HUB } from '@/lib/yacht-data';
+
+const TEASER_VIDEO = {
+  desktop: {
+    video: '/videos/hvar-aerial-rain-drone-2026-desktop.mp4',
+    poster: '/images/hero/hvar-aerial-rain-drone-2026-poster-desktop.jpg',
+  },
+  mobile: {
+    video: '/videos/hvar-aerial-rain-drone-2026-mobile.mp4',
+    poster: '/images/hero/hvar-aerial-rain-drone-2026-poster-mobile.jpg',
+  },
+  alt: 'Waves breaking on the rocky coast of Hvar, seen from above',
+};
 
 export function HomeYachtTeaser() {
   return (
@@ -14,12 +26,10 @@ export function HomeYachtTeaser() {
         className="group mx-auto grid max-w-container overflow-hidden rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] md:grid-cols-2"
       >
         <div className="relative aspect-[4/3] overflow-hidden md:aspect-auto md:min-h-[380px]">
-          <Image
-            src="/images/hero/hvar-aerial-rain-drone-2026-poster-desktop.jpg"
-            alt="Waves breaking on the rocky coast of Hvar, seen from above"
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          <HeroVideo
+            source={TEASER_VIDEO}
+            lazy
+            className="transition-transform duration-700 group-hover:scale-[1.03]"
           />
         </div>
         <div className="flex flex-col justify-center p-7 md:p-12">

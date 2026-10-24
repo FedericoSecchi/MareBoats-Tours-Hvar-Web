@@ -7,6 +7,8 @@
 //   and fades in once it is actually playing.
 // - No video at all with prefers-reduced-motion or Save-Data on: poster only.
 // - Paused while off-screen, so it does not burn battery under the fold.
+// - `lazy` is for below-the-fold uses: the poster drops its priority and the
+//   video source is only resolved after the container enters the viewport.
 
 import { useEffect, useRef, useState } from 'react';
 import { getImageProps } from 'next/image';
@@ -20,17 +22,45 @@ export type HeroVideoSource = {
 
 const MD = '(min-width: 768px)';
 
-export function HeroVideo({ source, className = '' }: { source: HeroVideoSource; className?: string }) {
+export function HeroVideo({
+  source,
+  className = '',
+  lazy = false,
+}: {
+  source: HeroVideoSource;
+  className?: string;
+  lazy?: boolean;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [src, setSrc] = useState<string | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [inView, setInView] = useState(!lazy);
 
   useEffect(() => {
+    if (!lazy) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [lazy]);
+
+  useEffect(() => {
+    if (!inView) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     if (reduced || saveData) return;
     setSrc(window.matchMedia(MD).matches ? source.desktop.video : source.mobile.video);
-  }, [source]);
+  }, [source, inView]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -46,7 +76,7 @@ export function HeroVideo({ source, className = '' }: { source: HeroVideoSource;
     return () => io.disconnect();
   }, [src]);
 
-  const common = { alt: source.alt, fill: true, sizes: '100vw', priority: true };
+  const common = { alt: source.alt, fill: true, sizes: '100vw', priority: !lazy };
   const {
     props: { srcSet: desktopSrcSet },
   } = getImageProps({ ...common, src: source.desktop.poster });
@@ -55,7 +85,7 @@ export function HeroVideo({ source, className = '' }: { source: HeroVideoSource;
   } = getImageProps({ ...common, src: source.mobile.poster });
 
   return (
-    <div className={`absolute inset-0 ${className}`}>
+    <div ref={containerRef} className={`absolute inset-0 ${className}`}>
       <picture>
         <source media={MD} srcSet={desktopSrcSet ?? source.desktop.poster} />
         {/* next/image art direction (getImageProps): the <img> carries next/image's own props and alt. */}
