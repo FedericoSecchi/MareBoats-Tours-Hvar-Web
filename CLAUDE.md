@@ -1293,3 +1293,19 @@ Nota de nombre: la palabra "premium" sigue prohibida en copy público. "Premium"
 - **Al reportar un grep, mostrar la línea encontrada, no sólo la cantidad de resultados.** "Un solo resultado en la línea 6" no permite verificar nada.
 - **Datos personales de terceros**: nada de candidatos, huéspedes ni referencias entra al build estático. Sólo a Notion, y sólo lo mínimo necesario.
 - **Formularios**: la única excepción a "solo WhatsApp" es `/careers/skipper/`. Cualquier otro form se consulta antes.
+
+## Cuándo preguntar y cuándo avanzar
+Avanzá sin preguntar en todo lo reversible: código en ramas, builds,
+refactors, elegir entre opciones técnicas equivalentes, arreglar lo que
+rompiste. Decidí con criterio y anotá la decisión en el reporte final.
+
+Preguntá SIEMPRE antes de:
+- Push a main o cualquier cosa que llegue a producción.
+- Copy público nuevo o cambiado (lo aprueba Nikola).
+- Precios, datos del negocio, políticas, legal: si no está en el código o
+  en este archivo, no se inventa.
+- Borrar cosas que no creaste vos en esta sesión.
+- Algo que contradiga este archivo o una instrucción mía.
+
+Si tenés una duda que no bloquea, seguí con lo demás y juntá las preguntas
+en una sola tanda al final, no una por una.
