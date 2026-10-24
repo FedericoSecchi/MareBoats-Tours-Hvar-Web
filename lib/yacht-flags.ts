@@ -1,5 +1,13 @@
 /** Publication switch. Only Fede flips this, once prices are set. */
-export const YACHT_SECTION_LIVE = false;
+export const YACHT_SECTION_LIVE = true;
+
+/**
+ * Always false. During pre-launch we had Coti's Figma photos as placeholders
+ * (gated by IS_PREVIEW_BUILD) so production never shipped stock or branded
+ * images. The folder is now deleted; this stays as a hard off switch so no
+ * future preview can bring Figma photos back without flipping it on purpose.
+ */
+export const USE_FIGMA_PHOTOS = false;
 
 /**
  * Netlify deploy previews and branch deploys (and local dev) show the links

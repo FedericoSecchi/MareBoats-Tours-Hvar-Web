@@ -15,43 +15,34 @@ import { EXTRAS, type YachtPriceKey } from './pricing';
 
 // Switches live in a tiny module so site-wide client components (footer, home)
 // can read them without pulling this whole file into every page's bundle.
-import { YACHT_SECTION_LIVE, IS_PREVIEW_BUILD, SHOW_YACHT_LINKS, YACHT_BASE } from './yacht-flags';
+import { YACHT_SECTION_LIVE, SHOW_YACHT_LINKS, YACHT_BASE } from './yacht-flags';
 export { YACHT_SECTION_LIVE, SHOW_YACHT_LINKS, YACHT_BASE };
 
-// ──────────────────────────────────────────────
-// Coti's Figma photos as TEMPORARY placeholders (decision 21/10: "add them all,
-// we replace them later"). Preview builds only. A production build always uses
-// our own photos, so a merge to main never publishes stock or manufacturer images.
-// Files: public/images/figma-temp/. Delete the folder once every slot has our own photo.
-// ──────────────────────────────────────────────
-
-export const USE_FIGMA_PHOTOS = IS_PREVIEW_BUILD;
-
 type Img = { src: string; alt: string; objectPosition?: string };
-const F = '/images/figma-temp';
 
-export const FIGMA_PHOTOS = {
-  hubHero: { src: `${F}/aerial-bay-boats.jpg`, alt: 'Boats in a bay from above' },
-  blueCaveHero: { src: `${F}/blue-cave.jpg`, alt: 'Blue light inside a sea cave' },
-  blueCave1: { src: `${F}/boat-over-reef.jpg`, alt: 'A boat over clear water from above' },
-  blueCave2: { src: `${F}/blue-cave.jpg`, alt: 'Blue light inside a sea cave' },
-  lunchHero: { src: `${F}/anchored-yachts.jpg`, alt: 'Yachts at anchor in a quiet bay' },
-  lunch1: { src: `${F}/chef-on-board.jpg`, alt: 'Lunch being cooked in the galley' },
-  lunch2: { src: `${F}/wine-toast.jpg`, alt: 'A toast on board' },
-  transfer: { src: `${F}/couple-on-deck.jpg`, alt: 'Guests on deck at sea' },
-  boat: { src: `${F}/boat-at-sea.jpg`, alt: 'The boat at sea' },
-  featuredLunch: { src: `${F}/chef-on-board.jpg`, alt: 'Lunch being cooked in the galley' },
-  reserve: { src: `${F}/waterfall.jpg`, alt: 'Waterfalls and green water' },
-  finalCta: { src: `${F}/aerial-bay-boats.jpg`, alt: 'Boats in a bay from above' },
-  seaCareHero: { src: `${F}/sea-care-cleanup.jpg`, alt: 'People collecting litter on a beach' },
-  seaCareBottles: { src: `${F}/sea-care-bottles.jpg`, alt: 'A bag of plastic bottles collected from a beach' },
-} satisfies Record<string, Img>;
+export type PhotoSlot =
+  | 'hubHero'
+  | 'blueCaveHero'
+  | 'blueCave1'
+  | 'blueCave2'
+  | 'lunchHero'
+  | 'lunch1'
+  | 'lunch2'
+  | 'transfer'
+  | 'boat'
+  | 'featuredLunch'
+  | 'reserve'
+  | 'finalCta'
+  | 'seaCareHero'
+  | 'seaCareBottles';
 
-export type PhotoSlot = keyof typeof FIGMA_PHOTOS;
-
-/** Our photo in production, Coti's placeholder in previews. */
-export function photo(slot: PhotoSlot, own: Img): Img {
-  return USE_FIGMA_PHOTOS ? FIGMA_PHOTOS[slot] : own;
+/**
+ * Returns the project-owned photo for a slot. The second argument was Coti's
+ * Figma placeholder during pre-launch; placeholders are gone now, we always
+ * use `own`. The signature stays by slot for callers that pass the slot name.
+ */
+export function photo(_slot: PhotoSlot, own: Img): Img {
+  return own;
 }
 
 export const YACHT_SEASON = '2027';
@@ -569,26 +560,7 @@ const OWN_JOURNAL: (JournalPhoto | [JournalPhoto, JournalPhoto])[] = [
   },
 ];
 
-// Coti's journal, same order as the Figma. Neutral captions: these are not our places.
-const FIGMA_JOURNAL: (JournalPhoto | [JournalPhoto, JournalPhoto])[] = [
-  { src: `${F}/islands-lake-aerial.jpg`, alt: 'Islands and a lake from above', caption: 'Islands from above' },
-  [
-    { src: `${F}/cove-swimmers.jpg`, alt: 'Swimmers in a turquoise cove', caption: 'Crystal-clear water' },
-    { src: `${F}/boat-over-reef.jpg`, alt: 'A boat over clear water from above', caption: 'On the Adriatic' },
-  ],
-  { src: `${F}/anchored-yachts.jpg`, alt: 'Yachts at anchor in a quiet bay', caption: 'Anchored yachts' },
-  [
-    { src: `${F}/wine-toast.jpg`, alt: 'A toast on board', caption: 'Wine on board' },
-    { src: `${F}/golden-hour-dinghy.jpg`, alt: 'A small boat on golden water', caption: 'Golden hour' },
-  ],
-  { src: `${F}/secluded-bay.jpg`, alt: 'A quiet bay with clear water', caption: 'A secluded bay' },
-  [
-    { src: `${F}/couple-on-deck.jpg`, alt: 'Guests on deck at sea', caption: 'Time together' },
-    { src: `${F}/superyacht-open-water.jpg`, alt: 'A large yacht in open water', caption: 'Open water' },
-  ],
-];
-
-export const YACHT_JOURNAL = USE_FIGMA_PHOTOS ? FIGMA_JOURNAL : OWN_JOURNAL;
+export const YACHT_JOURNAL = OWN_JOURNAL;
 
 // ──────────────────────────────────────────────
 // Reviews (real Google reviews of MareBoats Hvar)
