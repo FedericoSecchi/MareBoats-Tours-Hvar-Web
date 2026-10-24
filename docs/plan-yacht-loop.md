@@ -40,12 +40,12 @@ Antes de crear: grep de que ninguna ruta ni redirect de `netlify.toml` choque.
 
 ## Interruptor de publicación
 
-Constante única `YACHT_SECTION_LIVE = false` en `lib/yacht-data.ts`. Mientras sea `false`:
+Constante `YACHT_SECTION_LIVE` en `lib/yacht-flags.ts`. **Está en `true` desde el 24/10/2026.** Mientras estuvo en `false`:
 - todas las rutas de la sección con `robots: { index: false, follow: false }`
 - fuera de `sitemap.ts` y de `llms.txt`
 - sin links desde páginas públicas existentes (la card de `/transfers/` y los cross-links se renderizan solo si es `true`)
 
-Pasar a `true` es decisión de Fede, con precios cargados. No lo hace el loop.
+Volver a `false` apaga la sección completa en un commit. Lo hace Fede si hiciera falta; no el loop.
 
 ## Tareas
 
@@ -87,24 +87,24 @@ Pasar a `true` es decisión de Fede, con precios cargados. No lo hace el loop.
 - [x] **G4. Rendimiento.** Lighthouse mobile del hub contra la home actual. Si el hub queda más de 10 puntos abajo, simplificar animaciones (D) y volver a medir.
 - [x] **G5. PR** de `yacht-2027` a `main` (sin mergear). Esperar el deploy preview de Netlify, revisar que cargue, y mandar a Fede: link del preview, capturas clave, lista de Bloqueos. Frenar el loop.
 
-## Bloqueos
+## Bloqueos vigentes al 24/10/2026
 
-Lo que quedó pendiente porque necesita un dato o una decisión de otra persona. Nada de esto se inventó.
+Lo que sigue pendiente porque necesita un dato o una decisión de otra persona. Nada de esto se inventa. Los bloqueos ya resueltos salieron de la tabla y aparecen en la bitácora.
 
 | Pendiente | De quién | Qué falta |
 |---|---|---|
-| Precios de los tres productos | Fede | Completar la tabla de costos en `claude/analisis-precio-yacht-2027.md` (Project). Sin precio la sección no se publica |
+| Precios de los tres productos | Fede | Completar la tabla de costos en `claude/analisis-precio-yacht-2027.md` (Project). La sección ya está viva sin precios: los campos de `YACHT_PRICES` siguen en `null` y el componente los oculta hasta que Fede los cargue |
 | Duración y horario de salida de cada experiencia | Fede / Nikola | Campos `duration` y `departureTime` en `lib/yacht-data.ts` (hoy `null`, no se muestran) |
 | Qué incluye cada día (combustible, agua, snorkel, bebidas) | Fede / Nikola | Hoy solo dice yacht + skipper (+ almuerzo). Ampliar `includes` |
 | Menú de ejemplo | Juli | `JULI.sampleMenu` (hoy `null`, oculto) |
-| Diseño de Coti | Coti | No hay export en Drive (`MareBoats yacht diseño`) y el conector de Figma no tiene permiso. La sección está armada con los tokens del sitio |
 | Topic "Yacht Requests" en Telegram Core | Fede | El bot no puede crear topics desde n8n. Hoy avisa al General de Core. Crear el topic, copiar su link (t.me/c/4479127955/NNN) y poner NNN en `message_thread_id` del nodo "Notify Core" |
 | Fila de prueba en Notion | Fede | "TEST Claude (borrar)" en Yacht Requests 2027. El conector de Notion no borra filas |
 | Revisión legal de `/privacy/` | asesor de Josip | Se sumaron las solicitudes de yacht y Telegram como encargado. Telegram ya se usaba para candidatos y no figuraba en la política |
 | Quién responde cada solicitud | Nikola / Fede | La página de gracias promete confirmar recepción por WhatsApp o mail. Alguien tiene que hacerlo con cada aviso de Telegram |
 | Espera y cierre de la Blue Cave | Fede | El texto dice que en julio y agosto suele haber espera y que cierra con viento del sur. Confirmar que el wording es el que usamos con los guests |
 | `&mdash;` en `/transfers/` | Fede | Línea preexistente ("Hotels with private docks — Podstine…") con em-dash. No se tocó porque es copy aprobado fuera de la sección |
-| Links de entrada desde páginas speedboat | al publicar | Cuando la sección esté viva, sumar link desde `/tours/blue-cave-pakleni-islands/` y Red Rocks hacia las versiones yacht |
+| Links de entrada desde páginas speedboat | Nikola | Copy propuesto en rama `yacht-launch-cleanup` para `/tours/blue-cave-pakleni-islands/` y `/tours/red-rocks-pakleni-islands/`. No se publica hasta que Nikola apruebe el copy |
+| Neue Montreal | Fede | Tipografía de texto del diseño de Coti, paga para uso comercial web. Se usa Space Grotesk (la del sitio). Si se compra la licencia, cambia una línea en `tailwind.config.ts` |
 
 ## Bitácora
 
@@ -120,12 +120,6 @@ Lo que quedó pendiente porque necesita un dato o una decisión de otra persona.
 - 21/10 · Diseño de Coti aplicado (Figma copia `4FbVWLkr00fcDFEVmKzu59`, frames `296:14537` desktop y `382:470` mobile): títulos en Libre Caslon Text, cards de experiencias, bloque del barco sin marca, "Lunch on board" con pasos sin horarios, grilla "Why the yacht", reseñas en serif, journal de fotos, FAQ en cards, formulario embebido en cada página (#reserve) y cierre full-bleed. El stack sticky pasó a cards alternadas: las largas se cortaban en pantallas bajas.
 
 - 21/10 · Fotos del Figma de Coti cableadas como provisorias, solo en previews (14 slots + journal). Producción verificada: 0 HTML con `figma-temp`.
-- 21/10 · `/sea-care/` construida desde los frames `354:1802` y `386:1235`, verificada en 1440 y 390.
-
-### Bloqueos nuevos (21/10)
-
-| Pendiente | De quién | Qué falta |
-|---|---|---|
-| Fotos del Figma | Coti / Fede | Desde el 21/10 están puestas como provisorias, **solo en previews** (`USE_FIGMA_PHOTOS = IS_PREVIEW_BUILD` en `lib/yacht-data.ts`, archivos en `public/images/figma-temp/`). Un build de producción usa nuestras fotos aunque se mergee. Problemas: fotos de fábrica de Saxdor con logo visible, banco de imágenes, cascadas tipo Krka, la cocina de "Juli" es otra persona. Cuando haya fotos propias: reemplazar slot por slot y borrar `figma-temp/` |
-| Neue Montreal | Fede | Tipografía de texto del diseño, paga para uso comercial web. Se usa Space Grotesk (la del sitio). Si se compra la licencia, cambia una línea en `tailwind.config.ts` |
-| Página Sea care | Nikola | Construida el 21/10 en `/sea-care/` (noindex, fuera del sitemap, sin links; interruptor `SEA_CARE_LIVE`). Sacado el rótulo "Real photo, no stock" (la foto no es nuestra y parece generada) y "cigarette ends" (no se fuma a bordo). Respuestas del FAQ escritas solo con lo que ya dice la página (la del Figma era un placeholder en castellano). Todas las afirmaciones confirmadas por Fede: productos biodegradables (21/10), apoyo a limpiezas y baja velocidad en las bahías (22/10). Falta decidir cuándo se publica |
+- 21/10 · `/sea-care/` construida desde los frames `354:1802` y `386:1235`, verificada en 1440 y 390. Publicada después (`SEA_CARE_LIVE = true`), indexada, en el sitemap, con link en el footer y en `llms.txt`. Afirmaciones confirmadas por Fede: productos biodegradables (21/10), apoyo a limpiezas y baja velocidad en las bahías (22/10).
+- 24/10 · Publicación. `YACHT_SECTION_LIVE = true`. `USE_FIGMA_PHOTOS` se mudó a `lib/yacht-flags.ts` como `false` hard-off. Maquinaria de placeholders borrada (`FIGMA_PHOTOS`, `FIGMA_JOURNAL`, const `F` en `yacht-data.ts`) y 16 archivos de `public/images/figma-temp/` eliminados. Build limpio en `/tmp` con `CUSTOM_DOMAIN=mareboatshvar.com npm run build` sin errores. Verificado en `out/`: `/private-yacht-hvar/index.html` con `robots: index, follow`, 3 URLs yacht en `out/sitemap.xml`, 4 links a `/private-yacht-hvar/` desde `out/index.html` (nav desktop, menú mobile, teaser card, footer), 0 ocurrencias de `figma-temp` o `saxdor`. Fast-forward de `main` a `59f16f6`. Producción responde 200 y sirve `<meta name="robots" content="index, follow"/>`. Sitemap público incluye las 3 rutas.
+- 24/10 · Rama `yacht-launch-cleanup`: `.DS_Store` sacado del tracking (ya estaba en `.gitignore`), limpieza de `docs/plan-yacht-loop.md` y de la sección yacht en `CLAUDE.md` para reflejar la publicación. Copy propuesto a Nikola para los dos links de entrada desde speedboat (no se publica hasta la aprobación).
