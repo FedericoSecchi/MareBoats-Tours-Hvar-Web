@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 23 Agosto 2026**
+**Actualizado: 25 Octubre 2026**
 
 ---
 
@@ -233,6 +233,8 @@ No hardcodear offers en schema.ts. Valores actuales:
 - `/careers/skipper/` — **nueva 21/08/2026**. Pública, indexada, con `JobPosting` schema. Link en el footer, columna Info ("Join the Crew"). NO va en el navbar. Ver sección de careers abajo.
 - `/privacy/` — **nueva 21/08/2026**. Política de privacidad. Indexada, priority 0.2. Link en el footer, columna Info. Obligatoria porque el form de careers recolecta datos personales de candidatos en la UE.
 - `/crew-handbook-7x2m9p/` — **nueva 21/08/2026**. Handbook interno del crew. noindex, slug random, mismo checklist de invisibilidad que `/crew-9f3kq2/`. Ver sección de careers abajo.
+- `/sea-care/` — **publicada 22/10/2026**. Indexada, en el sitemap, link "Sea Care" en el footer y entrada en `llms.txt`. Interruptor `SEA_CARE_LIVE` en `app/sea-care/page.tsx` (hoy `true`). Afirmaciones confirmadas por Fede: productos biodegradables (21/10), apoyo a limpiezas y baja velocidad en las bahías (22/10). Copy neutro, sin fotos nuestras marcadas como propias.
+- `/` (home) — **hero video 24/10/2026**. Drone propio (`public/videos/hvar-aerial-sunny-drone-2026-*.mp4`): vertical nativo en mobile, 16:9 en desktop, vía `components/ui/HeroVideo.tsx`. Capa oscura 0.42 sobre el video y degradé radial detrás del párrafo (pedido de Coti). `HeroVideo` prioriza el poster como LCP, carga el video post-hidratación según el ancho, pausa fuera de pantalla y lo omite con `prefers-reduced-motion` o Save-Data. Prop opcional `lazy` (poster `loading="lazy"` + source del video resuelta por IntersectionObserver) para bloques bajo el pliegue: la usa `HomeYachtTeaser` con el video de lluvia.
 - Nav: Tours → Rentals → Transfers → Explore → About
 
 ## 🔒 /crew-9f3kq2/ — panel interno de precios (12/07/2026)
@@ -1293,6 +1295,7 @@ Nota de nombre: la palabra "premium" sigue prohibida en copy público. "Premium"
 - **Al reportar un grep, mostrar la línea encontrada, no sólo la cantidad de resultados.** "Un solo resultado en la línea 6" no permite verificar nada.
 - **Datos personales de terceros**: nada de candidatos, huéspedes ni referencias entra al build estático. Sólo a Notion, y sólo lo mínimo necesario.
 - **Formularios**: la única excepción a "solo WhatsApp" es `/careers/skipper/`. Cualquier otro form se consulta antes.
+- **Antes de pushear a main, compilar desde un clon limpio** (`git clone` + `npm ci` + `npm run build`). El 22/10 faltaba `lucide-react` en main y Netlify falló dos veces; en local no se vio porque `node_modules` ya lo tenía.
 
 ## Cuándo preguntar y cuándo avanzar
 Avanzá sin preguntar en todo lo reversible: código en ramas, builds,
