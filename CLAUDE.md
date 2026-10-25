@@ -1309,3 +1309,7 @@ Preguntá SIEMPRE antes de:
 
 Si tenés una duda que no bloquea, seguí con lo demás y juntá las preguntas
 en una sola tanda al final, no una por una.
+
+Comandos simples: no antepongas cd al repo, no uses loops, `$(( ))`,
+`SECONDS` ni `$'...'`. Para esperar un deploy, corré un curl simple, esperá
+y repetí. Esos comandos me piden permiso aunque sean inofensivos.
