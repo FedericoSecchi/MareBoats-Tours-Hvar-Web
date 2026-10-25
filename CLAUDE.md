@@ -1249,13 +1249,13 @@ Conversión por landing: `/rentals` **20,20%** · home 13,45% · `/landing/explo
 
 ---
 
-## 🛥️ Sección yacht (test de demanda 2027) — en preparación, 12/10/2026
+## 🛥️ Sección yacht (test de demanda 2027) — publicada 24/10/2026
 
 Antes de tocar cualquier cosa de esta sección, leer `docs/brief-seccion-premium.md`. Lo que figura ahí como **pendiente** (precios, fichas de producto, menús, mensaje 2027) no se escribe ni se inventa: se pregunta.
 
 Nota de nombre: la palabra "premium" sigue prohibida en copy público. "Premium" es solo el nombre interno de la sección; el término de cara al cliente es "private yacht" / "day yacht charter".
 
-**Estado 12/10/2026 (rama `yacht-2027`, PR #1):** fase 1 construida. Rutas `/private-yacht-hvar/`, `/blue-cave-half-day/`, `/boat-tour-with-lunch/`, `/request/`, `/request/thanks/`. Datos y copy en `lib/yacht-data.ts`; precios en `YACHT_PRICES` (hoy `null`). Interruptor único `YACHT_SECTION_LIVE` (hoy `false`): mientras esté apagado todo es noindex, fuera del sitemap y de `llms.txt`, y la card de `/transfers/` solo se ve en deploy previews. Formulario → n8n `MareBoats - Yacht Requests 2027` (`JPOWzdATbQG6zXo5`) → Notion `Yacht Requests 2027` → Telegram Core. Pendientes y bitácora en `docs/plan-yacht-loop.md`. Análisis de precio en el Project de Claude (nunca en el repo).
+**Estado 24/10/2026 (en `main`):** publicada. Rutas `/private-yacht-hvar/`, `/blue-cave-half-day/`, `/boat-tour-with-lunch/`, `/request/`, `/request/thanks/`, todas indexables y en el sitemap. Datos y copy en `lib/yacht-data.ts`; precios en `YACHT_PRICES` (siguen en `null`, los campos se ocultan hasta que Fede los cargue). Interruptor `YACHT_SECTION_LIVE = true` y `USE_FIGMA_PHOTOS = false` viven en `lib/yacht-flags.ts`; `USE_FIGMA_PHOTOS` queda como stop hard off para que ningún preview reintroduzca fotos de Figma sin cambiarlo a mano. La carpeta `public/images/figma-temp/` y su maquinaria en `yacht-data.ts` (FIGMA_PHOTOS, FIGMA_JOURNAL, const `F`) se borraron en el deploy del 24/10. Formulario → n8n `MareBoats - Yacht Requests 2027` (`JPOWzdATbQG6zXo5`) → Notion `Yacht Requests 2027` → Telegram Core. Pendientes vigentes y bitácora en `docs/plan-yacht-loop.md`. Análisis de precio en el Project de Claude (nunca en el repo).
 
 ## Instrucciones para Claude Code
 - Leer CLAUDE.md completo antes de empezar
