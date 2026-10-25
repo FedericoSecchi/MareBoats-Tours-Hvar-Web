@@ -69,7 +69,7 @@
       "Bash(gh pr create:*)",
       "Bash(gh pr edit:*)",
       "Bash(curl -s -o /dev/null -w:*)",
-      "Bash(curl -s https://mareboatshvar.com:*)",
+      "Bash(curl -s https://mareboatshvar.com/:*)",
       "Bash(curl -s https://deploy-preview-:*)",
       "Bash(rm -rf out)",
       "Bash(rm -rf out/)",
