@@ -9,16 +9,14 @@ import { toursData } from '@/lib/tours-data';
 import { formatPriceShort, RENTAL_SELF_DRIVE, TOUR_PRICES } from '@/lib/pricing';
 
 export const metadata: Metadata = generateSEO({
-  title: 'Boat Tours from Hvar: All Options',
+  title: 'Boat Trips from Hvar: Compare & Book',
   description:
-    'All MareBoats tours: Blue Cave, Red Rocks & Pakleni, Sunset Cruise, Private Charter. Private speedboat tours from Hvar. Book via WhatsApp.',
+    'Compare boat tours from Hvar on duration, price and what you see. Red Rocks, Blue Cave, Pakleni, Sunset Cruise and private charter. Day trips from Hvar by boat, book on WhatsApp.',
   keywords: [
-    'boat tours hvar',
-    'hvar tours',
-    'private boat tour hvar',
-    'blue cave tour hvar',
-    'pakleni islands tour',
-    'sunset cruise hvar',
+    'boat trips from hvar',
+    'boat tours from hvar',
+    'hvar boat tour prices',
+    'day trips from hvar by boat',
   ],
   slug: 'tours',
   ogImage: '/images/destinations/hvar-pakleni-islands-hidden-cove-drone-2026-01.jpg',
@@ -167,11 +165,10 @@ export default function ToursIndexPage() {
             All tours
           </p>
           <h1 className="mt-4 font-display text-[2rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] sm:text-4xl md:text-6xl">
-            Choose Your Adventure
+            Boat Trips from Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Private tours from Beach Križa. You pick the stops, we know every corner of the
-            coast.
+            Compare every boat tour from Hvar on this page: duration, price from, what you see. Full-day trips and short cruises, all leaving from Beach Križa, no middleman. Shared departures are priced per person, private days per boat.
           </p>
         </div>
       </section>

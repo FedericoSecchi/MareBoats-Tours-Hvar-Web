@@ -1,5 +1,5 @@
 # MareBoats Tours Hvar — Contexto del Proyecto
-**Actualizado: 25 Octubre 2026**
+**Actualizado: 26 Octubre 2026**
 
 ---
 
@@ -66,14 +66,10 @@ Decisión tomada (04/08): en vez de resolver la ambigüedad legal, **se sacó to
 
 Esto no resuelve el bloqueante de fondo (ver abajo), pero saca el riesgo inmediato del Pasara 20hp específicamente.
 
-### 🔴 BLOQUEANTE — Pasara 5hp "no licence needed"
-Nikola pidió sacar el texto "no licence needed" de la Pasara 5hp alegando "legal reason", y preguntó si se podía "esconder". **No se ejecutó y no se ejecuta hasta tener la razón concreta.**
+### ✅ RESUELTO — Pasara 5hp "no licence needed"
+Fede confirmó el 24/10/2026 en el intake de la corrida SEO: **es legal y se queda**. Es la única excepción legal del catálogo (ley náutica croata para 5HP). El resto de la flota rental sigue sin tocar el tema de licencia en el copy del rental (regla vigente para Pasara 20hp desde 04/08) o requiere licencia explícita (Speedboat 60hp y Mariner 150hp).
 
-Razonamiento: esconderlo es la peor opción de las tres, porque conserva el riesgo legal y pierde la keyword al mismo tiempo. O es legal y se dice fuerte, o no lo es y se saca. "Rent a boat without licence Hvar" es la keyword no-branded que más tráfico de rental trae, y la Pasara 5hp es el único producto sin licencia del catálogo: es la puerta de entrada a toda la categoría.
-
-Pregunta pendiente a Nikola: ¿el motivo es la ley náutica (bajo 5HP es legal en Croacia, se queda) o es el seguro / la licencia de charter del negocio (se saca el mismo día, sin discusión)?
-
-Hasta que responda, la web queda como está.
+Impacto en la web (sesión SEO 26/10, PR `kosmos/seo-tours-rentals`): badge **"No boating licence needed"** reforzado en la card del Pasara 5hp en `/rentals/`, con bullet "Legal to drive without a boating licence in Croatia". La subpágina `/rentals/boat-rental-hvar-without-licence/` responde la pregunta en el H1 verbatim ("Do you need a licence to rent a boat in Croatia?") y nombra la Pasara 5hp como la excepción.
 
 ## Stack técnico
 - Next.js 14 + Tailwind CSS + TypeScript — `output: 'export'` (static export)
@@ -194,7 +190,7 @@ Escribirlo como frase natural ("Dogs are welcome on board. Let us know when you 
 Archivo central: `lib/schema.ts`
 
 ### Schemas globales (app/layout.tsx)
-- `businessSchema`: @type ["LocalBusiness", "TouristAttraction"] · name "MareBoats Hvar" · coordenadas 43.1690147, 16.4429617 · reviewCount: 26 · rating 5.0 · availableLanguage [EN, HR, DE, ES, IT] · openingHours mayo-septiembre · priceRange "€€"
+- `businessSchema`: @type ["LocalBusiness", "TouristAttraction"] · name "MareBoats Hvar" · coordenadas 43.1690147, 16.4429617 · rating 5.0 · availableLanguage [EN, HR, DE, ES, IT] · openingHours abril-octubre · priceRange "€€". **El `reviewCount` ya no vive en `lib/schema.ts`**: desde la corrida SEO del 26/10, los números reales vienen de `lib/reviews.ts` (`googleReviews.count` = 216 al 24/10/2026) y se renderizan en el `<title>` del hero, no se declaran en structured data (evita confusión entre reviews del negocio y reviews de un tour específico, la decisión del 09/08 sigue).
 - `websiteSchema`: @type WebSite
 
 ### Schemas por página
@@ -355,6 +351,52 @@ Actitud sobre experiencia, valores sobre credenciales. El form ahorra entrevista
 
 Empatía, compañerismo y amabilidad no se detectan por escrito ni por videollamada: aparecen en las dos primeras semanas a bordo. **El filtro más efectivo no es de entrada, es de salida:** estar dispuesto a cortar en la semana dos.
 
+## 🗺️ Mapa keyword → URL (corrida SEO 26/10/2026)
+
+Una intención = una URL. Este mapa evita volver al estado anterior
+(home + /rentals/ + /tours/private-boat-charter/ peleándose por "boat
+rental hvar"). Fuente: `seo/02-arquitectura.md`.
+
+| URL | Keyword principal | Qué atrae |
+|---|---|---|
+| `/` | private boat tours hvar | Tours + marca |
+| `/tours/` | boat trips from hvar | Hub de comparación |
+| `/tours/red-rocks-pakleni-islands/` | red rocks hvar | Producto estrella, dos formatos |
+| `/tours/pakleni-islands/` | pakleni islands boat tour from hvar | Half-day Pakleni |
+| `/tours/blue-cave-pakleni-islands/` | blue cave tour from hvar | VIP 5 Islands (concepto intocado) |
+| `/tours/sunset-cruise/` | sunset cruise hvar | Golden hour |
+| `/tours/private-boat-charter/` | private boat charter hvar | Con skipper, tu ruta |
+| `/tours/scenic-coast-cruise/` | — (sin datos) | Producto corto, no compite por keyword propia todavía |
+| `/rentals/` | boat rental hvar | Self-drive (Pasaras primero) |
+| `/rentals/boat-rental-hvar-without-licence/` | do you need a licence to rent a boat in croatia | Página de decisión que deriva a Pasara 5hp y Charter |
+
+**Reglas**:
+- La home no apunta a alquiler: lo menciona con el ancla descriptiva
+  "Boat rental in Hvar →" y lo deriva a `/rentals/`.
+- `/tours/private-boat-charter/` no apunta a "rent a boat" ni "boat
+  hire" sin skipper: es *con skipper, tu ruta*.
+- `/rentals/` sacó la card "With Skipper" como producto; quedó como
+  línea que deriva al Private Charter.
+- `/rentals/boat-rental-hvar-without-licence/` responde la pregunta
+  legal y nombra la Pasara 5hp como excepción.
+
+## 🌟 Reseñas reales en el sitio (`lib/reviews.ts`, 24/10/2026)
+
+**Fuente única**: `lib/reviews.ts`. Guarda rating (5.0), count (216),
+fecha de consulta (Oct 2026), link a la ficha de Google y 9 citas
+textuales con topics (red-rocks, pakleni, rentals, skipper, weather,
+private).
+
+- **Home y `/landing/explore/`**: badge "216 Google reviews · Oct
+  2026" linkeado a la ficha. Reemplaza "140+ happy guests".
+- **Testimonials** (sección en home y en cada tour page): lee de
+  `reviewQuotes`, con prop opcional `topic` por slug para mostrar las
+  citas relevantes (ej. Red Rocks → topic `red-rocks`). Fallback al
+  pool general cuando el topic no tiene reseñas.
+
+Actualizar los números: solo tocar `googleReviews` en `lib/reviews.ts`
+y la fecha `readAt`. Nunca a mano en otro archivo.
+
 ## Cluster SEO — páginas interconectadas
 - `/explore/` → `/guide/`, `/hvar-islands-guide/`, `/tours/`
 - `/guide/` → `/hvar-islands-guide/` + links a tours
@@ -397,6 +439,7 @@ Empatía, compañerismo y amabilidad no se detectan por escrito ni por videollam
 - **NO nombrar negocios de terceros** (restaurantes, beach clubs) con datos que no controlamos: años de apertura, cantidad de amarres, horarios. Solo nombre y ubicación, y solo si ya estaba publicado.
 - **Nombres croatas con diacríticos**: Ždrilca, Žarače, Palmižana, Borče, Biševo, Crvene Stijene, Brač, Križa. Corregido en todo el sitio el 09/08. Excepción: nombres de archivo de imágenes y claves internas de código.
 - **El sufijo de marca lo agrega el template del layout.** Los titles de página NO deben incluir "| MareBoats" ni "- MareBoats". Regla: source ≤44 chars → rendered ≤60.
+  - **Excepción: la home.** El `title.template` del layout raíz no se aplica a `app/page.tsx` (mismo segmento), así que la home escribe la marca con `title: { absolute: 'Private Boat Tours Hvar | MareBoats Hvar' }`. El 82% de los clics de Google son búsquedas de marca: la home sin marca en el `<title>` es un error.
 
 ## Design tokens
 ```
@@ -913,6 +956,70 @@ Un stop está expuesto si el viento o el swell viene de su sector abierto:
 - **Token sin rotar.** Fede decidió mantener el token de `@mareboatsOps_bot` (credencial `Telegram account`) sin rotar. Decisión informada, documentada.
 
 ---
+
+## 🗓️ Changelog — 26 Octubre 2026 (corrida SEO `kosmos/seo-tours-rentals`)
+
+Trabajo autónomo con la skill kosmos-web en modo ejecución. PR
+abierto (ver `seo/PR.md` o PR en GitHub) · nada mergeado.
+
+### Nuevo
+- `lib/reviews.ts`: fuente única del rating y las citas de Google
+  (216 reseñas, Oct 2026). `Testimonials` ahora lee de ahí, con prop
+  opcional `topic` por página.
+- `seo/` completa con PLAN.md, 00-contexto, 02-arquitectura y una
+  carpeta por página con brief/contenido/keywords/qa.
+
+### Páginas trabajadas (10 — todas en `seo/paginas/<slug>/`)
+- **Red Rocks** `/tours/red-rocks-pakleni-islands/`: dos formatos
+  claros (half-day / full-day) + reseñas reales con topic. Title
+  reducido a 42 chars.
+- **`/rentals/`**: Pasaras primero; "With Skipper" quedó como línea
+  que deriva al Private Charter. Badge "No boating licence needed"
+  reforzado en la Pasara 5hp. FAQ de licencia corregido.
+- **Private Charter**: fuel como consecuencia de elegir la ruta, no
+  letra chica. [CONFIRMAR] rango de fuel sigue pendiente con Nikola.
+- **Home**: title `'Private Boat Tours Hvar | MareBoats Hvar'` vía
+  `title: { absolute }`. El primer intento ('Private Boat Tours Hvar from
+  Beach Križa') salía sin marca porque el template no aplica a la home. Testimonios ahora reseñas
+  reales de Google. Badge pasa de "140+ happy guests" a "216 Google
+  reviews · Oct 2026" linkeado a la ficha.
+- **Pakleni**: name/H1 "Pakleni Islands Boat Tour from Hvar"
+  (principal en H1 completo).
+- **Blue Cave**: title "Blue Cave Tour from Hvar: 5 Islands". Entra
+  "Green Cave Hvar" y "Stiniva Bay boat tour" sin tocar concepto VIP
+  5 Islands.
+- **Sunset**: long-tail del cluster en la description.
+- **Tours hub**: H1 "Boat Trips from Hvar" (dejó de llamarse "Choose
+  Your Adventure" que coincidía con una agencia competidora).
+- **Sin licencia** `/rentals/boat-rental-hvar-without-licence/`: H1
+  verbatim con el principal como pregunta; Pasara 5hp como excepción
+  legal nombrada.
+- **Scenic Coast**: ya pasaba title + copy_lint; brief/qa escritos.
+
+### Fixes transversales
+- Espacio en H1 de la home (`"Private BoatTours Hvar"` →
+  `"Private Boat Tours Hvar"`) y de `/sea-care/`
+  (`"SeaCare"` → `"Sea Care"`). Dos `<span>` sin whitespace estaban
+  dejando la keyword mochada para bots que leen sin CSS.
+- Em-dashes residuales en `FleetInfo.tsx` y en el stop de Ždrilca de
+  Red Rocks: eliminados.
+- `app/landing/explore/` dejó de inventar testimonios: también lee
+  de `lib/reviews.ts`.
+- `app/tours/[slug]/page.tsx`: mensaje de WhatsApp específico por
+  slug (date + people prellenados). Testimonials con topic por slug.
+
+### Reglas nuevas en CLAUDE.md
+- Mapa keyword → URL en una tabla (una intención = una URL).
+- Reseñas: fuente única `lib/reviews.ts`.
+- Pasara 5hp sin licencia: resuelto, se queda y se refuerza.
+- `reviewCount` ya no vive en `lib/schema.ts`.
+
+### Pendientes para merge
+- Aprobación de Nikola sobre el copy público nuevo (home title,
+  Red Rocks title, FAQ de licencia en `/rentals/`, H1 nuevo de
+  `/tours/`).
+- [CONFIRMAR] rango de combustible del Private Charter (sigue
+  pendiente desde julio).
 
 ## 🗓️ Changelog — 21 y 22 Agosto 2026
 

@@ -1,7 +1,7 @@
 const BLOCKS = [
   {
     title: 'Shade on every boat',
-    body: 'Every MareBoats Hvar speedboat has a sun canopy over the main seating area. The canopy provides shade from the moment you leave the dock to the last stop of the day. All four boats in the MareBoats Hvar fleet carry it as standard.',
+    body: 'Every MareBoats Hvar speedboat has a sun canopy over the main seating area. The canopy provides shade from the moment you leave the dock to the last stop of the day. Every boat in the fleet carries it as standard.',
   },
   {
     title: 'Room to move',
@@ -17,7 +17,7 @@ const BLOCKS = [
   },
   {
     title: 'Music and snorkel gear',
-    body: 'All MareBoats Hvar speedboats have a sound system on board. The playlist has been built over years from what has worked best with guests from every corner of the world. During the tour, guests can join a Spotify Jam and add their own music — you need the Spotify app on your phone. Snorkel masks are included on every tour. No need to bring your own.',
+    body: 'All MareBoats Hvar speedboats have a sound system on board. The playlist has been built over years from what has worked best with guests from every corner of the world. During the tour, guests can join a Spotify Jam and add their own music - you need the Spotify app on your phone. Snorkel masks are included on every tour. No need to bring your own.',
   },
 ];
 

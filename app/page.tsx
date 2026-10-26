@@ -12,6 +12,7 @@ import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
 import { homepageFaqs } from '@/lib/faqs';
 import { toursData } from '@/lib/tours-data';
+import { googleReviews, reviewsBadge } from '@/lib/reviews';
 
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), {
   ssr: false,
@@ -44,20 +45,27 @@ const HOME_HERO_VIDEO = {
   alt: 'Islands off Hvar from a drone on a clear day, private boat tours from Hvar Croatia',
 };
 
-export const metadata: Metadata = generateSEO({
-  title: 'Private Boat Tours Hvar Croatia | MareBoats - Book on WhatsApp',
-  description:
-    'Private speedboat tours from Hvar. Blue Cave, Pakleni Islands, sunset cruises & custom charters. 5.0★ on Google. Book direct, no middleman.',
-  keywords: [
-    'private boat tours hvar',
-    'boat tour hvar croatia',
-    'mare boats hvar',
-    'hvar boat excursion',
-    'blue cave hvar',
-    'pakleni islands tour',
-  ],
-  ogImage: '/img/mareboats-og.png',
-});
+// The root layout's title.template does not apply to a page in the same
+// segment, so the home writes the brand itself.
+const HOME_TITLE = 'Private Boat Tours Hvar | MareBoats Hvar';
+
+export const metadata: Metadata = {
+  ...generateSEO({
+    title: HOME_TITLE,
+    description:
+      'Private boat tours in Hvar from Beach Križa. Red Rocks, Blue Cave, Pakleni, sunset. Shared or private, up to 8 per boat. 5.0 on Google, 216 reviews. Book on WhatsApp.',
+    keywords: [
+      'private boat tours hvar',
+      'boat tours hvar',
+      'hvar boat tours',
+      'private boat tour hvar',
+      'speedboat tour hvar',
+      'boat tours in hvar',
+    ],
+    ogImage: '/img/mareboats-og.png',
+  }),
+  title: { absolute: HOME_TITLE },
+};
 
 const WA_URL =
   'https://wa.me/385951966734?text=Hi!%20I%E2%80%99m%20interested%20in%20a%20boat%20tour.';
@@ -82,6 +90,7 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto flex w-full max-w-container flex-col items-center gap-8 px-4 py-20 text-center">
           <h1 className="font-display text-[clamp(3rem,10vw,8rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.02em]">
             <span className="block text-[color:var(--white)]">Private Boat</span>
+            {' '}
             <span className="block text-[color:var(--accent)]">Tours Hvar</span>
           </h1>
 
@@ -91,9 +100,14 @@ export default function HomePage() {
 
           <div className="w-full">
             <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
-              <span className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)]">
-                ⭐ 140+ happy guests
-              </span>
+              <a
+                href={googleReviews.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)] hover:border-[color:var(--accent)]"
+              >
+                ⭐ {reviewsBadge()}
+              </a>
 
               <p className="max-w-2xl rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(13,27,42,0.7)_0%,rgba(13,27,42,0.45)_55%,rgba(13,27,42,0)_100%)] px-6 py-4 text-base leading-relaxed text-[color:var(--gray)] md:px-10 md:py-6 md:text-xl">
                 We sail from Beach Križa. You pick the day, the stops and the pace - Blue Cave, Red
@@ -136,16 +150,10 @@ export default function HomePage() {
             Also from Beach Križa
           </span>
           <Link
-            href="/rentals"
+            href="/rentals/"
             className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
           >
-            Boat Rentals →
-          </Link>
-          <Link
-            href="/rentals/#boat-rental"
-            className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
-          >
-            Boat Rental →
+            Boat rental in Hvar →
           </Link>
           <Link
             href="/transfers"

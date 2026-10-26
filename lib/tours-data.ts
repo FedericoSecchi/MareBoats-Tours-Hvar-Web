@@ -133,9 +133,9 @@ export const toursData: TourRecord[] = [
     tagline: 'Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming.',
     shortDescription:
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
-    description: `The Red Rocks & Pakleni Islands tour is the local route: the one we take when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
+    description: `Red Rocks Hvar, or Crvene Stijene, is a stretch of iron-red cliffs on the south coast of Hvar, Croatia. The Red Rocks & Pakleni Islands tour is the local route: the one we take when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
-We leave Beach Križa heading south along the coast. On calm days we also pause at Žarače, a quiet bay on the way. First stop is Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
+We leave Beach Križa heading south along the coast. On calm days we also pause at Žarače, a quiet bay on the way. First stop is Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping on Hvar from 5 to 10 metres is popular here if your group is into it.
 
 From Red Rocks we continue to Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land.
 
@@ -143,7 +143,7 @@ Then Borče Bay in Milna: a quiet cove on the southern coast, calm water, no oth
 
 We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Ždrilca for a quieter swim before we head back.
 
-Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 6 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
+Two formats to the same route: a half-day boat tour of Red Rocks (4 hours, 09:00-13:00 or 14:00-18:00) and a 6-hour full-day (11:00-17:00) with more time at every stop. Both run shared or private, up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: '4 OR 6 HRS',
@@ -245,7 +245,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         name: 'Ždrilca',
         description:
           'A sheltered bay in the Pakleni Islands with striking water colour, protected from open sea on all sides.',
-        travelTime: '3 min from Borče Bay. Mlini is on the way — the boat slows down through this stretch for the water colour.',
+        travelTime: '3 min from Borče Bay. Mlini is on the way - the boat slows down through this stretch for the water colour.',
         activities:
           'Swimming, snorkelling and lunch. Tri Grede is at Ždrilca, reachable only by boat. A good place to eat and slow down before the last stretch.',
         conditions: 'Sheltered in almost all conditions.',
@@ -288,9 +288,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       { label: 'Duration',      value: '4 hours (half-day) or 6 hours (full-day)' },
       { label: 'Distance',      value: '30 to 35 km total route' },
       { label: 'Departs',       value: 'Beach Križa. 09:00 or 14:00 (half-day) · 11:00 (full-day)' },
-      { label: 'Capacity',      value: 'MareBoats Hvar speedboats are licensed for 12. We sail with a maximum of 8 so there is room to move, shift between shade and sun, and get in the water as a full group at the same time. Groups of 9 to 16 travel on two boats sailing together.' },
-      { label: 'Shared',        value: `€${RR.sharedPerPerson} per person · minimum 6 guests to depart` },
-      { label: 'Private',       value: `€${RR.privateHalfDay} half-day · €${RR.privateFullDay} full-day` },
+      { label: 'Capacity',      value: 'Licensed for 12. We cap at 8 per boat. Groups of 9 to 16 travel on two boats sailing together.' },
       { label: 'Meeting point', value: MEETING },
       // Included and Not included are injected here by the render from tour.includes/notIncludes
       { label: 'Extra fees',    value: 'None' },
@@ -298,24 +296,14 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     ],
     faqs: [
       {
-        question: 'What is included in the Red Rocks & Pakleni Islands tour from Hvar?',
-        answer:
-          'The MareBoats Hvar speedboat and skipper are included, fuel for the full itinerary, a cooler with ice, bottled water, and snorkel masks. Lunch is not included. Restaurants are available at the Pakleni Islands at Palmižana and Ždrilca. There are no cave entrance fees on this route.',
-      },
-      {
         question: 'What time does the Red Rocks & Pakleni Islands tour depart from Hvar?',
         answer:
-          'Private half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The private full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking. All tours meet at the MareBoats barrel, on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel. About 3 minutes on foot from the ferry terminal, walking towards the Franciscan Monastery.',
+          'Half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking.',
       },
       {
-        question: 'What is the difference between the 4-hour and 6-hour Red Rocks tour?',
+        question: 'What is the difference between the half-day and full-day Red Rocks tour?',
         answer:
           'Both versions visit the same stops on the south coast of Hvar: Red Rocks, Dubovica Beach, Borče Bay, and the Pakleni Islands. The 4-hour half-day moves at a steady pace with time to swim at each stop. The 6-hour full-day (11:00 to 17:00) adds more time at each location, including a proper lunch break at the Pakleni Islands.',
-      },
-      {
-        question: 'How many people are on the shared Red Rocks & Pakleni Islands tour?',
-        answer:
-          'MareBoats Hvar speedboats are licensed for up to 12 guests but capped at 8 per boat. The shared tour departs when a minimum of 6 guests have confirmed. Groups of 9 to 16 travel on two MareBoats Hvar speedboats sailing together.',
       },
       {
         question: 'Is Žarače a guaranteed stop on the Red Rocks & Pakleni tour?',
@@ -323,9 +311,14 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
           'No. Žarače is a weather-dependent stop. When sea conditions allow, the skipper pauses at Žarače on the way south along the Hvar coast. It is a narrow, sheltered bay. On days with swell or wind the stop is skipped, but no other stop is removed from the itinerary.',
       },
       {
+        question: 'How many people are on the shared Red Rocks & Pakleni Islands tour?',
+        answer:
+          'MareBoats Hvar speedboats are licensed for up to 12 guests but capped at 8 per boat. The shared tour departs when a minimum of 6 guests have confirmed. Groups of 9 to 16 travel on two speedboats sailing together.',
+      },
+      {
         question: 'Can I book the Red Rocks & Pakleni Islands tour as a private group?',
         answer:
-          `Yes. The private half-day (4 hours) is €${RR.privateHalfDay} per boat for your group only. The private full-day (6 hours) is €${RR.privateFullDay} per boat. Both options include the speedboat, skipper, fuel, bottled water, cooler with ice, and snorkel masks. Up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together.`,
+          'Yes. Both the 4-hour half-day and the 6-hour full-day are available as private bookings for your group only, up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together. See the Pricing block for current rates.',
       },
       {
         question: 'Is Dubovica Beach accessible only by boat?',
@@ -340,12 +333,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       {
         question: 'Why does MareBoats Hvar limit groups to 8 guests?',
         answer:
-          'MareBoats Hvar speedboats are licensed for up to 12 guests but are capped at 8 per boat. At 8 guests, everyone has room to move between the shaded seating area and the open deck, and the full group can be in the water at the same time. Groups of 9 to 16 travel on two boats sailing together.',
-      },
-      {
-        question: 'Do I have to stay seated during the Red Rocks tour?',
-        answer:
-          'No. There are no assigned seats on a MareBoats Hvar speedboat. There is room to move and to choose between shade and open sun during the day.',
+          'Our speedboats are licensed for up to 12 guests but we cap at 8. At 8 guests everyone has room to move between the shaded seating area and the open deck, and the full group can be in the water at the same time.',
       },
       {
         question: 'Do I need to be a strong swimmer to use an underwater scooter?',
@@ -353,19 +341,9 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
           'No. If you are comfortable floating in the water, you can use one.',
       },
       {
-        question: 'Can I use an underwater scooter with a life jacket?',
-        answer:
-          'Yes. It works best without one, but with a life jacket you simply stay at the surface.',
-      },
-      {
-        question: 'How long does the underwater scooter battery last?',
-        answer:
-          'Around one hour depending on use, which is more than enough for the swim stops.',
-      },
-      {
         question: 'How do I add underwater scooters to my tour?',
         answer:
-          `Message us on WhatsApp when you book or before your tour. €${ADDONS.scooter} per scooter.`,
+          `Message us on WhatsApp when you book or before your tour. €${ADDONS.scooter} per scooter. Red Rocks and Pakleni Islands private tours only.`,
       },
     ],
     relatedGuide: {
@@ -403,17 +381,17 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
   {
     slug: 'pakleni-islands',
     productType: 'tour-private',
-    name: 'Pakleni Islands Half Day Tour',
+    name: 'Pakleni Islands Boat Tour from Hvar',
     tagline: 'Half day of turquoise water, hidden coves, and island hopping minutes from Hvar town.',
     shortDescription:
-      'Half-day private boat tour from Hvar, Croatia. Snorkel the clearest Adriatic waters, stop at Palmižana and explore secluded Pakleni coves.',
-    description: `The Pakleni Islands sit 10 minutes from Hvar. Close enough for a half day, varied enough to fill it. We take you through the archipelago, pick the stops based on wind and crowds, and leave the pace to you.
+      'Private Pakleni Islands boat tour from Hvar, Croatia. Snorkel the clearest Adriatic waters, stop at Palmižana and explore secluded Pakleni coves.',
+    description: `A Pakleni Islands boat tour from Hvar is the quickest way to see what this archipelago actually looks like: pine-scented islands 10 minutes from Hvar town, with shallow bays in shades of blue you only get this far south in the Adriatic. The boat trip from Hvar to Pakleni Islands works as a half day boat tour from Hvar when you want to stay close to town, or as a longer version with more stops when you want more time in the water.
 
-Departing from Beach Križa, you reach the Pakleni archipelago quickly, where pine-scented islands meet shallow bays in impossible shades of blue. Your skipper chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
+Departing from Beach Križa, you reach the Pakleni archipelago quickly. Your skipper chooses the best stops based on wind and crowds, so you can enjoy snorkeling, swimming, and sunbathing without feeling like you are on a generic group itinerary.
 
-Because the boat is private, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and your skipper knows the quieter coves that larger boats skip.
+Because this is a private Pakleni Islands boat tour, the route stays flexible: more time snorkeling, a longer swim break, or an optional pause for drinks at a beach bar can all be discussed on the day. Snorkeling equipment is included, and your skipper knows the quieter coves that larger boats skip.
 
-Two private options: 3 hours (€${PK.private!}) for the main Pakleni highlights, or 4 hours (€${PK.privateExtended!}) with more stops and more time on the water. Both for your group, up to 8 guests. Groups of 9 to 16 travel on two boats sailing together - message us for availability. Message us on WhatsApp with your date. We confirm fast.
+Two private options: 3 hours for the main Pakleni highlights, or 4 hours with more stops and more time on the water. Both for your group, up to 8 guests. Groups of 9 to 16 travel on two boats sailing together - message us for availability.
 
 Most guests who book this tour have already done a full-day trip and want a shorter option. Others are based in Hvar for a few days and prefer to save the longer routes for later. Either way, the Pakleni Islands are worth at least a half day.`,
     duration: '3 OR 4 HRS',
@@ -479,13 +457,13 @@ Most guests who book this tour have already done a full-day trip and want a shor
     tagline: 'Full-day speedboat tour from Hvar. Three sea caves, four beaches, Blue Cave on Biševo - and back before the day crowds hit.',
     shortDescription:
       'Full-day speedboat tour from Hvar: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups. Departs 10:00.',
-    description: `We leave Hvar at 10:00 and spend the day covering the most iconic stretch of the Adriatic - Blue Cave, Stiniva Bay, three sea caves, and the Pakleni Islands. One boat, your group, back by 17:00.
+    description: `This Blue Cave tour from Hvar leaves Beach Križa at 10:00 and spends the day covering the most iconic stretch of the Adriatic - Blue Cave on Biševo, Stiniva Bay on Vis, three sea caves in total, and the Pakleni Islands on the way back. One boat, your group, back by 17:00.
 
-The route takes you to five islands and hits three caves, four beaches and a blue lagoon. Green Cave on Biševo is first - natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos - and it delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
+The route takes you to five islands and hits three caves, four beaches and a blue lagoon. First comes the Green Cave, where natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, a cove voted one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos. It delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
 
 After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Ždrilca, both only reachable by boat.
 
-We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€${BC.sharedPerPerson} per person) or fully private (€${BC.private} for your group only, up to 8 guests). Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone as one group.
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour or fully private, up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone as one group.
 
 Message us on WhatsApp with your date and group size - we confirm fast.`,
     duration: '7 HRS · DEPARTS 10:00',
@@ -550,13 +528,13 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     tagline: 'Golden hour on the Adriatic - wine-friendly, calm water, and the best light of the day.',
     shortDescription:
       'Private sunset cruise from Hvar, Croatia. Golden hour over the Dalmatian coast, drinks on board, calm waters and the best photo light of the day.',
-    description: `A two-hour private cruise from Beach Križa, timed to the sunset. The light on the Adriatic at golden hour is different from anything you get during the day: warmer, softer, the kind that makes every photo look like it was planned.
+    description: `Two hours on a private speedboat from Beach Križa, timed to the sunset. The light on the Adriatic at golden hour is different from anything you get during the day: warmer, softer, the kind that makes every photo look like it was planned.
 
-This private evening boat tour departs from Beach Križa and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the boat is private, the pace stays yours.
+We follow a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. The boat is only for your group, so the pace stays yours.
 
 Your skipper focuses on safety and smooth cruising as light fades, and chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
-Pricing scales with group size: see the breakdown below. Wine is included with every booking, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
+The price depends on how many of you there are: see the pricing block below for the tier that fits your group. Wine is included with every booking, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
     duration: '2 HRS',
     durationIso: 'PT2H',
     price: formatPriceFull('sunset-cruise'),
@@ -598,13 +576,13 @@ Pricing scales with group size: see the breakdown below. Wine is included with e
     tagline: 'Your boat, your itinerary - full-day freedom with a skipper who knows these waters.',
     shortDescription:
       `Private boat charter from Hvar, Croatia. Your own boat, skipper, route and equipment - design the day you want on the Adriatic. €${PC.private} for boat + skipper, fuel paid separately.`,
-    description: `A private boat charter from Hvar is the most flexible format we offer: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your skipper helps you build a realistic plan based on weather and distances.
+    description: `A private boat with a skipper in Hvar, and your route for the full day. You pick the stops, we handle the rest. This is the most flexible format we offer, with a skipper who knows the Adriatic and the Hvar archipelago well enough to adapt in real time.
 
-Unlike fixed itineraries, a full-day charter gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
+Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your skipper builds a realistic plan around weather and distances. Unlike a fixed itinerary, a full day on your own boat gives you room to adapt: spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat is yours for the group, with no strangers on board.
 
-Price is €${PC.private} for the boat and skipper. Fuel is paid separately at the marina based on the route you choose - usually a few hundred euros for a long day depending on distance. We discuss a realistic fuel estimate before you commit, so there are no surprises.
+Price is €${PC.private} for the boat and skipper. Fuel is paid separately because you decide the route: a short Pakleni day burns less than a long run to Vis or Biševo. That is the trade of choosing your own itinerary, not fine print. We give you a realistic fuel estimate before you commit, based on your plan for the day.
 
-Every charter includes snorkelling masks, icebox and bottled water. Message us with your dates, group size and any stops you have in mind.`,
+Every private boat charter from Hvar includes snorkelling masks, icebox and bottled water. Message us on WhatsApp with your dates, group size and the stops you have in mind.`,
     duration: 'Full day',
     durationIso: 'PT8H',
     price: formatPriceFull('private-boat-charter'),

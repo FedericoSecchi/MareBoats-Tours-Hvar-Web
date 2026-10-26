@@ -9,8 +9,10 @@ import { tourSchemaMap, buildTouristTripSchema, buildFAQSchema } from '@/lib/sch
 import { getLastModified } from '@/lib/git-dates';
 import TourHero from '@/components/sections/TourHero';
 import FleetInfo from '@/components/sections/FleetInfo';
+import Testimonials from '@/components/sections/Testimonials';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { SHOW_YACHT_LINKS, YACHT_BASE } from '@/lib/yacht-flags';
+import type { ReviewQuote } from '@/lib/reviews';
 
 // Entries into the yacht section from the two tours that have a yacht variant.
 // Rendered just before the FAQ, gated by SHOW_YACHT_LINKS so the block disappears
@@ -30,6 +32,14 @@ const YACHT_UPSELL: Record<string, { question: string; linkText: string; href: s
 
 const SITE = 'https://mareboatshvar.com';
 
+// Which Google-review topic to feature on each tour page. Pages without an entry here
+// render the general Testimonials pool.
+const TOUR_REVIEW_TOPIC: Record<string, ReviewQuote['topics'][number] | undefined> = {
+  'red-rocks-pakleni-islands': 'red-rocks',
+  'pakleni-islands': 'pakleni',
+  'private-boat-charter': 'private',
+};
+
 type PageProps = { params: { slug: string } };
 
 export function generateStaticParams() {
@@ -43,9 +53,9 @@ export function generateMetadata({ params }: PageProps): Metadata {
   }
 
   const titleMap: Record<string, string> = {
-    'blue-cave-pakleni-islands': 'Hvar Boat Tour: 5 Islands, Blue Cave & 4 Beaches',
-    'red-rocks-pakleni-islands': 'Red Rocks & Pakleni Islands Boat Tour from Hvar',
-    'pakleni-islands': 'Pakleni Islands Half Day Boat Tour from Hvar',
+    'blue-cave-pakleni-islands': 'Blue Cave Tour from Hvar: 5 Islands',
+    'red-rocks-pakleni-islands': 'Red Rocks Hvar: Half or Full-Day Boat Tour',
+    'pakleni-islands': 'Pakleni Islands Boat Tour from Hvar',
     'sunset-cruise': 'Sunset Cruise Hvar',
     'private-boat-charter': 'Private Boat Charter Hvar',
     'split-airport-transfer': 'Split Airport to Hvar by Speedboat',
@@ -56,7 +66,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     'blue-cave-pakleni-islands':
       'Full-day speedboat tour from Hvar. Blue Cave, Stiniva Bay, Green Cave, Medvidina, Budikovac & Pakleni Islands. Small groups. Departs 10:00. Book on WhatsApp.',
     'red-rocks-pakleni-islands':
-      'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming. Book on WhatsApp.',
+      'Red Rocks Hvar by speedboat from Beach Križa. Half-day or full-day, private or shared. Red Rocks cliffs, Dubovica Beach, Pakleni Islands. Book on WhatsApp.',
     'split-airport-transfer':
       'Skip the ferry. Private speedboat transfer from Split Airport to Hvar - fast, comfortable, scenic. Book on WhatsApp, instant confirmation.',
     'yacht-sailboat-taxi':
@@ -102,10 +112,23 @@ export default function TourDetailPage({ params }: PageProps) {
   if (!tour) notFound();
 
   const hero = tour.heroImage ?? tour.images[0];
-  const waMessage =
-    tour.slug === 'yacht-sailboat-taxi'
-      ? 'Hi! I need a water taxi from my yacht. My location is: [coordinates]'
-      : `Hi! I'd like to book the ${tour.name}.`;
+  const waMessageMap: Record<string, string> = {
+    'yacht-sailboat-taxi':
+      'Hi! I need a water taxi from my yacht. My location is: [coordinates]',
+    'red-rocks-pakleni-islands':
+      "Hi! I'd like to book the Red Rocks tour (half day / full day) on ___ for ___ people.",
+    'blue-cave-pakleni-islands':
+      "Hi! I'd like to book the Blue Cave & 5 Islands tour on ___ for ___ people.",
+    'pakleni-islands':
+      "Hi! I'd like to book the Pakleni Islands half-day tour (3h / 4h) on ___ for ___ people.",
+    'sunset-cruise':
+      "Hi! I'd like to book the Sunset Cruise on ___ for ___ people.",
+    'private-boat-charter':
+      "Hi! I'd like to book a private charter on ___ for ___ people. We'd like to stop at ___.",
+    'scenic-coast-cruise':
+      "Hi! I'd like to book the 2-hour scenic coast cruise on ___ for ___ people.",
+  };
+  const waMessage = waMessageMap[tour.slug] ?? `Hi! I'd like to book the ${tour.name}.`;
   const waUrl = `https://wa.me/385951966734?text=${encodeURIComponent(waMessage)}`;
 
   const dateModified = getLastModified('lib/tours-data.ts');
@@ -386,6 +409,12 @@ export default function TourDetailPage({ params }: PageProps) {
           </div>
         </section>
       )}
+
+      <Testimonials
+        topic={TOUR_REVIEW_TOPIC[tour.slug]}
+        heading="What guests say"
+        eyebrow="Google reviews"
+      />
 
       <section className="bg-[color:var(--bg)] px-4 py-16 md:py-20">
         <div className="mx-auto grid max-w-container gap-10 md:grid-cols-2">
