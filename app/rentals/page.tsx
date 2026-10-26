@@ -192,7 +192,7 @@ export default function RentalsPage() {
             Boat Rental Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Self-drive boats from Beach Križa, from a small Pasara to a 150hp speedboat. The Pasara 5hp needs no boating licence. The 60hp speedboat and the Mariner 150hp need a valid one, or come out with us on a Private Charter and we bring the skipper.
+            Self-drive boat hire in Hvar, from a small Pasara to a 150hp speedboat, all picked up at Beach Križa. The Pasara 5hp needs no boating licence. The 60hp speedboat and the Mariner 150hp need a valid one, or come out with us on a Private Charter and we bring the skipper.
           </p>
         </div>
       </section>
