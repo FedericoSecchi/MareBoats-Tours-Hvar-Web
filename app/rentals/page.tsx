@@ -10,23 +10,20 @@ import { RENTAL_SELF_DRIVE, RENTAL_WITH_SKIPPER_FROM, ADDONS } from '@/lib/prici
 
 export const metadata: Metadata = {
   ...generateSEO({
-    title: 'Rentals Hvar - Boat Rental & Underwater Scooter',
+    title: 'Boat Rental Hvar: Self-Drive or Skipper',
     description:
-      'Rent a boat in Hvar with or without skipper, or try an underwater scooter. No licence? No problem. MareBoats rentals - pickup at Beach Križa.',
+      'Boat rental in Hvar from Beach Križa. Pasara 5hp with no boating licence needed, plus 20hp, 60hp and 150hp speedboats. Fuel included on all Pasaras. Book on WhatsApp.',
     keywords: [
       'boat rental hvar',
-      'rent a boat hvar croatia',
-      'hvar boat hire',
-      'private boat hvar',
-      'boat hire hvar without skipper',
-      'self drive boat hvar',
-      'boat hire hvar',
       'rent a boat hvar',
-      'boat hire hvar no licence',
-      'rent a boat hvar no licence',
-      'hvar boat rental without licence',
-      'underwater scooter hvar',
-      'rent boat hvar croatia',
+      'boat hire hvar',
+      'boat rental hvar no license',
+      'rent a boat hvar croatia',
+      'small boat rental hvar',
+      'speed boat rental hvar',
+      'self drive boat hvar',
+      'boat rental hvar without licence',
+      'pasara boat rental',
     ],
     slug: 'rentals',
     ogImage: '/images/boat/hvar-pakleni-islands-sea-scooter-snorkel-drone-2026-01.jpg',
@@ -62,8 +59,8 @@ const itemListSchema = {
   name: 'Rentals from MareBoats Hvar',
   description: 'Boat rental and underwater scooter in Hvar, Croatia.',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-skipper`, name: 'Boat Rental - With Skipper' },
-    { '@type': 'ListItem', position: 2, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental - Self-Drive' },
+    { '@type': 'ListItem', position: 1, url: `${SITE}/rentals/#boat-self-drive`, name: 'Boat Rental - Self-Drive' },
+    { '@type': 'ListItem', position: 2, url: `${SITE}/tours/private-boat-charter/`, name: 'Private Boat Charter (with skipper)' },
     { '@type': 'ListItem', position: 3, url: `${SITE}/rentals/#water-scooter`, name: 'Underwater Scooter' },
   ],
 };
@@ -72,7 +69,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: 'Do I need a boat licence to rent a boat in Hvar?',
     answer:
-      "For self-drive rental, a valid boat licence is required by Croatian maritime law. If you don't have a licence, we offer all our boats with a skipper included - no licence needed.",
+      "The Pasara 5hp self-drive does not need a boating licence under Croatian maritime law and is the only boat on this page you can rent licence-free. The Pasara 20hp, the 60hp speedboat and the Mariner 150hp are rented self-drive to guests with a valid boating licence. If you do not have one, book a Private Charter and we provide the skipper.",
   },
   {
     question: 'How many people can rent a boat in Hvar?',
@@ -197,10 +194,10 @@ export default function RentalsPage() {
             Hvar, Croatia
           </p>
           <h1 className="mt-4 font-display text-[2rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] sm:text-4xl md:text-6xl">
-            Rentals Hvar
+            Boat Rental Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Boat rental, underwater scooter &amp; more - pickup at Beach Križa.
+            Boat hire in Hvar from Beach Križa. Rent a boat in Hvar, Croatia with no license on the Pasara 5hp. Speed boat rental in Hvar or boat rental in Hvar without licence - the rest of the fleet needs a valid licence or a skipper.
           </p>
         </div>
       </section>
@@ -216,81 +213,21 @@ export default function RentalsPage() {
           </h2>
 
           <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Two ways to rent - come with a{' '}
-            <strong className="text-[color:var(--white)]">skipper included</strong> for the
-            full-service experience, or take the helm yourself with our{' '}
-            <strong className="text-[color:var(--white)]">self-drive option</strong>. Both pickup
-            at Beach Križa, same quality speedboat. Dogs are welcome on board, on request. Message
-            us before you book.
+            Four self-drive boats, same pickup at Beach Križa. The Pasara 5hp is the only one you can rent without a boating licence. The Pasara 20hp, the 60hp speedboat and the Mariner 150hp are rented self-drive to guests with a valid licence. Dogs are welcome on board, on request.
+          </p>
+          <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
+            Want a skipper on board instead?{' '}
+            <Link
+              href="/tours/private-boat-charter/"
+              className="font-semibold text-[color:var(--accent)] underline underline-offset-2 transition-colors hover:text-[color:var(--accent-dk)]"
+            >
+              Book a Private Charter from €{RENTAL_WITH_SKIPPER_FROM} &rarr;
+            </Link>
           </p>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 grid gap-6">
 
-            {/* Option A: With Skipper */}
-            <article
-              id="boat-skipper"
-              className="flex flex-col rounded-2xl border border-[color:var(--accent)]/30 bg-[color:var(--surface)] p-8 shadow-[0_10px_30px_rgba(59,201,219,0.10)]"
-            >
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--accent)]/15 text-[color:var(--accent)]">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                  </svg>
-                </span>
-                <p className="font-body text-xs font-medium uppercase tracking-[0.15em] text-[color:var(--accent)]">
-                  Most popular
-                </p>
-              </div>
-
-              <h3 className="mt-4 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                With Skipper
-              </h3>
-
-              <p className="mt-3 font-body text-base leading-relaxed text-[color:var(--gray)]">
-                No licence needed. A skipper who knows the island, custom route, private group.
-              </p>
-
-              <ul className="mt-5 space-y-2 font-body text-base text-[color:var(--gray)]">
-                {[
-                  'No licence needed',
-                  'Skipper included, custom route',
-                  'Fuel, water & snorkel included',
-                  'Up to 8 people - private group only',
-                  'Dogs welcome, on request',
-                ].map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-auto flex flex-col gap-3 pt-8">
-                <span className="font-body text-lg font-bold text-[color:var(--accent)]">
-                  From €{RENTAL_WITH_SKIPPER_FROM}
-                </span>
-                <WhatsAppTrackedLink
-                  href={waUrl("Hi! I'd like to ask about boat rental with skipper in Hvar.")}
-                  label="boat_rental_skipper"
-                  className="inline-flex items-center justify-center rounded-pill bg-[color:var(--accent)] px-5 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]/60 active:scale-[0.97]"
-                >
-                  Ask on WhatsApp
-                </WhatsAppTrackedLink>
-              </div>
-            </article>
-
-            {/* Option B: Self-Drive container */}
+            {/* Self-Drive container */}
             <div
               id="boat-self-drive"
               className="flex flex-col gap-4 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6"
@@ -300,14 +237,11 @@ export default function RentalsPage() {
                   Self-Drive
                 </p>
                 <h3 className="mt-1 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                  Boat Rental Hvar
+                  Four boats, pick yours
                 </h3>
               </div>
 
-              <p className="font-body text-base text-[color:var(--gray)]">
-                No licence? No problem. Our Pasara is available without a boating licence, perfect for a day around the Pakleni Islands. Licensed skippers can choose from our full speedboat fleet.
-              </p>
-              <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
+              <p className="mt-1 font-body text-sm text-[color:var(--gray)]">
                 Not sure what your options are?{' '}
                 <Link
                   href="/rentals/boat-rental-hvar-without-licence/"
@@ -319,18 +253,18 @@ export default function RentalsPage() {
 
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 
-                {/* Pasara 5hp */}
-                <article className="flex flex-col rounded-xl border border-[color:var(--accent)]/30 bg-[color:var(--bg)] p-4">
-                  <h4 className="font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
+                {/* Pasara 5hp - featured for the "no licence" cluster */}
+                <article className="flex flex-col rounded-xl border border-[color:var(--accent)]/60 bg-[color:var(--bg)] p-4 shadow-[0_10px_28px_rgba(59,201,219,0.14)]">
+                  <span className="inline-flex items-center self-start rounded-pill border border-[color:var(--accent)]/60 bg-[color:var(--accent)]/15 px-3 py-1 font-body text-[11px] font-bold uppercase tracking-wide text-[color:var(--accent)]">
+                    No boating licence needed
+                  </span>
+                  <h4 className="mt-2 font-display text-sm font-bold uppercase tracking-wide text-[color:var(--white)]">
                     Pasara · 5hp
                   </h4>
-                  <span className="mt-2 inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--accent)]/10 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-[color:var(--accent)]">
-                    No Licence Needed
-                  </span>
-                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">No licence needed · small boat rental Hvar · up to {RENTAL_SELF_DRIVE.pasara5hp.maxGuests} people</p>
+                  <p className="mt-1 font-body text-xs text-[color:var(--gray)]">Small boat rental Hvar · up to {RENTAL_SELF_DRIVE.pasara5hp.maxGuests} people · fuel included</p>
                   <p className="mt-1 font-body text-lg font-bold text-[color:var(--accent)]">€{RENTAL_SELF_DRIVE.pasara5hp.pricePerDay} / day</p>
                   <ul className="mt-3 space-y-1 font-body text-xs text-[color:var(--gray)]">
-                    {['Calm water exploration', 'Fuel included', 'Perfect for Pakleni Islands'].map((item) => (
+                    {['Calm water around the Pakleni Islands', 'Legal to drive without a boating licence in Croatia', 'Fuel included'].map((item) => (
                       <li key={item} className="flex gap-2">
                         <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
                         <span>{item}</span>
