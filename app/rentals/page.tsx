@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   ...generateSEO({
     title: 'Boat Rental Hvar: Self-Drive or Skipper',
     description:
-      'Boat rental in Hvar from Beach Križa. Pasara 5hp with no boating licence needed, plus 20hp, 60hp and 150hp speedboats. Fuel included on all Pasaras. Book on WhatsApp.',
+      'Self-drive boat rental in Hvar from Beach Križa, from small Pasaras to a 150hp speedboat. The Pasara 5hp needs no boating licence. Book on WhatsApp.',
     keywords: [
       'boat rental hvar',
       'rent a boat hvar',
@@ -69,7 +69,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: 'Do I need a boat licence to rent a boat in Hvar?',
     answer:
-      "The Pasara 5hp self-drive does not need a boating licence under Croatian maritime law and is the only boat on this page you can rent licence-free. The Pasara 20hp, the 60hp speedboat and the Mariner 150hp are rented self-drive to guests with a valid boating licence. If you do not have one, book a Private Charter and we provide the skipper.",
+      "The Pasara 5hp self-drive does not need a boating licence under Croatian maritime law. The 60hp speedboat and the Mariner 150hp need a valid boating licence. If you do not have one, book a Private Charter and we provide the skipper.",
   },
   {
     question: 'How many people can rent a boat in Hvar?',
@@ -197,7 +197,7 @@ export default function RentalsPage() {
             Boat Rental Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Boat hire in Hvar from Beach Križa. Rent a boat in Hvar, Croatia with no license on the Pasara 5hp. Speed boat rental in Hvar or boat rental in Hvar without licence - the rest of the fleet needs a valid licence or a skipper.
+            Self-drive boats from Beach Križa, from a small Pasara to a 150hp speedboat. The Pasara 5hp needs no boating licence. The 60hp speedboat and the Mariner 150hp need a valid one, or come out with us on a Private Charter and we bring the skipper.
           </p>
         </div>
       </section>
@@ -213,7 +213,7 @@ export default function RentalsPage() {
           </h2>
 
           <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Four self-drive boats, same pickup at Beach Križa. The Pasara 5hp is the only one you can rent without a boating licence. The Pasara 20hp, the 60hp speedboat and the Mariner 150hp are rented self-drive to guests with a valid licence. Dogs are welcome on board, on request.
+            Four self-drive boats, same pickup at Beach Križa. The Pasara 5hp needs no boating licence. The 60hp speedboat and the Mariner 150hp need a valid one. Dogs are welcome on board, on request.
           </p>
           <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
             Want a skipper on board instead?{' '}
