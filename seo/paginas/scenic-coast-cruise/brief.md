@@ -1,26 +1,8 @@
-# Brief — scenic-coast-cruise
+# Brief — Scenic Coast (`/tours/scenic-coast-cruise/`)
 
-- Keyword principal: · Idioma/mercado: · Persona principal:
-- Intención (qué quiere hacer quien busca):
-- Veredicto SERP:
+Sin keyword propia hasta tener datos (0 impr GSC). Pasa por
+`copy_lint` y la regla de title. No se re-toca contenido.
 
-## Competencia (top 3)
-| URL | Qué hacen bien | Qué les falta |
-|---|---|---|
-- Features de la SERP:
-- Lo que podemos decir que ellos no pueden:
-
-## CTA principal
-- Texto del botón:
-- Microcopy:
-- Mensaje prellenado WhatsApp:
-
-## Estructura (encabezados + bloques)
-| # | Bloque / componente | Encabezado (nivel y texto) | Contenido | Máx. palabras | Keywords asignadas | CTA |
-|---|---|---|---|---|---|---|
-
-## Descartado y por qué
-- 
-
-## [CONFIRMAR] que afectan esta página
-- 
+- Title: `"2-Hour Scenic Boat Cruise Hvar"` (30, rendered 48). ✓
+- H1: `"Scenic Coast Cruise in Hvar"`. ✓
+- copy_lint 98/100. ✓
