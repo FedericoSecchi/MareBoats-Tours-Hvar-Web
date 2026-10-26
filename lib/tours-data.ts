@@ -576,13 +576,13 @@ Pricing scales with group size: see the breakdown below. Wine is included with e
     tagline: 'Your boat, your itinerary - full-day freedom with a skipper who knows these waters.',
     shortDescription:
       `Private boat charter from Hvar, Croatia. Your own boat, skipper, route and equipment - design the day you want on the Adriatic. €${PC.private} for boat + skipper, fuel paid separately.`,
-    description: `A private boat charter from Hvar is the most flexible format we offer: you choose the rhythm, the stops, and the balance between sightseeing, swimming, and simple time on the water. Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your skipper helps you build a realistic plan based on weather and distances.
+    description: `A private boat with skipper in Hvar, your route for the full day. The charter is boat hire in Hvar with skipper included: you pick the stops, we handle the rest. This is the most flexible format we offer, with a skipper who knows the Adriatic and the Hvar archipelago well enough to adapt in real time.
 
-Unlike fixed itineraries, a full-day charter gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat remains exclusively yours for the group, with no strangers on board and no rigid schedule beyond what the sea safely allows.
+Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your skipper builds a realistic plan around weather and distances. Unlike fixed itineraries, a full day private boat in Hvar gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat is yours for the group, with no strangers on board.
 
-Price is €${PC.private} for the boat and skipper. Fuel is paid separately at the marina based on the route you choose - usually a few hundred euros for a long day depending on distance. We discuss a realistic fuel estimate before you commit, so there are no surprises.
+Price is €${PC.private} for the boat and skipper. Fuel is paid separately because you decide the route: a short Pakleni day burns less than a long run to Vis or Biševo. That is the trade of choosing your own itinerary, not fine print. We give you a realistic fuel estimate before you commit, based on your plan for the day.
 
-Every charter includes snorkelling masks, icebox and bottled water. Message us with your dates, group size and any stops you have in mind.`,
+Every private boat charter from Hvar includes snorkelling masks, icebox and bottled water. Message us on WhatsApp with your dates, group size and the stops you have in mind.`,
     duration: 'Full day',
     durationIso: 'PT8H',
     price: formatPriceFull('private-boat-charter'),
