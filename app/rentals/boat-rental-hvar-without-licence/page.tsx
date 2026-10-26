@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   ...generateSEO({
     title: 'Boat Licence Croatia: Rent Without One',
     description:
-      'Do you need a licence to rent a boat in Croatia? Not for the Pasara 5hp self-drive from MareBoats Hvar. For every other boat, book a private speedboat with a skipper. Rent a boat Hvar without licence from Beach Križa.',
+      'Do you need a licence to rent a boat in Croatia? Not for the Pasara 5hp self-drive from MareBoats Hvar, picked up at Beach Križa. Want to go further? Book a private speedboat with a skipper.',
     keywords: [
       'do you need a licence to rent a boat in croatia',
       'rent a boat without licence croatia',
@@ -106,11 +106,11 @@ export default function NoLicencePage() {
           </h1>
           <p className="mt-6 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
             For most boats, yes. The exception on this page is our{' '}
-            <strong className="text-[color:var(--white)]">Pasara 5hp</strong>: you can rent a boat
-            Hvar without licence under Croatian maritime law, and rent a boat without licence
-            Croatia-wide at that power level. For anything with more power, book a{' '}
+            <strong className="text-[color:var(--white)]">Pasara 5hp</strong>: at that power
+            Croatian maritime law lets you drive without a licence. If you want to go further,
+            book a{' '}
             <strong className="text-[color:var(--white)]">private speedboat with a skipper</strong>{' '}
-            and skip the boat licence Croatia question entirely.
+            and the question does not come up: we drive, you swim.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
