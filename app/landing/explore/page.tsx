@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { WhatsAppTrackedLink } from '@/components/ui/WhatsAppTrackedLink';
 import { featuredTours, type TourRecord } from '@/lib/tours-data';
+import { googleReviews, reviewQuotes, reviewLabel, reviewsBadge } from '@/lib/reviews';
 
 export const metadata: Metadata = {
   title: 'Private Boat Tours Hvar | Blue Cave & Island Tours',
@@ -24,28 +25,7 @@ function waUrlFor(tourName: string) {
   )}`;
 }
 
-type Review = { quote: string; author: string; origin: string };
-
-const reviews: Review[] = [
-  {
-    quote:
-      'Best day of our Croatia trip. Captain took us to quiet coves the group boats skip. Blue Cave was unreal.',
-    author: 'Sarah M.',
-    origin: 'United Kingdom',
-  },
-  {
-    quote:
-      'Private and relaxed. Fede knew the route perfectly, the snorkeling stops were beautiful and the boat was ours the whole day.',
-    author: 'Marco & Julia',
-    origin: 'Germany',
-  },
-  {
-    quote:
-      'Six of us, one boat, one full day. Snorkeling, lunch, Pakleni Islands. Already planning next summer.',
-    author: 'The Johnson Family',
-    origin: 'United States',
-  },
-];
+const reviews = reviewQuotes.slice(0, 3);
 
 function Stars() {
   return (
@@ -136,9 +116,14 @@ export default function LandingExplorePage() {
           }}
         />
         <div className="relative z-10 mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 font-body text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)]">
-            ⭐ 140+ happy guests
-          </span>
+          <a
+            href={googleReviews.profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 font-body text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)] hover:border-[color:var(--accent)]"
+          >
+            ⭐ {reviewsBadge()}
+          </a>
           <h1 className="mt-5 font-display text-[2rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] sm:text-4xl md:text-6xl">
             Choose Your Adventure
           </h1>
@@ -209,9 +194,9 @@ export default function LandingExplorePage() {
           </div>
 
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {reviews.map((r) => (
+            {reviews.map((r, i) => (
               <li
-                key={r.author}
+                key={`${r.month}-${r.year}-${i}`}
                 className="relative flex h-full flex-col gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--bg)]/60 p-7"
               >
                 <span
@@ -226,8 +211,7 @@ export default function LandingExplorePage() {
                 <div className="mt-auto flex flex-col gap-2 border-t border-[color:var(--border)] pt-4">
                   <Stars />
                   <p className="font-body text-sm font-semibold text-[color:var(--white)]">
-                    {r.author}
-                    <span className="font-normal text-[color:var(--gray)]"> · {r.origin}</span>
+                    <span className="font-normal text-[color:var(--gray)]">{reviewLabel(r)}</span>
                   </p>
                 </div>
               </li>

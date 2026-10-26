@@ -3,33 +3,20 @@
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '@/lib/hooks/useScrollAnimation';
 import { fadeInUpItem, staggerListOnly } from '@/lib/motion';
+import {
+  googleReviews,
+  reviewQuotes,
+  reviewLabel,
+  reviewsBadge,
+  type ReviewQuote,
+} from '@/lib/reviews';
 
-type Testimonial = {
-  quote: string;
-  author: string;
-  origin: string;
+type TestimonialsProps = {
+  topic?: ReviewQuote['topics'][number];
+  limit?: number;
+  heading?: string;
+  eyebrow?: string;
 };
-
-const testimonials: Testimonial[] = [
-  {
-    quote:
-      'The best day of our entire Croatia trip. Captain was amazing, took us to spots no tourist boat would go. Blue Cave was magical.',
-    author: 'Sarah M.',
-    origin: 'United Kingdom',
-  },
-  {
-    quote:
-      'Worth every euro. Private tour, completely at our own pace, and Fede spoke perfect Italian so our parents felt at home on board.',
-    author: 'Marco & Julia',
-    origin: 'Germany',
-  },
-  {
-    quote:
-      'Booked for 6 people, everything was perfect. Snorkeling, swimming, Pakleni Islands - all in one day. Will be back next summer for sure.',
-    author: 'The Johnson Family',
-    origin: 'United States',
-  },
-];
 
 function Stars() {
   return (
@@ -49,8 +36,18 @@ function Stars() {
   );
 }
 
-export default function Testimonials() {
+export default function Testimonials({
+  topic,
+  limit = 3,
+  heading = 'What Our Guests Say',
+  eyebrow = 'Google reviews',
+}: TestimonialsProps) {
   const { ref, inView } = useScrollAnimation();
+
+  const pool = topic ? reviewQuotes.filter((r) => r.topics.includes(topic)) : reviewQuotes;
+  const picked = pool.slice(0, limit);
+
+  if (picked.length === 0) return null;
 
   return (
     <section ref={ref} className="bg-[color:var(--bg)] py-20 px-4 md:py-24">
@@ -62,16 +59,26 @@ export default function Testimonials() {
       >
         <motion.div variants={fadeInUpItem} className="col-span-full md:col-span-3">
           <p className="font-body text-xs font-medium uppercase tracking-[0.2em] text-[color:var(--accent)]">
-            Reviews
+            {eyebrow}
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] md:text-5xl">
-            What Our Guests Say
+            {heading}
           </h2>
+          <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
+            <a
+              href={googleReviews.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-2 hover:underline"
+            >
+              {googleReviews.rating.toFixed(1)} on Google · {reviewsBadge()}
+            </a>
+          </p>
         </motion.div>
 
-        {testimonials.map((t) => (
+        {picked.map((t, i) => (
           <motion.article
-            key={t.author}
+            key={`${t.month}-${t.year}-${i}`}
             variants={fadeInUpItem}
             className="relative flex h-full flex-col gap-5 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-7"
           >
@@ -81,12 +88,13 @@ export default function Testimonials() {
             >
               &ldquo;
             </span>
-            <p className="-mt-6 flex-1 font-body text-base leading-relaxed text-[color:var(--white)]">{t.quote}</p>
+            <p className="-mt-6 flex-1 font-body text-base leading-relaxed text-[color:var(--white)]">
+              {t.quote}
+            </p>
             <div className="mt-auto flex flex-col gap-2 border-t border-[color:var(--border)] pt-4">
               <Stars />
               <p className="font-body text-sm font-semibold text-[color:var(--white)]">
-                {t.author}
-                <span className="font-normal text-[color:var(--gray)]"> · {t.origin}</span>
+                <span className="font-normal text-[color:var(--gray)]">{reviewLabel(t)}</span>
               </p>
             </div>
           </motion.article>

@@ -12,6 +12,7 @@ import Features from '@/components/sections/Features';
 import Gallery from '@/components/sections/Gallery';
 import { homepageFaqs } from '@/lib/faqs';
 import { toursData } from '@/lib/tours-data';
+import { googleReviews, reviewsBadge } from '@/lib/reviews';
 
 const Testimonials = dynamic(() => import('@/components/sections/Testimonials'), {
   ssr: false,
@@ -91,9 +92,14 @@ export default function HomePage() {
 
           <div className="w-full">
             <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
-              <span className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)]">
-                ⭐ 140+ happy guests
-              </span>
+              <a
+                href={googleReviews.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-pill border border-[color:var(--accent)]/40 bg-[color:var(--bg)]/55 px-3 py-1.5 text-xs font-medium tracking-wide text-[color:var(--white)] shadow-[0_8px_26px_rgba(59,201,219,0.16)] hover:border-[color:var(--accent)]"
+              >
+                ⭐ {reviewsBadge()}
+              </a>
 
               <p className="max-w-2xl rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(13,27,42,0.7)_0%,rgba(13,27,42,0.45)_55%,rgba(13,27,42,0)_100%)] px-6 py-4 text-base leading-relaxed text-[color:var(--gray)] md:px-10 md:py-6 md:text-xl">
                 We sail from Beach Križa. You pick the day, the stops and the pace - Blue Cave, Red
