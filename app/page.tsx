@@ -46,16 +46,16 @@ const HOME_HERO_VIDEO = {
 };
 
 export const metadata: Metadata = generateSEO({
-  title: 'Private Boat Tours Hvar Croatia | MareBoats - Book on WhatsApp',
+  title: 'Private Boat Tours Hvar from Beach Križa',
   description:
-    'Private speedboat tours from Hvar. Blue Cave, Pakleni Islands, sunset cruises & custom charters. 5.0★ on Google. Book direct, no middleman.',
+    'Private boat tours in Hvar from Beach Križa. Red Rocks, Blue Cave, Pakleni, sunset. Shared or private, up to 8 per boat. 5.0 on Google, 216 reviews. Book on WhatsApp.',
   keywords: [
     'private boat tours hvar',
-    'boat tour hvar croatia',
-    'mare boats hvar',
-    'hvar boat excursion',
-    'blue cave hvar',
-    'pakleni islands tour',
+    'boat tours hvar',
+    'hvar boat tours',
+    'private boat tour hvar',
+    'speedboat tour hvar',
+    'boat tours in hvar',
   ],
   ogImage: '/img/mareboats-og.png',
 });
@@ -143,16 +143,10 @@ export default function HomePage() {
             Also from Beach Križa
           </span>
           <Link
-            href="/rentals"
+            href="/rentals/"
             className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
           >
-            Boat Rentals →
-          </Link>
-          <Link
-            href="/rentals/#boat-rental"
-            className="font-body text-sm text-[color:var(--white)] transition-colors duration-200 hover:text-[color:var(--accent)] focus-visible:outline-none focus-visible:underline"
-          >
-            Boat Rental →
+            Boat rental in Hvar →
           </Link>
           <Link
             href="/transfers"
