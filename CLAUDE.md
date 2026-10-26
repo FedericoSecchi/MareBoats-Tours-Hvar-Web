@@ -439,6 +439,7 @@ y la fecha `readAt`. Nunca a mano en otro archivo.
 - **NO nombrar negocios de terceros** (restaurantes, beach clubs) con datos que no controlamos: años de apertura, cantidad de amarres, horarios. Solo nombre y ubicación, y solo si ya estaba publicado.
 - **Nombres croatas con diacríticos**: Ždrilca, Žarače, Palmižana, Borče, Biševo, Crvene Stijene, Brač, Križa. Corregido en todo el sitio el 09/08. Excepción: nombres de archivo de imágenes y claves internas de código.
 - **El sufijo de marca lo agrega el template del layout.** Los titles de página NO deben incluir "| MareBoats" ni "- MareBoats". Regla: source ≤44 chars → rendered ≤60.
+  - **Excepción: la home.** El `title.template` del layout raíz no se aplica a `app/page.tsx` (mismo segmento), así que la home escribe la marca con `title: { absolute: 'Private Boat Tours Hvar | MareBoats Hvar' }`. El 82% de los clics de Google son búsquedas de marca: la home sin marca en el `<title>` es un error.
 
 ## Design tokens
 ```
@@ -977,8 +978,9 @@ abierto (ver `seo/PR.md` o PR en GitHub) · nada mergeado.
   reforzado en la Pasara 5hp. FAQ de licencia corregido.
 - **Private Charter**: fuel como consecuencia de elegir la ruta, no
   letra chica. [CONFIRMAR] rango de fuel sigue pendiente con Nikola.
-- **Home**: title `'Private Boat Tours Hvar from Beach Križa'` (39
-  chars) resuelve el bug de "doble marca". Testimonios ahora reseñas
+- **Home**: title `'Private Boat Tours Hvar | MareBoats Hvar'` vía
+  `title: { absolute }`. El primer intento ('Private Boat Tours Hvar from
+  Beach Križa') salía sin marca porque el template no aplica a la home. Testimonios ahora reseñas
   reales de Google. Badge pasa de "140+ happy guests" a "216 Google
   reviews · Oct 2026" linkeado a la ficha.
 - **Pakleni**: name/H1 "Pakleni Islands Boat Tour from Hvar"

@@ -45,20 +45,27 @@ const HOME_HERO_VIDEO = {
   alt: 'Islands off Hvar from a drone on a clear day, private boat tours from Hvar Croatia',
 };
 
-export const metadata: Metadata = generateSEO({
-  title: 'Private Boat Tours Hvar from Beach Križa',
-  description:
-    'Private boat tours in Hvar from Beach Križa. Red Rocks, Blue Cave, Pakleni, sunset. Shared or private, up to 8 per boat. 5.0 on Google, 216 reviews. Book on WhatsApp.',
-  keywords: [
-    'private boat tours hvar',
-    'boat tours hvar',
-    'hvar boat tours',
-    'private boat tour hvar',
-    'speedboat tour hvar',
-    'boat tours in hvar',
-  ],
-  ogImage: '/img/mareboats-og.png',
-});
+// The root layout's title.template does not apply to a page in the same
+// segment, so the home writes the brand itself.
+const HOME_TITLE = 'Private Boat Tours Hvar | MareBoats Hvar';
+
+export const metadata: Metadata = {
+  ...generateSEO({
+    title: HOME_TITLE,
+    description:
+      'Private boat tours in Hvar from Beach Križa. Red Rocks, Blue Cave, Pakleni, sunset. Shared or private, up to 8 per boat. 5.0 on Google, 216 reviews. Book on WhatsApp.',
+    keywords: [
+      'private boat tours hvar',
+      'boat tours hvar',
+      'hvar boat tours',
+      'private boat tour hvar',
+      'speedboat tour hvar',
+      'boat tours in hvar',
+    ],
+    ogImage: '/img/mareboats-og.png',
+  }),
+  title: { absolute: HOME_TITLE },
+};
 
 const WA_URL =
   'https://wa.me/385951966734?text=Hi!%20I%E2%80%99m%20interested%20in%20a%20boat%20tour.';
