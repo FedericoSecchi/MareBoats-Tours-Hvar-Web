@@ -1,26 +1,12 @@
-# Brief — tours
+# Brief — Tours hub (`/tours/`)
 
-- Keyword principal: · Idioma/mercado: · Persona principal:
-- Intención (qué quiere hacer quien busca):
-- Veredicto SERP:
+## Keyword principal
+"boat trips from hvar" (hoy competía con el home por "boat tours").
 
-## Competencia (top 3)
-| URL | Qué hacen bien | Qué les falta |
-|---|---|---|
-- Features de la SERP:
-- Lo que podemos decir que ellos no pueden:
-
-## CTA principal
-- Texto del botón:
-- Microcopy:
-- Mensaje prellenado WhatsApp:
-
-## Estructura (encabezados + bloques)
-| # | Bloque / componente | Encabezado (nivel y texto) | Contenido | Máx. palabras | Keywords asignadas | CTA |
-|---|---|---|---|---|---|---|
-
-## Descartado y por qué
-- 
-
-## [CONFIRMAR] que afectan esta página
-- 
+## Cambios
+- **Title**: `"Boat Tours from Hvar: All Options"` → `"Boat Trips
+  from Hvar: Compare & Book"` (34 chars).
+- **H1**: `"Choose Your Adventure"` (sin keyword) → `"Boat Trips
+  from Hvar"` (principal entra al H1).
+- **Lead**: ahora dice *compare on duration, price from, what you
+  see*. Entra "day trips from Hvar by boat" y "Hvar boat tour prices".
