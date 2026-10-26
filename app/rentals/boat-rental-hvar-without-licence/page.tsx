@@ -9,17 +9,14 @@ import { PriceComparisonTable } from '@/components/ui/PriceComparisonTable';
 
 export const metadata: Metadata = {
   ...generateSEO({
-    title: 'Rent a Boat in Hvar Without a Licence?',
+    title: 'Boat Licence Croatia: Rent Without One',
     description:
-      'Most self-drive rentals in Croatia require a boating licence, and public sources on the threshold do not agree. The practical option without a licence is a private speedboat with a skipper. From €300 for the whole boat.',
+      'Do you need a licence to rent a boat in Croatia? Not for the Pasara 5hp self-drive from MareBoats Hvar. For every other boat, book a private speedboat with a skipper. Rent a boat Hvar without licence from Beach Križa.',
     keywords: [
-      'boat rental hvar without licence',
-      'rent a boat hvar no licence',
-      'hvar boat hire no licence',
-      'boat hire hvar without boating licence',
-      'private boat hvar no licence',
-      'hvar boat tour without licence',
-      'rent boat hvar without licence',
+      'do you need a licence to rent a boat in croatia',
+      'rent a boat without licence croatia',
+      'boat licence croatia',
+      'rent a boat hvar without licence',
     ],
     slug: 'rentals/boat-rental-hvar-without-licence',
   }),
@@ -105,14 +102,30 @@ export default function NoLicencePage() {
             Hvar, Croatia &middot; Boat Rental
           </p>
           <h1 className="mt-4 font-display text-[2rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-[color:var(--white)] sm:text-4xl md:text-5xl">
-            Can you rent a boat in Hvar without a boating licence?
+            Do you need a licence to rent a boat in Croatia?
           </h1>
           <p className="mt-6 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Most self-drive rental options in Croatia require a valid boating licence, and the
-            public sources on where the threshold sits do not agree with each other. The practical
-            way to be on the water in Hvar without a licence is a private speedboat with a skipper
-            included.
+            For most boats, yes. The exception on this page is our{' '}
+            <strong className="text-[color:var(--white)]">Pasara 5hp</strong>: you can rent a boat
+            Hvar without licence under Croatian maritime law, and rent a boat without licence
+            Croatia-wide at that power level. For anything with more power, book a{' '}
+            <strong className="text-[color:var(--white)]">private speedboat with a skipper</strong>{' '}
+            and skip the boat licence Croatia question entirely.
           </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="/rentals/#boat-self-drive"
+              className="inline-flex items-center rounded-pill border border-[color:var(--accent)] px-5 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--accent)] transition-colors duration-300 hover:bg-[color:var(--accent)]/10"
+            >
+              See the Pasara 5hp (€{pasara5Price}/day, up to {pasara5Max}) →
+            </Link>
+            <Link
+              href="/tours/private-boat-charter/"
+              className="inline-flex items-center rounded-pill bg-[color:var(--accent)] px-5 py-3 font-body text-sm font-semibold uppercase tracking-wide text-[color:var(--bg)] transition-colors duration-300 hover:bg-[color:var(--accent-dk)] hover:text-[color:var(--white)]"
+            >
+              See Private Charter (with skipper) →
+            </Link>
+          </div>
         </div>
       </section>
 
