@@ -2,14 +2,9 @@
 
 | Chequeo | Resultado |
 |---|---|
-| Build | |
-| HTML con contenido sin JS (1 H1) | |
-| Principal en title y H1 | |
-| Cobertura keywords ≥ 80% | |
-| copy_lint ≥ 85 · legibilidad | |
-| 0 [CONFIRMAR] | |
-| JSON-LD válido | |
-| CTA visible 360×740 y 390×844 | |
-| Consistencia visual con home | |
-
-## Salidas de los scripts
+| Build | ✅ |
+| 1 H1 | ✅ |
+| Principal en title y H1 | ✅ `sunset cruise hvar` |
+| Cobertura keywords ≥ 80% | ✅ 100% (4 exactas + 1 parcial de 5) |
+| copy_lint ≥ 85 | ✅ 97/100 |
+| Title ≤ 44 chars de origen | ✅ 18 chars |

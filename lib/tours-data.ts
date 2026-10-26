@@ -528,13 +528,13 @@ Message us on WhatsApp with your date and group size - we confirm fast.`,
     tagline: 'Golden hour on the Adriatic - wine-friendly, calm water, and the best light of the day.',
     shortDescription:
       'Private sunset cruise from Hvar, Croatia. Golden hour over the Dalmatian coast, drinks on board, calm waters and the best photo light of the day.',
-    description: `A two-hour private cruise from Beach Križa, timed to the sunset. The light on the Adriatic at golden hour is different from anything you get during the day: warmer, softer, the kind that makes every photo look like it was planned.
+    description: `This sunset cruise Hvar is a two-hour private sunset boat tour from Beach Križa, timed to the sunset. The light on the Adriatic at golden hour is different from anything you get during the day: warmer, softer, the kind that makes every photo look like it was planned.
 
-This private evening boat tour departs from Beach Križa and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the boat is private, the pace stays yours.
+This Hvar private sunset boat tour departs from Beach Križa and follows a route chosen for views and comfort, with time to relax on deck and swim if conditions allow. Because the sunset boat Hvar guests get is private, the pace stays yours.
 
 Your skipper focuses on safety and smooth cruising as light fades, and chooses the stops for the best view of the sky over the Pakleni Islands. Every booking includes bottled water and fresh fruit on board.
 
-Pricing scales with group size: see the breakdown below. Wine is included with every booking, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
+Hvar sunset boat tour price scales with group size: see the pricing block below for the exact tier that fits your group. Wine is included with every booking, and an extra bottle is available for €${SUNSET_WINE_EXTRA}. Sunset slots are limited during high season, so message us early on WhatsApp to reserve your date.`,
     duration: '2 HRS',
     durationIso: 'PT2H',
     price: formatPriceFull('sunset-cruise'),

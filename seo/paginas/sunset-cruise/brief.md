@@ -1,26 +1,12 @@
-# Brief — sunset-cruise
+# Brief — Sunset (`/tours/sunset-cruise/`)
 
-- Keyword principal: · Idioma/mercado: · Persona principal:
-- Intención (qué quiere hacer quien busca):
-- Veredicto SERP:
+## Keyword principal
+"sunset cruise hvar" (GSC: 93 impr · pos 11–13; muy cerca de la primera página).
 
-## Competencia (top 3)
-| URL | Qué hacen bien | Qué les falta |
-|---|---|---|
-- Features de la SERP:
-- Lo que podemos decir que ellos no pueden:
-
-## CTA principal
-- Texto del botón:
-- Microcopy:
-- Mensaje prellenado WhatsApp:
-
-## Estructura (encabezados + bloques)
-| # | Bloque / componente | Encabezado (nivel y texto) | Contenido | Máx. palabras | Keywords asignadas | CTA |
-|---|---|---|---|---|---|---|
-
-## Descartado y por qué
-- 
-
-## [CONFIRMAR] que afectan esta página
-- 
+## Cambios
+- **Description**: entra "sunset boat hvar", "Hvar private sunset
+  boat tour" y "Hvar sunset boat tour price" como long-tail
+  natural. Precios siguen en el pricing block.
+- **Tramos de precio**: no se tocan (`lib/pricing.ts`
+  `SUNSET_TIERS` queda intacto). CLAUDE.md pide mantenerlos.
+- Title ya era "Sunset Cruise Hvar" (18 chars) — bien.
