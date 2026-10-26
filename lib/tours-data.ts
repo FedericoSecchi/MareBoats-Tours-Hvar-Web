@@ -576,9 +576,9 @@ The price depends on how many of you there are: see the pricing block below for 
     tagline: 'Your boat, your itinerary - full-day freedom with a skipper who knows these waters.',
     shortDescription:
       `Private boat charter from Hvar, Croatia. Your own boat, skipper, route and equipment - design the day you want on the Adriatic. €${PC.private} for boat + skipper, fuel paid separately.`,
-    description: `A private boat with skipper in Hvar, your route for the full day. The charter is boat hire in Hvar with skipper included: you pick the stops, we handle the rest. This is the most flexible format we offer, with a skipper who knows the Adriatic and the Hvar archipelago well enough to adapt in real time.
+    description: `A private boat with a skipper in Hvar, and your route for the full day. You pick the stops, we handle the rest. This is the most flexible format we offer, with a skipper who knows the Adriatic and the Hvar archipelago well enough to adapt in real time.
 
-Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your skipper builds a realistic plan around weather and distances. Unlike fixed itineraries, a full day private boat in Hvar gives you room to adapt - spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat is yours for the group, with no strangers on board.
+Whether you want a slow island-hop, a photography-focused day, or a family-friendly route with plenty of shallow bays, your skipper builds a realistic plan around weather and distances. Unlike a fixed itinerary, a full day on your own boat gives you room to adapt: spend longer at Pakleni Islands, add a coastal cruise, or prioritise snorkelling and quiet beaches. The boat is yours for the group, with no strangers on board.
 
 Price is €${PC.private} for the boat and skipper. Fuel is paid separately because you decide the route: a short Pakleni day burns less than a long run to Vis or Biševo. That is the trade of choosing your own itinerary, not fine print. We give you a realistic fuel estimate before you commit, based on your plan for the day.
 
