@@ -1,26 +1,15 @@
-# Brief — blue-cave-pakleni-islands
+# Brief — Blue Cave (`/tours/blue-cave-pakleni-islands/`)
 
-- Keyword principal: · Idioma/mercado: · Persona principal:
-- Intención (qué quiere hacer quien busca):
-- Veredicto SERP:
+## Keyword principal
+"blue cave tour from hvar" (GSC: 42 impr · pos 47–56; long-tail
+competitiva pero fundamental para el cluster).
 
-## Competencia (top 3)
-| URL | Qué hacen bien | Qué les falta |
-|---|---|---|
-- Features de la SERP:
-- Lo que podemos decir que ellos no pueden:
-
-## CTA principal
-- Texto del botón:
-- Microcopy:
-- Mensaje prellenado WhatsApp:
-
-## Estructura (encabezados + bloques)
-| # | Bloque / componente | Encabezado (nivel y texto) | Contenido | Máx. palabras | Keywords asignadas | CTA |
-|---|---|---|---|---|---|---|
-
-## Descartado y por qué
-- 
-
-## [CONFIRMAR] que afectan esta página
-- 
+## Cambios
+- **Title**: `"Hvar Boat Tour: 5 Islands, Blue Cave & 4 Beaches"`
+  (48) → `"Blue Cave Tour from Hvar: 5 Islands"` (35). Principal al
+  principio del title.
+- **Description**: entra "Blue Cave tour from Hvar", "Green Cave
+  Hvar" y "Stiniva Bay boat tour" como long-tail sin tocar el
+  concepto VIP 5 Islands (10:00, 3 cuevas, grupos chicos — regla de
+  CLAUDE.md § OTAs). Precios sacados de la narrativa (siguen en
+  pricingOptions). Em-dash reemplazado por dos puntos.

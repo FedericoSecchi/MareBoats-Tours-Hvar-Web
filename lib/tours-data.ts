@@ -457,13 +457,13 @@ Most guests who book this tour have already done a full-day trip and want a shor
     tagline: 'Full-day speedboat tour from Hvar. Three sea caves, four beaches, Blue Cave on Biševo - and back before the day crowds hit.',
     shortDescription:
       'Full-day speedboat tour from Hvar: Green Cave, Stiniva Bay, Blue Cave (Biševo), Medvidina Cave, Budikovac Blue Lagoon and Pakleni Islands. Small groups. Departs 10:00.',
-    description: `We leave Hvar at 10:00 and spend the day covering the most iconic stretch of the Adriatic - Blue Cave, Stiniva Bay, three sea caves, and the Pakleni Islands. One boat, your group, back by 17:00.
+    description: `This Blue Cave tour from Hvar leaves Beach Križa at 10:00 and spends the day covering the most iconic stretch of the Adriatic - Blue Cave on Biševo, Stiniva Bay on Vis, three sea caves in total, and the Pakleni Islands on the way back. One boat, your group, back by 17:00.
 
-The route takes you to five islands and hits three caves, four beaches and a blue lagoon. Green Cave on Biševo is first - natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis, one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos - and it delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
+The route takes you to five islands and hits three caves, four beaches and a blue lagoon. The Green Cave Hvar guests see is first: natural light filters in through an underwater arch and the colour is unlike anything else on the Adriatic. Then Stiniva Bay on Vis: this Stiniva Bay boat tour segment reaches a cove voted one of the most dramatic beaches in Europe, enclosed by cliffs that rise 100 metres on either side. Blue Cave comes next, the one everyone has seen in photos. It delivers every time when the light is right. We time the visit for peak blue, between 11:00 and 12:00.
 
 After the caves you get Medvidina, the longest sea cave on Biševo, and Budikovac Blue Lagoon - shallow, calm, perfect for snorkelling with the masks we carry on board. The day ends at the Pakleni Islands, where you can stop for lunch at Palmižana or Ždrilca, both only reachable by boat.
 
-We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour (€${BC.sharedPerPerson} per person) or fully private (€${BC.private} for your group only, up to 8 guests). Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone as one group.
+We keep the group small so the day stays relaxed. Your skipper adjusts the pace to sea conditions and what your group actually wants - more time swimming, more caves, or a longer lunch stop. Available as a shared group tour or fully private, up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together - same route, same stops, everyone as one group.
 
 Message us on WhatsApp with your date and group size - we confirm fast.`,
     duration: '7 HRS · DEPARTS 10:00',
