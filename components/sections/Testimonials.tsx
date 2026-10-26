@@ -45,7 +45,9 @@ export default function Testimonials({
   const { ref, inView } = useScrollAnimation();
 
   const pool = topic ? reviewQuotes.filter((r) => r.topics.includes(topic)) : reviewQuotes;
-  const picked = pool.slice(0, limit);
+  // Fallback: if the requested topic has no reviews yet, show the general set so the section
+  // never renders empty on a page that opted in.
+  const picked = (pool.length > 0 ? pool : reviewQuotes).slice(0, limit);
 
   if (picked.length === 0) return null;
 

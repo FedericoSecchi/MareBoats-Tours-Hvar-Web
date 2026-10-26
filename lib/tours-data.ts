@@ -133,9 +133,9 @@ export const toursData: TourRecord[] = [
     tagline: 'Speedboat tour from Hvar: Red Rocks, Dubovica Beach & Pakleni Islands. Less sailing, more swimming.',
     shortDescription:
       'Speedboat tour from Hvar: Red Rocks cliffs, Dubovica Beach, a secret sea cave & Pakleni Islands. Private or shared. Less sailing, more swimming.',
-    description: `The Red Rocks & Pakleni Islands tour is the local route: the one we take when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
+    description: `Red Rocks Hvar, or Crvene Stijene, is a stretch of iron-red cliffs on the south coast of Hvar, Croatia. The Red Rocks & Pakleni Islands tour is the local route: the one we take when guests want to see Hvar the way people who live here actually experience it. Less sailing, more time in the water. A skipper who knows where the crowds aren't.
 
-We leave Beach Križa heading south along the coast. On calm days we also pause at Žarače, a quiet bay on the way. First stop is Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping from 5 to 10 metres is popular here if your group is into it.
+We leave Beach Križa heading south along the coast. On calm days we also pause at Žarače, a quiet bay on the way. First stop is Red Rocks, where iron oxide in the limestone turns the cliffs deep red against the turquoise sea. The water stays deep right up to the cliff face, and cliff jumping on Hvar from 5 to 10 metres is popular here if your group is into it.
 
 From Red Rocks we continue to Dubovica Beach, one of the most photographed beaches on Hvar, with a 16th-century stone house standing at the edge of the bay. A short swim from the shore, a hidden sea cave catches the light in a way that almost nobody sees from land.
 
@@ -143,7 +143,7 @@ Then Borče Bay in Milna: a quiet cove on the southern coast, calm water, no oth
 
 We finish in the Pakleni Islands: Palmižana for lunch at a restaurant you can only reach by boat, or Ždrilca for a quieter swim before we head back.
 
-Available as a shared tour (€${RR.sharedPerPerson}/person - minimum 6 guests to depart), a private half-day (4 hours, 09:00-13:00 or 14:00-18:00, €${RR.privateHalfDay}), or a private full-day (6 hours, 11:00-17:00, €${RR.privateFullDay} - more time at every stop). Groups of 9 to 16 travel on two boats sailing together - message us for pricing and availability.
+Two formats to the same route: a half-day boat tour of Red Rocks (4 hours, 09:00-13:00 or 14:00-18:00) and a 6-hour full-day (11:00-17:00) with more time at every stop. Both run shared or private, up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together.
 
 Message us on WhatsApp with your date and what sounds right - we sort the rest.`,
     duration: '4 OR 6 HRS',
@@ -245,7 +245,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
         name: 'Ždrilca',
         description:
           'A sheltered bay in the Pakleni Islands with striking water colour, protected from open sea on all sides.',
-        travelTime: '3 min from Borče Bay. Mlini is on the way — the boat slows down through this stretch for the water colour.',
+        travelTime: '3 min from Borče Bay. Mlini is on the way - the boat slows down through this stretch for the water colour.',
         activities:
           'Swimming, snorkelling and lunch. Tri Grede is at Ždrilca, reachable only by boat. A good place to eat and slow down before the last stretch.',
         conditions: 'Sheltered in almost all conditions.',
@@ -288,9 +288,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       { label: 'Duration',      value: '4 hours (half-day) or 6 hours (full-day)' },
       { label: 'Distance',      value: '30 to 35 km total route' },
       { label: 'Departs',       value: 'Beach Križa. 09:00 or 14:00 (half-day) · 11:00 (full-day)' },
-      { label: 'Capacity',      value: 'MareBoats Hvar speedboats are licensed for 12. We sail with a maximum of 8 so there is room to move, shift between shade and sun, and get in the water as a full group at the same time. Groups of 9 to 16 travel on two boats sailing together.' },
-      { label: 'Shared',        value: `€${RR.sharedPerPerson} per person · minimum 6 guests to depart` },
-      { label: 'Private',       value: `€${RR.privateHalfDay} half-day · €${RR.privateFullDay} full-day` },
+      { label: 'Capacity',      value: 'Licensed for 12. We cap at 8 per boat. Groups of 9 to 16 travel on two boats sailing together.' },
       { label: 'Meeting point', value: MEETING },
       // Included and Not included are injected here by the render from tour.includes/notIncludes
       { label: 'Extra fees',    value: 'None' },
@@ -298,24 +296,14 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
     ],
     faqs: [
       {
-        question: 'What is included in the Red Rocks & Pakleni Islands tour from Hvar?',
-        answer:
-          'The MareBoats Hvar speedboat and skipper are included, fuel for the full itinerary, a cooler with ice, bottled water, and snorkel masks. Lunch is not included. Restaurants are available at the Pakleni Islands at Palmižana and Ždrilca. There are no cave entrance fees on this route.',
-      },
-      {
         question: 'What time does the Red Rocks & Pakleni Islands tour depart from Hvar?',
         answer:
-          'Private half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The private full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking. All tours meet at the MareBoats barrel, on the path between Hvar port and Beach Križa, below the Beach Bay Hvar Hotel. About 3 minutes on foot from the ferry terminal, walking towards the Franciscan Monastery.',
+          'Half-day tours depart at 09:00 (returning by 13:00) or 14:00 (returning by 18:00). The full-day runs 11:00 to approximately 17:00. Shared tour departure times are confirmed by WhatsApp after booking.',
       },
       {
-        question: 'What is the difference between the 4-hour and 6-hour Red Rocks tour?',
+        question: 'What is the difference between the half-day and full-day Red Rocks tour?',
         answer:
           'Both versions visit the same stops on the south coast of Hvar: Red Rocks, Dubovica Beach, Borče Bay, and the Pakleni Islands. The 4-hour half-day moves at a steady pace with time to swim at each stop. The 6-hour full-day (11:00 to 17:00) adds more time at each location, including a proper lunch break at the Pakleni Islands.',
-      },
-      {
-        question: 'How many people are on the shared Red Rocks & Pakleni Islands tour?',
-        answer:
-          'MareBoats Hvar speedboats are licensed for up to 12 guests but capped at 8 per boat. The shared tour departs when a minimum of 6 guests have confirmed. Groups of 9 to 16 travel on two MareBoats Hvar speedboats sailing together.',
       },
       {
         question: 'Is Žarače a guaranteed stop on the Red Rocks & Pakleni tour?',
@@ -323,9 +311,14 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
           'No. Žarače is a weather-dependent stop. When sea conditions allow, the skipper pauses at Žarače on the way south along the Hvar coast. It is a narrow, sheltered bay. On days with swell or wind the stop is skipped, but no other stop is removed from the itinerary.',
       },
       {
+        question: 'How many people are on the shared Red Rocks & Pakleni Islands tour?',
+        answer:
+          'MareBoats Hvar speedboats are licensed for up to 12 guests but capped at 8 per boat. The shared tour departs when a minimum of 6 guests have confirmed. Groups of 9 to 16 travel on two speedboats sailing together.',
+      },
+      {
         question: 'Can I book the Red Rocks & Pakleni Islands tour as a private group?',
         answer:
-          `Yes. The private half-day (4 hours) is €${RR.privateHalfDay} per boat for your group only. The private full-day (6 hours) is €${RR.privateFullDay} per boat. Both options include the speedboat, skipper, fuel, bottled water, cooler with ice, and snorkel masks. Up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together.`,
+          'Yes. Both the 4-hour half-day and the 6-hour full-day are available as private bookings for your group only, up to 8 guests per boat. Groups of 9 to 16 travel on two boats sailing together. See the Pricing block for current rates.',
       },
       {
         question: 'Is Dubovica Beach accessible only by boat?',
@@ -340,12 +333,7 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
       {
         question: 'Why does MareBoats Hvar limit groups to 8 guests?',
         answer:
-          'MareBoats Hvar speedboats are licensed for up to 12 guests but are capped at 8 per boat. At 8 guests, everyone has room to move between the shaded seating area and the open deck, and the full group can be in the water at the same time. Groups of 9 to 16 travel on two boats sailing together.',
-      },
-      {
-        question: 'Do I have to stay seated during the Red Rocks tour?',
-        answer:
-          'No. There are no assigned seats on a MareBoats Hvar speedboat. There is room to move and to choose between shade and open sun during the day.',
+          'Our speedboats are licensed for up to 12 guests but we cap at 8. At 8 guests everyone has room to move between the shaded seating area and the open deck, and the full group can be in the water at the same time.',
       },
       {
         question: 'Do I need to be a strong swimmer to use an underwater scooter?',
@@ -353,19 +341,9 @@ Message us on WhatsApp with your date and what sounds right - we sort the rest.`
           'No. If you are comfortable floating in the water, you can use one.',
       },
       {
-        question: 'Can I use an underwater scooter with a life jacket?',
-        answer:
-          'Yes. It works best without one, but with a life jacket you simply stay at the surface.',
-      },
-      {
-        question: 'How long does the underwater scooter battery last?',
-        answer:
-          'Around one hour depending on use, which is more than enough for the swim stops.',
-      },
-      {
         question: 'How do I add underwater scooters to my tour?',
         answer:
-          `Message us on WhatsApp when you book or before your tour. €${ADDONS.scooter} per scooter.`,
+          `Message us on WhatsApp when you book or before your tour. €${ADDONS.scooter} per scooter. Red Rocks and Pakleni Islands private tours only.`,
       },
     ],
     relatedGuide: {
