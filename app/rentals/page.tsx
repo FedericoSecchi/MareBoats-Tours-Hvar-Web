@@ -68,8 +68,7 @@ const itemListSchema = {
 const FAQS: { question: string; answer: string }[] = [
   {
     question: 'Do I need a boat licence to rent a boat in Hvar?',
-    answer:
-      "The Pasara 5hp self-drive does not need a boating licence under Croatian maritime law. The 60hp speedboat and the Mariner 150hp need a valid boating licence. If you do not have one, book a Private Charter and we provide the skipper.",
+    answer: `Not for the Pasara 5hp. It needs no boating licence under Croatian maritime law, costs €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay} a day with fuel included and suits the calm water around the Pakleni Islands. The 60hp speedboat and the Mariner 150hp need a valid boating licence. If you do not have one and want to go further, book a Private Charter and we provide the skipper.`,
   },
   {
     question: 'How many people can rent a boat in Hvar?',
@@ -85,10 +84,6 @@ const FAQS: { question: string; answer: string }[] = [
     question: 'Can I choose my own route?',
     answer:
       "Yes. With a skipper, we'll suggest the best spots based on conditions that day - but the route is yours. Self-drive rentals have recommended areas within the Hvar archipelago.",
-  },
-  {
-    question: 'Can I rent a boat in Hvar without a licence?',
-    answer: `For guests without a boating licence, we offer the Pasara - a small open boat available from €${RENTAL_SELF_DRIVE.pasara5hp.pricePerDay}/day. Contact us on WhatsApp to confirm eligibility for your group and dates.`,
   },
   {
     question: 'Is there a security deposit for the Mariner 150hp?',
