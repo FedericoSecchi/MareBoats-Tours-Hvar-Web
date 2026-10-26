@@ -192,7 +192,7 @@ export default function RentalsPage() {
             Boat Rental Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Self-drive boat hire in Hvar, from a small Pasara to a 150hp speedboat, all picked up at Beach Križa. The Pasara 5hp needs no boating licence. The 60hp speedboat and the Mariner 150hp need a valid one, or come out with us on a Private Charter and we bring the skipper.
+            Self-drive boats from Beach Križa. No licence needed on the Pasara 5hp.
           </p>
         </div>
       </section>
@@ -208,7 +208,7 @@ export default function RentalsPage() {
           </h2>
 
           <p className="mt-6 max-w-2xl font-body text-base leading-relaxed text-[color:var(--gray)]">
-            Four self-drive boats, same pickup at Beach Križa. The Pasara 5hp needs no boating licence. The 60hp speedboat and the Mariner 150hp need a valid one. Dogs are welcome on board, on request.
+            Every self-drive boat is picked up at Beach Križa. The Pasara 5hp needs no boating licence. The 60hp speedboat and the Mariner 150hp need a valid one. Dogs are welcome on board, on request.
           </p>
           <p className="mt-3 font-body text-sm text-[color:var(--gray)]">
             Want a skipper on board instead?{' '}
@@ -232,7 +232,7 @@ export default function RentalsPage() {
                   Self-Drive
                 </p>
                 <h3 className="mt-1 font-display text-2xl font-bold uppercase tracking-[-0.01em] text-[color:var(--white)]">
-                  Four boats, pick yours
+                  Pick your boat
                 </h3>
               </div>
 
