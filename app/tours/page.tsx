@@ -168,7 +168,7 @@ export default function ToursIndexPage() {
             Boat Trips from Hvar
           </h1>
           <p className="mt-5 font-body text-base leading-relaxed text-[color:var(--gray)] md:text-lg">
-            Compare every boat tour from Hvar on this page: duration, price from, what you see. Day trips from Hvar by boat and short cruises from Beach Križa, no middleman. Hvar boat tour prices scale with group size for shared departures and are shown per boat for private days.
+            Compare every boat tour from Hvar on this page: duration, price from, what you see. Full-day trips and short cruises, all leaving from Beach Križa, no middleman. Shared departures are priced per person, private days per boat.
           </p>
         </div>
       </section>
