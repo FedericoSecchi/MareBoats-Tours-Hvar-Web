@@ -55,7 +55,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   const titleMap: Record<string, string> = {
     'blue-cave-pakleni-islands': 'Hvar Boat Tour: 5 Islands, Blue Cave & 4 Beaches',
     'red-rocks-pakleni-islands': 'Red Rocks Hvar: Half or Full-Day Boat Tour',
-    'pakleni-islands': 'Pakleni Islands Half Day Boat Tour from Hvar',
+    'pakleni-islands': 'Pakleni Islands Boat Tour from Hvar',
     'sunset-cruise': 'Sunset Cruise Hvar',
     'private-boat-charter': 'Private Boat Charter Hvar',
     'split-airport-transfer': 'Split Airport to Hvar by Speedboat',

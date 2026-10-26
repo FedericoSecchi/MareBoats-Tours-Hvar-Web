@@ -1,26 +1,19 @@
-# Brief — pakleni-islands
+# Brief — Pakleni (`/tours/pakleni-islands/`)
 
-- Keyword principal: · Idioma/mercado: · Persona principal:
-- Intención (qué quiere hacer quien busca):
-- Veredicto SERP:
+## Keyword principal
+"pakleni islands boat tour from hvar" (GSC: ~250 impr en el cluster · pos 13–25).
 
-## Competencia (top 3)
-| URL | Qué hacen bien | Qué les falta |
-|---|---|---|
-- Features de la SERP:
-- Lo que podemos decir que ellos no pueden:
-
-## CTA principal
-- Texto del botón:
-- Microcopy:
-- Mensaje prellenado WhatsApp:
-
-## Estructura (encabezados + bloques)
-| # | Bloque / componente | Encabezado (nivel y texto) | Contenido | Máx. palabras | Keywords asignadas | CTA |
-|---|---|---|---|---|---|---|
-
-## Descartado y por qué
-- 
-
-## [CONFIRMAR] que afectan esta página
-- 
+## Cambios
+- **Name/H1**: `"Pakleni Islands Half Day Tour"` → `"Pakleni Islands
+  Boat Tour from Hvar"`. El principal entra al H1 completo.
+- **Title (SEO)**: `"Pakleni Islands Half Day Boat Tour from Hvar"`
+  (44 chars de origen) → `"Pakleni Islands Boat Tour from Hvar"`
+  (35 chars). "half day" ya aparece en el description.
+- **Description del tour**: reescrita para que entren
+  "boat trip from Hvar to Pakleni Islands",
+  "half day boat tour from Hvar" y
+  "private Pakleni Islands boat tour" como long-tail.
+- **shortDescription**: ahora arranca con "Private Pakleni Islands
+  boat tour from Hvar, Croatia".
+- Precios sacados de la description (siguen en pricingOptions). Los
+  dos formatos (3h / 4h) se nombran sin repetir el precio.

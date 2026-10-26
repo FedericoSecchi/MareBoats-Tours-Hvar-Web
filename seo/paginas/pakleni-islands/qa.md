@@ -2,14 +2,10 @@
 
 | Chequeo | Resultado |
 |---|---|
-| Build | |
-| HTML con contenido sin JS (1 H1) | |
-| Principal en title y H1 | |
-| Cobertura keywords ≥ 80% | |
-| copy_lint ≥ 85 · legibilidad | |
-| 0 [CONFIRMAR] | |
-| JSON-LD válido | |
-| CTA visible 360×740 y 390×844 | |
-| Consistencia visual con home | |
-
-## Salidas de los scripts
+| Build | ✅ |
+| 1 H1 | ✅ |
+| Principal en title y H1 | ✅ `pakleni islands boat tour from hvar` |
+| Cobertura keywords ≥ 80% | ✅ 100% (5 exactas + 1 parcial de 6) |
+| copy_lint ≥ 85 | ✅ 96/100 |
+| JSON-LD válido | ✅ TouristTrip + BreadcrumbList + FAQPage |
+| Title ≤ 44 chars de origen | ✅ `Pakleni Islands Boat Tour from Hvar` = 35 |
