@@ -107,7 +107,7 @@ export default function SeaCarePage() {
         <div className="relative mx-auto w-full max-w-[1120px] px-4 pb-20 md:pb-24">
           <p className="font-body text-sm font-bold uppercase tracking-[0.15em] text-[color:var(--accent)]">MareBoats Hvar</p>
           <h1 className="mt-2 font-display text-[4rem] font-extrabold uppercase leading-[1.08] tracking-[-0.053em] md:text-[6.25rem]">
-            Sea
+            Sea{' '}
             <br />
             Care
           </h1>

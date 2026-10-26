@@ -83,6 +83,7 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto flex w-full max-w-container flex-col items-center gap-8 px-4 py-20 text-center">
           <h1 className="font-display text-[clamp(3rem,10vw,8rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.02em]">
             <span className="block text-[color:var(--white)]">Private Boat</span>
+            {' '}
             <span className="block text-[color:var(--accent)]">Tours Hvar</span>
           </h1>
 
